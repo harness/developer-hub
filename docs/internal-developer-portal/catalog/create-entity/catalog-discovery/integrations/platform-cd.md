@@ -2,6 +2,8 @@
 title: Catalog Auto-Discovery with Platform Integrations
 sidebar_position: 9
 sidebar_label: Platform Integration
+redirect_from:
+  - /docs/internal-developer-portal/catalog/create-entity/catalog-discovery/platform-cd
 description: Discover services from Platform integrations and sync them to the IDP Catalog
 keywords:
   - catalog auto-discovery
@@ -41,7 +43,7 @@ To enable Platform Integration:
 3. The integration will display an enable/disable toggle with minimal configuration required
 
 
-<DocImage path={require('./static/enable-pl-int.png')} alt="Enable Platform Integration" title="Click to view full size image" />
+<DocImage path={require('../static/enable-pl-int.png')} alt="Enable Platform Integration" title="Click to view full size image" />
 
 :::info
 Once you import entities using Platform Integration, you will not be able to delete them from the catalog. They are managed by the Platform Integration sync process.
@@ -57,7 +59,7 @@ Once the import is complete, you can view all imported entities in two ways:
 
 Navigate to **Configure** → **Integrations** → **Platform Integration** to view the imported entities table:
 
-<DocImage path={require('./static/pl-int-list.png')} alt="Platform Integration List" title="Click to view full size image" />
+<DocImage path={require('../static/pl-int-list.png')} alt="Platform Integration List" title="Click to view full size image" />
 
 
 Clicking on an entity in this table will navigate you to the IDP catalog entity details page.
@@ -66,7 +68,7 @@ Clicking on an entity in this table will navigate you to the IDP catalog entity 
 
 Navigate to **Catalog** and filter by **Kind: hierarchy** to view all hierarchical entities. You can then select the specific type (account, organization, or project) to view entities at that level.
 
-<DocImage path={require('./static/hierarchy.png')} alt="Hierarchy entities" title="Click to view full size image" />
+<DocImage path={require('../static/hierarchy.png')} alt="Hierarchy entities" title="Click to view full size image" />
 
 ## Hierarchy entity structure
 
@@ -84,7 +86,7 @@ When you view an account entity:
 - **Kind:** `hierarchy`
 - **Type:** `account`
 
-<DocImage path={require('./static/acc-lvl-entity.png')} alt="Account Level Entity" title="Click to view full size image" />
+<DocImage path={require('../static/acc-lvl-entity.png')} alt="Account Level Entity" title="Click to view full size image" />
 
 **The Overview tab displays two tables:**
 
@@ -100,7 +102,7 @@ When you view an organization entity:
 - **Kind:** `hierarchy`
 - **Type:** `organization`
 
-<DocImage path={require('./static/org-entity.png')} alt="Organization Level Entity" title="Click to view full size image" />
+<DocImage path={require('../static/org-entity.png')} alt="Organization Level Entity" title="Click to view full size image" />
 
 **The Overview tab displays three sections:**
 
@@ -116,7 +118,7 @@ When you view a project entity:
 - **Kind:** `hierarchy`
 - **Type:** `project`
 
-<DocImage path={require('./static/pro-level.png')} alt="Project Level Entity" title="Click to view full size image" />
+<DocImage path={require('../static/pro-level.png')} alt="Project Level Entity" title="Click to view full size image" />
 
 **The Overview tab displays:**
 
@@ -129,7 +131,7 @@ When you view a project entity:
 
 Beyond the default hierarchical relationships, you can customize the Overview tab of hierarchy entities to display additional metrics and insights using **Aggregation Rules** and **Layout Configuration**.
 
-<DocImage path={require('./static/layout.png')} alt="Layout" title="Click to view full size image" />
+<DocImage path={require('../static/layout.png')} alt="Layout" title="Click to view full size image" />
 
 #### What you can add
 
@@ -142,7 +144,7 @@ Beyond the default hierarchical relationships, you can customize the Overview ta
 2. **Configure Layouts** - Add stats cards and tables to display the aggregated metrics on hierarchy entities
 3. **View Results** - Navigate to hierarchy entities to see your customized metrics and insights
 
-<DocImage path={require('./static/metric.png')} alt="Metric" title="Click to view full size image" />
+<DocImage path={require('../static/metric.png')} alt="Metric" title="Click to view full size image" />
 
 For example, you can aggregate DORA metrics from service components to project entities, then roll up test coverage from projects to organizations, and display these as cards on the Overview tab.
 

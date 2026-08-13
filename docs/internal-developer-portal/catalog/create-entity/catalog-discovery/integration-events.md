@@ -2,7 +2,7 @@
 title: Integration Events
 description: Monitor sync and lifecycle activity for Airbyte-based integrations in Harness IDP. Understand event types, statuses, and how to use the Events tab.
 sidebar_label: Integration Events
-sidebar_position: 12
+sidebar_position: 5
 ---
 
 import DocImage from '@site/src/components/DocImage';
@@ -10,9 +10,11 @@ import DocImage from '@site/src/components/DocImage';
 The **Events** tab is available for every Airbyte-based integration. It logs all sync runs, integration lifecycle events, import operations, and entity unlink events for that integration. Use it to verify that scheduled syncs are completing, confirm that imports finished successfully, and investigate failures.
 
 :::info
-* The Events tab is available for the following integrations: [Bitbucket Cloud](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/bitbucket-cloud), [Datadog](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/datadog), [Dynatrace](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/dynatrace), [GitHub](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github), [Google Cloud](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/gcp), [PagerDuty](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/pagerduty), [ServiceNow CMDB](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/servicenow-cmdb), and [SonarQube](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube). It is not available for Harness CD, Kubernetes integration, and Platform integrations.
+* The Events tab is available for the following integrations: [Bitbucket Cloud](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/bitbucket-cloud), [Datadog](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/datadog), [Dynatrace](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/dynatrace), [GitHub](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/github), [Google Cloud](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/gcp), [PagerDuty](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/pagerduty), [ServiceNow CMDB](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/servicenow-cmdb), and [SonarQube](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/sonarqube). It is not available for Harness CD, Kubernetes integration, and Platform integrations.
 
 * Events are retained for 180 days. Events older than 180 days are automatically removed and cannot be recovered.
+
+* [Custom Integrations](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/custom-integrations/overview) also have an Events tab, but it reports ingestion and lifecycle activity rather than sync runs. Go to [Monitor ingestion](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/custom-integrations/ingest-data#monitor-ingestion-with-the-events-tab) for those event types.
 
 :::
 

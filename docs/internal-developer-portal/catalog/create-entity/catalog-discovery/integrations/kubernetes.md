@@ -3,6 +3,8 @@ title: Kubernetes Integration
 description: Auto-discover Kubernetes services and populate the IDP Catalog for service discovery and dependency mapping.
 sidebar_position: 7
 sidebar_label: Kubernetes
+redirect_from:
+  - /docs/internal-developer-portal/catalog/create-entity/catalog-discovery/kubernetes
 ---
 
 import DocImage from '@site/src/components/DocImage';
@@ -67,7 +69,7 @@ This section is intended to take you to the Kubernetes integration at the projec
 
 3. In the left sidebar, switch the scope to your target project.
 
-   <DocImage path={require('./static/k8s-integration-nav.gif')} />
+   <DocImage path={require('../static/k8s-integration-nav.gif')} />
 
 4. In the left navigation menu under the project section, click **Integrations**.
 
@@ -79,7 +81,7 @@ This section is intended to take you to the Kubernetes integration at the projec
 
 This section is intended to help you attach a discovery agent required to pull information about your Kubernetes services into the IDP.
 
-<DocImage path={require('./static/discovery-agent-selection.png')} />
+<DocImage path={require('../static/discovery-agent-selection.png')} />
 
 1. Enter a name in the **Integration Name** field. This name appears on the integration card on the **Integrations** page (e.g., `PreQA GCP K8s Integration`).
 
@@ -100,7 +102,7 @@ The integration relies on a Service Discovery Agent (SDA) that runs inside your 
 
    Enable **Persistent Agent Mode** when you want changes such as a replica count update, a pod restart, or a health change to appear on the entity within seconds rather than after the next cron run.
 
-   <DocImage path={require('./static/persistent-agent-mode.png')} />
+   <DocImage path={require('../static/persistent-agent-mode.png')} />
 
    :::tip
    The agent observes resources per cluster. For example, if your prod and non-prod services run in separate clusters but you need them in one entity view, you may create separate Kubernetes integrations (and agents) for each cluster, and then merge the discovered services into the same catalog entity to [see all environments together](#overview-tab).
@@ -120,7 +122,7 @@ This section covers how you can view the Kubernetes services found by the discov
 
 After the integration runs, all services detected by the SDA appear in the **Discovered** tab. If the services do not update, use the **Sync** button at the top right to manually refresh and fetch the latest services from the cluster.
 
-   <DocImage path={require('./static/discovered-tab.png')} />
+   <DocImage path={require('../static/discovered-tab.png')} />
 
 For each discovered service, you can see its name, kind, and the date it was detected. You can choose how to bring the services into the IDP Catalog using one of the following methods:
 
@@ -137,7 +139,7 @@ For each discovered service, you can see its name, kind, and the date it was det
 
 The **Imported** tab displays all the services you have brought into the catalog.
 
-   <DocImage path={require('./static/imported-tab.png')} />
+   <DocImage path={require('../static/imported-tab.png')} />
 
 It displays the following data:
 
@@ -180,7 +182,7 @@ To display Kubernetes data on the [entity details](/docs/internal-developer-port
 
 4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new top-level tab entry using the `KubernetesIntegrationTab` component:
 
-   <DocImage path={require('./static/k8s-layout-config.png')} />
+   <DocImage path={require('../static/k8s-layout-config.png')} />
 
    The relevant YAML additions are:
 
@@ -207,13 +209,13 @@ To display Kubernetes data on the [entity details](/docs/internal-developer-port
 
 The entity **Overview** tab includes a card that summarizes the Kubernetes resources linked to the service. Each row shows the resource name, environment, namespace, kind, and replica count. Click **View All** to open the full [Kubernetes tab](#kubernetes-tab).
 
-<DocImage path={require('./static/k8s-overview.png')} />
+<DocImage path={require('../static/k8s-overview.png')} />
 
 ### Kubernetes tab
 
 The **Kubernetes** tab shows every Kubernetes resource linked to the service. Because the agent observes resources per cluster, this view lets you see resources across the environments and namespaces you have merged into the entity.
 
-<DocImage path={require('./static/k8s-tab-resources.png')} />
+<DocImage path={require('../static/k8s-tab-resources.png')} />
 
 The table lists the following columns:
 
@@ -232,7 +234,7 @@ Use the **Environment**, **Namespace**, and **Integration ID** dropdowns at the 
 
 Click any row in the Kubernetes tab to open a detail drawer for that resource. The drawer organizes data into tabs.
 
-<DocImage path={require('./static/k8s-drawer.gif')} />
+<DocImage path={require('../static/k8s-drawer.gif')} />
 
 * **Overview** - Workload summary for the resource. Includes its kind, status flags (for example, `Healthy`, `No Privileged`, `Pinned Images`, `Has Limits`), ready replica count, labels and annotations, deployment configuration (strategy, max surge, max unavailable, service account), container summary, volumes, conditions, and networking details.
 
@@ -247,7 +249,7 @@ Click any row in the Kubernetes tab to open a detail drawer for that resource. T
 
   A **Scaling Metrics** sub-section follows, with a table listing each configured metric (such as CPU utilization) with its **Target** and **Current** values.
 
-  <DocImage path={require('./static/autoscaling-k8s.png')} />
+  <DocImage path={require('../static/autoscaling-k8s.png')} />
 
 * **Pods** - The pods that belong to the resource. Each pod shows its running status, pod IP, host IP, node placement, service account, start time, and per-container ready state and restart count.
 * **Nodes** - The nodes the resource is scheduled on. Each node shows its kubelet version, OS, architecture, zone, capacity, allocatable resources, and node conditions.
@@ -274,7 +276,7 @@ Click any row in the Kubernetes tab to open a detail drawer for that resource. T
 
   The **Routing** tab only appears in the drawer when Ingress or Istio resources are present for the service. It is not shown for services with no routing resources.
 
-  <DocImage path={require('./static/k8s-routing.png')} />
+  <DocImage path={require('../static/k8s-routing.png')} />
 
 :::info Data refresh for autoscaling and routing
 Autoscaling (HPA) and Routing data refresh on the agent's scan, every 5 minutes by default. This is separate from the near real-time updates the persistent agent provides for workload, pod, and node data. Expect up to a 5-minute lag between a cluster change (such as an HPA scaling event or a new Ingress rule) and its appearance in the UI.
@@ -291,7 +293,7 @@ This integration surfaces resource state and status, not pod logs. Pod and conta
 
 To inspect the raw data ingested from Kubernetes, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
-   <DocImage path={require('./static/k8s-catalog-yaml-data.gif')} />
+   <DocImage path={require('../static/k8s-catalog-yaml-data.gif')} />
 
 Ingested properties are stored in two sections of the entity YAML:
 

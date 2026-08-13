@@ -5,7 +5,7 @@ sidebar_position: 7
 sidebar_label: Google Cloud
 ---
 
-import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/gcp.md';
+import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/gcp.md';
 
 <Idp />
 

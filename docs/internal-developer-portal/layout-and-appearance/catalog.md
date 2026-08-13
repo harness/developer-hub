@@ -360,7 +360,7 @@ page:
 
 ## Hierarchy entity layouts
 
-Hierarchy entities (created by [Platform Integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/platform-cd)) use specialized layouts to display organizational structure and aggregated metrics. You can customize layouts for each hierarchy type: **account**, **organization**, and **project**.
+Hierarchy entities (created by [Platform Integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/platform-cd)) use specialized layouts to display organizational structure and aggregated metrics. You can customize layouts for each hierarchy type: **account**, **organization**, and **project**.
 
 ![Hierarchy entities](./static/hirar.png)
 

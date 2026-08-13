@@ -3,6 +3,8 @@ title: Catalog Auto-Discovery with Harness CD Services
 description: Steps to use Catalog Ingestion API to ingest metadata and use the information on the catalog overview and workflows
 sidebar_position: 6
 sidebar_label: Harness CD
+redirect_from:
+  - /docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd
 ---
 
 This document is a detailed guide on how to use the **Harness IDP Catalog Auto-Discovery** integration to sync **Harness CD** services into the **IDP Catalog**. This integration populates your Catalog with CD services so you can sync, view, and manage them directly in Catalog. Services are created as **IDP service entities** and kept in **real-time, uni-directional sync** with their corresponding CD services.
@@ -29,7 +31,7 @@ Make sure the following prerequisites are met:
 
 1. In Harness IDP, go to **Configure** → **Integrations**.
 2. On the **Harness CD services** integration card, select **Enable**.
-![](./static/enable-integration-idp.png)
+![](../static/enable-integration-idp.png)
 
 ### 2. Sync Harness CD services to the IDP catalog
 
@@ -72,13 +74,13 @@ After enabling the integration, configure what to sync:
 #### Configure the sync scope
 
 1. On the same integration card, select **Edit**.
-![](./static/edit-integ-2.png)
+![](../static/edit-integ-2.png)
 2. Choose a scope:
 
    * **All Scopes**: Sync services across the entire account (all organizations and projects).
-   ![](./static/all-scopes.png)
+   ![](../static/all-scopes.png)
    * **Particular Organizations & Projects**: Sync from selected organizations and/or projects using the dropdown.
-   ![](./static/specific-scopes.png)
+   ![](../static/specific-scopes.png)
 3. Select **Save Changes** to begin syncing.
 
 :::info Changing Scope Filters
@@ -99,16 +101,16 @@ Once synced, search for any CD service in **IDP Catalog**:
 
 * Open the entity to view all data synced from the CD service.
 * The **CI/CD** plugin is automatically configured for the entity.
-![](./static/ci-cd-plugin.png)
+![](../static/ci-cd-plugin.png)
 * Use **Open in Harness CD** on the entity overview to navigate to the service in CD.
-![](./static/open-in-harness-cd.png)
+![](../static/open-in-harness-cd.png)
 
 #### Check the IDP entity reference in Harness CD
 
 * In **Harness CD**, open the relevant CD service.
 * Go to the **Referenced by** section.
 * From there, open the corresponding IDP entity.
-![](./static/cd-referenced-by.png)
+![](../static/cd-referenced-by.png)
 
 ### 4. Suspend auto-discovery
 **What happens when auto-discovery is suspended:**
@@ -120,7 +122,7 @@ To stop auto-discovery:
 
 1. Go to **Configure** → **Integrations** → **Harness CD**, then select **Edit**.
 2. Enable **Suspend Auto-discovery** and select **Save Changes**.
-![](./static/auto-suspend.png)
+![](../static/auto-suspend.png)
 
 Auto-discovery is now suspended.
 
@@ -140,19 +142,19 @@ The CD Auto-Discovery workflow becomes more comprehensive with new capabilities:
 
 **Enhanced discovery and management:** Instead of services being automatically imported, you now have a **Discovered** tab where all CD services appear first. Use the **Sync Services** button to manually refresh and fetch the latest services within your configured scope. From here, you can review each service (seeing its name, kind, type, scope, and available actions) and decide whether to **register it as a new entity** or **merge it with an existing catalog entity**. This gives you complete control over how services are brought into your catalog. Once you import services (individually or in bulk), they move to the **Imported** tab for easy management.
 
-<DocImage path={require('./static/sync.png')} alt="Sync Services" title="Click to view full size image" />
+<DocImage path={require('../static/sync.png')} alt="Sync Services" title="Click to view full size image" />
 
 **Entity sync behavior:** CD services sync the same fields as before (name, identifier, description, tags), but with the enhanced workflow you get more visibility into the sync process. If an entity with the same CD service ID already exists, the system performs a merge operation automatically. You can view which entities are linked to which CD services in the Imported tab.
 
 **Flexible import options:** You can import services one at a time or select multiple services for bulk import. The snackbar at the bottom of the Discovered tab lets you bulk-select by action type: open the dropdown to choose **All services**, **Register**, or **Merge (Recommended)**, then click **Import selected services**. There is also an **Auto-import toggle** that automatically imports all future discovered services, giving you the choice between manual curation and automatic syncing.
 
-<DocImage path={require('./static/import-toggle.png')} alt="Import Toggle" title="Click to view full size image" />
+<DocImage path={require('../static/import-toggle.png')} alt="Import Toggle" title="Click to view full size image" />
 
 **Register vs Merge:** For each discovered service, choose how to bring it into your catalog. **Register** creates a fresh catalog entry, while **Merge** links the CD service to an existing entity, combining information from both sources. This is particularly useful when you already have catalog entities defined and want to enrich them with CD service data.
 
 **Imported services management:** The **Imported** tab shows all services that have been brought into your catalog, displaying the relationship between CD services and IDP entities. You can unlink services at any time using the three-dot menu, which stops sync updates while keeping the IDP entity intact.
 
-<DocImage path={require('./static/imported.png')} alt="Imported Services" title="Click to view full size image" />
+<DocImage path={require('../static/imported.png')} alt="Imported Services" title="Click to view full size image" />
 
 **Configuration changes:** When configuring the sync scope, you will use the **Configuration** button instead of **Edit**, and confirm changes with **Confirm** instead of **Save Changes**. The scope selection options remain the same (All Scopes or specific organizations/projects), but you can now also select specific account-level entities.
 
@@ -160,13 +162,13 @@ In addition to scope selection, you can now configure **DORA metrics settings**:
 - Set the **deployment cycle period** (in days) to define the time window for calculating DORA metrics
 - Once configured, DORA metrics from CD (deployment frequency, lead time, change failure rate, and mean time to recovery) will be automatically sent to the catalog entity
 
-<DocImage path={require('./static/config.png')} alt="Configuration" title="Click to view full size image" />
+<DocImage path={require('../static/config.png')} alt="Configuration" title="Click to view full size image" />
 
 ### Ingested properties
 
 To inspect the raw data ingested from Harness CD, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
-<DocImage path={require('./static/harnesscd-ingested-properties.gif')} alt="Ingested Properties of HarnessCD" title="Click to view full size image" />
+<DocImage path={require('../static/harnesscd-ingested-properties.gif')} alt="Ingested Properties of HarnessCD" title="Click to view full size image" />
 
 Ingested properties are stored in two sections of the entity YAML:
 

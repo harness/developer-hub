@@ -5,7 +5,7 @@ sidebar_position: 5
 sidebar_label: PagerDuty
 ---
 
-import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/pagerduty.md';
+import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/pagerduty.md';
 
 <Idp />
 

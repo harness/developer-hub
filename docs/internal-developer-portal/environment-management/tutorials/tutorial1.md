@@ -504,7 +504,7 @@ You will need these in Step 9 when updating the Catalog entities.
 
 ### Step 8: Enable CD auto-discovery to register catalog entities
 
-CD Auto-discovery will automatically discover and import CD services as Catalog components in IDP. For more information on how to do this, go to [Catalog Auto-Discovery with Harness CD Services](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd/)
+CD Auto-discovery will automatically discover and import CD services as Catalog components in IDP. For more information on how to do this, go to [Catalog Auto-Discovery with Harness CD Services](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/harness-cd/)
 
 
 ### Step 9: Update catalog entities with deployment pipelines

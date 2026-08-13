@@ -11,7 +11,11 @@ redirect_from:
 
 Software Catalog in Harness IDP supports modifying metadata associated with the services, libraries, websites and any other entities registered in the Catalog, without having to manually edit the `catalog-info.yaml`. This allows integrations with many systems such as cost trackers, service health checkers, security scans or even simple spreadsheets tracking personnel details like who is on-call this week.
 
-The ingested data can be used to display on the UI, can be consumed in [Custom Plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview) and measured in Scorecard Checks. 
+The ingested data can be used to display on the UI, can be consumed in [Custom Plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview) and measured in Scorecard Checks.
+
+:::tip Which mechanism do I need?
+Use the Catalog Ingestion API to change a property on an entity, such as a team lead or a cost figure. Use a [Custom Integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/custom-integrations/overview) to attach activity records such as builds, deployments, incidents, quality reports, or security findings, which are displayed on the entity without modifying its metadata.
+::: 
 
 <DocImage title="Architecture Diagram of Catalog Ingestion" path={require('./catalog-ingestion/static/catalog-custom-property.png')} />
 

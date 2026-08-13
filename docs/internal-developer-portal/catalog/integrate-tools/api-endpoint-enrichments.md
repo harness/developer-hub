@@ -21,7 +21,7 @@ When you [register a catalog entity](/docs/internal-developer-portal/catalog/tut
 This page explains what gets extracted, how to configure the entity definition so extraction works reliably, and how to write enrichment data to individual endpoints using the Catalog Custom Properties API.
 
 :::info
-If you use Traceable for API security, the [Traceable integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/traceable) pushes risk scores, data type exposure, and open issues onto your API entity pages automatically. The CCP API described on this page is for writing your own custom enrichment metadata from any external tool or script.
+If you use Traceable for API security, the [Traceable integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/traceable) pushes risk scores, data type exposure, and open issues onto your API entity pages automatically. The CCP API described on this page is for writing your own custom enrichment metadata from any external tool or script.
 :::
 
 ---
@@ -200,7 +200,7 @@ The URL Allow List controls which domains the IDP frontend can render. It is not
 Once endpoints are extracted, you can attach custom metadata to any endpoint using the Catalog Custom Properties (CCP) API. Enrichments are stored separately from the extracted spec data and are never written to the entity's `catalog-info.yaml` in Git. Any service or tool that can make an authenticated HTTP request can write enrichments: your own scripts, CI/CD steps, or external integrations.
 
 :::tip
-Enrichment data written to endpoint properties is also available as a data source for [Scorecard](/docs/internal-developer-portal/scorecards/scorecard) rules, allowing you to define and measure API quality checks against enriched values such as risk scores or compliance tags. If you use Traceable for API security, the [Traceable integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/traceable) displays risk scores and open issues automatically as ready-made scorecard data points without requiring manual enrichment. See [Traceable data points](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources#traceable).
+Enrichment data written to endpoint properties is also available as a data source for [Scorecard](/docs/internal-developer-portal/scorecards/scorecard) rules, allowing you to define and measure API quality checks against enriched values such as risk scores or compliance tags. If you use Traceable for API security, the [Traceable integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/traceable) displays risk scores and open issues automatically as ready-made scorecard data points without requiring manual enrichment. See [Traceable data points](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources#traceable).
 
 :::
 

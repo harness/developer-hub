@@ -5,7 +5,7 @@ sidebar_position: 2
 sidebar_label: Harness CD
 ---
 
-import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd.md';
+import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/harness-cd.md';
 
 <Idp />
 

@@ -17,23 +17,26 @@ Integrations allow you to fetch data from Harness modules as well as third-party
 
 The following integrations are currently available under the `IDP_INTEGRATIONS` feature flag:
 
-- [**Bitbucket Cloud**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/bitbucket-cloud): Auto-discover Bitbucket Cloud repositories and populate the IDP Catalog for service discovery and dependency mapping.
-- [**Datadog**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/datadog): Auto-discover Datadog services and import them into the IDP Catalog with monitor health, SLO tracking, and service dependency context.
-- [**Dynatrace**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/dynatrace): Auto-discover Dynatrace services with problems, SLO tracking, and service health context.
-- [**GCP**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/gcp): Auto-discover Google Cloud resources and populate the IDP Catalog with infrastructure, compute, database, and AI resource metadata.
-- [**GitHub**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github): Auto-discover repositories, teams, and AI assets from your GitHub organization.
-- [**Harness CD**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd): Import CD services with customizable DORA metrics and deployment data.
-- [**Kubernetes**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/kubernetes): Auto-discover Kubernetes services and populate the IDP Catalog for service discovery and dependency mapping.
-- [**PagerDuty**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/pagerduty): Auto-discover PagerDuty services and teams and populate the IDP Catalog for on-call visibility and incident context.
-- [**Platform Integration**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/platform-cd): Sync all Harness Platform hierarchy entities (accounts, organizations, projects) into the catalog.
-- [**ServiceNow CMDB**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/servicenow-cmdb): Sync CMDB records into the catalog with configurable field mappings.
-- [**SonarQube**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube): Auto-discover SonarQube projects and populate the IDP Catalog with code quality metrics, security data, and issue analytics.
+- [**Bitbucket Cloud**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/bitbucket-cloud): Auto-discover Bitbucket Cloud repositories and populate the IDP Catalog for service discovery and dependency mapping.
+- [**Datadog**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/datadog): Auto-discover Datadog services and import them into the IDP Catalog with monitor health, SLO tracking, and service dependency context.
+- [**Dynatrace**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/dynatrace): Auto-discover Dynatrace services with problems, SLO tracking, and service health context.
+- [**GCP**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/gcp): Auto-discover Google Cloud resources and populate the IDP Catalog with infrastructure, compute, database, and AI resource metadata.
+- [**GitHub**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/github): Auto-discover repositories, teams, and AI assets from your GitHub organization.
+- [**Harness CD**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/harness-cd): Import CD services with customizable DORA metrics and deployment data.
+- [**Kubernetes**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/kubernetes): Auto-discover Kubernetes services and populate the IDP Catalog for service discovery and dependency mapping.
+- [**PagerDuty**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/pagerduty): Auto-discover PagerDuty services and teams and populate the IDP Catalog for on-call visibility and incident context.
+- [**Platform Integration**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/platform-cd): Sync all Harness Platform hierarchy entities (accounts, organizations, projects) into the catalog.
+- [**ServiceNow CMDB**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/servicenow-cmdb): Sync CMDB records into the catalog with configurable field mappings.
+- [**SonarQube**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/sonarqube): Auto-discover SonarQube projects and populate the IDP Catalog with code quality metrics, security data, and issue analytics.
 
+    :::tip Tool not listed here?
+    The integrations above connect outward to a supported tool and create or enrich catalog entities. To bring data in from any other tool, including Jenkins, CircleCI, GitHub Actions, or an internal system, use a [Custom Integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/custom-integrations/overview) and push the data yourself over a REST API or a webhook. Custom Integrations attach activity such as builds, deployments, incidents, and scan results to entities that already exist, rather than creating them.
+    :::
 ---
 
 ## Harness integrations
 
-- [**Traceable**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/traceable): This integration is available under a separate feature flag (`IDP_API_ENDPOINT_EXTRACTION`) and follows a different setup flow from the integrations above. It enriches existing API catalog entities with live security data rather than creating or discovering new entities. Display API security data from Traceable, including per-endpoint risk scores, data type exposure, and open issues, directly on your `kind: API` catalog entities.
+- [**Traceable**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/traceable): This integration is available under a separate feature flag (`IDP_API_ENDPOINT_EXTRACTION`) and follows a different setup flow from the integrations above. It enriches existing API catalog entities with live security data rather than creating or discovering new entities. Display API security data from Traceable, including per-endpoint risk scores, data type exposure, and open issues, directly on your `kind: API` catalog entities.
 
 ---
 

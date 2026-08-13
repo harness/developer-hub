@@ -5,7 +5,7 @@ sidebar_position: 3
 sidebar_label: Kubernetes
 ---
 
-import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/kubernetes.md';
+import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/kubernetes.md';
 
 <Idp />
 

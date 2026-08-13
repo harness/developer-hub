@@ -5,7 +5,7 @@ sidebar_position: 6
 sidebar_label: SonarQube
 ---
 
-import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube.md';
+import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/sonarqube.md';
 
 <Idp />
 

@@ -14,7 +14,7 @@ tags:
   - cd-auto-discovery
 ---
 
-import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/platform-cd.md';
+import Idp from '@site/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/platform-cd.md';
 
 <Idp />
 

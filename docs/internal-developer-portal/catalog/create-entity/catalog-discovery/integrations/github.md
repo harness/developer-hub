@@ -3,6 +3,8 @@ title: GitHub Integration
 description: Auto-discover GitHub repositories, teams, and AI assets and populate the IDP Catalog for service discovery and dependency mapping.
 sidebar_position: 4
 sidebar_label: GitHub
+redirect_from:
+  - /docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github
 ---
 
 The GitHub integration automatically discovers repositories, teams, and AI assets from your GitHub organization and brings them into the IDP Catalog. Once discovered, entities can be registered as new catalog entries or merged into existing ones, enriching them with GitHub-sourced metadata for service discovery, team ownership, and dependency mapping.
@@ -68,7 +70,7 @@ Here is how to set it up: [Configure delegate proxy settings](/docs/platform/del
 
 3. In the left navigation menu, click **Integrations**.
 
-   ![](./static/gh-integration-nav.png)
+   ![](../static/gh-integration-nav.png)
    <center>Figure 1: Navigation Path of GitHub Integration</center>
 
 4. On the Integrations page, click **+ New Integration** at the top.
@@ -79,7 +81,7 @@ Here is how to set it up: [Configure delegate proxy settings](/docs/platform/del
 
 This section connects Harness IDP to your GitHub organization.
 
-![](./static/gh-setup-connectivity.png)
+![](../static/gh-setup-connectivity.png)
 <center>Figure 2: Setup & Connectivity</center>
 
 1. Enter a name in the **Integration Name** field. This name appears on the integration card on the **Integrations** page (e.g., `GitHub Production`).
@@ -114,7 +116,7 @@ This section defines how GitHub entities are mapped to IDP catalog entities and 
 
 The integration supports three entity types: **Repository Entity**, **Team Entity**, and **AI Assets Entity**, each with its own toggle, registration behavior, and field configuration.
 
-![](./static/gh-entities.png)
+![](../static/gh-entities.png)
 <center>Figure 3: Available Entities - Repository, Team, and AI Assets</center>
 
 #### Repository entity
@@ -125,7 +127,7 @@ The Repository Entity mapping imports GitHub repositories as catalog entities, w
 The GitHub integration registers each repository as a single service across all GitHub types. Monorepos, where one repository contains multiple services, are not currently supported, so the individual services within a monorepo cannot be registered as separate catalog entities.
 :::
 
-![](./static/repo-entity.png)
+![](../static/repo-entity.png)
 <center>Figure 4: Enable Repository Entity</center>
 
 1. Ensure the **Repository Entity** toggle is turned on.
@@ -155,7 +157,7 @@ The GitHub integration registers each repository as a single service across all 
 
    Secondary kinds enrich each repository entity with development activity data. By surfacing pull requests and issues, IDP gives teams an instant view of how actively an entity is being developed, how stable it is, and whether it is progressing or at risk, all without leaving the platform.
 
-   ![](./static/gh-secondary-kinds.png)
+   ![](../static/gh-secondary-kinds.png)
    <center>Figure 5: Configure Secondary Kinds panel</center>
 
    The following secondary kinds are available:
@@ -179,7 +181,7 @@ The GitHub integration registers each repository as a single service across all 
 
 The Team Entity mapping imports GitHub teams as catalog entities, with configurable `Kind` or `Type`.
 
-![](./static/gh-team-entity.png)
+![](../static/gh-team-entity.png)
 <center>Figure 6: Enable Team Entity</center>
 
 1. Ensure the **Team Entity** toggle is turned on.
@@ -206,7 +208,7 @@ The catalog only surfaces repositories for which the GitHub team has Admin permi
 
 The AI Assets Entity mapping discovers and imports AI/ML assets found in your GitHub repositories through manifest-level, API-based scanning. No repository cloning is required. 
 
-![](./static/ai-assets-entity.png)
+![](../static/ai-assets-entity.png)
 <center>Figure 7: Enable AI Assets Entity</center>
 
 You can discover the following class of asset:
@@ -226,7 +228,7 @@ The current implementation scans for plugin manifests and `.claude/` directories
 :::
 
 :::tip Find your imported entities in the Catalog
-This asset class is registered in the IDP Catalog under `AIAsset` kind with its respective types, and is browsable under the **AI Assets** tab in the [Catalog](../../../catalog/overview)
+This asset class is registered in the IDP Catalog under `AIAsset` kind with its respective types, and is browsable under the **AI Assets** tab in the [Catalog](/docs/internal-developer-portal/catalog/overview)
 :::
 
 :::tip
@@ -237,7 +239,7 @@ Harness IDP includes out-of-the-box scorecard checks for AIAsset entities discov
  
 When AI assets of type `skill` or `agent` are imported, IDP automatically fetches their corresponding instruction file (for example, `SKILL.md`) from GitHub and stores it along with the entity. This powers the **Instructions** tab on the entity page as shown below. 
 
-![](./static/instructions.gif)
+![](../static/instructions.gif)
 <center>Figure 8: AI Assets Instructions</center>
 
 Additional metadata is also captured as annotations on the entity, including commit count, last commit message, author, and source location. These are visible in the **Entity Inspector** under **Metadata**.
@@ -259,7 +261,7 @@ However, this requires you to add an `InstructionsTab` component to your AI Asse
        - component: InstructionsTab
    ```
 
-   ![](./static/layout-edit.gif)
+   ![](../static/layout-edit.gif)
    <center>Figure 9: Edit Layout to display Instructions tab on Entity</center>
  
 5. Click **Save**.
@@ -275,7 +277,7 @@ The Instructions tab is currently supported for `skill` and `agent` type AI asse
 
 The **Advanced Settings** section controls how frequently IDP syncs with GitHub and how far back historical data is pulled.
 
-![](./static/gh-advanced-settings.png)
+![](../static/gh-advanced-settings.png)
 <center>Figure 10: Advanced Settings</center>
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls GitHub for new data.
@@ -302,7 +304,7 @@ This section covers how to view the GitHub entities discovered by the integratio
 
 After the integration runs, all GitHub entities detected appear in the **Discovered** tab. Use the **Repository**, **Team**, and **AI Assets** sub-tabs to switch between entity types. If entities do not appear, use the **Sync** button at the top right to manually refresh.
 
-![](./static/discovered-tab-gh.png)
+![](../static/discovered-tab-gh.png)
 <center>Figure 11: 'Discovered' tab showing GitHub Repositories, Teams, and AI Assets</center>
 
 For each discovered entity, you can see its name, the recommended catalog action, kind, and the date it was detected. You can choose how to bring entities into the catalog using one of the following actions:
@@ -319,7 +321,7 @@ For each discovered entity, you can see its name, the recommended catalog action
 
 The **Imported** tab displays all GitHub entities that have been brought into the catalog. Use the **Repository**, **Team**, and **AI Assets** sub-tabs to view each entity type separately.
 
-![](./static/imported-tab-gh.png)
+![](../static/imported-tab-gh.png)
 <center>Figure 12: 'Imported' tab showing GitHub entities linked to catalog entities</center>
 
 It displays the following data:
@@ -377,7 +379,7 @@ To display GitHub data on the [entity details](/docs/internal-developer-portal/c
 3. Select the **Entity Kind** (e.g., `component`) and the **Entity Type** (e.g., `service`) that matches your imported GitHub entities.
 4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **Source Code** tab using the `SourceControlTab` component.
 
-   ![Entity Layout configuration for GitHub components](./static/gh-layout-config.png)
+   ![Entity Layout configuration for GitHub components](../static/gh-layout-config.png)
    <center>Figure 13: Layout configuration for GitHub cards in Overview tab and Source Code tab</center>
 
    The relevant YAML additions are:
@@ -405,7 +407,7 @@ To display GitHub data on the [entity details](/docs/internal-developer-portal/c
 
 After the layout is configured, a `Source Control Management` card appears in the **Overview** tab of any entity that has GitHub data linked to it. The card displays the key GitHub metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
-![GitHub Cards on the Overview tab](./static/gh-card-overview.gif)
+![GitHub Cards on the Overview tab](../static/gh-card-overview.gif)
 <center>Figure 14: GitHub Cards on the Overview tab</center>
 
 If the GitHub integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. 
@@ -414,7 +416,7 @@ If the GitHub integration has not been configured for the entity, the card shows
 
 The **Source Code** tab provides a more complete view of the GitHub data for the entity. This tab fetches the latest possible data using the integration ID and entity UUID.
 
-![Source Code tab showing full resource details](./static/sourcecode.png)
+![Source Code tab showing full resource details](../static/sourcecode.png)
 <center>Figure 15: Source Code tab showing full GitHub resource details</center>
 
 :::tip Feature Highlights
@@ -427,7 +429,7 @@ The **Source Code** tab provides a more complete view of the GitHub data for the
 
 To inspect the raw data ingested from GitHub, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
-![](./static/catalog-yaml-gh.gif)
+![](../static/catalog-yaml-gh.gif)
 <center>Figure 16: Entity Inspector Page showing Ingested Properties</center>
 
 Ingested properties are stored in two sections of the entity YAML:
@@ -478,20 +480,20 @@ The following scopes are required for IDP to perform org-level discovery of repo
    * `repo` - Required to read private repository information. Classic PATs on GitHub do not offer a read-only scope for private repositories, so this broader scope is necessary even though IDP only reads repository data.
    * `read:org` (under admin:org) - Grants read access to organization and team membership, and org projects.
 
-![Classic PAT scope selection with repo and read:org checked](./static/repo-perm1-v2.png)
+![Classic PAT scope selection with repo and read:org checked](../static/repo-perm1-v2.png)
 
 
 If your GitHub organization enforces SAML SSO, the token must also be explicitly authorized for that organization after it is generated. Without SSO authorization, org-level queries will fail even if `read:org` is selected.
 
 To authorize, navigate to your token on the GitHub tokens page, click **Configure SSO**, and authorize the token for the relevant organization.
 
-![Configure SSO dialog showing organizations available to authorize](./static/repo-perm2.png)
+![Configure SSO dialog showing organizations available to authorize](../static/repo-perm2.png)
 
 ### Fine-Grained personal access token
 
 * **Repository access** must be set to **All repositories** so that IDP can discover all repositories in the organization. 
 
-   ![](./static/repo-perm3a-v2.png)
+   ![](../static/repo-perm3a-v2.png)
 
 * Under the **Repositories** permission tab, set the following options to `Read-only`:
    * `Contents`
@@ -499,11 +501,11 @@ To authorize, navigate to your token on the GitHub tokens page, click **Configur
    * `Metadata`
    * `Pull Requests`
 
-   ![](./static/repo-perm3b-v3.png)
+   ![](../static/repo-perm3b-v3.png)
 
 * Under the **Organizations** permission tab, set `Members` to `Read-only`.
 
-   ![](./static/repo-perm4-v3.png)
+   ![](../static/repo-perm4-v3.png)
 
 
 The **Resource owner** must be set to the **organization**, not a personal account. Fine-grained tokens are scoped to a single resource owner, so one token covers one organization. If you need to connect multiple GitHub organizations, create a separate token and a separate Harness connector for each.
@@ -512,7 +514,7 @@ The **Resource owner** must be set to the **organization**, not a personal accou
 
 * When configuring the app, the **Permissions** section should have the required permissions configured under both **Repository permissions** and **Organization permissions**.
 
-   ![](./static/repo-perm5-v3.png)
+   ![](../static/repo-perm5-v3.png)
 
 * In **Repository permissions**, confirm that the following options are set to `Read-only`:
    * `Contents`
@@ -520,15 +522,15 @@ The **Resource owner** must be set to the **organization**, not a personal accou
    * `Metadata`
    * `Pull Requests`
 
-   ![](./static/repo-perm6a-v3.png)
+   ![](../static/repo-perm6a-v3.png)
    
    Similarly, under **Organization permissions**, set `Members` to `Read-only`.
 
-   ![](./static/repo-perm6b-v3.png)
+   ![](../static/repo-perm6b-v3.png)
 
 * The app must be installed on the organization for the permissions to take effect. Once installed, the app's permission summary on the org's installed apps page will confirm: `Read access to members and metadata`
 
-   ![](./static/repo-perm7.png)
+   ![](../static/repo-perm7.png)
 
 ---
 

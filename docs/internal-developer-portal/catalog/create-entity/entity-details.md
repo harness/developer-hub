@@ -69,12 +69,12 @@ The `IntegrationsContent` card includes the following signals:
 
 | Signal | Description |
 |--------|-------------|
-| **Incidents** | Shows active incidents linked to this entity from connected [PagerDuty](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/pagerduty) integration. Resolved incidents are not shown in this summary, so navigate to the dedicated [Incidents tab](#incidents-tab) for a full list. |
-| **On-Call** | The current on-call schedule from the [PagerDuty](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/pagerduty) integration, showing who is responsible for responding to incidents right now. |
-| **Source Control Management** | A summary of SCM activity from the connected [GitHub](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github) integration, including open PR count, merged PRs, and average cycle time. PR data covers the last 30 days. The Top Language field shows a single primary language only, not a multi-language breakdown. |
-| **Code Quality** | A summary of code quality metrics from the connected [SonarQube](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube) integration, including Reliability Rating, Security Rating, SQALE (Maintainability) Rating, Coverage percentage, and Technical Debt. A quality gate badge shows passed or failed status. |
+| **Incidents** | Shows active incidents linked to this entity from connected [PagerDuty](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/pagerduty) integration. Resolved incidents are not shown in this summary, so navigate to the dedicated [Incidents tab](#incidents-tab) for a full list. |
+| **On-Call** | The current on-call schedule from the [PagerDuty](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/pagerduty) integration, showing who is responsible for responding to incidents right now. |
+| **Source Control Management** | A summary of SCM activity from the connected [GitHub](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/github) integration, including open PR count, merged PRs, and average cycle time. PR data covers the last 30 days. The Top Language field shows a single primary language only, not a multi-language breakdown. |
+| **Code Quality** | A summary of code quality metrics from the connected [SonarQube](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/sonarqube) integration, including Reliability Rating, Security Rating, SQALE (Maintainability) Rating, Coverage percentage, and Technical Debt. A quality gate badge shows passed or failed status. |
 | **Scorecard** | A summary of the entity's scorecard results, including overall score. Go to [Scorecards](/docs/internal-developer-portal/scorecards/scorecard) to view details. |
-| **DORA** | The four DORA metrics that measure software delivery performance: Deploy Frequency, Lead Time for Changes, Change Failure Rate, and Failed Deploy Recovery. Ratings are shown as Good, Fair, or Poor based on DORA benchmark thresholds. Rendered from ingested YAML properties available through [Harness CD](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd) integration. |
+| **DORA** | The four DORA metrics that measure software delivery performance: Deploy Frequency, Lead Time for Changes, Change Failure Rate, and Failed Deploy Recovery. Ratings are shown as Good, Fair, or Poor based on DORA benchmark thresholds. Rendered from ingested YAML properties available through [Harness CD](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/harness-cd) integration. |
 
 Instead of requiring you to add and configure individual cards for every integration signal, the `IntegrationsContent` card bundles all integration-sourced data into a single card:
 
@@ -109,7 +109,7 @@ Currently, the arrangement of data within the `IntegrationsContent` card cannot 
 
 ### Code quality tab
 
-The **Code Quality** tab provides a full, paginated view of code quality data from the connected [SonarQube](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube) integration. It shows everything in the Overview summary, plus:
+The **Code Quality** tab provides a full, paginated view of code quality data from the connected [SonarQube](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/sonarqube) integration. It shows everything in the Overview summary, plus:
 
 * Full issues list (bugs, code smells, vulnerabilities) with pagination
 * Security hotspots
@@ -144,7 +144,7 @@ The pull request list on this tab is only populated if **Pull Requests** is sele
 
 ### Incidents tab
 
-The **Incidents** tab provides a full view of incident data for this entity from [PagerDuty](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/pagerduty). An incident is an alert or event that indicates something may be wrong with the service, for example, a spike in error rate or a failed health check. This tab is distinct from the Integration Content card on the [Overview tab](#overview-tab), which shows only active incidents. The Incidents tab includes:
+The **Incidents** tab provides a full view of incident data for this entity from [PagerDuty](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/pagerduty). An incident is an alert or event that indicates something may be wrong with the service, for example, a spike in error rate or a failed health check. This tab is distinct from the Integration Content card on the [Overview tab](#overview-tab), which shows only active incidents. The Incidents tab includes:
 
 * A list of both active and resolved incidents.
 * On-call persons with their schedule, showing when each user is on-call for this entity. For permanently on-call individuals, no schedule is shown.

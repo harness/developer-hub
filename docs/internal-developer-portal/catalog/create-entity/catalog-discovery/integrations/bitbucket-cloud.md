@@ -3,6 +3,8 @@ title: Bitbucket Cloud Integration
 description: Auto-discover Bitbucket Cloud repositories and populate the IDP Catalog for service discovery and dependency mapping.
 sidebar_position: 2
 sidebar_label: Bitbucket Cloud
+redirect_from:
+  - /docs/internal-developer-portal/catalog/create-entity/catalog-discovery/bitbucket-cloud
 ---
 
 import DocImage from '@site/src/components/DocImage';
@@ -51,7 +53,7 @@ Go to [Configure delegate proxy settings](/docs/platform/delegates/manage-delega
 
 3. In the left navigation menu, click **Integrations**.
 
-   <DocImage path={require('./static/bb-integration-nav.png')} />
+   <DocImage path={require('../static/bb-integration-nav.png')} />
 
 4. On the Integrations page, click **+ New Integration** at the top.
 
@@ -61,7 +63,7 @@ Go to [Configure delegate proxy settings](/docs/platform/delegates/manage-delega
 
 This section connects Harness IDP to your Bitbucket workspace.
 
-<DocImage path={require('./static/bb-setup-connectivity.png')} />
+<DocImage path={require('../static/bb-setup-connectivity.png')} />
 
 1. Enter a name in the **Integration Name** field. This name appears on the integration card on the **Integrations** page (for example, `Bitbucket PreQA Workspace`).
 
@@ -79,7 +81,7 @@ This section defines how Bitbucket entities map to IDP catalog entities and how 
 
 The Bitbucket Cloud integration supports one entity type: **Repository Entity**.
 
-<DocImage path={require('./static/bb-repository-entity.png')} />
+<DocImage path={require('../static/bb-repository-entity.png')} />
 
 #### Repository entity
 
@@ -106,7 +108,7 @@ The Repository Entity mapping imports Bitbucket repositories as catalog entities
 
    Secondary kinds enrich each repository entity with development activity data, giving teams a view of how actively an entity is being developed without leaving the platform.
 
-   <DocImage path={require('./static/bb-secondary-kinds.png')} />
+   <DocImage path={require('../static/bb-secondary-kinds.png')} />
 
    The following secondary kinds are available:
 
@@ -128,7 +130,7 @@ The Repository Entity mapping imports Bitbucket repositories as catalog entities
 
 The **Advanced Settings** section controls how frequently IDP syncs with Bitbucket Cloud.
 
-<DocImage path={require('./static/bb-advanced-settings.png')} />
+<DocImage path={require('../static/bb-advanced-settings.png')} />
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls Bitbucket for new data.
 
@@ -150,7 +152,7 @@ This section covers how to view the Bitbucket entities discovered by the integra
 
 After the integration runs, all Bitbucket repositories detected appear in the **Discovered** tab. If entities do not appear, use the **Sync** button at the top right to manually refresh.
 
-<DocImage path={require('./static/bb-discovered-tab.png')} />
+<DocImage path={require('../static/bb-discovered-tab.png')} />
 
 For each discovered entity, you can see its name, the recommended catalog action, kind, type, and the date it was detected. You can choose how to bring entities into the catalog using one of the following actions:
 
@@ -166,7 +168,7 @@ For each discovered entity, you can see its name, the recommended catalog action
 
 The **Imported** tab displays all Bitbucket entities that have been brought into the catalog.
 
-<DocImage path={require('./static/bb-imported-tab.png')} />
+<DocImage path={require('../static/bb-imported-tab.png')} />
 
 It displays the following data:
 
@@ -187,7 +189,7 @@ To stop syncing a specific entity without deleting the catalog entity, use the t
 
 The **Events** tab logs all sync and lifecycle activity for this integration. Use it to verify that syncs are running, confirm that imports completed successfully, and investigate any failures.
 
-<DocImage path={require('./static/bb-events.png')} />
+<DocImage path={require('../static/bb-events.png')} />
 
 For the full event type reference and detail panel fields, go to [Integration Events](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integration-events).
 
@@ -205,7 +207,7 @@ Each imported Bitbucket repository is registered with:
 
 Open any entity to view Bitbucket-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: one on the **Overview** tab and a **Bitbucket Cloud** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-bitbucket-cloud-components).
 
-<DocImage path={require('./static/bb-catalog-entity.gif')} />
+<DocImage path={require('../static/bb-catalog-entity.gif')} />
 
 ### Layout for Bitbucket Cloud components
 
@@ -216,7 +218,7 @@ To display Bitbucket Cloud data on the [entity details](/docs/internal-developer
 3. Select the **Entity Kind** (e.g., `component`) and the **Entity Type** (e.g., `service`) that matches your imported Bitbucket Cloud entities.
 4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **Bitbucket Cloud** tab using the `SourceControlTab` component.
 
-   ![Entity Layout configuration for Bitbucket Cloud components](./static/bb-layout-config.png)
+   ![Entity Layout configuration for Bitbucket Cloud components](../static/bb-layout-config.png)
    <center>Figure 8: Layout configuration for Bitbucket Cloud cards in Overview tab and Bitbucket Cloud tab</center>
 
    The relevant YAML additions are:
@@ -247,7 +249,7 @@ To display Bitbucket Cloud data on the [entity details](/docs/internal-developer
 
 After the layout is configured, a `Source Control Management` card appears in the **Overview** tab of any entity that has Bitbucket Cloud data linked to it. The card displays the key Bitbucket Cloud metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
-![Catalog entity page for a Bitbucket-imported service](./static/bb-catalog-entity.png)
+![Catalog entity page for a Bitbucket-imported service](../static/bb-catalog-entity.png)
 <center>Figure 9: IDP Catalog Entity Page for a Bitbucket Cloud service</center>
 
 If the Bitbucket Cloud integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page.
@@ -256,7 +258,7 @@ If the Bitbucket Cloud integration has not been configured for the entity, the c
 
 The **Bitbucket Cloud** tab provides a more complete view of the Bitbucket Cloud data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
 
-![Bitbucket Cloud tab showing full resource details](./static/bitbucket-cloud-tab.png)
+![Bitbucket Cloud tab showing full resource details](../static/bitbucket-cloud-tab.png)
 <center>Figure 10: Tab showing full Bitbucket Cloud resource details</center>
 
 :::tip Feature Highlights
@@ -269,7 +271,7 @@ The **Bitbucket Cloud** tab provides a more complete view of the Bitbucket Cloud
 
 To inspect the raw data ingested from Bitbucket Cloud, open the entity and click **View YAML**, then select **Ingested Properties** in the Entity Inspector.
 
-<DocImage path={require('./static/bb-ingested-properties.gif')} />
+<DocImage path={require('../static/bb-ingested-properties.gif')} />
 
 Ingested properties are stored in two sections of the entity YAML:
 
@@ -307,6 +309,6 @@ The Bitbucket Cloud integration requires a workspace access token with the follo
 * **Repositories:** Read
 * **Pull requests:** Read
 
-<DocImage path={require('./static/minimum-perm.png')} />
+<DocImage path={require('../static/minimum-perm.png')} />
 
 These scopes allow IDP to discover all repositories in the workspace, read repository metadata, and ingest pull request data as a secondary kind.

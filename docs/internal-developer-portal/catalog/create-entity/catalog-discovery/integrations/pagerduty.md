@@ -3,6 +3,8 @@ title: PagerDuty Integration
 description: Auto-discover PagerDuty services and teams and populate the IDP Catalog for on-call visibility and incident context.
 sidebar_position: 8
 sidebar_label: PagerDuty
+redirect_from:
+  - /docs/internal-developer-portal/catalog/create-entity/catalog-discovery/pagerduty
 ---
 
 The PagerDuty integration automatically discovers services and teams from your PagerDuty account and brings them into the IDP Catalog. Once discovered, entities can be registered as new catalog entries or merged into existing ones, enriching them with PagerDuty-sourced metadata such as on-call schedules, incident analytics, and team ownership.
@@ -46,7 +48,7 @@ The PagerDuty integration is currently available at the **Account** level only. 
 
 3. In the left navigation menu, click **Integrations**.
 
-   ![](./static/pd-integration-nav.gif)
+   ![](../static/pd-integration-nav.gif)
    <center>Figure 1: Navigation Path of PagerDuty Integration</center>
 
 4. On the Integrations page, click **+ New Integration** at the top.
@@ -73,7 +75,7 @@ This section defines how PagerDuty entities are mapped to IDP catalog entities a
 
 The integration supports two entity types: **Service Entity** and **Team Entity**, each with its own toggle, registration behavior, and field configuration.
 
-![](./static/pagerduty-entities.png)
+![](../static/pagerduty-entities.png)
 <center>Figure 2: Available Entities - Service and Team</center>
 
 #### Service entity
@@ -87,7 +89,7 @@ The Service Entity mapping imports PagerDuty services as catalog components.
    * **Register** - Creates new catalog entities from PagerDuty. Does not merge with existing entities.
    * **Merge** - Links discovered services to existing catalog entities. Matching entities are recommended automatically, but you can choose a different one.
 
-      ![](./static/service-entity.png)
+      ![](../static/service-entity.png)
       <center>Figure 3: Enable Service Entity</center>
 
 3. The default **Kind** is `Component` and **Type** is `Service`. These are pre-configured and apply to all PagerDuty service imports.
@@ -101,7 +103,7 @@ The Service Entity mapping imports PagerDuty services as catalog components.
 
 5. Optionally, click **Configure** next to **Configure fields** to customize which PagerDuty fields are synced to the catalog. By default, all available fields are selected. 
 
-   ![](./static/service-ent-config.gif)
+   ![](../static/service-ent-config.gif)
    <center>Figure 4: Service Entity Configuration</center>
 
    The available PagerDuty service fields include:
@@ -124,7 +126,7 @@ The Team Entity mapping imports PagerDuty teams as catalog group entities.
 
 2. Under **Entity Registration Behavior**, choose the registration behavior as described above for [Service Entity](#service-entity).
 
-   ![](./static/team-entity.png)
+   ![](../static/team-entity.png)
    <center>Figure 5: Enable Team Entity</center>
 
 3. The default **Kind** is `Group` and **Type** is `Team`.
@@ -133,7 +135,7 @@ The Team Entity mapping imports PagerDuty teams as catalog group entities.
 
 5. Optionally, click **Configure** next to **Configure fields (optional)** to customize the field mapping. 
 
-   ![](./static/team-ent-config.gif)
+   ![](../static/team-ent-config.gif)
    <center>Figure 6: Team Entity Configuration</center>
 
    The available PagerDuty fields include:
@@ -150,7 +152,7 @@ The Team Entity mapping imports PagerDuty teams as catalog group entities.
 
 The **Advanced Settings** section controls how frequently IDP syncs with PagerDuty and how far back historical data is pulled.
 
-![](./static/advanced-settings.png)
+![](../static/advanced-settings.png)
 <center>Figure 7: Advanced Settings</center>
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls PagerDuty for new data. 
@@ -173,7 +175,7 @@ This section covers how to view the PagerDuty entities discovered by the integra
 
 After the integration runs, all PagerDuty services and teams detected appear in the **Discovered** tab. Use the **Service** and **Team** sub-tabs to switch between entity types. If entities do not appear, use the **Sync** button at the top right to manually refresh.
 
-![](./static/discovered-tab-pd.png)
+![](../static/discovered-tab-pd.png)
 <center>Figure 8: 'Discovered' tab showing the PagerDuty Services and Teams</center>
 
 For each discovered entity, you can see its name, the recommended catalog action, kind, type, and the date it was detected. You can choose how to bring entities into the catalog using one of the following actions:
@@ -190,7 +192,7 @@ For each discovered entity, you can see its name, the recommended catalog action
 
 The **Imported** tab displays all PagerDuty entities that have been brought into the catalog. Use the **Service** and **Team** sub-tabs to view each entity type separately.
 
-![](./static/imported-tab-pd.png)
+![](../static/imported-tab-pd.png)
 <center>Figure 9: 'Imported' tab showing the PagerDuty Services and Teams linked to the catalog entities</center>
 
 It displays the following data:
@@ -243,7 +245,7 @@ To display PagerDuty data on the [entity details](/docs/internal-developer-porta
 3. Select the **Entity Kind** (e.g., `component`) and the **Entity Type** (e.g., `service`) that matches your imported PagerDuty entities.
 4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **Incidents** tab using the `IncidentTabContent` component.
 
-   ![Entity Layout configuration for PagerDuty components](./static/pd-layout-config.png)
+   ![Entity Layout configuration for PagerDuty components](../static/pd-layout-config.png)
    <center>Figure 10: Layout configuration for PagerDuty cards in Overview tab and Incidents tab</center>
 
    The relevant YAML additions are:
@@ -271,7 +273,7 @@ To display PagerDuty data on the [entity details](/docs/internal-developer-porta
 
 After the layout is configured, two cards `Incidents` and `On-Call` appear in the **Overview** tab of any entity that has PagerDuty data linked to it. The card displays the key PagerDuty metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
-![PagerDuty Cards on the Overview tab](./static/pd-card-overview.png)
+![PagerDuty Cards on the Overview tab](../static/pd-card-overview.png)
 <center>Figure 11: PagerDuty Cards on the Overview tab</center>
 
 If the PagerDuty integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. 
@@ -280,7 +282,7 @@ If the PagerDuty integration has not been configured for the entity, the card sh
 
 The **Incidents** tab provides a more complete view of the PagerDuty data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
 
-![Incidents tab showing full resource details](./static/incidents-tab.png)
+![Incidents tab showing full resource details](../static/incidents-tab.png)
 <center>Figure 12: Incidents tab showing full PagerDuty resource details</center>
 
 :::tip Feature Highlights
@@ -295,10 +297,10 @@ The **Incidents** tab provides a more complete view of the PagerDuty data for th
 
 To inspect the raw data ingested from PagerDuty, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
-![](./static/catalog-yaml-pd1.gif)
+![](../static/catalog-yaml-pd1.gif)
 <center>Figure 13a: Entity Inspector Page showing ingested properties of Service Data</center>
 
-![](./static/catalog-yaml-pd2.gif)
+![](../static/catalog-yaml-pd2.gif)
 <center>Figure 13b: Entity Inspector Page showing ingested properties of Team Data</center>
 
 Ingested properties are stored in two sections of the entity YAML:

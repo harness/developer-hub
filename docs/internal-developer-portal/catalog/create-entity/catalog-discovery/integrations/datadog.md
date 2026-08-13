@@ -3,6 +3,8 @@ title: Datadog Integration
 description: Auto-discover Datadog services and import them into the IDP Catalog with monitor health, SLO tracking, and service dependency context.
 sidebar_position: 3
 sidebar_label: Datadog
+redirect_from:
+  - /docs/internal-developer-portal/catalog/create-entity/catalog-discovery/datadog
 ---
 
 The Datadog integration automatically discovers services from your [Datadog](https://www.datadoghq.com/) account and brings them into the [IDP Catalog](/docs/internal-developer-portal/catalog/overview). Once discovered, entities can be registered as new catalog entries or merged into existing ones. 
@@ -44,7 +46,7 @@ Go to [Configure delegate proxy settings](/docs/platform/delegates/manage-delega
 
 3. In the left navigation menu, click **Integrations**.
 
-   ![](./static/dd-integration-nav.png)
+   ![](../static/dd-integration-nav.png)
    <center>Figure 1: Navigation Path of Datadog Integration</center>
 
 4. On the Integrations page, click **+ New Integration** at the top.
@@ -55,7 +57,7 @@ Go to [Configure delegate proxy settings](/docs/platform/delegates/manage-delega
 
 This section connects Harness IDP to your Datadog account.
 
-![Setup & Connectivity section of the Datadog Integration page](./static/dd-setup-connectivity.png)
+![Setup & Connectivity section of the Datadog Integration page](../static/dd-setup-connectivity.png)
 <center>Figure 2: Setup & Connectivity</center>
 
 1. Enter a name in the **Integration Name** field. This name appears on the integration card on the **Integrations** page (e.g., `Datadog Prod Observability`).
@@ -105,7 +107,7 @@ If you do not have an existing Datadog connector, you can create one directly fr
 
 This section defines how Datadog services are mapped to IDP catalog entities and how they are correlated with existing records.
 
-![Mapping & Correlation section](./static/dd-mapping-correlation.png)
+![Mapping & Correlation section](../static/dd-mapping-correlation.png)
 <center>Figure 3: Mapping & Correlation</center>
 
 #### Service entity
@@ -125,14 +127,14 @@ The Service Entity mapping imports Datadog services as catalog components.
 
 5. Optionally, click **Configure** next to **Configure fields** to customize which Datadog fields are synced to the catalog. By default, all available fields are selected.
 
-   ![Configure Datadog service fields panel](./static/dd-field-config.gif)
+   ![Configure Datadog service fields panel](../static/dd-field-config.gif)
    <center>Figure 4: Configure Datadog Service Fields</center>
 
 ### 4. Configure advanced settings
 
 The **Advanced Settings** section controls how frequently IDP syncs with Datadog.
 
-![Advanced Settings section](./static/dd-advanced-settings.png)
+![Advanced Settings section](../static/dd-advanced-settings.png)
 <center>Figure 5: Advanced Settings</center>
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls Datadog for new data.
@@ -153,7 +155,7 @@ This section covers how to view the Datadog services discovered by the integrati
 
 After the integration runs, all Datadog services detected appear in the **Discovered** tab. If no entities appear yet, the tab shows a **Discovering Services** state, indicating the sync is still in progress.
 
-![Discovered tab showing Discovering Services state](./static/dd-discovering.png)
+![Discovered tab showing Discovering Services state](../static/dd-discovering.png)
 <center>Figure 6: Discovered tab in progress</center>
 
 Use the **Sync** button at the top right to manually trigger a refresh if needed.
@@ -171,7 +173,7 @@ Select services individually using the checkboxes, or use the snackbar at the bo
 
 The **Imported** tab displays all Datadog services that have been brought into the catalog.
 
-![Imported tab showing Datadog services linked to catalog entities](./static/dd-imported.png)
+![Imported tab showing Datadog services linked to catalog entities](../static/dd-imported.png)
 <center>Figure 7: Imported tab</center>
 
 It displays the following data:
@@ -218,7 +220,7 @@ To display Datadog data on the [entity details](/docs/internal-developer-portal/
 3. Select the **Entity Kind** (e.g., `component`) and the **Entity Type** (e.g., `service`) that matches your imported Datadog entities.
 4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **Observability** tab using the `ObservabilityTabContent` component.
 
-   ![Entity Layout configuration for Datadog components](./static/dd-layout-config.png)
+   ![Entity Layout configuration for Datadog components](../static/dd-layout-config.png)
    <center>Figure 8: Layout configuration for Datadog cards in Overview tab and Observability tab</center>
 
    The relevant YAML additions are:
@@ -246,10 +248,10 @@ To display Datadog data on the [entity details](/docs/internal-developer-portal/
 
 After the layout is configured, cards like `Monitors` and `SLOs` appear in the **Overview** tab of any entity that has Datadog data linked to it. The card displays the key Datadog metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
-![Catalog entity page for a Datadog-imported service](./static/dd-catalog-entity.gif)
+![Catalog entity page for a Datadog-imported service](../static/dd-catalog-entity.gif)
 <center>Figure 9a: IDP Catalog Entity Page for a Datadog service</center>
 
-![Dependencies of a Datadog-imported service](./static/dd-entity-dependencies.png)
+![Dependencies of a Datadog-imported service](../static/dd-entity-dependencies.png)
 <center>Figure 9b: Dependencies of a Datadog-imported service</center>
 
 If the Datadog integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. 
@@ -258,7 +260,7 @@ If the Datadog integration has not been configured for the entity, the card show
 
 The **Observability** tab provides a more complete view of the Datadog data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
 
-![Observability tab showing full resource details](./static/observability-tab.png)
+![Observability tab showing full resource details](../static/observability-tab.png)
 <center>Figure 10: Observability tab showing full Datadog resource details</center>
 
 
@@ -266,7 +268,7 @@ The **Observability** tab provides a more complete view of the Datadog data for 
 
 To inspect the raw data ingested from Datadog, open the entity and click **View YAML**, then select **Ingested Properties** in the Entity Inspector.
 
-![Entity Inspector showing Datadog ingested properties](./static/dd-ingested-properties.gif)
+![Entity Inspector showing Datadog ingested properties](../static/dd-ingested-properties.gif)
 <center>Figure 11: Entity Inspector showing Datadog Ingested Properties</center>
 
 Ingested properties are stored in two sections of the entity YAML:

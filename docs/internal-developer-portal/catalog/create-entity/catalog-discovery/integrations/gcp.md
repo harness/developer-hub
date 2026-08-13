@@ -3,6 +3,8 @@ title: Google Cloud Integration
 description: Auto-discover Google Cloud resources and populate the IDP Catalog with infrastructure, compute, database, and AI resource metadata.
 sidebar_position: 5
 sidebar_label: Google Cloud
+redirect_from:
+  - /docs/internal-developer-portal/catalog/create-entity/catalog-discovery/gcp
 ---
 
 import DocVideo from '@site/src/components/DocVideo';
@@ -55,7 +57,7 @@ The Google Cloud integration is available at the **Account**, **Organization**, 
 
 3. In the left navigation menu, click **Integrations**.
 
-   ![Navigation Path of GCP Integration](./static/gcp-integration-nav.gif)
+   ![Navigation Path of GCP Integration](../static/gcp-integration-nav.gif)
    <center>Figure 1: Navigation Path of GCP Integration</center>
 
 4. On the Integrations page, click **+ New Integration** at the top.
@@ -66,7 +68,7 @@ The Google Cloud integration is available at the **Account**, **Organization**, 
 
 This section connects Harness IDP to your Google Cloud Platform.
 
-![Setup & Connectivity](./static/gcp-setup-connectivity.png)
+![Setup & Connectivity](../static/gcp-setup-connectivity.png)
 <center>Figure 2: Setup & Connectivity</center>
 
 1. Enter a name in the **Integration Name** field. This name appears on the integration card on the **Integrations** page (e.g., `GCP QA Data Integration`).
@@ -91,7 +93,7 @@ Click **Configure** next to **Choose resources for ingestion** to open the **Res
 
 Resources are organized into several categories: Monitoring, Databases, API Gateway, Serverless, CI/CD & Data, Compute Engine, Networking, IAM & Security, Kubernetes, Storage, Resource Manager, Caching, Messaging, and Vertex AI. Use the **Choose Resource** dropdown at the top of the panel to filter by category.
 
-![GCP Resource Selection](./static/gcp-resource-selection.gif)
+![GCP Resource Selection](../static/gcp-resource-selection.gif)
 <center>Figure 3: GCP Resource Selection</center>
 
 For each resource you select, three fields are configurable:
@@ -106,7 +108,7 @@ Once you have made your selections, click **Continue** to return to the main con
 
 The **Advanced Settings** section controls how frequently IDP syncs with GCP.
 
-![Advanced Settings](./static/gcp-advanced-settings.png)
+![Advanced Settings](../static/gcp-advanced-settings.png)
 <center>Figure 4: Advanced Settings</center>
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls GCP for new data.
@@ -125,7 +127,7 @@ The integration is now enabled and IDP begins syncing data from GCP. Discovered 
 
 After the integration runs, all GCP resources detected appear in the **Discovered** tab. Use the **Resource** dropdown filter to narrow the list by resource type. If entities do not appear, use the **Sync** button at the top right to manually refresh.
 
-!['Discovered' tab showing GCP Resources](./static/discovered-tab-gcp.png)
+!['Discovered' tab showing GCP Resources](../static/discovered-tab-gcp.png)
 <center>Figure 5: 'Discovered' tab showing GCP Resources</center>
 
 For each discovered entity, you can see its name, the recommended catalog action, kind, type, and the date it was detected. All discovered GCP resources default to the **Register** action, which creates a new catalog entity populated with the GCP metadata.
@@ -135,14 +137,14 @@ For each discovered entity, you can see its name, the recommended catalog action
 * **Auto Import**: Toggle **Auto-import future discovered entities** in the top right of the Discovered tab to automatically import all future entities without manual review.
 :::
 
-![Import Discovered GCP Resources to IDP Catalog](./static/import-gcp-entities.gif)
+![Import Discovered GCP Resources to IDP Catalog](../static/import-gcp-entities.gif)
 <center>Figure 6: Import Discovered GCP Resources to IDP Catalog</center>
 
 ### Imported tab
 
 The **Imported** tab displays all GCP entities that have been brought into the catalog. Use the **Resource** dropdown filter to narrow by resource type.
 
-!['Imported' tab showing GCP entities linked to catalog entities](./static/imported-tab-gcp.png)
+!['Imported' tab showing GCP entities linked to catalog entities](../static/imported-tab-gcp.png)
 <center>Figure 7: 'Imported' tab showing GCP entities linked to catalog entities</center>
 
 | Column | Description |
@@ -181,7 +183,7 @@ To display GCP data on the [entity details](/docs/internal-developer-portal/cata
 3. Select the **Entity Kind** (e.g., `resource`) and the **Entity Type** (e.g., `compute_instance`) that matches your imported GCP entities.
 4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **GCP Integration** tab using the `GCPIntegrationTab` component.
 
-   ![Entity Layout configuration for GCP components](./static/gcp-layout-config.png)
+   ![Entity Layout configuration for GCP components](../static/gcp-layout-config.png)
    <center>Figure 8: Layout configuration for GCP Cloud Card and GCP Integration tab</center>
 
    The relevant YAML additions are:
@@ -209,7 +211,7 @@ To display GCP data on the [entity details](/docs/internal-developer-portal/cata
 
 After the layout is configured, a card appears in the **Overview** tab of any entity that has GCP data linked to it. The card displays the key GCP metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
-![GCP Cloud Card on the Overview tab](./static/gcp-cloud-card-overview.png)
+![GCP Cloud Card on the Overview tab](../static/gcp-cloud-card-overview.png)
 <center>Figure 9: GCP Cloud Card on the Overview tab</center>
 
 If the GCP integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. If multiple GCP integrations are active on your account, a dropdown appears at the top of the card to switch between integrations.
@@ -218,7 +220,7 @@ If the GCP integration has not been configured for the entity, the card shows a 
 
 The **GCP Integration** tab provides a more complete view of the GCP data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
 
-![GCP Integration tab showing full resource details](./static/gcp-integration-tab.png)
+![GCP Integration tab showing full resource details](../static/gcp-integration-tab.png)
 <center>Figure 10: GCP Integration tab showing full GCP resource details</center>
 
 :::tip Feature Highlights
@@ -233,7 +235,7 @@ The **GCP Integration** tab provides a more complete view of the GCP data for th
 
 To inspect the raw data ingested from GCP, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
-![Entity Inspector Page showing Ingested Properties](./static/ingested-gcp-property.gif)
+![Entity Inspector Page showing Ingested Properties](../static/ingested-gcp-property.gif)
 <center>Figure 11: Entity Inspector Page showing Ingested Properties</center>
 
 Ingested properties are stored in two sections of the entity YAML:

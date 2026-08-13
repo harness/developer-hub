@@ -3,6 +3,8 @@ title: Traceable Integration
 description: How to configure the Traceable integration in Harness IDP to surface API security data alongside your API catalog entities.
 sidebar_position: 11
 sidebar_label: Traceable
+redirect_from:
+  - /docs/internal-developer-portal/catalog/create-entity/catalog-discovery/traceable
 keywords:
   - idp
   - catalog
@@ -38,7 +40,7 @@ Traceable watches live traffic to your APIs and collects security data per endpo
 2. Select **+ New Integration**.
 3. In the integration picker, select **Harness Integrations**.
 
-    <DocImage path={require('./static/harness-integrations.png')} />
+    <DocImage path={require('../static/harness-integrations.png')} />
 
     :::caution Limit: Only one integration per type
     Currently, you can create only one Traceable integration in your account. If one already exists, you can manage or suspend it but cannot create another.
@@ -49,9 +51,9 @@ Traceable watches live traffic to your APIs and collects security data per endpo
 5. Under **Choose Integration**, select **Traceable**.
 6. Under **IDP Scope to import into**, choose one of the following:
    - **All IDP scopes**: Traceable data enriches all matching API entities across your entire IDP catalog.
-      <DocImage path={require('./static/all-idp-scopes.png')} />
+      <DocImage path={require('../static/all-idp-scopes.png')} />
    - **Particular IDP Scope**: Select specific projects or organizations. Only API entities within those scopes are enriched.
-      <DocImage path={require('./static/particular-idp-scope.png')} />
+      <DocImage path={require('../static/particular-idp-scope.png')} />
 7. Click **Confirm & Enable**.
 
 Once saved, the integration appears in the **Configure** → **Integrations** list.
@@ -90,7 +92,7 @@ Go to **Configure** → **Layout**, select the API entity kind layout, and add t
               xs: 12
 ```
 
-<DocImage path={require('./static/traceable-layout.png')} />
+<DocImage path={require('../static/traceable-layout.png')} />
 
 ---
 
@@ -98,7 +100,7 @@ Go to **Configure** → **Layout**, select the API entity kind layout, and add t
 
 The **API Specification** tab shows the IDP-extracted endpoint list from the entity's OpenAPI spec. This data comes from the [endpoint extraction feature](/docs/internal-developer-portal/catalog/integrate-tools/api-endpoint-enrichments). It shows each endpoint's HTTP method and path, and displays a timestamp for when the list was last updated.
 
-<DocImage path={require('./static/api-spec-tab.png')} />
+<DocImage path={require('../static/api-spec-tab.png')} />
 
 ---
 
@@ -123,7 +125,7 @@ When the matching job runs, it compares every endpoint Traceable has observed ag
 
 After the matching job runs, go to any API entity page and select the **Endpoints** tab. The tab lists all Traceable endpoints matched to the entity's OpenAPI spec.
 
-<DocImage path={require('./static/traceable-endpoints-tab.png')} />
+<DocImage path={require('../static/traceable-endpoints-tab.png')} />
 
 :::info
 The **Endpoints** tab is Traceable-specific and only shows data when the Traceable integration is active and has matched endpoints for the entity. The **API Specification** tab is independent of Traceable; it renders the IDP-extracted endpoint list from the entity's OpenAPI spec and is useful regardless of whether Traceable is configured. See [Catalog layout](/docs/internal-developer-portal/layout-and-appearance/catalog) for full layout editing guidance.
@@ -156,7 +158,7 @@ Select any endpoint to open a detail drawer showing:
 | Data Types | Categories of sensitive data flowing through this endpoint (for example, Phone, Credit Card PIN) |
 | Open Issues | Table of open security issues: Issue Name, Severity, Status, and OWASP Classification |
 
-<DocImage path={require('./static/traceable-endpoint-drawer.png')} />
+<DocImage path={require('../static/traceable-endpoint-drawer.png')} />
 
 
 :::info
@@ -170,13 +172,13 @@ Traceable endpoints that did not match any IDP API entity's OpenAPI spec are vis
 
 Go to **Configure** → **Integrations** and select your Traceable integration by name. The **Unmatched** tab lists all such endpoints.
 
-<DocImage path={require('./static/unmatched-tab.png')} />
+<DocImage path={require('../static/unmatched-tab.png')} />
 
 The table shows ENDPOINTS, ENVIRONMENT, and API TYPE columns. You can filter by **Environment** and **API Type**, and search by endpoint path.
 
 Select any unmatched endpoint to see its details, including Service, Type, Encrypted, External, Environment, Risk Score, Category, Data Types, and any associated Issues.
 
-<DocImage path={require('./static/unmatched-drawer.png')} />
+<DocImage path={require('../static/unmatched-drawer.png')} />
 
 Endpoints appear in the unmatched list when:
 - The corresponding API entity has not been registered in IDP yet.
@@ -197,7 +199,7 @@ The following data points are currently available:
 | `Highest Open Issues on an Endpoint` | Highest open-issue count among all matched endpoints |
 | `Lowest Open Issues on an Endpoint` | Lowest open-issue count among all matched endpoints |
 
-<DocImage path={require('./static/traceable-scorecard-results.png')} />
+<DocImage path={require('../static/traceable-scorecard-results.png')} />
 
 ---
 

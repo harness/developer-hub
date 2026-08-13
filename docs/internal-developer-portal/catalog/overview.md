@@ -66,7 +66,7 @@ Create new entities and Workflows by **importing their YAML definitions** stored
 
 Use the **Harness IDP Catalog Auto-Discovery** integration to sync **Harness CD** services into the **IDP Catalog**. This integration populates your Catalog with CD services so you can sync, view, and manage them directly in Catalog. Services are created as **IDP service entities** and kept in **real-time, uni-directional sync** with their corresponding CD services.
 
-[Learn more about catalog auto-discovery →](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd.md)
+[Learn more about catalog auto-discovery →](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/harness-cd.md)
 
 ---
 
@@ -92,7 +92,7 @@ Ready to get started with the Software Catalog? Here are some recommended next s
 
 1. **Understand the Data Model**: Learn about entity types, schemas, and relationships in the [Catalog Data Model](/docs/internal-developer-portal/catalog/data-model#idp2.0)
 2. **Create Your First Entity**: Follow the guide to [create entities manually](/docs/internal-developer-portal/catalog/create-entity/create-manually)
-3. **Set Up Auto-Discovery**: Automate entity registration with [catalog auto-discovery](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd.md)
+3. **Set Up Auto-Discovery**: Automate entity registration with [catalog auto-discovery](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/harness-cd.md)
 4. **Customize Your Catalog**: Configure the [catalog UI](/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--manage-catalog-ui) to match your team's needs
 5. **Write Catalog YAML**: Learn the [YAML schema](/docs/internal-developer-portal/catalog/catalog-yaml) for defining entities
 6. **Enforce Governance Policies**: Block or warn on non-compliant entities at save time using [Centralized Policy Governance](/docs/internal-developer-portal/governance/opa-governance)

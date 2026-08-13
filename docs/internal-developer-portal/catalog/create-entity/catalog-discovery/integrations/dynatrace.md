@@ -3,6 +3,8 @@ title: Dynatrace Integration
 description: Auto-discover Dynatrace services and import them into the IDP Catalog with problems, SLO tracking, and service health context.
 sidebar_position: 3
 sidebar_label: Dynatrace
+redirect_from:
+  - /docs/internal-developer-portal/catalog/create-entity/catalog-discovery/dynatrace
 keywords:
   - dynatrace
   - integration
@@ -58,7 +60,7 @@ Go to [Configure delegate proxy settings](/docs/platform/delegates/manage-delega
 
 3. In the left navigation menu, click **Integrations**.
 
-   <DocImage path={require('./static/bb-integration-nav.png')} />
+   <DocImage path={require('../static/bb-integration-nav.png')} />
 
 4. On the Integrations page, click **+ New Integration** at the top.
 
@@ -68,7 +70,7 @@ Go to [Configure delegate proxy settings](/docs/platform/delegates/manage-delega
 
 This section connects Harness IDP to your Dynatrace account.
 
-<DocImage path={require('./static/dt-setup-connectivity.png')} />
+<DocImage path={require('../static/dt-setup-connectivity.png')} />
 
 1. Enter a name in the **Integration Name** field. This name appears on the integration card on the **Integrations** page (e.g., `Dynatrace PreQA Observability`).
 
@@ -86,7 +88,7 @@ This section connects Harness IDP to your Dynatrace account.
 
 This section defines how Dynatrace services are mapped to IDP catalog entities and how they are correlated with existing records.
 
-<DocImage path={require('./static/dt-mapping-correlation.png')} />
+<DocImage path={require('../static/dt-mapping-correlation.png')} />
 
 #### Service entity
 
@@ -105,13 +107,13 @@ The Service Entity mapping imports Dynatrace services as catalog components.
 
 5. Optionally, click **Configure** next to **Configure fields** to customize which Dynatrace fields are synced to the catalog. By default, all available fields are selected.
 
-   <DocImage path={require('./static/dt-field-config.gif')} />
+   <DocImage path={require('../static/dt-field-config.gif')} />
 
 ### 4. Configure advanced settings
 
 The **Advanced Settings** section controls the sync frequency and how far back in time Dynatrace data is fetched.
 
-<DocImage path={require('./static/dt-advanced-settings.png')} />
+<DocImage path={require('../static/dt-advanced-settings.png')} />
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls Dynatrace for new data.
 
@@ -137,7 +139,7 @@ This section covers how to view the Dynatrace services discovered by the integra
 
 After the integration runs, all Dynatrace services detected appear in the **Discovered** tab. If no services appear yet, the sync may still be in progress. Use the **Sync** button at the top right to manually trigger a refresh if needed.
 
-<DocImage path={require('./static/dt-discovering.png')} />
+<DocImage path={require('../static/dt-discovering.png')} />
 
 Once discovery completes, each discovered service appears with its name, recommended catalog action, kind, type, and detection date. You can bring entities into the catalog using one of the following actions:
 
@@ -152,7 +154,7 @@ Select services individually using the checkboxes, or use the snackbar at the bo
 
 The **Imported** tab displays all Dynatrace services that have been brought into the catalog.
 
-<DocImage path={require('./static/dt-imported.png')} />
+<DocImage path={require('../static/dt-imported.png')} />
 
 It displays the following data:
 
@@ -173,7 +175,7 @@ To stop syncing a specific entity without deleting the catalog entity, use the t
 
 The **Events** tab logs all sync and lifecycle activity for this integration. Use it to verify that syncs are running, confirm that imports completed successfully, and investigate any failures.
 
-<DocImage path={require('./static/dt-events.png')} />
+<DocImage path={require('../static/dt-events.png')} />
 
 For the full event type reference and detail panel fields, go to [Integration Events](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integration-events).
 
@@ -191,7 +193,7 @@ Each imported Dynatrace service is registered with:
 
 Open any entity to view Dynatrace-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: one on the **Overview** tab and a **Dynatrace** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-dynatrace-components).
 
-<DocImage path={require('./static/dt-catalog-entity.gif')} />
+<DocImage path={require('../static/dt-catalog-entity.gif')} />
 
 ### Layout for Dynatrace components
 
@@ -202,7 +204,7 @@ To display Dynatrace data on the [entity details](/docs/internal-developer-porta
 3. Select the **Entity Kind** (e.g., `component`) and the **Entity Type** (e.g., `service`) that matches your imported Dynatrace entities.
 4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **Dynatrace** tab using the `ObservabilityTabContent` component.
 
-   ![Entity Layout configuration for Dynatrace components](./static/dt-layout-config.png)
+   ![Entity Layout configuration for Dynatrace components](../static/dt-layout-config.png)
    <center>Figure 8: Layout configuration for Dynatrace cards in Overview tab and Dynatrace tab</center>
 
    The relevant YAML additions are:
@@ -233,7 +235,7 @@ To display Dynatrace data on the [entity details](/docs/internal-developer-porta
 
 After the layout is configured, cards like `Monitors` and `SLOs` appear in the **Overview** tab of any entity that has Dynatrace data linked to it. The card displays the key Dynatrace metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
-![Catalog entity page for a Dynatrace-imported service](./static/dt-catalog-entity2.gif)
+![Catalog entity page for a Dynatrace-imported service](../static/dt-catalog-entity2.gif)
 <center>Figure 9: IDP Catalog Entity Page for a Dynatrace service</center>
 
 If the Dynatrace integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page.
@@ -242,7 +244,7 @@ If the Dynatrace integration has not been configured for the entity, the card sh
 
 The **Dynatrace** tab provides a more complete view of the Dynatrace data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
 
-![Dynatrace tab showing full resource details](./static/dynatrace-tab.png)
+![Dynatrace tab showing full resource details](../static/dynatrace-tab.png)
 <center>Figure 10: Tab showing full Dynatrace resource details</center>
 
 ### Ingested properties
@@ -254,7 +256,7 @@ Ingested properties are stored in two sections of the entity YAML:
 - **`metadata.integration`** - Tracks which Dynatrace integration instances are linked to this entity, including the entity action (e.g., `MERGE`) and the linked entity UUID.
 - **`integration_properties.DynaTrace`** - Contains the Dynatrace-specific data for the entity, including fields synced from the Dynatrace service.
 
-<DocImage path={require('./static/dt-ingested-properties.gif')} />
+<DocImage path={require('../static/dt-ingested-properties.gif')} />
 
 ---
 

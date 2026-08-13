@@ -14,6 +14,7 @@ This is a one-time setup done from the **Integrations** section of IDP, and can 
 :::info Points to remember
 * If you attempt to create an integration without completing this initial configuration, your integration will not be created. Additionally, you may see an **Infra configuration required** notification in the Integrations section.
 * Platform integrations like **Harness CD** run directly and do not require this setup.
+* [Custom Integrations](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/custom-integrations/overview) do not require this setup either. Your systems push data to Harness, so no data collection runs in your cluster.
 :::
 
 

@@ -1,0 +1,11 @@
+{
+  "label": "Integrations",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "Catalog Discovery Integrations"
+  },
+  "customProps": {}
+}

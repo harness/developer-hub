@@ -85,7 +85,7 @@ The Catalog Info YAML data source evaluates fields stored directly in an entity'
 
 #### AIAsset checks
 
-The AIAsset checks from **Catalog Info YAML** data source currently support assets discovered via the [IDP GitHub integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github) only. The following example shows an AIAsset scorecard with all four checks applied to a plugin entity.
+The AIAsset checks from **Catalog Info YAML** data source currently support assets discovered via the [IDP GitHub integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/github) only. The following example shows an AIAsset scorecard with all four checks applied to a plugin entity.
 
 <DocImage path={require('../static/scorecard-results-aiassets.png')} />
 
@@ -620,7 +620,7 @@ If the PagerDuty annotation is missing from the catalog-info.yaml file, the chec
 These data points apply only to IDP entities with `kind: API`. They will not appear or evaluate for any other entity kind.
 :::
 
-The Traceable data source provides out-of-the-box data points derived from live API traffic observed by Traceable. These require the `IDP_API_ENDPOINT_EXTRACTION` feature flag to be enabled and the Traceable integration to be configured. See [Traceable integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/traceable).
+The Traceable data source provides out-of-the-box data points derived from live API traffic observed by Traceable. These require the `IDP_API_ENDPOINT_EXTRACTION` feature flag to be enabled and the Traceable integration to be configured. See [Traceable integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/traceable).
 
 To view available Traceable data points, go to **Configure** → **Scorecards** → **Data Sources** and select **Traceable** from the dropdown.
 

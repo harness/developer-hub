@@ -3,6 +3,8 @@ title: ServiceNow CMDB Integration
 description: ServiceNow CMDB Integrations
 sidebar_position: 10
 sidebar_label: ServiceNow CMDB
+redirect_from:
+  - /docs/internal-developer-portal/catalog/create-entity/catalog-discovery/servicenow-cmdb
 ---
 
 The ServiceNow CMDB integration syncs records from a ServiceNow CMDB table into the IDP Catalog. It uses configurable field mappings to control which CMDB columns are ingested and where they appear in the catalog entity YAML.
@@ -37,18 +39,18 @@ Here is how to set it up: [Configure delegate proxy settings](/docs/platform/del
 1. In Harness IDP, go to **Configure** → **Integrations**.
 2. Click on **+New integration** and choose **ServiceNow**. This will take you to the **Configuration** page.
 
-   ![](./static/snow-enable.png)
+   ![](../static/snow-enable.png)
 
 ### Setup and connectivity
 
-   ![](./static/snow-setup-and-connectivity.png)
+   ![](../static/snow-setup-and-connectivity.png)
 
 1. Enter a friendly name for the integration. This will be shown in the **Integrations** list card.
 2. Select the Harness [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) that is configured to access your ServiceNow instance. This connector is used to fetch table data from the CMDB. Note that we support username/password and OAuth authentication for this connector.
 
 ### Field mapping
 
-   ![](./static/snow-field-mapping.png)
+   ![](../static/snow-field-mapping.png)
 
 1. **CMDB Table Name** -    Specify the name of the ServiceNow CMDB table from which records should be imported (for example, `cmdb_ci_service`).
 2. **Entity Kind and Type** - Define the catalog entity `kind` (for example, `Component`) and `type` (for example, `Service`) that will be assigned to entities created or enriched from this integration.
@@ -75,7 +77,7 @@ Any CMDB field can be mapped to a standard catalog field or to a custom property
 5. **Correlation Field** - Set a **correlation field**, the catalog field used to automatically map discovered CMDB records to existing catalog entities. For example, setting the correlation field to `name` means the integration will look for existing catalog entities with a matching name and pre-select the **Merge** option for those matches.
 
 #### Advanced settings
-   ![](./static/snow-advanced-settings.png)
+   ![](../static/snow-advanced-settings.png)
 
 6. **Sync Schedule** - Configure when and how often the integration runs to fetch updated data from ServiceNow.
 
@@ -85,7 +87,7 @@ Any CMDB field can be mapped to a standard catalog field or to a custom property
 
 After the integration runs, discovered CMDB records appear in the **Discovered** tab.
 
-![ServiceNow CMDB Discovered tab](./static/snow-discovered-tab.png)
+![ServiceNow CMDB Discovered tab](../static/snow-discovered-tab.png)
 
 If a correlation field is configured, matching catalog entities are automatically suggested as merge targets. For example, if your catalog already contains an entity named "IDP Service" (created via the Harness CD integration) and the ServiceNow CMDB also has a record named "IDP Service," the integration will automatically suggest merging the CMDB data into the existing entity.
 
