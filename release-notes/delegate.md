@@ -171,6 +171,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## August 2026
 
+### Version 26.08.89801 <!-- August 14, 2026 -->
+
+#### Fixed issues
+
+- Fixed dot-notation variable names (for example, `someVar.child`) being written as flat inline YAML or JSON keys instead of nested objects when the UpdateReleaseRepo step creates a target release repo file that does not exist. The step now correctly nests dot-notation variables. [CDS-129370]
+- Fixed a NullPointerException in the Jenkins build trigger when Jenkins or CloudBees returns 200 OK without a Location header instead of the expected 201 Created. The step now fails with a clear error message instead of an opaque NPE. [CDS-128535]
+
 ### Version 26.07.89707 <!-- August 11, 2026 -->
 
 #### Fixed issues
