@@ -39,7 +39,6 @@ Use the checklist below to ensure your setup is complete before getting started.
 Enable these feature flags in your Harness account:
 
 * `PIPE_DYNAMIC_PIPELINES_EXECUTION` - Dynamic pipeline execution. [Click here](/docs/platform/pipelines/dynamic-execution-pipeline/) to learn more.
-* `IACM_1984_WORKSPACE_TEMPLATES` - Workspace template support
 
 ### Infrastructure requirements
 
