@@ -1,6 +1,23 @@
 ## August 2026
 
+### Version 1.162.2
+
+#### Fixed issues
+
+- Fixed an issue where Custom Deployment service and infrastructure list APIs took 2–5 minutes to respond for accounts with many remote entities. The APIs now persist template metadata directly instead of fetching and parsing YAML from Git on every request. This feature requires the feature flag `CDS_USE_METADATA_FOR_CUSTOM_DEPLOYMENT_LIST`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-127197**, **ZD-117948**)
+- Fixed a NullPointerException in the Jenkins build trigger step when Jenkins returns HTTP 200 without a Location header instead of 201 Created. The step now fails with a clear error message. (**CDS-128535**, **ZD-119752**)
+- Fixed a NullPointerException when deleting a service in Self-Managed Platform 0.43.1. (**CDS-128638**, **ZD-120407**)
+- Fixed an issue where approval step expressions (such as `<+approval.approvedAt>` or `<+approval.approver>`) resolved to null when re-running a pipeline past an already-approved step. Approval expressions now correctly resolve to the original approver and approval details even when the Harness Approval step is skipped during a re-run. (**CDS-129017**)
+- Fixed an issue where the GitOps Sync step reported success even when the sync operation failed. The step now stops polling and fails when the sync operation fails. (**CDS-129023**)
+- Fixed an issue where the UpdateReleaseRepo step wrote dot-notation variable names as flat keys instead of nested objects when creating a new release repo file. (**CDS-129370**, **ZD-121095**)
+- Fixed an issue where the K8s Canary Delete step failed with "Canary Deploy step is not configured" when both steps were in the same non-containerised step group and an earlier step group was skipped. (**CDS-127911**)
+- Fixed an issue where the GitOps Update Application step applied Helm or Kustomize configuration to Argo CD applications regardless of the application's actual source type. The step now validates the application's source type before applying values and fails with a clear error if the types do not match. (**CDS-128550**)
+
 ### Version 1.161.1
+
+#### New features and enhancements
+
+- Harness now enforces **onSave OPA policies on Git-backed CD entities** committed directly to Git. When you commit a service, environment, infrastructure definition, or override to Git, Harness evaluates the onSave policy, surfaces the validation result on the entity detail page, and blocks pipeline execution at the step level if the entity fails the policy check. This feature requires feature flags `CDS_OPA_GOVERNANCE_FOR_WEBHOOK` and `PIPE_OPA_GITX_ENFORCEMENT`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Enforce onSave policies on Git-backed entities](/docs/platform/governance/policy-as-code/enforce-policies-on-git-backed-entities) to configure. (**CDS-124509**)
 
 #### Fixed issues
 

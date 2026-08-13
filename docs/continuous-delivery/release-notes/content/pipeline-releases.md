@@ -1,5 +1,13 @@
 ## August 2026
 
+### Pipeline service 1.201.0
+
+#### New features and enhancements
+
+- Harness now supports **project-level pipeline execution concurrency**, so you can split your account-wide concurrency limit into High-Priority and Low-Priority partitions to guarantee reserved execution slots for critical projects. This feature requires feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Pipeline settings](/docs/platform/pipelines/pipeline-settings#project-level-pipeline-execution-concurrency) to configure project concurrency. (**PIPE-35597**)
+
+- Harness now provides a **Pipeline template usage dashboard** to track which pipelines reference each template version across your account. Go to [Pipeline template usage dashboard](/docs/platform/templates/view-template-usage-dashboard) to view template adoption. (**PIPE-34837**)
+
 ### Pipeline service 1.200.7
 
 #### New features and enhancements
