@@ -32,9 +32,68 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| [2026.8.v1](/release-notes/internal-developer-portal#august---20268v1)  | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.7.v2](/release-notes/internal-developer-portal#july---20267v2)  | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.7.v1](/release-notes/internal-developer-portal#july---20267v1)  | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
-| [2026.6.v1](/release-notes/internal-developer-portal#june---20266v1)  | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
+
+
+## August - [2026.8.v1]
+ 
+---
+ 
+### New Features
+
+#### Custom Integrations | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/custom-integrations/overview)
+
+Using Custom Integration, you can now push operational data from any external tool directly into Harness IDP and display it against the services in your Software Catalog, without modifying catalog entity metadata. This feature is gated behind the `IDP_CUSTOM_INTEGRATION` feature flag.
+
+It has out-of-the-box schemas covering the most common data kinds: **Build**, **Deployment**, **Incidents**, **Quality**, **Security issues**, and **Security scans**. Moreover, it supports custom schema too that accepts any structure you define in JSON Schema. 
+
+<DocImage path={require('../docs/internal-developer-portal/static/rn/custom-integration.gif')} />
+
+#### Custom Metrics | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/custom-integrations/custom-metrics)
+
+Using **Metrics**, you can now push time-series numeric data into Harness IDP and display it as charts on catalog entity pages is configured separately from Custom Integration and uses its own ingestion API. Each push sends one or more `{value, timestamp}` data points, stored as append-only time-series. Metric data links to catalog entities using the same Correlation Mapping model as Custom Integration.
+
+Similar to [Custom Integrations](#custom-integrations), this feature too is gated behind the `IDP_CUSTOM_INTEGRATION` feature flag.
+
+<DocImage path={require('../docs/internal-developer-portal/static/rn/custom-metrics.gif')} />
+
+#### Kubernetes Integration: Autoscaling and Routing visibility | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/kubernetes#resource-detail-drawer).
+
+The Kubernetes service detail view now includes an **Autoscaling** section in the **Overview** tab, showing HPA replica counts and scaling metrics, and a new **Routing** tab with Ingress rules and Istio VirtualServices and Gateways. To use these features, install a new discovery agent.
+
+<DocImage path={require('../docs/internal-developer-portal/static/rn/k8s-autoscale-routing.gif')} />
+
+---
+
+### Enhancements & Bug Fixes
+
+#### Collapsible Sidebar Navigation
+
+The left sidebar navigation in IDP can now be collapsed to maximize screen space for the main content area. The collapsed state persists across sessions.
+
+<DocImage path={require('../docs/internal-developer-portal/static/rn/collapsible-sidenav.gif')} />
+
+#### GitHub and Bitbucket Integration: Removed commits kind
+
+The `commits` secondary kind has been removed from both integrations considering the utility and volume of data.
+
+#### Workflow Catalog Steps: Support for 2.0 Entity YAMLs
+
+The IDP workflow catalog steps now support both IDP 1.0 (Backstage) and IDP 2.0 entity YAML formats. When a workflow step registers a catalog entity, IDP determines which registration flow to use based on the YAML format: 1.0 YAMLs continue to use the Backstage register location flow, while 2.0 YAMLs use the GitX entity import flow.
+
+#### Fixes
+
+- Pipeline polling was continuing for open workflow tasks even after terminal cancellation, causing the UI to hang. Polling is now correctly bounded and stops when tasks reach a terminal state. [IDP-10387]
+- Workflows with parallel input parameters were failing to execute. This is now fixed. [IDP-10337]
+- Scorecard checks using Traceable data points were failing with "HQL Value does not match data point type" errors when the Traceable data was present in the entity. This is now fixed. [IDP-10484]
+- Dropdown search results were not ranked by match quality, making it difficult to find the correct option quickly. Search results are now ranked so that exact and prefix matches appear first. [IDP-10513]
+- TechDocs pages were not rendering correctly when entities used vanity URLs in their source code linkage configuration. This is now fixed. [IDP-10092]
+- Link text in TechDocs was not highlighted, reducing readability. Links now render with proper styling. [IDP-10478]
+- The workflow execution history table was not showing a loading state while fetching data, making the table appear broken during the fetch. A loading indicator now appears while the table loads. [IDP-10439]
+
+---
 
 
 ## July - [2026.7.v2]
