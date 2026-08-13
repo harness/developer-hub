@@ -211,4 +211,9 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 /docs/category/dashboard-v30-closed-beta /docs/category/dashboard-v30-open-beta
 /3k-docs/category/dashboard-v30-closed-beta /3k-docs/category/dashboard-v30-open-beta
 
+# Added by smriti.satyanarayana on 2026-08-11 for HDH-1183 - Migration and Backward Compatibility moved out of Getting Started into their own Migrations & Compatibility section.
+# redirect_from frontmatter is only honored for docs/ pages, so 3k-docs/ moves need server redirects.
+/3k-docs/platform/getting-started/migration /3k-docs/platform/migrations-and-compatibility/migration
+/3k-docs/platform/getting-started/compatibility /3k-docs/platform/migrations-and-compatibility/compatibility
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

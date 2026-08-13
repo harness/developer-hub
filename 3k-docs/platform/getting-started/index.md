@@ -1,14 +1,33 @@
 ---
 title: Introduction to Harness 3.0
-sidebar_label: Overview
+sidebar_label: Key changes
 id: index
 slug: /platform/getting-started
 sidebar_position: 1
+description: Understand what changes between Harness NG and Harness 3.0, and what those changes mean for your pipelines.
+keywords:
+  - harness 3.0
+  - pipeline yaml v1
+  - migration
+tags:
+  - platform
+  - getting-started
 ---
 
-Harness 3.0 is a ground-up rethink of the Harness platform. It introduces a simplified pipeline YAML (v1), compatibility with Drone and GitHub Actions, containerized step execution, a redesigned navigation experience, and an AI-powered assistant. 
+Harness 3.0 rebuilds the Harness Platform around a simplified pipeline format and a container-based execution model. Pipelines move to a YAML (also known as pipeline v1) with the following characteristics:
+- Pipelines are a superset of Drone and GitHub Actions,
+- Every step in a pipeline runs as a container on your target infrastructure, 
+- A single unified Delegate replaces the per-type Delegates of Harness NG.
 
-This page summarizes every major change from Harness NG to Harness 3.0.
+These changes affect how you define pipelines, how you run them, and where you configure them. 
+
+This topic compares Harness NG with Harness 3.0 so you know what to expect before you migrate.
+
+---
+
+## What changes at a glance
+
+The following table compares Harness NG with Harness 3.0 across multiple areas.
 
 | Area             | Harness NG                                                                    | Harness 3.0                                                                                                     |
 | ---------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -18,7 +37,7 @@ This page summarizes every major change from Harness NG to Harness 3.0.
 | Step Execution   | Steps run on Delegate or Harness Manager depending on type                    | All steps run as containers on the target infrastructure                                                        |
 | Inputs           | Runtime inputs with `<+input>` expressions, untyped                           | Typed inputs (`string`, `number`, `boolean`, `secret`, `connector`, `service`, `environment`, `infrastructure`) |
 | Step Updates     | Steps bundled with Delegate version                                           | Steps versioned independently,  pin or upgrade per pipeline                                                     |
-| Delegate         | Multiple Delegate types (K8s, Docker, Shell, Helm, ECS)                       | Single unified lightweight Delegate 2.0                                                                         |
+| Delegate         | Multiple Delegate types (K8s, Docker, Shell, Helm, ECS)                       | Single unified lightweight Delegate 3.0                                                                         |
 | UI Configuration | Modal-based Pipeline Studio with multi-step wizards                           | Drawer-based Pipeline Studio with smart defaults and auto-generated names                                       |
 | Navigation       | Module-centric navigation with separate sidebars                              | Holistic platform view with pinning, favorites, and unified project selector                                    |
 | Code Repository  | External Git providers only                                                   | Harness Code: built-in Git hosting with enhanced PR experience                                                 |
@@ -386,13 +405,13 @@ The Pipeline Studio in Harness 3.0 has been redesigned for speed and simplicity.
 The Pipeline Studio continues to support both visual and YAML editing modes. Changes made in either mode are synchronized in real time.
 :::
 
-## Delegate 2.0
+## Delegate 3.0
 
-Harness NG required different Delegate types depending on your infrastructure: a Kubernetes Delegate for K8s workloads, a Docker Delegate for container tasks, a Shell Delegate for VM-based operations, and so on. Harness 3.0 consolidates all of these into a single, unified, lightweight Delegate 2.0.
+Harness NG required different Delegate types depending on your infrastructure: a Kubernetes Delegate for K8s workloads, a Docker Delegate for container tasks, a Shell Delegate for VM-based operations, and so on. Harness 3.0 consolidates all of these into a single, unified, lightweight Delegate 3.0.
 
 | Aspect          | Harness NG                                                         | Harness 3.0                                                     |
 | --------------- | ------------------------------------------------------------------ | --------------------------------------------------------------- |
-| Delegate Count  | Multiple delegates per environment (K8s, Docker, Shell, Helm, ECS) | One unified Delegate 2.0 per environment                        |
+| Delegate Count  | Multiple delegates per environment (K8s, Docker, Shell, Helm, ECS) | One unified Delegate 3.0 per environment                        |
 | Image Size      | Large image with pre-installed tooling (~1.5 GB)                   | Lightweight base image (~200 MB): tools run as step containers |
 | Tool Management | Tools installed on Delegate, upgraded with Delegate                | Tools ship inside step containers, versioned independently      |
 | Startup Time    | Slower startup due to large image and initialization scripts       | Fast startup: minimal initialization required                  |
@@ -407,7 +426,7 @@ The following platforms are supported:
 - Harness Cloud (managed)
 
 :::warning Upgrade Path
-Existing Harness NG Delegates will continue to work during the transition period. Harness provides a migration tool to convert existing Delegate configurations to Delegate 2.0. See the Migration Guide for detailed instructions.
+Existing Harness NG Delegates will continue to work during the transition period. Harness provides a migration tool to convert existing Delegate configurations to Delegate 3.0. See the Migration Guide for detailed instructions.
 :::
 
 ## Redesigned navigation

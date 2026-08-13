@@ -2,7 +2,7 @@
 title: Migration Guide
 sidebar_label: Migration Guide
 description: Learn how to migrate from Harness NextGen (NG) to Harness 3.0. 
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 This guide provides a step-by-step process for migrating from Harness NG to Harness 3.0. Existing NG resources are fully compatible with 3.0, so teams can migrate incrementally at their own pace.
@@ -23,7 +23,7 @@ Follow these eight steps to migrate from Harness NG to Harness 3.0. Each step ca
 
 1. **Add Typed Inputs**: Replace runtime inputs (`<+input>`) with the new typed inputs system. Typed inputs support string, number, boolean, choice, and secret types with validation and default values.
 
-1. **Deploy Delegate 2.0**: Install the new unified Delegate 2.0 alongside existing delegates. Route new pipelines to Delegate 2.0 using delegate selectors, and decommission NG delegates as workloads are migrated.
+1. **Deploy Delegate 3.0**: Install the new unified Delegate 3.0 alongside existing delegates. Route new pipelines to Delegate 3.0 using delegate selectors, and decommission NG delegates as workloads are migrated.
 
 1. **Customize Navigation**: Explore the new 3.0 navigation layout. Pin frequently used projects and resources, configure your sidebar preferences, and learn the keyboard shortcuts for efficient navigation.
 

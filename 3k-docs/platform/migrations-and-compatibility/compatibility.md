@@ -1,7 +1,7 @@
 ---
 title: Backward Compatibility
 sidebar_label: Backward Compatibility
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 Harness 3.0 provides full backwards compatibility with existing Harness NG resources. All investments in pipelines, services, environments, connectors, secrets, templates, and expressions are protected. Nothing breaks when you upgrade to 3.0.

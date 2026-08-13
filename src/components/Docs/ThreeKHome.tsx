@@ -407,12 +407,12 @@ pipeline:
                 </li>
               </ul>
             </div>
-            {/* ── Delegate 2.0 ── */}
+            {/* ── Delegate 3.0 ── */}
             <div className={styles.detailsItem}>
-              <h3>Delegate 2.0</h3>
+              <h3>Delegate 3.0</h3>
               <p>
                 The Harness Delegate has been completely rebuilt for speed, size, and
-                simplicity. Delegate 2.0 removes tooling dependencies and supports local
+                simplicity. Delegate 3.0 removes tooling dependencies and supports local
                 pipeline execution.
               </p>
               <table className={styles.delegateTable}>

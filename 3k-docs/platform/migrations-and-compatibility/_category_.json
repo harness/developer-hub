@@ -1,0 +1,10 @@
+{
+    "label": "Migrations & Compatibility",
+    "collapsible": true,
+    "collapsed": true,
+    "position": 2,
+    "link": {
+        "type": "generated-index",
+        "title": "Migrations & Compatibility"
+    }
+}

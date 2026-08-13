@@ -618,17 +618,11 @@ const sidebars: SidebarsConfig = {
           className: 'horizontal-bar',
         },
         {
-          type: 'category',
+          type: 'doc',
           label: 'Getting Started',
-          link: {
-            type: 'doc',
-            id: 'platform/getting-started/index',
-          },
-          items: [
-            'platform/getting-started/migration',
-            'platform/getting-started/compatibility',
-          ],
+          id: 'platform/getting-started/index',
         },
+        'platform/platform-whats-supported',
         {
           type: 'category',
           label: 'Navigation',
@@ -641,43 +635,19 @@ const sidebars: SidebarsConfig = {
             'platform/getting-started/navigation/scope',
             'platform/getting-started/navigation/settings',
             'platform/getting-started/navigation/assistant',
-            'platform/getting-started/navigation/delegate',
           ]
         },
         {
           type: 'category',
-          label: 'Pipelines',
+          label: 'Migrations & Compatibility',
           link: {
-            type: 'doc',
-            id: 'platform/getting-started/pipelines/index',
+            type: 'generated-index',
           },
           collapsed: true,
           items: [
-            'platform/getting-started/pipelines/stages',
-            'platform/getting-started/pipelines/steps',
-            'platform/getting-started/pipelines/services',
-            'platform/getting-started/pipelines/infrastructure',
-            'platform/getting-started/pipelines/inputs',
-            'platform/getting-started/pipelines/expressions',
-            'platform/getting-started/pipelines/advanced',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Steps',
-          link: {
-            type: 'doc',
-            id: 'platform/getting-started/steps/index',
-          },
-          collapsed: true,
-          items: [
-            'platform/getting-started/steps/ci',
-            'platform/getting-started/steps/kubernetes',
-            'platform/getting-started/steps/cloud',
-            'platform/getting-started/steps/iacm',
-            'platform/getting-started/steps/integrations',
-            'platform/getting-started/steps/templates',
-          ]
+            'platform/migrations-and-compatibility/migration',
+            'platform/migrations-and-compatibility/compatibility',
+          ],
         },
         {
           type: 'category',
@@ -694,6 +664,7 @@ const sidebars: SidebarsConfig = {
             'platform/getting-started/agents/custom',
           ]
         },
+        'platform/getting-started/navigation/delegate',
         {
           type: 'category',
           label: 'Connectors',
@@ -737,13 +708,47 @@ const sidebars: SidebarsConfig = {
           ]
         },
         {
+          type: 'category',
+          label: 'Pipelines',
+          link: {
+            type: 'doc',
+            id: 'platform/getting-started/pipelines/index',
+          },
+          collapsed: true,
+          items: [
+            'platform/getting-started/pipelines/stages',
+            {
+              type: 'category',
+              label: 'Steps',
+              link: {
+                type: 'doc',
+                id: 'platform/getting-started/pipelines/steps',
+              },
+              collapsed: true,
+              items: [
+                'platform/getting-started/steps/index',
+                'platform/getting-started/steps/ci',
+                'platform/getting-started/steps/kubernetes',
+                'platform/getting-started/steps/cloud',
+                'platform/getting-started/steps/iacm',
+                'platform/getting-started/steps/integrations',
+                'platform/getting-started/steps/templates',
+              ]
+            },
+            'platform/getting-started/pipelines/services',
+            'platform/getting-started/pipelines/infrastructure',
+            'platform/getting-started/pipelines/inputs',
+            'platform/getting-started/pipelines/expressions',
+            'platform/getting-started/pipelines/advanced',
+          ]
+        },
+        {
           type: 'html',
           value: 'New to Harness 3.0?',
           className: 'horizontal-bar',
         },
         'platform/get-started/key-concepts',
         'platform/get-started/onboarding-guide',
-        'platform/platform-whats-supported',
         {
           type: 'html',
           value: 'Harness Platform Resources',
