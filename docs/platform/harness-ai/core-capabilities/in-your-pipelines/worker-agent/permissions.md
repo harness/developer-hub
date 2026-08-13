@@ -196,8 +196,8 @@ A trigger-started pipeline must have an executor identity before Harness can der
 
 When you assign an executor identity, Harness runs the pipeline as that user or service account. Harness intersects the identity's RBAC permissions with the pipeline's declared `permissions` block, then injects the resulting scoped token into the Worker Agent stage. Include `ai_llm_gateway: access` in the block when the Agent step uses a Harness-managed LLM connector.
 
-:::note Limited availability
-Support for trigger-started Worker Agents is under QA validation and is not generally available. It requires both the `HARNESS_INJECT_TOKEN` and `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY` feature flags. Contact [Harness Support](mailto:support@harness.io) to request access.
+:::note Feature flags required
+Support for trigger-started Worker Agents is available in production. It requires both the `HARNESS_INJECT_TOKEN` and `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY` feature flags. Contact [Harness Support](mailto:support@harness.io) to enable them for your account.
 :::
 
 ### Required configuration
@@ -489,7 +489,7 @@ The first two cases surface as a permission-denied error when the agent calls th
 
 ## Current limitations
 
-- **Trigger support requires two feature flags:** Trigger-started Worker Agent runs require both `HARNESS_INJECT_TOKEN` and `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY`. This capability is under QA validation and is not generally available.
+- **Trigger support requires two feature flags:** Trigger-started Worker Agent runs require both `HARNESS_INJECT_TOKEN` and `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY`. This capability is available in production when both feature flags are enabled.
 - **Verbs are unvalidated:** There is no verb enum, so a mistyped or unsupported verb fails silently rather than raising an error. Confirm every verb against the resource's RBAC actions.
 - **Resource keys not listed are dropped:** Any key outside <a href="#supported-resources-by-module">Supported resources by module</a> grants nothing. New keys are added as modules onboard to the scoped-token model.
 - **`scs_evidence_vault` (Beta):** Requires the corresponding feature flag.
