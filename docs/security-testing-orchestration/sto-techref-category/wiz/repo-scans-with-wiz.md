@@ -28,6 +28,14 @@ CLI version `0.x` will continue to work with existing credentials, while CLI ver
 
 :::
 
+:::info Issue types for Wiz repository scans
+
+When you scan a code repository with Wiz (Scan Configuration = **Wiz Directory**), STO now accurately categorizes findings as SAST or SCA.
+
+After this change, the same repository scan can show more SCA issues and fewer SAST issues. The scan did not find new issues; STO only fixed how it labels them.
+
+:::
+
 ## Important notes for running Wiz scans in STO
 
 <!--  If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. -->
