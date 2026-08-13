@@ -12,6 +12,14 @@ import PartialExample from '/docs/continuous-delivery/shared/cd-integrations-sup
 
 <PartialExample name="integrations" />
 
+## Deploy pipeline log streaming
+
+Harness CD supports streaming deploy pipeline stage execution logs from your self-managed delegate to your own observability backend, such as Grafana Loki, Splunk, Datadog, or Elasticsearch. When enabled, the delegate writes CD execution logs as structured JSON to stdout in parallel with the standard Harness Log Service. A log collector such as OpenTelemetry Collector, Fluent Bit, or Vector then forwards those logs to your backend.
+
+Go to [Stream pipeline logs](/docs/platform/delegates/manage-delegates/stream-pipeline-logs-to-observability-backend) to set this up.
+
+---
+
 ## Active CD Feature flags
 
 Some Harness CD features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience. Feature development statuses are categorized as [Beta, GA, or Limited GA](/docs/platform/get-started/key-concepts#beta-limited-ga-and-ga-definitions).
