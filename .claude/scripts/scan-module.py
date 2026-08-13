@@ -257,20 +257,24 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
             violations.append({"rule": "FM-4", "text": f"H1 heading in body: {match.group(1)}", "line": body[:match.start()].count('\n')})
 
     # H-1: Heading case violations
-    def is_proper_noun(word: str) -> bool:
-        """Check if a word is a proper noun using patterns and known terms"""
-        # Known proper nouns (Harness modules, common tech terms)
     known_proper_nouns = {
         "Harness", "IaCM", "CI", "CD", "STO", "CCM", "AIDI", "FF", "SRM", "FME",
         "Kubernetes", "Terraform", "OpenTofu", "AWS", "GCP", "Azure", "GitHub", "Docker",
         "Helm", "Argo", "Vault", "OPA", "Rego", "PostgreSQL", "MySQL", "MongoDB",
         "BigQuery", "CloudSQL", "Liquibase", "Flyway", "Jinja2", "CockroachDB",
         "Backstage", "OAuth", "API", "REST", "JSON", "YAML", "JDBC", "SDK", "HTTP",
-        "HTTPS", "SSH", "SSL", "TLS", "CLI", "UI", "URL", "URI", "DNS", "IP"
+        "HTTPS", "SSH", "SSL", "TLS", "CLI", "UI", "URL", "URI", "DNS", "IP",
+        # Third-party product and tool names used across AI SRE integration docs.
+        # These are correctly capitalized brand names, not Title Case violations.
+        "Datadog", "Jira", "Slack", "Mustache", "Zoom", "Grafana", "Splunk",
+        "Confluence", "Dynatrace", "Bitbucket", "Opsgenie", "Jenkins", "Octopus",
+        "Travis", "Nagios", "Sentry", "Prometheus", "Lacework", "PagerDuty",
+        "ServiceNow", "GitLab", "CircleCI", "CloudWatch", "BigPanda", "AlertSite",
+        "Zendesk", "Kafka",
     }
 
     def is_proper_noun(word: str) -> bool:
-
+        """Check if a word is a proper noun using patterns and known terms"""
         if word in known_proper_nouns:
             return True
 
