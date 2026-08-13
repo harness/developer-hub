@@ -219,7 +219,7 @@ All requests require an API key with appropriate permissions.
 
 - **Base URL**: `https://app.harness.io/gateway/ng/api/v2/secrets`
 
-```bash title="list-secrets.http"
+```bash title="list-secrets.sh"
 # List secrets
 curl -X GET \
   "https://app.harness.io/gateway/ng/api/v2/secrets?accountIdentifier=abc123&projectIdentifier=myproject" \
@@ -227,7 +227,7 @@ curl -X GET \
   -H "Content-Type: application/json"
 ```
 
-```bash title="create-secret.http"
+```bash title="create-secret.sh"
 # Create a text secret
 curl -X POST \
   "https://app.harness.io/gateway/ng/api/v2/secrets?accountIdentifier=abc123" \
@@ -249,7 +249,7 @@ curl -X POST \
   }'
 ```
 
-```bash title="update-secret.http"
+```bash title="update-secret.sh"
 # Update a text secret value
 curl -X PUT \
   "https://app.harness.io/gateway/ng/api/v2/secrets/my_api_key?accountIdentifier=abc123" \
@@ -271,7 +271,7 @@ curl -X PUT \
   }'
 ```
 
-```bash title="delete-secret.http"
+```bash title="delete-secret.sh"
 # Delete a secret
 curl -X DELETE \
   "https://app.harness.io/gateway/ng/api/v2/secrets/my_api_key?accountIdentifier=abc123&projectIdentifier=myproject" \

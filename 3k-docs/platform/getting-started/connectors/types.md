@@ -171,4 +171,4 @@ Confluence connectors allow pipelines to read from or publish to Confluence page
 
 ### MCP (GitHub MCP)
 
-The GitHub MCP (Model Context Protocol) connector enables the Harness AI assistant (AIDA) to interact with GitHub repositories, issues, and pull requests through a structured tool interface for AI-driven development workflows.
+The GitHub MCP (Model Context Protocol) connector enables the Harness AI assistant to interact with GitHub repositories, issues, and pull requests through a structured tool interface for AI-driven development workflows.
