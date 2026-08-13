@@ -1,5 +1,19 @@
 [
   {
+    "flagKey": "GITX_RATE_LIMITS_API",
+    "description": "Enables account-level APIs to list GitX rate limits and retrieve rate-limit timelines, providing visibility into Git provider API consumption across Git connectors for monitoring and troubleshooting throttling.",
+    "gaStartDate": "2026-08-13",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "GITX_WEBHOOK_HEALTH_PER_REPO",
+    "description": "Enables accounts to use the GitX webhook health APIs (GET /v1/gitx-health and GET /v1/gitx-health/repo) to view per-repository webhook coverage status and untracked entity paths.",
+    "gaStartDate": "2026-08-13",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
+  },
+  {
     "flagKey": "EPHEMERAL_DESTROY",
     "description": "Enables automated teardown of infrastructure for expired ephemeral workspaces, ensuring cloud resources are cleaned up when a workspace's configured lifetime ends.",
     "gaStartDate": "2026-08-06",
