@@ -145,36 +145,48 @@ If you encounter any issues after the initial upgrade, contact [Harness Support]
 Attempting to upgrade directly to 0.37.0 or later without passing through 0.36.x will result in an unsupported state, as the required database migration will not have been performed.
 :::
 
-:::info MongoDB Upgrade to Version 7.x in SMP Environments
+:::info
 
-With MongoDB 6 reaching end-of-life (EOL), it is recommended that customers using an in-cluster MongoDB instance upgrade to MongoDB 7.x. This upgrade mitigates known CVEs and aligns with MongoDB's recommended upgrade path. Please also see the transition from Mongo 6 to Mongo 7 below.
+## MongoDB Upgrade to Version 8.x in SMP Environments {#mongodb-upgrade-to-version-8x-in-smp-environments}
+
+Starting with SMP **0.44.0**, Harness ships **MongoDB 8.0** for in-cluster MongoDB. Keep the MongoDB Feature Compatibility Version (FCV) upgrade job **enabled** during upgrades so FCV stays aligned with the MongoDB server version. Disabling the job can leave FCV behind the server version and block or break subsequent MongoDB major-version upgrades.
 
 #### MongoDB Version History:
 * MongoDB 4.0 was used in versions 0.16.x and earlier.
 * MongoDB 5.0 was used in versions 0.17.x through 0.21.x.
 * MongoDB 6.0 is used starting from version 0.22.x.
 * MongoDB 7.0 is used starting from version 0.33.x.
+* MongoDB 8.0 is used starting from version 0.44.x.
 
 #### Upgrade Path
-1. Upgrade to at least SMP 0.17.0 if you are running 0.16.x or below version. This is required because Mongo doesn’t allow direct upgrade from Mongo 4.0 to Mongo 6.0
-2. Upgrade to at least SMP 0.22.0 if you are running 0.21.x or below version. This is required because Mongo doesn't allow direct upgrade from Mongo 5.0 to Mongo 7.0
-2. Upgrade to 0.33.0 or above to use mongo 7.0 server.
+MongoDB does not allow you to skip major versions. Upgrade SMP in order so each MongoDB major version runs before the next.
+
+1. Upgrade to at least SMP 0.17.0 if you are running 0.16.x or earlier. MongoDB does not allow a direct upgrade from MongoDB 4.0 to MongoDB 6.0.
+2. Upgrade to at least SMP 0.22.0 if you are running 0.21.x or earlier. MongoDB does not allow a direct upgrade from MongoDB 5.0 to MongoDB 7.0.
+3. Upgrade to at least SMP 0.33.0 if you are running a version earlier than 0.33.0. This moves in-cluster MongoDB to 7.0.
+4. Upgrade to SMP 0.44.0 or later to move in-cluster MongoDB to 8.0. Do not jump from MongoDB 6.x (SMP 0.22.x through 0.32.x) directly to SMP 0.44.0.
 
 #### Harness-Specific Details
 
-1. **Helm Users:**
-  - A job has been introduced to handle the FCV upgrade automatically. This job runs pre-upgrade checks and upgrades FCV to match the server version.
-
-2. **Argo CD Users:**
-  - For Argo CD users, run the FCV upgrade job manually before performing the main upgrade.
+1. **Helm users:** Keep `upgrades.mongoFCVUpgrade.enabled` set to `true` (the default). The job runs pre-upgrade checks and upgrades FCV to match the server version.
+2. **Argo CD users:** Run the FCV upgrade job manually before the main upgrade. Do not skip this step when you move across MongoDB major versions (for example, 7.0 to 8.0).
 
 #### MongoDB FCV Upgrade Job
-To run FCV upgrade manually (required for Argo CD users), include this job definition: (mongo-preupgradejob)[https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/examples/mongo-fcv-upgrade/job.yaml]
-This job runs as a pre-upgrade hook to ensure FCV is compatible with the MongoDB server version.
+To run the FCV upgrade manually (required for Argo CD users), use this job definition: [mongo-preupgradejob](https://raw.githubusercontent.com/harness/helm-charts/refs/heads/main/examples/mongo-fcv-upgrade/job.yaml).
+
+This job runs as a pre-upgrade hook to ensure FCV is compatible with the MongoDB server version. Harness recommends that you leave the job enabled for Helm upgrades.
 
 #### Configuration
 
-To disable the upgrade job if a manual FCV upgrade is preferred, use the following setting in the override file:
+Harness recommends that you keep the FCV upgrade job enabled:
+
+```yaml
+upgrades:
+  mongoFCVUpgrade:
+    enabled: true
+```
+
+Disable the job only if you intentionally manage FCV yourself. If you disable it, upgrade FCV manually to the MongoDB server major version before the next SMP upgrade that ships a newer MongoDB major version.
 
 ```yaml
 upgrades:
@@ -455,6 +467,15 @@ Starting with version 0.38.x, the airgap bundle structure has been redesigned. C
 :::
 
 For a comprehensive guide on installing Harness Self-Managed Enterprise Edition in an air-gapped environment, see the **Version 0.38.x and later** tab in the [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment) documentation. It covers downloading airgap bundles using interactive scripts (or alternative methods like `gsutil` and `curl`), organizing the core modules and execution components, and securely pushing them to your private container registry.
+
+### Important notes
+
+#### MongoDB 8.0 for in-cluster MongoDB
+
+- Harness SMP **0.44.0** ships **MongoDB 8.0** (`harnesssecure/mongo:8.0.26-jammy`) for in-cluster MongoDB. MongoDB 7.0 was used from 0.33.x through 0.43.x.
+- MongoDB does not allow you to skip major versions. Upgrade to at least SMP 0.33.0 (MongoDB 7.0) before you upgrade to 0.44.0 (MongoDB 8.0).
+- Keep the MongoDB FCV upgrade job **enabled** (`upgrades.mongoFCVUpgrade.enabled: true`, the default) so Feature Compatibility Version stays aligned with the MongoDB server during the upgrade. Argo CD users must run the FCV job manually before the main upgrade.
+- Go to the [MongoDB Upgrade to Version 8.x](#mongodb-upgrade-to-version-8x-in-smp-environments) note at the top of these release notes for the full version history and upgrade path.
 
 ### New features and enhancements
 
