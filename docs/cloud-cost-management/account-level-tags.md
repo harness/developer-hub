@@ -151,7 +151,7 @@ Project-level labels from GCP Cloud Resource Manager appear with the prefix `pro
 
 - **Azure organization:** Account-level subscription and resource group tags are available only when your subscriptions belong to an Azure organization (a Tenant with Management Groups). Standalone subscriptions outside an organization do not surface account-level tags.
 - **Tag inheritance:** Subscription and resource group tags are not visible in Harness until you enable tag inheritance in Azure. Go to the [Enable tag inheritance](#enable-tag-inheritance) steps below.
-- **Azure connector:** Re-sync your Azure connector in Harness after you enable tag inheritance. Go to [Set up cost visibility for Azure](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure) to configure your connector.
+- **Azure connector:** A configured Azure connector in Harness. After you enable tag inheritance, the connector picks up the tags automatically on its next ingestion cycle. Go to [Set up cost visibility for Azure](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure) to configure your connector.
 - **Who can apply:** An Azure subscription owner or contributor tags subscriptions and enables tag inheritance.
 
 Azure does not expose subscription or resource group tags as separate fields in billing exports by default. Azure uses **tag inheritance** to roll tags down to billed resources.
@@ -162,7 +162,7 @@ Only tags directly on the billed resource appear in cost data. Subscription and 
 
 #### With Tag Inheritance Enabled
 
-Subscription and resource group tags flow down to every resource billed under that subscription or resource group. They then appear in Harness `Label V2` as plain keys — no prefix is added by Azure.
+Subscription and resource group tags flow down to every resource billed under that subscription or resource group. They then appear in Harness `Label V2` as plain keys, with no prefix added by Azure.
 
 **What the conflict policy is:** The same tag key can exist at more than one level, for example `env` on both the subscription and a resource. When that happens, Azure applies a conflict policy to decide which value wins: the higher-level tag or the resource's own tag.
 
@@ -180,8 +180,14 @@ Because Azure does not add a prefix, use a naming convention in the tag key itse
 1. In the Azure portal, go to **Cost Management** and select **Manage subscription**.
 2. Select **Tag inheritance**.
 3. Enable tag inheritance for each subscription or billing scope.
-4. Choose your conflict behavior — prefer subscription and resource group tags or prefer resource tags.
-5. Re-sync your Azure connector in Harness CACM.
+4. Choose your conflict behavior:
+   - **Prefer subscription and resource group tags**
+   - **Prefer resource tags**
+5. Wait for the next ingestion cycle to pick up the newly added or enabled tags.
+
+:::note
+Newly added or enabled tags do not appear immediately. Azure includes them in its cost exports only from the next billing cycle, and Harness surfaces them after the following ingestion cycle. Allow time for both before you expect the tags in CACM reports.
+:::
 
 Go to [Azure tag inheritance](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/enable-tag-inheritance) to review the Azure documentation.
 
@@ -241,5 +247,5 @@ For example, to see monthly cost per team across every AWS account, add a **Data
 <Troubleshoot
   issue="My Azure subscription or resource group tags are not visible in Harness CACM"
   mode="docs"
-  fallback="Azure subscription and resource group tags require tag inheritance to be enabled in Azure Cost Management. Go to Cost Management > Manage subscription > Tag inheritance and enable it for each subscription, then re-sync your Azure connector in Harness."
+  fallback="Azure subscription and resource group tags require tag inheritance to be enabled in Azure Cost Management. Go to Cost Management > Manage subscription > Tag inheritance and enable it for each subscription, then wait for the next ingestion cycle to pick up the tags."
 />

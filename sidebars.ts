@@ -2920,6 +2920,7 @@ const sidebars: SidebarsConfig = {
         'cloud-cost-management/unit-costs',
         'cloud-cost-management/get-started/key-concepts',
         'cloud-cost-management/scad',
+        'cloud-cost-management/account-level-tags',
         'cloud-cost-management/get-started/data-job-status',
         'cloud-cost-management/ask-ai',
         {
@@ -3149,7 +3150,6 @@ const sidebars: SidebarsConfig = {
         'cloud-cost-management/feature-permissions',
         'cloud-cost-management/oidc-auth',
         'cloud-cost-management/product-behaviour',
-        'cloud-cost-management/account-level-tags',
         {
           type: 'category',
           label: 'Self-Managed Enterprise Edition',
