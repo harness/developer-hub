@@ -1,5 +1,19 @@
 [
   {
+    "flagKey": "COST_INTEGRATION",
+    "description": "Enables Cloud Cost Management (CCM) Integration on IaCM workspaces, displaying actual monthly infrastructure costs and cost optimization recommendations sourced from Harness CCM on the workspace Overview tab.",
+    "gaStartDate": "2026-08-10",
+    "module": "Infrastructure as Code Management",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "OVERVIEW_V3",
+    "description": "Introduces a redesigned workspace Overview tab with a new layout showing resource counts, live cloud costs, cost optimization opportunities, provisioner details, and recent provisioning activity at a glance.",
+    "gaStartDate": "2026-08-10",
+    "module": "Infrastructure as Code Management",
+    "lifecycleState": "Beta"
+  },
+  {
     "flagKey": "GITX_RATE_LIMITS_API",
     "description": "Enables account-level APIs to list GitX rate limits and retrieve rate-limit timelines, providing visibility into Git provider API consumption across Git connectors for monitoring and troubleshooting throttling.",
     "gaStartDate": "2026-08-13",

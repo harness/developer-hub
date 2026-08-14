@@ -44,6 +44,10 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 
 ### New features and enhancements
 
+- **[Workspace Overview](/docs/infra-as-code-management/workspaces/workspace-overview) (Beta):** The workspace Overview tab has been redesigned with a new layout that surfaces resource counts, live cloud costs, cost optimization opportunities, provisioner details, and recent activity at a glance. A new **Cloud Cost Management Integration** toggle in workspace configuration connects a workspace to Harness CCM to display actual monthly infrastructure costs and optimization recommendations on the Overview tab. Contact [Harness Support](mailto:support@harness.io) to request access.
+
+  ![Workspace overview](./static/workspace-overview-ccm.png)
+
 - **[Ephemeral Workspaces](/docs/infra-as-code-management/workspaces/drift-ephemeral-workspaces) (Limited GA):** Ephemeral Workspaces is now available as a Limited GA feature. Ephemeral Workspaces automatically tears down infrastructure for expired workspaces and optionally deletes the workspace record after a configurable delay. The feature is enabled per account. Contact [Harness Support](mailto:support@harness.io) to enable it for your account.
 
 ---

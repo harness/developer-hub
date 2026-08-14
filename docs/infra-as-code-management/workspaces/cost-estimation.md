@@ -1,12 +1,14 @@
 ---
 title: Cost Estimation
 sidebar_label: Cost Estimation
-description: Learn how to get cost estimation for infrastructure changes.
+description: Learn how to enable and use cloud cost estimation and Cloud Cost Management Integration for IaCM workspaces.
 keywords:
   - cost estimation
   - infracost
   - terraform cost
   - cloud cost
+  - cloud cost management
+  - ccm integration
   - workspace configuration
   - infrastructure cost
 tags:
@@ -18,17 +20,16 @@ sidebar_position: 40
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import DocImage from '@site/src/components/DocImage';
 
-Cost estimation in Harness IaCM uses Infracost to analyze Terraform plans and show estimated monthly cost changes during pipeline execution, including approval steps when your pipeline uses them.
-
-Enable it on a workspace when you want spending context before apply, for example to support budget checks or cost-aware approvals.
+Harness IaCM provides two independent cost visibility features for workspaces. **Cloud Cost Estimation** uses [Infracost](https://www.infracost.io/) to estimate monthly cost changes from a Terraform or OpenTofu plan, while **Cloud Cost Management Integration** pulls actual infrastructure costs and optimization recommendations from the Harness Cloud Cost Management (CCM) module. Enable either or both features per workspace from the **Configuration** tab.
 
 ---
 
-## Prerequisites
+## Before you begin
 
-- **Workspace configuration access:** You need permissions to edit workspace settings. Go to [Workspace RBAC](/docs/infra-as-code-management/manage-projects/workspace-rbac) to configure permissions.
-- **Terraform-based workspace:** Cost estimation works with Terraform and OpenTofu workspaces. Go to [Create a workspace](/docs/infra-as-code-management/workspaces/create-workspace) to set up a workspace.
-- **Optional - Paid Infracost Cloud and custom pricing:** Add an API key only if you subscribe to a paid Infracost Cloud plan and maintain custom pricing there. Go to [Infracost Cloud](https://www.infracost.io/) and [Infracost documentation](https://www.infracost.io/docs/) for account types and setup.
+- **Workspace configuration access:** You need **View** and **Edit** permissions for IaCM workspaces to enable cost features. Go to [Workspace RBAC](/docs/infra-as-code-management/workspaces/workspace-rbac) to configure permissions.
+- **Terraform-based workspace:** Cloud Cost Estimation works with Terraform and OpenTofu workspaces. Go to [Create a workspace](/docs/infra-as-code-management/workspaces/create-workspace) to set up a workspace.
+- **CCM Integration (optional):** Cloud Cost Management Integration requires the Harness CCM module to be active on your account and cloud resources provisioned on AWS, Azure, or GCP.
+- **Paid Infracost Cloud (optional):** Add an Infracost API key only if you subscribe to a paid Infracost Cloud plan and maintain custom pricing there. Go to [Infracost Cloud](https://www.infracost.io/) and [Infracost documentation](https://www.infracost.io/docs/) for account types and setup.
 
 ---
 
@@ -37,48 +38,82 @@ Enable it on a workspace when you want spending context before apply, for exampl
 Harness IaCM integrates with Infracost to estimate cloud infrastructure costs by analyzing Terraform plan output. When enabled, Harness automatically runs Infracost during every Terraform plan operation and calculates the estimated monthly cost difference based on current cloud provider pricing.
 
 **Key characteristics:**
-- **Approximations only:** Cost estimates may differ from actual costs based on your cloud provider agreement, usage patterns, and regional pricing variations
-- **Infrastructure focus:** Estimates cover infrastructure costs (compute, storage, networking) but not usage-based charges like data transfer or API calls
-- **Cloud provider support:** Works with AWS, Azure, and Google Cloud Platform
-- **Infracost Cloud API key (optional):** Harness integrates Infracost into IaCM, so estimates use public list prices from the open-source pricing data without an Infracost Cloud account. Set `INFRACOST_API_KEY` only if you have a **paid** Infracost Cloud plan **and** you define custom pricing in Infracost Cloud; otherwise the key does not add value
+- **Approximations only:** Cost estimates may differ from actual costs based on your cloud provider agreement, usage patterns, and regional pricing variations.
+- **Infrastructure focus:** Estimates cover infrastructure costs (compute, storage, networking) but not usage-based charges like data transfer or API calls.
+- **Cloud provider support:** Works with AWS, Azure, and Google Cloud Platform.
+- **Infracost Cloud API key (optional):** Harness integrates Infracost into IaCM, so estimates use public list prices from the open-source pricing data without an Infracost Cloud account. Set `INFRACOST_API_KEY` only if you have a **paid** Infracost Cloud plan **and** you define custom pricing in Infracost Cloud; otherwise the key does not add value.
 
 ---
 
-## Enable cost estimation
+## Cloud Cost Management Integration
 
-To enable cost estimation for a workspace:
+:::info Pending release
+Cloud Cost Management Integration is currently **pending release**. Contact [Harness Support](mailto:support@harness.io) to request access.
+:::
+
+Cloud Cost Management (CCM) Integration connects a workspace to the Harness CCM module to surface **actual** cloud infrastructure costs and cost optimization recommendations for the resources the workspace manages.
+
+When enabled, Harness syncs cost and recommendation data from CCM approximately every 12 hours and writes it to the workspace. The following data appears on the workspace **Overview** tab:
+
+- **Current Monthly Cost:** The total actual monthly spend for cloud resources in this workspace, based on usage data from your cloud provider as reported by CCM.
+- **Optimization Opportunity:** The estimated potential monthly savings from CCM cost recommendations, along with a count of available recommendations.
+
+### How it differs from Cloud Cost Estimation
+
+| | Cloud Cost Estimation | Cloud Cost Management Integration |
+|---|---|---|
+| **Data source** | Infracost (plan-time estimates) | Harness CCM (actual usage costs) |
+| **When it runs** | During each Terraform or OpenTofu plan | Approximately every 12 hours in the background |
+| **What it shows** | Estimated cost change from a planned change | Actual current monthly spend and savings opportunities |
+| **Where it appears** | Approval steps, Cost Change Estimation tab | Workspace Overview tab |
+| **Cloud provider support** | AWS, Azure, GCP | AWS, Azure, GCP |
+
+CCM Integration requires provisioned cloud resources with recognized provider types (AWS, Azure, or GCP) and the Harness CCM module active on your account.
+
+---
+
+## Enable cloud cost features
+
+Both cost features are controlled from the **Cloud Cost Integration** section of the workspace **Configuration** tab. You can enable either or both independently.
 
 1. In your IaCM project, go to **Workspaces**.
 2. Select the workspace you want to configure.
 3. Go to the **Configuration** tab.
-4. Toggle **Enable Cost Estimation** to on.
+4. Under **Cloud Cost Integration**, toggle the features you want to enable:
+   - **Cloud Cost Estimation:** Enables Infracost-based cost estimates during Terraform and OpenTofu plan operations. Estimates appear in approval steps and the Cost Change Estimation tab.
+   - **Cloud Cost Management Integration:** Pulls actual infrastructure costs and optimization recommendations from the Harness CCM module. Results appear on the workspace Overview tab.
 
-<DocImage path={require('./static/cost1.png')} alt="Enable cost estimation in workspace configuration" title="Click to view full size" />
-<p align="center"><em>Enable cost estimation in the workspace Configuration tab</em></p>
+<img src={require('./static/cloud-cost-integration.png').default} alt="" style={{border: '1px solid #555', display: 'block', margin: '16px 0'}} />
 
-The setting applies immediately. Future pipeline executions that include a Terraform plan operation will automatically calculate and display cost estimates.
+Settings apply immediately. Future pipeline executions will reflect the updated configuration.
 
 ---
 
-## Where to view cost estimates
+## Where to view cost data
 
-Once enabled, cost estimates appear in two locations during pipeline execution.
+Each cost feature surfaces data in a different location.
+
+### Workspace Overview tab
+
+When Cloud Cost Management Integration is enabled, the workspace **Overview** tab displays the **Current Monthly Cost** and **Optimization Opportunity** cards. These show actual infrastructure costs and CCM recommendations for the resources managed by the workspace.
+
+Go to [Workspaces overview](/docs/infra-as-code-management/workspaces/workspace-overview) to understand the workspace Overview tab.
 
 ### Approval steps
 
-When your pipeline includes an approval step after a Terraform plan, the approval interface displays cost estimates alongside resource changes. This allows approvers to review the financial impact before authorizing the apply operation.
+When your pipeline includes an approval step after a Terraform plan, the approval interface displays Infracost cost estimates alongside resource changes. This allows approvers to review the estimated financial impact before authorizing the apply operation.
 
 <DocImage path={require('./static/cost2.png')} alt="Cost estimates in approval step" title="Click to view full size" />
-<p align="center"><em>Cost estimates displayed in the approval step alongside resource changes</em></p>
+<p align="center"><em>Infracost cost estimates displayed in the approval step alongside resource changes</em></p>
 
 The approval step shows the estimated monthly cost difference (increase or decrease) compared to the current infrastructure state.
 
 ### Cost Change Estimation tab
 
-For a complete audit trail, Harness stores cost estimation data for every pipeline execution in the **Cost Change Estimation** tab. You can review historical cost estimates for past runs, compare cost impacts across different changes, and track infrastructure spending trends over time.
+For a complete audit trail, Harness stores Infracost cost estimation data for every pipeline execution in the **Cost Change Estimation** tab. You can review historical cost estimates for past runs, compare cost impacts across different changes, and track infrastructure spending trends over time.
 
 <DocImage path={require('./static/cost3.png')} alt="Cost Change Estimation tab" title="Click to view full size" />
-<p align="center"><em>Cost Change Estimation tab showing historical cost data for pipeline executions</em></p>
+<p align="center"><em>Cost Change Estimation tab showing historical Infracost data for pipeline executions</em></p>
 
 This tab is available in the pipeline execution details view and persists the cost data even after the pipeline completes.
 
@@ -144,13 +179,19 @@ Be aware of these limitations when using cost estimation:
   fallback="Cost estimates are based on standard cloud provider pricing and cannot account for enterprise agreements, reserved instances, spot pricing, or usage-based charges. Review your cloud provider's billing dashboard to understand the source of cost differences. Use cost estimates as directional guidance, not exact predictions."
 />
 
+<Troubleshoot
+  issue="Cloud Cost Management Integration shows no data on the workspace Overview tab despite the toggle being enabled in IaCM"
+  mode="general"
+  fallback="Confirm the Harness CCM module is active on your account and that the workspace manages resources on AWS, Azure, or GCP. CCM Integration syncs approximately every 12 hours, so data may not appear immediately after enabling the toggle. If no data appears after 24 hours, verify that CCM has visibility into the cloud account where these resources are provisioned."
+/>
+
 ---
 
 ## Next steps
 
 Now that you understand how cost estimation works in IaCM, explore related workspace and governance topics:
 
-- [Create a workspace](/docs/infra-as-code-management/workspaces/create-workspace): Learn how to create and configure workspaces
-- [Workspace RBAC](/docs/infra-as-code-management/manage-projects/workspace-rbac): Control who can enable cost estimation and view cost estimates
-- [IaCM pipelines](/docs/category/iacm-pipelines): Understand how cost estimates integrate with Terraform plan and approval steps
-- [Infracost documentation](https://www.infracost.io/docs/): Optional Infracost Cloud setup, API keys for paid plans, and supported resources
+- [Create a workspace](/docs/infra-as-code-management/workspaces/create-workspace): Learn how to create and configure workspaces.
+- [Workspace RBAC](/docs/infra-as-code-management/workspaces/workspace-rbac): Control who can enable cost estimation and view cost estimates.
+- [IaCM pipelines](/docs/category/iacm-pipelines): Understand how cost estimates integrate with Terraform plan and approval steps.
+- [Infracost documentation](https://www.infracost.io/docs/): Optional Infracost Cloud setup, API keys for paid plans, and supported resources.
