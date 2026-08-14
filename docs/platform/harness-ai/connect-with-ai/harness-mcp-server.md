@@ -447,6 +447,13 @@ Tested gateways include [Docker MCP Gateway](https://docs.docker.com/), [Portkey
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
 | `LOG_LEVEL` | No | `info` | Log verbosity: `debug`, `info`, `warn`, `error` |
+| `HARNESS_TOOLSETS` | No | *(all)* | Comma-separated list of enabled toolsets (see [Toolset filtering](#toolset-filtering)) |
+| `HARNESS_READ_ONLY` | No | `false` | Block all mutating operations (create, update, delete, execute) |
+| `HARNESS_AUTO_APPROVE_RISK` | No | `none` | Risk-based auto-approve threshold for autonomous workflows. Operations at or below this risk level proceed without user confirmation. Values: `none`, `low_write`, `medium_write`, `high_write`, `all` |
+| `HARNESS_SKIP_ELICITATION` | No | `false` | **Deprecated.** Superseded by `HARNESS_AUTO_APPROVE_RISK`. Setting `true` is equivalent to `HARNESS_AUTO_APPROVE_RISK=all` and logs a deprecation warning to stderr. If both are set, `HARNESS_AUTO_APPROVE_RISK` takes precedence |
+| `HARNESS_ALLOW_HTTP` | No | `false` | Allow non-HTTPS `HARNESS_BASE_URL`. Set to `true` only for local development |
+| `HARNESS_FME_BASE_URL` | No | `https://api.split.io` | Base URL for Feature Management & Experimentation (Split) API |
+| `HARNESS_PIPELINE_VERSION` | No | `0` | Default pipeline YAML version (`0` or `1`) |
 | `HARNESS_MCP_LOG_FILE` | No | `~/.claude/harness-mcp.log` | File used for stdio disconnect and crash diagnostics when stderr is no longer available |
 | `HARNESS_AUDIT_FILE` | No | -- | Append audit events to a newline-delimited JSON file for durable local collection |
 | `HARNESS_AUDIT_WEBHOOK_URL` | No | -- | HTTPS endpoint that receives batched audit events. HTTP URLs require `HARNESS_ALLOW_HTTP=true` for local development |
@@ -1050,7 +1057,7 @@ Sessions can also send an `x-harness-auto-approve-risk` header on the MCP `initi
 
 - **Secrets are never exposed.** The `secret` resource type returns metadata only — secret values are never included in any response.
 - **Write operations use elicitation when available.** `harness_create`, `harness_update`, `harness_delete`, and `harness_execute` prompt for user confirmation.
-- **Destructive writes fail closed.** If confirmation cannot be obtained, `harness_delete` is blocked.
+- **Destructive writes fail closed.** If confirmation cannot be obtained, `harness_delete` is blocked, unless `HARNESS_AUTO_APPROVE_RISK=all` is set.
 - **CORS restricted to same-origin.** The HTTP transport prevents CSRF attacks from malicious websites.
 - **Rate limiting.** HTTP transport enforces 60 requests per minute per IP. The API client enforces 10 requests/second to avoid upstream rate limits.
 - **Pagination bounds enforced.** List queries are capped at 10,000 items total and 100 per page.
