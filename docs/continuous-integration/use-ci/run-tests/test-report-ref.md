@@ -1,6 +1,6 @@
 ---
 title: Format test reports
-description: Test reports must be in JUnit XML format to appear on the Tests tab.
+description: Harness CI supports JUnit XML and TRX test report formats.
 sidebar_position: 30
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/test-report-ref
@@ -9,9 +9,20 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Results on the [Tests tab](./viewing-tests.md) are parsed from test reports specified in the **Report Paths** setting in **Run** and **Test** steps. Test reports must be in [JUnit XML format](https://llg.cubic.org/docs/junit/) to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only.
+Results on the [Tests tab](./viewing-tests.md) are parsed from test reports specified in the **Report Paths** setting in **Run** and **Test** steps.
+
+## Supported test report formats
+
+Harness supports the following test report formats:
+
+- **JUnit XML** — The standard format for test reports. Most testing frameworks either produce JUnit XML by default or have plugins to generate it. Go to [JUnit XML format resources](#junit-xml-format-resources) for specification details.
+- **TRX** — .NET test reports (`.trx` files) are automatically converted to JUnit XML format. When using .NET, enable log reporting when running tests (for example, `dotnet test -l:trx`) to generate TRX reports.
+
+If your test tool does not produce JUnit XML or TRX by default, go to [JUnit converters, formatters, and plugins](#junit-converters-formatters-and-plugins) for conversion tools.
 
 For optimal rendering in the Harness UI, there is a limit of 8,000 characters per field. If a field in your XML file contains more than 8,000 characters, the output might render incorrectly on the **Tests** tab.
+
+---
 
 ## JUnit XML format resources
 

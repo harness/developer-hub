@@ -33,7 +33,7 @@ To publish test results and view them in Harness, you must produce [test reports
                         - /path/to/test/report.xml
 ```
 
-The **Tests** tab can show tests only if your test reports are in JUnit XML format, because Harness parses test reports that are in JUnit XML format only. For information about formatting unit test reports, go to [Format test reports](./test-report-ref.md).
+The **Tests** tab displays test results from reports in JUnit XML or TRX format (TRX reports are automatically converted to JUnit XML). For information about formatting unit test reports, go to [Format test reports](./test-report-ref.md).
 
 After a build runs, you can review test reports on the **Tests** tab on the [Build details page](../viewing-builds.md). The content differs for **Run** and **Test** steps.
 

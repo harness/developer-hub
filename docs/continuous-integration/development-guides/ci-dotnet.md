@@ -227,11 +227,11 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build 
 
 ### Visualize test results
 
-You can [view test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests/) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
+You can [view test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests/) on the **Tests** tab of your pipeline executions. Harness supports JUnit XML and TRX test report formats.
 
-You can use a converter to output compatible JUnit XML reports, such as [NUnit to JUnit](https://github.com/nunit/nunit-transforms/tree/master/nunit3-junit) or [.NET trx2JUnit](https://github.com/gfoidl/trx2junit).
+For .NET projects, you can generate TRX reports natively using `dotnet test -l:trx` without needing a converter. Alternatively, you can use a converter to output JUnit XML reports, such as [NUnit to JUnit](https://github.com/nunit/nunit-transforms/tree/master/nunit3-junit) or [.NET trx2JUnit](https://github.com/gfoidl/trx2junit).
 
-For your pipeline to produce test reports, you need to modify the **Run** step that runs your tests. Make sure the `command` generates JUnit XML reports and add the `reports` specification.
+For your pipeline to produce test reports, you need to modify the **Run** step that runs your tests. Make sure the `command` generates test reports and add the `reports` specification.
 
 <Tabs>
 <TabItem value="Harness Cloud">

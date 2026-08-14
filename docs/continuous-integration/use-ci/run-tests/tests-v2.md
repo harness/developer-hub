@@ -155,11 +155,11 @@ For example:
                       - tmp/junit.xml
 ```
 
-You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) is supported. [Test results must be in JUnit XML format](./test-report-ref.md).
+You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) is supported. Go to [Format test reports](./test-report-ref.md) for supported formats.
 
 :::info
 
-When using **.Net**, make sure to enable log reporting when running the tests, e.g. `dotnet test -l:trx`, or otherwise no tests would be shown in the **Tests** tab.
+When using **.Net**, make sure to enable log reporting when running the tests, e.g. `dotnet test -l:trx`. TRX reports are automatically converted to JUnit XML. No tests will be shown on the **Tests** tab without test report generation enabled.
 
 :::
 
