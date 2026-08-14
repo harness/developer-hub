@@ -406,7 +406,7 @@ ${host}
 
 ## HDH API CALL
 
-### Usuage
+### Usage
 
 ```js
 <HarnessApiData
@@ -422,7 +422,7 @@ ${host}
 
 <HarnessApiData  query="https://app.harness.io/ng/api/organizations/default" accountIdentifier token fallback="harness fallback" parse=".data.organization.description"/>
 
-### Usuage
+### Usage
 
 ```js
 <HarnessApiData
@@ -442,7 +442,7 @@ ${host}
     parse='.[-1] | "(up to v\(.))"'>
 </HarnessApiData>
 
-### Usuage
+### Usage
 
 ```js
 <HarnessApiData
