@@ -2119,5 +2119,19 @@
     "gaStartDate": "2026-08-06",
     "module": "Feature Management & Experimentation",
     "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "HARNESS_INJECT_TOKEN",
+    "description": "Enables the injection of a Harness token into the environment variables of a pipeline step, allowing secure access to Harness APIs and services during pipeline execution.",
+    "gaStartDate": "2026-08-12",
+    "module": "Harness AI",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENFORCE_TRIGGER_EXECUTOR_IDENTITY",
+    "description": "Enables enforcement of trigger executor identity in pipelines, ensuring that only authorized users or systems can execute pipeline triggers for enhanced security and access control.",
+    "gaStartDate": "2026-08-12",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   }
 ]
