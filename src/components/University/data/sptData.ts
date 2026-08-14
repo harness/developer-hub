@@ -201,6 +201,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to Governance Policies (OPA)",
+    module: MODULES.ci,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Governance Policies (OPA).",
+    version: "Harness CI Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-governance-policies-opa",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Introduction to Test Intelligence",
     module: MODULES.ci,
     type: type.user,
