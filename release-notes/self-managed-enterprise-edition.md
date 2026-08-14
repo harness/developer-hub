@@ -473,6 +473,20 @@ upgrades:
 - Go to the [MongoDB Upgrade to Version 8.x](#mongodb-upgrade-to-version-8x-in-smp-environments) note at the top of these release notes for the full version history and upgrade path.
 :::
 
+:::warning Important
+Customers using **Security Testing Orchestration (STO)** who upgrade from SMP **0.43.x** to **0.44.0** can encounter a database migration failure that prevents `sto-core` from starting, which stops STO scans from running.
+
+To resolve this, run the following query against the STO PostgreSQL database:
+
+```sql
+UPDATE schema_migrations
+SET version = 20260608053929, dirty = false
+WHERE version = 20260608053930;
+```
+
+After the query completes, restart the `sto-core` pods.
+:::
+
 This table lists the module, its components, its version and the release notes versions associated with it.
 
 <SmpVersionTable version="0.44.0" />
