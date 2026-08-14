@@ -412,6 +412,17 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
+  {
+    title: "Introduction to AI DLC CSV Upload and Org Tree Creation",
+    module: MODULES.sei,
+    type: type.user,
+    description:
+      "Self-paced video course introducing AI DLC CSV Upload and Org Tree Creation.",
+    version: "Harness AI DLC Insights Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-ai-dlc-csv-upload-and-org-tree-creation",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
 
 
 
