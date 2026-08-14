@@ -358,7 +358,7 @@ Normally they would fall back to the pooling mode but because in both cases APIK
 
 ### Cache Cleanup 
 
-When the proxy begins, it will attempt to fetch the proxy config from the SAAS and populate the cache with inventory of assets for each environment associated with the key which incudes: 
+When the proxy begins, it will attempt to fetch the proxy config from the SAAS and populate the cache with inventory of assets for each environment associated with the key which includes: 
  - `APIKeys`,
  - Features and, 
  - Segments.

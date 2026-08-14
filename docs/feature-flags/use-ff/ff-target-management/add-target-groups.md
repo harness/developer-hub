@@ -185,7 +185,7 @@ The AND rule will be used to evaluate the flag i.e. the flag in the example will
 
 Older SDKs don’t have the logic to handle the AND section of each rule. They will only evaluate the first clause of each rule i.e. for the above example older non compatible SDK’s will evaluate the rule as (Identifier equals Harness) OR (Identifier equals Test_Acc). The same behaviour applies when the `FFM_11173_TARGET_GROUP_AND_OPERATOR` flag is disabled.
 
-### Backwords/forwards compatibility 
+### Backwards/forwards compatibility 
 
 These AND rules are backwards and forwards compatible with existing target group rules. When the `FFM_11173_TARGET_GROUP_AND_OPERATOR` flag is enabled all your existing OR rules will still exist, you’ll just now have the ability to add the additional AND rules to them via the + symbol in the updated UI.
 

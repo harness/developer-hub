@@ -184,7 +184,7 @@ The entire pipeline is available as YAML, also.
 1. In **Feature Flag**, in **Pipelines**, click **YAML**.
 2. You can see the entire pipeline as YAML. You can edit anything in the pipeline and run it again.
 
-![A screenshot of a pipleline YAML file.](./static/1-build-feature-flag-pipeline-08.png)
+![A screenshot of a pipeline YAML file.](./static/1-build-feature-flag-pipeline-08.png)
 
 ## Schedule pipelines using triggers
 

@@ -215,7 +215,7 @@ For example:
         AnalyticsEnabled = true  
     };  
   
-    // Set selected identifer:  
+    // Set selected identifier:  
     var target = new CfTargetProxy  
     {  
         Identifier = "target_identifier",  
