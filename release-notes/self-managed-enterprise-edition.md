@@ -33,6 +33,15 @@ As the supported replacement, Harness Self-Managed Enterprise Edition now provid
 Go to [Migrate from NGINX Ingress to Envoy Gateway](/docs/self-managed-enterprise-edition/advanced-configurations/migrate-nginx-ingress-to-envoy-gateway) to complete the migration.
 :::
 
+:::danger Breaking changes
+#### MongoDB 8.0 for in-cluster MongoDB
+
+- Harness SMP **0.44.0** ships **MongoDB 8.0** (`harnesssecure/mongo:8.0.26-jammy`) for in-cluster MongoDB. MongoDB 7.0 was used from 0.33.x through 0.43.x.
+- MongoDB does not allow you to skip major versions. Upgrade to at least SMP 0.33.0 (MongoDB 7.0) before you upgrade to 0.44.0 (MongoDB 8.0).
+- Keep the MongoDB FCV upgrade job **enabled** (`upgrades.mongoFCVUpgrade.enabled: true`, the default) so Feature Compatibility Version stays aligned with the MongoDB server during the upgrade. Argo CD users must run the FCV job manually before the main upgrade.
+- Go to the [MongoDB Upgrade to Version 8.x](#mongodb-upgrade-to-version-8x-in-smp-environments) note at the top of these release notes for the full version history and upgrade path.
+:::
+
 :::warning Announcement: PostgreSQL 14 deprecation
 
 PostgreSQL 14 will reach end of life on November 12, 2026. Harness Self-Managed Enterprise Edition will continue to support PostgreSQL 14 through **0.47.0**. Starting with **0.48.0**, PostgreSQL 14 support will be deprecated.
@@ -455,6 +464,15 @@ upgrades:
 
 ## July 31, 2026, Version 0.44.0 <!-- July 31, 2026 -->
 
+:::danger Breaking changes
+#### MongoDB 8.0 for in-cluster MongoDB
+
+- Harness SMP **0.44.0** ships **MongoDB 8.0** (`harnesssecure/mongo:8.0.26-jammy`) for in-cluster MongoDB. MongoDB 7.0 was used from 0.33.x through 0.43.x.
+- MongoDB does not allow you to skip major versions. Upgrade to at least SMP 0.33.0 (MongoDB 7.0) before you upgrade to 0.44.0 (MongoDB 8.0).
+- Keep the MongoDB FCV upgrade job **enabled** (`upgrades.mongoFCVUpgrade.enabled: true`, the default) so Feature Compatibility Version stays aligned with the MongoDB server during the upgrade. Argo CD users must run the FCV job manually before the main upgrade.
+- Go to the [MongoDB Upgrade to Version 8.x](#mongodb-upgrade-to-version-8x-in-smp-environments) note at the top of these release notes for the full version history and upgrade path.
+:::
+
 This table lists the module, its components, its version and the release notes versions associated with it.
 
 <SmpVersionTable version="0.44.0" />
@@ -467,15 +485,6 @@ Starting with version 0.38.x, the airgap bundle structure has been redesigned. C
 :::
 
 For a comprehensive guide on installing Harness Self-Managed Enterprise Edition in an air-gapped environment, see the **Version 0.38.x and later** tab in the [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment) documentation. It covers downloading airgap bundles using interactive scripts (or alternative methods like `gsutil` and `curl`), organizing the core modules and execution components, and securely pushing them to your private container registry.
-
-### Important notes
-
-#### MongoDB 8.0 for in-cluster MongoDB
-
-- Harness SMP **0.44.0** ships **MongoDB 8.0** (`harnesssecure/mongo:8.0.26-jammy`) for in-cluster MongoDB. MongoDB 7.0 was used from 0.33.x through 0.43.x.
-- MongoDB does not allow you to skip major versions. Upgrade to at least SMP 0.33.0 (MongoDB 7.0) before you upgrade to 0.44.0 (MongoDB 8.0).
-- Keep the MongoDB FCV upgrade job **enabled** (`upgrades.mongoFCVUpgrade.enabled: true`, the default) so Feature Compatibility Version stays aligned with the MongoDB server during the upgrade. Argo CD users must run the FCV job manually before the main upgrade.
-- Go to the [MongoDB Upgrade to Version 8.x](#mongodb-upgrade-to-version-8x-in-smp-environments) note at the top of these release notes for the full version history and upgrade path.
 
 ### New features and enhancements
 
