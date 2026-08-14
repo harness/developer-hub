@@ -91,7 +91,7 @@ Harness IDP Workflows use custom actions to trigger and orchestrate Harness Pipe
 
 ---
 
-## 6. Miscellaneous
+## 7. Miscellaneous
 
 Additional features and capabilities supported in Harness IDP:
 
