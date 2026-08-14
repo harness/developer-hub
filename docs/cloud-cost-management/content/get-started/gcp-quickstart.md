@@ -2,7 +2,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
 
-<RedirectIfStandalone label="GCP" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
+<RedirectIfStandalone label="GCP" targetPage="/docs/cloud-cost-management/provider-integrations/cloud-providers/gcp" />
 
 ## Before You Start
 To ensure a smooth and error-free setup experience, set up GCP Billing Export before launching the Harness wizard. This will allow you to progress through the setup without delays or missing prerequisites.

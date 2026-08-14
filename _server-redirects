@@ -211,6 +211,18 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 /docs/category/dashboard-v30-closed-beta /docs/category/dashboard-v30-open-beta
 /3k-docs/category/dashboard-v30-closed-beta /3k-docs/category/dashboard-v30-open-beta
 
+# Added by arpit.agrawal on 2026-08-13 for HDH-1116 - CCM generated-index categories moved to explicit slugs, vacating their old /category/* URLs.
+# Only ai-providers and sdk-integrations are redirected: both labels are unique, so those old URLs 404 after the move.
+# Do NOT redirect /docs/category/cloud-providers - that bare slug is the platform connectors category (referenced across CD, IaCM, Platform, SSCA, IDP), not CCM. The old CCM slug was the deduped cloud-providers-1, which the SMP Cloud Providers category now reclaims, so a redirect there would either be shadowed or steal SMP's URL.
+/docs/category/ai-providers /docs/cloud-cost-management/provider-integrations/ai-providers 301!
+/docs/category/sdk-integrations /docs/cloud-cost-management/sdk-integrations 301!
+
+# Added by arpit.agrawal on 2026-08-10 for HDH-1116 - stale /get-started/ provider tabs (#aws, #anthropic, #openai, #gcp, #azure, #kubernetes) after AI Cost restructure.
+# Rule 1: get-started AWS CUR deep links (?cur=...) route to the AWS provider page, Step 2. Must stay above the catch-all below so ?cur requests match here first.
+/docs/cloud-cost-management/get-started cur=:v /docs/cloud-cost-management/provider-integrations/cloud-providers/aws?cur-version=:v#step-2-select-or-create-a-cost-and-usage-report 301!
+# Rule 2: catch-all for every other get-started request routes to the integrations hub that links all providers.
+/docs/cloud-cost-management/get-started /docs/cloud-cost-management/integrations 301!
+
 # Added by smriti.satyanarayana on 2026-08-11 for HDH-1183 - Migration and Backward Compatibility moved out of Getting Started into their own Migrations & Compatibility section.
 # redirect_from frontmatter is only honored for docs/ pages, so 3k-docs/ moves need server redirects.
 /3k-docs/platform/getting-started/migration /3k-docs/platform/migrations-and-compatibility/migration

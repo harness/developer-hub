@@ -53,7 +53,7 @@ Used for LLM inference.
 | Smolagents | ⚠️ Not native |
 
 :::note Frameworks marked "Not native" still work
-A framework that does not emit GenAI semantic conventions natively can still be instrumented. Use the OpenInference instrumentation or the LangSmith OTel export for LangChain and LangGraph, or the Harness SDK when the framework routes through LiteLLM. Go to [Set Up AI Cost Traces](/docs/cloud-cost-management/ai-cost-management/set-up-ai-cost-traces?path=framework) for per-framework steps.
+A framework that does not emit GenAI semantic conventions natively can still be instrumented. Use the OpenInference instrumentation or the LangSmith OTel export for LangChain and LangGraph, or the Harness SDK when the framework routes through LiteLLM. Go to [SDK Integrations](/docs/cloud-cost-management/sdk-integrations) for per-framework steps.
 :::
 
 ---
@@ -61,7 +61,7 @@ A framework that does not emit GenAI semantic conventions natively can still be 
 ## Next Steps
 
 - Go to [AI Cost Management Quickstart](/docs/cloud-cost-management/ai-cost-management/quickstart) to connect a provider and see billed cost.
-- Go to [Set Up AI Cost Traces](/docs/cloud-cost-management/ai-cost-management/set-up-ai-cost-traces) to instrument your application for trace attribution.
+- Go to the [AI Cost Management Quickstart](/docs/cloud-cost-management/ai-cost-management/quickstart) to instrument your application for trace attribution.
 - Go to the [GenAI Span Attribute Reference](/docs/cloud-cost-management/ai-cost-management/genai-span-attribute-reference) to review the attributes CACM reads from each span.
 - Go to [AI Cost Troubleshooting](/docs/cloud-cost-management/ai-cost-troubleshooting) if data does not appear as expected.
 - Go to the [AI Cost Management FAQ](/docs/cloud-cost-management/faq) to review common questions.

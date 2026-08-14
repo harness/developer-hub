@@ -33,7 +33,7 @@ CACM brings cloud and AI spend into one place. Pick any one provider to connect.
 4. Click the **+ New** button on that tab. The button label changes per tab: **+ New Cloud Account**, **+ New Kubernetes Connector**, or **+ AI Provider**.
 5. Select your provider from the picker and follow the setup wizard.
 
-Go to [Cloud Providers](/docs/category/cloud-providers-1) or [AI Providers](/docs/category/ai-providers) to follow the per-provider setup guide.
+Go to [Cloud Providers](/docs/cloud-cost-management/provider-integrations/cloud-providers) or [AI Providers](/docs/cloud-cost-management/provider-integrations/ai-providers) to follow the per-provider setup guide.
 
 ---
 

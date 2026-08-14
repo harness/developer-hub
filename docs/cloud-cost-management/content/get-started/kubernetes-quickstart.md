@@ -2,7 +2,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
 
-<RedirectIfStandalone label="Azure" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
+<RedirectIfStandalone label="Kubernetes" targetPage="/docs/cloud-cost-management/provider-integrations/cloud-providers/kubernetes" />
 
 
 ## Before You Start

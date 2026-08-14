@@ -52,6 +52,7 @@ Each LLM span is expected to carry the following attributes. The four pricing-cr
 | `gen_ai.request.model` | Model requested. |
 | `gen_ai.response.model` | Model that actually served the response. |
 | `gen_ai.response.id` | Provider response identifier. |
+| `gen_ai.agent.name` | Agent name for cost grouping. Set this to attribute cost to a specific agent in Cost Explorer. |
 | `gen_ai.conversation.id` | Session or conversation grouping. |
 | `gen_ai.request.max_tokens` | Requested token cap. |
 | `gen_ai.request.temperature` | Sampling temperature. |
@@ -77,14 +78,14 @@ The attributes fall into three roles:
 - **Grouping dimensions:** `service.name`, `deployment.environment.name`, `gen_ai.conversation.id`, `gen_ai.agent.name`, `tenant.id`, and `user.id` allow you to group and filter cost by service, environment, session, agent, tenant, and user in Cost Explorer.
 
 :::note Raw prompt and response text is optional
-`gen_ai.input.messages` and `gen_ai.output.messages` carry the raw prompt and completion. They are useful for debugging but inflate span size. Disable payload capture if spans contain sensitive data or grow too large. Go to [Set Up AI Cost Traces](/docs/cloud-cost-management/ai-cost-management/set-up-ai-cost-traces#reduce-trace-data-volume) to reduce trace data volume.
+`gen_ai.input.messages` and `gen_ai.output.messages` carry the raw prompt and completion. They are useful for debugging but inflate span size. Disable payload capture if spans contain sensitive data or grow too large. Go to [Reduce Trace Data Volume](/docs/cloud-cost-management/sdk-integrations/manual-instrumentation#reduce-trace-data-volume) to reduce trace data volume.
 :::
 
 ---
 
 ## Next Steps
 
-- Go to [Set Up AI Cost Traces](/docs/cloud-cost-management/ai-cost-management/set-up-ai-cost-traces) to emit these attributes from your application.
+- Go to [Manual Instrumentation](/docs/cloud-cost-management/sdk-integrations/manual-instrumentation) to emit these attributes from your application.
 - Go to [Supported Providers and Frameworks](/docs/cloud-cost-management/ai-cost-management/supported-providers-and-frameworks) to check which SDKs and frameworks emit these attributes natively.
 - Go to [How AI Traces Work](/docs/cloud-cost-management/ai-cost-management/how-ai-traces-work) to understand how spans become cost.
 - Go to [AI Cost Troubleshooting](/docs/cloud-cost-management/ai-cost-troubleshooting) if traces appear without cost.

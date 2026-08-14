@@ -64,6 +64,67 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 </Tabs>
 
+### Set Up the Cost and Usage Report
+
+Create the report in your AWS console, then use its name and S3 bucket when you configure the Harness connector. We recommend **CUR 2.0**, but **Legacy CUR** is also fully supported.
+
+<Tabs queryString="cur">
+<TabItem value="cur2" label="CUR 2.0 (recommended)" default>
+
+1. In the AWS console, navigate to **Billing and Cost Management** → **Data Exports** → **Create export**.
+2. Under **Report details**, select all four options:
+   - Include resource IDs
+   - Split cost allocation data
+   - Include caller identity (IAM principal) allocation data
+   - Include capacity reservation columns and granularity
+3. Under **Delivery options**, configure the following:
+
+   | Setting | Required Value |
+   |---------|----------------|
+   | **Compression type** | Parquet |
+   | **S3 bucket** | Select or create a bucket. Copy the bucket name, as you will need it for the Harness connector. |
+   | **S3 path prefix** | Enter any prefix. |
+
+4. Do not uncheck any columns.
+5. Review and create the export. Copy the export name, as you will need it for the Harness connector.
+
+   <DocImage path={require('./static/aws-cur-2-0.png')} width="100%" height="100%" title="Click to view full size image" />
+
+</TabItem>
+<TabItem value="cur1" label="Legacy CUR">
+
+#### Legacy CUR setup {#legacy-cur-setup}
+
+1. In the AWS console, go to **Billing → Cost & Usage Reports** and click **Create report**.
+2. Select **Legacy CUR export** and give the report a descriptive name. Copy this name, as you will need it for the Harness connector.
+3. Under **Report details**, configure the following:
+
+   | Setting | Required Value | Notes |
+   |---------|----------------|-------|
+   | **Include Resource IDs** | ✅ Enabled | Must be checked in "Additional report details" |
+   | **Time Granularity** | Hourly | Required for accurate cost tracking |
+   | **Report versioning** | Create new report version | - |
+
+4. Under **Delivery options**, configure the following:
+
+   | Setting | Required Value | Notes |
+   |---------|----------------|-------|
+   | **S3 bucket** | Select or create a bucket | Copy the bucket name for the Harness connector |
+   | **S3 path prefix** | Enter any prefix | Note it if you set one |
+   | **Compression** | GZIP | Required format |
+   | **File Format** | CSV | Parquet is not supported |
+   | **Data Refresh Settings** | Automatic | Enable "Automatically refresh" |
+
+5. Review and create the report.
+
+</TabItem>
+</Tabs>
+
+#### Related Documentation
+
+- [AWS CUR User Guide](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
+- [Legacy CUR vs CUR 2.0](https://docs.aws.amazon.com/cur/latest/userguide/table-dictionary-cur2.html)
+
 ## Implementation Guide
 
 ### Connect CACM to your AWS account
@@ -104,46 +165,34 @@ To enable CACM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), 
 | **Specify the AWS account ID**       | The Account ID of the AWS account to connect to. To find your AWS account ID, see [Finding your AWS account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#FindingYourAWSId). |
 | **Is this an AWS GovCloud account?** | Select **Yes** if connecting to a GovCloud account.                                                                                                                                                            |
 
-### Step 2: Set Up Cost and Usage Report
+### Step 2: Select or Create a Cost and Usage Report
 
-Launch the AWS console and perform the following steps:
+In the connector wizard, select a report type. We recommend **CUR 2.0**, but **CUR 1.0 (legacy)** is also fully supported.
 
-1. Log into your AWS account if not already logged in.
-2. Select **Create Report**.
-3. In the **Specify report details** step, enter the following values, and then select **Next**.
+<Tabs queryString="cur-version">
+<TabItem value="cur2" label="CUR 2.0 (recommended)" default>
 
-#### Report Details
+1. In the connector wizard, select the **CUR 2.0 (recommended)** tab.
+2. Click **Launch AWS console** and follow the [CUR 2.0 setup steps](?cur=cur2#set-up-the-cost-and-usage-report) to create a Data Export if you have not done so already.
+3. Enter the **Data Export Name** and **S3 Bucket Name** in the fields provided.
+4. Click **Continue**.
 
-| **Field**                      | **Description**                                                                                                                                 |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Report Name**                | Enter a name for the report. Make sure to copy this name, as you will need it to continue configuring the Harness connector in the steps below. |
-| **Include resource IDs**       | Make sure this option is selected.                                                                                                              |
-| **Split cost allocation data** | Make sure this option is unchecked.                                                                                                             |
-| **Refresh automatically**      | Make sure this option is selected.                                                                                                              |
+<DocImage path={require('./static/curtwo.png')} width="100%" height="100%" title="Click to view full size image" />
 
-5. In the **Set delivery options** step, enter the following values, and then select **Next**.
+</TabItem>
+<TabItem value="cur1" label="CUR 1.0 (legacy)">
 
-| **Field**                        | **Description**                                                                                                                                                   |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Configure S3 Bucket**          | Select an existing bucket or create a new one. Make sure to copy this name, as you will need it to continue configuring the Harness connector in the steps below. |
-| **S3 path prefix - required**    | Enter any path prefix. Harness will automatically scan and find this prefix.                                                                                      |
-| **Report data time granularity** | Select **Hourly**.                                                                                                                                                |
-| **Report versioning**            | Select **Overwrite existing report**.                                                                                                                             |
-| **Amazon Athena**                | Make sure this option is unchecked.                                                                                                                               |
-| **Amazon Redshift**              | Make sure this option is unchecked.                                                                                                                               |
-| **Amazon QuickSight**            | Make sure this option is unchecked.                                                                                                                               |
-| **Compression type**             | Select **GZIP**.                                                                                                                                                  |
+1. In the connector wizard, select the **CUR 1.0 (legacy)** tab.
+2. Click **Launch AWS console** and follow the [Legacy CUR setup](?cur=cur1#legacy-cur-setup) steps to create a report if you have not done so already.
+3. Enter the **Cost and Usage Report Name** and **S3 Bucket Name** in the fields provided.
+4. Click **Continue**.
 
-6. In the **Review and create** step, select **Create Report**.
+</TabItem>
+</Tabs>
 
-7. In the Harness connector dialog, enter the following values, and then select **Continue**.
-
-<DocImage path={require('./static/aws-connector-two.png')} width="100%" height="100%" title="Click to view full size image" />
-
-| **Field**                         | **Description**                              |
-| --------------------------------- | -------------------------------------------- |
-| **Cost and Usage Report Name**    | Enter the report name you copied earlier.    |
-| **Cost and Usage S3 Bucket Name** | Enter the bucket name you specified earlier. |
+:::info
+Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CACM to understand the minimum IAM roles or policies needed for every CACM feature.
+:::
 
 ### Step 3: Choose Requirements
 

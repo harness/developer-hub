@@ -2,7 +2,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
 
-<RedirectIfStandalone label="AWS" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
+<RedirectIfStandalone label="RDS" targetPage="/docs/cloud-cost-management/use-ccm-cost-optimization/commitment-orch-docs/get-started" />
 
 
 ### Before You Begin

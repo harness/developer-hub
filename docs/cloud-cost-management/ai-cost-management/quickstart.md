@@ -13,6 +13,8 @@ tags:
   - ai-cost-management
 redirect_from:
   - /docs/cloud-cost-management/ai-cost-management/get-started
+  - /docs/cloud-cost-management/ai-cost-management/set-up-ai-cost-traces
+  - /docs/cloud-cost-management/ai-cost-management/set-up-ai-traces
 ---
 
 import Tabs from '@theme/Tabs';
@@ -133,11 +135,27 @@ Go to the [Harness SDK integration](/docs/cloud-cost-management/sdk-integrations
 
 Use this if a framework such as LangChain, LlamaIndex, or Google ADK runs your LLM calls. Each framework has its own open-source instrumentation that captures the full workflow, not just the model call, so you see the tool calls, retries, and loops around it. Follow the setup page for your framework:
 
-| Framework | Framework |
-|-----------|-----------|
-| [LangChain / LangGraph](/docs/cloud-cost-management/sdk-integrations/langchain#instrument-your-app-openinference) | [OpenAI Agents SDK](/docs/cloud-cost-management/sdk-integrations/openai-agents#instrument-the-openai-agents-sdk) |
-| [LlamaIndex](/docs/cloud-cost-management/sdk-integrations/llamaindex#instrument-llamaindex) | [LiteLLM Proxy](/docs/cloud-cost-management/sdk-integrations/litellm-proxy#instrument-the-litellm-proxy) |
-| [Google ADK](/docs/cloud-cost-management/sdk-integrations/google-adk#instrument-google-adk) | [Claude Code](/docs/cloud-cost-management/sdk-integrations/claude-code#configure-claude-code) |
+<table>
+  <thead>
+    <tr>
+      <th colSpan={2}>Framework</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/docs/cloud-cost-management/sdk-integrations/langchain#instrument-your-app-openinference">LangChain / LangGraph</a></td>
+      <td><a href="/docs/cloud-cost-management/sdk-integrations/openai-agents#instrument-the-openai-agents-sdk">OpenAI Agents SDK</a></td>
+    </tr>
+    <tr>
+      <td><a href="/docs/cloud-cost-management/sdk-integrations/llamaindex#instrument-llamaindex">LlamaIndex</a></td>
+      <td><a href="/docs/cloud-cost-management/sdk-integrations/litellm-proxy#instrument-the-litellm-proxy">LiteLLM Proxy</a></td>
+    </tr>
+    <tr>
+      <td><a href="/docs/cloud-cost-management/sdk-integrations/google-adk#instrument-google-adk">Google ADK</a></td>
+      <td><a href="/docs/cloud-cost-management/sdk-integrations/claude-code#configure-claude-code">Claude Code</a></td>
+    </tr>
+  </tbody>
+</table>
 
 For other languages (Go, Java, .NET), go to [Manual instrumentation](/docs/cloud-cost-management/sdk-integrations/manual-instrumentation).
 

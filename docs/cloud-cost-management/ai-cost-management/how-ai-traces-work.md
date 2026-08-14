@@ -192,7 +192,7 @@ When you connect a provider, Harness backfills as much history as the provider e
 
 ## Next Steps
 
-- Go to [Set Up AI Cost Traces](/docs/cloud-cost-management/ai-cost-management/set-up-ai-cost-traces) to instrument your application and route traces to Harness.
+- Go to the [AI Cost Management Quickstart](/docs/cloud-cost-management/ai-cost-management/quickstart) to instrument your application and route traces to Harness.
 - Go to the [GenAI Span Attribute Reference](/docs/cloud-cost-management/ai-cost-management/genai-span-attribute-reference) to review the exact attributes CACM reads.
 - Go to [Supported Providers and Frameworks](/docs/cloud-cost-management/ai-cost-management/supported-providers-and-frameworks) to check which SDKs and frameworks emit these attributes natively.
 - Go to [AI Cost Troubleshooting](/docs/cloud-cost-management/ai-cost-troubleshooting) if traces do not appear or show no cost.

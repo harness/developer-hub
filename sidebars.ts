@@ -3088,11 +3088,12 @@ const sidebars: SidebarsConfig = {
           value: 'Integrations',
           className: 'horizontal-bar',
         },
+        'cloud-cost-management/provider-integrations/index',
         {
           type: 'category',
           label: 'AI providers',
           collapsed: true,
-          link: { type: 'generated-index', title: 'AI Providers', description: 'Connect OpenAI, Anthropic, Cursor, Devin, and GitHub Copilot to track AI provider spend in Cloud & AI Cost Management.' },
+          link: { type: 'generated-index', slug: '/cloud-cost-management/provider-integrations/ai-providers', title: 'AI Providers', description: 'Connect OpenAI, Anthropic, Cursor, Devin, and GitHub Copilot to track AI provider spend in Cloud & AI Cost Management.' },
           items: [
             'cloud-cost-management/provider-integrations/ai-providers/openai',
             'cloud-cost-management/provider-integrations/ai-providers/anthropic',
@@ -3105,7 +3106,7 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Cloud providers',
           collapsed: true,
-          link: { type: 'generated-index', title: 'Cloud Providers', description: 'Connect AWS, GCP, and Azure to track cloud spend in Cloud & AI Cost Management.' },
+          link: { type: 'generated-index', slug: '/cloud-cost-management/provider-integrations/cloud-providers', title: 'Cloud Providers', description: 'Connect AWS, GCP, and Azure to track cloud spend in Cloud & AI Cost Management.' },
           items: [
             'cloud-cost-management/provider-integrations/cloud-providers/aws',
             'cloud-cost-management/provider-integrations/cloud-providers/gcp',
@@ -3118,7 +3119,7 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'SDK Integrations',
           collapsed: true,
-          link: { type: 'generated-index', title: 'SDK Integrations', description: 'Instrument your application to send AI traces to Cloud & AI Cost Management.' },
+          link: { type: 'generated-index', slug: '/cloud-cost-management/sdk-integrations', title: 'SDK Integrations', description: 'Instrument your application to send AI traces to Cloud & AI Cost Management.' },
           items: [
             'cloud-cost-management/sdk-integrations/harness-sdk',
             {

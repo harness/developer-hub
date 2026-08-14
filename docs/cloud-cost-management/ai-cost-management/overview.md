@@ -56,7 +56,7 @@ Add trace attribution when you need answers the connector cannot give:
 - **Debug a cost spike:** trace an expensive session to the exact LLM call, retry, or tool loop that drove it.
 - **Measure unit economics:** compute cost per business outcome, such as cost per resolved ticket or per completed order.
 
-Traces require GenAI-instrumented code, so you do not enable them everywhere at once. Instrument the applications where per-agent or per-outcome attribution is worth the code change, and leave the rest on provider costs. Go to [Set up AI cost traces](/docs/cloud-cost-management/ai-cost-management/set-up-ai-cost-traces) to instrument an application.
+Traces require GenAI-instrumented code, so you do not enable them everywhere at once. Instrument the applications where per-agent or per-outcome attribution is worth the code change, and leave the rest on provider costs. Go to the [AI Cost Management Quickstart](/docs/cloud-cost-management/ai-cost-management/quickstart) to instrument an application.
 
 <details>
 <summary>Example: From a Monthly Total to Cost Per Outcome</summary>

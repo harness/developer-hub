@@ -88,5 +88,5 @@ If you are still stuck, [contact Harness Support](https://support.harness.io/) o
 ## Next Steps
 
 - Go to [AI Cost Management Quickstart](/docs/cloud-cost-management/ai-cost-management/quickstart) to connect a provider.
-- Go to [Set Up AI Cost Traces](/docs/cloud-cost-management/ai-cost-management/set-up-ai-cost-traces) to instrument your application.
+- Go to the [AI Cost Management Quickstart](/docs/cloud-cost-management/ai-cost-management/quickstart) to instrument your application.
 - Go to the [GenAI Span Attribute Reference](/docs/cloud-cost-management/ai-cost-management/genai-span-attribute-reference) to review the attributes CACM needs to price a span.
