@@ -58,8 +58,8 @@ Harness offers tiered HSU pricing based on your organization's needs:
 | **Essentials** | \$0.75 | Small to medium businesses |
 | **Enterprise** | \$1.25 | Large organizations with committed usage |
 
-:::note Free HSUs on the Free/Essentials plan
-Every Free and Essentials account receives **1,000 free HSUs per month** at no cost. These free units reset each calendar month and let you explore modules or handle light workloads before you need to purchase additional capacity.
+:::note HSUs on the Free plan
+Every Free account receives **1,000 free HSUs per month** at no cost. These free units reset each calendar month and let you explore modules or handle light workloads before you need to purchase additional capacity.
 :::
 
 ## HSU Calculator
