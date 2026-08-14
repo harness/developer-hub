@@ -394,7 +394,7 @@ In the above YAML just replace the `url` with the pipeline URL we created above,
 
 Also for **Jira token** input the input should be the [personal access token](https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html) from JIRA. 
 
-23. Now go to your git provider and add this workflow yaml and save it, make sure it is public incase it is in private repo make sure you have the [git integration setup](/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup). 
+23. Now go to your git provider and add this workflow yaml and save it, make sure it is public in case it is in private repo make sure you have the [git integration setup](/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup). 
 
 24. Once the file is created in your git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/tutorial-jira-ticket-catalog-ingestion.yaml`.
 
@@ -749,7 +749,7 @@ spec:
 
 In the above YAML just replace the `url` with the pipeline URL we created above, also make sure the **key values under `inputset` exactly matches with the pipeline variable names**. 
 
-23. Now go to your git provider and add this workflow yaml and save it, make sure it is public incase it is in private repo make sure you have the [git integration setup](/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup). 
+23. Now go to your git provider and add this workflow yaml and save it, make sure it is public in case it is in private repo make sure you have the [git integration setup](/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup). 
 
 24. Once the file is created in your git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/tutorial-jira-ticket-catalog-ingestion.yaml`.
 
