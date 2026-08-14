@@ -278,14 +278,56 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
   }}
 />
 
+## Kubernetes Workload Utilization Aggregations
+
+For a Kubernetes workload recommendation, **Aggregation** refers to how CPU and memory utilization values are combined across your workload. Utilization can be aggregated using one of the following methods:
+
+- **Time-weighted:** Weights CPU and memory utilization by the active duration of each pod.
+- **Absolute:** Sums CPU and memory utilization values without adjusting for pod duration.
+
+### Example 1 {#example_1}
+
+Let's assume you want to check the CPU requests of your workload between 3 A.M. and 4 A.M. Imagine there were two pods during that duration:
+
+- Each pod requesting 0.4 CPU
+- The first pod was deleted at 3:53 A.M. The first pod was active for 53 minutes.
+- The second pod was created at 3:53 A.M. The second pod was active for 7 minutes.
+
+For **time-weighted**, the utilization value is calculated as:
+
+`[(cpu request of pod 1) * (active time) + (cpu request of pod 2) * (active time)] / total duration = [(0.4*53) + (0.4*7)]/60 = 0.4`
+
+For **absolute**, the utilization value is calculated as:
+
+`(cpu request of pod 1) + (cpu request of pod 2) = 0.4 + 0.4 = 0.8`
+
+### Example 2 {#example_2}
+
+Let's assume you want to check the CPU requests of a workload with three pods in your cluster:
+
+- Each pod requesting 0.4 CPU
+- Pod 1 runs from 0-25 mins into the hour
+- Pod 2 runs from 15-40 mins into the hour
+- Pod 3 runs from 35-60 mins into the hour
+
+For **time-weighted**, the utilization value is calculated as:
+
+`[(cpu request of pod 1) * (active time) + (cpu request of pod 2) * (active time) + (cpu request of pod 3) * (active time)] / total duration = ((0.4*25) + (0.4*25) + (0.4*25))/60 = 0.5`
+
+For **absolute**, the utilization value is calculated as:
+
+`(cpu request of pod 1) + (cpu request of pod 2) + (cpu request of pod 3) = 0.4 + 0.4 + 0.4 = 1.2`
+
+---
+
 ## Apply Recommendations
 
 Applying recommendations is easy! You just need to:
 
-1. **Review Recommendations** - Analyze the suggested optimizations in the Recommendations dashboard
+1. **Review Recommendations** - Analyze the suggested optimizations in the Recommendations dashboard.
 2. **Tune Parameters** - Adjust recommendation settings to see how different configurations affect potential cost savings. See [Recommendations per Cloud Provider](#recommendations-per-cloud-provider) for a deeper drilldown into a particular type of recommendation to understand the action required, cost calculations and tuning.
-3. **Implement Changes and Track using Jira/ServiceNow** -  Apply the optimizations manually in your cloud environment. [Create and manage Jira or ServiceNow tickets](#managing-recommendations-via-jira-servicenow-tickets) to monitor implementation progress
-5. **Update Status** - Mark recommendations as applied in the CACM platform once implemented. Once applied, recommendations show up in the **Applied** tab.
+3. **Implement Changes and Track using Jira/ServiceNow** -  Apply the optimizations manually in your cloud environment. [Create and manage Jira or ServiceNow tickets](#managing-recommendations-via-jira-servicenow-tickets) to monitor implementation progress.
+4. **Update Status** - Mark recommendations as applied in the CACM platform once implemented. Once applied, recommendations show up in the **Applied** tab.
 
 ### Auto Inferences
 

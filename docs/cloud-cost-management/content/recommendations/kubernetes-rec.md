@@ -276,46 +276,7 @@ When you click on an individual recommendation, the following details are shown:
     + **Time-weighted**: This considers the active duration of pods when calculating the CPU and memory utilization.
     + **Absolute**: This simply aggregates the CPU and memory utilization values.
 
-#### Example 1
-
-Let's assume you want to check the CPU requests of your workload between 3 a.m. and 4 a.m. Imagine there were two pods during that duration:
-
-1. Each pod requesting 0.4 CPU
-2. 1st pod was deleted at 3:53 a.m. So the 1st pod was active for 53 minutes in that duration
-3. 2nd pod was created at 3.53 a.m., so it was active for 7 mins in that duration
-
-In the case of **time-weighted**, the utilization value is calculated as the following:
-
-`[(cpu request of pod 1) * (active time) + (cpu request of pod 2) * (active time)]/ total duration`
-
-which is equal to `[(0.4*53) + (0.4*7)]/60 = 0.4`
-
-In the case of **absolute**, the utilization value is calculated as the following:
-
-`(cpu request of pod 1) + (cpu request of pod 2)`
-
-which is equal to `0.4 + 0.4 = 0.8`
-
-#### Example 2
-
-Let's assume you want to check the CPU requests of three workloads in your cluster:
-
-1. Each workload requesting 0.4 CPU
-2. Workload 1 runs from 0-25 mins into the hour
-3. Workload 2 runs from 15-40 mins into the hour
-4. Workload 3 runs from 35-60 mins into the hour
-
-In the case of **time-weighted**, the utilization value is calculated as the following:
-
-`[(cpu request of pod 1) * (active time) + (cpu request of pod 2) * (active time) + (cpu request of pod 3) * (active time)]/ total duration`
-
-which is equal to `((0.4*25) + (0.4*25) + (0.4*25))/60 = 0.5`
-
-In the case of **absolute**, the utilization value is calculated as the following:
-
-`(cpu request of pod 1) + (cpu request of pod 2) + (cpu request of pod 3)`
-
-which is equal to `0.4 + 0.4 + 0.4 = 1.2`
+Go to [Kubernetes workload utilization aggregations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#kubernetes-workload-utilization-aggregations) to review worked examples of time-weighted and absolute aggregation.
 
 </details>
 </TabItem>
