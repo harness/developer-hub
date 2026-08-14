@@ -24,7 +24,7 @@ Channels are the delivery methods for your notifications. You can use existing c
 2. Select **Notifications Management**.
 3. Go to the **Channels** tab.
 
-For detailed instructions on setting up different channel types, go to the Harness Platform documentation on [Notification Settings](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels-to-sent-notification).
+For detailed instructions on setting up different channel types, go to the Harness Platform documentation on [Notification Settings](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels).
 
 ### Configure Notification Rules
 

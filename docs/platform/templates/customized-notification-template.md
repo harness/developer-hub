@@ -6,13 +6,14 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info note
-Currently this feature is behind Feature Flag: `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`
-:::
 
 You can create custom notification templates to customize notification content and reuse templates across **Centralized Pipeline Notifications**. These templates support Pipeline Expressions and RBAC controls, giving you both flexibility and security.
 
 With this enhancement, you can **attach a custom notification template** to a notification rule and override the default message format with a custom webhook payload.
+
+:::info note
+Currently this feature is behind `PIPE_CUSTOM_NOTIFICATION_TEMPLATES` feature flag. Contact [Harness support](mailto:support@harness.io) to enable it.
+:::
 
 Custom templates let you:
 
@@ -27,9 +28,9 @@ You can create custom notification templates at the following [scopes](https://d
 There are two ways to use custom notification templates:
 
 - [**Centralized notifications for pipelines**](/docs/platform/notifications/centralised-notification)
-- [**Pipeline notifications**](/docs/platform/notifications/notifications/configure-notifications#get-started-with-pipeline-notifications)
+- [**Pipeline notifications**](/docs/platform/notifications/notifications/configure-notifications#configure-pipeline-notifications)
 
-## Setting Up Notifications Template
+## Set Up notifications template
 
 :::info note
 - Custom Notification templates support usage of template variables.
@@ -97,7 +98,7 @@ In this example, we are going to discuss setting up custom notification template
 
 ---
 
-## Attaching a Custom Notification Template to Pipeline Notifications
+## Attach a custom notification template to pipeline notifications
 
 Harness supports [adding notification rules to pipelines](/docs/platform/notifications/notifications/centralised-notification#pipeline-notifications). With this enhancement, you can now **attach a custom notification template** to a pipeline notification rule to override the default message format and send custom webhook-based notifications.
 
@@ -105,9 +106,9 @@ You can also attach templates in [**centralized notification for pipeline events
 
 This allows you to replace the default notification message with a tailored structure defined in your template, including any runtime variables or expressions you've configured.
 
-### How to Attach a Template
+### Attach a template
 
-When configuring a **pipeline-level notification rule**, click **Notify** in the right panel of the Pipeline Studio. Then, follow the steps for [Configure pipeline notifications](/docs/platform/notifications/notifications/configure-notifications#get-started-with-pipeline-notifications) until you reach the **Notification Template** step.
+When configuring a **pipeline-level notification rule**, click **Notify** in the right panel of the Pipeline Studio. Then, follow the steps for [Configure pipeline notifications](/docs/platform/notifications/notifications/configure-notifications#configure-pipeline-notifications) until you reach the **Notification Template** step.
 
 Under the **Notification Template** section:
 
@@ -465,13 +466,13 @@ Each notification method has its own payload format. Ensure that your custom tem
 
 Once applied, the custom template overrides the default webhook payload sent during pipeline execution.
 
-## Notification Templates for reference
+## Notification templates for reference
 
 You can also refer to the ready to use default notification templates in the [harness-schema gitHub repository](https://github.com/harness/harness-schema/tree/main/notificationtemplates/defaulttemplates).
 
 These templates will help you to understand the payload format better for each notification method.
 
-## Variables in the Notification Template
+## Variables in notification template
 
 Notification templates support **runtime inputs**, which must be provided when configuring a notification rule—whether at the **Centralised Notification Service (CNS)** level or the **pipeline** level.
 
@@ -483,11 +484,11 @@ You can access the event type that triggered the notification using: `<+notifica
 
 In case of failure, you can use the expression `<+notification.errorMessage>` to view failure information for the pipeline/stage/step.
 
-## Reconciliation of Notification Rules
+## Reconcile notification rules
 
 If you update a notification template by **adding new runtime variables** after it has already been attached to a notification rule, you may need to reconcile the rule to ensure those inputs are provided during execution.
 
-### Pipeline-level Notifications
+### Pipeline-level notifications
 
 When a template used in a **pipeline-level notification rule configured through the Custom Notification tab** is updated, a **warning message** will appear when you attempt to run the pipeline:
 
@@ -505,7 +506,7 @@ To fully reconcile the rule with the latest version of the template, you need to
 
 This updates the pipeline YAML to reference the latest template version and ensures all required inputs are captured.
 
-### Improved Reconciliation Flow
+### Improved reconciliation flow
 
 :::note 
 This enhanced flow is available behind the feature flag `PIPE_NOTIFICATION_TEMPLATE_INPUT_VARIABLE_PROMPT_UI`. Contact [Harness Support](mailto:support@harness.io) to enable it.
@@ -540,7 +541,7 @@ When the feature flag is enabled, pipeline reconciliation for updated notificati
 
 Once these steps are completed, the pipeline will be fully reconciled with the latest version of the notification template.
 
-### Centralised Notifications
+### Centralised notifications
 
 In **Centralised Notification rules**, no warning appears when you update a template. However, if a template has changes or new input variables, you can view all the impacted references in the **Referenced By** section of the template.
 
@@ -559,7 +560,7 @@ This process ensures that all new inputs are captured and the rule remains valid
 
 By re-selecting the updated template in either case, you ensure your rule is aligned with the latest version and that all runtime inputs are explicitly provided.
 
-## CD Events Schema
+## CD events schema
 
 To align with the [CD Events](https://cdevents.dev/) standard, Harness has contributed several notification templates to the public CD Events schema repository based on our supported events.
 

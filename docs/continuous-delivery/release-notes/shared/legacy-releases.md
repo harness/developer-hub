@@ -674,7 +674,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 - Harness now supports filtering pipeline executions by `planExecutionId` (including comma-separated lists and saved filters) and displays `planExecutionId` in the Execution Id field and list page for direct access. Currently, this feature is behind the feature flag `PIPE_EXECUTION_ID_FILTER`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 
-- Harness now supports the [`<+notification.errorMessage>`](https://developer.harness.io/docs/platform/templates/customized-notification-template/#variables-in-the-notification-template) expression in notification templates to display failure information for the pipeline, stage, or step. (**PIPE-27718**)
+- Harness now supports the [`<+notification.errorMessage>`](https://developer.harness.io/docs/platform/templates/customized-notification-template/#variables-in-notification-template) expression in notification templates to display failure information for the pipeline, stage, or step. (**PIPE-27718**)
 
 ##### Fixed Issues
 
