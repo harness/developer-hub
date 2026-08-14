@@ -442,34 +442,12 @@ pipeline:
                   <tr>
                     <td>No Tooling Dependencies</td>
                     <td>
-                      No kubectl, helm, tanzu, or terraform binaries coupled with the
+                      No Kubectl, Helm, Tanzu, or Terraform binaries coupled with the
                       runner.
                     </td>
                   </tr>
                 </tbody>
               </table>
-            </div>
-            {/* ── Improved UX ── */}
-            <div className={styles.detailsItem}>
-              <h3>AI-First UX</h3>
-              <p>
-                Harness 3.0 provides an AI-first, developer-first user experience. The
-                entire platform has been redesigned to surface intelligent assistance at
-                every step — from pipeline creation to debugging failed deployments.
-              </p>
-              <a
-                href="https://drive.google.com/file/d/1jYgh5TFIBcKfwwUthMNZ7q707zASoTjN/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.demoLink}
-              >
-                <span className={styles.demoIcon}>▶</span>
-                <span>
-                  <strong>Watch the Harness 3.0 Demo</strong>
-                  <br />
-                  <small>See the new AI-first developer experience in action</small>
-                </span>
-              </a>
             </div>
           </div>
         </details>

@@ -933,7 +933,7 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 | **Image**                | **Change**                                       | **Previous version** | **New Version** |
 | ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
-| `harness/drone-git` | Added support for Bitbucket in Clone Steps using Local/K8s Runner & Added support for containerless Bitbucket Git Clone step (CI) using Delegate 2.0 (PIPE-30743) | 1.7.6 | 1.7.7 |
+| `harness/drone-git` | Added support for Bitbucket in Clone Steps using Local/K8s Runner & Added support for containerless Bitbucket Git Clone step (CI) using Delegate 3.0 (PIPE-30743) | 1.7.6 | 1.7.7 |
 
 ## October 2025
 

@@ -76,7 +76,7 @@ The following table compares Harness NG with Harness 3.0 across multiple areas.
 | Step Execution   | Steps run on Delegate or Harness Manager depending on type                    | All steps run as containers on the target infrastructure                                                        |
 | Inputs           | Runtime inputs with `<+input>` expressions, untyped                           | Typed inputs (`string`, `number`, `boolean`, `secret`, `connector`, `service`, `environment`, `infrastructure`) |
 | Step Updates     | Steps bundled with Delegate version                                           | Steps versioned independently,  pin or upgrade per pipeline                                                     |
-| Delegate         | Multiple Delegate types (K8s, Docker, Shell, Helm, ECS)                       | Single unified lightweight Delegate 3.0                                                                         |
+| Delegate         | Multiple Delegate types (K8s, Docker, Shell, Helm, ECS)                       | Single, lightweight Delegate 3.0                                                                         |
 | UI Configuration | Modal-based Pipeline Studio with multi-step wizards                           | Drawer-based Pipeline Studio with smart defaults and auto-generated names                                       |
 | Navigation       | Product-centric navigation with separate sidebars                             | Holistic platform view with pinning, favorites, and unified project selector                                    |
 | Code Repository  | External Git providers only                                                   | Harness Code: built-in Git hosting with enhanced PR experience                                                 |
@@ -284,7 +284,6 @@ pipeline:
 ```
 
 :::tip Parallel by Default
-
 Stages inside a group run in parallel by default. The pipeline waits for all grouped stages to complete before moving to the next stage or group in the sequence.
 :::
 
@@ -373,7 +372,6 @@ pipeline:
 ```
 
 :::info Container Configuration
-
 Each step can specify its own container image, resource limits, environment variables, and volume mounts. Shared volumes allow steps within a stage to pass files between each other.
 :::
 
@@ -519,7 +517,7 @@ Harness NG required different Delegate types depending on your infrastructure: a
 | Delegate Count  | Multiple delegates per environment (K8s, Docker, Shell, Helm, ECS) | One unified Delegate 3.0 per environment                        |
 | Image Size      | Large image with pre-installed tooling (~1.5 GB)                   | Lightweight base image (~200 MB): tools run as step containers |
 | Tool Management | Tools installed on Delegate, upgraded with Delegate                | Tools ship inside step containers, versioned independently      |
-| Startup Time    | Slower startup due to large image and initialization scripts       | Fast startup: minimal initialization required                  |
+| Startup Time    | Slower startup due to large image and initialization scripts       | Fast startup: minimal initialization required                   |
 
 The following platforms are supported:
 

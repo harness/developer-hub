@@ -1009,7 +1009,7 @@
   },
   {
     "flagKey": "CONTAINERLESS_INGESTION",
-    "description": "Support for Delegate 2.0 for all STO steps running in Ingestion mode on Linux and MacOS.",
+    "description": "Support for Delegate 3.0 for all STO steps running in Ingestion mode on Linux and MacOS.",
     "gaStartDate": "2026-03-10",
     "module": "Security Testing Orchestration",
     "lifecycleState": "Beta"

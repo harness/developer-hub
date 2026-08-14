@@ -3489,7 +3489,7 @@ Ensure that the `smp-airgap-bundles/` directory exists before running the comman
 
 #### Continuous Integration
 - Fixed gRPC retry issues that were causing unnecessary retries. [CI-19192]
-- Fixed Run step issues for Docker/VM infrastructure with Delegate 2.0. [CI-20070]
+- Fixed Run step issues for Docker/VM infrastructure with Delegate 3.0. [CI-20070]
 - Fixed log streaming for parallel build stages. [CI-18653]
 - Fixed race conditions in pipeline state transitions (queued to running). [CI-19974]
 - Fixed dynamic parallelism behavior. [CI-20317]
@@ -3590,7 +3590,7 @@ Ensure that the `smp-airgap-bundles/` directory exists before running the comman
 - Pod failure error messages now stream directly to the console UI, improving visibility into Kubernetes build failures. [CI-19573]
 - CI now skips git status updates when custom pipeline-level status reporting is enabled. [CI-19762]
 - Build Intelligence now works on Windows containers on Kubernetes. [CI-17571]
-- Cache step improvements for Docker infrastructure with Delegate 2.0. [CI-20100]
+- Cache step improvements for Docker infrastructure with Delegate 3.0. [CI-20100]
 - Added additional debug logging for troubleshooting. [CI-19193]
 - Flex compute option removed from Build stage UI (YAML configuration still supported). [CI-20286]
 - Enhanced log streaming for builds. [CI-19389]
