@@ -1,22 +1,42 @@
-Connecting OpenAI brings your LLM spend into Harness Cloud & AI Cost Management alongside your cloud costs. The connector uses a read-only Admin API key to pull usage and cost data from your OpenAI account, so you can analyze AI spend in Cost Explorer, attribute it with Perspectives/Views and Cost Categories, and govern it with budgets and anomaly detection, the same workflow you already use for cloud.
+Connecting OpenAI brings your OpenAI spend into Harness Cloud & AI Cost Management alongside your cloud costs. The connector uses an Admin API key with read-only access to pull usage and cost data from your OpenAI account. You can analyze AI spend in Cost Explorer, attribute it with Views and Cost Categories, and govern it with budgets and anomaly detection, the same way you manage cloud costs.
 
-## Set up the OpenAI connector
+## Before You Begin
 
-To connect OpenAI, go to **Cloud & AI Cost Management** > **Account Settings** > **AI Cloud Providers** and select **Add AI Provider**, then choose **OpenAI**.
+**OpenAI Admin API key:** An Admin API key with read-only access from your OpenAI account. The key lets Harness ingest billing and usage data. Go to the [OpenAI Admin API keys reference](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys/methods/create) to create one.
 
-**Step 1:** Add Name, Description (optional), Tags (optional)
+## Set Up the OpenAI Connector
 
-- **Name**: A required identifier for the connector
-- **Description**: An optional field to add context about what this connector is used for
-- **Tags**: Optional labels to organize and filter connectors, useful when you have multiple AI provider connections
+To connect OpenAI, go to **Cloud & AI Cost Management** > **Account Settings** > **AI Providers** and click **AI Provider**, and then select **OpenAI**.
+
+### Step 1: Name the Connector
+
+1. On the **Overview** panel, enter a **Name** for the connector.
+2. Optionally, add a **Description** and **Tags** to organize and filter connectors.
 
 <DocImage path={require('../../static/openai-one.png')} width="100%" height="100%" title="Click to view full size image" />
 
-**Step 2:** Add URL and API Key
+3. Click **Continue**.
 
-- **URL**: The OpenAI API endpoint URL. Use the default in UI unless you have a custom endpoint.
-- **API Key**: Your OpenAI Admin API key with read-only access. This key is used to fetch usage and cost data from your OpenAI account. Go to the [OpenAI Admin API keys reference](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys/methods/create) to create one.
+### Step 2: Add the Connector Details
 
-<DocImage path={require('../../static/openai-two.png')} width="100%" height="100%" title="Click to view full size image" />
+On the **Connector Details** panel, confirm the API endpoint and provide the OpenAI Admin API key as a Harness secret. Do the following:
 
-Click on **Continue** and wait for connection test.
+1. In the **URL** field, do not change the default `https://api.openai.com/v1` unless you have a custom endpoint.
+
+   <DocImage path={require('../../static/openai-two.png')} width="100%" height="100%" title="Click to view full size image" />
+
+2. In the **API Key** field, click **Create or Select a Secret**.
+   - To use an existing secret, select it from the list, then click **Apply Selected**.
+   - To add a new secret, click **New Secret Text**, enter a **Secret Name**, and provide your OpenAI Admin API key as the **Secret Value**.
+
+     <DocImage path={require('../../static/openai-three.png')} width="100%" height="100%" title="Click to view full size image" />
+
+     Go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets) to review all secret creation options.
+
+3. Click **Continue**.
+
+### Step 3: Verify the Connection
+
+On the **Connection Test** panel, Harness validates the API key against your OpenAI account. Once the verification is successful, click **Finish** to create the connector.
+
+<DocImage path={require('../../static/openai-five.png')} width="100%" height="100%" title="Click to view full size image" />

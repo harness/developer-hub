@@ -3092,10 +3092,13 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'AI providers',
           collapsed: true,
-          link: { type: 'generated-index', title: 'AI Providers', description: 'Connect OpenAI and Anthropic to track AI provider spend in Cloud & AI Cost Management.' },
+          link: { type: 'generated-index', title: 'AI Providers', description: 'Connect OpenAI, Anthropic, Cursor, Devin, and GitHub Copilot to track AI provider spend in Cloud & AI Cost Management.' },
           items: [
             'cloud-cost-management/provider-integrations/ai-providers/openai',
             'cloud-cost-management/provider-integrations/ai-providers/anthropic',
+            'cloud-cost-management/provider-integrations/ai-providers/cursor',
+            'cloud-cost-management/provider-integrations/ai-providers/devin',
+            'cloud-cost-management/provider-integrations/ai-providers/github-copilot',
           ],
         },
         {
