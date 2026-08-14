@@ -357,7 +357,7 @@ License utilization is measured over a yearly cycle. Each cycle allows license s
 
 ##### Are the licenses continued to be counted beyond the yearly cycle?
 
-Only if the chaos experimentation is active. If you run chaos experiments on a resource (such as a Kuberentes Deployment) now and do not run any experiments for the next year, then the utilised license will be released after the yearly idle period. Licenses are counted only if at least one chaos experiment is run against a service in the last year. This system of license counting allows the reuse of licenses in a given annual period of licensing. 
+Only if the chaos experimentation is active. If you run chaos experiments on a resource (such as a Kubernetes Deployment) now and do not run any experiments for the next year, then the utilised license will be released after the yearly idle period. Licenses are counted only if at least one chaos experiment is run against a service in the last year. This system of license counting allows the reuse of licenses in a given annual period of licensing. 
 
 #### Can I change the target services for my license in Harness Chaos Engineering?
 
