@@ -434,7 +434,7 @@ let resp = client?.track(eventType: "page_load_time", value: 83.334)
 let resp = client.track(eventType: "EVENT-TYPE", properties: PROPERTIES)
 // Example
 let properties: [String:Any] = ["package": "premium", "discount": 50, "admin": true]
-let resp = client?.track(eventType: "page_load_time", proerties: properties)
+let resp = client?.track(eventType: "page_load_time", properties: properties)
 ```
 
 ## Manager

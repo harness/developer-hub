@@ -10,7 +10,7 @@ This feature is in beta. If you'd like to be included in the beta, contact [earl
 
 This guide explains how to use the Harness FME Visual Studio Code (VSCode) extension to interact with feature flags from within VSCode. This capability allows you to view critical flag information without leaving your IDE. With this extension you can:
 
-* View feature flag definitios by environment 
+* View feature flag definition by environment 
 * Sort flags alphabetically, by rollout status, and creation date
 * Hover over a feature flag to view information such as description, tags, etc. within a tooltip
 * Find code references for a given flag 

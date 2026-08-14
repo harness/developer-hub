@@ -82,7 +82,7 @@ If you are looking for a language that is not listed here, contact the support t
 * **Post events:** Send to Harness servers the generated events by the SDK `.track` method.
 
 :::info[Split-Sync v5.0.0 pipelined data eviction]
-Starting with split-sync v5.0.0, we've introduced a new approach to impressions and events eviction. This replaces the previous approach of periodically fetching & posting impressions and events. Our new approch feature flags this task in 3 parts, a thread dedicated to fetching data from redis and placing it in a buffer, N threads (where N is derived from the number of available CPU cores) dedicated to parsing, formatting the data and placing it in a second buffer, and N (configurable) threads that pick the data and post it to Harness servers. The result is a significant increase in throughput, that will better suit customers which operate on big volumes of data.
+Starting with split-sync v5.0.0, we've introduced a new approach to impressions and events eviction. This replaces the previous approach of periodically fetching & posting impressions and events. Our new approach feature flags this task in 3 parts, a thread dedicated to fetching data from redis and placing it in a buffer, N threads (where N is derived from the number of available CPU cores) dedicated to parsing, formatting the data and placing it in a second buffer, and N (configurable) threads that pick the data and post it to Harness servers. The result is a significant increase in throughput, that will better suit customers which operate on big volumes of data.
 :::
 
 ### Architecture

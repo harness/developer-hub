@@ -100,7 +100,7 @@ import TabItem from '@theme/TabItem';
 
 * **Filtering**: Many tools allow you to set filtering criteria to include or exclude specific traffic, perhaps blocking internal traffic, spam, bots, excluding time ranges or IP addresses, etc. Make sure to use the same filtering logic across all tools, or at least account for the differences.
 
-* **Time Zones and Time Windows**: Some analytics tools use the the user's location while others may default to UTC or some other time zone. This affects the day boundary for reports. Also, the start time of an experiment may not coincide neatly with the output from another tool. Make sure you are looking at the same window of time when comparing data.
+* **Time Zones and Time Windows**: Some analytics tools use the user's location while others may default to UTC or some other time zone. This affects the day boundary for reports. Also, the start time of an experiment may not coincide neatly with the output from another tool. Make sure you are looking at the same window of time when comparing data.
 
 </TabItem>
 <TabItem value="2" label="Attribution and exclusion">

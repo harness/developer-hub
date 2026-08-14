@@ -346,7 +346,7 @@ link:
 
 ### A word on IPC socket types
 
-`splitd` currently supports listenting for connection on two types of unix sockets: `STREAM` and `SEQPACKET`.
+`splitd` currently supports listening for connection on two types of unix sockets: `STREAM` and `SEQPACKET`.
 
 Stream-based sockets operate in a similar fashion to TCP-based sockets, without message boundaries and with support for partial reads. Sequenced packet sockets, on the other hand, preserve message boundaries and require the reader to consume the whole package at once (with properly preallocated buffers on the reader side). Since sequenced packet sockets do not require framing/unframing and read with a single syscall, they tend to perform better than stream-based sockets, but they have limited support for large message sizes. With current splitd support for SDK `client.getTreatment()` and `client.getTreatments()` function calls, message size limits are not an issue, but once the manager functionality for querying FME feature flags or dynamic configs become available, it's possible to hit message size limits with the FME Thin SDK `client.getTreatmentsWithConfig()` or `manager.Splits()` function calls.
 

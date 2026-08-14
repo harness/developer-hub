@@ -58,7 +58,7 @@ Change into the new bugsnag2split directory. Create a new SPLIT_API_KEY file:
 touch SPLIT_API_KEY
 ```
 
-Create a new server-side API token in Harness FME, and copy it into this file. There should be no spaces or carriage return arount it. This token is used to validate the integration when it sends an event to Harness FME.
+Create a new server-side API token in Harness FME, and copy it into this file. There should be no spaces or carriage return around it. This token is used to validate the integration when it sends an event to Harness FME.
 
 Run an npm install:
 

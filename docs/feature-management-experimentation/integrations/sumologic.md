@@ -4,7 +4,7 @@ sidebar_label: Sumo Logic
 description: ""
 ---
 
-Sumo Logic provides log monitoring, management, and analytics service. Integrate Harness FME data into Sumo Logic to get rollout and rollback events in Sumo Logic. These events can be overlayed with any other log data to quickly detect and correlate application issues with feature flag changes.
+Sumo Logic provides log monitoring, management, and analytics service. Integrate Harness FME data into Sumo Logic to get rollout and rollback events in Sumo Logic. These events can be overlaid with any other log data to quickly detect and correlate application issues with feature flag changes.
 
 If you are having trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 

@@ -126,7 +126,7 @@ To install the FullStory events webhook, do the following:
 
 A single node.js lambda does the work for the integration, using only the filesystem (for API keys) and the Axios HTTP client. The integration makes two cheap API calls per FullStory event. To install a FullStory webhook in AWS, do the following:
 
-1. Create a new lamba called fullstory using the Node.js language.
+1. Create a new lambda called fullstory using the Node.js language.
 
 2. Upload fullstory.zip to the Code screen of your AWS lambda.
 

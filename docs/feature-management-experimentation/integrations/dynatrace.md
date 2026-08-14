@@ -111,7 +111,7 @@ To resolve this, tag an entity in Dynatrace (as discussed above) and make a chan
 
 ## Code
 
-This is a third-party integration that has been tested by the Harness FME team. Harness does not own or maintain this integration. For more information, reach out to the [contibutor](mailto:david.martin@split.io).
+This is a third-party integration that has been tested by the Harness FME team. Harness does not own or maintain this integration. For more information, reach out to the [contributor](mailto:david.martin@split.io).
 
 We encourage contribution for all third-party integrations. You can find the repo that backs this integration which is found in [GitHub](https://github.com/dbmartin00/split2DynatraceAws).
 

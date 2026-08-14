@@ -349,7 +349,7 @@ when (client.getTreatment("FEATURE_FLAG_NAME", attributes)) {
 
 Attributes can be bound to the client at any time during the SDK lifecycle. These attributes are stored in memory and used in every evaluation to avoid the need for keeping the attribute set accessible through the whole app. These attributes can be cached into the persistent caching mechanism of the SDK making them available for future sessions, as well as part of the SDK_READY_FROM_CACHE flow by setting the `persistentAttributesEnabled` to true. There is no need to wait for your attributes to be loaded at every session before evaluating flags that use them. 
 
-When an evaluation is called, the attributes provided (if any) at evaluation time are combined with the ones already loaded into the SDK memory, with the ones provided at function execution time take precedence, enabling for those attributes to be overriden/hidden for specific evaluations. 
+When an evaluation is called, the attributes provided (if any) at evaluation time are combined with the ones already loaded into the SDK memory, with the ones provided at function execution time take precedence, enabling for those attributes to be overridden/hidden for specific evaluations. 
 
 An attribute is considered valid if it follows one of the types listed below:
 - String

@@ -131,7 +131,7 @@ To turn impression tracking on or off:
 
 3. On the feature flag Definition tab, click **Review changes** and click **Save**.
 
-When impression tracking is off, you will see "Impression tracking off" at the top right of the feature flag definition page. The arrows will also be grayed out (shown with tooltip) on the the feature flag definition card.
+When impression tracking is off, you will see "Impression tracking off" at the top right of the feature flag definition page. The arrows will also be grayed out (shown with tooltip) on the feature flag definition card.
 
 ![](../static/impressions-tracking-visual-cues-1.png)
 

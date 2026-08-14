@@ -195,7 +195,7 @@ config = {
   'redisPort' : 6379,
   'redisDb' : 0,
   'redisPassword' : 'somePassword',
-  ## if the user access is not the default 'root' user, inlcude parameter below
+  ## if the user access is not the default 'root' user, include parameter below
   'redisUsername' : 'username',
   ## if you've set a redis prefix also include that in the config
   'redisPrefix' : 'your prefix that you defined'
@@ -217,7 +217,7 @@ async def main():
     'redisPort' : 6379,
     'redisDb' : 0,
     'redisPassword' : 'somePassword',
-    ## if the user access is not the default 'root' user, inlcude parameter below
+    ## if the user access is not the default 'root' user, include parameter below
     'redisUsername' : 'username',
     ## if you've set a redis prefix also include that in the config
     'redisPrefix' : 'your prefix that you defined'
@@ -248,7 +248,7 @@ SPLITIO = {
     'redisPort': 6379,
     'redisDb': 0,
     'redisPassword': 'somePassword'
-    ## if the user access is not the default 'root' user, inlcude parameter below
+    ## if the user access is not the default 'root' user, include parameter below
     'redisUsername' : 'username',
     ## if you've set a redis prefix also include that in the config
     'redisPrefix' : 'your prefix that you defined'
@@ -338,7 +338,7 @@ SPLITIO = {
     'redisDb': 0,
     'redisPassword': 'somePassword',
     'redisSocketTimeout': 5
-    ## if the user access is not the default 'root' user, inlcude parameter below
+    ## if the user access is not the default 'root' user, include parameter below
     'redisUsername' : 'username'
 }
 
@@ -361,7 +361,7 @@ This functionality is currently not supported for this SDK, but is planned for a
 ### Preforked client setup
 
 Since version `8.4.0` we added support for running our SDK in standalone mode in preforked multiprocess servers. With this feature you can take advantage of using FME in preforking servers such as GUnicorn or uWSGI and attaching it to the `postfork` hooks. This can yield significant performance improvements in terms of memory in comparison to use lazy-style initialization and greatly reduced evaluation time in comparison to use Redis + Split Synchronizer approach at the expense of CPU and BG network traffic.
-There are two main steps for initializating the SDK by using hooks:
+There are two main steps for initializing the SDK by using hooks:
 1. `preforkedInitialization`: this is a new configuration option that will tell the SDK that it should initiate the SDK in master mode and it will not start polling nor streaming.
 2. `factory.resume()`: this is a new method provided by the factory that should be executed on newly forked http worker processes in order to resume synchronisation.
 
@@ -379,7 +379,7 @@ There are a few extra steps to set up SDK with `postfork` option.
 3. Add and use the `postfork` decorator.
 5. Call `factory.resume()` method to resume tasks on each forked child process.
 
-**Note:** Make sure to add the parameter `--enable-threads` to enable multi-threading when starting the UWSGI app server. While Python SDK does support UWSGI app server in process based mode, for the SDK to synchronize with Harness FME servers, you need to enable the multi-threading option, as the background threads perform the synching task. For example:
+**Note:** Make sure to add the parameter `--enable-threads` to enable multi-threading when starting the UWSGI app server. While Python SDK does support UWSGI app server in process based mode, for the SDK to synchronize with Harness FME servers, you need to enable the multi-threading option, as the background threads perform the syncing task. For example:
 
 ```bash title="Shell"
 uwsgi --http :8080 --chdir /var/app --wsgi-file ${WSGI_PATH} ${UWSGI_MODULE} --master
@@ -859,7 +859,7 @@ This does NOT kill the threads or tasks if they are synchronizing, but prevents 
 
 When you call the `.destroy()` method from the client, any subsequent call to `get_treatment()`returns `CONTROL`, and when querying `splits` or `split_names` via the manager interface, an empty list `[]` is returned.
 
-Since version `8.0.0` .destroy() accepts an optinal argument of type `threading.Event`. This allows the user to have control of the shutdown cycle of the SDK.
+Since version `8.0.0` .destroy() accepts an optional argument of type `threading.Event`. This allows the user to have control of the shutdown cycle of the SDK.
 The user can for example choose to block the application until destroy() has finished, so that all the impressions and events are flushed correctly before the application shuts down.
 
 <Tabs groupId="python-mode">
@@ -1003,9 +1003,9 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | preforkedInitialization | Flag for enabling fork execution (requires extra setup mentioned on the preforked client setup section). | False | Preforked running mode. |
 | impressionListener | Custom implementation of impression listener interface. | None | Redis-based storage setup. |
 | eventsQueueSize | Max number of events to accumulate before sending them to the backend. | 10000 | In-memory. |
-| eventsBulkSize | How many events to package when submiting them to the split servers | 5000 | In-memory. |
+| eventsBulkSize | How many events to package when submitting them to the split servers | 5000 | In-memory. |
 | impressionsQueueSize | Max number of impressions to accumulate before sending them to the backend. | 10000 | In-memory. |
-| impressionsBulkSize | How many impressions to package when submiting them to the split servers | 5000 | In-memory. |
+| impressionsBulkSize | How many impressions to package when submitting them to the split servers | 5000 | In-memory. |
 | IPAddressesEnabled | Flag to disable IP addresses and host name from being sent to the Harness servers.  | True | Redis, In-memory. |
 | impressionsMode | This configuration defines how impressions are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. In DEBUG mode, ALL impressions are queued and sent to Harness. Use DEBUG mode when you want every impression to be logged in Harness FME when trying to debug your SDK setup. This setting does not impact the impression listener which will receives all generated impressions. | `'optimized'` | In-memory operation mode. |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | True | In-memory operation mode. |
@@ -1070,7 +1070,7 @@ SPLITIO = {
     'redisPort': 6379,
     'redisDb': 0,
     'redisPassword': 'somePassword',
-    ## if the user access is not the default 'root' user, inlcude parameter below
+    ## if the user access is not the default 'root' user, include parameter below
     'redisUsername' : 'username',
   	'featuresRefreshRate': 5,
     'segmentsRefreshRate' : 60,

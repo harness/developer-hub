@@ -86,7 +86,7 @@ For each Sentry project that you want to integrate with Harness FME, you will ne
 
       * **Sentry Project Slug**. Paste the Project Slug here that you copied from above in Sentry.
 
-    * **Capture Culprit as separate Event**. If you have have specific Sentry Issues that come up consistently and want to be able to create metrics based on a specifc Sentry Issue - select this checkbox to capture an extra event for each exception sent from Sentry.
+    * **Capture Culprit as separate Event**. If you have have specific Sentry Issues that come up consistently and want to be able to create metrics based on a specific Sentry Issue - select this checkbox to capture an extra event for each exception sent from Sentry.
 
     Once you've configured the above fields, click **Save**. Harness FME will then create a Service Hook for you on your Sentry project. At this point, your integration is now configured. Exceptions should start flowing in as track events and you will be able to define metrics as you need!
 

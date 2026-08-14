@@ -299,7 +299,7 @@ Tracking per identity using `client.track()`:
 ```swift title="Swift"
 let client = factory.client
 
-// Expected parameteres are
+// Expected parameters are
 let resp = client.track(trafficType: "TRAFFIC_TYPE", eventType: "EVENT-TYPE", , value: VALUE, properties: PROPERTIES)
 
 // Example with both a value and properties
@@ -329,7 +329,7 @@ let resp = suite.track(eventType: "page_load_time", value: 83.334, properties: n
 let resp = suite.track(eventType: "EVENT-TYPE", properties: PROPERTIES)
 // Example
 let properties: [String:Any] = ["package": "premium", "discount": 50, "admin": true]
-let resp = suite.track(eventType: "page_load_time", proerties: properties)
+let resp = suite.track(eventType: "page_load_time", properties: properties)
 
 ```
 

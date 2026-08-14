@@ -730,7 +730,7 @@ catch (Exception ex)
 
 :::warning[The KeyHashTag Parameter]
 The KeyHashTag is a required parameter. If left empty, the SDK will by default use "\{SPLITIO\}" as the KeyHashTag value. The KeyHashTag value is added to the user prefix to improve SDK performance in Redis Cluster.
-You should use the same KeyHashTag value in the [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) app synching to the same Redis cluster.
+You should use the same KeyHashTag value in the [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) app syncing to the same Redis cluster.
 :::
 
 ## Localhost mode

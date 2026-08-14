@@ -170,7 +170,7 @@ Use tags to narrow feature flags, segments, metrics, or experiments to only the 
 
    ![](./static/tags-9.png)
 
-1. Select one ore more tags to filter the list. 
+1. Select one or more tags to filter the list. 
 
 </TabItem>
 <TabItem value="metric" label="Metrics">
@@ -180,7 +180,7 @@ Use tags to narrow feature flags, segments, metrics, or experiments to only the 
 
    ![](./static/tags-10.png)
 
-1. Select one ore more tags to filter the list. 
+1. Select one or more tags to filter the list. 
 
 </TabItem>
 </Tabs>

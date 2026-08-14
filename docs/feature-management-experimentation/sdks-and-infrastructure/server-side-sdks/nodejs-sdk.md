@@ -210,7 +210,7 @@ const attributes: SplitIO.Attributes = {
   registered_date: new Date('YYYY-MM-DDTHH:mm:ss.sssZ').getTime(),
   // this string will be compared against a list called `plan_type`
   plan_type: 'growth',
-  // this number will be compared agains a const value called `deal_size`
+  // this number will be compared against a const value called `deal_size`
   deal_size: 10000,
   // this array will be compared against a set called `permissions`
   permissions: [‘read’, ‘write’]

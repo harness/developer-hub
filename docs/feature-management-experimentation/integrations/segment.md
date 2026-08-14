@@ -10,7 +10,7 @@ Use this integration to:
 
 * Send data from Harness FME as a source in Segment. When configured, FME sends traffic impression data for feature flags to Segment.
 
-* Send data to Harness FME as a destination in Segment. When configured, FME processes and displayes Segment event data in Harness FME for analysis. FME supports the `identify`, `group`, `track`, `page` and `screen` specs. FME and Segment let you change these integration settings via your Segment and Harness FME dashboards without having to touch any code. 
+* Send data to Harness FME as a destination in Segment. When configured, FME processes and displays Segment event data in Harness FME for analysis. FME supports the `identify`, `group`, `track`, `page` and `screen` specs. FME and Segment let you change these integration settings via your Segment and Harness FME dashboards without having to touch any code. 
  
 This documentation provides additional details on the different types of Segment integrations you can use, how they affect your data in Harness FME, and instructions for setting up the integration. 
 
