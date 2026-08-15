@@ -462,7 +462,7 @@ upgrades:
 </details>  
 :::
 
-## July 31, 2026, Version 0.44.0 <!-- July 31, 2026 -->
+## August 10, 2026, Version 0.44.0 <!-- August 10, 2026 -->
 
 :::danger Breaking changes
 #### MongoDB 8.0 for in-cluster MongoDB
