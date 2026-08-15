@@ -86,7 +86,7 @@ The goal is to determine if we are getting the desired outcome for specific feat
 
 ## Comparing FME metrics with other tools
 
-Most companies have a variety of tools to count and track user visits and interactions on their web and mobile applications. While it can be helpful to compare the numbers between, say, Split and Google Analytics, it is not unusual or unexpected that the numbers are different. 
+Most companies have a variety of tools to count and track user visits and interactions on their web and mobile applications. While it can be helpful to compare the numbers between, say, Harness FME and Google Analytics, it is not unusual or unexpected that the numbers are different. 
 
 There can be a number of reasons for this:
 
@@ -107,9 +107,9 @@ import TabItem from '@theme/TabItem';
 
 Because different attribution logic is used by various tools, it's not uncommon for values of a similar metric to vary by 10-15%. It's important to understand how things like omni-channel conversions are handled. For example, a user may get an impression/treatment on one device, perhaps an ad on a phone, and then convert (or perform some other tracked action) from a browser.
 
-When experimenting, Split will [exclude users](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/#sample-population) from results under certain circumstances. For example, a user that switches targeting rules more than once within the same version of an experiment. This is not a usual circumstance and the number of users excluded for these reasons may be small, but there are cases where the design of a test could cause many users to be excluded because of changing targeting rules more than once.
+When experimenting, Harness FME will [exclude users](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/#sample-population) from results under certain circumstances. For example, a user that switches targeting rules more than once within the same version of an experiment. This is not a usual circumstance and the number of users excluded for these reasons may be small, but there are cases where the design of a test could cause many users to be excluded because of changing targeting rules more than once.
 
-For more information about Split's attribution logic and how it's handled when users change treatments and/or rules within a version, see [Attribution and exclusion](/docs/feature-management-experimentation/release-monitoring/attribution-and-exclusion/).
+For more information about Harness FME's attribution logic and how it's handled when users change treatments and/or rules within a version, see [Attribution and exclusion](/docs/feature-management-experimentation/release-monitoring/attribution-and-exclusion/).
 
 </TabItem>
 <TabItem value="3" label="Browsers and mobile devices">
@@ -118,7 +118,7 @@ Implementation on the browser or mobile device can impact the collection of data
 
 Also, content blockers are becoming more common as users seek to avoid ads and more attention is placed on privacy concerns. These blockers can impact a wide range of client-side trackers, not just ads. Depending on what's blocked, they could cause the results computed by various analytic tools to differ.
 
-### Server-side feature flags
+#### Server-side feature flags
 
 One way to mitigate the issues posed by the lack of control on the client side, and create greater consistency in the user experience, is to move feature flags to a back end service for evaluation. For more information, see [Moving feature flags to a service](/docs/feature-management-experimentation/sdks-and-infrastructure#using-a-service-for-feature-flags).
 
@@ -126,41 +126,23 @@ Moving feature flags to the back-end may exacerbate the difference in counts if 
 
 When using the JavaScript or mobile SDKs, configuration options (like in the [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk/#configuration)) can be tuned to ensure you'll capture the greatest possible number of impressions and/or events. In particular, the `RefreshRate` can have a significant impact when lowered.
 
-### Why are my impression counts different or missing?
+#### Why are my impression counts different or missing?
 
-If you notice that the number of visitors, impressions, or events in Split differs from other tools, or some impressions are missing, here are some common causes and how to address them:
+If you notice that the number of visitors, impressions, or events in Harness FME differs from other tools, or some impressions are missing, here are some common causes and how to address them:
 
-* [Block traffic until the SDK is ready](/docs/feature-management-experimentation/sdks-and-infrastructure#block-traffic-until-the-sdk-is-ready): Ensure your application waits for the Split SDK to initialize before sending traffic, to avoid losing impression data.
-* [Impressions not showing in Split](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#impressions-not-showing-in-harness-fme): Check your implementation for any issues that may prevent impressions from being recorded correctly.
+* [Block traffic until the SDK is ready](/docs/feature-management-experimentation/sdks-and-infrastructure#block-traffic-until-the-sdk-is-ready): Ensure your application waits for the Harness FME SDK to initialize before sending traffic, to avoid losing impression data.
+* [Impressions not showing in Harness FME](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#impressions-not-showing-in-harness-fme): Check your implementation for any issues that may prevent impressions from being recorded correctly.
 * [JavaScript SDK on slow networks](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#why-does-the-javascript-sdk-return-not-ready-status-on-slow-networks): On slow network connections, the SDK may not send impressions in a timely manner. Consider strategies to mitigate network latency.
 * [Always getting control treatments](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#always-getting-control-treatments-from-gettreatment): Receiving only control treatments can indicate targeting or configuration problems affecting impression counts.
 
 </TabItem>
 </Tabs>
 
-Split has robust data pipelines and attribution logic. If you do find a mismatch in numbers that is greater than the expected variance between tools, we're happy to work with you to troubleshoot the discrepancy. Contact [Harness Support](/docs/feature-management-experimentation/fme-support) or send an email to help@split.io.
-
-## FME features
-
-### Feature management
-
-Manage feature flag scheduling, flag sets, and flag lifecycles. Feature flags turn on features to specific users or segments. You can tailor access to beta testers and early adopters based on individual IDs, attributes, dependencies, or percentages. Gradually increase the rollout percentage to limit the blast radius of your releases.
-
-In [this book](https://www.harness.io/resources/feature-flags-best-practices), Split CTO Pato Echague and Pete Hodgson explain how to implement feature-flagged software successfully, and offer some tips to developers on how to configure and manage a growing set of feature flags within your product, maintain them over time, manage infrastructure migrations, and more.
-
-### Release monitoring
-
-Release monitoring detects the impact of each feature on system performance and user behavior, starting with the earliest stage of a gradual rollout. With detection and triage done at the flag level, you can ship more often and with greater confidence.
-
-### Experimentation
-
-Experimentation provides customizable, centralized, and self-serve A/B testing, empowering your team with actionable data to make rapid, trusted, data-driven decisions.
-
-## Harness platform
-
-If you're new to Harness, review the [Harness platform onboarding guide](/docs/platform/get-started/onboarding-guide) and [Harness platform key concepts](/docs/platform/get-started/key-concepts).
+Harness FME has robust data pipelines and attribution logic. If you do find a mismatch in numbers that is greater than the expected variance between tools, we're happy to work with you to troubleshoot the discrepancy. Contact [Harness Support](/docs/feature-management-experimentation/fme-support).
 
 ## Get started with Harness FME
+
+If you're new to Harness, review the [Harness platform onboarding guide](/docs/platform/get-started/onboarding-guide) and [Harness platform key concepts](/docs/platform/get-started/key-concepts).
 
 ### Create an account or join an account
 
@@ -170,7 +152,7 @@ We assume you’ve created an account already, but if not, [sign up](https://app
 
 When you sign up you are sent a link to create an account. We utilize your company name as the account name. This can be changed later in your account's admin settings.
 
-Within this account, you can create multiple projects. Your company should have one account in Split but can have multiple projects within that account. When you first create your account, you'll have one project named Default. This project has two environments and one traffic type underneath it. You can rename and edit these environments and traffic types as well as add more.
+Within this account, you can create multiple projects. Your company should have one account in Harness FME but can have multiple projects within that account. When you first create your account, you'll have one project named Default. This project has two environments and one traffic type underneath it. You can rename and edit these environments and traffic types as well as add more.
 
 Each [project](/docs/feature-management-experimentation/projects/) has its own set of environments, SDK API keys, feature flags, segments, metrics, and event types.
 
@@ -178,9 +160,9 @@ Each [project](/docs/feature-management-experimentation/projects/) has its own s
 
 Environments allow you to manage your feature flags throughout your development lifecycle — from local development to staging and production. When you first create your account, your project is provided with two environments. These two environments are named staging and production, and can be re-named. For more information about environments, see [Environments](/docs/feature-management-experimentation/environments).
 
-Each environment is automatically set up with its own API keys. Use these API keys to connect the Split SDK to a specific environment. If you are setting Split up with a server side SDK, be sure to use the server API key type. If you are setting Split up in the browser or on a mobile client, be sure to use the browser API key type. If you are interested in using Split’s public API, create an admin API key type. For more information about API keys, see [API keys](/docs/feature-management-experimentation/api-keys).
+Each environment is automatically set up with its own API keys. Use these API keys to connect the Harness FME SDK to a specific environment. If you are setting Harness FME up with a server side SDK, be sure to use the server API key type. If you are setting Harness FME up in the browser or on a mobile client, be sure to use the browser API key type. If you are interested in using Harness FME’s public API, create an admin API key type. For more information about API keys, see [API keys](/docs/feature-management-experimentation/api-keys).
 
-Use traffic types to easily identify the customer traffic you are splitting. A traffic type is a particular identifier type for any hierarchy of your customer base. Traffic types in Split are customizable and can be any key you choose to send to Split, i.e. a user ID, team ID, IP address, browser ID, etc. Essentially, any internal database key you're using to track what "customer" means to you. When you first create your account, your project has one traffic type - user - but you can easily create additional like guest or anonymous. For more information about traffic types, see [Traffic types](/docs/feature-management-experimentation/traffic-types).
+Use traffic types to easily identify the customer traffic you are splitting. A traffic type is a particular identifier type for any hierarchy of your customer base. Traffic types in Harness FME are customizable and can be any key you choose to send to Harness FME, i.e. a user ID, team ID, IP address, browser ID, etc. Essentially, any internal database key you're using to track what "customer" means to you. When you first create your account, your project has one traffic type (user) but you can easily create additional like guest or anonymous. For more information about traffic types, see [Traffic types](/docs/feature-management-experimentation/traffic-types).
 
 ### Testing with feature flags
 
@@ -190,57 +172,173 @@ Feature flags can be integrated into a variety of testing strategies across the 
 * **[Regression testing](https://www.harness.io/blog/comparing-smoke-tests-to-regression-tests)**: Ensures recent changes haven’t broken existing functionality.
 * **[Sanity testing](https://www.harness.io/blog/differences-between-smoke-testing-and-sanity-testing)**: A fast check that recent fixes or updates didn’t disrupt core features.
 
-Teams can also use localhost mode to validate flag behavior in isolation or as part of CI pipelines, and apply flags in both shift-left and shift-right practices. 
-
-For guidance on incorporating feature flags into these workflows, see [Creating Unit Tests for Code Using FME SDKs](/docs/feature-management-experimentation/api/unit-tests) and [Using Test Automation in QA](/docs/feature-management-experimentation/api/test-automation).
+Teams can also use localhost mode to validate flag behavior in isolation or as part of CI pipelines, and apply flags in both shift-left and shift-right practices. For guidance on incorporating feature flags into these workflows, see [Creating Unit Tests for Code Using FME SDKs](/docs/feature-management-experimentation/api/unit-tests) and [Using Test Automation in QA](/docs/feature-management-experimentation/api/test-automation).
 
 ## Setup 
 
-This section walks you through setting up your Split instance, installing the Split SDK, and creating your first feature flag to release rapidly and safely with feature flags and measure impact with experimentation. 
+To get started with Harness FME:
 
-To start using Harness FME:
-
-1. [Install the SDK and set up your account](/docs/feature-management-experimentation/getting-started/overview/install-the-sdk)
-
-   * Learn how to install FME SDKs to control feature flags in your application.
-   * Learn how to manage and maintain your Harness FME account and users.
-
-1. [Create a feature flag and target users](/docs/feature-management-experimentation/getting-started/overview/create-a-feature-flag)
-
-   * Feature flagging & configuration: Understand how to target your customers using Harness FME's feature flags.
-
-1. [Send event data](/docs/feature-management-experimentation/getting-started/overview/send-event-data)
-
-   * Send event data to track usage and behavior in Harness FME.
-
-1. [Create a metric, monitor, and measure impact](/docs/feature-management-experimentation/getting-started/overview/create-a-metric)
-
-   * Monitoring & experiment: Measure impact and make data-driven decisions with experimentation.
+1. [Install the SDK and set up your account](/docs/feature-management-experimentation/getting-started/overview/install-the-sdk): Learn how to install FME SDKs to control feature flags in your application, and manage your Harness FME account and users.
+1. [Create a feature flag and target users](/docs/feature-management-experimentation/getting-started/overview/create-a-feature-flag): Understand how to target your customers using Harness FME feature flags.
+1. [Send event data](/docs/feature-management-experimentation/getting-started/overview/send-event-data): Send event data to track usage and behavior in Harness FME.
+1. [Create a metric, monitor, and measure impact](/docs/feature-management-experimentation/getting-started/overview/create-a-metric): Measure impact and make data-driven decisions with experimentation.
 
 ### Allow Harness FME traffic through your network
 
-If you use a proxy or firewall and need to allow communication between your internal systems and Split’s cloud platform, add the following URLs and IPs to your allowlist:
+If you use a proxy or firewall and need to allow communication between your internal systems and Harness FME's cloud platform, add the following hostnames to your allowlist. Use the US hostnames unless your account is provisioned in the EU region; in which case, use the EU hostnames instead.
 
-* [SDK traffic](https://sdk.split.io): [Fastly IPs](https://api.fastly.com/public-ip-list) are used for SDK traffic.
-* [REST API](https://api.split.io/)
-* [Impressions, events, and SDK metrics](https://events.split.io)
-* WebSocket streaming: https://auth.split.io and https://streaming.split.io
-* [CDN](https://cdn.split.io)
-* [Telemetry](https://telemetry.split.io)
+:::tip
+SDK traffic uses [Fastly IPs](https://api.fastly.com/public-ip-list) for both regions. 
 
-If you have on-premise systems that need to integrate with Split—such as a webhook service—you may need IP addresses for outbound Split service connections. You can find those at https://our-ips.split.io/.
+Not sure which region your account uses? Contact [Harness Support](/docs/feature-management-experimentation/fme-support) to confirm before you configure firewall rules or SDK host overrides.
+:::
 
-:::info
-You’ll see entries marked “Active” (primary region) and “Passive” (secondary region), and traffic types labeled “Inbound” or “Outbound.” 
+| Service | US hostname | EU hostname |
+|---|---|---|
+| SDK traffic | `sdk.split.io` | `sdk.eu.split.io` |
+| REST API | `api.split.io` | `api.eu.split.io` |
+| Impressions, events, and SDK metrics | `events.split.io` | `events.eu.split.io` |
+| WebSocket streaming authentication | `auth.split.io` | `auth.eu.split.io` |
+| WebSocket streaming | `streaming.split.io` | `streaming.eu.split.io` |
+| CDN | `cdn.split.io` | `cdn.split.io` |
+| Telemetry | `telemetry.split.io` | `telemetry.eu.split.io` |
+
+:::info Outbound Connections
+If you have on-premise systems that need to integrate with Harness FME, such as a webhook service, you may need IP addresses for outbound connections. Go to [our-ips.split.io](https://our-ips.split.io/) to find those addresses.
+
+You will see entries marked "Active" (primary region) and "Passive" (secondary region), and traffic types labeled "Inbound" or "Outbound."
 
 ![](./static/ips.png)
 
-This list may change in the event of a failover, so we recommend subscribing to Split's [Status Page](https://status.split.io/) for updates.
+This list may change in the event of a failover. Subscribe to Harness FME's [Status Page](https://status.harness.io/) for updates.
 :::
 
-#### Email invites
+### Configure SDKs for the EU region
 
-Split uses a third-party provider, SendGrid, to send user invitations. If your spam blocker prevents these from being delivered, allow the following IP address: `168.245.9.60`.
+Harness FME SDKs connect to the US hostnames by default. If your account is provisioned in the EU region, override the applicable base URL parameters in your SDK configuration using the EU hostnames from the table above. 
+
+Each SDK exposes a different subset of these parameters, covering the SDK, events, authentication, streaming, and telemetry services. The example below shows the override syntax for each SDK; go to that SDK's own configuration reference to confirm the complete list of parameters it exposes before you rely on this for EU data residency.
+
+<Tabs queryString="eu-sdks">
+<TabItem value="javascript" label="JavaScript SDK">
+
+```javascript
+core: { ... },
+urls: {
+    sdk: 'https://sdk.eu.split.io/api',
+    events: 'https://events.eu.split.io/api',
+    auth: 'https://auth.eu.split.io/api',
+},
+```
+
+</TabItem>
+
+<TabItem value="android" label="Android SDK">
+
+```java
+final ServiceEndpoints serviceEndpoints = ServiceEndpoints.builder()
+    .apiEndpoint("https://sdk.eu.split.io/api")
+    .eventsEndpoint("https://events.eu.split.io/api")
+    .sseAuthServiceEndpoint("https://auth.eu.split.io/api")
+    .streamingServiceEndpoint("https://streaming.eu.split.io")
+    .telemetryServiceEndpoint("https://telemetry.eu.split.io/api")
+    .build();
+
+SplitClientConfig config = SplitClientConfig.builder()
+    .serviceEndpoints(serviceEndpoints)
+    .build();
+```
+
+</TabItem>
+
+<TabItem value="ios" label="iOS SDK">
+
+```swift
+let endpoints: ServiceEndpoints = ServiceEndpoints.builder()
+    .set(sdkEndpoint: "https://sdk.eu.split.io/api")
+    .set(eventsEndpoint: "https://events.eu.split.io/api")
+    .set(authServiceEndpoint: "https://auth.eu.split.io/api")
+    .set(telemetryServiceEndpoint: "https://telemetry.eu.split.io/api")
+    .build()
+
+let config = SplitClientConfig()
+config.serviceEndpoints = endpoints
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java SDK">
+
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+    .endpoint("https://sdk.eu.split.io", "https://events.eu.split.io")
+    .authServiceURL("https://auth.eu.split.io/api/v2/auth")
+    .telemetryURL("https://telemetry.eu.split.io/api/v1")
+    .build();
+```
+
+</TabItem>
+
+<TabItem value="ruby" label="Ruby SDK">
+
+```ruby
+options = {
+    base_uri: "https://sdk.eu.split.io/api",
+    events_uri: "https://events.eu.split.io/api",
+    auth_service_url: "https://auth.eu.split.io/api",
+    telemetry_service_url: "https://telemetry.eu.split.io/api",
+    streaming_service_url: "https://streaming.eu.split.io"
+}
+```
+
+</TabItem>
+
+<TabItem value="python" label="Python SDK">
+
+```python
+factory = get_factory(
+    API_KEY,
+    sdk_api_base_url="https://sdk.eu.split.io/api",
+    events_api_base_url="https://events.eu.split.io/api",
+    telemetry_api_base_url="https://telemetry.eu.split.io/api"
+)
+```
+
+</TabItem>
+
+<TabItem value="go" label="Go SDK">
+
+```go
+cfg := conf.Default()
+cfg.Advanced.AuthServiceURL = "https://auth.eu.split.io/api"
+cfg.Advanced.SdkURL = "https://sdk.eu.split.io/api"
+cfg.Advanced.EventsURL = "https://events.eu.split.io/api"
+cfg.Advanced.TelemetryServiceURL = "https://telemetry.eu.split.io/api"
+```
+
+</TabItem>
+
+<TabItem value="dotnet" label=".NET SDK">
+
+```csharp
+var config = new ConfigurationOptions
+{
+    Endpoint = "https://sdk.eu.split.io",
+    EventsEndpoint = "https://events.eu.split.io",
+    AuthServiceURL = "https://auth.eu.split.io/api/v2/auth",
+    StreamingServiceURL = "https://streaming.eu.split.io/sse",
+    TelemetryServiceURL = "https://telemetry.eu.split.io/api/v1"
+};
+```
+
+</TabItem>
+</Tabs>
+
+Go to the [SDKs and infrastructure](/docs/feature-management-experimentation/sdks-and-infrastructure) to find the full configuration reference for each SDK.
+
+### Email invites
+
+Harness FME uses a third-party provider, SendGrid, to send user invitations. If your spam blocker prevents these from being delivered, allow the following IP address: `159.183.44.127`.
 
 <UniversityAdmonition title="Harness FME self-paced training">
   For an interactive onboarding experience including further use cases and features like **feature management**, **release monitoring**, and **cloud experimentation**, check out the [**Harness Feature Management & Experimentation self-paced training**](https://university-registration.harness.io/page/fme).
@@ -250,6 +348,6 @@ Split uses a third-party provider, SendGrid, to send user invitations. If your s
 
 Additional documentation, blog blog links, and articles:
 
-- [Testing Redesigned Data Pipelines with Split](https://www.harness.io/blog/testing-pipelines-split)
+- [Testing Redesigned Data Pipelines with Harness FME](https://www.harness.io/blog/testing-pipelines-split)
 - [Understanding Different Types of Usability Testing](https://www.harness.io/blog/types-of-usability-testing)
 - [Differences Between Smoke Testing and Sanity Testing](https://www.harness.io/blog/differences-between-smoke-testing-and-sanity-testing#feature-flags-and-their-role-in-testing)
