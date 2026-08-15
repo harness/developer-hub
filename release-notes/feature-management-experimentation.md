@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-07-21T10:00:00
+date: 2026-08-11T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,7 +14,37 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: July 21, 2026
+#### Last updated: August 11, 2026
+
+## August 2026
+
+### Scheduling in the Change Requests API
+----
+#### 2026-08-11
+
+The [Submit Change Request](https://docs.split.io/reference/create-change-request) API now supports scheduling. When submitting a change request for a feature flag or segment, you can include `scheduledFor`, a Unix timestamp in milliseconds marking the exact date and time an approved change executes, rather than having it execute immediately upon approval.
+
+The two new fields, `scheduledFor` and `scheduledForTimezone`, are shown below. This example is abbreviated to highlight the new fields; a full UPDATE request also includes the existing `split` definition, as shown in [Schedule a change request](/docs/feature-management-experimentation/api/approvals#schedule-a-change-request).
+
+```json title="Example JSON Payload" showLineNumbers {6-7}
+{
+  "operationType": "UPDATE",
+  "title": "New rollout split percentage",
+  "comment": "updated rollout percentage",
+  "approvers": [],
+  "scheduledFor": 1786201200000,
+  "scheduledForTimezone": "America/Los_Angeles"
+}
+```
+
+`scheduledFor` is an absolute point in time and is not affected by time zone. Optionally include `scheduledForTimezone` to control the time zone used to display that scheduled time in the Harness FME UI, for example to approvers reviewing the pending change; it does not shift when the change executes. If omitted, Harness FME displays the scheduled time in `UTC`. The value must be a valid IANA time zone identifier, such as `America/New_York` or `Europe/London`; invalid time zones are rejected.
+
+Change requests submitted with scheduling also follow a distinct status lifecycle: a pending scheduled change request reports `SCHEDULE_REQUESTED` instead of `REQUESTED`, and moves to `SCHEDULED` (instead of `APPROVED`) once approved, remaining there until the scheduled time arrives and the change publishes.
+
+#### Related documentation
+
+- [Approval Flows and Change Requests](/docs/feature-management-experimentation/api/approvals#schedule-a-change-request)
+- [Submit Change Request API](https://docs.split.io/reference/create-change-request)
 
 ## July 2026
 

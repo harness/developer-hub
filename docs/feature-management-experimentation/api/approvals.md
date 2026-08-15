@@ -5,11 +5,12 @@ sidebar_position: 4
 sidebar_label: Approval Flows and Change Requests
 ---
 
-## Overview
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 Change control is critical to the success of any ongoing project and especially fundamental to software development. It is used to ensure that changes are introduced in a controlled and coordinated manner, reducing the risk of unnecessary changes and ensuring minimal disruption to services.
 
-Split supports change control on segment and feature flags objects. If change control is enabled in your environment, then API calls to modify these objects directly without creating a change request returns a 403 stating that Approvals are required, for example:
+Harness FME supports change control on segment and feature flags objects. If change control is enabled in your environment, then API calls to modify these objects directly without creating a change request returns a 403 stating that Approvals are required, for example:
 
 ```bash
 {
@@ -20,27 +21,59 @@ Split supports change control on segment and feature flags objects. If change co
 }
 ```
 
+:::tip
+This page uses `$orgId` and `$apiKey` to represent the account ID and the token you generated. Replace these with your own values.
+:::
+
 ### Prerequisites
 
 - Install [cURL](https://curl.se/). This application is a free HTTP API client that we will use to make API calls in this document. It should be installed already if you are on a Mac or a Linux machine. If you are more comfortable with other ways to call HTTP endpoints or other HTTP clients, you should be able to follow along. It is a command line tool, so you need to have basic familiarity with the CMD.exe command prompt on Windows or Terminal emulators on Mac or Linux machines.
 
-- You need to create an Admin API key. You can create this by navigating to **Admin settings** and then **API keys**. Click the **Action** button and from the menu list, select **Create API key** in the top right. 
+- You need a Harness API key, or a [Service Account Token (SAT)](/docs/platform/role-based-access-control/add-and-manage-service-account/), to authenticate these calls.
 
-  The following page displays:
+## Create a service account
 
-  ![](./static/create-api-key.png)
+To create an API key:
 
-  Select **Admin** as this tutorial’s API key needs to be for the Admin API. Give it a name and optionally restrict it to environments and projects that you are using the API key for.
+1. [Create a service account](/docs/platform/role-based-access-control/add-and-manage-service-account) at the **Account Settings**, **Organization Settings**, or **Project Settings** scope under **Access Control**, depending on how broadly this key needs to reach.
+1. Under that service account, [create an API key and generate a token](/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens).
+1. Copy the token once it is generated. It is displayed only once.
 
-  Once you click **Create**, an API key is available for use:
+   :::info Already have a Split Admin API key?
+   Existing Split Admin API keys continue to work for feature flag and segment change requests. You only need a new Harness SAT if you are creating a key for the first time, or if you are consolidating on Harness-issued keys going forward.
+   :::
 
-  ![](./static/admin-keys.png)
+### Choose an authentication header
 
-:::tip
-This page uses `$orgId` and `$apiKey` to replace the actual API key and account ID that we gathered previously. Replace these with what you have copied as the account ID and API key.
-:::
+Requests to `api.split.io` accept two [authentication headers](https://docs.split.io/reference/authentication):
 
-To use this key for approving change requests, you need to first set this API Key as an approver by following these steps:
+- `x-api-key`: The standard header used across Harness APIs, including Harness FME. This is the recommended header for new integrations, and the one used in the examples on this page.
+- `Authorization: Bearer`: The legacy header used by earlier Split integrations. It is still fully supported, so existing scripts do not need to change.
+
+Both headers authenticate the same token; use whichever fits your existing code:
+
+<Tabs>
+<TabItem value="x-api-key" label="Harness SAT (Recommended)" default>
+
+```bash
+curl --location --request GET 'https://api.split.io/internal/api/v2/workspaces' \
+--header 'Content-Type: application/json' \
+--header 'x-api-key: $apiKey'
+```
+
+</TabItem>
+<TabItem value="bearer" label="Admin API Key (Legacy)">
+
+```bash
+curl --location --request GET 'https://api.split.io/internal/api/v2/workspaces' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer $apiKey'
+```
+
+</TabItem>
+</Tabs>
+
+To use this key for approving change requests, you need to first set this API key as an approver by following these steps:
 
 1. In **Admin settings**, click **Projects**.
 1. Find the project in which you want to set the API key as an approver. Click the **View** link in the **Actions** column.
@@ -59,58 +92,61 @@ To use this key for approving change requests, you need to first set this API Ke
 
 1. Click **Save**. The next screen shows that the environment requires approvals.
 
-For both of the following sections, we also need the project ID and environment ID. Those can be collected from the Split user interface or from API calls. Using our API key we can call to the Workspaces endpoint (used for projects) as follows:
+For both of the following sections, we also need the project ID and environment ID. Those can be collected from the Harness FME user interface or from API calls. 
 
-```bash
-curl --location --request GET 'https://api.split.io/internal/api/v2/workspaces' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer $apiKey‘
-```
+   Using our API key, we can call to the Workspaces endpoint (used for projects) as follows:
 
-To retrieve our list of projects and their IDs:
+   ```bash
+   curl --location --request GET 'https://api.split.io/internal/api/v2/workspaces' \
+   --header 'Content-Type: application/json' \
+   --header 'x-api-key: $apiKey'
+   ```
 
-```bash
-{
-"objects": [
-       {
-          "name": "Default",
-          "type": "workspace",
-          "id": "id-defaultProject-UUID",
-           "requiresTitleAndComments": false
-       },
-………
-   ],
-    "offset": 0,
-    "limit": 10,
-    "totalCount": 3
-}
-```
+   To retrieve our list of projects and their IDs:
 
-Then, using that project ID, we can get the environments:
-
-```bash
-curl --location --request GET 'https://api.split.io/internal/api/v2/environments/ws/id-defaultProject-UUID' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer $apiKey‘
-```
-
-This returns the following data:
-
-```bash
-[
+   ```bash
    {
-      "name": "Prod-Default",
-      "id": "id-prodEnv-UUID",
-      "production": true
-   },
-   {
-       "name": "Staging-Default",
-       "id": "id-stgEnv-UUID",
-       "production": false
+   "objects": [
+         {
+             "name": "Default",
+             "type": "workspace",
+             "id": "id-defaultProject-UUID",
+             "requiresTitleAndComments": false
+         },
+   ………
+     ],
+       "offset": 0,
+       "limit": 10,
+       "totalCount": 3
    }
-]
-```
+   ```
 
+   Then, using that project ID, we can get the environments:
+
+   ```bash
+   curl --location --request GET 'https://api.split.io/internal/api/v2/environments/ws/id-defaultProject-UUID' \
+   --header 'Content-Type: application/json' \
+   --header 'x-api-key: $apiKey'
+   ```
+
+   This returns the following data:
+
+   ```bash
+   [
+     {
+         "name": "Prod-Default",
+         "id": "id-prodEnv-UUID",
+         "production": true
+     },
+     {
+         "name": "Staging-Default",
+         "id": "id-stgEnv-UUID",
+         "production": false
+     }
+   ]
+   ```
+
+:::tip
 To do this using the user interface, go to **Admin settings** and select **Projects** to see the project names and IDs. 
 
 ![](./static/projects.png)
@@ -118,6 +154,7 @@ To do this using the user interface, go to **Admin settings** and select **Proje
 Click the **View** link in the **Actions** column to see a project's environment names and IDs.
 
 ![](./static/project-envs.png)
+:::
 
 ## Change requests with segments
 
@@ -135,7 +172,7 @@ Some of the actions listed below (such as updating segment owners and tags) cann
 |   | Removing an empty segment definition from an environment |
 |   | Deleting a segment |
 
-Creating or deleting segment keys via the Admin API both require a HTTP POST request. All change requests go to the changeRequest endpoint. Before submitting the change request, you must gather the data required. 
+Creating or deleting segment keys via the Admin API both require a HTTP POST request. All change requests go to the `changeRequest` endpoint. Before submitting the change request, you must gather the data required. 
 
 ### Segment Operation Payload
 
@@ -147,6 +184,8 @@ Creating or deleting segment keys via the Admin API both require a HTTP POST req
 | `title`          | The title of the change request.                                            |
 | `comment`        | Any change request comments.                                                |
 | `approvers`      | Email address(es) of the approver(s). Cannot be the API key. See notes below. |
+| `scheduledFor`   | Optional. Unix timestamp in milliseconds marking the exact date and time the approved change request executes. This is an absolute point in time and does not change based on `scheduledForTimezone`. See [Schedule a change request](#schedule-a-change-request). |
+| `scheduledForTimezone` | Optional. IANA time zone, such as `America/Los_Angeles`, used only to display `scheduledFor` in the Harness FME UI. It does not affect when the change request executes. Defaults to `UTC` if omitted. |
 
 ### `operationType` Values
 
@@ -179,7 +218,7 @@ Then, the call to create the change request will look like the following:
 ```bash
 curl --location --request POST 'https://api.split.io/internal/api/v2/changeRequests/ws/id-defaultProject-UUID/environments/id-prodEnv-UUID' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer $apiKey' \
+--header 'x-api-key: $apiKey' \
 --data-raw '{
    "segment":{"name":"beta_accounts", "keys":["San Francisco","Clark'\''s Mountain"]},
    "operationType":"CREATE",
@@ -231,7 +270,7 @@ To confirm this change request, we can call the GET request on the changeRequest
 
 ```bash
 curl --location --request GET 'https://api.split.io/internal/api/v2/changeRequests' \
---header 'Authorization: Bearer $apiKey’‘
+--header 'x-api-key: $apiKey'
 ```
 
 We then see the REQUESTED status change request:
@@ -281,14 +320,14 @@ We then see the REQUESTED status change request:
 
 The GET supports pagination using `nextMarker` and `previousMarker` as optional query parameters. It also is possible to also get APPROVED, REJECTED, WITHDRAWN, and PUBLISHED change requests using the status query parameter. 
 
-In the Split user interface, we can also confirm the pending change request exists when you see the message `This segment has pending change. View the change`. 
+In the Harness FME user interface, we can also confirm the pending change request exists when you see the message `This segment has pending change. View the change`. 
 
 At this point, if the API key is not set as an approver, the only other thing we can do with it is withdraw the change request. 
 
 ```bash
 curl --location --request PUT 'https://api.split.io/internal/api/v2/changeRequests/id-cr-UUID' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer $apiKey‘ \
+--header 'x-api-key: $apiKey' \
 --data-raw '{
    "status":"WITHDRAWN",
    "comment":"CR withdrawn via Admin API"
@@ -300,7 +339,7 @@ Now if we call the GET request like we did previously, you won’t see the chang
 
 ```bash
 curl --location --request GET 'https://api.split.io/internal/api/v2/changeRequests' \
---header 'Authorization: Bearer $apiKey‘
+--header 'x-api-key: $apiKey'
 ```
 
 This call returns the following:
@@ -319,7 +358,7 @@ To see a withdrawn change request, use this endpoint to see a single change requ
 
 ```bash
 curl --location --request GET 'https://api.split.io/internal/api/v2/changeRequests/id-cr-UUID’ \
---header 'Authorization: Bearer $apiKey’
+--header 'x-api-key: $apiKey'
 ```
 
 This returns the change request showing the WITHDRAWN status. Notice the comments objects at the bottom also showing the history of comments as well. In the case of change request management, it is helpful to have meaningful comments. 
@@ -369,7 +408,7 @@ Another way to see this is to explicitly call to list all WITHDRAWN change reque
 
 ```bash
 curl --location --request GET 'https://api.split.io/internal/api/v2/changeRequests?status=WITHDRAWN' \
---header 'Authorization: Bearer $apiKey‘
+--header 'x-api-key: $apiKey'
 ```
 
 If the Admin API is set as an approver, you can approve the change request by setting the status to APPROVED instead of WITHDRAWN as shown below: 
@@ -377,7 +416,7 @@ If the Admin API is set as an approver, you can approve the change request by se
 ```bash
 curl --location --request PUT 'https://api.split.io/internal/api/v2/changeRequests/id-cr-UUID' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer $apiKey‘ \
+--header 'x-api-key: $apiKey' \
 --data-raw '{
   "status":"APPROVED",
   "comment":"CR approved via Admin API"
@@ -440,6 +479,8 @@ We need to gather the following information to build the object to send:
 | `comment`            | Any change request comments.                                                                                                                                       |
 | `rolloutStatus.id`   | The rollout status ID. Not required for `KILL` operations.                                                                                                         |
 | `approvers`          | Email address(es) of the approver(s). Cannot be the API key. See [Approvers Behavior](#approvers-behavior-by-environment-setting-1).                                |
+| `scheduledFor`       | Optional. Unix timestamp in milliseconds marking the exact date and time the approved change request executes. This is an absolute point in time and does not change based on `scheduledForTimezone`. See [Schedule a change request](#schedule-a-change-request). |
+| `scheduledForTimezone` | Optional. IANA time zone, such as `America/Los_Angeles`, used only to display `scheduledFor` in the Harness FME UI. It does not affect when the change request executes. Defaults to `UTC` if omitted. |
 
 ### `operationType` Values
 
@@ -462,7 +503,7 @@ For this exercise, you are going to take an existing feature flag definition and
 
 The feature flag we are using is called `new_onboarding_flow`. 
 
-In the Split user interface, the default rule shows a 50/50 rollout:
+In the Harness FME user interface, the default rule shows a 50/50 rollout:
 
 ![](./static/default-rule.png)
 
@@ -471,7 +512,7 @@ The first thing we need to do is to create the project level feature flag in ord
 ```bash
 curl --location --request POST 'https://api.split.io/internal/api/v2/splits/ws/557c90d0-7c44-11ec-97df-eafbc0e90433/trafficTypes/user/' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer $apiKey' \
+--header 'x-api-key: $apiKey' \
 --data-raw '{
 "name": "copy_of_onboarding_flow",
 "description": "New Split"
@@ -487,7 +528,7 @@ As such, we first get the feature flag definition.
 ```bash
 curl --location --request GET 'https://api.split.io/internal/api/v2/splits/ws/id-defaultProject-UUID/new_onboarding_flow/environments/id-prodEnv-UUID' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer $apiKey'
+--header 'x-api-key: $apiKey'
 ```
 
 The returned value is the full feature flag definition with ID, name, environment, and trafficType along with the treatment definitions. However, for what you need, you can ignore that. The properties we need are the ones below that are returned. 
@@ -577,7 +618,7 @@ The other piece of information that we need is the rollout status we want to use
 
 ```bash
 curl --location --request GET 'https://api.split.io/internal/api/v2/rolloutStatuses?wsId=id-defaultProject-UUID' \
---header 'Authorization: Bearer $apiKey‘
+--header 'x-api-key: $apiKey'
 ```
 
 This returns the rollout statuses. In our case, we are interested in the *Ramping* status. 
@@ -632,7 +673,7 @@ With our object created and information gathered, now you can submit this as a C
 ```bash
 curl --location --request POST 'https://api.split.io/internal/api/v2/changeRequests/ws/id-defaultProject-UUID/environments/id-defaultEnvironment-UUID' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer $apiKey‘ \
+--header 'x-api-key: $apiKey' \
 --data-raw '{
  "split": {
   "name": "copy_of_onboarding_flow",
@@ -693,7 +734,7 @@ The returned value shows the change request and the change request ID.
 }
 ```
 
-As with segments change requests, Split doesn’t allow for the same API key or user to approve a change request that it submitted. This can be approved either by a different Admin API Key or by a user manually. 
+As with segments change requests, Harness FME doesn’t allow for the same API key or user to approve a change request that it submitted. This can be approved either by a different Admin API Key or by a user manually. 
 
 Once approved, let’s say we want to update the feature flag to a 90/10 rollout. You need to create a change request of operationType UPDATE. The only difference between UPDATE and CREATE is that UPDATE operations act upon existing feature flag definitions. 
 
@@ -702,7 +743,7 @@ For example, this is an UPDATE call to update the existing feature flag we creat
 ```bash
 curl --location --request POST 'https://api.split.io/internal/api/v2/changeRequests/ws/id-defaultProject-UUID/environments/id-defaultEnvironment-UUID' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer $apiKey‘ \
+--header 'x-api-key: $apiKey' \
 --data-raw '{
   "split": {
     "name": "copy_of_onboarding_flow",
@@ -735,7 +776,7 @@ You would kill the feature flag in the case of alerts showing performance proble
 ```bash
 curl --location --request POST 'https://api.split.io/internal/api/v2/changeRequests/ws/id-defaultProject-UUID/environments/id-prodEnv-UUID' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer $apiKey' \
+--header 'x-api-key: $apiKey' \
 --data-raw '{
   "split": {"name":"new_onboarding_flow"},
   "operationType":"KILL",
@@ -749,11 +790,60 @@ The response shows the proposed feature flag definition with a `split.killed` pr
 
 This same API call can be used to create a change request to RESTORE the killed feature flag to its state before the kill or ARCHIVE the feature flag to remove it from the environment entirely just by changing the operationType object property. 
 
-You’ve learned all about change requests via the Admin API in Split.
+## Schedule a change request
+
+By default, an approved change request executes immediately. To defer execution, include `scheduledFor` in the request body when you submit the change request. `scheduledFor` is a Unix timestamp in milliseconds marking the exact date and time the change executes. This applies to change requests for both segments and feature flags.
+
+Optionally, include `scheduledForTimezone` to control the time zone used to display that scheduled date and time in the Harness FME UI, for example to approvers reviewing the pending change. `scheduledForTimezone` does not shift the instant that `scheduledFor` represents; it only affects display. If omitted, Harness FME displays the scheduled time in `UTC`. The value must be a valid IANA time zone identifier, such as `America/New_York` or `Europe/London`; invalid time zones are rejected.
+
+For example, this UPDATE change request schedules the rollout change for a future date and time:
+
+```bash title="Update Change Request Example" showLineNumbers {25-26}
+curl --location --request POST 'https://api.split.io/internal/api/v2/changeRequests/ws/id-defaultProject-UUID/environments/id-defaultEnvironment-UUID' \
+--header 'Content-Type: application/json' \
+--header 'x-api-key: $apiKey' \
+--data-raw '{
+  "split": {
+    "name": "copy_of_onboarding_flow",
+    "treatments": [ {"name": "on", "description": ""}, {"name": "off", "description": ""} ],
+    "defaultTreatment": "off",
+    "trafficAllocation": 100,
+    "rules": [
+      {
+       "buckets": [ {"treatment": "on", "size": 100} ],
+       "condition": {
+         "combiner": "AND",
+         "matchers": [ {"type": "IN_SEGMENT", "string": "employees"} ]
+        }
+      }
+   ],
+   "defaultRule": [ {"treatment": "on", "size": 90}, {"treatment": "off", "size": 10} ]
+ },
+ "operationType": "UPDATE",
+ "title": "New rollout split percentage",
+ "comment": "updated rollout percentage",
+ "approvers": [],
+ "scheduledFor": 1786201200000,
+ "scheduledForTimezone": "America/Los_Angeles"
+}'
+```
+
+### Status lifecycle for scheduled change requests
+
+A change request submitted with scheduling follows a different status lifecycle than a standard change request. The action you take to approve it is the same in both cases; only the status Harness FME reports back differs:
+
+| Stage | Standard change request | Scheduled change request |
+|---|---|---|
+| Submitted | `REQUESTED` | `SCHEDULE_REQUESTED` |
+| Approved | `APPROVED` | `SCHEDULED` |
+| Executed | `PUBLISHED` | `PUBLISHED` |
+
+A pending scheduled change request returns `"status": "SCHEDULE_REQUESTED"` instead of `"status": "REQUESTED"`. Approve a scheduled change request the same way you approve a standard one: send a PUT request with `"status":"APPROVED"` in the body. Harness FME then reports the change request's status as `SCHEDULED`, not `APPROVED`, and it remains `SCHEDULED` until the scheduled time arrives, at which point it executes and moves to `PUBLISHED`.
 
 ## Troubleshooting
 
-### Posting a change request fails when the approver is specified
+<details>
+<summary>Posting a change request fails when the approver is specified</summary>
 
 When [submitting a change request](https://docs.split.io/reference#create-change-request) while using the Admin REST API to specify the approver contact, the request fails with a `400` error.
 
@@ -761,7 +851,7 @@ When [submitting a change request](https://docs.split.io/reference#create-change
 {"code":400,"message":"Something was wrong","details":"","transactionId":"xxxxxxx"}
 ```
 
-This error is possible if the approver option is set in the environment that has the feature flag. When approvers are pre-selected, it is not allowed to specify an approver when submitting the change request, similarly to when submitting the change from Split user interface; the approver edit box will be greyed out.
+This error is possible if the approver option is set in the environment that has the feature flag. When approvers are pre-selected, it is not allowed to specify an approver when submitting the change request, similarly to when submitting the change from the Harness FME user interface; the approver edit box will be greyed out.
 
 Verify if the feature flag definitions belong to an environment that has approvers set in its permissions. If so, remove the approver contact and leave the approvers array empty in the JSON payload.
 
@@ -770,6 +860,8 @@ For example:
 ```bash
 "approvers":[]
 ```
+
+</details>
 
 ## See also
 
