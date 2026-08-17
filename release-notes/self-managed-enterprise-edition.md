@@ -476,7 +476,9 @@ upgrades:
 :::warning Important
 Customers using **Security Testing Orchestration (STO)** who upgrade from SMP **0.43.x** to **0.44.0** can encounter a database migration failure that prevents `sto-core` from starting, which stops STO scans from running.
 
-To resolve this, run the following query against the STO PostgreSQL database:
+To resolve this issue, upgrade to SMP **0.44.1**.
+
+If you cannot upgrade immediately, run the following query against the STO PostgreSQL database as a temporary workaround:
 
 ```sql
 UPDATE schema_migrations
