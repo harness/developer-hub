@@ -1,5 +1,12 @@
 [
   {
+    "flagKey": "CCM_COMMITMENT_V1",
+    "description": "Enables the enhanced Commitment Orchestrator experience (V2) in Cloud & AI Cost Management, providing a redesigned interface for managing cloud commitment purchases and coverage.",
+    "gaStartDate": "2026-08-17",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Beta"
+  },
+  {
     "flagKey": "COST_INTEGRATION",
     "description": "Enables Cloud Cost Management (CCM) Integration on IaCM workspaces, displaying actual monthly infrastructure costs and cost optimization recommendations sourced from Harness CCM on the workspace Overview tab.",
     "gaStartDate": "2026-08-10",
