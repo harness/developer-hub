@@ -44,11 +44,11 @@ Go to [Migrate from NGINX Ingress to Envoy Gateway](/docs/self-managed-enterpris
 
 :::warning Announcement: PostgreSQL 14 deprecation
 
-PostgreSQL 14 will reach end of life on November 12, 2026. Harness Self-Managed Enterprise Edition will continue to support PostgreSQL 14 through **0.47.0**. Starting with **0.48.0**, PostgreSQL 14 support will be deprecated.
+PostgreSQL 14 will reach end of life on November 12, 2026. Starting with the November release, Harness Self-Managed Enterprise Edition will no longer support PostgreSQL 14.
 
-To remain on a supported version, upgrade the Harness-provided in-cluster PostgreSQL database from version 14 to version 16 before you upgrade to 0.48.0 or later.
+To stay on a supported version, upgrade your Harness-provided in-cluster PostgreSQL database from version 14 to version 16 before you upgrade to the November release.
 
-Go to [Upgrade PostgreSQL 14 to 16](/docs/self-managed-enterprise-edition/advanced-configurations/upgrade-postgresql-14-to-16) to upgrade the in-cluster PostgreSQL database.
+Go to [Upgrade PostgreSQL 14 to 16](/docs/self-managed-enterprise-edition/advanced-configurations/upgrade-postgresql-14-to-16) to complete the upgrade.
 :::
 
 :::warning Announcement 
