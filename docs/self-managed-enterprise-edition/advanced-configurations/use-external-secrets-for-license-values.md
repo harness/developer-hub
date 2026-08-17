@@ -32,7 +32,7 @@ The following values are available in `global.license.secrets.kubernetesSecrets`
 
 ## Configure an external secret as a Harness license value
 
-To configure a Kubernetes-based external secret as a a NextGen Harness license value, do the following:
+To configure a Kubernetes-based external secret as a NextGen Harness license value, do the following:
 
 1. Create a Kubernetes secret that includes your NextGen Harness license.
 

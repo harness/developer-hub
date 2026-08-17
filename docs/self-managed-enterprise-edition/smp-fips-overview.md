@@ -224,7 +224,7 @@ To enable FIPS mode in your Harness SMP, modify the `values.yaml` (or `override.
       fips: true
     ```
 ### Configure passwords for databases.
-Database passwords must be atleast 14 characters long to be FIPS compliant.
+Database passwords must be at least 14 characters long to be FIPS compliant.
 
 1. Create secrets to store database passwords
     ```bash

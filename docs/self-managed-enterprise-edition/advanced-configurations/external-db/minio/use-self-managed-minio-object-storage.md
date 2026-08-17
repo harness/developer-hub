@@ -301,7 +301,7 @@ To configure your MinIO servers, do the following:
 
    # Set to the URL of the load balancer for the MinIO deployment
    # This value *must* match across all MinIO servers. If you do
-   # not have a load balancer, set this value to to any *one* of the
+   # not have a load balancer, set this value to any *one* of the
    # MinIO hosts in the deployment as a temporary measure.
    MINIO_SERVER_URL="http://<external-ip-of-nginx-vm>"
    MINIO_BROWSER=on

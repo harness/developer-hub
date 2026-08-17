@@ -169,7 +169,7 @@ To configure Harness to use AWS S3 for log storage using static credentials you 
 ### Option 2: Configure Harness - Using IAM Role for Service Accounts (IRSA)
 
 :::info
-Prequisites: Your cluster must have an OIDC provider configured.
+Prerequisites: Your cluster must have an OIDC provider configured.
 If not you can follow the [Configure OIDC Provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html) guide to configure it.
 :::
 
