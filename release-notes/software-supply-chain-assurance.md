@@ -35,6 +35,10 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
   <DocImage path={require('./static/scs/gitlab-integration.png')} width="70%" height="70%" title="Click to view full size image" />
 
+- Artifact Registry (AR) integration for [artifact signing](/docs/software-supply-chain-assurance/artifact-security/sign-verify/sign-artifacts#container-images) and [verification](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#container-images) steps is now **Generally Available (GA)**.
+
+  <DocImage path={require('./static/scs/artifact-registry-signing.png')} width="70%" height="70%" title="Click to view full size image" />
+
 #### Fixed Issues
 
 - Fixed an issue where Repository Security Posture Management (RSPM) APIs did not consistently enforce role-based access control (RBAC) across project, organization, and account scopes, allowing unauthorized access in certain scenarios.
@@ -89,8 +93,6 @@ These release notes describe recent changes to Harness Supply Chain Security.
   <DocImage path={require('./static/scs/generate-slsa-non-container-image.png')} width="70%" height="70%" title="Click to view full size image" />
 - Added support for [keyless signing](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa#attest-slsa-provenance) and [verification](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa#verify-slsa-attestation) using OIDC-based identity, removing the need to manage long-lived cryptographic keys. It supports AWS, GCP, and Azure OIDC providers and works across SCS workflows, including artifact signing, SBOM, and SLSA attestation and verification.
   <DocImage path={require('./static/scs/attest-slsa-keyless.png')} width="70%" height="70%" title="Click to view full size image" />
-- Artifact Registry (AR) integration for [artifact signing](/docs/software-supply-chain-assurance/artifact-security/sign-verify/sign-artifacts#container-images) and [verification](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#container-images) steps is now **Generally Available (GA)**.
-  <DocImage path={require('./static/scs/artifact-registry-signing.png')} width="70%" height="70%" title="Click to view full size image" />
 - Added support for [cdxgen CLI flags](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts#use-cdxgen) to customize SBOM generation across scan scope, dependency resolution, and output behavior.
   
   <DocImage path={require('./static/scs/cli-flags-sbom.png')} width="70%" height="70%" title="Click to view full size image" />
