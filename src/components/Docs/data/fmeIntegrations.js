@@ -11,6 +11,7 @@ function chunkArray(array, size) {
 export const supportedModules = [
   { name: "Harness IDP", img: "/img/icon_idp.svg", link: "/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme" },
   { name: "Harness CD", img: "/img/icon_cd.svg", link: "/docs/feature-management-experimentation/pipelines" },
+  { name: "Terraform Provider", img: "/provider-logos/fme-integrations/terraform-logo.png", link: "/docs/feature-management-experimentation/integrations/terraform" },
 ];
 
 export const supportedWorkflows = [
@@ -56,7 +57,6 @@ export const supportedCommunity = [
   { name: "PagerDuty", img: "/provider-logos/fme-integrations/pagerduty-logo.png", link: "/docs/feature-management-experimentation/integrations/pagerduty" },
   { name: "Quantum Metric", img: "/provider-logos/fme-integrations/quantummetric-logo.png", link: "/docs/feature-management-experimentation/integrations/quantummetric" },
   { name: "SessionCam", img: "/provider-logos/fme-integrations/sessioncam-logo.png", link: "/docs/feature-management-experimentation/integrations/sessioncam" },
-  { name: "Terraform Provider", img: "/provider-logos/fme-integrations/terraform-logo.png", link: "/docs/feature-management-experimentation/integrations/terraform" },
 ];
 
 export const Section = ({ title, items, perRow = 6, rowSpacing = '32px', description }) => {
