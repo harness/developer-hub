@@ -432,7 +432,7 @@ steps:
       listWorkspace: true
 ```
 
-### 7. `debug:wait`
+### 6. `debug:wait`
 This action is used to add a **waiting period** for certain time. 
 
 #### Inputs
