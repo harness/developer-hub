@@ -24,8 +24,7 @@ There are different entities within our Harness IDP data model. However, softwar
 * **APIs**: Boundaries between different components.
 * **Resources**: Physical or virtual infrastructure needed to operate a component.
 * **Systems**: High-level organizational units that group related components, APIs and resources.
-* **Groups**: Custom user groups representing team structures, departments, or any organizational unit.
-
+* **Teams**: Organizational units such as squads, teams, or departments.
 
 ![](../../static/intro-system.png)
 
@@ -78,18 +77,18 @@ A **User** entity represents a person or an automated account which has authenti
 
 A **Platform User Group** entity represents a collection of related Users which have authentication details stored and are synchronized from an identity provider (LDAP, SCIM, SSO). These are typically used for role-based access control.
 
-### Custom user groups
+### Teams
 
-New in IDP 2.0, **Custom User Groups** are created and managed entirely within IDP as first-class entities. Unlike platform user groups, custom groups can be enriched with additional metadata like team lead, region, or other organizational information. Custom groups support hierarchical relationships through parent-child connections and serve as a source of truth for organizational structure within IDP.
+**Teams** model your organization inside IDP. A Team can carry members, sit in a parent-child hierarchy, and be marked as the owner of catalog entities. Teams can be enriched with metadata such as leader, region, or contact details.
 
-Custom User Groups can:
+Teams can:
 * Have members (users)
 * Be organized in hierarchies with parent-child relationships
 * Own components, systems, and other entities
 * Be enriched with metadata for better context
+* Grant access to the entities they own
 
-For more details on Custom User Groups, refer to the [detailed docs](/docs/internal-developer-portal/catalog/data-model/user-group.md).
-
+For more details on Teams, refer to the [detailed docs](/docs/internal-developer-portal/catalog/teams/overview).
 Roles and resource groups can be assigned directly to users or inherited from user groups. Here is how you can [add users](/docs/platform/role-based-access-control/add-users/) in Harness IDP.
 
 You can [add users manually](/docs/platform/role-based-access-control/add-users#add-users-manually) or through [automated provisioning](/docs/platform/role-based-access-control/add-users#use-automated-provisioning). User groups can be created at all scopes.
@@ -140,7 +139,7 @@ With IDP 2.0, you can create resources at any scope: **Account**, **Org**, or **
 | **Scorecards** | ✅                 | ❌             | ❌                 | Only supported at the Account scope currently. Org/Project scope support is planned in the future roadmap. |
 | **Layouts**    | ✅                 | ❌             | ❌                 | Supported only at the Account scope currently. Org/Project scope support is planned.                       |
 | **Plugins**    | ✅                 | ❌             | ❌                 | Plugins can be created and configured only at the Account scope.                                           |
-| **Custom User Groups**    | ✅                 | ❌             | ❌                 | Custom User Groups can be created and managed only at the Account scope.                                   |
+| **Teams**    | ✅                 | ✅             | ✅                 | Teams can be created at all scopes. A Team can have sub-teams in its own scope or any child scope.                                   |
 
 ---
 
@@ -163,9 +162,9 @@ This design reduces redundancy in YAML definitions, prevents manual errors, and 
 
 ### 1. `ownedBy` and `ownerOf`
 
-An ownership relation where the owner is typically a [User Group](/docs/platform/role-based-access-control/add-user-groups/).
+An ownership relation where the owner is typically a [Team](/docs/internal-developer-portal/catalog/teams/overview).
 
-In IDP, the owner is the single entity (usually a User Group in Harness) responsible for the entity, with the authority and capability to maintain it. They act as the point of contact for issues or feature requests. This relation primarily serves display purposes in IDP, allowing users to understand ownership. It should not be used by automated systems for runtime authorization. While others may contribute to the entity, there is always one designated owner.
+In IDP, the owner is the single entity responsible for the entity, with the authority and capability to maintain it. The owner acts as the point of contact for issues or feature requests. When the owner is a Team, this relation also backs access control: users who hold `View`, `Create/Edit`, or `Delete` permission on the owning Team hold the same permission on the entities that Team owns. Creating a new catalog entity is never inherited and always requires Catalog Create/Edit permission at the entity's scope. This inheritance does not apply to Workflows, Environments, or Environment Blueprints. Go to [Team access control](/docs/internal-developer-portal/catalog/teams/team-access-control) for details.
 
 This relation is typically generated based on the `spec.owner` field of the owned entity.
 
@@ -195,17 +194,26 @@ Typically generated from the `spec.dependsOn` field.
 
 ### 5. `parentOf` and `childOf`
 
-A parent-child relation used to construct trees, commonly for organizational structures among [User Groups](/docs/platform/role-based-access-control/add-user-groups/).
+A parent-child relation used to construct trees, commonly for organizational structures among [Teams](/docs/internal-developer-portal/catalog/teams/overview).
 
 Typically based on the `spec.parent` and/or `spec.children` fields.
 
 ### 6. `memberOf` and `hasMember`
 
-A membership relation, usually for users in [User Groups](/docs/platform/role-based-access-control/add-user-groups/).
+A membership relation, usually for users in [Teams](/docs/internal-developer-portal/catalog/teams/overview).
 
 Typically based on the `spec.memberOf` field.
 
-### 7. `partOf` and `hasPart`
+### 7. `leaderOf` and `hasLeader`
+
+A leadership relation between a [Team](/docs/internal-developer-portal/catalog/teams/overview) and the user who leads it.
+
+* `hasLeader`: Points from the Team to the user who leads it.
+* `leaderOf`: Points from the user back to the Team they lead.
+
+This relation is generated when the **Leader** field is set on a Team.
+
+### 8. `partOf` and `hasPart`
 
 A relation with a Domain, System or Component entity, typically from a Component, API, System, or Domain.
 

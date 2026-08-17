@@ -1165,8 +1165,6 @@ Take control of your organizational structure with IDP 2.0's powerful new Custom
 * **Intuitive hierarchical relationships** - Build parent-child connections between teams and departments with automatic bi-directional linking
 * **Complete UI and YAML support** - Create groups through the intuitive UI or via standard YAML definitions
 
-[Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/data-model/user-group#idp2.0)
-
 ### [New Feature] Support for Bitbucket Access Token Authentication Mode
 
 Harness IDP now supports the **[Access Token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/)** authentication mode for the [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings). This mode not only provides a secure way to access Bitbucket repositories but also enables **higher API rate limits**, which is a critical use case for Harness IDP. This authentication mode is supported across the following IDP features:

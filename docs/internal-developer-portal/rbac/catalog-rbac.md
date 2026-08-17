@@ -38,6 +38,12 @@ These permissions can be configured when [creating a custom role](/docs/platform
 
 <img width="850" alt="Image" src="https://github.com/user-attachments/assets/28bbaebe-a480-4141-b118-250c45771bc5" />
 
+## Access through team ownership
+
+A user can view, edit, or delete a Catalog entity through a direct Catalog permission at the entity's scope, or through the same permission on the [Team](/docs/internal-developer-portal/catalog/teams/overview) that owns it. Either one is sufficient. However, creating a new entity always requires Catalog Create/Edit permission at the entity's scope and is never inherited from a Team.
+
+Go to [Team access control](/docs/internal-developer-portal/catalog/teams/team-access-control) to configure ownership-based access.
+
 ## Catalog RBAC example
 
 ### Configure RBAC for Account-Level catalog entity creation

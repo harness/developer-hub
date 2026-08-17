@@ -469,6 +469,84 @@ For example, if you have an aggregation rule that creates `metadata.Avg Deployme
 - Use `NAME_COLUMN` for the entity name column in aggregated tables
 - `accessorKey` references the original property from child entities
 
+
+## Team entity layouts \{#team-entity-layouts}
+
+[Team](/docs/internal-developer-portal/catalog/teams/overview) pages have their own layout. Go to **Configure** → **Layout** → **Catalog Entities**, and under **Human based Entities** select **Team**.
+
+Team layouts support these components in addition to the standard catalog components.
+
+#### SubTeamsCard
+
+Lists the sub-teams belonging to the Team.
+
+```yaml
+- component: SubTeamsCard
+```
+
+#### TeamMembersCard
+
+Lists the individual users belonging to the Team.
+
+```yaml
+- component: TeamMembersCard
+```
+
+#### TeamsEntityListCard
+
+Lists every catalog entity owned by the Team and by its sub-teams.
+
+```yaml
+- component: TeamsEntityListCard
+```
+
+<details>
+<summary>Default Team layout</summary>
+
+```yaml
+page:
+  name: EntityLayout
+  tabs:
+    - name: Overview
+      path: /
+      title: Overview
+      contents:
+        - component: SubTeamsCard
+          specs:
+            gridProps:
+              md: 12
+        - component: TeamMembersCard
+          specs:
+            gridProps:
+              md: 12
+        - component: HarnessEntityRelationsCard
+          specs:
+            gridProps:
+              md: 12
+    - name: relations
+      path: /relations
+      title: Relations
+      contents:
+        - component: SystemExplorerTabContent
+    - name: Entities
+      path: /entities
+      title: Owned Entities
+      contents:
+        - component: TeamsEntityListCard
+    - name: Members
+      path: /member
+      title: Member
+      contents:
+        - component: SubTeamsCard
+        - component: TeamMembersCard
+```
+
+</details>
+
+:::info
+The default Team layout does not include scorecard or aggregated metric components. Go to [Team metrics and scorecards](/docs/internal-developer-portal/catalog/teams/team-metrics-and-scorecards#show-metrics-and-scores-on-the-team-page) to add them.
+:::
+
 ## Troubleshooting
 
 - Component Not Rendering: Check for correct `props`.

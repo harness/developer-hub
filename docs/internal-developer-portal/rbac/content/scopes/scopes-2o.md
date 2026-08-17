@@ -46,6 +46,7 @@ With IDP 2.0, you can create resources at any scope: **Account**, **Org**, or **
 | **Plugins**    | <ul><li>View</li><li>Create/Edit</li><li>Toggle</li><li>Delete</li></ul>  | ✅                 | ❌             | ❌                 | Plugins can be created and configured only at the Account scope.                                   |
 | **Environment Blueprints** | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>     | ✅                 | ❌             | ❌                 | Environment Blueprints are created at the Account scope and can be used to provision environments at the Project scope. |
 | **Environments** | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>               | ❌                 | ❌             | ✅                 | Environments are created at the Project scope using Environment Blueprints defined at the Account scope. |
+| **Teams**    | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>                 | ✅                 | ✅             | ✅                 | Teams can be created and managed at all scopes. A permission on a Team also applies to the catalog entities that Team owns.                     |
 
 You can configure RBAC for each resource with different permissions and create reusable resource groups to apply those permissions. Learn more about [Platform RBAC](/docs/platform/role-based-access-control/rbac-in-harness/).
 
@@ -94,6 +95,7 @@ You can include:
 #### IDP resource groups
 For IDP, resource groups can include:
 * Catalog
+* Teams
 * Workflow
 * Layouts
 * Scorecards

@@ -7,6 +7,10 @@ sidebar_position: 3
 With the release of **Granular RBAC in IDP 2.0**, you can now control access to **Workflows** in your Harness IDP. This means you can restrict who can **create** and **execute** Workflows across your IDP setup. Workflows can be created at all available scopes: **Account**, **Organization**, or **Project**.
 To learn more about permissions and scopes, visit the [IDP 2.0 Data Model](/docs/internal-developer-portal/catalog/data-model).
 
+:::info
+Workflow access is governed by Workflow permissions only. Ownership by a [Team](/docs/internal-developer-portal/catalog/teams/overview) does not grant access to Workflows, Environments, or Environment Blueprints.
+:::
+
 ## RBAC workflow in Harness IDP
 
 Before configuring RBAC for Workflows, ensure you’ve reviewed the [Scopes](/docs/internal-developer-portal/rbac/scopes#scopes), [Permissions](/docs/internal-developer-portal/rbac/scopes#permissions--resources), and [RBAC Components](/docs/internal-developer-portal/rbac/scopes#rbac-components).

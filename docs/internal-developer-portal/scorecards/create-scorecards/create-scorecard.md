@@ -63,6 +63,11 @@ Follow these steps to add Scorecards to your catalog entities:
 
 ![](./static/tabs-scorecard.png)
 
+
+:::info
+Team entity layouts do not include the scorecard components by default. To see scorecard results on Team pages, add `EntityScoreCard` and `EntityScorecardContent` to the Team layout.
+:::
+
 ---
 
 ## Create a scorecard
@@ -85,7 +90,7 @@ Once you have enabled the Scorecard components, follow these steps to create you
    
    Apply filters to specify which Catalog entities the scorecard should evaluate:
 
-   - **Kind** (mandatory): Select the entity `kind` (e.g., Component, Service)
+   - **Kind** (mandatory): Select the entity `kind` (e.g., Component, Service, Teams)
    - **Type** (mandatory): Select the `type` for the chosen kind
    - **Owners** (optional): Select specific entity owners to evaluate
    - **Tags** (optional): Filter entities by tags

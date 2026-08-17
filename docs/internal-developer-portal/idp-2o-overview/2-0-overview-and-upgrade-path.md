@@ -18,7 +18,7 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 | [**RBAC and Project/Org Hierarchy**](/docs/internal-developer-portal/rbac/scopes)                     | ✅ (Ready to onboard) |
 | [**Git Experience (YAML files in Git)**](/docs/internal-developer-portal/git-experience/gitx-journey) | ✅ (Ready to onboard) |
 | [**New System Entity for grouping**](/docs/internal-developer-portal/catalog/data-model/system-entity)           | ✅ (Ready to onboard)  |
-| [**Custom User Groups**](/docs/internal-developer-portal/catalog/data-model/user-group)                   | ✅ (Ready to onboard)  |
+| [**Teams**](/docs/internal-developer-portal/catalog/teams/overview)                   | ✅ (Ready to onboard)  |
 | [**Project/Org filters in Scorecards**](/docs/internal-developer-portal/scorecards/scorecard#create-a-scorecard)                                                                | ✅ (Ready to onboard)        |
 
 :::
@@ -334,17 +334,17 @@ The "Create Catalog" and "Register Catalog" steps previously used in IDP pipelin
 
 You can now directly use Harness IDP Catalog APIs to register new entities using YAML definitions without Git operations. A dedicated step for this functionality will be available soon.
 
-### Custom user groups
+### Teams
 
-Harness IDP 2.0 supports Custom User Groups as first-class catalog entities! These groups differ from platform user groups synced from identity providers and offer several advantages:
+Harness IDP supports Teams as first-class catalog entities. Teams model your organization inside the portal and connect people to the software they own:
 
-* Create organizational groups directly in the IDP interface or via YAML definitions
-* Model parent-child hierarchical relationships between teams and departments
-* Enrich groups with metadata like team lead, region, and contact information
-* Assign ownership of components, systems, and other catalog entities to custom groups
-* Make IDP your source of truth for team modeling and organizational structure
+* Create Teams directly in the IDP interface or through YAML definitions
+* Model parent-child relationships between Teams and sub-teams
+* Enrich Teams with metadata such as leader, region, and contact information
+* Assign ownership of components, systems, and other catalog entities to a Team
+* Grant access to catalog entities through the Team that owns them
 
-Custom User Groups are created at the account level and coexist with platform user groups. [Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/data-model/user-group).
+Teams can be created at the Account, Organization, or Project scope. [Learn more about Teams](/docs/internal-developer-portal/catalog/teams/overview).
 
 ## Feature compatibility matrix (1.0 vs 2.0)
 
@@ -395,7 +395,7 @@ Custom User Groups are created at the account level and coexist with platform us
 | Entity CRUD APIs                     | ❌      | ✅      | Entities can be created, updated, and deleted using Harness APIs.                                                                                                                                              |
 | Catalog Ingestion APIs               | ✅      | ✅      |                                                                                                                                                                                                                |
 | Terraform Provider                   | ❌      | Planned |                                                                                                                                                                                                                |
-| Custom User Groups                   | ✅      | ✅      |                                                                                                                                                                                                                |
+| Teams                                | ✅      | ✅      |                                                                                                                                                                                                                |
 
 ## Timeline
 

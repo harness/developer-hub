@@ -38,7 +38,7 @@ Harness IDP supports several core entity types:
 - **[API](/docs/internal-developer-portal/catalog/data-model#idp2.0--api)**: REST APIs, GraphQL endpoints, or other programmatic interfaces
 - **[Resource](/docs/internal-developer-portal/catalog/data-model#idp2.0--resource)**: Databases, message queues, storage buckets, or infrastructure resources
 - **[System](/docs/internal-developer-portal/catalog/data-model#idp2.0--system)**: Logical groupings of related components, APIs, and resources
-- **[User Group](/docs/internal-developer-portal/catalog/data-model#idp2.0--custom-user-groups)**: Custom organizational units or teams that own and manage catalog entities 
+- **[Team](/docs/internal-developer-portal/catalog/teams/overview)**: Squads, departments, or other organizational units that own catalog entities 
 
 Each entity type has its own schema and metadata fields tailored to its specific purpose. For a comprehensive understanding of entity types, their structure, and relationships, refer to the [Catalog Data Model](/docs/internal-developer-portal/catalog/data-model).
 

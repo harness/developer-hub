@@ -14,7 +14,7 @@ tags:
 ---
 
 
-Aggregation rules roll up data from lower-level entities (such as services and components) to higher levels in your organizational hierarchy: project, organization, account, or system. The result is ingested as a new metadata property on the target hierarchy entity, which you can surface using a [StatsCard](/docs/internal-developer-portal/layout-and-appearance/catalog#statscard) in the catalog layout.
+Aggregation rules roll up data from lower-level entities (such as services and components) to higher levels in your organizational hierarchy: project, organization, account, system, or team. The result is ingested as a new metadata property on the target hierarchy entity, which you can surface using a [StatsCard](/docs/internal-developer-portal/layout-and-appearance/catalog#statscard) in the catalog layout.
 
 For each rule, you define what to aggregate, the formula (average, sum, median, min, or max), the hierarchy levels to roll up to, and the entity filters that determine which entities contribute.
 
@@ -54,6 +54,14 @@ The diagram below shows the problematic back-edge from A to G. Nodes A, C, and G
 ![Cyclic dependency in system-of-systems hierarchy](./static/agg-system-hierarchy-cyclic.svg)
 
 Always configure your system-of-systems hierarchy as a directed acyclic graph. If you are unsure whether your hierarchy has cycles, review your system definitions before creating aggregation rules that target the System roll-up scope.
+
+---
+
+## Team hierarchy
+
+When you select **Team** as a roll-up scope, the aggregation collects values from the entities each Team owns. Because Teams nest, values flow upward through the sub-team tree, so a parent Team reflects everything owned by the Teams below it.
+
+Go to [Team metrics and scorecards](/docs/internal-developer-portal/catalog/teams/team-metrics-and-scorecards) to set this up.
 
 ---
 

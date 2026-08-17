@@ -109,7 +109,7 @@ metadata:
 </details>
 
 <details>
-<summary>User Group YAML Example</summary>
+<summary>Team YAML Example</summary>
 
 ```yaml
 apiVersion: harness.io/v1
@@ -297,18 +297,21 @@ orgIdentifier: default
 
 ### `owner`
 
-The `owner` field indicates the owner of that entity and maps to Harness Users or User Groups depending on the scope.
+The `owner` field indicates the owner of that entity and maps to Harness Users or Teams depending on the scope.
 
 While `owner` is not mandatory, it is **strongly recommended** to associate entities with logical owning teams.
 
-:::important
-**Important Note on Owner Field and Permissions**
+:::info Owner field and permissions
 
-The `owner` field is only for indicating team ownership and organizational responsibility. It **does not** control catalog entity permissions or determine who can edit components. Actual access permissions are governed by platform-level RBAC (Role-Based Access Control), meaning users with the appropriate roles can edit entities regardless of this field's value.
+The `owner` field records organizational responsibility, and when the owner is a Team it also grants access. Users who hold View, Create/Edit, or Delete permission on the owning Team hold the same permission on the entity. Direct catalog permissions granted at the entity's scope continue to apply independently of this field.
+
+A Team can be named as the owner of an entity only if the entity is in the same scope as the Team, or in one of the Team's child scopes. For example, a Team at the Organization scope can own entities in that organization and in its projects, but it cannot own entities at the Account scope.
+
+Go to [Team access control](/docs/internal-developer-portal/catalog/teams/team-access-control) for details.
 :::
 
-- At **Project scope**: any User/User Group from Project, Org, or Account can be assigned.  
-- At **Org scope**: assign Users/User Groups from Org or Account.  
+- At **Project scope**: any User or Team from Project, Org, or Account can be assigned.  
+- At **Org scope**: assign Users or Teams from Org or Account.  
 - At **Account scope**: assign from Account-level only.
 
 The `spec.owner` field supports multiple formats for defining ownership:
@@ -516,9 +519,9 @@ metadata:
 ---
 
 ### Kind: Group
-**Group** entities allow organizations to model their team structure directly within the IDP catalog. Custom User Groups extend the catalog model to include organizational teams and hierarchies as first-class entities, representing real-world structures such as teams, departments, or cross-functional squads.
+**Group** entities back the [Teams](/docs/internal-developer-portal/catalog/teams/overview) you see in the Catalog and in the **Teams** page. They let you model your organization inside IDP, including squads, departments, and cross-functional units, and they can be marked as the owner of other catalog entities.
 
-Unlike platform user groups which are synchronized from an identity provider (LDAP, SCIM, SSO), custom user groups are created and managed entirely within IDP, allowing for richer metadata and context.
+Set `type` to `team` for a standard Team. Go to [Creating a Team](/docs/internal-developer-portal/catalog/teams/create-a-team) for the create flow and the full field reference.
 
 #### Entity structure
 All the fields mentioned below are the parameters required to define a Group:
@@ -529,7 +532,7 @@ All the fields mentioned below are the parameters required to define a Group:
 | `kind` | **Group** |
 | `name` | Human-readable name for the group |
 | `identifier` | Unique identifier for the group |
-| `type` | Common values include `department`, `engineering` |
+| `type` | Common values include `team`, `squad`, `department` |
 
 #### Special spec fields
 

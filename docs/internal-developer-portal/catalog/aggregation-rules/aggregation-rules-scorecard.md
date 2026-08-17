@@ -62,6 +62,7 @@ Select the hierarchy levels where the aggregated value should be stored. You can
 | **Organization** | All matching entities within each organization |
 | **Project** | All matching entities within each project |
 | **System** | All matching entities associated with each system |
+| **Team** | All matching entities owned by each team and its sub-teams |
 
 :::info
 Each level is computed independently from the source entities. The account value is never derived by averaging project values. It is always computed fresh from source entities directly.

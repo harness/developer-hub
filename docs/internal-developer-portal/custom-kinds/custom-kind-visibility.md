@@ -38,6 +38,12 @@ Custom kind entities are fully supported in Scorecards. When creating a scorecar
 
 ---
 
+## Access control
+
+Custom kind entities fall under the Catalog resource and therefore inherit access from the Team that owns them, with a link.
+
+---
+
 ## Plugins and ingestion APIs
 
 [Plugins](/docs/internal-developer-portal/plugins/overview.md) that render on entity pages work with custom kind entities through the same annotation-driven approach used for built-in kinds. Add the relevant annotations to the entity's `metadata` block, then configure the plugin's visibility rules to include your custom kind.
