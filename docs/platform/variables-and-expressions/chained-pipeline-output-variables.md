@@ -22,7 +22,7 @@ At the **parent pipeline** level of the **pipeline reference stage**, head to th
 
 ![](./static/pipeline-outputs.png)
 
-You can define the outputs utlizing the Harness Expressions reference utility, as references within a chained pipeline can become complicated.  
+You can define the outputs utilizing the Harness Expressions reference utility, as references within a chained pipeline can become complicated.  
 
 For example, a variable referenced within the chained pipeline such as `<+serviceVariables.SampleVariable>` will need to be referred as `<+pipeline.stages.[ChildStageName].spec.serviceVariables.SampleVariable>`
  

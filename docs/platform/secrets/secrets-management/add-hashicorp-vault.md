@@ -101,8 +101,8 @@ To add a Connector:
 
             Let’s assume we have set a 15 min TTL. The token is cached for one pipeline during those 15 minutes (minus 1 percent), but it is determined by the **delegate** which is being used with the connector.  If the delegate has been used previously with the connector within the 15 min, then a cached version of the Vault token will exist on the delegate.  
 
-            If we have three pipeline, and two delgates involved, the assignment in our example is:
-            - `Pipeline A` and `Pipeine C` use the delegate, `delegate-mumbai`
+            If we have three pipeline, and two delegates involved, the assignment in our example is:
+            - `Pipeline A` and `Pipeline C` use the delegate, `delegate-mumbai`
             - `Pipeline B` uses the delegate, `delegate-sanfran`
 
             We will see the following behavior for the Vault connector occur in the executions, along with the **unique refresh timer** for each delegate
@@ -162,7 +162,7 @@ To add a Connector:
 
       #### Custom Authentication Path for AppRole Login
 
-         :::note Feature Availablity
+         :::note Feature Availability
          This feature is supported on delegate version `837xx` and above.
          :::
 
@@ -255,7 +255,7 @@ To add a Connector:
 
    ### Option: JWT/OIDC Auth
 
-      :::note Feature Availablity
+      :::note Feature Availability
       This feature is supported with [Delegate version](/release-notes/delegate): 25.02.85100 and above.
       :::
 

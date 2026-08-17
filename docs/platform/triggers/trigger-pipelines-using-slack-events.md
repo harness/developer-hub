@@ -11,7 +11,7 @@ Triggers enable event-driven CI/CD and support practices like building and/or de
 
 :::important note
 
-Currently this feature is behing the Feature Flag `CDS_EVENT_BRIDGE_WEBHOOK` and `CD_TRIGGERS_REFACTOR`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+Currently this feature is behind the Feature Flag `CDS_EVENT_BRIDGE_WEBHOOK` and `CD_TRIGGERS_REFACTOR`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 
 :::
 
@@ -28,7 +28,7 @@ Steps to Create a Slack Webhook
 3. Enter a **Name** for the webhook.
 4. Select the type of the webhook. In this case, **Slack**.
 5. For Auth type, we have two options
-   **No Auth** if you have authentication to your source. no additional configuration is reqired.
+   **No Auth** if you have authentication to your source. no additional configuration is required.
    **HMAC** for Hash-Based Message Authentication Code authentication
 
 ![](./static/slack-webhook-1.png)
@@ -57,7 +57,7 @@ Select the Slack webhook you created earlier.
 Click on **Continue**.
 
 
-5. In the **Conditions** page, give the approproate **Header Conditions** and **Payload Conditions**.
+5. In the **Conditions** page, give the appropriate **Header Conditions** and **Payload Conditions**.
 Click on **Continue**.
 
 6. In the **Pipeline Input** page, you can provide any Pipeline input variables as per your requirement.

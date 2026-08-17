@@ -98,7 +98,7 @@ If you are using Kubernetes version 1.30 or higher, ensure the following steps a
 
     ```
     harness:
-        ## Othe Key Above
+        ## Other Key Above
         override_files: 
             - "<fullpath>/override.yaml"
     ```

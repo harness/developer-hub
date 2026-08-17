@@ -21,7 +21,7 @@ After configuration of the proxy alongside testing the connection using the comm
 wget -p https://app.harness.io/ -O /dev/null
 ```
 
-The response is successfull yet Delegate is not running and fails with the below error message
+The response is successful yet Delegate is not running and fails with the below error message
 
 ```
 Readiness probe failed:	Unhealthy	Aug 19, 2021, 1:14:57 PM	Aug 19, 2021, 1:34:37 PM	111	

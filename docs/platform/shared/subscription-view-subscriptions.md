@@ -4,7 +4,7 @@ In your Harness account, go to **Account Settings** to view which Harness module
 
 #### Subscriptions page
 
-For Developer 360 module subscriptions, the **Subscriptions** page displays the the developer license count (**Developers**), as well as the consumption entitlement, depending on the module's licensing unit.
+For Developer 360 module subscriptions, the **Subscriptions** page displays the developer license count (**Developers**), as well as the consumption entitlement, depending on the module's licensing unit.
 
 For example, consumption entitlement for CD could include **Services** or **Service Instances**.
 

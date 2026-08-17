@@ -218,7 +218,7 @@ In this, under the first insert block we have added one Shell Script step. Now, 
 
 ![](./static/inject_stage_template_with_step.png)
 
-If no actions are provided in the insert block the pipeline will proceed without any additonal steps and stages. 
+If no actions are provided in the insert block the pipeline will proceed without any additional steps and stages. 
 
 For example, in the below yaml, we have used this stage template  in the pipeline with 2 insert blocks and we have not added any additional steps in it:-
 

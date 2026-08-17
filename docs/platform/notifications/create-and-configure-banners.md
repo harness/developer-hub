@@ -36,7 +36,7 @@ To create a banner in Harness, you need a role with create banner [permissions](
 
 1. Choose a Banner Type: Select one of the four types based on the message’s urgency.
     - **Informational**: For general updates.
-    - **High**: For critical events like **downtime annoucements**.
+    - **High**: For critical events like **downtime announcements**.
     - **Medium**: For warnings or important notices.
     - **Low**: To highlight key points.
 

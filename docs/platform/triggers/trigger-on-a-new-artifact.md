@@ -116,7 +116,7 @@ Review the following behavior and recommendations before you create an artifact 
   :::
 
 - **Allow time for polling to start**: Whenever a trigger is created or updated, it takes about five to ten minutes for the polling job to start and for the trigger to be in a working state. Harness recommends that you wait five to ten minutes after a trigger is created or updated before you push the artifact.
-- **Polling and disabled triggers**: Polling stops when you disable a trigger. Artifact polling restarts after you reenable the trigger. Harness recommends that you submit a tag or push an artifact and verify the flow, because this is treated as a new polling job.
+- **Polling and disabled triggers**: Polling stops when you disable a trigger. Artifact polling restarts after you re-enable the trigger. Harness recommends that you submit a tag or push an artifact and verify the flow, because this is treated as a new polling job.
 - **Use lexically sortable tags**: Due to a Docker API limitation, image build numbers and tags are always listed in lexical order. To ensure that executions are triggered with the image pushed last, a best practice is to create build numbers or tags that can be sorted lexically using their creation date. With this method, higher build numbers are assigned for later creation dates, which ensures that the image pushed last is used when more than one image is pushed over a short period, such as less than five minutes.
 
 ---

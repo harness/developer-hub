@@ -289,7 +289,7 @@ Yes, for more information, go to:
 
 ### Can you link the docs to the API endpoint used to authorize a user with API token?
 
-Harness has an API to to check whether you perform authorization using bearer or API key token. For more information, go to [Get access control list](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList) in the API documentation. For API token categories: Service Account vs. Personal access tokens, go to [Add and manage API keys](/docs/platform/automation/api/add-and-manage-api-keys/).
+Harness has an API to check whether you perform authorization using bearer or API key token. For more information, go to [Get access control list](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList) in the API documentation. For API token categories: Service Account vs. Personal access tokens, go to [Add and manage API keys](/docs/platform/automation/api/add-and-manage-api-keys/).
 
 ### How can I set my API key to expire in 24 hours?
 
@@ -611,7 +611,7 @@ To verify whether your account has SSO enabled, do the following:
 
 1. Sign in to `https://app.harness.io/auth/#/signin` with your username and password.
    If you have forgotten your password, use the reset password option. After you log in, you can access your demo account.
-2. Use the switch option. For more information, go to [Switch account](/docs/platform/authentication/switch-account/). Harness will prompt you for for SSO.
+2. Use the switch option. For more information, go to [Switch account](/docs/platform/authentication/switch-account/). Harness will prompt you for SSO.
 3. Set the account as the default. The next time you sign in, you can use the SSO option.
 
 ### How do I capture SAML Tracer information?
@@ -1831,7 +1831,7 @@ The following error usually occurs with an encryption mismatch on the secret.  A
 
 Customer should bash into their delegate, and attempt to run `ssh -vvv -i '/path/to/keyfileondelegate' username@server`, where the keyfile is saved onto the delegate and can be referenced as a path.
 
-If there is an incompatibility, the customer may see an error message similar to the following, which indicates an expecation of a SHA1 key.
+If there is an incompatibility, the customer may see an error message similar to the following, which indicates an expectation of a SHA1 key.
 `Unable to negotiate with <ipaddress> port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1`
 
 Please note that our delegates JSCH are updated, and may not support legacy SHA keys that pose security hazards such as SHA1 keys.  

@@ -46,7 +46,7 @@ You can customize the favicon and logo by following the guidelines listed below.
 
 A favicon is an icon for a website that shows in your browser tabs, bookmarks, and shortcuts. The default favicon is the Harness logo. 
 
-Customize the apperance of the favicon by replacing it with your own favicon. You can use any image that is less than 50 KB in size, and the recommended dimensions are 32 × 32 px. 
+Customize the appearance of the favicon by replacing it with your own favicon. You can use any image that is less than 50 KB in size, and the recommended dimensions are 32 × 32 px. 
 
 :::note 
 Currently, custom favicons are not supported on the pipeline execution page. During pipeline execution, the favicon automatically switches to the Harness default to indicate status: green for success, red for failure, and blue for running, as shown in the image below. When you navigate away from the page, it reverts to your custom favicon.

@@ -436,7 +436,7 @@ Select **Pipeline Stages** to execute pipelines using triggers. This can be a fi
 
 ### Select pipeline stages and input sets as a fixed value
 
-If you select fixed value for pipeline stages, all stages in the pipeline are dispalyed. Select a stage or all stages that you want to execute using the trigger.
+If you select fixed value for pipeline stages, all stages in the pipeline are displayed. Select a stage or all stages that you want to execute using the trigger.
 
 For input sets, in **Pipeline Input**, select or create the input set to use when the trigger executes the pipeline.
 

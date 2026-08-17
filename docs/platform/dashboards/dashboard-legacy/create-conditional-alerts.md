@@ -43,7 +43,7 @@ The alert condition is represented by these components:
 	* **Increases by**
 	* **Decreases by**
 	* **Changes by** (a combination of **Increases by** and **Decreases by**)
-4. In **Where to send it**, enter the email address(es) of the recepients.
+4. In **Where to send it**, enter the email address(es) of the recipients.
 5. Set the frequency at which dashboard will check your data for changes to send an alert notification (if the alert conditions are met). These are the available frequency options:
 	* **Monthly** on a specified **Day** of the month (the default is the **1st** of the month) at a specified **Time** (the default is **05:00**)
 	* **Weekly** on a specified **Day** of the week (the default is **Sun** for Sunday) at a specified **Time** (the default is **05:00**)

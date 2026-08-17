@@ -158,7 +158,7 @@ The status values for pipelines, stages, and steps are Java enums. You can find 
 
 You can reference these status values in your JEXL conditions. These expressions must reference stages or steps that have already executed at [evaluation time](#values-must-be-available-at-resolution-time).
 
-* **Stage status:** To get a stage's status, use the the expression `<+pipeline.stages.STAGE_ID.status>`, such as:
+* **Stage status:** To get a stage's status, use the expression `<+pipeline.stages.STAGE_ID.status>`, such as:
 
    ```yaml
    <+pipeline.stages.somestage.status> == "FAILED"

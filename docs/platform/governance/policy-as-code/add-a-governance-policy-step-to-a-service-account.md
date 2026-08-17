@@ -59,7 +59,7 @@ After creating your policy, add it to a Policy Set before applying it to your Se
 
    In **Entity type**, select **Service Account**.
 
-   ![opa-service-setting](../../governance/policy-as-code/static/opa-name-description-entitiy-setup.png)
+   ![opa-service-setting](../../governance/policy-as-code/static/opa-name-description-entity-setup.png)
 
    In **On what event should the Policy Set be evaluated**, select **On save.** → **Continue**.
 

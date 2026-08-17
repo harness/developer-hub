@@ -104,7 +104,7 @@ To configure your credentials for Self-hosted Bitbucket provide:
 
 ![](./static/oauth-selfhosted-bitbucket-1.png)
 
-3. Select **Bitbucket** as a provier.
+3. Select **Bitbucket** as a provider.
 4. Enter the **Name** and **Domain URL** of the provider. 
 5. Specify the **Secret Manager**. This is where you have the access token related to the BitBucket stored.
 6. Specify the **Delegate Selector**. Click on continue.
@@ -122,7 +122,7 @@ Under **Connect to a Provider**, click on **Select a Provider**, CLick on **On-P
 
 ![](./static/oauth-selfhosted-bitbucket-3.png)
 
- Once you select **Alow** on the Bitbucket page, the access token will be created.
+ Once you select **Allow** on the Bitbucket page, the access token will be created.
 
 ### Configure OAuth for Self-hosted Gitlab provider
 
@@ -139,7 +139,7 @@ To configure your credentials for Self-hosted Gitlab provide:
 
 ![](./static/gitlab_on_prem.png)
 
-3. Select **Gitlab** as a provier.
+3. Select **Gitlab** as a provider.
 4. Enter the **Name** and **Domain URL** of the provider. 
 5. Specify the **Secret Manager**. This is where you have the access token related to the Gitlab stored.
 6. Specify the **Delegate Selector**. Click on continue.

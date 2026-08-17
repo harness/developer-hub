@@ -14,7 +14,7 @@ How to identify if the delegate is disconnected using api ?
 
 Delegate status can be seen in the UI however it always helps if there is a progrmatic way of get the status of the delegates along with some other delegate details.
 
-We have a graphql api fucntion that helps us provide such details. We can parse the response to get name , ip of the delegate version and connection status information.
+We have a graphql api function that helps us provide such details. We can parse the response to get name , ip of the delegate version and connection status information.
 
 Below is an example graphql api for the same:
 

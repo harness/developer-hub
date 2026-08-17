@@ -359,7 +359,7 @@ deny[msg] {
 
 The following outlines methods to restrict certain commands from being utilized within Shell Scripts or Run Steps.  These will apply to templates as well.  Please note that scripts that are used, but are stored in Harness File Store will not be evaluated as the only YAML informatil that exists within the pipeline will be a reference to the file, and not the content of the file.
 
-For this example, a customer wants to remove any possibility of running `Maven Debug proceses`.
+For this example, a customer wants to remove any possibility of running `Maven Debug processes`.
 
 ```
 package pipeline

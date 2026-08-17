@@ -13,7 +13,7 @@ The service account created via the delegate helm chart has the same as the dele
 
 ## Create Role
 
-Create a Role in the target namespace with the nessesary permissions launch container based steps:
+Create a Role in the target namespace with the necessary permissions launch container based steps:
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -43,7 +43,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: <delegate service account name>
-    namespace: <delegate namspace>
+    namespace: <delegate namespace>
 roleRef:
   kind: Role
   name: harness-container-steps

@@ -63,7 +63,7 @@ All triggers in a Harness account have the same URL: `https://app.harness.io/gat
 3. For **Connector**, select a [code repo connector](/docs/category/code-repo-connectors) for your SCM provider.
 
    - A connector is required for all Git trigger types except **Custom** and **Harness Code**. In the connector's **Credentials** settings, make sure API access is enabled and that the token has the [required permissions](#code-repo-connector-permissions-for-webhook-triggers).
-   - For **Custom** triggers, you must set up the external tool to send payloads to to the trigger URL. Refer to your tool's documentation for instructions on sending payloads.
+   - For **Custom** triggers, you must set up the external tool to send payloads to the trigger URL. Refer to your tool's documentation for instructions on sending payloads.
 
 4. For **Event**, select a [Git event type](./triggers-reference.md#event-and-actions), and, if required, select one or more **Actions**.
 5. Configure additional settings, such as **Auto-abort Previous Execution**, **Configure Secret**, and **Polling Frequency**, according to your desired trigger configuration.
@@ -444,7 +444,7 @@ For UI to render the branch name at the top of the pipeline executions, we must 
 ## Executions
 
 :::important note
-Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+Currently this feature is behind the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 :::
 
 The **My Executions** filter on the listing page displays both manual executions and those triggered automatically by Git events (PRs, Push, Issue Comments) i.e execution executed by their Git events as well as manually execution pipeline execution will appear in the My Execution list. 

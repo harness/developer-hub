@@ -68,7 +68,7 @@ After creating your policy, add it to a Policy Set before applying it to your Va
 
     Click **Continue** to proceed.
 
-   ![opa-variable-setting](./static/select-entitiy-variables.png)
+   ![opa-variable-setting](./static/select-entity-variables.png)
 
 ### Step 3: Select Policy evaluation criteria
 

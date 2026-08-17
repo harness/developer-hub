@@ -730,7 +730,7 @@ We do not have any limits on the number of variables that can be created per acc
 We provide pipeline notifications to alert users about approvals and other events Pipeline Notifications Documentation : https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/
 
 ### How can I access variables defined within a service, infrastructure, environment, or scope?
-To access variables in the the Service, Infrastructure and Environment. You can use our inbuilt variables https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference#service-expressions and You can get environment and Infrastructure expressions from here similar way in your pipeline.
+To access variables in the Service, Infrastructure and Environment. You can use our inbuilt variables https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference#service-expressions and You can get environment and Infrastructure expressions from here similar way in your pipeline.
 
 ### Could you please explain how delegate selection is handled in both Service and Infrastructure steps?
 The service will use the connector delegate selector during the artifact fetch task. The connector will employ a delegate or delegate selector as specified, and the same delegate will be used if no delegate selector is defined at the step, stage, or pipeline level. 

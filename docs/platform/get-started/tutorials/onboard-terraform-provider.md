@@ -34,7 +34,7 @@ terraform -version
 
 ### Get Your Harness Account ID 
 
-You will also need to provde your Harness accountId as an input parameter to the Provider. This accountId is present in every Harness URL. For example, in the following URL
+You will also need to provide your Harness accountId as an input parameter to the Provider. This accountId is present in every Harness URL. For example, in the following URL
 
 ```
 https://<harness-mgr-port>/ng/#/account/6_vVHzo9Qeu9fXvj-AcQCb/settings/overview

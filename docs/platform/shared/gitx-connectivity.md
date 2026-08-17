@@ -26,7 +26,7 @@ Any updates made during the downtime period will not be reflected in the executi
 Please note that while the cache remains effective, the cache's existence and each individual object's existence is reliant on a couple factors
 
 #### Overall Cache Existence
-The Harness webhook cache as a whole, will exist so long as the webhook for that particular cache remains unmodified.  For example, deleting, modifying, or disabling a webhook will cause the entire cache to be flushed, and therefore, all objects in the cache will disappear.   So for example, if a customer deletes a webhook while there is a connectivity error to the host respository, and attempts to re-create the webhook, the existing cache will be deleted and then a new cache will need to be built.
+The Harness webhook cache as a whole, will exist so long as the webhook for that particular cache remains unmodified.  For example, deleting, modifying, or disabling a webhook will cause the entire cache to be flushed, and therefore, all objects in the cache will disappear.   So for example, if a customer deletes a webhook while there is a connectivity error to the host repository, and attempts to re-create the webhook, the existing cache will be deleted and then a new cache will need to be built.
 
 This will mean that no executions can occur again until the cache is re-established
 

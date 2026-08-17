@@ -460,7 +460,7 @@ resource "harness_platform_environment" "environment" {
   identifier = "dev" ## Define Environment Identifier, this is unique to the project, org or account - where the environment will be created
   name       = "dev" ## This will be the name of the environment that you will see in Harness UI
   org_id     = "default" ## Optional if your creating at Account level
-  project_id = "cdproduct" ## optional if your creating at Org or Acount
+  project_id = "cdproduct" ## optional if your creating at Org or Account
   tags       = ["status:nonregulated", "owner:devops"]
   type       = "PreProduction"
   yaml = <<-EOT
@@ -468,12 +468,12 @@ resource "harness_platform_environment" "environment" {
          name: dev ## Name of the environment, similar to above
          identifier: dev ## Name of the environment
          orgIdentifier: default
-         projectIdentifier: cdproduct ## optional if your creating at Org or Acount, this is where the environment will be created
+         projectIdentifier: cdproduct ## optional if your creating at Org or Account, this is where the environment will be created
          type: PreProduction
          tags:
            status: nonregulated
            owner: devops
-         variables: ## You can configure global environment variable overides here
+         variables: ## You can configure global environment variable overrides here
            - name: port
              type: String
              value: 8080
@@ -731,7 +731,7 @@ resource "harness_platform_connector_helm" "helm" {
   name        = "bitnami"
   description = "bitnami helm connector"
   tags        = ["owner:dev"]
-  url                = "hhttps://charts.bitnami.com/bitnami"
+  url                = "https://charts.bitnami.com/bitnami"
   delegate_selectors = ["harness-delegate"]
 }
 ```

@@ -11,7 +11,7 @@ Triggers enable event-driven CI/CD and support practices like building and deplo
 
 :::important note
 
-Currently this feature is behing the Feature Flag `CDS_EVENT_BRIDGE_WEBHOOK` and `CD_TRIGGERS_REFACTOR`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+Currently this feature is behind the Feature Flag `CDS_EVENT_BRIDGE_WEBHOOK` and `CD_TRIGGERS_REFACTOR`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 
 :::
 
@@ -56,7 +56,7 @@ Click on **Continue**.
 
 ![](./static/generic-webhook-3.png) 
 
-5. In the **Conditions** page, give the approproate **Header Conditions** and **Payload Conditions**.
+5. In the **Conditions** page, give the appropriate **Header Conditions** and **Payload Conditions**.
 Click on **Continue**.
 
 6. In the **Pipeline Input** page, you can provide any Pipeline input variables as per your requirement.

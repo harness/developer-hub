@@ -449,7 +449,7 @@ If RBAC is required on the triggers in your environment, please review the [Harn
 ## Executions
 
 :::important note
-Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+Currently this feature is behind the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 :::
 
  **My Executions** filter on the listing page displays both manual executions and those triggered automatically by custom trigger i.e execution executed by custom trigger/curl command and manually execution pipeline execution will appear in the **My Execution** list. 

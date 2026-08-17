@@ -38,9 +38,9 @@ Customers can set the following authorization on the Account, Organization, or P
 
 1. Go to the appropriate setting for the scope (in this example, **Account Settings**)
 2. Click on the **Default Settings** and go to the **Pipeline** section
-3. In the section, there is a setting labelled *Mandate Authroization for Custom Webhook Triggers*.  Set this to True.
+3. In the section, there is a setting labelled *Mandate Authorization for Custom Webhook Triggers*.  Set this to True.
    ![](./static/mandateauthorization.png)
-4. When the Allow Overrides box is selected at the account level, Harness users will be able to select a different value for this setting at project level.  For example a project, in Default Settings > Pipeline may have a a different value for Mandate Authorization for Custom Webhook Triggers, when compared to the Account or Organization settings.
+4. When the Allow Overrides box is selected at the account level, Harness users will be able to select a different value for this setting at project level.  For example a project, in Default Settings > Pipeline may have a different value for Mandate Authorization for Custom Webhook Triggers, when compared to the Account or Organization settings.
 Remove the ability to **override** this setting to ensure that the authorization is enforced and cannot be adjusted.
 
 

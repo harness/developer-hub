@@ -337,7 +337,7 @@ The encryption key selection is only available for inline secrets. For reference
 ## Reference an AWS Secrets Manager Secret
 In order to reference your AWS Secrets Manager secret, customers have a few options to retrieve the secret 
 
-They can either retrieve the secret directly through a Referenced JSON secret, or they can utilize a "referenced secret" type.  The benefit to utlizing a referenced secret is that it allows for some more complicated conditions to be utilized, and customers can update the referenced secret at one location, instead at every reference point.  
+They can either retrieve the secret directly through a Referenced JSON secret, or they can utilize a "referenced secret" type.  The benefit to utilizing a referenced secret is that it allows for some more complicated conditions to be utilized, and customers can update the referenced secret at one location, instead at every reference point.  
 
 ### Reference JSON secrets
 

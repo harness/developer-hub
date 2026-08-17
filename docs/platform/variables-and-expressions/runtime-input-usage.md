@@ -503,7 +503,7 @@ Users can view their uploaded files in the `Upload` tab and can download them by
 In the `Output tab`, you will find two outputs:
 
 - `uploadedby`: The email of the user who uploaded the files.
-- `filesname`: The name of the uploaded file in your storage, which follows the path format: `accountID/runtimeFileInputData/planExecutionId/nodeExecutionId/fileName`. An underscore followed by 6 alphanumeric characters is appended to the `fileName`. This exact name, including the appended characters, must be used in the [download API](#retrieve-uploaded-file-using-curl).
+- `filename`: The name of the uploaded file in your storage, which follows the path format: `accountID/runtimeFileInputData/planExecutionId/nodeExecutionId/fileName`. An underscore followed by 6 alphanumeric characters is appended to the `fileName`. This exact name, including the appended characters, must be used in the [download API](#retrieve-uploaded-file-using-curl).
 
 For example, if the original file name is `input.txt`, it will be stored as `input_91ASD1.txt`, and this complete name (`input_91ASD1.txt`) should be provided when using the download API.
 

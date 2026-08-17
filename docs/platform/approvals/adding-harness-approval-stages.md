@@ -155,7 +155,7 @@ The **Time** setting supports Harness expressions. You can use an expression to 
 
 For example, let's say you wanted to automatically approve exactly one week from when the pipeline runs.
 
-You could precede the Approval step with a Shell Script step. In the Shell Scrip step, you can add a script that calculates what the time will be exactly one week from now, at the current hour and minute, in a specific time zone, and display it in a human-readable format.
+You could precede the Approval step with a Shell Script step. In the Shell Script step, you can add a script that calculates what the time will be exactly one week from now, at the current hour and minute, in a specific time zone, and display it in a human-readable format.
 
 Here's an example script:
 

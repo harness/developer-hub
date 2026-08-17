@@ -110,7 +110,7 @@ Here is an example of a step group template YAML.
      steps:
      - step:
          type: K8sDryRun
-         name: Output Servie Manifest
+         name: Output Service Manifest
          identifier: Output_Servie_Manifest
          spec: {}
          timeout: 10m

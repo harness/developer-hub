@@ -189,7 +189,7 @@ In the following YAML example, an [Action step](/docs/continuous-integration/use
             steps:
               - step:
                   identifier: install_java
-                  name: intall java version 17
+                  name: install java version 17
                   type: Action
                   spec:
                     uses: actions/setup-java@v3
