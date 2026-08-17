@@ -188,6 +188,7 @@ If the Update Release Repo step has 'Succeed if no files changed' enabled and it
   - **Merge** (default): Creates a merge commit that preserves the full commit history from the PR branch.
   - **Squash**: Combines all commits from the PR branch into a single commit on the target branch. Use squash when you want a cleaner, linear Git history in your release repo.
 - **Delete Source Branch:** When enabled, deletes the PR source branch after the merge completes.
+- **Disable Git Restraint:** When true, removes the Git locking mechanism so multiple pipelines can modify the same repository concurrently through a single connector.
 
 ![Merge PR step configuration showing Merge Strategy Type dropdown](./static/merge-pr-strategy-type.png)
 
@@ -200,6 +201,7 @@ If the Update Release Repo step has 'Succeed if no files changed' enabled and it
     identifier: MergePR_1
     spec:
       deleteSourceBranch: false
+      disableGitRestraint: false
       mergeStrategy: squash
       variables: []
     timeout: 10m
