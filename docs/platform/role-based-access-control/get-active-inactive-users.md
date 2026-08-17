@@ -1,6 +1,19 @@
 ---
 title: Get active and inactive users
-description: Identify users who have logged into Harness over a specified time period.
+description: Run a Python script against the Harness Audit API to identify which users logged in over a specified time period.
+keywords:
+  - active users
+  - inactive users
+  - deleted users
+  - audit api
+  - login activity
+  - license management
+  - offboarding
+  - user lifecycle
+tags:
+  - rbac
+  - access control
+  - users
 sidebar_position: 70
 helpdocs_topic_id:
 helpdocs_category_id: w4rzhnf27d
@@ -8,39 +21,55 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can identify which users have logged into your Harness account over a specific time period. This is useful for:
+Identify which users logged in to your Harness account over a specific time period. This topic provides a Python script that queries the <a href="https://apidocs.harness.io/audit" target="_blank">Harness Audit API</a> for `LOGIN` events across a date range, compares the results against every user in your account, and categorizes each user as active, inactive, or deleted.
 
-* **Compliance and auditing**: Track user access for security and regulatory requirements.
-* **License management**: Identify active users to optimize license usage.
-* **User lifecycle management**: Find inactive users who may need to be offboarded.
+Login activity supports several account management tasks:
 
-This guide provides a Python script that uses the [Harness Audit API](https://apidocs.harness.io/audit) to fetch user login activity and categorize users as active, inactive, or deleted.
+- **Compliance and auditing**: Track user access for security and regulatory requirements.
+- **License management**: Identify active users to optimize license usage.
+- **User lifecycle management**: Find inactive users who may need to be offboarded.
 
-## How it works
+---
 
-The script queries the Harness Audit API for `LOGIN` events within a specified date range and compares this data against all users in your account. It then generates three output files:
+## What will you learn in this topic?
 
-* **active_users.ndjson**: Users who logged in during the specified time period.
-* **inactive_users.ndjson**: Users who exist in the account but did not log in during the specified time period.
-* **deleted_users.ndjson**: Users who logged in during the specified time period but no longer exist in the account.
+By the end of this topic, you will be able to:
 
-The output files use [NDJSON format](http://ndjson.org/) (newline-delimited JSON), where each line is a valid JSON object representing a user record.
+- [Understand how the script works](#how-the-script-works) and which output files it produces.
+- [Run the script](#run-the-script) with a custom date range or environment variables.
+- [Review the script parameters](#script-parameters) to control the account and reporting window.
+- [Interpret the output](#interpret-the-output) files and count or extract user records.
+- [Troubleshoot](#troubleshooting) authentication, permission, and rate limit errors.
 
-## Prerequisites
+---
 
-Before using the script, ensure you have:
+## Before you begin
 
-* **Python 3.x** installed on your system.
-* **Python requests library**: Install using `pip install requests`.
-* A **token** with appropriate permissions. For more information, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
-* **Permission to view audit logs** in your Harness account.
-* Your **Harness account ID**. You can find this in any Harness URL (e.g., `https://app.harness.io/ng/account/<ACCOUNT_ID>/...`).
+Before you run the script, ensure you have the following:
 
-## Usage
+- **Python 3.x**: Installed on the system where you run the script.
+- **Python requests library**: Install it with `pip install requests`.
+- **API token**: A token with permission to read audit logs and users. For more information, see <a href="/docs/platform/automation/api/add-and-manage-api-keys" target="_blank">Manage API keys</a>.
+- **Audit log permission**: Permission to view audit logs in your Harness account. For more information, see <a href="/docs/platform/role-based-access-control/permissions-reference" target="_blank">Permissions reference</a>.
+- **Harness account ID**: Available in any Harness URL, for example `https://app.harness.io/ng/account/<ACCOUNT_ID>/...`.
 
-### Basic usage
+---
 
-Run the script with your environment URL and authentication credentials:
+## How the script works
+
+Understand the output categories before you act on the results, because an empty login record does not always mean the account is safe to delete. The script queries the Harness Audit API for `LOGIN` events within a date range, compares that data against all users in your account, and writes three files.
+
+- **active_users.ndjson**: Users who logged in during the specified time period.
+- **inactive_users.ndjson**: Users who exist in the account but did not log in during the specified time period.
+- **deleted_users.ndjson**: Users who logged in during the specified time period but no longer exist in the account.
+
+The output files use <a href="http://ndjson.org/" target="_blank">NDJSON format</a> (newline-delimited JSON), where each line is a valid JSON object representing one user record.
+
+---
+
+## Run the script
+
+Save the <a href="#complete-script">complete script</a> as `get_inactive_users.py`, then run it from the command line with your environment URL and credentials. By default, the script analyzes the last 30 days of login activity.
 
 ```bash
 # Using API key (recommended)
@@ -54,11 +83,9 @@ python3 get_inactive_users.py \
   --bearer YOUR_BEARER_TOKEN
 ```
 
-By default, the script analyzes the last 30 days of login activity.
+### Specify a custom date range
 
-### Specify custom date range
-
-To analyze a specific time period, use the `--start` and `--end` parameters:
+Set an explicit window when you report on a fixed audit period, such as a quarter, rather than the trailing 30 days. Pass the `--start` and `--end` parameters:
 
 ```bash
 python3 get_inactive_users.py \
@@ -70,7 +97,7 @@ python3 get_inactive_users.py \
 
 ### Use environment variables
 
-You can set authentication credentials as environment variables:
+Set credentials as environment variables to keep tokens out of your shell history and process list. The script reads `HARNESS_API_KEY` for an API key and `HARNESS_BEARER` for a Bearer token.
 
 ```bash
 # Set environment variable
@@ -82,11 +109,11 @@ python3 get_inactive_users.py \
   --start "2025-01-01 00:00"
 ```
 
-Supported environment variables:
-* `HARNESS_API_KEY`: Your Harness API key
-* `HARNESS_BEARER`: Your Bearer token
+---
 
 ## Script parameters
+
+Use these parameters to control the target account, the authentication method, and the reporting window.
 
 | Parameter | Required | Description | Default | Example |
 |-----------|----------|-------------|---------|---------|
@@ -96,11 +123,13 @@ Supported environment variables:
 | `--start` | No | Start date and time in `YYYY-MM-DD HH:MM` format | 30 days ago | `2025-01-01 00:00` |
 | `--end` | No | End date and time in `YYYY-MM-DD HH:MM` format | Current time | `2025-01-31 23:59` |
 
-\* One of `--apikey` or `--bearer` is required (or their corresponding environment variables).
+\* One of `--apikey` or `--bearer` is required, or the corresponding environment variable.
 
-## Understanding the output
+---
 
-The script generates three NDJSON files in the current directory:
+## Interpret the output
+
+Read the output files to decide which accounts to offboard and which to retain. The script writes all three NDJSON files to the current directory.
 
 ### active_users.ndjson
 
@@ -135,13 +164,13 @@ Contains user records for users who exist in the account but did not log in duri
 
 ### deleted_users.ndjson
 
-Contains audit log entries for users who logged in during the specified time period but no longer exist in the account (deleted users).
+Contains audit log entries for users who logged in during the specified time period but no longer exist in the account.
 
-### Analyzing the output
+### Analyze the output
 
-You can process the NDJSON files using command-line tools or Python:
+Process the NDJSON files with command-line tools when you need a quick count, or with Python when you need to feed the results into another system.
 
-#### Count users using wc
+To count the records in each category, use `wc`:
 
 ```bash
 # Count active users
@@ -154,7 +183,7 @@ wc -l inactive_users.ndjson
 wc -l deleted_users.ndjson
 ```
 
-#### Extract emails using jq
+To extract email addresses, use `jq`:
 
 ```bash
 # List active user emails
@@ -164,7 +193,7 @@ jq -r '.authenticationInfo.labels.email' active_users.ndjson
 jq -r '.email' inactive_users.ndjson
 ```
 
-#### Process with Python
+To process the records programmatically, read them in Python:
 
 ```python
 import json
@@ -177,9 +206,16 @@ with open('active_users.ndjson', 'r') as f:
     print(active_emails)
 ```
 
+For accounts with many users or extensive audit history, the script can take several minutes to complete. It paginates through the data, fetching up to 1000 audit log entries or 100 users per page, and prints progress as it runs.
+
+---
+
 ## Complete script
 
-Save the following script as `get_inactive_users.py`:
+Save the following as `get_inactive_users.py`.
+
+<details>
+<summary>get_inactive_users.py</summary>
 
 ```python
 import argparse
@@ -416,46 +452,47 @@ if __name__ == "__main__":
     main()
 ```
 
+</details>
+
+---
+
 ## Troubleshooting
 
-### Authentication errors
+Match the error the script prints to the corresponding fix.
 
-**Error**: `401 Unauthorized`
+<details>
+<summary>401 Unauthorized</summary>
 
-**Solution**: Verify that your API key or Bearer token is valid and has the necessary permissions to access audit logs. For more information, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
+**Solution:** Verify that your API key or Bearer token is valid and has the necessary permissions to access audit logs. For more information, see <a href="/docs/platform/automation/api/add-and-manage-api-keys" target="_blank">Manage API keys</a>.
 
-### Invalid date format
+</details>
 
-**Error**: `Invalid date format`
+<details>
+<summary>403 Forbidden</summary>
 
-**Solution**: Ensure dates are in the format `YYYY-MM-DD HH:MM`. For example: `2025-01-01 00:00`.
+**Solution:** Your API key or Bearer token does not have permission to view audit logs or user information. Confirm you have the necessary <a href="/docs/platform/role-based-access-control/permissions-reference" target="_blank">permissions</a> to access these resources.
 
-### Rate limiting
+</details>
 
-**Error**: `429 Too Many Requests`
+<details>
+<summary>Invalid date format</summary>
 
-**Solution**: The script has exceeded the Harness API rate limits. Wait a few minutes and try again. For more information about rate limits, go to [Rate limits](/docs/platform/rate-limits).
+**Solution:** Ensure dates use the format `YYYY-MM-DD HH:MM`, for example `2025-01-01 00:00`.
 
-### Permission errors
+</details>
 
-**Error**: `403 Forbidden`
+<details>
+<summary>429 Too Many Requests</summary>
 
-**Solution**: Your API key or Bearer token does not have permission to view audit logs or user information. Ensure you have the necessary [permissions](./permissions-reference.md) to access these resources.
+**Solution:** The script exceeded the Harness API rate limits. Wait a few minutes and run it again. For more information, see <a href="/docs/platform/rate-limits" target="_blank">Rate limits</a>.
 
-### Large datasets
+</details>
 
-**Note**: For accounts with many users or extensive audit history, the script may take several minutes to complete. The script processes data in pages and displays progress as it runs.
+---
 
-:::info
+## Related articles
 
-The script uses pagination to efficiently handle large datasets. Each API call fetches up to 1000 audit log entries or 100 users per page.
-
-:::
-
-## Related documentation
-
-* [Manage users](./add-users.md)
-* [Get started with Harness API](/docs/platform/automation/api/api-quickstart)
-* [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys)
-* [RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness)
-* [Permissions reference](./permissions-reference.md)
+- <a href="/docs/platform/role-based-access-control/add-users" target="_blank">Manage users</a>: Add, edit, and delete users, and act on the inactive accounts this script identifies.
+- <a href="/docs/platform/governance/audit-trail" target="_blank">Audit trail</a>: Review the audit events that this script queries.
+- <a href="/docs/platform/automation/api/add-and-manage-api-keys" target="_blank">Manage API keys</a>: Create the token the script uses to authenticate.
+- <a href="/docs/platform/automation/api/api-quickstart" target="_blank">Harness API quickstart</a>: Understand how to authenticate and call Harness APIs.
