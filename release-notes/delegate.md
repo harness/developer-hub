@@ -171,12 +171,24 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## August 2026
 
+### Version 26.08.89802 <!-- August 15, 2026 -->
+
+#### Fixed issues
+
+- Fixed a issue where pipeline executions using WinRM with NTLM authentication would stall before failing when multiple steps targeted the same host in parallel. Credentials are now scoped per invocation. Each parallel WinRM NTLM connection establishes its own independent authentication context, eliminating session contention when multiple steps target the same host concurrently. [CDS-129720]
+
 ### Version 26.08.89801 <!-- August 14, 2026 -->
 
 #### Fixed issues
 
 - Fixed dot-notation variable names (for example, `someVar.child`) being written as flat inline YAML or JSON keys instead of nested objects when the UpdateReleaseRepo step creates a target release repo file that does not exist. The step now correctly nests dot-notation variables. [CDS-129370]
 - Fixed a NullPointerException in the Jenkins build trigger when Jenkins or CloudBees returns 200 OK without a Location header instead of the expected 201 Created. The step now fails with a clear error message instead of an opaque NPE. [CDS-128535]
+
+### Version 26.08.89708 <!-- August 15, 2026 -->
+
+#### Fixed issues
+
+- Fixed a issue where pipeline executions using WinRM with NTLM authentication would stall before failing when multiple steps targeted the same host in parallel. Credentials are now scoped per invocation. Each parallel WinRM NTLM connection establishes its own independent authentication context, eliminating session contention when multiple steps target the same host concurrently. [CDS-129720]
 
 ### Version 26.07.89707 <!-- August 11, 2026 -->
 
@@ -190,6 +202,17 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - Resolved a high-severity security vulnerability CVE-2026-42504 in the `mime` library (version 1.25.10) bundled within the SCM binary at `/opt/harness-delegate/client-tools/scm/2e8610936/scm`. This vulnerability was fixed by upgrading `mime` to version 1.25.12 [PIPE-36408]
 
+### Version 26.08.89605 <!-- August 15, 2026 -->
+
+#### Fixed issues
+
+- Fixed a issue where pipeline executions using WinRM with NTLM authentication would stall before failing when multiple steps targeted the same host in parallel. Credentials are now scoped per invocation. Each parallel WinRM NTLM connection establishes its own independent authentication context, eliminating session contention when multiple steps target the same host concurrently. [CDS-129720]
+
+### Version 26.08.89505 <!-- August 15, 2026 -->
+
+#### Fixed issues
+
+- Fixed a issue where pipeline executions using WinRM with NTLM authentication would stall before failing when multiple steps targeted the same host in parallel. Credentials are now scoped per invocation. Each parallel WinRM NTLM connection establishes its own independent authentication context, eliminating session contention when multiple steps target the same host concurrently. [CDS-129720]
 
 ## July 2026
 
