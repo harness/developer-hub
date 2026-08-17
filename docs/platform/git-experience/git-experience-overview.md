@@ -12,7 +12,6 @@ helpdocs_is_published: true
 import create_pipeline from './static/git-experience-overview-02.png'
 import branch_selection from './static/git-experience-overview-03.png'
 
-
 Harness Git Experience allows you to store your resource configurations, such as pipelines and input sets, in Git. You can use Git as the single source of truth and modify your configurations using your Git credentials.
 
 With Harness Git Experience, you can easily select the repository and branch from which to execute your pipelines. This provides seamless access to your Harness resources and their configurations stored in Git, simplifying your pipeline execution.
@@ -120,10 +119,10 @@ For more information, go to [Default settings](/docs/platform/settings/default-s
 
 :::
 
-### Repo Listing
+### Repository listing
 
 :::info note
-Currently this feature is behind feature flag `CDS_LIST_REPO_V2 `. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently this feature is behind feature flag `CDS_LIST_REPO_V2 `. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
 For a certain connector, you can now search for repositories with support for infinite scroll. Simply enter any keyword to see related repositories listed. If you can't find the repository you're looking for, you can also add it manually.
@@ -135,11 +134,26 @@ If the repository actually exists it will fetch the branch name, if not it will 
 ![](./static/repolisting_error.png)
 
 :::important
-1. Search in repo listing is not supported for Azure Repos.
-2. GitHub connectors should be created at the "organization" level, linking each connector to a specific GitHub organization to access all repositories within that organization. Using a global GitHub connector with the URL “github.com” to access multiple organizations and their repositories is not supported and may cause issues. The V2 repo listing APIs do not support global GitHub connectors, and if such a connector is used, the API will automatically switch to the V1 flow to ensure repositories can still be listed, albeit without the enhancements of the V2 APIs.
+1. Search in repository listing is not supported for Azure Repos.
+2. GitHub connectors should be created at the "organization" level, linking each connector to a specific GitHub organization to access all repositories within that organization. Using a root GitHub connector with the URL “github.com” without any account or org name to access multiple organizations and their repositories is not supported and may cause issues. The V2 repository listing APIs do not support root GitHub connectors, and if such a connector is used, the API will automatically switch to the V1 flow to ensure repositories can still be listed, albeit without the enhancements of the V2 APIs.
 3. For **GitLab** the search functionality will only work with the repository names, not the full path or subdirectory. Additionally, search will not work for cases like "subgroup/project".
 For Example: If the repo full directory path is: `test-group9482940/subgroup/folder1/subgroupextra/project2`, then the search will only work for the `project2` substring.
 :::
+
+#### Repository listing limits
+
+Repository listing returns one page of repositories per API call rather than the full list. As a result, a repository that falls outside the current page does not appear in the repository dropdown, even though the repository exists.
+
+An account can contain thousands of repositories, and fetching every repository on each dropdown interaction adds latency and increases the load on your Git provider rate limits. 
+
+Repository search narrows that list, but search runs only on the V2 repository listing flow. If the repository dropdown does not filter as you enter text, one of the following applies:
+
+- **The `CDS_LIST_REPO_V2` feature flag is not enabled.** Without the V2 flow, the dropdown does not filter as you enter text, so you scroll the paginated list instead. Contact [Harness Support](mailto:support@harness.io) to enable the flag.
+- **The connector is a root GitHub connector.** V2 repository listing does not support root GitHub connectors that use the `github.com` URL without any account or org name. Harness falls back to the V1 flow, which lists repositories without the V2 search and infinite scroll enhancements. Create the connector at the organization level instead.
+- **The connector is an Azure Repos connector.** Search in repository listing is not supported for Azure Repos.
+- **The connector is a GitLab connector and you entered a path.** Search matches the repository name only, so a value such as `subgroup/project` returns no matches. Enter the repository name by itself.
+
+To select a repository that the dropdown does not list, enter the full repository name manually. Harness resolves the repository directly, so the entity saves successfully once you provide the exact name.
 
 ### Branch Listing
 
@@ -162,22 +176,23 @@ For **GitHub App** connectors, typing in the branch dropdown does not refresh th
 
 For **GitHub** connectors, branch search and pagination are supported through the V2 branch listing API, which requires Harness UI version 1.145.x or later, ng-manager 1.157.x or later, scm-service 1.55.x or later, and Harness Delegate version `26.06.8950` or later. Go to [Delegate upgrades and expiration](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to upgrade your delegate.
 
-### Supported Git Providers for Repo and Branch Listing
+### Supported Git Providers for Repository and Branch Listing
 
-| Git Provider | Repo Listing | Branch Listing
+| Git Provider | Repository Listing | Branch Listing
 | --- | --- | --- |
 | Github | Yes | Yes  |
 | Bitbucket SAAS | Yes | Yes |
 | Bitbucket Server | Yes  | Yes |
 | Azure | No | Yes |
 | Gitlab | Yes | Yes |
-| Github App | No | No |
+| Github App | Yes | No |
 | Harness Code | Yes | Yes |
 
-1. [Repo Listing](#repo-listing) is not supported in Azure and Github Apps, but users can manually type in the desired repository name and add it.
+1. [Repository listing](#repository-listing) is not supported in Azure Repo, but users can manually type in the desired repository name and add it.
 2. [Branch Listing](#branch-listing) is not supported in Github Apps, but users can manually type in the desired branch name and add it.
-3. Branch search for GitHub requires the minimum UI, ng-manager, scm-service, and delegate versions listed under [Branch listing limits](#branch-listing-limits).
-4. Every provider returns a maximum of 100 branches per call. Go to [Branch listing limits](#branch-listing-limits) to understand the impact.
+3. Repository listing returns one page of repositories per API call, and repository search requires the V2 repository listing flow. Go to [Repository listing limits](#repository-listing-limits) to understand the impact.
+4. Branch search for GitHub requires the minimum UI, ng-manager, scm-service, and delegate versions listed under [Branch listing limits](#branch-listing-limits).
+5. Every provider returns a maximum of 100 branches per call. Go to [Branch listing limits](#branch-listing-limits) to understand the impact.
 
 ### Multiple branch support
 

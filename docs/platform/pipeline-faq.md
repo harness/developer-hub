@@ -68,6 +68,14 @@ This behavior is expected. Harness returns a maximum of 100 branches per branch 
 
 Go to [Branch listing limits](/docs/platform/git-experience/git-experience-overview#branch-listing-limits) to understand the limit and the per-provider search support.
 
+### Why does the Repository dropdown in Git details not filter as you enter text?
+
+Repository search runs only on the V2 repository listing flow, which is behind the `CDS_LIST_REPO_V2` feature flag. Without the V2 flow enabled, the dropdown does not filter as you enter text, so you scroll the paginated list instead. Contact [Harness Support](mailto:support@harness.io) to enable the flag.
+
+A global GitHub connector that uses the `github.com` URL also falls back to the V1 listing flow, which lists repositories without the V2 search and infinite scroll enhancements. Create GitHub connectors at the organization level instead. To select a repository that the dropdown does not list, enter the full repository name manually.
+
+Go to [Repository listing limits](/docs/platform/git-experience/git-experience-overview#repository-listing-limits) to review every case that affects repository search.
+
 ### Where to find the callback_id parameter needed for approving the Harness pipeline via API?
 
 Set the **Callback ID** in the Approval step, under **Approval Callback Identifier**.
