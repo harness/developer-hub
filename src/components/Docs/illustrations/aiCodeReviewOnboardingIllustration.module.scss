@@ -1,0 +1,234 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. See iacmOnboardingIllustration.module.scss for the full
+ * explanation of the shared timing system - everything here runs off
+ * the same cycle/beat/fire clock from ./shared/_motion.scss.
+ *
+ * The gate for this flow is node 4 ("Checks reported": a finding raised
+ * vs. all checks passed), matching the shared travel keyframe's
+ * assumption, so the travel dot uses the shared mixin verbatim.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #7a5af8;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+/* Stage 1 - Open a pull request */
+.prNode {
+  fill: url(#aicrGrad);
+}
+
+.prArrow {
+  stroke: url(#aicrGrad);
+  stroke-width: 2;
+}
+
+.prArrowHead {
+  stroke: url(#aicrGrad);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Stage 2 - Trigger fires */
+.boltIcon {
+  fill: url(#aicrGrad);
+}
+
+/* Stage 3 - Agent reviews */
+.bracket {
+  stroke: url(#aicrGrad);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contextPill {
+  fill: rgba(122, 90, 248, 0.1);
+  stroke: url(#aicrGrad);
+  stroke-width: 1.5;
+}
+
+.contextLabel {
+  font-size: 11px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.contextFeed {
+  /* solid color, not the gradient: a purely vertical line has a zero-width
+     bounding box, which makes an objectBoundingBox gradient render
+     invisible in some SVG engines */
+  stroke: #7a5af8;
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+/* Stage 4 - Checks reported */
+.checkTick {
+  stroke: url(#aicrGrad);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.checkRow {
+  stroke: #7a5af8;
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.45;
+}
+
+/* Stage 5 - Risk posted */
+.commentBubble {
+  fill: rgba(122, 90, 248, 0.08);
+  stroke: url(#aicrGrad);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+.forkPathBright {
+  stroke: #7a5af8;
+  stroke-width: 1.5;
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+.travelDot {
+  @include motion.travel-dot;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#7a5af8);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - the PR badge reuses the shared magnifyPulse shape on the
+   node's beat rather than pulsing forever. */
+.prBadge {
+  fill: url(#aicrGrad);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(1);
+}
+
+/* Stage 3 - the sparkle is the agent doing the work, so it gets a single
+   clean burst on node 3's beat, and the context pill feeds in just before
+   it using the same beat. */
+.sparkle {
+  fill: url(#aicrGrad);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+.contextGroup {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+/* Stage 4 is the gate: the fork resolves once on node 4's beat using the
+   shared decide keyframes. */
+.findingTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.passedTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* Stage 5 - the risk summary lines fill in, staggered, reusing the shared
+   barPulse shape. */
+.riskBar {
+  transform-box: fill-box;
+  transform-origin: left;
+  animation: barPulse motion.$cycle ease-in-out infinite backwards;
+}
+.risk1 { animation-delay: motion.fire(5); }
+.risk2 { animation-delay: motion.fire(5) + 0.12s; }
+.risk3 { animation-delay: motion.fire(5) + 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .prBadge,
+  .sparkle,
+  .contextGroup,
+  .findingTag,
+  .passedTag,
+  .riskBar {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .sparkle { opacity: 1; transform: none; }
+  .contextGroup { opacity: 1; transform: none; }
+  .findingTag { opacity: 0.3; }
+  .passedTag { opacity: 1; transform: none; }
+  .riskBar { transform: scaleX(1); }
+}

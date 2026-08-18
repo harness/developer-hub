@@ -170,6 +170,15 @@ export const moduleIconAndColor = {
       color: '--mod-aida-300',
     },
   },
+  'AI Code Review': {
+    iconUrl:
+      'https://developer.harness.io/img/icon-ai-code-review.svg',
+    colors: {
+      border: '--mod-aida-200',
+      backgroundColor: '--mod-aida-100',
+      color: '--mod-aida-300',
+    },
+  },
   'AI Code Assistant': {
     iconUrl:
       'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/666730eaefeed82bad545d10_Subtract.svg',

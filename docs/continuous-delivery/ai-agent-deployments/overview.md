@@ -25,8 +25,7 @@ Agent deployments are behind the feature flag `CDS_AGENT_RUNTIME_DEPLOYMENT`. Co
 
 ---
 
-## What will you learn?
-
+## What you will learn from this topic
 This section covers everything you need to deploy an AI agent through Harness CD, on either supported runtime. The workflow is the same on both: register an agent service, configure an environment with an infrastructure definition, and build a pipeline with a canary execution.
 
 - **Concepts:** Understand agent services, the deployment model, and how the pieces fit together. Go to [How a deployment fits together](#how-a-deployment-fits-together) to review the model.

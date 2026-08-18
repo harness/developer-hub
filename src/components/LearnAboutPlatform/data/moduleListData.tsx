@@ -179,4 +179,12 @@ export const moduleList: CardItem[] = [
     description: <>Use data-led insights to remove bottlenecks and improve productivity.</>,
     link: 'docs/ai-test-automation',
   },
+  // AI Code Review is hidden from navigation until beta launch (HDH-1155).
+  // {
+  //   title: 'AI Code Review',
+  //   module: MODULES.aicr,
+  //   icon: 'img/icon-ai-code-review.svg',
+  //   description: <>Review pull requests with an AI agent that understands your delivery data.</>,
+  //   link: 'docs/ai-code-review',
+  // },
 ];

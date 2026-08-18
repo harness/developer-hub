@@ -233,7 +233,7 @@ Use `cat -v` to show non-printing characters, or `hexdump -C <file> | head` to i
    **Template structure check — verify this order is present:**
    - Frontmatter (`title`, `sidebar_label`, `description`, `keywords`, `tags`)
    - Introduction paragraphs (no `##` heading — plain prose)
-   - `## What will you learn?` — add this for any tutorial, how-to, or overview page if
+   - `## What you will learn from this topic` — add this for any tutorial, how-to, or overview page if
      absent. Use a short bold-label bullet list of key outcomes. Omit only for pure reference
      pages (permissions tables, settings references, API references).
    - `## Before you begin` — concise bullets, bold label + link each, no paragraph-length bullets

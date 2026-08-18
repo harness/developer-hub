@@ -1,0 +1,10 @@
+{
+  "label": "Platforms",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link": {
+    "type": "generated-index",
+    "title": "Platforms"
+  },
+  "position": 10
+}

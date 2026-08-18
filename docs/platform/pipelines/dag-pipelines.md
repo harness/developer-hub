@@ -22,8 +22,7 @@ This feature is currently in beta. It is behind the feature flag `PIPE_ENABLE_DE
 
 ---
 
-## What will you learn?
-
+## What you will learn from this topic
 - **When to use DAG pipelines:** Recognize the workflows where stage dependencies beat sequential or parallel execution.
 - **How DAG pipelines work:** Understand how the `dependsOn` field controls execution instead of stage order.
 - **How to enable DAG:** Create a new DAG pipeline or convert an existing pipeline to the DAG format.

@@ -42,6 +42,8 @@ const sidebars: SidebarsConfig = {
     "feature-flags",
     "chaos-engineering",
     "ai-test-automation",
+    // AI Code Review is hidden from navigation until beta launch (HDH-1155).
+    // "ai-code-review",
     "ai-sre",
      {
           type: "html",

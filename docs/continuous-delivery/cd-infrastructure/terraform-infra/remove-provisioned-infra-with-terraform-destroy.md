@@ -27,8 +27,7 @@ The **Terraform Destroy** step is independent of any other Terraform provisionin
 
 ---
 
-## What will you learn?
-
+## What you will learn from this topic
 - **Add Terraform Destroy steps:** Configure destroy steps in pipeline execution, dynamic provisioning, or rollback sections.
 - **Reference Provisioner Identifiers:** Link destroy steps to the infrastructure provisioned by Plan and Apply steps.
 - **Preview destroy plans:** Use Terraform Plan with destroy command to review what will be removed before execution.

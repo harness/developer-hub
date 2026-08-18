@@ -10,7 +10,7 @@ The drift-ephemeral-workspaces.md page demonstrated that real-world documentatio
 
 **Example characteristics of hybrid pages:**
 - Title is a noun phrase (overview pattern) but contains extensive step-by-step UI navigation (instructional pattern)
-- Has "What you will learn" section (overview pattern) AND detailed RBAC prerequisites (instructional pattern)
+- Has "What you will learn from this topic" section (overview pattern) AND detailed RBAC prerequisites (instructional pattern)
 - Contains conceptual "How it works" sections with descriptive headings AND procedural "Enable X" sections with imperative headings
 - Includes reference tables and architecture explanations (overview) alongside API curl examples and configuration steps (instructional)
 
@@ -35,7 +35,7 @@ Updated the audit skills to recognize and appropriately score hybrid pages.
 ### Adjusted Scoring Rules for Hybrids
 
 **Hybrid (Instructional leaning):**
-- ✅ Do NOT penalize for having "What you will learn" section
+- ✅ Do NOT penalize for having "What you will learn from this topic" section
 - ✅ Do NOT penalize for conceptual sections with noun phrase headings alongside imperative procedural headings
 - ✅ Reduce penalty for missing detailed RBAC prerequisites (–5 instead of –10) if page is primarily configuration-focused
 - ✅ Allow mixed heading styles: imperative for procedural sections, descriptive for conceptual sections
@@ -43,7 +43,7 @@ Updated the audit skills to recognize and appropriately score hybrid pages.
 **Hybrid (Overview leaning):**
 - ✅ Do NOT penalize for having procedural sections with step-by-step instructions
 - ✅ Do NOT penalize for imperative headings in procedural subsections
-- ✅ Reduce penalty for missing "What you will learn" (–5 instead of –15) if page has strong introductory explanation
+- ✅ Reduce penalty for missing "What you will learn from this topic" (–5 instead of –15) if page has strong introductory explanation
 - ✅ Allow mixed heading styles: descriptive for conceptual sections, imperative for procedural sections
 
 **Hybrid (Balanced):**
@@ -55,7 +55,7 @@ Updated the audit skills to recognize and appropriately score hybrid pages.
 **General adjustments for all hybrid pages:**
 - **Editorial heading case:** Allow mixed heading styles without penalty as long as each heading matches its section type
 - **Completion RBAC:** Reduce RBAC prerequisite penalty to –5 if page focuses more on architecture/concepts than account setup
-- **Structure flexibility:** Do not penalize for having both "What you will learn" (overview) and detailed "Before you begin" (instructional) in same document
+- **Structure flexibility:** Do not penalize for having both "What you will learn from this topic" (overview) and detailed "Before you begin" (instructional) in same document
 
 ## Skills Updated
 
@@ -111,7 +111,7 @@ Updated the audit skills to recognize and appropriately score hybrid pages.
 **Test case:** `docs/infra-as-code-management/workspaces/drift-ephemeral-workspaces.md`
 
 **Before hybrid support:**
-- Classified as "Overview" (has "What you will learn", noun phrase title)
+- Classified as "Overview" (has "What you will learn from this topic", noun phrase title)
 - Scored 97/100 with lenient interpretation
 - **OR** classified as "Instructional" (has step-by-step UI navigation, API examples)
 - Scored 75/100 with strict interpretation, failing for H-1 heading case violations
@@ -119,7 +119,7 @@ Updated the audit skills to recognize and appropriately score hybrid pages.
 **After hybrid support:**
 - Should be classified as "Hybrid (Instructional leaning)" — contains substantial conceptual sections but ≥60% of content is procedural (UI steps, API curl examples, configuration instructions)
 - Scored using Instructional template with adjusted rules:
-  - No penalty for having "What you will learn" section
+  - No penalty for having "What you will learn from this topic" section
   - No penalty for having conceptual sections like "Configuration levels" and "How the two features relate" with descriptive headings
   - H-1 violations (Title Case in `## Drift Detection`, `## Ephemeral Workspaces`) are still violations, but context notes that feature names may be Title Case
 - Expected score: 75-85/100 (acknowledges violations but doesn't over-penalize for hybrid nature)

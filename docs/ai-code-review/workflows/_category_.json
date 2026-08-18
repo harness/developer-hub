@@ -1,0 +1,10 @@
+{
+  "label": "Workflows",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link": {
+    "type": "generated-index",
+    "title": "Workflows"
+  },
+  "position": 30
+}

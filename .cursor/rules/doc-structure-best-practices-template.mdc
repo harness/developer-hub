@@ -56,7 +56,7 @@ The consequence is what separates a best practice from a feature description. A 
 
 A best-practices page is scored differently from a feature or overview page. Do not carry over sections from those templates. Specifically, **omit** the following:
 
-- **No "What you will learn" section.** That belongs on overview pages. A best-practices reader wants recommendations, not learning outcomes.
+- **No "What you will learn from this topic" section.** That belongs on overview pages. A best-practices reader wants recommendations, not learning outcomes.
 - **No `<Troubleshoot>` section and no troubleshooting blocks.** Debugging failures belongs on a dedicated troubleshooting page or the relevant feature page. Someone on a best-practices page is setting things up right, not recovering from a failure. If a failure mode is instructive, fold it into a recommendation as the *consequence*, not as a separate troubleshooting entry.
 - **No concept dumps.** Architecture, resource hierarchies, framework or version matrices, and "how RBAC works" explanations belong on overview or concept pages. Link out to them; do not reproduce them here.
 - **No standalone "Limitations and gotchas" section.** Where a limitation drives a recommendation (for example, "delegates fail silently when outdated, so keep them current"), express it as a practice with its consequence. Move pure reference limitations to the feature page.
@@ -121,7 +121,7 @@ Group related recommendations under **imperative headings** that name the practi
 
 **Avoid (these belong on overview or instructional pages):**
 - `## State management` (neutral noun phrase; reads like a concept page)
-- `## What you will learn`
+- `## What you will learn from this topic`
 - `## Troubleshooting`
 
 Open each section with one sentence of framing that states the stakes, then list the recommendations. Use the standard list format with a **bold label** and a colon, and make sure each entry carries its consequence:
@@ -182,7 +182,7 @@ When you review or score a best-practices page, judge it against this template, 
 - States a **consequence** for every recommendation ("if you do not, then ...").
 - Reads like **advice from an experienced practitioner**, not a feature description.
 - Uses **imperative headings** that name practices.
-- **Omits** "What you will learn" and "Troubleshooting" by design. Do not penalize their absence; penalize their presence.
+- **Omits** "What you will learn from this topic" and "Troubleshooting" by design. Do not penalize their absence; penalize their presence.
 - **Links out** concept, hierarchy, and platform-level material instead of reproducing it.
 - States **honest trade-offs** for the options it recommends.
 

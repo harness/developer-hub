@@ -35,8 +35,7 @@ Deploying through Harness closes that gap. The agent becomes a Harness entity, s
 
 ---
 
-## What will you learn?
-
+## What you will learn from this topic
 This section covers everything you need to deploy an agent to AWS Agent Core through a Harness pipeline. You will learn how to:
 
 - Register an agent service that points at your agent container image and execution role.

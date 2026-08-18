@@ -255,6 +255,13 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /src/components/Roadmap/data/ataData.ts shibam.dhar@harness.io debaditya.chatterjee@harness.io sumit.khaitan@harness.io abhijeet.sharma1@harness.io
 /release-notes/static/ait/ shibam.dhar@harness.io debaditya.chatterjee@harness.io sumit.khaitan@harness.io abhijeet.sharma1@harness.io
 
+# AI Code Review Docs
+/docs/ai-code-review/ richard.black@harness.io colin.chartier@harness.io uri.scheiner@harness.io
+/docs/ai-code-review.md richard.black@harness.io colin.chartier@harness.io uri.scheiner@harness.io
+/release-notes/ai-code-review.md richard.black@harness.io colin.chartier@harness.io uri.scheiner@harness.io
+/src/components/Docs/AiCodeReview.tsx richard.black@harness.io colin.chartier@harness.io uri.scheiner@harness.io
+/src/components/Docs/data/aiCodeReviewData.ts richard.black@harness.io colin.chartier@harness.io uri.scheiner@harness.io
+
 # Artifact Registry Docs
 /docs/artifact-registry/ ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io abhijeet.sharma1@harness.io
 /release-notes/artifact-registry.md ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io abhijeet.sharma1@harness.io

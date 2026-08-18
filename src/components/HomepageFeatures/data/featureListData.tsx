@@ -173,6 +173,14 @@ export const featureList: CardItem[] = [
     description: <>End to End testing powered by Generative AI</>,
     link: 'docs/ai-test-automation/get-started/quickstart',
   },
+  // AI Code Review is hidden from navigation until beta launch (HDH-1155).
+  // {
+  //   title: 'Review Pull Requests with AI',
+  //   module: MODULES.aicr,
+  //   icon: 'img/icon-ai-code-review.svg',
+  //   description: <>Catch issues before merge with an AI reviewer that knows your pipelines.</>,
+  //   link: 'docs/ai-code-review/get-started',
+  // },
   {
     title: "Administer Harness Platform",
     module: MODULES.platform,

@@ -48,7 +48,7 @@ overview, concept, or setup page and link to it instead.
 
 Remove or never add the following on a best-practices page:
 
-- "What you will learn" section.
+- "What you will learn from this topic" section.
 - Troubleshoot blocks or any troubleshooting section. Fold an instructive failure mode into
   a recommendation as its consequence instead.
 - Concept dumps: hierarchies, architecture, framework or version matrices, "how RBAC works".
@@ -69,7 +69,7 @@ Before finishing, verify the page:
 - States a consequence for every recommendation.
 - Reads like advice from an experienced practitioner, not a feature description.
 - Uses imperative headings that name practices (for example "Store state in a remote backend").
-- Omits "What you will learn" and "Troubleshooting" by design.
+- Omits "What you will learn from this topic" and "Troubleshooting" by design.
 - Links out concept and platform material instead of reproducing it.
 - States honest trade-offs for the options it recommends.
 - Follows the project voice: present tense, second person, no contractions, no em dashes, no

@@ -22,8 +22,7 @@ Harness Policy As Code evaluates OPA policies, written in Rego, against your pip
 
 ---
 
-## What will you learn?
-
+## What you will learn from this topic
 - **Policy model:** How Harness OPA policies apply to the pipelines that run Ansible.
 - **Example policies:** Rego that requires approvals, restricts inventories, and enforces timeouts on the `IACMAnsiblePlugin` step.
 - **Enforcement:** Attach a policy set to pipelines so violations warn or block on save or run.

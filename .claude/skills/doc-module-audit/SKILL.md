@@ -277,7 +277,7 @@ Exceptions: `## Troubleshooting`, `## Before you begin` — these are standard s
 
 **H-3 — Body content at `##` level**
 WARN if the file uses `##` headings for body sections rather than only the standard landmarks
-(`## Before you begin`, `## Troubleshooting`, `## Next steps`, `## What will you learn?`,
+(`## Before you begin`, `## Troubleshooting`, `## Next steps`, `## What you will learn from this topic`,
 `## Step N`). Specifically flag when more than 4 `##` headings are present and none of the
 body `##` entries are step headings, suggesting body content is at the wrong heading level.
 **Exempt:** FAQ pages (`is_faq: true`) — `##` is the correct and only heading level for FAQ category groupings.
@@ -316,7 +316,7 @@ WARN for common contractions in the file body. Check for: `don't`, `won't`, `can
 
 **C-1 — Has at least one landmark section**
 WARN if the file body contains none of: `## Before you begin`, `## Next steps`,
-`## Troubleshooting`, `## What will you learn?`. Pages with no landmark sections are likely
+`## Troubleshooting`, `## What you will learn from this topic`. Pages with no landmark sections are likely
 stubs or uncategorized fragments.
 **Exempt:** DMS content files (path contains `/content/`) — landmark sections belong on the
 parent page only, not in DMS children. Skip this check for those files.
@@ -485,7 +485,7 @@ The report file is saved with today's date. The audits directory is created if i
 | S-5 | "please" in body | — | N |
 | S-6 | No intro before list | — | N |
 | S-7 | Contractions (don't, won't, can't, etc.) | — | N |
-| C-1 | No landmark sections (Before you begin, Next steps, Troubleshooting, What will you learn?) | — | N |
+| C-1 | No landmark sections (Before you begin, Next steps, Troubleshooting, What you will learn from this topic) | — | N |
 | C-2 | Code blocks without language tag | — | N |
 | T-1 | Troubleshoot component not used | — | N |
 | T-2 | ## Introduction heading in body | N | — |

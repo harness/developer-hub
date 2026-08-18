@@ -220,7 +220,7 @@ Score across three dimensions (each starts at 100). **Adjust criteria based on p
 **Editorial (30%):** –15 page does not follow faq-template skeleton (H2 categories + `<details>`/`<summary>`), –10 missing/incorrect frontmatter (must include `sidebar_label: FAQ`, `title: FAQ — X`, `faq` tag, description, `sidebar_position` as multiple of 10), –10 non-site-relative links, –10 missing `redirect_from` on a moved page, –10 em dashes / bare link text (S-1, S-3), –5 `<summary>` text does not end with `?`, –5 `###` or deeper heading found in page body, –5 `## Before you begin`, `## Next steps`, or `## Troubleshooting` section present, –5 link phrasing — see [link], refer to, to learn more (S-2), –5 contractions (S-7), –5 "please" in body (S-5), –5 spelling/grammar
 
 **Key differences for FAQ pages:**
-- No Before you begin, Next steps, or "What will you learn?" sections required — their absence is not penalised
+- No Before you begin, Next steps, or "What you will learn from this topic" sections required — their absence is not penalised
 - No Troubleshoot component expected — `<details>` is the correct pattern
 - C-1 (landmark sections) does not apply
 - H-2 (gerund headings) does not apply — FAQ categories are noun phrases by design
@@ -234,13 +234,13 @@ Best-practices pages are scored against `.cursor/rules/doc-structure-best-practi
 
 **Accuracy (40%):** –20 a recommendation contradicts current product behaviour, –15 a stated consequence is wrong or overstated, –10 recommends a deprecated or unsupported approach, –10 stale version or feature info, –5 broken links
 
-**Completion (30%):** –20 recommendations lack a consequence (the "if you do not do X, then Y" framing is the defining trait — apply this when most entries are bare imperatives), –10 missing key practices a production reader needs, –10 concept, hierarchy, or setup content that belongs on another page and is not routed out, –5 trade-offs presented as benefits only, –5 no Next steps or no links out to the platform controls (RBAC, secrets) the page deliberately omits. **Do NOT penalize** missing "What you will learn" or missing Troubleshooting — both must be absent.
+**Completion (30%):** –20 recommendations lack a consequence (the "if you do not do X, then Y" framing is the defining trait — apply this when most entries are bare imperatives), –10 missing key practices a production reader needs, –10 concept, hierarchy, or setup content that belongs on another page and is not routed out, –5 trade-offs presented as benefits only, –5 no Next steps or no links out to the platform controls (RBAC, secrets) the page deliberately omits. **Do NOT penalize** missing "What you will learn from this topic" or missing Troubleshooting — both must be absent.
 
-**Editorial (30%):** –15 wrong structure (includes a "What you will learn" section, a `<Troubleshoot>` block, a standalone Troubleshooting or "Limitations and gotchas" section, or a concept dump), –10 feature-tour introduction instead of an advice frame, –10 missing/incorrect frontmatter, –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text (S-1, S-3), –10 walls of text, –5 link phrasing (S-2), –5 gerund headings (use imperative practice names), –5 "please" (S-5), –5 contractions (S-7), –5 inconsistent bolding, –5 spelling/grammar, –5 slug /docs/docs/ bug
+**Editorial (30%):** –15 wrong structure (includes a "What you will learn from this topic" section, a `<Troubleshoot>` block, a standalone Troubleshooting or "Limitations and gotchas" section, or a concept dump), –10 feature-tour introduction instead of an advice frame, –10 missing/incorrect frontmatter, –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text (S-1, S-3), –10 walls of text, –5 link phrasing (S-2), –5 gerund headings (use imperative practice names), –5 "please" (S-5), –5 contractions (S-7), –5 inconsistent bolding, –5 spelling/grammar, –5 slug /docs/docs/ bug
 
 **Key differences for best-practices pages:**
 - Every recommendation states a consequence. Bare imperatives with no rationale or consequence are the primary Completion failure.
-- "What you will learn" must be **absent** — penalize its presence, not its absence.
+- "What you will learn from this topic" must be **absent** — penalize its presence, not its absence.
 - Troubleshooting and "Limitations and gotchas" sections must be **absent** — fold instructive failure modes into a recommendation as its consequence, or route them to the feature page.
 - Headings are **imperative practice names** ("Store state in a remote backend"), so imperative headings are correct here, unlike on overview pages.
 - Concept, hierarchy, and platform-level material (RBAC, secret management) is **linked out**, not reproduced, and surfaced under Next steps.
@@ -260,13 +260,13 @@ Best-practices pages are scored against `.cursor/rules/doc-structure-best-practi
 
 **Accuracy (40%):** –20 contradicts behavior/concepts, –15 incorrect examples, –15 broken code, –10 wrong API/schema, –10 stale versions, –10 incorrect conceptual explanations, –5 broken links
 
-**Completion (30%):** –15 missing "What you will learn", –10 incomplete concept explanations, –10 missing reference material (attributes/params), –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 missing architectural context, –10 missing limitations/caveats, –5 no Related concepts/Next steps, –5 light/no prerequisites for knowledge context
+**Completion (30%):** –15 missing "What you will learn from this topic", –10 incomplete concept explanations, –10 missing reference material (attributes/params), –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 missing architectural context, –10 missing limitations/caveats, –5 no Related concepts/Next steps, –5 light/no prerequisites for knowledge context
 
 **Editorial (30%):** –15 wrong structure (vs overview template), –10 missing/incorrect frontmatter (must include title, sidebar_label, description, keywords, tags, sidebar_position as multiple of 10), –10 wrong heading case (must be sentence case + descriptive/noun phrases, NOT imperative; allow proper nouns: CamelCase words like BigQuery/CloudSQL, words with numbers like Jinja2/OAuth2, acronyms like API/REST/JSON, product names like Kubernetes/Terraform), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text — here, click here (S-1, S-3), –5 link phrasing — see [link], refer to, to learn more (S-2), –10 walls of text, –5 inconsistent bolding, –5 no intro before lists (S-6), –5 “please” in body (S-5), –5 contractions — don’t, won’t, can’t etc. (S-7), –5 missing Troubleshoot component (T-1) / ## Introduction heading in body (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
 
 **Key differences for overview pages:**
 - Before you begin is optional/lightweight (knowledge context only, NOT account/RBAC)
-- "What you will learn" section is required
+- "What you will learn from this topic" section is required
 - Headings should be descriptive/noun phrases, NOT imperative verbs
 - Troubleshooting/FAQs are optional
 - End section is "Related concepts" or "Learn more" (not necessarily "Next steps")
@@ -279,7 +279,7 @@ Best-practices pages are scored against `.cursor/rules/doc-structure-best-practi
 
 **Hybrid pages (Instructional leaning — ≥60% procedural):**
 - Score using **Instructional template** rules above
-- **Do NOT penalize** for having "What you will learn" section (common in hybrids)
+- **Do NOT penalize** for having "What you will learn from this topic" section (common in hybrids)
 - **Do NOT penalize** for having conceptual "How it works" sections with noun phrase headings alongside imperative procedural headings
 - **Reduce penalty** for missing detailed RBAC prerequisites if the page is primarily configuration-focused (–5 instead of –10)
 - Heading case: Allow **mixed heading styles** — imperative for procedural sections ("Configure X"), descriptive for conceptual sections ("Configuration levels", "How X works")
@@ -288,7 +288,7 @@ Best-practices pages are scored against `.cursor/rules/doc-structure-best-practi
 - Score using **Overview template** rules above
 - **Do NOT penalize** for having procedural sections with step-by-step instructions (common in hybrids)
 - **Do NOT penalize** for having imperative headings in procedural subsections alongside descriptive headings in conceptual sections
-- **Reduce penalty** for missing "What you will learn" if the page has a strong introductory explanation (–5 instead of –15)
+- **Reduce penalty** for missing "What you will learn from this topic" if the page has a strong introductory explanation (–5 instead of –15)
 - Heading case: Allow **mixed heading styles** — descriptive for conceptual sections, imperative for procedural sections
 
 **Hybrid pages (Balanced — 40-60% each):**
@@ -301,7 +301,7 @@ Best-practices pages are scored against `.cursor/rules/doc-structure-best-practi
 **General hybrid scoring adjustments:**
 - **Editorial heading case:** For all hybrid pages, allow mixed heading styles without penalty as long as each heading matches its section type (imperative for steps, descriptive for concepts)
 - **Completion RBAC:** Reduce RBAC prerequisite penalty to –5 if the page focuses more on architecture/concepts than account setup
-- **Structure flexibility:** Do not penalize for having both "What you will learn" (overview pattern) and detailed "Before you begin" (instructional pattern) in the same document
+- **Structure flexibility:** Do not penalize for having both "What you will learn from this topic" (overview pattern) and detailed "Before you begin" (instructional pattern) in the same document
 
 **Weighted score:** `(Accuracy × 0.4) + (Completion × 0.3) + (Editorial × 0.3)`
 **Pass: ≥ 80. Fail: < 80.**
@@ -637,7 +637,7 @@ The rewritten page must satisfy all of the following before you consider it done
 **For Best-practices pages:**
 - Follows doc-structure-best-practices-template.mdc skeleton (frontmatter → advice-frame intro → practice sections with imperative headings → Next steps)
 - Every recommendation states a recommendation + rationale + consequence ("if you do not do X, then Y happens")
-- No "What you will learn" section, no `<Troubleshoot>` block, no standalone Troubleshooting or "Limitations and gotchas" section
+- No "What you will learn from this topic" section, no `<Troubleshoot>` block, no standalone Troubleshooting or "Limitations and gotchas" section
 - No concept dumps (hierarchies, framework/version matrices, "how RBAC works") — linked out instead
 - Trade-offs state the real downside, not benefits only
 - Platform-level material (RBAC, secrets) routed to Next steps, not explained in the body
@@ -650,9 +650,9 @@ The rewritten page must satisfy all of the following before you consider it done
 - <Troubleshoot> component with at least 3 entries for common task errors
 
 **For Overview pages:**
-- Follows doc-structure-overview-template.mdc skeleton exactly (frontmatter → intro → What you will learn →
+- Follows doc-structure-overview-template.mdc skeleton exactly (frontmatter → intro → What you will learn from this topic →
   optional lightweight prerequisites → concept sections → optional FAQs → Related concepts)
-- "What you will learn" section with 3-5 learning outcomes
+- "What you will learn from this topic" section with 3-5 learning outcomes
 - Before you begin is optional/lightweight (knowledge context only, NOT account/RBAC)
 - All ## and ### headings use sentence case with descriptive noun phrases ("Policy entity types", "How X works")
 - Optional <FAQ> component for conceptual questions

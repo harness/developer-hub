@@ -62,6 +62,14 @@ import { MODULES } from "@site/src/constants";
               "",
             link: "/release-notes/ai-test-automation",
           },
+          // AI Code Review is hidden from navigation until beta launch (HDH-1155).
+          // {
+          //   title: "AI Code Review release notes",
+          //   module: MODULES.aicr,
+          //   description:
+          //     "",
+          //   link: "/release-notes/ai-code-review",
+          // },
           {
             title: "Artifact Registry release notes",
             module: MODULES.ar,

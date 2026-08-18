@@ -96,5 +96,13 @@
     "aliases": [
       "ai-sre"
     ]
+  },
+  {
+    "code": "aicr",
+    "base_url": "/docs/ai-code-review",
+    "folder": "docs/ai-code-review",
+    "aliases": [
+      "ai-code-review"
+    ]
   }
 ]

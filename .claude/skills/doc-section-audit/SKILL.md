@@ -182,20 +182,20 @@ Score across three dimensions (each starts at 100). **Use the same scoring logic
 
 **For Overview pages:**
 - **Accuracy (40%):** –20 contradicts behavior/concepts, –15 incorrect examples, –15 broken code, –10 wrong API/schema, –10 stale versions, –10 incorrect conceptual explanations, –5 broken links
-- **Completion (30%):** –15 missing "What you will learn", –10 incomplete concept explanations, –10 missing reference material (attributes/params), –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 missing architectural context, –10 missing limitations/caveats, –5 no Related concepts/Next steps, –5 light/no prerequisites for knowledge context
+- **Completion (30%):** –15 missing "What you will learn from this topic", –10 incomplete concept explanations, –10 missing reference material (attributes/params), –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 missing architectural context, –10 missing limitations/caveats, –5 no Related concepts/Next steps, –5 light/no prerequisites for knowledge context
 - **Editorial (30%):** –15 wrong structure (vs overview template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + descriptive/noun phrases, NOT imperative), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text (S-1, S-3), –5 link phrasing (S-2), –10 walls of text, –5 inconsistent bolding, –5 no intro before lists (S-6), –5 "please" in body (S-5), –5 contractions (S-7), –5 missing Troubleshoot component (T-1) / ## Introduction heading (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug, –5 module-root file not in `sidebars.ts` (file at `/docs/[module]/file.md` with no explicit sidebar entry)
 
 **For Best-practices pages:**
 - Score against `.cursor/rules/doc-structure-best-practices-template.mdc` using the best-practices rubric from `doc-audit` Step 3:
   - **Accuracy (40%):** –20 a recommendation contradicts product behaviour, –15 a stated consequence is wrong, –10 deprecated approach, –10 stale info, –5 broken links
-  - **Completion (30%):** –20 recommendations lack a consequence ("if you do not do X, then Y"), –10 missing key production practices, –10 concept or setup content not routed out, –5 benefits-only trade-offs, –5 no Next steps or links out. Do NOT penalize missing "What you will learn" or Troubleshooting.
-  - **Editorial (30%):** –15 wrong structure (has "What you will learn", `<Troubleshoot>`, a Troubleshooting or "Limitations" section, or a concept dump), –10 feature-tour intro, –10 frontmatter, –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text, –5 link phrasing, –5 gerund headings, –5 contractions, –5 "please", –5 spelling/grammar
+  - **Completion (30%):** –20 recommendations lack a consequence ("if you do not do X, then Y"), –10 missing key production practices, –10 concept or setup content not routed out, –5 benefits-only trade-offs, –5 no Next steps or links out. Do NOT penalize missing "What you will learn from this topic" or Troubleshooting.
+  - **Editorial (30%):** –15 wrong structure (has "What you will learn from this topic", `<Troubleshoot>`, a Troubleshooting or "Limitations" section, or a concept dump), –10 feature-tour intro, –10 frontmatter, –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text, –5 link phrasing, –5 gerund headings, –5 contractions, –5 "please", –5 spelling/grammar
   - Headings are imperative practice names (correct here, unlike overview). Best-practices pages are rare — generally one per module.
 
 **For Hybrid pages:**
 - Apply the adjusted scoring rules from `doc-audit` Step 3:
   - Allow mixed heading styles (imperative for procedural sections, descriptive for conceptual sections)
-  - Do not penalize for having both "What you will learn" and detailed "Before you begin"
+  - Do not penalize for having both "What you will learn from this topic" and detailed "Before you begin"
   - Reduce RBAC penalty to –5 if page is architecture-focused
   - For balanced hybrids, score against both templates and use the higher score
 

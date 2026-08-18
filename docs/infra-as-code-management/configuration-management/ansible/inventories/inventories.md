@@ -26,8 +26,7 @@ An inventory defines the machines your playbooks target and the variables those 
 
 ---
 
-## What will you learn?
-
+## What you will learn from this topic
 - **Inventory types:** When to choose a static, dynamic, or plugin inventory.
 - **Static setup:** Create an inventory and define hosts and groups manually.
 - **Dynamic setup:** Add a source that resolves hosts from workspace resources, select the host address attribute, and filter hosts with conditions.

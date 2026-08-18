@@ -66,6 +66,15 @@ export const categories: Category[] = [
         iconDark: "img/home/repository.svg",
         description: "Host, review, and collaborate on code with Git and pipelines."
       },
+      // AI Code Review is hidden from navigation until beta launch (HDH-1155).
+      // {
+      //   name: "AI Code Review",
+      //   href: "/docs/ai-code-review",
+      //   module: "aicr",
+      //   iconLight: "img/icon-ai-code-review.svg",
+      //   iconDark: "img/icon-ai-code-review.svg",
+      //   description: "Review pull requests with an AI agent on GitHub or Harness Code."
+      // },
       {
         name: "Feature Management & Experimentation",
         href: "/docs/feature-management-experimentation",

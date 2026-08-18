@@ -21,8 +21,7 @@ This guide shows you how to deploy Amazon EC2 workloads by orchestrating Auto Sc
 
 ---
 
-## What will you learn?
-
+## What you will learn from this topic
 - **ASG service configuration:** How to define launch templates, ASG configuration files, and AMI artifacts in Harness
 - **Infrastructure targeting:** How to connect Harness to your AWS account and specify the target region for ASG deployments
 - **Deployment strategies:** When to use rolling, canary, or blue-green deployment patterns for ASGs

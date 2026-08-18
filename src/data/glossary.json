@@ -3711,6 +3711,52 @@
       ]
     },
     {
+      "id": "aicr.concepts.review-agent",
+      "term": "review agent",
+      "definition": "The AI agent that Harness AI Code Review runs against a pull request diff. The agent clones the repository, reads the diff, and calls Harness tools for delivery context.",
+      "slug": "review-agent",
+      "module": "aicr",
+      "category": "concepts",
+      "letter": "R",
+      "related": [
+        {
+          "term": "ai sre",
+          "slug": "ai-sre"
+        },
+        {
+          "term": "anomaly",
+          "slug": "anomaly"
+        },
+        {
+          "term": "api key",
+          "slug": "api-key"
+        }
+      ]
+    },
+    {
+      "id": "aicr.concepts.review-criteria",
+      "term": "review criteria",
+      "definition": "A named check that Harness AI Code Review runs against a pull request, such as test coverage, backward compatibility, or a team convention. Each criterion returns a pass or fail result with an explanation.",
+      "slug": "review-criteria",
+      "module": "aicr",
+      "category": "concepts",
+      "letter": "R",
+      "related": [
+        {
+          "term": "ai sre",
+          "slug": "ai-sre"
+        },
+        {
+          "term": "anomaly",
+          "slug": "anomaly"
+        },
+        {
+          "term": "api key",
+          "slug": "api-key"
+        }
+      ]
+    },
+    {
       "id": "platform.concepts.role",
       "term": "role",
       "definition": "A set of permissions that define what actions (view, create, edit, delete, execute) a user or user group can perform on Harness resources.",
@@ -9196,6 +9242,52 @@
         "definition": "A named collection of Harness resources (pipelines, connectors, environments, services) used in RBAC to define what resources a role can access.",
         "slug": "resource-group",
         "module": "platform",
+        "category": "concepts",
+        "letter": "R",
+        "related": [
+          {
+            "term": "ai sre",
+            "slug": "ai-sre"
+          },
+          {
+            "term": "anomaly",
+            "slug": "anomaly"
+          },
+          {
+            "term": "api key",
+            "slug": "api-key"
+          }
+        ]
+      },
+      {
+        "id": "aicr.concepts.review-agent",
+        "term": "review agent",
+        "definition": "The AI agent that Harness AI Code Review runs against a pull request diff. The agent clones the repository, reads the diff, and calls Harness tools for delivery context.",
+        "slug": "review-agent",
+        "module": "aicr",
+        "category": "concepts",
+        "letter": "R",
+        "related": [
+          {
+            "term": "ai sre",
+            "slug": "ai-sre"
+          },
+          {
+            "term": "anomaly",
+            "slug": "anomaly"
+          },
+          {
+            "term": "api key",
+            "slug": "api-key"
+          }
+        ]
+      },
+      {
+        "id": "aicr.concepts.review-criteria",
+        "term": "review criteria",
+        "definition": "A named check that Harness AI Code Review runs against a pull request, such as test coverage, backward compatibility, or a team convention. Each criterion returns a pass or fail result with an explanation.",
+        "slug": "review-criteria",
+        "module": "aicr",
         "category": "concepts",
         "letter": "R",
         "related": [

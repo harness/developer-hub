@@ -169,6 +169,7 @@ function getModuleName(moduleKey) {
     'cloud-development-environments': 'Cloud Development Environments (CDE)',
     'code-repository': 'Code Repository',
     'artifact-registry': 'Artifact Registry',
+    'ai-code-review': 'AI Code Review',
     'internal-developer-portal': 'Internal Developer Portal (IDP)',
     'software-engineering-insights': 'AI DLC Insights (SEI)',
     'service-reliability-management': 'Service Reliability Management (SRM)',

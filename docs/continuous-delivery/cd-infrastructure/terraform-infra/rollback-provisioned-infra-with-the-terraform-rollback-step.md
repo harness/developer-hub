@@ -23,8 +23,7 @@ This topic describes how to roll back your provisioned infrastructure and resour
 
 ---
 
-## What will you learn?
-
+## What you will learn from this topic
 - **Add Terraform Rollback steps:** Configure rollback steps in pipeline rollback sections to handle failed deployments.
 - **Reference Provisioner Identifiers:** Link rollback steps to the infrastructure provisioned by Apply steps.
 - **Understand rollback limitations:** Learn when rollback can and cannot be performed based on Terraform state.

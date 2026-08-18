@@ -109,6 +109,8 @@ export default function NavbarWrapper(props: Props): ReactNode {
     { to: `${docsBase}/ai`, legacyTo: "/docs/platform/harness-ai/overview", label: "Harness AI", icon: "/img/home/ai.svg" },
     { to: `${docsBase}/platform`, label: "Harness Platform", icon: "/img/home/platform.svg" },
     { to: `${docsBase}/code-repository`, label: "Code Repository", icon: "/img/home/repository.svg" },
+    // AI Code Review is hidden from navigation until beta launch (HDH-1155).
+    // { to: `${docsBase}/ai-code-review`, label: "AI Code Review", icon: "/img/icon-ai-code-review.svg" },
 
     { type: "header", label: "Delivery" },
     { to: `${docsBase}/continuous-delivery`, label: "Continuous Delivery", icon: "/img/home/deployment.svg" },

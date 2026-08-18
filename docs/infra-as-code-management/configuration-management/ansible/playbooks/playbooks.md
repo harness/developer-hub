@@ -26,8 +26,7 @@ A playbook in Harness IaCM is a pointer to automation you maintain in Git: Harne
 
 ---
 
-## What will you learn?
-
+## What you will learn from this topic
 - **Registration:** Point Harness at the repository, branch or commit, and path where your playbook lives.
 - **Variables:** Attach playbook-scoped variables and environment variables, including secrets.
 - **Ansible Galaxy:** Enable automatic installation of collections from a `requirements.yml` file before execution.

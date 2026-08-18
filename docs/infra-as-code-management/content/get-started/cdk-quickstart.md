@@ -5,8 +5,7 @@ AWS Cloud Development Kit (CDK) lets you define cloud infrastructure using gener
 
 This guide walks you from connectors and workspace creation through a standard CDK deploy pipeline (bootstrap, synth, diff, deploy) and an optional approval between diff and deploy.
 
-### What will you learn?
-
+### What you will learn from this topic
 - **Connectors and workspace:** Create cloud and Git connectors, then create a CDK workspace configured with your language and package manager.
 - **Deploy pipeline:** Run a pipeline that executes the four CDK steps: bootstrap, synth, diff, and deploy.
 - **Stack targeting:** Optionally deploy a specific stack from your CDK app rather than the full application.

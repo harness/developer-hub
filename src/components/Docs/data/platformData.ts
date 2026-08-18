@@ -42,6 +42,13 @@ export const docsCards: CardSections = [
         description: "Host, review, and collaborate on code with built-in Git support and native pipeline integrations.",
         link: "/docs/code-repository/get-started/onboarding-guide",
       },
+      // AI Code Review is hidden from navigation until beta launch (HDH-1155).
+      // {
+      //   title: "AI Code Review",
+      //   module: MODULES.aicr,
+      //   description: "Review pull requests with an AI agent that reads your diff alongside your CI, CD, and incident data.",
+      //   link: "/docs/ai-code-review/overview",
+      // },
       {
         title: "Continuous Delivery & GitOps",
         module: MODULES.cd,

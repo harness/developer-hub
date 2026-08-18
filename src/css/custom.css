@@ -1961,7 +1961,9 @@ html[data-theme='dark'] .navbar__search_kapa kbd {
 .sidebar-opensource > div > a::before,
 .sidebar-opensource > a::before,
 .sidebar-univ > div > a::before,
-.sidebar-univ > a::before {
+.sidebar-univ > a::before,
+.sidebar-aicr > div > a::before,
+.sidebar-aicr > a::before {
   content: ' ';
   display: inline-block;
   height: 24px;
@@ -2003,7 +2005,17 @@ html[data-theme='dark'] .navbar__search_kapa kbd {
   background-image: url('/img/home/university.svg');
 }
 
+.sidebar-aicr > div > a::before,
+.sidebar-aicr > a::before {
+  background-image: url('/img/icon-ai-code-review.svg');
+}
+
 /* ── 3k-docs icons (/home/ modern variants) ── */
+
+nav[data-docs-variant="3k"] .sidebar-aicr > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-aicr > a::before {
+  background-image: url('/img/home/ai-code.svg');
+}
 
 nav[data-docs-variant="3k"] .sidebar-ai > div > a::before,
 nav[data-docs-variant="3k"] .sidebar-ai > a::before {
@@ -2209,6 +2221,10 @@ html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-aisec > div > a::be
 html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-aisec > a::before,
 html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-hsf > div > a::before,
 html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-hsf > a::before,
+html[data-theme='dark'] .sidebar-aicr > div > a::before,
+html[data-theme='dark'] .sidebar-aicr > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-aicr > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-aicr > a::before,
 html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-qwietai > div > a::before,
 html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-qwietai > a::before {
   filter: brightness(0) invert(1) opacity(0.9);

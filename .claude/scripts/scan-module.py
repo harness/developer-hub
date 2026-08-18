@@ -238,6 +238,7 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
                      for i, ln in enumerate(body_raw.split('\n')))
 
     # Landmark sections recognised across all doc types (overview + how-to).
+    # "What you will learn" is a prefix match for "What you will learn from this topic".
     _LANDMARKS = ["Before you begin", "What you will learn", "Related concepts",
                   "Next steps", "Troubleshooting"]
     has_landmark = any(re.search(rf'^## {re.escape(l)}', body, re.MULTILINE) for l in _LANDMARKS)
@@ -350,8 +351,8 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
         violations.append({"rule": "S-5", "text": "Word 'please' found", "line": body[:match.start()].count('\n')})
 
     # S-6: No intro before list. Exempt landmark sections that conventionally lead with
-    # a list (What you will learn, Before you begin, etc.).
-    _S6_EXEMPT = {"What you will learn", "Before you begin", "Related concepts",
+    # a list (What you will learn from this topic, Before you begin, etc.).
+    _S6_EXEMPT = {"What you will learn from this topic", "What you will learn", "Before you begin", "Related concepts",
                   "Next steps", "Prerequisites"}
     for match in re.finditer(r'^##+ (.+)\n\n[ \t]*(?:[-*]|\d+\.)\s', body, re.MULTILINE):
         if match.group(1).strip() not in _S6_EXEMPT:
@@ -413,7 +414,7 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
                 violations.append({"rule": "T-3", "text": f"Summary doesn't end with ?: {summary_text[:50]}", "line": body[:match.start()].count('\n')})
 
         # Check for banned sections
-        banned_sections = ["Prerequisites", "Next steps", "Troubleshooting", "What will you learn"]
+        banned_sections = ["Prerequisites", "Next steps", "Troubleshooting", "What you will learn from this topic", "What you will learn", "What will you learn"]
         for section in banned_sections:
             if re.search(rf'^## {section}', body, re.MULTILINE):
                 violations.append({"rule": "T-3", "text": f"FAQ page has banned section: {section}"})

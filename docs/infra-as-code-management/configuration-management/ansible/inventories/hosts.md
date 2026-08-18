@@ -25,8 +25,7 @@ Hosts are the machines your playbooks configure, and groups let a playbook targe
 
 ---
 
-## What will you learn?
-
+## What you will learn from this topic
 - **Hosts:** Add, edit, and delete hosts, and assign them to groups.
 - **Groups:** Create groups, manage membership, and attach group-level variables.
 - **Host variables:** Set per-host values, including connection settings such as `ansible_user`.

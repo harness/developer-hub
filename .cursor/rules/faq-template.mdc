@@ -237,7 +237,7 @@ Never include in an FAQ page:
 
 - `## Before you begin` section
 - `## Next steps` section
-- `## What will you learn?` section
+- `## What you will learn from this topic` section
 - `<Troubleshoot>` component (use static `<details>` or `<FAQ>` instead)
 - H3 or deeper headings
 - Numbered step sequences — if a question requires steps, link to the instructional page

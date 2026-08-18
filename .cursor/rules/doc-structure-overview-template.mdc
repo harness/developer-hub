@@ -77,14 +77,14 @@ In Harness IaCM, OPA policies can evaluate workspace configurations, Terraform p
 
 **Visual separation:** Add a horizontal rule (`---`) before each major `##` section heading to provide clear visual separation between sections.
 
-#### 3. What you will learn (required for overview pages)
+#### 3. What you will learn from this topic (required for overview pages)
 
 Help readers understand what concepts they'll grasp by the end. Use bold labels with brief descriptions:
 
 ```markdown
 ---
 
-## What you will learn
+## What you will learn from this topic
 
 - **Policy entity types:** The three types of entities (Workspace, Terraform Plan, Terraform State) and when each is evaluated.
 - **Policy triggering behavior:** How and when Harness automatically evaluates policies during pipeline execution.
@@ -343,7 +343,7 @@ Now that you understand how OPA policies work in IaCM, you're ready to create an
 | **Code examples** | Illustrative reference, meant to be adapted | Step-by-step, meant to be followed exactly |
 | **Troubleshooting** | FAQs or misconceptions (if any) | Common errors during task execution |
 | **End section** | "Related concepts" or "Learn more" | "Next steps" with what to do next |
-| **Required section** | "What you will learn" (learning outcomes) | Before you begin (what you need before starting) |
+| **Required section** | "What you will learn from this topic" (learning outcomes) | Before you begin (what you need before starting) |
 | **User outcome** | Understands a concept or feature | Has completed a task or configuration |
 
 ---
@@ -366,6 +366,6 @@ Now that you understand how OPA policies work in IaCM, you're ready to create an
 
 **Hybrid pages:**
 Some pages blend both (e.g., explain a concept, then show how to use it). For these:
-1. Start with overview structure (intro, "What you will learn", concept explanation)
+1. Start with overview structure (intro, "What you will learn from this topic", concept explanation)
 2. Transition to instructional structure (Before you begin, step-by-step instructions)
 3. Use both templates as reference and adapt section order as needed

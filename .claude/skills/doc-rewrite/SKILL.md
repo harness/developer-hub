@@ -101,7 +101,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
 - Questions: Every `<summary>` must end with `?`. No `###` or deeper headings anywhere.
 - Answers: Every `<details>` body must contain at least one full sentence of content.
 - Components: Use static `<details>`/`<summary>` for all entries. Only use `<FAQ>` component if the page has fewer than 10 questions total. Never use `<Troubleshoot>`.
-- Banned sections: No `## Before you begin`, `## Next steps`, `## Troubleshooting`, `## What will you learn?`, or `## Introduction`.
+- Banned sections: No `## Before you begin`, `## Next steps`, `## Troubleshooting`, `## What you will learn from this topic`, or `## Introduction`.
 - Frontmatter: `sidebar_label: FAQ`, `title: FAQ — [Feature Name]`, `faq` tag required, `sidebar_position` (multiple of 10).
 
 **For Instructional pages:**
@@ -111,7 +111,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
 - Code examples: Step-by-step, meant to be followed
 
 **For Overview pages:**
-- Structure: Frontmatter → Introduction (2-3 paragraphs) → What you will learn → Optional lightweight prerequisites → Concept sections → Optional FAQs → Related concepts
+- Structure: Frontmatter → Introduction (2-3 paragraphs) → What you will learn from this topic → Optional lightweight prerequisites → Concept sections → Optional FAQs → Related concepts
 - Headings: Descriptive noun phrases, sentence case ("Policy entity types", "How X works")
 - Before you begin: Optional, knowledge-context only (NO account/RBAC requirements)
 - Code examples: Illustrative reference, meant to be adapted
@@ -131,7 +131,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
    - Keep existing :::info or :::warning callouts if they add value
 
 3. **Section additions (Instructional and Overview pages only — do NOT apply to FAQ pages):**
-   - Add "What you will learn" (Overview pages only)
+   - Add "What you will learn from this topic" (Overview pages only)
    - Add Before you begin (Instructional) or lightweight knowledge prerequisites (Overview, optional)
    - Add Troubleshooting with `<Troubleshoot>` component (Instructional, at least 3 entries)
    - Add FAQs with `<FAQ>` component (Overview, optional)
@@ -235,7 +235,7 @@ After applying changes:
    - Every `<summary>` ends with `?`
    - Every `<details>` body has at least one full sentence (not just a link)
    - No `###` or deeper headings anywhere in the body
-   - No `## Before you begin`, `## Next steps`, `## Troubleshooting`, or `## What will you learn?` sections
+   - No `## Before you begin`, `## Next steps`, `## Troubleshooting`, or `## What you will learn from this topic` sections
    - `<FAQ>` component only used if total question count is fewer than 10
    - No `<Troubleshoot>` component used
    
@@ -253,7 +253,7 @@ After applying changes:
 Provide a summary:
 
 1. **Changes applied:**
-   - List the key changes (e.g., "Added 'What you will learn' section", "Fixed 3 non-site-relative links", "Added Troubleshooting component with 4 entries")
+   - List the key changes (e.g., "Added 'What you will learn from this topic' section", "Fixed 3 non-site-relative links", "Added Troubleshooting component with 4 entries")
 
 2. **Sections added:**
    - List any new sections that were added

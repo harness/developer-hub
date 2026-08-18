@@ -215,6 +215,13 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/ai-sre/ @ryantaylor16 @Kmonkeyjam @NickLanam
 /release-notes/ai-sre.md @ryantaylor16 @Kmonkeyjam @NickLanam
 
+# AI Code Review Docs
+/docs/ai-code-review/ @richardblack-Harness @urischeiner
+/docs/ai-code-review.md @richardblack-Harness @urischeiner
+/release-notes/ai-code-review.md @richardblack-Harness @urischeiner
+/src/components/Docs/AiCodeReview.tsx @richardblack-Harness @urischeiner
+/src/components/Docs/data/aiCodeReviewData.ts @richardblack-Harness @urischeiner
+
 # AI QA Assistant Docs
 /docs/ai-qa-assistant/ @ShibamD @splitterben @deba-harness
 /release-notes/ai-test-automation.md @ShibamD @splitterben @deba-harness

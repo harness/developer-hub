@@ -11,8 +11,7 @@ This guide shows you how to configure Terraform variable files in your pipeline'
 
 ---
 
-## What will you learn?
-
+## What you will learn from this topic
 - **Inline variables:** Add variables directly in the step configuration for simple, static values.
 - **Remote variable files:** Connect to Git repositories to fetch `.tfvars` files managed in version control.
 - **Optional file handling:** Mark files as optional so Harness ignores missing files and continues execution.
