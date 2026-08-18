@@ -498,7 +498,7 @@ template:
                                   actualFailedTestsStatus=<+steps.poll_scan_status.output.outputVariables.pollingStatus>
                                   if [[ "$actualFailedTestsStatus" = "Success" || "$actualFailedTestsStatus" = "IgnoreFailed" ]]
                                   then
-                                    echo "STO Scan Pipeline return SUCCESSS"
+                                    echo "STO Scan Pipeline return SUCCESS"
                                     exit 0
                                   else 
                                     echo "STO Scan Pipeline return FAILED"
@@ -677,7 +677,7 @@ template:
                                   actualFailedTestsStatus=<+steps.poll_sanity_urls.output.outputVariables.pollingStatus>
                                   if [[ "$actualFailedTestsStatus" = "Success" || "$actualFailedTestsStatus" = "IgnoreFailed" ]]
                                   then
-                                    echo "Sanity return SUCCESSS"
+                                    echo "Sanity return SUCCESS"
                                     exit 0
                                   else 
                                     echo "Sanity return FAILED"

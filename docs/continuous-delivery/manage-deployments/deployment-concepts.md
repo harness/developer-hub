@@ -67,7 +67,7 @@ With a rolling deployment, all nodes within a single environment are replaced on
 - Balancing speed and safety. Nodes are replaced in an immediate series.
 - Ramping load balancing scenarios that require reduced downtime.
 
-One use of rolling deployments is as the stage preceeding a canary deployment in a deployment pipeline. For example, in the first stage you can perform a rolling deployment to a QA environment, once successful, you perform a canary deployment to production incrementally.
+One use of rolling deployments is as the stage preceding a canary deployment in a deployment pipeline. For example, in the first stage you can perform a rolling deployment to a QA environment, once successful, you perform a canary deployment to production incrementally.
 
 #### Pros
 

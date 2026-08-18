@@ -112,7 +112,7 @@ See [Deployment concepts and strategies](/docs/continuous-delivery/manage-deplo
 
 #### How do I filter deployments on the Deployments page?
 
-You can filter deployments on the the Deployments page according to multiple criteria, and save these filters as a quick way to filter deployments in the future.
+You can filter deployments on the Deployments page according to multiple criteria, and save these filters as a quick way to filter deployments in the future.
 
 #### How do I know which Harness Delegates were used in a deployment?
 
@@ -240,11 +240,11 @@ You can configure pipeline outputs throughout the stages to include all the data
 
 #### Can we get details what branch did trigger the pipeline and who did it; the time the pipeline failed or terminated,  while using Microsoft Teams Notification
 
-These details are not available by default as only (status, time, pipeline name url etc) is only sent and if you need these details might ned to use custom shell script
+These details are not available by default as only (status, time, pipeline name url etc) is only sent and if you need these details might need to use custom shell script
 
 #### How to pass list of multiple domains for allowing whitelisting while using api ?
 
-Domain whitelisting api takes domain as input array. So if we have multiple domains to be passed this needs to be done as coma separeted string entries in the array. Below is a sample for the same:
+Domain whitelisting api takes domain as input array. So if we have multiple domains to be passed this needs to be done as coma separated string entries in the array. Below is a sample for the same:
 
 ```
 curl -i -X PUT \
@@ -409,7 +409,7 @@ If your deployment type is WinRM, then WinRM is the default option used to conne
 
 #### Why doesn't the pipeline skip steps in a step group when another step in the group fails?
 
-If you want this to occur, you neeed to define a conditional execution of `<+stage.liveStatus> == "SUCCESS"` on each step in the group.
+If you want this to occur, you need to define a conditional execution of `<+stage.liveStatus> == "SUCCESS"` on each step in the group.
 
 #### Why am I getting an error that the input set does not exist in the selected Branch?
 
@@ -1610,7 +1610,7 @@ The new v2 experience has been designed to provided users and organizations with
 
 #### I am working on overrides creation using Terraform. As I see according to the latest update overrides were moved from the Environments tab to a separate tab. We have a use case where I must create all the 3 types provided under service-specific overrides. How to get YAML representation for all 3 types of override
 
-You can get the the detail under Example Usage here https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service_overrides_v2
+You can get the detail under Example Usage here https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service_overrides_v2
 
 #### What are OAuth App access restrictions in a Git environment, and how do they affect my ability to push changes to a repository?
 
@@ -1690,7 +1690,7 @@ For Blue-Green deployment in PROD, you can define the conditions to switch traff
 
 You can define the failure strategy on stages and steps in your pipeline to set up proper rollback strategies. You can add a failure strategy in the deploy stage by either ignoring the failure for the shell script or getting a manual intervention where you can mark that step as a success. Additionally, you can use the declarative rollback feature provided by Harness to perform rollbacks effectively in different deployment scenarios.
 
-#### How to refer to the name and identifier for Infrastructure Definition using build-in variables from another stage?
+#### How to refer to the name and identifier for Infrastructure Definition using built-in variables from another stage?
 
 ENV details can be referred from the previous stage using output expressions of that stage.
 
@@ -1702,7 +1702,7 @@ You can update the RBAC to disable auto-sync for the entire GitOps app, but this
 
 When you are trying to delete a service and it gives you an error saying it has running insatances. But you have already remove the pipeline/environment etc
 As When you deploy using Harness , Harness runs a perpetal task to validate about the depployed instance using the infrastructure definition.
-Yoi can either bring down the instance from the infrastucture and then delete the service or use the Force Delete option in Harness if you want to delete the servie but still keep the deployed instance up and running.
+You can either bring down the instance from the infrastructure and then delete the service or use the Force Delete option in Harness if you want to delete the service but still keep the deployed instance up and running.
 
 #### Is there a platform page where we can view the deployed image tags for each environment associated with a service ?
 
@@ -1820,7 +1820,7 @@ The Infrastructure key (the unique key used to restrict concurrent deployments) 
 To make the deployment work you can :
 
 1. Add a connector in the select host field and specify the host.
-2. Change the secret identifie (create a new with same key but differen identifier)
+2. Change the secret identifie (create a new with same key but different identifier)
 
 #### Does using organizational environments come with the same limitations observed at the organizational and account levels, particularly regarding the unavailability of the service metric page and rollback features ?
 
@@ -1855,9 +1855,9 @@ You can use Harness with CloudFormation in two ways:
 Dynamic infrastructure provisioning: you can provision the target infrastructure for a deployment as part of the stage's Environment settings, and then deploy to that provisioned infrastructure in the same stage.
 Ad hoc provisioning: provision any resources other than the target infrastructure for the deployment.
 
-#### Accessing a variable in namepsace of an environment which is defined in the shell script step of the pipeline.
+#### Accessing a variable in namespace of an environment which is defined in the shell script step of the pipeline.
 
-You will need to add a custom stage and then export an output variable in order to use this output variable in the deploy stage environment variable as when the pipeline will execute it will initialize the service and environment before getting to tht shell setp.
+You will need to add a custom stage and then export an output variable in order to use this output variable in the deploy stage environment variable as when the pipeline will execute it will initialize the service and environment before getting to the shell setp.
 
 #### Environment Selection Options appearing in Custom Stages
 
@@ -1992,7 +1992,7 @@ To integrate a new version of the Helm binary with the delegate:
 #### Which entities such as service or environment are factors that determine the metrics displayed in Deployment Dashboard?
 
 In our setup, two Looker dashboard models are specifically designed to showcase data solely from pipeline executions with a CD stage. The data aggregation and presentation within these views adapt dynamically based on the chosen attributes for display on the dashboard
-Please read more on Looker/Dashboard Behaviour in the following [Doumentation](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/cost-categories-usage/#behaviour)
+Please read more on Looker/Dashboard Behaviour in the following [Documentation](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/cost-categories-usage/#behaviour)
 
 #### What's the difference between matchType all and any?
 
@@ -2431,7 +2431,7 @@ Currently, we do not offer direct support or a connector to Keyfactor.
 
 #### Can we get details what branch did trigger the pipeline and who did it; the time the pipeline failed or terminated, while using Microsoft Teams Notification?
 
-These details are not available by default as only (status, time, pipeline name url etc) is only sent and if you need these details might ned to use custom shell script
+These details are not available by default as only (status, time, pipeline name url etc) is only sent and if you need these details might need to use custom shell script
 
 #### How to create role binding (to a usergroup) through the API?
 
@@ -2456,7 +2456,7 @@ Currently we can not use Harness variable expression for tag.
 
 ##### How to pass list of multiple domains for allowing whitelisting while using api ?
 
-Domain whitelisting api takes domain as input array. So if we have multiple domains to be passed this needs to be done as coma separeted string entries in the array. Below is a sample for the same:
+Domain whitelisting api takes domain as input array. So if we have multiple domains to be passed this needs to be done as coma separated string entries in the array. Below is a sample for the same:
 
 ```
 curl -i -X PUT \
@@ -2492,7 +2492,7 @@ We do however have api for testing connectors on demand as well. We can create a
 
 #### Can we block access to only api calls from certain IP address?
 
-The ip allowlist options can be configured optionally for UI and api. If we only want to block api access we need to select only UI option during configruation. This way access to api call from those api range will not be allowed.
+The IP allowlist options can be configured optionally for UI and api. If we only want to block api access we need to select only UI option during configuration. This way access to api call from those api range will not be allowed.
 
 #### Is there a short notation for accessing step output variable within the same step group ?
 
@@ -2510,7 +2510,7 @@ We can also shorten the expression for accessing output variables of a step insi
 
 #### How to use secret identifiers for secret variables?
 
-Secret variables need to select which secret identifier they resolve to. However it allows for use of expression as well. We can have a variable assigned type as expresion and use a runtime input variable in that expression. The runtime input in this secnario will be treated as the secret identifier.
+Secret variables need to select which secret identifier they resolve to. However, it allows for use of expression as well. We can have a variable assigned type as expression and use a runtime input variable in that expression. The runtime input in this scenario will be treated as the secret identifier.
 
 An example expression will be below:
 
@@ -2526,11 +2526,11 @@ We can add two primary artifacts in the service however the execution will run w
 
 #### Do we have a inline values override in Next Gen?
 
-We do not have a separate option for inline values yaml override. However in Next gen we allow to use values override from Harness file store. So we can create the values yaml override in harness file store and add it in the values override configruation.
+We do not have a separate option for inline values yaml override. However in Next gen we allow to use values override from Harness file store. So we can create the values yaml override in harness file store and add it in the values override configuration.
 
 #### Is space allowed in variable names?
 
-Space in pipeline variable names does not confirm to the naming convention for the variables used. Varaible names can only contain alphanumerics -, \_ and $ .
+Space in pipeline variable names does not confirm to the naming convention for the variables used. Variable names can only contain alphanumerics -, \_ and $ .
 
 #### Is there a way I can create multiple triggers in the same pipeline such that each trigger is registered with a different GitHub repo as a webhook?
 
@@ -2595,7 +2595,7 @@ It is only present in CI as caching dependencies needs to build an artifact is a
 
 #### Can we not not use `<+input>.executionInput()` in the ternary operator to wait for user entry ?
 
-No, this is not possible yet for the excution. We may consider this as Enhancement Request in upcoming future.
+No, this is not possible yet for the execution. We may consider this as Enhancement Request in upcoming future.
 
 #### Does Harness support the use of two Target Groups and allow the utilization of either the Load Balancer or Route53 DNS for orchestrating the switching between the routes to the Blue or Green Services ?
 
@@ -2716,13 +2716,13 @@ These limits are applied because:
 
 - There is a limit on the total number of concurrent and queued executions. If some pipelines run/wait for days/weeks, they consume valuable resources from other projects in the account and delay queues.
 - Usually, very long running pipelines are waiting on something (approvals, test results, deployments) that took longer than expected. A quicker timeout makes it clear that something went wrong in the workflow, instead of indefinitely waiting.
-- Long running pipelines impact the availablility of Harness resources.
+- Long running pipelines impact the availability of Harness resources.
 
 For more information, go to [Deloyment logs and limitations](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations) and [Pipeline settings](https://developer.harness.io/docs/platform/pipelines/pipeline-settings).
 
 #### Can we create Custom remote manifest template in Next-Gen ?
 
-No, this feauture is yet to be introduced.
+No, this feature is yet to be introduced.
 
 #### Can we disable the Fetch Instances in custom deployment stage ?
 
@@ -2731,7 +2731,7 @@ Disabling such is not an available option.
 
 #### What expression can be employed to account for the status of children within a matrix when the default expression currentStatus does not suffice ?
 
-By default the expression we use is currentStatus which does not take into account the status of children inside matrix. Inorder to acheive the same behaviour we can use `liveStatus` expression.
+By default the expression we use is currentStatus which does not take into account the status of children inside matrix. Inorder to achieve the same behaviour we can use `liveStatus` expression.
 
 #### Can one implement execution of the pipeline using the following expression `<+stage.variables.Notification_To> != ""`?
 
@@ -2742,10 +2742,10 @@ One can also use implementation `<+stage.variables.Notification_To> != "" || <+s
 No, We do not resolve the expression in the test channel capability, the user would need to hardcode a channel and test
 Also, we do not log the resolved pipeline expression into the slack notification configuration
 
-#### How long does the Perpetual Task in Service instace count stays live and what is the interval perid of this check?
+#### How long does the Perpetual Task in Service instance count stays live and what is the interval perid of this check?
 
 Perpetual Task run after 10 mins interval which sync instances details, But stays alive for 2 weeks. So, after 10 mins service dashboard should be updated but live expectation can be for upto 2 weeks from here.
-Please read more on this in the following [Documentaion](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#how-instance-information-is-obtained).
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#how-instance-information-is-obtained).
 
 #### What is the variable type set to if an echo for the variable is made?
 
@@ -2871,8 +2871,8 @@ The result should be like this:
 
 #### Unable to see real time console logs for a pipeline execution.
 
-It could be that you are nopt able to see real time console logs for a pipleine execution but once the pipeline completes it shows all the logs.
-You can open the devleoper tools and check the network while the pipeline is executing. If you see a failed stream api , then issue most likely is on the proxy settings. You also need to make sure Server-Sent Events are not blocked:
+It could be that you are nopt able to see real time console logs for a pipeline execution but once the pipeline completes it shows all the logs.
+You can open the developer tools and check the network while the pipeline is executing. If you see a failed stream api , then issue most likely is on the proxy settings. You also need to make sure Server-Sent Events are not blocked:
 
 Reference : https://stackoverflow.com/questions/13672743/eventsource-server-sent-events-through-nginx
 
@@ -2884,7 +2884,7 @@ Let's take an example that your secret value is json and you stored it as a secr
 
 #### Pipelines notifications on slack secret expression for slack webhook URL.
 
-You can also store the slack webhook url as secret in Harness and then use it for the pipeline notifcations.
+You can also store the slack webhook url as secret in Harness and then use it for the pipeline notifications.
 
 Use the below expression :
 `<+secrets.getValue("slack_webhook_url")>`
@@ -2894,7 +2894,7 @@ Here the slack_webhook_url is secret stored in Harness which has the real webhoo
 
 When you are trying to delete a service and it gives you an error saying it has running insatances. But you have already remove the pipeline/environment etc
 As When you deploy using Harness , Harness runs a perpetal task to validate about the depployed instance using the infrastructure definition.
-Yoi can either bring down the instance from the infrastucture and then delete the service or use the Force Delete option in Harness if you want to delete the servie but still keep the deployed instance up and running.
+You can either bring down the instance from the infrastructure and then delete the service or use the Force Delete option in Harness if you want to delete the service but still keep the deployed instance up and running.
 
 #### Freeze window slack notifictaion.
 
@@ -3021,7 +3021,7 @@ You can make use of the update service API with the artifact source added in the
 
 #### API to list all secret managers in an account.
 
-You can use the [list connectors API](https://apidocs.harness.io/tag/Connectors#operation/getConnectorListV2) filter in the account. You can use SECRET_MANAGER to list all secret mangers from the account.
+You can use the [list connectors API](https://apidocs.harness.io/tag/Connectors#operation/getConnectorListV2) filter in the account. You can use SECRET_MANAGER to list all secret managers from the account.
 
 #### How to pass multiple environments and infrastructures as expressions?
 

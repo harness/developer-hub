@@ -197,7 +197,7 @@ The Platform Dashboards use [LookML](https://docs.looker.com/data-modeling/learn
 
 ### Built-in CD Dashboards
 
-Currently, there are two built-in CD Dashboads: **Deployments** and **Services**.
+Currently, there are two built-in CD Dashboards: **Deployments** and **Services**.
 
 To view these dashboards, in Harness, click **Dashboards**.
 

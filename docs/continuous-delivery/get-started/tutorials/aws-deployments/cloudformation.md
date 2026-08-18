@@ -104,7 +104,7 @@ If you already have a Git connector that gives access to your forked [harnesscd-
 ### CloudFormation Create Stack step
 
 1. Under **Step Parameters**, add the **Provision Identifier** as `demoprovision`.
-2. Add the **AWS Connector** you created before and add the region for which your connector has persmission to create the CloudFormation Stack.
+2. Add the **AWS Connector** you created before and add the region for which your connector has permission to create the CloudFormation Stack.
 3. Assuming you have already forked the **harness-cd-example** apps repo and have a functional GitHub connector, use the same connector to add the template file in the file store.
 4. Select the **Git Fetch type** as `Latest from Branch`, add the **Branch** as `main`, set the **Template File Path** as `cloudformation/cf_template.yaml`, and select **Submit**
 5. Now provide the **Stack Name** as `harness-provisoned-stack` and select **Apply Changes**.
@@ -212,7 +212,7 @@ Here we are using the same EKS cluster we provisioned in the **Provision with Cl
 1. Create the **Kubernetes connector**.
    - Copy the contents of [kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/kubernetes-connector.yml).
    - In your Harness project, under **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and and paste the copied YAML.
+   - Select **Create via YAML Builder** and paste the copied YAML.
    - Replace **DELEGATE_NAME** with the installed Delegate name. To obtain the Delegate name, navigate to **Project Setup**, and then **Delegates**.
    - Select **Save Changes** and verify that the new connector named **harness_k8sconnector** is successfully created.
    - Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.

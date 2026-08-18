@@ -19,7 +19,7 @@ Start by going to the CD module, under project setup go to Templates, and then u
 
 ![](../static/template-create-ms.png)
 
-Give your template a name, version, and chose wether to store the template in Harness or in a git repository.
+Give your template a name, version, and chose whether to store the template in Harness or in a git repository.
 
 First change the service and environment options to be runtime inputs.
 

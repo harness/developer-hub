@@ -1077,7 +1077,7 @@ Supported Deployment Types:
   - Native Helm (Helm Chart): Optional field is rendered under the values.yaml section.
 Overrides: The file path field can also be marked as Optional. (**CDS-85487, CDS-106960, CDS-106961, CDS-106962**)
 
-- Users can now enforce Oauth for commits by enbaling the setting **Enforce Oauth For Commits** in the Account Setting under **Git Experience**. (**PIPE-25432**)
+- Users can now enforce Oauth for commits by enabling the setting **Enforce Oauth For Commits** in the Account Setting under **Git Experience**. (**PIPE-25432**)
 
 ##### Fixed Issues
 
@@ -1106,7 +1106,7 @@ This issue has been resolved. The Monitored Services page now supports opening v
 - Previously, the Harness delegate incorrectly used local container credentials instead of the OIDC access token when listing GCP projects via an OIDC-authenticated connector. (**CDS-108481**)
 - Previously, after deploying with Google Cloud Run steps, instance counts were not displayed in the Service Deployments Summary dashboard. This issue has been resolved now, ensuring that instance counts are correctly shown for Google Cloud Run deployments. (**CDS-108501**)
 - Previously, when a GitX pipeline was deleted from the Harness UI but still modified in the SCM (e.g., GitHub), webhook events failed without displaying an error message. The UI and webhook logs did not indicate that the pipeline no longer existed, making it difficult to diagnose the issue. This issue has been resolved now, and an appropriate error message is displayed in the UI and webhook logs when attempting to update a deleted GitX pipeline.(**PIPE-25695**)
-- The Service Dashboard page had slow load times (~60s) due to inefficient queries. This isue is resolved now by optimizing the API calls, removing heavy queries, and relocating certain data to improve performance. The top-right graph is now in the Analytics tab. The fix is behind the feature flag `CDS_SERVICE_DASHBOARD_SIMPLIFICATION`, ensuring the delegate lists projects correctly based on its IAM principal.Contact [Harness Support](mailto:support@harness.io) to enable the fix. (**CDS-102299, ZD-72575**)
+- The Service Dashboard page had slow load times (~60s) due to inefficient queries. This issue is resolved now by optimizing the API calls, removing heavy queries, and relocating certain data to improve performance. The top-right graph is now in the Analytics tab. The fix is behind the feature flag `CDS_SERVICE_DASHBOARD_SIMPLIFICATION`, ensuring the delegate lists projects correctly based on its IAM principal.Contact [Harness Support](mailto:support@harness.io) to enable the fix. (**CDS-102299, ZD-72575**)
 - Previously, the Pipeline dropdown filter on the Execution View Page retained data from the last viewed project, causing incorrect pipeline listings when switching projects. This issue was due to the filter component not re-rendering. This issue is resolved now. (**PIPE-26180, ZD-80662**)
 - Previously, when selecting specific stages in a Docker trigger, the selection was not saved, and All Stages were shown instead. This issue is resolved now, ensuring that selective stages are correctly saved and applied when configuring triggers. (**PIPE-26169, ZD-80796**)
 
@@ -1689,7 +1689,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 
 - Harness GitOps now supports Multi-Source applications with Argo CD. This feature is available for the GitOps agent version 0.79. (CDS-85518)
 
-- We now suport force deleting of GitOps Applications, which can be used when a delete operation is stalled. Note that this option may leave some resources orphaned, so it is advised to use it only in critical scenarios. (CDS-97813)
+- We now support force deleting of GitOps Applications, which can be used when a delete operation is stalled. Note that this option may leave some resources orphaned, so it is advised to use it only in critical scenarios. (CDS-97813)
 
 - While retrieving an application from Argo CD, if the application is not found in the specified agent namespace, it will be removed from the database. (CDS-101006)
 
@@ -1840,7 +1840,7 @@ We have introduced a failure strategy for the service, where the service step wi
 
 We have introduced a UI component to make the list of infrastructure searchable and sorted based on creation time. You can also select all the infrastructures in the environment by choosing the `All Infrastructures` checkbox.
 
-- The [My Executions](/docs/platform/triggers/triggering-pipelines#executions) filter on the listing page displays both manual executions and those triggered automatically by Git pull requests (PRs) i.e execution executed by their Githib PRs as well as manually execution pipeline execution will appear in the My Execution list. Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (PIPE-13755)
+- The [My Executions](/docs/platform/triggers/triggering-pipelines#executions) filter on the listing page displays both manual executions and those triggered automatically by Git pull requests (PRs) i.e execution executed by their Githib PRs as well as manually execution pipeline execution will appear in the My Execution list. Currently this feature is behind the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (PIPE-13755)
 
 ##### Fixed issues
 
@@ -1935,7 +1935,7 @@ We have introduced a UI component to make the list of infrastructure searchable 
 
 - **Bi-Directional Sync Health Status for Git Sync**
 
-We have introduced a Git Sync status page for Harness NG. Once you have synced your Harness entities with your Git repository, you can view bidirectional activity between Harness and your repository using the Bi-Directional Sync Health Status feature. For each entitiy, you can see file path, commit message, status of the last sync as well as the payload. Refer to Harness [Git Sync health Page](/docs/platform/git-experience/monitor-git-experience) for more information. (PIPE-16865)
+We have introduced a Git Sync status page for Harness NG. Once you have synced your Harness entities with your Git repository, you can view bidirectional activity between Harness and your repository using the Bi-Directional Sync Health Status feature. For each entity, you can see file path, commit message, status of the last sync as well as the payload. Refer to Harness [Git Sync health Page](/docs/platform/git-experience/monitor-git-experience) for more information. (PIPE-16865)
 
 - **HTTP support HTTPS Authentication for Terraform and Terragrunt Modules**
 
@@ -2165,7 +2165,7 @@ Refer to following doc for more details on new [repository listing](/docs/platfo
 - Fixed an issue where the Nexus 2 artifactory registry drop-down listed duplicate group IDs. (CDS-94376, ZD-60041)
 - Terraform deployment failed when using AWS connectors (IRSA credential type with assume cross account role) in Terraform steps. This issue occurred when the Terraform Apply step was trying to assume a different role from the AWS backend configuration. The default duration for assuming the role in the `aws-java-sdk` is 15 minutes. When the Terraform Apply step exceeded 15 minutes, the Terraform output threw an error. This issue is resolved by introducing a new Harness variable, `HARNESS_AWS_ASSUME_ROLE_DURATION`. In Terraform steps, you can now set the environment variable value to override the default duration to assume AWS roles. This item requires Harness Delegate version 01.04.82700. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CDS-94355, ZD-60095)
 - Unable to load the AWS resources during an Amazon ECS Blue Green deployment. The API call for fetching elastic load balancer call was not being made in the stage causing this issue. This issue is fixed now. (CDS-94084, ZD-59734)
-- The dashboard widget in the Deployments Dashboard showed a mismatch in the executions count. This issue is fixed by synching the missing data for dashboards. (CDB-1599, ZD-60164)
+- The dashboard widget in the Deployments Dashboard showed a mismatch in the executions count. This issue is fixed by syncing the missing data for dashboards. (CDB-1599, ZD-60164)
 - Fixed an issue where Harness was unable to integrate Google Cloud Operations with Continuous Verification (CV) for service monitoring. This item requires Harness Delegate version 01.04.82700. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CDS-93479)
 - Fixed an issue where users were unable to create Zendesk tickets for the Platform module. (CDS-95061, ZD-60650, ZD-60734)
 - Continuous Verification (CV) telemetry failed if any one of the publish data failed. This occurred because all telemetry information is present in the same try catch block. This issue is fixed by separating telemetry publish events in different try catch blocks. (CDS-94962)
@@ -2562,7 +2562,7 @@ The bug has now been fixed, and you should be able to select an alternate versio
 - Issue with template inputs not showing up (CDS-84490)
   - Previously, there was an issue where template inputs were not showing up in the Pipeline Editor due to an API issue.
   - Fixing this caused another, worse more common error where the platform would get stuck in an infinite API call loop.
-  - The template input fix has been **reverted** fixing the inifinite API call loop issue.
+  - The template input fix has been **reverted** fixing the infinite API call loop issue.
 
 #### Version 1.19.6
 
@@ -4858,7 +4858,7 @@ This release does not include any early access features.
 
 - The Harness UI hid the Interrupts button for chained pipelines for multi-service and multi-environment cases. (CDS-59374)
 
-  Previously, the parent pipeline's **planExecutionId**, **projectId**, and **orgId** were passed in the child pipeline, and hence, the interrupt functionality for chained pipeline was not working. This issue is fixed by passing the the correct **planExecutionId**, **projectId**, and **orgId** for the child pipeline. There is no need to hide these buttons anymore.
+  Previously, the parent pipeline's **planExecutionId**, **projectId**, and **orgId** were passed in the child pipeline, and hence, the interrupt functionality for chained pipeline was not working. This issue is fixed by passing the correct **planExecutionId**, **projectId**, and **orgId** for the child pipeline. There is no need to hide these buttons anymore.
 
 - Harness displays an error message when the ASG configuration or ASG launch template is missing from the ASG deployment config file. (CDS-59154)
 - Rollback step logs were empty when the ASG deployment is rolled back due to errors. (CDS-59152)
@@ -4891,7 +4891,7 @@ This release does not include any early access features.
 
   This issue is fixed in the Harness Delegate version 23.05.79307 by improving the error messages.
 
-- Fixed an issue in the the Harness Delegate version 23.05.79307 by eliminating NPE during ASG pipeline execution. (CDS-59383)
+- Fixed an issue in the Harness Delegate version 23.05.79307 by eliminating NPE during ASG pipeline execution. (CDS-59383)
 - The Canary Delete step during rollback skipped deleting Canary resources if the forward Canary Delete step expired.(CDS-58704)
 
   Canary Delete step rely on the Harness release history when Canary Deployment step expires. Harness release history wasn't getting updated, and wasn't made available for the Canary Delete step during rollback because the Watch API call request wasn't getting interrupted properly.
@@ -5210,7 +5210,7 @@ This release does not include any early access features.
 
 - Improve Infrastructure API Design. (CDS-55827)
 
-  Perviously, our infrastructure APIs (create/update) required YAML as input, but the API also accepted some of the fields as part of request body directly (name/identifier/envRef etc.). Harness expected some of the fields to be present in both places (YAML as well as the request body).
+  Previously, our infrastructure APIs (create/update) required YAML as input, but the API also accepted some of the fields as part of request body directly (name/identifier/envRef etc.). Harness expected some of the fields to be present in both places (YAML as well as the request body).
 
   Now Harness accepts everything as part of the YAML, making the YAML sufficient to create an infrastructure. Harness now reads all the required fields from the YAML or, if missing, reads them from the request body.
 
@@ -5657,7 +5657,7 @@ This release does not include any early access features.
 
   Harness failed to fetch files with a no file found error when deploying Helm charts without any default values.yaml file. This issue is fixed.
 
-- The Google Container Registry (GCR) fetch API failed with with a `404` or `400` error. (CDS-54925)
+- The Google Container Registry (GCR) fetch API failed with a `404` or `400` error. (CDS-54925)
 
   Running a cURL command for the API returned an error due to the presence of an OCI image header. This issue is fixed. The fetch APIs for Docker labels and manifest APIs on GCR now support OCI headers.
 
@@ -5747,7 +5747,7 @@ This release does not include any early access features.
 
   This issue is fixed.
 
-- (**Customer impact**) The decalarative rollback feature in Kubernetes deployments with canary or blue green deployment strategies could share the same ConfigMap or Secret. (CDS-54023)
+- (**Customer impact**) The declarative rollback feature in Kubernetes deployments with canary or blue green deployment strategies could share the same ConfigMap or Secret. (CDS-54023)
 
   If the declarative rollback feature was enabled, Harness did not do resource versioning for the ConfigMap and Secret because the main purpose of the versioning in Harness was to be able to do `kubectl` rollout for a managed workload to a previous version that would point to a different version of the resource. Harness was re-applying the full manifest of the previous version. Hence, all resource including the ConfigMap and Secret were reverted to a previous version. With canary and blue green deployment strategies, each canary workload or workload of different colors must point to a different version of the ConfigMap or Secret. Without versioning, it will point to the same resource revision.
 
@@ -6479,7 +6479,7 @@ This release does not include new features.
 
 - Iterator was leading to high CPU usage on the Harness manager. (CDS-50507)
 
-  Unregisted the iterator handler. It no longer runs on the Harness manager.
+  Unregistered the iterator handler. It no longer runs on the Harness manager.
 
 - Account level stage templates **Service** and **Environment** settings are expecting fixed values even when **Runtime Input** is selected. (CDS-50487)
 
@@ -6609,7 +6609,7 @@ This release does not include new features.
 
   Harness applies Kubernetes manifest using `kubectl apply`, which is a declarative way of creating Kubernetes objects. But when rolling back, we perform `kubectl rollout undo workloadType/workloadName --to-revision=\<REVISION_NUMBER>`, which is an imperative way of rolling back. Using imperative and declarative commands together is not recommended and can cause issues.
 
-In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then refered to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behaviour with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
+In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then referred to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behaviour with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
 
 **What is the fix?**
 
@@ -6954,7 +6954,7 @@ Fixed the field alignment issues for artifacts.
 
 Fixed by adding hover text for files.
 
-- Tempaltes Inline/Remote cropped in the UI. (CDS-48153)
+- Templates Inline/Remote cropped in the UI. (CDS-48153)
 
 The Template modal functions fine now.
 
@@ -7353,7 +7353,7 @@ This functionality is behind a feature flag: TERRAFORM_REMOTE_BACKEND_CONFIG.
 
   The Command step will always run on the Delegate, hence you need to enable the Run On Delegate option.
 
-  The Command step should always be run after the the Fetch Instances step.
+  The Command step should always be run after the Fetch Instances step.
 
   See Use the Command step to download, copy, or run scripts.
 

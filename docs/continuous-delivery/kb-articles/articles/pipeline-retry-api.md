@@ -1,5 +1,5 @@
 ---
-description: Using API to retry pipleine with input set YAML
+description: Using API to retry pipeline with input set YAML
 title: Pipeline retry API
 redirect_from: 
   - /kb/continuous-delivery/articles/pipeline-retry-api
@@ -33,7 +33,7 @@ Retrying a pipeline based on the latest ExecutionId can be a challenging task, e
 
 ## Solution
 
-1. Use the [Pipeline Execution Details API](https://apidocs.harness.io/tag/Pipeline-Execution-Details/#operation/getInputsetYamlV2) to get the the inputSet YAML used for the Plan Execution that you want to retry.
+1. Use the [Pipeline Execution Details API](https://apidocs.harness.io/tag/Pipeline-Execution-Details/#operation/getInputsetYamlV2) to get the inputSet YAML used for the Plan Execution that you want to retry.
 2. Use the [Pipeline Execute API](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/retryPipeline) to retry the pipeline with the inputSet pipeline YAML.
 
 Here is a Shell script that uses these two endpoints. To use this Shell script for yourself, replace placeholders, like `ExecutionId`, `YOUR_API_TOKEN`, `YOUR_APPLICATION_ID`, and `YOUR_PIPELINE_ID`, with actual values relevant to your Harness account.

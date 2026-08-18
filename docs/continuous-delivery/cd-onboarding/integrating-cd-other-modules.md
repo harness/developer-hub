@@ -143,7 +143,7 @@ Here's the Kubernetes Rollout Deployment step from the CD stage.
 
 <DocImage path={require('./static/d3f2a764bed2a191ddb13ae8c4f2a607da97c7aa22e94f433eeac946da54cb15.png')} width="60%" height="60%" title="Click to view full size image" />
 
-In the stage's service, the expression `<+pipeline.sequenceId>` is used pull the the app version.
+In the stage's service, the expression `<+pipeline.sequenceId>` is used pull the app version.
 
 ![picture 2](static/3c2e1bbbaf91a9d3da0487bbeb2919ae045b1718fe2c20bba220efcc4a86a439.png)
 

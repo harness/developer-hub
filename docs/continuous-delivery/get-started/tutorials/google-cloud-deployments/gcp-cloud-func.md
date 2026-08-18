@@ -164,7 +164,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 2. Create the **GCP connector**.
    - Copy the contents of [gcp-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/gcp-connector.yml).
    - In your Harness project, under **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and and paste the copied YAML.
+   - Select **Create via YAML Builder** and paste the copied YAML.
    - Select **Save Changes** and verify that the new connector named **gcpconnector** is successfully created.
    - Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
 
@@ -589,7 +589,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 2. Create the **GCP connector**.
    - Copy the contents of [gcp-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/gcp-connector.yml).
    - In your Harness project, under **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and and paste the copied YAML.
+   - Select **Create via YAML Builder** and paste the copied YAML.
    - Select **Save Changes** and verify that the new connector named **gcpconnector** is successfully created.
    - Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
 

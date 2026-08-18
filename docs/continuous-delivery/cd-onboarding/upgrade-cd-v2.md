@@ -404,7 +404,7 @@ environment:
 
 #### Environment REST API updates
 
-When creating a service via the Harness REST API, there is a new [enviroment endpoint](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentv2).
+When creating a service via the Harness REST API, there is a new [environment endpoint](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentv2).
 
 Here are a few important details:
 
@@ -1008,7 +1008,7 @@ curl --location --request POST 'https://<base_url>/gateway/ng/api/service-env-mi
 
 ## Project level migration
 
-The API will migrate services and enviroments for all existing pipelines in a project. It can update pipeline YAML also.
+The API will migrate services and environments for all existing pipelines in a project. It can update pipeline YAML also.
 
 ### Sample request for project level migration API
 

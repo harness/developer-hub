@@ -76,7 +76,7 @@ Harness tracks the .harness folder by default in all webhooks.
 1. Currently the file cache duration is set to 30 days.
 2. Customers are recommended to create a webhook at the account level so all pipelines pulling from the repository can enjoy the benefits of the cache
 3. Customers may still have a possibility of encountering issues depending on the amount of changes being pushed/made in each commit
-4. Each repository will need to have a webhook established.  For example, setting a webhook up for repository `abc123corp` will not cache data fro the repo `harness123` in Bitbucket
+4. Each repository will need to have a webhook established.  For example, setting a webhook up for repository `abc123corp` will not cache data from the repo `harness123` in Bitbucket
 :::
 
 <GitXconnect />

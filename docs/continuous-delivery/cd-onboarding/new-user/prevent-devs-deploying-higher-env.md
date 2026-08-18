@@ -147,7 +147,7 @@ Using the Resource Group construct, you can specify the pipelines you want to gr
 
 ![picture 4](static/87c5412b1f07aaa5a1f04222198e1fe4d8cca34fd9de24d7907e4177b3568f9f.png)  
 
-In **Roles**, you can configure **execute** for the the pipeline resource.
+In **Roles**, you can configure **execute** for the pipeline resource.
 
 ![picture 5](static/b09bfc76c7949dc19f40b3454e3d3bacfb55aafadfb6fc875b61a19081c870e4.png)  
 

@@ -28,7 +28,7 @@ Deployment freezes are commonly used in software development to ensure that a sy
 
 ## Harness freeze windows
 
-In Harness, you set up a a deployment freeze as a **freeze window**. 
+In Harness, you set up a deployment freeze as a **freeze window**. 
 
 A freeze window is defined using one or more rules and a schedule. The rules define the Harness orgs, projects, services, and environments to freeze. 
 

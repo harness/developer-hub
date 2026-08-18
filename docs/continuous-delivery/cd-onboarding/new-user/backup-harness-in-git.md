@@ -211,7 +211,7 @@ To set up the Harness Terraform Provider for backups, do the following:
   │   ├── 
   │   ├── pipelines
   ├	|--templates
-  |   |- servies
+  |   |- services
   |	|- environments
   |	|- infrastructure_definition
   └── project.tf

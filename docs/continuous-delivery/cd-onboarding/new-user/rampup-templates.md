@@ -254,7 +254,7 @@ Breaking changes are any changes to runtime inputs, defaults on runtime inputs, 
 
 ### Testing Template Changes
 
-A testing pipeline should be setup to the template being developed which can be run to test the template functionality. This testing pipeline should be setup to use the feature branch under development, and also the new major version if the update includes a breaking change.  You can run this pipeline to test the updates as you develop the change.  When all is complete and the template exectuion is successful, this change can be released to users by merging this feature branch to `main` with a PR.  
+A testing pipeline should be setup to the template being developed which can be run to test the template functionality. This testing pipeline should be setup to use the feature branch under development, and also the new major version if the update includes a breaking change. You can run this pipeline to test the updates as you develop the change. When all is complete and the template execution is successful, this change can be released to users by merging this feature branch to `main` with a PR.  
 
 Once everything is done and checks out good, merge the feature branch to main, which will push the update to all the consumers of the template with no intervention.  Changes can be rolled back by reverting the commit in git in the event of any issue.
 

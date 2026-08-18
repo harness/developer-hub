@@ -244,7 +244,7 @@ Click Continue to point Harness to your ECS Cluster.
 
 Harness has a concept of Environments which is the target infrastructure where you want to deploy. In this case, we will be deploying to the ECS Cluster that was created.
 
-![Specifiy Environment](../static/first-ecs/specifiy-env.png)
+![Specify Environment](../static/first-ecs/specifiy-env.png)
 
 Click + New Environment
 

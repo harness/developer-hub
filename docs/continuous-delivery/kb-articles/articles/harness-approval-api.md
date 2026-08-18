@@ -213,4 +213,4 @@ Replace the \<STEP_GROUP_ID\> by the identifier of the stepgroup when it gets us
 
 1. Familiarize yourself with the Harness Approval Step. [The Harness documentation provides](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/) detailed information on it.
 
-2. Refer [API Documentation](https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivityByPipelineExecutionId) for more detailed information on the the API.
+2. Refer [API Documentation](https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivityByPipelineExecutionId) for more detailed information on the API.

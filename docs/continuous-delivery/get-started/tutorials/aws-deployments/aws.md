@@ -307,7 +307,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
 </details>
 
-1. Create a Secret of type **WinRM Crendential**.
+1. Create a Secret of type **WinRM Credential**.
    - In **Project Setup**, select **Secrets**.
    - Select **New Secret**, and then select **WinRM Credential**.
    - Enter the secret name `harness_winrmpwd` and select **Continue**.

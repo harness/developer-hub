@@ -282,7 +282,7 @@ pipeline:
                             echo "Pushing Go runtime image"
                             docker push "${GO_IMAGE}"
                             echo "All runtime images built and pushed successfully."
-                        description: Build and push images for all rumtimes
+                        description: Build and push images for all runtimes
                   stepGroupInfra:
                     type: KubernetesDirect
                     spec:

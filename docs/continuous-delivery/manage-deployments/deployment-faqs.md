@@ -690,7 +690,7 @@ This error means execution can't able to rollback to the previous version becaus
 
 
 ### Can we get details what branch did trigger the pipeline and who did it; the time the pipeline failed or terminated,  while using Microsoft Teams Notification 
-These details are not available by default as only (status, time, pipeline name url etc) is only sent and if you need these details might ned to use custom shell script
+These details are not available by default as only (status, time, pipeline name url etc) is only sent and if you need these details might need to use custom shell script
 
 
 ### If there is temporary failure/communication issue for sometime while connecting to service how to make sure step is tried multiple times instead of getting failed with tried once
@@ -828,7 +828,7 @@ The maximum limits for a single pipeline run are 35 days for paid plans and 4 ho
 These limits are applied because:
 - There is a limit on the total number of concurrent and queued executions. If some pipelines run/wait for days/weeks, they consume valuable resources from other projects in the account and delay queues.
 - Usually, very long running pipelines are waiting on something (approvals, test results, deployments) that took longer than expected. A quicker timeout makes it clear that something went wrong in the workflow, instead of indefinitely waiting.
-- Long running pipelines impact the availablility of Harness resources.
+- Long running pipelines impact the availability of Harness resources.
 
 For more information, go to [Deployment logs and limitations](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations) and [Pipeline settings](https://developer.harness.io/docs/platform/pipelines/pipeline-settings).
 
@@ -998,7 +998,7 @@ Input Sets can store Variables: String values used in deployments.
 Harness Overlays are specialized Input Sets that enable you to customize deployments for specific environments or stages. They allow you to override or augment existing Input Set configurations without modifying the original set.
 
 
-### Is the user can able to to share input set between project in one organization?
+### Is the user can able to share input set between project in one organization?
 No, as per the current design user can't share the input set with other projects.
 
 
@@ -1138,7 +1138,7 @@ For more details, go to [Documentation](https://developer.harness.io/docs/contin
 
 ### How to carry forward the output variable when looping steps?
 
-If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consequtive steps or with in the loop, you can use `<+strategy.iteration>` to denote the iteration count.
+If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consecutive steps or with in the loop, you can use `<+strategy.iteration>` to denote the iteration count.
 
 
 ### We need to pull deployments events from Harness to datadog/custom when any PROD deployment is successful.
@@ -1430,7 +1430,7 @@ We use a kubectl command similar to the one below: `kubectl --kubeconfig=config 
 The method to fetch modified files varies based on your Git provider, as the payload structure is unique for each provider's trigger mechanism. For instance, when using GitHub, you can obtain the list of modified files within a pull request by utilizing the following expression: `<+trigger.payload.head_commit.modified>`. This approach allows you to access specific details about the changes that initiated the pipeline execution.
 
 
-### Is there a way to capture the the services that are being deployed as a variable?
+### Is there a way to capture the services that are being deployed as a variable?
 
 If there are multiple services deployed as part of a stage we can get the service name corresponding to each service deployment but there is no built in variable which gives list of all services that have been selected for deployment.
 
@@ -1938,7 +1938,7 @@ EOF
 ```
 
 ### Why did my artifact trigger my pipeline only once?
-If artifacts aren't triggering pipelines even though there were multiple artifacts pushed, it may be due to the `Execute Triggers With All Collected Artifacts or Manifests` configuration option. By default, artifact triggers are configured to only trigger once if more than one artifact or manifest is returned in a 1 minute interval. This configuration option allows triggers to execute for each artifact or manfiest collected regardless of the polling interval. To enable this feature, go to your Harness project/org/account **Default Settings**, select **Pipeline**, and then enable **Execute Triggers With All Collected Artifacts or Manifests**.
+If artifacts aren't triggering pipelines even though there were multiple artifacts pushed, it may be due to the `Execute Triggers With All Collected Artifacts or Manifests` configuration option. By default, artifact triggers are configured to only trigger once if more than one artifact or manifest is returned in a 1 minute interval. This configuration option allows triggers to execute for each artifact or manifest collected regardless of the polling interval. To enable this feature, go to your Harness project/org/account **Default Settings**, select **Pipeline**, and then enable **Execute Triggers With All Collected Artifacts or Manifests**.
 
 For more information on this topic, go to [Trigger pipelines on a new artifact](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#important-notes) documentation
 
