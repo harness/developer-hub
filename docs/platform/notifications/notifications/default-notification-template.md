@@ -58,7 +58,8 @@ Before you configure a default notification template, ensure you have the follow
 
 ## Watch an interactive walkthrough
 
-Step through the walkthrough to see the full flow before you configure your own set. The example sets up a default email notification template for pipeline events at the **Account** scope.
+Step through the walkthrough to see the full flow before you configure your own set. 
+The example sets up a default email notification template for pipeline events at the **Account** scope.
 
 <div style={{position: 'relative', paddingBottom: 'calc(50.3472% + 41px)', height: '0px', width: '100%'}}>
   <iframe
