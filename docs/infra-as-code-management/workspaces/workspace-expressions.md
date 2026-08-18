@@ -103,7 +103,7 @@ See the reference of old and new expression formats:
         | **Output**               | Before: `<+workspace.<+pipeline.stages.s1.spec.execution.steps.init.spec.workspace>.OUTPUT_ID>`        |
         |                         | After: `<+workspace.outputs.OUTPUT_ID>`                                                              |
         | **Env Var from Connector**| Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.envVariablesFromConnector.PLUGIN_ACCESS_KEY>` |
-        |                         | After: `<+workspce.envVariablesFromConnector.PLUGIN_ACCESS_KEY>`                                      |
+        |                         | After: `<+workspace.envVariablesFromConnector.PLUGIN_ACCESS_KEY>`                                      |
         | **Secret from Connector**| Before: `<+pipeline.stages.s1.spec.execution.steps.init.spec.secretVariablesFromConnector.PLUGIN_SECRET_KEY>` |
         |                         | After: `<+workspace.secretVariablesFromConnector.PLUGIN_SECRET_KEY>`                                  |
 </details>

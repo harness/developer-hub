@@ -16,13 +16,13 @@ Migrate your state files to Harness IaCM by configuring your OpenTofu/Terraform 
 
 :::info Terraform Cloud
 
-TFC dosnt support a direct `tofu init -migrate-state` conversion to third-party backends (such as Harness IaCM). As such you will need to pull your TFC state locally and then reinitalize your backed to use this local state before continuing.
+TFC does not support a direct `tofu init -migrate-state` conversion to third-party backends (such as Harness IaCM). As such you will need to pull your TFC state locally and then reinitialize your backend to use this local state before continuing.
 
-Make sure you initalized your TF project successfully using your TFC remote state.
+Make sure you initialized your TF project successfully using your TFC remote state.
 
 Then pull your state locally with `tofu state pull > terraform.tfstate`.
 
-Now you can remove the TFC backend block, delete your current TF settings by removing the `.terraform` directory, and re-initalizing your project with `tofu init`.
+Now you can remove the TFC backend block, delete your current TF settings by removing the `.terraform` directory, and reinitializing your project with `tofu init`.
 
 At this point you are now using a local backend which has the content of your current TFC state
 :::
@@ -54,7 +54,7 @@ Once you have validated the state exists in Harness, you can remove the existing
 
 ## Harness API
 
-You can use the Harness API to directly load an existing state file into an existing workspace. You will need a Workspace created in Harness before you attemt the following API call.
+You can use the Harness API to directly load an existing state file into an existing workspace. You will need a Workspace created in Harness before you attempt the following API call.
 
 Given an existing `terraform.tfstate` file in the current directory:
 
