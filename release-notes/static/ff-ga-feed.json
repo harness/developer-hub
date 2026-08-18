@@ -1,6 +1,13 @@
 [
   {
-    "flagKey": "CCM_COMMITMENT_V1",
+    "flagKey": "ENABLE_ETL_CHUNKED_PROCESSING",
+    "description": "Enables chunked processing for ETL jobs in AI DLC Insights, improving performance and scalability for large datasets.",
+    "gaStartDate": "2026-08-17",
+    "module": "AI DLC Insights",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "COMMITMENT_V1",
     "description": "Enables the enhanced Commitment Orchestrator experience (V2) in Cloud & AI Cost Management, providing a redesigned interface for managing cloud commitment purchases and coverage.",
     "gaStartDate": "2026-08-17",
     "module": "Cloud & AI Cost Management",
