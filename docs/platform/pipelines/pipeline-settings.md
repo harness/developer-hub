@@ -98,18 +98,23 @@ Use this setting to set the image pull policy for the internal Harness images th
 
 ### Concurrent active pipeline executions
 
-This is the number of concurrent pipeline executions allowed per execution API request. The setting considers only those executions that are in progress (including those that are paused temporarily by steps such as the wait step or approval step), not those that have executed to completion. Users are permitted 200 and 500 Concurrent Pipeline Executions (based on your plan) across the entire account by default. You can increase it to 500 and 1000 Concurrent Pipeline Executions (based on your plan).
+This is the number of concurrent pipeline executions allowed per execution API request. The setting considers only those executions that are in progress (including those that are paused temporarily by steps such as the wait step or approval step), not those that have executed to completion.
+
+The default concurrency limits vary by plan tier (ranging from 2 for Free plans to 500 for Enterprise and Essentials plans). Depending on your plan, you can increase these limits up to the maximum allowed for your tier.
 
 Any executions that are triggered when the limit is reached are added to the execution queue. **These executions and their deployments are not failed by Harness.**
 
 The concurrency limits are as follows for each plan tier:
 
-|          | Free plan and Team/Enterprise trials | Team plan | Enterprise plan |
-| -------- | ------------------------------------ | --------- | --------------- |
-| Default | 2 | 200 | 500 |
-| Maximum | 2 | 500 | 1000 |
-| Editable | No | Yes | Yes |
-| Scope | Account | Account | Account |
+| Plan Tier | Default | Maximum | Editable | Scope |
+| --------- | ------- | ------- | -------- | ----- |
+| Free plan and Team/Enterprise trials | 2 | 2 | No | Account |
+| Team plan | 200 | 500 | Yes | Account |
+| DevOps Essentials* | 60 | - | Contact Support | Account |
+| Enterprise plan | 500 | 1000 | Yes | Account |
+| Essentials (Flex Pricing) | 500 | 1000 | Yes | Account |
+
+\* **Note:** DevOps Essentials is on the deprecation path as part of the transition to Flex Pricing.
 
 :::warning
 
@@ -152,12 +157,17 @@ This limit defines the maximum number of **steps or stages that can run simultan
 
 #### Default concurrency limits (per execution)
 
-| Plan Tier            | Max Concurrent Steps/Stages |
-|----------------------|-----------------------------|
-| Free                 | 2                           |
-| Team                 | 50                          |
-| DevOps Essentials    | 60                          |
-| Enterprise           | 100                         |
+These limits define the maximum number of steps or stages that can run concurrently within a single pipeline execution.
+
+| Plan Tier | Max Concurrent Steps/Stages |
+| --------- | --------------------------- |
+| Free plan and Team/Enterprise trials | 2 |
+| Team plan | 50 |
+| DevOps Essentials* | 60 |
+| Enterprise plan | 100 |
+| Essentials (Flex Pricing) | 100 |
+
+\* **Note:** DevOps Essentials is on the deprecation path as part of the transition to Flex Pricing.
 
 :::note
 
