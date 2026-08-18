@@ -81,7 +81,7 @@ It simulates node maintenance activity (hardware refresh, OS patching, Kubernete
 
 ### Node IO stress
 
-Node IO stress causes I/O stress on the Kubernetes node. The amount of I/O stress is specifed as the size in percentage of the total free space available on the file system using `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable or in gigabytes(GB) using `FILESYSTEM_UTILIZATION_BYTES` environment variable. When both the values are provided, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precendence. It tests application resiliency on replica evictions that occur due I/O stress on the available disk space.
+Node IO stress causes I/O stress on the Kubernetes node. The amount of I/O stress is specified as the size in percentage of the total free space available on the file system using `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable or in gigabytes(GB) using `FILESYSTEM_UTILIZATION_BYTES` environment variable. When both the values are provided, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precedence. It tests application resiliency on replica evictions that occur due I/O stress on the available disk space.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -319,7 +319,7 @@ Pod autoscaler is a Kubernetes pod-level chaos fault that scales a target Deploy
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault determines how an application accomodates multiple replicas of a given application pod at unexpected point in time.
+This fault determines how an application accommodates multiple replicas of a given application pod at unexpected point in time.
 </Accordion>
 
 </FaultDetailsCard>

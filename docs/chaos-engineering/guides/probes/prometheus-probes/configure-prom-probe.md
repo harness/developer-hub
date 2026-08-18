@@ -80,7 +80,7 @@ redirect_from:
 - **Interval**: Duration for which the probe waits between subsequent attempts.
 - **Attempt**: Number of times a check is executed upon failure in the previous attempts before declaring the probe status as `FAILED`.
 - **Polling Interval**: Time interval for which `continuous` and `onchaos` probe modes should wait after each iteration.
-- **Intitial Delay**: Duration to wait before the probe begins execution.
+- **Initial Delay**: Duration to wait before the probe begins execution.
 - **Verbosity**: Level of detail to include in the logs generated during the execution of the probe. Choose between `info` (essential logs, probe status are printed) and `debug` (in-depth logs, timestamps, and execution logs are printed) mode.
 - **Stop on Failure (Optional)**: Enable it to continue or disable it to stop the experiment execution after the probe fails. Disabled by default.
 

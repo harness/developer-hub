@@ -69,7 +69,7 @@ You will formulate a unified command for chaos injection, which can be specified
 
 #### Construct the Command for Cloud SQL Failover
 
-GCP provides a specific command for SQL failover, which requires two imputs (environment variables), which can be executed as follows:
+GCP provides a specific command for SQL failover, which requires two inputs (environment variables), which can be executed as follows:
 
 ```bash
 gcloud sql instances failover "${CLOUD_SQL_INSTANCE_NAME}" --project="${CLOUD_SQL_PROJECT}" -q
@@ -86,7 +86,7 @@ To confirm the occurrence of chaos injection, verify the zone of the SQL instanc
 gcloud sql instances describe "${CLOUD_SQL_INSTANCE_NAME}" --project "${CLOUD_SQL_PROJECT}" --format="get(gceZone)"
 ```
 
-The command above provides a detailed description of the specificed SQL instance and displays the zone of the specific instance as a single output, which simplifies the output log for easy analysis.
+The command above provides a detailed description of the specified SQL instance and displays the zone of the specific instance as a single output, which simplifies the output log for easy analysis.
 
 
 The next step would be to integrate the commands described earlier, in a manner that allows you to do the following:

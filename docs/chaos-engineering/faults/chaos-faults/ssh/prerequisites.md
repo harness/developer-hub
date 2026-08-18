@@ -128,7 +128,7 @@ The output would look like:
 
   ```
   jq -c '@json' escaped-input.json
-  "{\"paramaters\":[{\"placeholder\":\"destination_ip\",
+  "{\"parameters\":[{\"placeholder\":\"destination_ip\",
   \"data_type\":\"string\",\"value\":\"HOST_IP\"},
   {\"placeholder\":\"port\",\"data_type\":\"int\",
   \"value\":\"3258\"}]}"

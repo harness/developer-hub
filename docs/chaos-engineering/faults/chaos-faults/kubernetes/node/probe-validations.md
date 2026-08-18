@@ -20,7 +20,7 @@ This topic describes the best practices to use with resilience probes in Kuberne
 - [HTTP Probe (Application Health)](/docs/chaos-engineering/guides/probes/http-probe): To check if the application end point is healthy or not (applications which are scheduled on that node).
 - [Prometheus](/docs/chaos-engineering/guides/probes/prometheus-probes)/[DataDog](/docs/chaos-engineering/guides/probes/apm-probes)/[Dynatrace Queries (Latency, Error rates)](/docs/chaos-engineering/guides/probes/apm-probes) Queries (Latency, Error rate): To check the latency and error rate of the applications.
 - [CMD Source Probe (Data Consistency)](/docs/chaos-engineering/guides/probes/command-probes): To ensure that data is not corrupted and the read and write operations involving the affected node work as expected.
-- CMD Source Probe (Failover): To check how quickly the application fails over to other node if the node is not availiable for longer duration. 
+- CMD Source Probe (Failover): To check how quickly the application fails over to other node if the node is not available for longer duration. 
 - CMD Source Probe (Failover): It checks if the system brings up the new node.
 - Prometheus/DataDog/Dynatrace (Alerts): To check if alerts are being fired when node in the network is not available, for example, time greater than the threshold.
 

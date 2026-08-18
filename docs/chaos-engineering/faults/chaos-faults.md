@@ -164,7 +164,7 @@ spec:
     spec:
       components:
         env:
-        # define the sequence of execution of chaos in case of mutiple targets
+        # define the sequence of execution of chaos in case of multiple targets
         # supports: serial, parallel. default: parallel
         - name: SEQUENCE
           value: 'parallel'

@@ -16,7 +16,7 @@ APM probes are used when your application is being monitored by an APM system. T
 
 ## What are the supported APM probe types?
 
-| APM Probe Type | Kubernetes HD | Kubenetes | Linux | Windows |
+| APM Probe Type | Kubernetes HD | Kubernetes | Linux | Windows |
 |---------------|--------------|-----------|-------|---------|
 | [Prometheus](./prometheus-probe) | YES | NO | NO | NO |
 | [Datadog](../datadog-probe) | YES | NO | NO | NO |

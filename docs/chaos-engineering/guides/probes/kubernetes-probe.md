@@ -305,7 +305,7 @@ It checks for the presence of Kubernetes resources based on GVR and filters (fie
 Use the following example to tune this:
 
 ```yaml
-# verify the existance of the resource matched with the given inputs inside cluster
+# verify the existence of the resource matched with the given inputs inside cluster
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

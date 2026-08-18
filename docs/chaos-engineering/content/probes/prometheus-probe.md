@@ -280,7 +280,7 @@ spec:
           query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
           comparator:
             # criteria which should be followed by the actual output and the expected output
-            #supports >=,<=,>,<,==,!= comparision
+            #supports >=,<=,>,<,==,!= comparison
             criteria: ">" 
             # expected value, which should follow the specified criteria
             value: "0"
@@ -328,7 +328,7 @@ spec:
           queryPath: "/etc/config/prometheus-query"
           comparator:
             # criteria which should be followed by the actual output and the expected output
-            #supports >=,<=,>,<,==,!= comparision
+            #supports >=,<=,>,<,==,!= comparison
             criteria: ">" 
             # expected value, which should follow the specified criteria
             value: "0"
@@ -428,7 +428,7 @@ spec:
           query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
           comparator:
             # criteria which should be followed by the actual output and the expected output
-            #supports >=,<=,>,<,==,!= comparision
+            #supports >=,<=,>,<,==,!= comparison
             criteria: ">" 
             # expected value, which should follow the specified criteria
             value: "0"
@@ -472,7 +472,7 @@ spec:
           query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
           comparator:
             # criteria which should be followed by the actual output and the expected output
-            #supports >=,<=,>,<,==,!= comparision
+            #supports >=,<=,>,<,==,!= comparison
             criteria: ">"
             # expected value, which should follow the specified criteria
             value: "0"
@@ -556,7 +556,7 @@ spec:
 - **Interval**: Duration for which the probe waits between subsequent attempts.
 - **Attempt**: Number of times a check is executed upon failure in the previous attempts before declaring the probe status as `FAILED`.
 - **Polling Interval**: Time interval for which `continuous` and `onchaos` probe modes should wait after each iteration.
-- **Intitial Delay**: Duration to wait before the probe begins execution.
+- **Initial Delay**: Duration to wait before the probe begins execution.
 - **Verbosity**: Level of detail to include in the logs generated during the execution of the probe. Choose between `info` (essential logs, probe status are printed) and `debug` (in-depth logs, timestamps, and execution logs are printed) mode.
 - **Stop on Failure (Optional)**: Enable it to continue or disable it to stop the experiment execution after the probe fails. Disabled by default.
 
