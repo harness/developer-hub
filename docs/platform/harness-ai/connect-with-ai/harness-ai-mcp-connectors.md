@@ -9,6 +9,8 @@ keywords:
   - Model Context Protocol
   - AI chat tools
   - third-party MCP
+  - tool permissions
+  - MCP server
 tags:
   - ai
   - mcp
@@ -21,52 +23,53 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Harness AI chat can use third-party MCP (Model Context Protocol) connectors to reach tools and data outside of Harness. When you attach an MCP connector to your chat settings, Harness AI can call that server's tools during a conversation, such as listing GitHub repositories, reading Jira issues, querying GitLab, or calling a custom internal service. MCP connectors are additive: they extend what Harness AI can do without changing your existing chat workflows.
+Harness AI chat can use third-party Model Context Protocol (MCP) connectors to reach tools and data outside of Harness. When you connect an MCP connector to your chat settings, Harness AI can call that server's tools during a conversation, such as listing GitHub repositories, reading Jira issues, querying GitLab, or calling a custom internal service. MCP connectors are additive: they extend what Harness AI can do without changing your existing chat workflows.
 
----
-
-:::note Feature flag
+:::note
 Currently, this feature is behind the feature flag `ML_ENABLE_CHAT_MCP_SETTINGS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
 ---
 
-## What you will learn
+## What you will learn in this topic
 
-- **Connector purpose:** How third-party MCP connectors add tools to Harness AI chat.
-- **Connector scope:** How account, organization, and project connectors apply.
-- **Connector management:** How to add, pin, edit, and remove connectors from chat settings.
-- **Tool permissions:** How to control which MCP tools Harness AI can call, and when it needs approval.
-- **Tool usage:** How Harness AI calls MCP tools during a chat.
-- **Supported servers:** Which third-party MCP servers you can connect, such as GitHub, GitLab, and Jira.
+By the end of this topic, you will be able to:
+
+- [Understand how MCP connectors](#how-mcp-connectors-work-in-chat) add tools to Harness AI chat.
+- [Connect a connector](#connector-scopes) from any scope you can access.
+- [Add, pin, edit, and remove connectors](#add-an-mcp-connector) in chat settings.
+- [Control which MCP tools Harness AI can call](#manage-tool-permissions), and when it needs approval.
+- [Use MCP tools](#use-mcp-tools-in-chat) during a chat conversation.
 
 ---
 
 ## Before you begin
 
-- **Harness AI access:** Harness AI must be active for your account. Go to [Overview of Harness AI](/docs/platform/harness-ai/overview#enable-ai) to enable Harness AI.
-- **Feature flag:** The `ML_ENABLE_CHAT_MCP_SETTINGS` flag must be enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
-- **An MCP Server connector:** You need an MCP Server connector, or permission to create one, at account, organization, or project scope. Go to [Configure MCP connectors](/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-mcp-connectors) to set up the connector, or go to [Add an MCP connector](#add-an-mcp-connector) to create one during chat setup.
-- **Server credential:** MCP Server connectors authenticate with the credential the server expects, such as a custom header or API key. Store the credential as a Harness secret. Go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets) to create one.
+Before you connect an MCP connector to Harness AI chat, ensure you have the following:
+
+- **Harness AI access**: Harness AI active for your account. For more information, see <a href="/docs/platform/harness-ai/overview#enable-ai" target="_blank">Overview of Harness AI</a>.
+- **Feature flag**: The `ML_ENABLE_CHAT_MCP_SETTINGS` flag enabled for your account. Contact [Harness Support](mailto:support@harness.io) to enable it.
+- **An MCP Server connector**: An MCP Server connector, or permission to create one, at **Account**, **Organization**, or **Project** scope. For more information, see <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-mcp-connectors" target="_blank">Configure MCP connectors</a> and <a href="#add-an-mcp-connector" target="_blank">Add an MCP connector</a>.
+- **Server credential**: The credential the MCP server expects, such as a custom header or API key, stored as a Harness secret. For more information, see <a href="/docs/platform/secrets/add-use-text-secrets" target="_blank">Add and reference text secrets</a>.
 
 ---
 
 ## How MCP connectors work in chat
 
-Harness AI chat sends your prompt to the model along with the tools exposed by each connector you attach. When a request needs one of those tools, Harness AI calls the MCP server, uses the result, and continues the conversation.
+Harness AI chat sends your prompt to the model along with the tools exposed by each connector that you connect. When a request needs one of those tools, Harness AI calls the MCP server, uses the result, and continues the conversation.
 
-- **Extra tools:** Each connector adds the tools its MCP server exposes, such as repository, issue, or ticket operations.
-- **Live data:** Harness AI reads current data from the server at request time, not a cached copy.
-- **Session scope:** Attached connectors apply to your chat sessions. Other users do not inherit your selection.
-- **Governance still applies:** Harness AI Rules continue to shape and constrain responses. When a rule limits an action, Harness AI reports the constraint in its answer.
+- **Extra tools**: Each connector adds the tools its MCP server exposes, such as repository, issue, or ticket operations.
+- **Live data**: Harness AI reads current data from the server at request time, not a cached copy.
+- **Session scope**: Connected connectors apply to your chat sessions. Other users do not inherit your selection.
+- **Governance still applies**: Harness AI Rules continue to shape and constrain responses. When a rule limits an action, Harness AI reports the constraint in its answer.
 
-Harness AI Rules and Memories still apply when connectors are active. Go to [Harness AI Rules](/docs/platform/harness-ai/harness-ai-rules) to constrain AI output, and go to [Harness AI Memories](/docs/platform/harness-ai/harness-ai-memories) to personalize responses.
+Harness AI Rules and Memories still apply when connectors are active. For more information, see <a href="/docs/platform/harness-ai/govern-ai-output/harness-ai-rules" target="_blank">Harness AI Rules</a> and <a href="/docs/platform/harness-ai/context-and-memory/harness-ai-memories" target="_blank">Harness AI Memories</a>.
 
 ---
 
 ## Connector scopes
 
-MCP connectors follow the Harness account, organization, and project hierarchy. The **Select MCP Connector** panel lists connectors under **Project**, **Organization**, and **Account** tabs so you can attach connectors from any scope you can access.
+MCP connectors follow the Harness hierarchy, so you can share one server across every team or restrict it to a single project. The **Select MCP Connector** panel lists connectors under **Project**, **Organization**, and **Account** tabs so you can use connectors from any scope that you can access.
 
 | Scope | Typical owner | Common use |
 | --- | --- | --- |
@@ -78,34 +81,40 @@ MCP connectors follow the Harness account, organization, and project hierarchy. 
 
 ## Connector status and management
 
-The connector list shows the state of each connector so you can tell which servers are reachable before you attach them.
+The connector list shows the state of each connector so you can tell which servers are reachable before you connect them.
 
-- **Connection status:** A colored indicator shows connector health. Green indicates a reachable, healthy connector. Red indicates a connection problem, such as an invalid URL or credential.
-- **Pin:** Pin a connector to keep it at the top of the list for quick reuse.
-- **Edit:** Select the edit icon to open the connector and update its URL, authentication, or other settings.
-- **Search:** Use the search box to filter connectors by name within the selected scope.
+- **Connection status**: A status icon precedes every connector name: a green check mark for a successful connection, and a red cross for a failed one.
+- **Pin**: Pin a connector to keep it at the top of the list for quick reuse.
+- **Edit**: Click the **Edit** icon to open the connector and update its URL, authentication, or other settings.
+- **Search**: Use the search box to filter connectors by name within the selected scope.
 
-If a connector shows a red status, open it with the edit icon and confirm the server URL and API key. Go to [Add an MCP connector](#add-an-mcp-connector) to review the required values.
+If the status icon for a connector is red, open it with the **Edit** icon and confirm the server URL and API key. For more information, see [Add an MCP connector](#add-an-mcp-connector).
 
-<DocImage path={require('./static/ai-mcp-connectors-tab.png')} alt="Harness AI Settings MCP Connectors tab showing an attached connector with a delete icon and an Add MCP Connector button" title="Click to view full size" />
-<p align="center"><em>The MCP Connectors tab lists attached connectors and lets you add or remove them before you select Save.</em></p>
+<div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/ai-mcp-connectors-tab.png')} alt="Harness AI Settings MCP Connectors tab showing a connected connector with a delete icon and an Add MCP Connector button" width="80%" height="40%" title="Click to view full size image" />
+</div>
+<p align="center"><em>The MCP Connectors tab lists connected connectors and lets you add or remove them before you click **Save**.</em></p>
 
 ---
 
 ## Add an MCP connector
 
-Attach a connector from Harness AI chat settings. You can attach an existing connector or create a new one.
+You can use an existing connector or create a new one. To connect a connector from Harness AI chat settings, follow the steps below:
 
-1. Open Harness AI.
-2. Select the more options menu, then select **Settings**.
+1. Navigate to Harness AI.
+2. Select the **More Options** menu, then select **Settings**.
 3. Select the **MCP Connectors** tab.
-4. Select **Add MCP Connector**.
-5. In the **Select MCP Connector** panel, choose **Existing** or **New**.
+4. Click **Add MCP Connector**.
+5. In the **Select MCP Connector** panel, select **Existing** or **New**.
 
-<DocImage path={require('./static/ai-mcp-settings-menu.png')} alt="Harness AI chat more options menu with History and Settings entries" title="Click to view full size" />
-<p align="center"><em>Open Settings from the Harness AI more options menu to reach the MCP Connectors tab.</em></p>
+<div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/ai-mcp-settings-menu.png')} alt="Harness AI chat more options menu with History and Settings entries" width="80%" height="40%" title="Click to view full size image" />
+</div>
+<p align="center"><em>Open Settings from the Harness AI More menu to reach the MCP Connectors tab.</em></p>
 
-<DocImage path={require('./static/ai-mcp-select-connector.png')} alt="Select MCP Connector panel with Existing and New options and Project, Organization, and Account tabs listing connectors" title="Click to view full size" />
+<div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/ai-mcp-select-connector.png')} alt="Select MCP Connector panel with Existing and New options and Project, Organization, and Account tabs listing connectors" width="80%" height="40%" title="Click to view full size image" />
+</div>
 <p align="center"><em>The Select MCP Connector panel lists connectors by scope and lets you use an existing connector or create a new one.</em></p>
 
 <Tabs>
@@ -115,7 +124,7 @@ Attach a connector from Harness AI chat settings. You can attach an existing con
 2. Select the **Project**, **Organization**, or **Account** tab for the scope that holds the connector.
 3. Search for the connector by name, then select it.
 4. Optionally pin the connector to keep it at the top of the list.
-5. Close the panel to return to **MCP Connectors**, then select **Save**.
+5. Close the panel to return to **MCP Connectors**, then click **Save**.
 
 </TabItem>
 <TabItem value="new" label="Create a new connector">
@@ -123,57 +132,65 @@ Attach a connector from Harness AI chat settings. You can attach an existing con
 1. Select **New** to create an MCP Server connector.
 2. Enter the **Server URL** for the third-party MCP server, such as your GitHub, GitLab, or Jira MCP endpoint.
 3. Under **Authentication**, provide the credential the server expects, such as a custom header or API key, stored as a Harness secret.
-4. Save the connector, then attach it and select **Save**.
+4. Save the connector, then connect it and click **Save**.
 
 </TabItem>
 </Tabs>
 
-:::warning
-MCP Server connectors require both a valid server URL and a valid credential. A connector name alone is not sufficient. If either value is wrong, the connector shows a red status and its tools do not load.
-:::
+### Connector requirements
 
-To create a connector outside of chat, or to review the full connector YAML, go to [Configure MCP connectors](/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-mcp-connectors).
+MCP Server connectors require both a valid server URL and a valid credential. A connector name alone is not sufficient. If either value is wrong, the status icon for a connector shows red and its tools will not load.
+
+To create a connector outside of chat, or to review the full connector YAML, see <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-mcp-connectors" target="_blank">Configure MCP connectors</a>.
 
 ---
 
 ## Manage tool permissions
 
-An MCP server exposes a set of tools, and each tool can read or change data in the connected system. The **Tools** step of the MCP Server Connector controls how Harness AI can invoke each tool, so you can allow safe read operations while gating anything that writes. Set these permissions when you create the connector, or open an existing connector and go to the **Tools** step to change them.
+An MCP server exposes a set of tools, and each tool can read or change data in the connected system. The **Tools** step of the MCP Server Connector controls how Harness AI can invoke each tool. This way, you can allow read operations safely but monitor write operations.
+
+You can set these permissions when you create the connector, or open an existing connector and navigate to the **Tools** step to modify them.
 
 Each tool supports three permission levels:
 
-- **Always allow:** Harness AI can call the tool without confirmation. Use this for low-risk, read-only tools, such as listing repositories or reading issues.
-- **Blocked:** Harness AI cannot call the tool. Use this to hide tools you do not want available in chat.
-- **Needs approval:** Harness AI must request your confirmation before it calls the tool. Use this for tools that create, update, or delete data, such as opening a pull request or commenting on an issue.
+- **Always allow**: Harness AI can call the tool without confirmation. Use this for low-risk, read-only tools, such as listing repositories or reading issues.
+- **Blocked**: Harness AI cannot call the tool. Use this to hide tools you do not want available in chat.
+- **Needs approval**: Harness AI must request your confirmation before it calls the tool. Use this for tools that create, update, or delete data, such as opening a pull request or commenting on an issue.
 
-Use the **Set all tools to** selector at the top of the step to apply one permission level to every tool at once, then adjust individual tools as needed. The per-tool rows show the tool name and description so you can decide the right level for each one.
+Use the **Set all tools to** selector at the top of the step to apply one permission level to every tool at once, then adjust individual tools as needed. The per-tool rows in the image below show the tool name and description so you can decide the right level for each one.
 
-<DocImage path={require('./static/ai-mcp-tool-permissions.png')} alt="MCP Server Connector Tools step showing the Set all tools to selector and per-tool Always allow, Blocked, and Needs approval radio buttons" title="Click to view full size" />
+Click **Save** to apply the tool permissions. Harness AI enforces these permissions in every chat that uses the connector.
+
+
+<div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/ai-mcp-tool-permissions.png')} alt="MCP Server Connector Tools step showing the Set all tools to selector and per-tool Always allow, Blocked, and Needs approval radio buttons" width="80%" height="40%" title="Click to view full size image" />
+</div>
 <p align="center"><em>The Tools step sets a permission level for each tool the MCP server exposes, with a bulk selector to set all tools at once.</em></p>
 
-Select **Save** to apply tool permissions. Harness AI enforces these permissions in every chat that uses the connector.
-
-:::tip Start restrictive for write tools
-Set write tools to **Needs approval** or **Blocked** until you trust a connector in chat. You can loosen permissions later without recreating the connector.
+:::tip Recommendation
+Harness recommends you set the write tools to **Needs approval** or **Blocked** until you trust a connector in the chat. You can modify the permissions later without recreating the connector.
 :::
 
 ---
 
 ## Remove an MCP connector
 
-1. Open the **MCP Connectors** tab in Harness AI settings.
-2. Select the delete icon next to the connector you want to remove.
-3. Select **Save**.
+When you remove a connector, the connector is detached from your chat sessions. It does not delete the underlying connector, so you can connect it again later.
 
-Removing a connector detaches it from your chat sessions. It does not delete the underlying connector, so you can attach it again later.
+To remove a connector, follow the steps below:
+
+1. Open the **MCP Connectors** tab in Harness AI settings.
+2. Click **Delete** next to the connector you want to remove.
+3. Click **Save**.
+
 
 ---
 
 ## Use MCP tools in chat
 
-After you attach a connector and save, ask Harness AI a question that needs one of its tools. Harness AI decides when to call the tool, runs it, and uses the result in its answer.
+After you connect a connector and save it, ask Harness AI a question that needs one of its tools. Harness AI decides when to call the tool, runs it, and uses the result in its answer.
 
-For example, with a GitHub MCP connector attached, you can ask:
+For example, with a GitHub MCP connector connected, you can ask:
 
 ```text
 List the GitHub repositories in my GitHub account.
@@ -181,22 +198,24 @@ List the GitHub repositories in my GitHub account.
 
 Harness AI calls the GitHub MCP server, retrieves your repositories, and returns them in the chat, along with a short note about any governance rules it applied to the request.
 
-<DocImage path={require('./static/ai-mcp-chat-github-result.png')} alt="Harness AI chat response listing GitHub repositories in a table after calling the GitHub MCP connector" title="Click to view full size" />
-<p align="center"><em>Harness AI calls the attached GitHub MCP connector and returns repository data directly in the chat.</em></p>
+<div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/ai-mcp-chat-github-result.png')} alt="Harness AI chat response listing GitHub repositories in a table after calling the GitHub MCP connector" width="80%" height="40%" title="Click to view full size image" />
+</div>
+<p align="center"><em>Harness AI calls the connected GitHub MCP connector and returns repository data directly in the chat.</em></p>
 
 ---
 
 ## Supported MCP servers
 
-You can attach any third-party MCP Server connector that exposes a reachable endpoint and a valid credential. Common sources include:
+You can connect any third-party MCP Server connector that exposes a reachable endpoint and a valid credential. Common sources include:
 
-- **GitHub:** Repositories, issues, and pull requests.
-- **GitLab:** Projects, merge requests, and issues.
-- **Jira:** Issues, projects, and tickets.
-- **Other providers:** Any custom or third-party MCP server that follows the Model Context Protocol and exposes a reachable endpoint.
+- **GitHub**: Repositories, issues, and pull requests.
+- **GitLab**: Projects, merge requests, and issues.
+- **Jira**: Issues, projects, and tickets.
+- **Other providers**: Any custom or third-party MCP server that follows the Model Context Protocol and exposes a reachable endpoint.
 
-:::tip Harness-native tools
-Harness AI already has built-in access to Harness data such as pipelines, executions, services, and environments, so you do not need an MCP connector for Harness-native workflows. Add MCP connectors when you want Harness AI to reach tools and data in external systems. Go to the [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) page to review the Harness-native tools available.
+:::tip Recommendation
+Harness AI already has built-in access to Harness data such as pipelines, executions, services, and environments, so you do not need an MCP connector for Harness-native workflows. Add MCP connectors when you want Harness AI to reach tools and data in external systems. For more information, see <a href="/docs/platform/harness-ai/connect-with-ai/harness-mcp-server" target="_blank">Harness MCP Server</a>.
 :::
 
 ---
@@ -216,17 +235,17 @@ Harness AI already has built-in access to Harness data such as pipelines, execut
 />
 
 <Troubleshoot
-  issue="Harness AI does not use the tools from an attached MCP connector"
+  issue="Harness AI does not use the tools from a connected MCP connector"
   mode="general"
-  fallback="Confirm you selected Save after attaching the connector, that the connector status is healthy, and that your prompt clearly asks for an action the server's tools support."
+  fallback="Confirm you selected Save after connecting the connector, that the connector status is healthy, and that your prompt clearly asks for an action the server's tools support."
 />
 
 ---
 
-## Next steps
+## Related articles
 
-- [Overview of Harness AI](/docs/platform/harness-ai/overview): Review available AI features.
-- [Configure MCP connectors](/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-mcp-connectors): Set up an MCP Server connector that includes a server URL, authentication, and connector YAML.
-- [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server): Review Harness-native MCP tools and resource types.
-- [Harness AI Rules](/docs/platform/harness-ai/harness-ai-rules): Govern AI output before Harness resources change.
-- [Effective Prompting with Harness AI](/docs/platform/harness-ai/harness-create-with-ai/effective-prompting-ai): Write prompts that produce better tool calls.
+- <a href="/docs/platform/harness-ai/overview" target="_blank">Overview of Harness AI</a>: Review available AI features.
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-mcp-connectors" target="_blank">Configure MCP connectors</a>: Set up an MCP Server connector that includes a server URL, authentication, and connector YAML.
+- <a href="/docs/platform/harness-ai/connect-with-ai/harness-mcp-server" target="_blank">Harness MCP Server</a>: Review Harness-native MCP tools and resource types.
+- <a href="/docs/platform/harness-ai/govern-ai-output/harness-ai-rules" target="_blank">Harness AI Rules</a>: Govern AI output before Harness resources change.
+- <a href="/docs/platform/harness-ai/harness-create-with-ai/effective-prompting-ai" target="_blank">Effective Prompting with Harness AI</a>: Write prompts that produce better tool calls.

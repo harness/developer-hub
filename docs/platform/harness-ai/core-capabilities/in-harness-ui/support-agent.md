@@ -28,7 +28,7 @@ The Support Agent uses **Claude Opus 4.6** to process your questions and retriev
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

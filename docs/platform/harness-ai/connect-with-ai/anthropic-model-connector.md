@@ -22,7 +22,7 @@ The Anthropic Model Connector defines Claude as the LLM provider and default mod
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

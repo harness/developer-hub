@@ -22,7 +22,7 @@ The OpenAI Model Connector defines OpenAI as the LLM provider and default model 
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

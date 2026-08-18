@@ -26,7 +26,7 @@ Harness recommends you start with a small set of **Account** or **Project** rule
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to understand:
 

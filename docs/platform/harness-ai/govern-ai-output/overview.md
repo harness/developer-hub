@@ -28,7 +28,7 @@ For more information on the source code for Harness skills, see <a href="https:/
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

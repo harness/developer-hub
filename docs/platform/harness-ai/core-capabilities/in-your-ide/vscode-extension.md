@@ -40,7 +40,7 @@ Harness AI Code Agent (AI code completions and chat) has been updated. For more 
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

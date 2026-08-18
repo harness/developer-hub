@@ -23,7 +23,7 @@ Harness AI enhances the code review process by automatically generating pull req
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

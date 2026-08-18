@@ -23,7 +23,7 @@ Harness AI chat history and Memory let you search past conversations and carry u
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

@@ -28,7 +28,7 @@ The DevOps Agent uses Claude Opus 4.6, hosted through AWS Bedrock and Google Ver
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

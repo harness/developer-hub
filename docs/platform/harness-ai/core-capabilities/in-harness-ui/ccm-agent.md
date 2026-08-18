@@ -13,7 +13,7 @@ This topic describes how you can use Harness AI to optimize cloud costs through 
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 
