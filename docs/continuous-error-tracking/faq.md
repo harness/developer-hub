@@ -564,7 +564,7 @@ There are two ways to disable the CET agent's log statement capture for the log 
 
 #### What is the significance of utilizing the ET_NO_CEREBRO parameter for the CET agent?
 
-Using the `ET_NO_CEREBRO` paramter for the CET Micro-Agent disables log statement capture for the log view. It potentially provides significant performance benefits. Log capture can affect Garbage Collection when logs are dense. This does not affect recording of logged errors and logged warnings as events.
+Using the `ET_NO_CEREBRO` parameter for the CET Micro-Agent disables log statement capture for the log view. It potentially provides significant performance benefits. Log capture can affect Garbage Collection when logs are dense. This does not affect recording of logged errors and logged warnings as events.
 
 
 
@@ -944,7 +944,7 @@ The following versions of OpenJDK are currently supported for the CET agent:
 - 7: EoL 06-30-2020
 - 6: EoL 12-31-2016 (update 20 and above)
 
-Note: The OpenJDK VM has other extentions such as Amazon Correto or Adopt OpenJDK that are supported.  However, not all derivatives have been thoroughly tested with the CET agent.  Place a feature request if there is a version of OpenJDK that you would like to see supported.
+Note: The OpenJDK VM has other extensions such as Amazon Correto or Adopt OpenJDK that are supported.  However, not all derivatives have been thoroughly tested with the CET agent.  Place a feature request if there is a version of OpenJDK that you would like to see supported.
 
 Note: The CET agent supports LTS for OpenJDK versions 17, 11, and 8.
 

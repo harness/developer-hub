@@ -41,7 +41,7 @@ The following agent environment variables can be added so that your code reposit
 
   | **Required Environment Variable** | **Manifest Attribute** |  **Description** | **Example** |
 | --- | --- | --- | --- |
-| `ET_REPOSITORY_CONNECTOR_ID` | `Harness-Repository-Connector-Id` | ID for the code repository conenctor you created | `coderepoconnector`|
+| `ET_REPOSITORY_CONNECTOR_ID` | `Harness-Repository-Connector-Id` | ID for the code repository connector you created | `coderepoconnector`|
 | `ET_REPOSITORY_COMMIT` | `Harness-Repository-Commit` | CommitHashOrReleaseTag for the code you are want to track. Note that commit and branch both are not required. Only one of them is required. If both fields are provided, then commit takes a higher priority. | `12a69d4c668ce126fc104f4d58f3d7ed85403v1h`|
 | `ET_REPOSITORY_BRANCH` | `Harness-Repository-Branch` | Name of the branch you are tracking | `pre-prod` |
 | `ET_REPOSITORY_SOURCES_ROOT` | `Harness-Repository-Sources-Root` | Requires a reference to the repository name; optionally, you can provide additional paths to prepend to the file you want to track | `event-generator/backend/src/main/java` |

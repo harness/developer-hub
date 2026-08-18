@@ -1,6 +1,6 @@
 ---
 title: Agent Onboarding Wizard
-description: Learn how to quickly intall and onboard an Error Tracking Agent.
+description: Learn how to quickly install and onboard an Error Tracking Agent.
 sidebar_position: 70
 ---
 
