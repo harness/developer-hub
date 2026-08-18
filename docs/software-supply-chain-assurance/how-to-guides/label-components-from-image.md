@@ -184,7 +184,7 @@ echo "==========================================================================
 echo "Manifest Digest for $IMAGE_NAME on platform $PLATFORM_OS/$PLATFORM_ARCH is $digest"
 echo "==================================================================================="
 
-# Note: Incase of multiple platforms images $digest is the manifest digest while base_image_digest is the index digest
+# Note: In case of multiple platforms images $digest is the manifest digest while base_image_digest is the index digest
 base_image_digest=$digest
 
 if [ -z "$base_image_url" ] || [ -z "$base_image_digest" ]; then
