@@ -65,7 +65,7 @@ The Overall Health Score timeline has a time window that displays granular detai
 
 ### Changes list
 
-The **Changes** list provides a detailed breakdown of all the changes that occurred in deployment, infrastructure, feature flags, and chaos experiments during the selected time period. It also displays the incidents from the incident management tool during the selected time period. You can see the following information in the **Chages** list:
+The **Changes** list provides a detailed breakdown of all the changes that occurred in deployment, infrastructure, feature flags, and chaos experiments during the selected time period. It also displays the incidents from the incident management tool during the selected time period. You can see the following information in the **Changes** list:
 
 - Deployments such as ECS, Kubernetes, and Helm from the Harness Deployment module.
 - Infrastructure changes such as Kubernetes events, Terraform audit logs, MongoDB audit events, AWS CloudTrail, GCP audit logs, and Azure audit logs.

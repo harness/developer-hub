@@ -113,7 +113,7 @@ In the Harness Platform, go to the **Service Reliability** module and select **S
 
 Select **Create SLO**, enter a name for the SLO, such as `myslo`.
 
-Create a service to monitor. Name the service `my-slo-app`, set the environment to `kubenetes`, and then select **Save**.
+Create a service to monitor. Name the service `my-slo-app`, set the environment to `kubernetes`, and then select **Save**.
 
 ![Monitored Service](./static/first-slo-tutorial/monitored_service.png)
 

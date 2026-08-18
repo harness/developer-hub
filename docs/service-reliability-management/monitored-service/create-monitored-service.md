@@ -1,6 +1,6 @@
 ---
 title: Create a monitored service
-description: Create a monitored servie to correlate change events.
+description: Create a monitored service to correlate change events.
 sidebar_position: 1
 ---
 

@@ -35,7 +35,7 @@ To set up notifications for a monitored service:
      | **Slack**               |    Enter the **Slack Webhook URL** to which the notification should be sent.   |
      | **Email**               |    Enter the email addresses to which the notifications should be sent.      |
      | **PagerDuty**           |    Enter the PagerDuty account or service key to the notifications should be sent.   |
-     | **Microsoft Teams**     |    Enter the **Microsoft Teams Webhook URL(s)** to which the notifications should be sent. You add multiple Micorsoft webhook URLs by selecting **+ Add**.     |
+     | **Microsoft Teams**     |    Enter the **Microsoft Teams Webhook URL(s)** to which the notifications should be sent. You add multiple Microsoft webhook URLs by selecting **+ Add**.     |
 
       If you choose Slack, PagerDuty, or Microsoft Teams as your notification method, you can select a Harness user group that is part of a Harness project, organization, or an account. Notifications are sent to the Slack or Microsoft Teams channels that are associated with the selected user group.
 

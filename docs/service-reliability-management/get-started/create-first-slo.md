@@ -47,7 +47,7 @@ A Service Level Objective (SLO) is a target for the level of service you aim to 
 Here is the summary of steps involved creating a SLO:
 
 - Define SLO Identification
-- Configure Service Level Indicatiors (SLIs)
+- Configure Service Level Indicators (SLIs)
 - CreateError Budget Policy (Optional)
 
 
@@ -103,7 +103,7 @@ To create a monitored service:
 2. In the **Name** field, enter a name for the user journey. For example, the “dev users".
 3. Optionally, you can add a description of the user journey in the **Description (Optional)** field. You can also attach a tag to the user journey. Select the pencil icon next to the **Tags (Optional)** field, type a tag name, and then press enter.
 3. Select **Save**.
-4. Select **Next** to go to the **Configure Service Level Indicatiors (SLIs)** section.
+4. Select **Next** to go to the **Configure Service Level Indicators (SLIs)** section.
 
 
 ### Configure Service Level Indicators (SLIs)

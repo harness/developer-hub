@@ -26,7 +26,7 @@ For detailed instructions on how to prepare files required for Terraform setup, 
 
 ## Set up a Terraform compliant delegate
 
-Set up Harness Delegate to run the Terraform setup for appling the changes.
+Set up Harness Delegate to run the Terraform setup for applying the changes.
 
 In your Harness Delegate, run the following commands to install the libraries required for Terraform:
 
