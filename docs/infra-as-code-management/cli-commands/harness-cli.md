@@ -1,15 +1,17 @@
 ---
-title: Harness CLI 3.0 for IaCM
-sidebar_label: Harness CLI 3.0
+title: Harness CLI for IaCM
+sidebar_label: Harness CLI
 sidebar_position: 10
-description: Install, authenticate, and run the unified Harness CLI 3.0 to manage IaCM workspaces from your terminal.
+description: Install, authenticate, and run the Harness CLI to manage IaCM workspaces from your terminal.
 keywords:
   - harness cli
-  - harness cli 3.0
-  - unified cli
   - iacm cli
   - harness auth login
   - workspace
+  - execute workspace
+  - terraform plan
+  - opentofu plan
+  - harness list workspace
 tags:
   - iacm
   - cli
@@ -20,24 +22,25 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-The **Harness CLI 3.0** is the unified command-line interface for Harness. It uses one consistent grammar across every module, so the way you install, authenticate, and run commands for IaCM matches the rest of the Harness platform. This guide shows you how to install the CLI, log in, set your scope, and manage IaCM workspaces from your terminal.
+The **Harness CLI** is the unified command-line interface for Harness. It uses one consistent grammar across every module, so the way you install, authenticate, and run commands for IaCM matches the rest of the Harness platform. This guide shows you how to install the CLI, log in, set your scope, and manage IaCM workspaces from your terminal.
 
-:::info Beta
-Harness CLI 3.0 is in beta. Report issues and feedback in the **#harness-cli-beta-feedback** Slack channel so the CLI Core team can act on them quickly.
-:::
+---
 
-:::warning Legacy CLI is deprecated
-The earlier `harness iacm` plugin commands and the standalone install steps in [Harness CLI overview](/docs/platform/automation/cli/install/) are deprecated for IaCM onboarding. Use the unified Harness CLI 3.0 on this page for all install, authentication, and workspace commands.
-:::
+## What you will learn in this topic
+
+- How to install the Harness CLI and verify the installation
+- How to authenticate and set your default org and project scope
+- How to list and inspect IaCM workspaces from the terminal
+- How to trigger Terraform or OpenTofu plan operations with `harness execute workspace`
 
 ---
 
 ## Before you begin
 
 - **A Harness account:** Access to a project that contains at least one IaCM workspace. Go to [Get started with IaCM](/docs/infra-as-code-management/get-started) to create your first workspace.
-- **A supported operating system:** macOS or Linux on `amd64` or `arm64`. Windows is not supported — use WSL (Windows Subsystem for Linux) if you are on Windows. The installer downloads the matching binary automatically.
-- **IaCM workspace permissions:** You need **View** and **Execute** permissions on IaCM workspaces. Go to the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference#iacm) to review IaCM permissions. An administrator must assign you a role that includes them. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
-- **An API key (optional):** Required only for CI pipelines and automated scripts (environments without a terminal). Go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys) to create one with the required IaCM permissions at the project or org scope.
+- **A supported operating system:** macOS or Linux on `amd64` or `arm64`. Windows is not supported. Use WSL (Windows Subsystem for Linux) if you are on Windows. The installer downloads the matching binary automatically.
+- **IaCM workspace permissions:** You need **View** and **Execute** permissions on IaCM workspaces. Go to the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference#iacm) to review IaCM permissions. An administrator must assign you a role that includes them. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to understand how roles work.
+- **An API key (optional):** Required only for CI pipelines and automated scripts. Go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys) to create one with the required IaCM permissions at the project or org scope.
 - **`curl` available on your `PATH`:** The install step uses `curl` to download the installer.
 
 ---
@@ -64,7 +67,7 @@ curl -fsSL https://raw.githubusercontent.com/harness/cli/main/install.sh | sh -s
 Confirm the install:
 
 ```bash
-harness --version
+harness version
 ```
 
 ### Enable shell completions
@@ -109,7 +112,7 @@ harness auth login --profile staging
 Use the `--profile` flag on any command to switch profiles: `harness list workspace --profile staging`.
 
 :::tip Non-interactive authentication
-For CI pipelines and automated scripts (environments without a terminal), set the `HARNESS_API_KEY` environment variable instead of running an interactive login. The CLI resolves auth in this order: `--profile` flag, then `HARNESS_API_KEY`, then `HARNESS_PROFILE`, then CI runner variables, then the default profile.
+For CI pipelines and automated scripts, set the `HARNESS_API_KEY` environment variable instead of running an interactive login. The CLI resolves auth in this order: `--profile` flag, then `HARNESS_API_KEY`, then `HARNESS_PROFILE`, then CI runner variables, then the default profile.
 :::
 
 :::info Token expiry
@@ -118,7 +121,7 @@ Interactive login tokens can be configured to expire in 30, 90, or 180 days, or 
 
 ### Set your default org and project
 
-The org and project scope determines which Harness resources your CLI commands target by default. IaCM commands run against a default org and project. Set them once so you do not repeat the values on every command:
+The org and project scope determines which Harness resources your CLI commands target by default. Set them once so you do not repeat the values on every command:
 
 ```bash
 harness auth setscope --org <org-id> --project <project-id>
@@ -127,6 +130,8 @@ harness auth setscope --org <org-id> --project <project-id>
 Run `harness auth setscope` with no flags to choose your org and project from an interactive list.
 
 ### Check your status
+
+Run the following command to confirm your active profile, account, and token state:
 
 ```bash
 harness auth status
@@ -164,13 +169,13 @@ harness get workspace <workspace-id>
 
 ### Execute a workspace
 
-Run a remote Terraform or OpenTofu plan against a workspace. The plan runs on Harness infrastructure, not your local machine:
+Run a Terraform or OpenTofu plan against a workspace. By default, the command zips and uploads your local working directory to Harness, triggers the default plan pipeline, and streams execution output to your terminal:
 
 ```bash
-harness execute workspace <workspace-id> --plan
+harness execute workspace <workspace-id>
 ```
 
-The plan output is displayed in your terminal. To view execution history in the Harness UI, go to **Infrastructure > Workspaces > [workspace] > Execution History**.
+To view execution history in the Harness UI, go to **Infrastructure > Workspaces > [workspace] > Execution History**.
 
 :::info Workspace state locking
 Harness implements state locking to prevent multiple users or processes from modifying the state simultaneously. If another user or CI job is running an operation on the same workspace, your command will wait until the lock is released or fail with a lock error.
@@ -178,15 +183,15 @@ Harness implements state locking to prevent multiple users or processes from mod
 
 The `execute workspace` command supports these flags for plan operations:
 
-- **`--plan`:** Execute a plan. This is the default operation.
-- **`--target`:** Target a specific resource. Repeat the flag to target more than one resource.
-- **`--replace`:** Replace a variable in `key=value` format. Repeat the flag for multiple replacements.
-- **`--force`:** Skip the confirmation prompt that appears before running the plan.
+- **`--target <resource>`:** Target a specific resource. Repeat the flag to target more than one resource.
+- **`--replace <resource>`:** Mark a specific resource for replacement. Repeat the flag for multiple resources.
+- **`--force`:** Skip the confirmation prompt before running the plan.
+- **`--branch <branch>`:** Run the plan against a specific Git branch instead of uploading local code.
 
 For example, target two resources and skip the prompt:
 
 ```bash
-harness execute workspace my-workspace --plan --target aws_instance.web --target aws_s3_bucket.assets --force
+harness execute workspace my-workspace --target aws_instance.web --target aws_s3_bucket.assets --force
 ```
 
 :::tip Discover any command
@@ -198,13 +203,13 @@ Append `--help` at any level to list the available verbs, nouns, and flags, for 
 ## Troubleshooting
 
 <Troubleshoot
-  issue="harness: command not found after installing the Harness CLI 3.0"
+  issue="harness: command not found after installing the Harness CLI"
   mode="fallback-only"
   fallback={`The install directory is not on your PATH. Add ~/.local/bin to your PATH (export PATH="$HOME/.local/bin:$PATH"), then restart your shell or re-run the installer and accept the PATH update prompt.`}
 />
 
 <Troubleshoot
-  issue="harness auth login fails or hangs with no interactive prompt in Harness CLI 3.0"
+  issue="harness auth login fails or hangs with no interactive prompt in Harness CLI"
   mode="fallback-only"
   fallback="Interactive login requires a TTY. In CI or a non-interactive shell, set the HARNESS_API_KEY environment variable instead of running harness auth login."
 />
@@ -219,7 +224,8 @@ Append `--help` at any level to list the available verbs, nouns, and flags, for 
 
 ## Next steps
 
-You installed the Harness CLI 3.0, authenticated, and ran the core IaCM workspace commands. Continue with the local planning workflow and the full command grammar.
+You installed the Harness CLI, authenticated, and ran the core IaCM workspace commands. Continue with the local planning workflow and the full command grammar.
 
 - Go to [Local CLI Plan](/docs/infra-as-code-management/cli-commands/cli-iacm-plan) to run Terraform plans against your local files.
-- Go to the [Supported OpenTofu and Terraform commands](/docs/infra-as-code-management/cli-commands/terraform-plugins) to learn how to use Terraform commands within your pipelines.
+- Go to [IaCM CLI commands](/docs/platform/harness-cli/harness-cli-commands/iacm-commands) to explore apply, destroy, and state operations available in the Harness CLI.
+- Go to [Supported OpenTofu and Terraform commands](/docs/infra-as-code-management/cli-commands/terraform-plugins) to learn how to use Terraform commands within your pipelines.

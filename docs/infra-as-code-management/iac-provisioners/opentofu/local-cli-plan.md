@@ -31,7 +31,7 @@ You can validate OpenTofu changes locally by using the Harness CLI. Instead of r
 
 ## How local CLI plans work
 
-When you run `harness iacm plan` from your local machine, the following workflow executes:
+When you run `harness execute workspace` from your local machine, the following workflow executes:
 
 <div style={{textAlign: 'center'}}>
 
@@ -80,14 +80,14 @@ From the perspective of OpenTofu execution, the primary difference is the source
 Run the following command from the root of your OpenTofu working directory:
 
 ```bash
-harness iacm plan --org-id <org-id> --project-id <project-id> --workspace-id <workspace-id>
+harness execute workspace <workspace_id>
 ```
 
-:::info Prerequisites
-Before you run a local plan, make sure you have a [default plan pipeline configured](/docs/infra-as-code-management/iac-provisioners/opentofu/default-pipelines) in your OpenTofu workspace and the [Harness CLI installed and authenticated](/docs/infra-as-code-management/cli-commands/cli-iacm-plan). Installing OpenTofu locally is optional because the plan executes remotely through Harness.
+:::info Before you begin
+Before you run a local plan, make sure you have a [default plan pipeline configured](/docs/infra-as-code-management/iac-provisioners/opentofu/default-pipelines) in your OpenTofu workspace and the [Harness CLI installed and authenticated](/docs/platform/harness-cli/install-and-upgrade). OpenTofu does not need to be installed locally because the plan executes remotely through Harness.
 :::
 
-Go to [Local CLI Plan](/docs/infra-as-code-management/cli-commands/cli-iacm-plan) for complete command reference, configuration options, authentication details, and limitations.
+Go to [Local CLI Plan](/docs/infra-as-code-management/cli-commands/cli-iacm-plan) to view the complete command reference, configuration options, authentication details, and limitations.
 
 ---
 
