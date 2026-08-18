@@ -6085,7 +6085,19 @@ const sidebars: SidebarsConfig = {
             'release-management/releases/modeling-releases',
             'release-management/releases/release-calendar',
             'release-management/releases/adhoc-releases',
-            'release-management/releases/release-reports',            
+            'release-management/releases/release-reports',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Artifacts',
+          link: {
+            type: 'generated-index',
+            slug: '/category/release-orchestration-artifacts',
+          },
+          collapsed: true,
+          items: [
+            'release-management/artifacts/artifact-tracker-getting-started',
           ],
         },
         {

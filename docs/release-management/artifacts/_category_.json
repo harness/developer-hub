@@ -1,0 +1,12 @@
+{
+  "label": "Artifacts",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link": {
+    "type": "generated-index",
+    "title": "Artifacts"
+  },
+  "customProps": {
+    "position": "6"
+  }
+}
