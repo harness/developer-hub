@@ -69,6 +69,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to Basic CD Deployments",
+    module: MODULES.cd,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing basic CD deployments.",
+    version: "Harness CD & GitOps Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-basic-cd-deployments",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Introduction to Policy as Code [OPA]",
     module: MODULES.cd,
     type: type.user,
