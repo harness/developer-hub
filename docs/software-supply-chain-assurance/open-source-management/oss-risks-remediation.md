@@ -100,7 +100,7 @@ To select the recommended version of the dependency:
 4. Click on any dependency exposed to OSS risks from the dependency list to open the dependency side panel.
 
 5. The **Overview tab** of the dependency side panel opens by default. It has the following sections:
-  * **Details** - Review the dependency’s current and latest available versions, license, package manager, and associated PURL.
+  * **Details** - Review the dependency’s current and latest available versions, package age, license, package manager, and associated PURL.
   * **OSS Risks** - Displays detailed information about the OSS risks associated with the selected dependency, including the total number of identified risks. Each risk is presented in a collapsible section. Click a collapsed section to view its details.
 
     <DocImage path={require('./static/dependency-view-overview.png')} width="80%" height="80%" title="Click to view full size image" />

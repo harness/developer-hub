@@ -13,7 +13,7 @@ tags:
 ---
 
 
-This document provides a step-by-step guide on how to create SLSA Policies. For guidance on how to write these policies, please refer to the section on [write policy definitions](/docs/software-supply-chain-assurance/open-source-management/define-sbom-policies). To learn about implementing SLSA policies, follow the instructions in the section on [enforcing SLSA policies](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa#enforce-policies-on-slsa-provenance).
+This document provides a step-by-step guide on how to create SLSA Policies. For guidance on how to write these policies, please refer to the section on [write policy definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies). To learn about implementing SLSA policies, follow the instructions in the section on [enforcing SLSA policies](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa#enforce-policies-on-slsa-provenance).
 
 ### Before you begin
 

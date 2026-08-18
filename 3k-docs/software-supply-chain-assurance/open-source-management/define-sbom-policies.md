@@ -11,7 +11,7 @@ tags:
   - supply-chain-visibility
 ---
 
-import Scs from '@site/docs/software-supply-chain-assurance/open-source-management/define-sbom-policies.md';
+import Scs from '@site/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies.md';
 
 <Scs />
 

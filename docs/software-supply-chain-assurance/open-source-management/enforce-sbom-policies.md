@@ -33,7 +33,7 @@ Here's a breakdown of the overall steps involved:
 
 
 1. Create an [OPA policy set](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)
-2. [Write policy definitions](/docs/software-supply-chain-assurance/open-source-management/define-sbom-policies)
+2. [Write policy definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies)
 3. [Enforce the policies on SBOM](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies#policy-configuration)
 4. View [policy violations](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies#view-policy-violations) and take actions
 
@@ -96,7 +96,7 @@ import CosignVerificationOptions from '/docs/software-supply-chain-assurance/sha
 
 You can configure the step to enforce policies on the SBOM by selecting the appropriate policy set.
 
-- **Policy Sets:** Choose the policy sets you want to use for enforcement. You can select multiple policy sets from the **Account**, **Org**, or **Project** levels. For more details, refer to [Creating SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#creating-an-sbom-policy) and [Writing SBOM Policy Definitions](/docs/software-supply-chain-assurance/open-source-management/define-sbom-policies).
+- **Policy Sets:** Choose the policy sets you want to use for enforcement. You can select multiple policy sets from the **Account**, **Org**, or **Project** levels. For more details, refer to [Creating SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#creating-an-sbom-policy) and [Writing SBOM Policy Definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies).
 
 
 ## Run the pipeline
@@ -108,7 +108,7 @@ When the pipeline runs, the **SBOM Policy Enforcement** step does the following:
 * If violations are detected based on the policy evaluation criteria, the pipeline may issue a warning and proceed, or it may generate an error and terminate.
 * Records policy violations and shows them on the **Supply Chain** tab on the **Execution details** page.
 
-SCS evaluates the components described in the artifact's SBOM against your [policy definitions](/docs/software-supply-chain-assurance/open-source-management/define-sbom-policies). For a component to pass the evaluation, it must meet these conditions:
+SCS evaluates the components described in the artifact's SBOM against your [policy definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies). For a component to pass the evaluation, it must meet these conditions:
 
 * The component *must not* be denied based on the rules in the `deny_list`.
 * The component *must* be allowed based on the rules in the `allow_list`.

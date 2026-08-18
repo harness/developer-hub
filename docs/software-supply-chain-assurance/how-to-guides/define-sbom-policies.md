@@ -5,6 +5,7 @@ sidebar_position: 22
 redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/define-ssca-policies
   - /docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies
+  - /docs/software-supply-chain-assurance/open-source-management/define-sbom-policies
 
 tags:
   - harness-scs 
@@ -15,30 +16,12 @@ tags:
   - supply-chain-visibility
 ---
 
-When you [create SBOM policies](./create-sbom-policies.md), you define rules for open-source component usage based on criteria such as component name, version, license, PURL, and supplier.
+When you [create SBOM policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies), you define rules for open-source component usage based on criteria such as component name, version, license, PURL, and supplier.
 
 The SCS module supports deny list and allow list policies. Your policy files can include both lists. This topic explains how to write rules for each list.
 
-## Deny list policies
 
-Use deny list policies to block the use of specific components within your artifacts. If an artifact includes a component that is part of the deny list, the artifact's policy evaluation fails.
-
-For example, you can block a specific version of a component that has known vulnerabilities or doesn't meet your security standards. By adding that version of the component to the `deny_list` and [enforcing the policy](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies) in your pipelines, any attempts to use this component version in your organization's artifacts will be blocked.
-
-Your deny list rules can use any combination of the following attributes, in addition to the component `name`:
-
-* `supplier`
-* `license`
-* `version`
-* `purl`
-
-
-## Allow list policies
-
-Use allow list policies to define a list of approved licenses, suppliers, and PURLs. The allow list ensures that your artifacts only include components that meet your specifications, which can help mitigate security and compliance risks. When you enforce policies in your pipelines, if an artifact includes a component that is not included in the allow list, the attribute's policy evaluation fails. Policy evaluation will also fail if the attribute on which the policy is enforced is not present in the corresponding SBOM.
-
-
-## Using OPA policies
+## Use OPA policies
 
 You can define OPA policy sets at project, org, and account levels. A typical SBOM policy set has three sections:
 
