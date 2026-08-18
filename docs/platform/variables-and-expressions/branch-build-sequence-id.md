@@ -13,7 +13,7 @@ This feature is behind the feature flag `CI_ENABLE_BRANCH_SEQUENCE_ID`. Contact 
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

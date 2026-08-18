@@ -9,7 +9,7 @@ The dry run validation endpoint allows you to validate pipeline YAML changes whi
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How to [use the dry run validation endpoint](#use-the-api-endpoint) to validate pipeline YAML.
 - How to [read the validation response](#response-format) for valid and invalid pipelines.

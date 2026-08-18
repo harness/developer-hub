@@ -20,7 +20,7 @@ As an account administrator, you can configure global pipeline settings and enfo
 
 Some default limitations are applied on pipeline executions and resource consumption depending on your plan tier. Some settings can be modified within individual pipelines or globally by an administrator. Some settings cannot be modified.
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How to [configure account-level default pipeline settings](#pipeline-default-settings) for triggers, concurrency, and timeouts.
 - How to find the [fixed pipeline settings](#fixed-pipeline-settings) that you cannot modify.

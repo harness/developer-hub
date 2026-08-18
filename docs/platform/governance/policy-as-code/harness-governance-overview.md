@@ -26,7 +26,7 @@ You can define and store policies directly in the OPA service in Harness or use 
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

@@ -47,7 +47,7 @@ Regardless of your strategy, the maximum number of stages you can run in paralle
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How the [parallelism](#parallelism-strategies), [matrix](#matrix-strategies), and [repeat](#repeat-strategies) looping strategies work and when to use each.
 - How to configure [matrix dimensions](#configure-a-matrix-strategy), [exclude combinations](#exclude-combinations), [limit concurrency](#limit-resource-usage), and [customize instance names](#customize-matrix-stage-names).

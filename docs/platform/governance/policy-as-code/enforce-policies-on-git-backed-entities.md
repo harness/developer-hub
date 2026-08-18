@@ -21,7 +21,7 @@ Git-backed entities store their configuration in a Git repository rather than ex
 
 Harness now runs **onSave** policies when you commit a change directly to a Git-backed entity. For pipelines and templates, Harness also blocks pipeline execution when the most recent commit fails the policy check. For CD entities (services, environments, infrastructure definitions, and overrides), Harness surfaces the policy violation status on the entity detail page and gates pipeline execution at the step level when the referenced entity is invalid. This keeps Git-backed entities governed the same way as entities saved directly in Harness.
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 This topic explains how Harness enforces **onSave** OPA policies on Git-backed entities and how to resolve a blocked pipeline. It covers:
 

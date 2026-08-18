@@ -24,7 +24,7 @@ If your Git connector authenticates through a Harness Delegate, the delegate mus
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 This topic explains how to monitor Git provider API rate limits. It covers:
 

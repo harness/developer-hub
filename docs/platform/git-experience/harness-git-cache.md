@@ -18,7 +18,7 @@ The Git cache is only used to render entities faster in the Harness UI, not to i
 
 You can reload the entities from Git and update the cache at any time. 
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How Harness [sets up caching](#set-up-caching) for remote entities.
 - How the cache is [maintained separately for each branch](#caching-entities-saved-on-multiple-branches).

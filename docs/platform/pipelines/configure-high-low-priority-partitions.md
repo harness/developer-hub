@@ -23,7 +23,7 @@ This feature is behind feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` 
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How to [configure High/Low priority partitions](#configure-highlow-priority-partitions).
 - How to [assign projects to partitions](#partition-assignment).

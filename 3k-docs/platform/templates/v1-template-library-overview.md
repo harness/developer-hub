@@ -20,7 +20,7 @@ V1 templates are written in the V1 pipeline YAML format and are registered under
 
 ---
 
-## What you will learn
+## What you will learn in this topic
 
 - The three V1 template types and when to use each.
 - How a pipeline references a template with `uses` and `with`.

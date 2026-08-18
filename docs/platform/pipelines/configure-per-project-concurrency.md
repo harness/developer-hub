@@ -26,7 +26,7 @@ This feature is behind feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY`,
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How to [configure the default project concurrency limit](#configure-the-default-project-concurrency-limit).
 - How to [set project-level overrides](#project-level-overrides).

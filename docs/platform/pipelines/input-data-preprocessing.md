@@ -17,7 +17,7 @@ Harness handles a blank input variable differently depending on whether you run 
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How [Harness handles a blank input variable](#how-harness-handles-blank-input-variables) with and without an input set.
 - How to [enable Save Blank Fields as Empty String](#enable-the-save-blank-fields-as-empty-string-setting) with the account-level settings.

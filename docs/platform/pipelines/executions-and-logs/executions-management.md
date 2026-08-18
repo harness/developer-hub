@@ -19,7 +19,7 @@ This feature is behind the feature flag `PIPE_QUEUED_PIPELINE_OBSERVABILITY`. Co
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How to [access Executions Management](#access-executions-management) and what queued and running executions represent.
 - How to read the [queue behavior](#queue-behavior), including execution status.

@@ -32,7 +32,7 @@ Template overrides are supported only for templates that use the v0 YAML version
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How [template overrides](#how-template-overrides-work) work and when to use them.
 - How a template owner [allows advanced settings to be overridden](#allow-overrides-on-a-template).

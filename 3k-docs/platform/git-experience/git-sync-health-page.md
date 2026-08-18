@@ -14,7 +14,7 @@ Using these views, you can verify that Git changes are received and processed co
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How to [check account-level bi-directional sync health](#account-level-bi-directional-sync-health).
 - How to [view repository sync status](#view-repository-sync-status).

@@ -27,7 +27,7 @@ This feature is behind the feature flag `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY`
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - Why [trigger executor identity](#executor-identity-and-access-control) matters and the security risk it addresses.
 - How the [feature flag and the account setting](#feature-flag-and-enforcement-setting) interact to make the executor optional or mandatory.

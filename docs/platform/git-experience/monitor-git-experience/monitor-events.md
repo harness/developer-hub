@@ -27,7 +27,7 @@ Use this view to:
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 This topic explains how to monitor webhook events. It covers:
 

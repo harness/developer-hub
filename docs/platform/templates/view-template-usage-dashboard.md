@@ -25,7 +25,7 @@ The dashboard displays only pipeline references that you have permission to view
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How to [access the Pipeline Template Usage Dashboard](#access-the-pipeline-template-usage-dashboard)
 - How to [read the Pipelines per Template Version table](#pipelines-per-template-version)

@@ -36,7 +36,7 @@ The cron expression is evaluated in UTC time. Only the UTC timezone is supported
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

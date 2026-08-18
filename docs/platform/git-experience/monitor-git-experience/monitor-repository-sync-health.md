@@ -20,7 +20,7 @@ Bi-directional sync uses **Git Experience (GitX)** webhooks to synchronize chang
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 This topic explains how to monitor repository synchronization health. It covers:
 

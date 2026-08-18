@@ -24,7 +24,7 @@ The **Webhooks** page provides two tabs:
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 This section introduces the monitoring capabilities available on the **Webhooks** page. It covers:
 
