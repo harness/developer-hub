@@ -98,4 +98,4 @@ Specifically:
 
 To enable mapping, ensure that the Jira issue ID is included in at least one of the locations described above.
 
-For troubleshooting guidance about the Harness platform, secrets, or other modules, go to the [Platform Knowledge Base](/docs/category/knowledge-base/) or [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
+For troubleshooting guidance about the Harness platform, secrets, or other modules, go to the [Platform Knowledge Base](/docs/category/articles) or [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).

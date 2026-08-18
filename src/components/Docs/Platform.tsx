@@ -25,7 +25,10 @@ export default function Platform() {
             <h1>Harness Platform</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/docs/category/knowledge-base">
+            {/* Platform KB articles live at /docs/category/articles.
+                /docs/category/knowledge-base is the Internal Developer Portal
+                category, so do not point Platform at it. */}
+            <Link href="/docs/category/articles">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />

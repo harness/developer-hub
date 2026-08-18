@@ -583,7 +583,7 @@ This pattern works across stage types (CD, CI, Custom) and with other notificati
 
 ## Troubleshooting expressions
 
-The following sections describe some common issues or troubleshooting scenarios for expressions. For more troubleshooting information, go to the [Harness Platform Knowledge Base](/docs/category/knowledge-base).
+The following sections describe some common issues or troubleshooting scenarios for expressions. For more troubleshooting information, go to the [Harness Platform Knowledge Base](/docs/category/articles).
 
 ### Debugging expressions
 
