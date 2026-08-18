@@ -109,6 +109,115 @@ Resource filters are available only when you select applications by name. They d
 
 ---
 
+## GitOps Sync step parameter reference
+
+```yaml
+- step:
+    type: GitOpsSync
+    name: GitOps Sync
+    identifier: GitOpsSync
+    spec:
+      applicationsList:                    # UI: "Application Name" — auto-populated by Fetch Linked Apps
+        - agentId: my-agent
+          applicationName: my-app
+      # applicationRegex: "^payments-.*"   # UI: "Application Regex" — Go regex, max 1000; not JEXL
+      # applicationLabels:                 # UI: "Application Labels" — Key:Value label selectors
+      #   - "env:production"
+
+      prune: false                         # UI: "Prune" — delete cluster resources absent from Git
+      dryRun: false                        # UI: "Dry Run" — preview without applying to cluster
+      applyOnly: false                     # UI: "Apply Only" — skip pre/post-sync hooks and sync waves
+      forceApply: false                    # UI: "Force Apply" — delete and recreate instead of patch
+      showResourceProgress: true           # UI: "Show Resource Progress" — stream per-resource status to logs
+
+      waitTillHealthy: true                # UI: "Wait until healthy"
+      failOnTimeout: false                 # UI: "Fail If Step Times Out" — only meaningful when waitTillHealthy: true
+      degradedStateTimeout: "0"            # UI: "Degraded State Timeout" — duration string (e.g. "30s", "5m")
+                                           # max time app may stay Degraded before step fails; "0" = disabled
+                                           # ⚠ transient degraded states (e.g. rolling updates) can trigger this early
+
+      autoPromoteRolloutBehavior: null     # promote-full | resume | retry | abort | restart
+                                           # omit if not using Argo Rollouts
+
+      resourcesFilter:                     # scope sync to specific resource types (applicationsList only)
+        group: apps
+        kind: Deployment
+        name: ".*"
+        namespace: default
+        label: "app=my-app"
+
+      syncOptions:
+        skipSchemaValidation: false
+        autoCreateNamespace: false
+        pruneResourcesAtLast: false
+        applyOutOfSyncOnly: false
+        replaceResources: false
+        serverSideApply: false
+        respectIgnoreDifferences: false
+        prunePropagationPolicy: foreground # foreground | background | orphan
+
+      retryStrategy:
+        limit: 3
+        baseBackoffDuration: "5s"
+        increaseBackoffByFactor: 2
+        maxBackoffDuration: "3m"
+    timeout: 10m
+```
+
+**Application selection (use one):**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Application Name** (`applicationsList`) | `list<object>` | No | Explicit `{agentId, applicationName}` pairs. Auto-populated when Fetch Linked Apps ran earlier in the stage. |
+| **Application Regex** (`applicationRegex`) | `string` (Go regex) | No | Matches up to 1000 app names. Not JEXL. |
+| **Application Labels** (`applicationLabels`) | `list<string>` | No | `Key:Value` label selectors. Partial matches also consider service and environment names. |
+
+**Sync behaviour:**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Prune** (`prune`) | `boolean` | No (`false`) | Delete cluster resources absent from Git. |
+| **Dry Run** (`dryRun`) | `boolean` | No (`false`) | Preview sync without applying changes. |
+| **Apply Only** (`applyOnly`) | `boolean` | No (`false`) | Skip pre/post-sync hooks and sync waves. |
+| **Force Apply** (`forceApply`) | `boolean` | No (`false`) | Delete and recreate resources instead of patching. |
+| **Show Resource Progress** (`showResourceProgress`) | `boolean` | No (`false`) | Stream per-resource sync status to step logs. |
+
+**Health and timeout:**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Wait until healthy** (`waitTillHealthy`) | `boolean` | No (`false`) | Hold step until all synced apps reach `Healthy`. |
+| **Fail If Step Times Out** (`failOnTimeout`) | `boolean` | No (`false`) | When `waitTillHealthy: true`, fail the step if `Healthy` is not reached before timeout. |
+| **Degraded State Timeout** (`degradedStateTimeout`) | duration string | No (`"0"`) | Max time app may stay in `Degraded` before the step fails (e.g. `"30s"`, `"5m"`). `"0"` disables early-exit. Only evaluated when `waitTillHealthy: true`. |
+
+:::warning
+`degradedStateTimeout` can fire during transient degraded states such as rolling updates where pods are briefly unavailable. Set conservatively or leave at `"0"`.
+:::
+
+**Sync options** (`syncOptions`):
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Skip schema validation** (`skipSchemaValidation`) | `boolean` | No (`false`) | Skip Kubernetes schema validation before applying. |
+| **Auto-create namespace** (`autoCreateNamespace`) | `boolean` | No (`false`) | Create the destination namespace if it does not exist. |
+| **Prune resources at last** (`pruneResourcesAtLast`) | `boolean` | No (`false`) | Defer pruning until all other resources are applied. |
+| **Apply out-of-sync only** (`applyOutOfSyncOnly`) | `boolean` | No (`false`) | Only apply resources that differ from cluster state. |
+| **Replace resources** (`replaceResources`) | `boolean` | No (`false`) | Use `kubectl replace` instead of `apply`. |
+| **Server-side apply** (`serverSideApply`) | `boolean` | No (`false`) | Use Kubernetes server-side apply. |
+| **Respect ignore differences** (`respectIgnoreDifferences`) | `boolean` | No (`false`) | Honor the app's `ignoreDifferences` config during sync. |
+| **Prune propagation policy** (`prunePropagationPolicy`) | enum | No (`foreground`) | How pruned resources are deleted: `foreground`, `background`, `orphan`. |
+
+**Retry strategy** (`retryStrategy`):
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Limit** (`limit`) | `integer` (≥ 0) | No | Max retry attempts. |
+| **Base backoff** (`baseBackoffDuration`) | duration string | No | Initial wait before first retry (e.g. `5s`). |
+| **Backoff factor** (`increaseBackoffByFactor`) | `integer` (≥ 0) | No | Multiply backoff by this factor on each retry. |
+| **Max backoff** (`maxBackoffDuration`) | duration string | No | Backoff ceiling (e.g. `3m`). |
+
+---
+
 ## Sync for  Multiple Sources application
 
 For more information on creating a multi-source application, refer to the [Support for Multiple Sources](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-4-add-a-harness-gitops-application) documentation
@@ -130,12 +239,6 @@ To terminate an in-progress sync, go to the application for the syncing app and 
 ![](./static/terminate-sync.png)
 
 ## Bulk Sync and Refresh
-
-:::note 
-
-This feature is behind the feature flag `GITOPS_BULK_ACTIONS_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-
-:::
 
 :::info Minimum Version
 

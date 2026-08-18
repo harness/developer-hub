@@ -111,314 +111,656 @@ Harness provides purpose-built steps for GitOps pipelines. The table below summa
 | [Update GitOps App](#update-gitops-app) | Updates values files, Helm overrides, or target revision directly on the application | None |
 | [GitOps Rollback](#gitops-rollback) | Rolls an Argo CD application back to a previous deployment revision | None |
 | [GitOps Get App Details](#gitops-get-app-details) | Returns real-time application status as JSON for use in subsequent steps | None |
-| [Revert PR](#revert-pr) | Reverts a previously merged PR - used in rollback scenarios | None |
+| [Revert PR](#revert-pr) | Reverts a previously merged PR — used in rollback scenarios | None |
 | [GitOps Rollout](#gitops-rollout) | Controls Argo Rollouts progressive delivery (pause, resume, abort) | None |
+
+---
 
 ### Update Release Repo
 
-This step fetches your YAML config files (Kubernetes manifests, `kustomization.yaml`, or `values.yaml`) from the release repo, applies the variable changes you specify, commits the result to a new branch, and creates a pull request.
+Fetches config files from the release repo, applies variable changes, commits to a new branch, and creates a PR.
 
-**Key capabilities:**
 
-- **Custom PR title:** Provide a title or let Harness default to *Harness: Updating config overrides*.
-- **Hierarchical variables:** A dot-separated key like `a.b` creates or updates a nested structure:
-  ```json
-  {
-    "a": {
-      "b": "val"
-    }
-  }
-  ```
-- **List value updates:** Target a specific list index, e.g. `spec.template.spec.containers[0].image`. You can update existing list values but cannot add or remove items.
-- **Variable precedence:** If a variable name in this step matches one defined on the service or environment, the step-level value wins.
-- **Automatic service and environment overrides:** By default, the Update Release Repo step also applies service-level and environment-level variable overrides. These overrides come from the GitOps Cluster step output and are merged into the config file. Keys you did not explicitly add in the step (such as `deploy_file` or `repo_env_path`) may appear in the committed file. Enable **Don't Propagate Pipeline Variables** to turn this off and write only the variables defined in the step.
-- **Empty values:** A blank variable value is ignored. No update is written for that key.
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Variables** (`variables[].name`) | `string` | Yes | Config file key. Dot-separated for nested (`a.b`), index for lists (`items[0].tag`). Cannot add or remove list items. |
+| **Type** (`variables[].type`) | `string` | Yes | `String`, `Number`, or `Secret`. |
+| **Value** (`variables[].value`) | `string` | Yes | Value to write. Blank values are ignored — no update is written for that key. |
+| **PR Title** (`prTitle`) | `string` | No (`Harness: Updating config overrides`) | Title for the created PR. |
+| **Wait for PR merge** (`waitForMerge`) | `boolean` | No (`false`) | Block pipeline until PR is merged externally via the Git provider. Requires ng-manager v1.146.0, next-gen-ui v1.134.0, delegate 891xx+. |
+| **Allow Empty Commit** (`allowEmptyCommit`) | `boolean` | No (`false`) | Commit even when no file changes are detected. Requires delegate 84600+. |
+| **Succeed if no files changed** (`allowNoFilesChanged`) | `boolean` | No (`false`) | Pass the step when all values already match the release repo. No branch, commit, or PR is created; `PR URL` output is empty. A downstream Merge PR step also passes when PR URL is empty. |
+| **Ignore missing files** (`ignoreMissingFiles`) | `boolean` | No (`false`) | Skip the step instead of failing when the target config file does not exist in the repo. |
+| **Don't Propagate Pipeline Variables** (`skipPipelineVariables`) | `boolean` | No (`false`) | Write only step-level variables. Excludes service and environment variable overrides from the release repo file. |
+| **Disable Git Restraint** (`disableGitRestraint`) | `boolean` | No (`false`) | Remove the Git lock so multiple pipelines can write to the same repo concurrently. |
+| **Ignore missing values** (`ignoreMissingValues`) | `boolean` | No (`false`) | Skip a variable update when its resolved value is null or empty. |
 
-:::tip Control which variables reach the release repo
-To write **only** the variables defined in the Update Release Repo step, enable **Don't Propagate Pipeline Variables** in Optional Configuration. Service and environment variables are then excluded from the Release Repository file.
-
-To suppress a **specific** service or environment override and still allow other overrides to apply, add that variable in the step with a **blank value**. Empty values are ignored, so no update is written for that key.
+:::note Variable precedence
+Step-level values override service and environment variables with the same name. To suppress a specific service or environment variable without disabling all propagation, add it in the step with a blank value — blank values are ignored, so no update is written for that key.
 :::
-
-**Optional configuration:**
-
-- **Wait for PR merge:** When enabled, the step blocks pipeline execution after raising the PR and waits until the PR is merged through your Git provider's native review process (for example, GitHub, GitLab, or Bitbucket). The pipeline resumes automatically once the PR is merged. This eliminates the need for a separate Merge PR step and allows you to use your Git provider's built-in review, approval, and merge workflows as the approval gate. Reviewers are notified through your Git provider's native notification system. Go to [PR-based promotion workflows](#pr-based-promotion-workflows) to learn how to use this option for multi-environment promotions.
-
-  :::info Minimum versions
-  This option requires ng-manager v1.146.0, next-gen-ui v1.134.0, and Harness Delegate version 891xx or later.
-  :::
-
-- **Allow Empty Commit:** When `true`, the step commits even if no file changes are detected instead of failing. Requires Harness Delegate version 84600 or later.
-- **Succeed if no files changed:** When enabled, the step succeeds if the service, environment, and step variables already match the values in the release repo files. Harness does not create a branch, commit, or pull request, and the step `PR URL` output remains empty. Use this option to make PR pipeline reruns idempotent when the desired artifact version has not changed. Existing PR pipelines keep the current behavior unless you enable this option. In YAML, set `AllowNoFilesChanged` to `true` or `false`.
-- **Disable Git Restraint:** When `true`, removes the Git locking mechanism so multiple pipelines can modify the same repository concurrently through a single connector.
-- **Ignore missing files:** When `true`, the step skips updates when the target config file does not exist in the release repository. The step continues instead of failing or creating a new file. Use this when the same pipeline promotes across environments or services where the Release Repository file path may not exist in every target branch or repository layout.
-- **Don't Propagate Pipeline Variables:** When enabled, variables defined on the linked service and environment are not written to the Release Repository file. Only variables you add in the step's **Variables** table are inserted. Use this when the service or environment defines many variables that should not appear in the release repo manifest. Without this option, every new service or environment variable is written to the file unless you suppress it with a blank step-level value.
-
-  ![Don't Propagate Pipeline Variables option in Update Release Repo](./static/dont-propagate-pipeline-variables.png)
-
-**YAML example with optional configuration:**
-
-```yaml
-- step:
-      type: GitOpsUpdateReleaseRepo
-      name: Modify Git
-      identifier: Modify_Git
-      timeout: 10m
-      spec:
-      variables:
-            - name: replicas[0].count
-            type: String
-            value: <+pipeline.variables.replica>
-            rTitle: Update Replica Count
-      allowEmptyCommit: true
-      ignoreMissingFiles: true
-```
 
 ![Update Release Repo step configuration](./static/update-release-repo.png)
 
+---
+
 ### Merge PR
 
-Merges the pull request created by the Update Release Repo step.
+Merges the PR created by Update Release Repo.
 
-If the Update Release Repo step has 'Succeed if no files changed' enabled and its `PR URL` output is empty, the Merge PR step also passes. This lets a rerun with no manifest changes complete without a conditional skip. If 'Succeed if no files changed' is not enabled, the existing behavior continues, and you must add your own condition if you want to skip Merge PR when the PR URL is empty.
 
-**Step parameters:**
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Merge Strategy Type** (`mergeStrategy`) | enum | No (`merge`) | `merge`: preserves full commit history. `squash`: combines all PR commits into one commit on the target branch. |
+| **Delete Source Branch** (`deleteSourceBranch`) | `boolean` | No (`false`) | Delete the PR source branch after merge completes. |
+| **Disable Git Restraint** (`disableGitRestraint`) | `boolean` | No (`false`) | Remove the Git lock so multiple pipelines can write to the same repo concurrently. |
 
-- **Merge Strategy Type:** Controls how the PR branch is incorporated into the target branch. Select one of:
-  - **Merge** (default): Creates a merge commit that preserves the full commit history from the PR branch.
-  - **Squash**: Combines all commits from the PR branch into a single commit on the target branch. Use squash when you want a cleaner, linear Git history in your release repo.
-- **Delete Source Branch:** When enabled, deletes the PR source branch after the merge completes.
-- **Disable Git Restraint:** When true, removes the Git locking mechanism so multiple pipelines can modify the same repository concurrently through a single connector.
+:::info Limitations
+- Maximum 2 Merge PR steps per stage.
+- Git connectors authenticated with OAuth are not supported.
+:::
 
 ![Merge PR step configuration showing Merge Strategy Type dropdown](./static/merge-pr-strategy-type.png)
 
-**YAML example:**
-
-```yaml
-- step:
-    type: MergePR
-    name: MergePR_1
-    identifier: MergePR_1
-    spec:
-      deleteSourceBranch: false
-      disableGitRestraint: false
-      mergeStrategy: squash
-      variables: []
-    timeout: 10m
-```
-
-Set `mergeStrategy` to `merge` or `squash`. If omitted, the step defaults to `merge`.
-
-:::info Limitation
-- You can add a maximum of two Merge PR steps in a single stage.
-- Git connectors authenticated through OAuth are not currently supported in this step.
-:::
+---
 
 ### Fetch Linked Apps
 
-:::tip Not needed for standalone applications
-If you are deploying standalone GitOps applications (no ApplicationSets), you do not need this step. You can select applications directly in the GitOps Sync step by name, regex, or labels. This step is only useful when ApplicationSets dynamically generate the applications you want to sync.
-:::
+Discovers all GitOps applications generated by the ApplicationSet linked to the pipeline's service and environment. When this step runs before a GitOps Sync step, the Sync step automatically uses the discovered applications — no manual selection needed.
 
-Discovers all GitOps applications generated by the ApplicationSet linked to your service and environment — including app name, agent identifier, and a direct link to the app in Harness. This is most commonly used as a precursor to the [GitOps Sync](#gitops-sync) step: when Fetch Linked Apps is present, the Sync step automatically picks up the discovered applications and you do not need to specify them manually.
+Not needed for standalone applications (no ApplicationSets). Select applications directly in the GitOps Sync step by name, regex, or labels instead.
 
-The step resolves applications using either the **Deployment Repo** details or the **ApplicationSet references** configured in your service. If neither is defined, the step will fail.
 
-#### Filter applications per configured service/environment
-
-The step includes a **Filter applications per configured service/env** checkbox:
-
-- **Unchecked (default, recommended):** Fetches only applications matching both the service definition and the cluster(s) linked to the pipeline's environment.
-- **Checked:** Fetches all applications in the cluster that belong to the specified environment, regardless of service configuration.
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Filter applications per configured service/env** (`filterByServiceEnvCluster`) | `boolean` | No (`false`) | `false` (recommended): fetch apps matching both service definition and linked cluster. `true`: fetch all apps in the cluster for the environment, ignoring service config. |
 
 :::warning
-Enabling the filter with a large number of applications may cause the step to fail due to timeout or resource constraints. Leave it unchecked unless you have a specific need.
+`filterByServiceEnvCluster: true` with a large number of applications can cause the step to time out. Leave it `false` unless you have a specific need.
 :::
 
-#### Multiple ApplicationSet support
-
-:::info Feature flag
-This feature requires `GITOPS_APPLICATIONSET_FIRST_CLASS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
-
-When enabled, you can configure multiple ApplicationSets at the service level. The Fetch Linked Apps step fetches applications across all agents where those ApplicationSets are deployed.
-
-#### Step output
-
-The output tab displays app name, agent ID, and URLs. You can copy any output expression and reference it in subsequent steps.
+The step output includes app name, agent ID, and URLs. Reference them in subsequent steps using Harness expressions from the output tab.
 
 ![Fetch Linked Apps step output](./static/9b9bdbb81176317f5eafdd31e982b081ba449514f56fa5d9222effc03f69bd88.png)
 
+---
+
 ### GitOps Sync
 
-Triggers a sync for one or more existing or updated GitOps applications. **This is the GitOps equivalent of a deployment** — it is the step that actually applies changes to your cluster. Place approval gates, policy checks, or any other pre-deployment validations *before* this step. Place verification, notifications, or post-deployment scripts *after* it.
+Triggers a sync for one or more Argo CD applications — this is the step that applies changes to your cluster. Place approval gates and policy checks before it; place verification and notifications after it.
 
-- **Wait until healthy:** Enable this checkbox to hold the step until the application reaches a `Healthy` state. When enabled, the step polls each application until it is healthy or the step timeout is reached.
+If a Fetch Linked Apps step ran earlier in the stage, the Sync step automatically uses the discovered applications and no selection is needed.
 
-- **Degraded State Timeout (seconds):** *(Applies only when **Wait until healthy** is enabled.)* Maximum time (in seconds) an application can remain in a `Degraded` health state before being marked as failed. When an application enters a degraded state (for example, due to a bad deployment, resource issues, or failing health checks), the step starts a timer. If the application stays degraded longer than this timeout, the step marks it as failed without waiting for the full step timeout. Set to `0` (the default) to disable — the step will continue polling until the overall step timeout is reached, matching the existing behavior.
 
-  :::warning
-  Use this setting with care. A `Degraded` state can sometimes be transient — for example, during a rolling update where pods are briefly unavailable. Setting a very short timeout may cause the step to fail before such transient conditions resolve themselves.
-  :::
+**Application selection (use one):**
 
-**If a [Fetch Linked Apps](#fetch-linked-apps) step ran earlier in the stage**, the Sync step automatically uses the discovered applications — you do not need to select any applications in the step configuration.
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Application Name** (`applicationsList`) | `list<object>` | No | Explicit `{agentId, applicationName}` pairs. Auto-populated when Fetch Linked Apps ran earlier in the stage. |
+| **Application Regex** (`applicationRegex`) | `string` | No | Go regex matching up to 1000 app names. Not JEXL. Test at [regex101.com](https://regex101.com/) with Golang flavor. |
+| **Application Labels** (`applicationLabels`) | `list<string>` | No | `Key:Value` label selectors. Partial matches also consider service and environment names. |
 
-If Fetch Linked Apps is not present (for example, when deploying standalone applications without ApplicationSets), use **Advanced Configuration** to choose how to select applications:
+To pass label values from pipeline variables:
+- JSON list: `<+json.list("$", <+pipeline.variables.labels>)>` — format variable as `["cluster"]` or `["cluster", "list"]`
+- Split: `<+pipeline.variables.labels.split(",")>` — format variable as `cluster` or `cluster,list`
 
-- **Application name:** Select specific applications manually from the dropdown.
-- **Application regex:** Match up to 1000 applications using a regular expression. This field uses **Go (Golang) regex syntax** — not JEXL. You can test your patterns at [regex101](https://regex101.com/) with the **Golang** flavor selected.
-- **Application labels:** Filter applications by their Kubernetes labels using exact match (`Key:Value`) or partial match (`Key` or `Value`). Partial searches also consider the Service name and Environment name associated with the application. This is especially useful when you want to sync a group of related applications — for example, all apps labeled `env:production`, or all apps belonging to a specific team or deployment group.
+**Sync behaviour:**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Prune** (`prune`) | `boolean` | No (`false`) | Delete cluster resources absent from Git. |
+| **Dry Run** (`dryRun`) | `boolean` | No (`false`) | Preview sync without applying changes. |
+| **Apply Only** (`applyOnly`) | `boolean` | No (`false`) | Skip pre/post-sync hooks and sync waves. |
+| **Force Apply** (`forceApply`) | `boolean` | No (`false`) | Delete and recreate resources instead of patching. |
+| **Show Resource Progress** (`showResourceProgress`) | `boolean` | No (`false`) | Stream per-resource sync status to step logs. |
+
+**Health and timeout:**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Wait until healthy** (`waitTillHealthy`) | `boolean` | No (`false`) | Hold step until all synced apps reach `Healthy`. |
+| **Fail If Step Times Out** (`failOnTimeout`) | `boolean` | No (`false`) | When `waitTillHealthy: true`, fail the step if `Healthy` is not reached before timeout. |
+| **Degraded State Timeout** (`degradedStateTimeout`) | duration string | No (`"0"`) | Max time app may stay in `Degraded` before step fails (e.g. `"30s"`, `"5m"`). `"0"` disables early-exit. Only evaluated when `waitTillHealthy: true`. |
+
+:::warning
+`degradedStateTimeout` can fire during transient degraded states such as rolling updates where pods are briefly unavailable. Set conservatively or leave at `"0"`.
+:::
+
+**Argo Rollouts:**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Auto-promote rollout** (`autoPromoteRolloutBehavior`) | enum | No | Action on an Argo Rollout after sync: `promote-full`, `resume`, `retry`, `abort`, `restart`. Omit if not using Argo Rollouts. |
+
+**Resource filter** (`resourcesFilter`) — available only when selecting by application name, not by regex or labels:
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Group** (`group`) | `string` | No | Kubernetes API group (e.g. `apps`). |
+| **Kind** (`kind`) | `string` | No | Resource kind (e.g. `Deployment`). |
+| **Name** (`name`) | `string` | No | Resource name pattern. |
+| **Namespace** (`namespace`) | `string` | No | Namespace pattern. |
+| **Label** (`label`) | `string` | No | Label selector. |
+
+:::info Minimum versions for resource filter
+Requires ng-manager v1.154.0 and next-gen-ui v1.141.0.
+:::
+
+**Sync options** (`syncOptions`):
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Skip schema validation** (`skipSchemaValidation`) | `boolean` | No (`false`) | Skip Kubernetes schema validation before applying. |
+| **Auto-create namespace** (`autoCreateNamespace`) | `boolean` | No (`false`) | Create the destination namespace if it does not exist. |
+| **Prune resources at last** (`pruneResourcesAtLast`) | `boolean` | No (`false`) | Defer pruning until all other resources are applied. |
+| **Apply out-of-sync only** (`applyOutOfSyncOnly`) | `boolean` | No (`false`) | Only apply resources that differ from cluster state. |
+| **Replace resources** (`replaceResources`) | `boolean` | No (`false`) | Use `kubectl replace` instead of `apply`. |
+| **Server-side apply** (`serverSideApply`) | `boolean` | No (`false`) | Use Kubernetes server-side apply. |
+| **Respect ignore differences** (`respectIgnoreDifferences`) | `boolean` | No (`false`) | Honor the app's `ignoreDifferences` config during sync. |
+| **Prune propagation policy** (`prunePropagationPolicy`) | enum | No (`foreground`) | How pruned resources are deleted: `foreground`, `background`, `orphan`. |
+
+**Retry strategy** (`retryStrategy`):
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Limit** (`limit`) | `integer` (≥ 0) | No | Max retry attempts. |
+| **Base backoff** (`baseBackoffDuration`) | duration string | No | Initial wait before first retry (e.g. `5s`). |
+| **Backoff factor** (`increaseBackoffByFactor`) | `integer` (≥ 0) | No | Multiply backoff by this factor on each retry. |
+| **Max backoff** (`maxBackoffDuration`) | duration string | No | Backoff ceiling (e.g. `3m`). |
+
+:::tip
+Open the step's console output during execution to see exactly which applications passed the filters and were synced. Useful when using regex or label selection.
+:::
 
 <div align="center">
   <DocImage path={require('./static/gitopssync-step.png')} width="50%" height="50%" title="Click to view full size image" />
 </div>
 
-#### Using expressions with application labels
-
-`applicationLabels` represents a list of strings. Use one of these approaches to pass label values:
-
-**JSON list functor:**
-
-```
-<+json.list("$", <+pipeline.variables.labels>)>
-```
-
-Format the `labels` variable as `["cluster"]` or `["cluster", "list"]`. See [JSON and XML functors](/docs/platform/variables-and-expressions/harness-variables/#json-and-xml-functors).
-
-**Split function:**
-
-```
-<+pipeline.variables.labels.split(",")>
-```
-
-Input: `cluster` (single) or `cluster,list` (multiple).
-
-#### Debugging and output
-
-:::tip Check the console output
-Open the step's console output during execution to see exactly which applications passed the filters and were actually synced. This is especially useful when using regex or label-based selection to verify the right set of applications was targeted.
-:::
-
-The GitOps Sync step exposes output variables that downstream steps can reference — for example, the list of applications that were synced. Use these in Shell Script or other steps to run custom validation or notification logic after the sync completes.
+---
 
 ### Update GitOps App
 
-Updates an existing GitOps application's target revision (branch or tag), Helm overrides (parameters, file parameters, values files), or Kustomize overrides directly from the pipeline - without modifying files in Git.
+Updates an Argo CD application's target revision, Helm overrides, or Kustomize overrides directly — without modifying files in Git. Common use case: pin the app to a new immutable Git tag, then follow with a GitOps Sync step.
 
-:::note Limitation
-You can use the Update GitOps App step only once per stage.
+:::note
+One Update GitOps App step per stage maximum.
 :::
 
-A common use case is tag-based production deployments: update the application's target revision to a new immutable Git tag, then follow with a GitOps Sync step.
 
-:::info
-Existing Helm parameters and file parameters are merged with the values provided in the step. If a parameter appears in both a values file and as an override, the override takes precedence.
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Agent** (`agentId`) | `string` | Yes | Harness GitOps agent identifier. |
+| **Application** (`applicationName`) | `string` | Yes | Argo CD application name. |
+| **Target Revision** (`targetRevision`) | `string` | No | Branch, tag, or commit SHA. |
+| **Helm overrides** (`helm`) | `object` | No | Helm parameters, file parameters, and values files. Merged with existing app params; step-level overrides take precedence. |
+| **Kustomize overrides** (`kustomize`) | `object` | No | Kustomize image overrides. |
+
+:::note Rollback for Update GitOps App
+Add an Update GitOps App step on the **Rollback** tab of the pipeline stage (toggle using the Execution / Rollback switcher in the pipeline studio). The rollback step requires no configuration — it reverts automatically to the last successful revision. Add a GitOps Sync step after it to apply the state. This is separate from the [GitOps Rollback](#gitops-rollback) step, which targets Argo CD history entries.
 :::
+
+For multi-source applications, select your app in the Application field — all sources appear and can be updated individually.
 
 ![Update GitOps App step](./static/harness-git-ops-application-set-tutorial-64.png)
 
-#### Rollback for Update GitOps App
-
-:::note
-This feature is behind the feature flag `CDS_GITOPS_ENABLE_UPDATE_GITOPS_APP_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
-
-1. **Toggle to the Rollback tab** using the **Execution / Rollback** toggle in the pipeline studio.
-2. **Add an Update GitOps App step.** This rollback step requires no configuration - it automatically reverts to the last successful revision.
-3. **Add a GitOps Sync step** after it to apply the rolled-back state.
-
-![Toggle rollback](./static/toggle-rollback.png)
-
-This stage-level rollback for Update GitOps App is different from the [GitOps Rollback](#gitops-rollback) step, which restores a previous Argo CD application deployment revision.
-
-#### Multi-source applications
-
-When enabled, select your multi-source application in the **Application** field to see all sources. Update each source individually the same way you would a single-source application.
+---
 
 ### GitOps Rollback
 
-Rolls a GitOps application back to a previous deployment revision. This is the Harness equivalent of the Argo CD `argocd app rollback` operation. Configure the application name, how many revisions to roll back, and optional prune and health-check settings.
+Rolls one or more Argo CD applications back to a previous deployment revision. This is the Harness equivalent of `argocd app rollback`.
 
-Go to [Rollback GitOps applications](/docs/continuous-delivery/gitops/application/rollback-gitops-applications) to configure the History & Rollback UI action or the GitOps Rollback pipeline step.
+Go to [Rollback GitOps applications](/docs/continuous-delivery/gitops/application/rollback-gitops-applications) for the full guide including how revisions work, the UI rollback flow, and edge cases.
+
+
+**Top-level parameters:**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Applications** (`applicationsList`) | `list<object>` | Yes | One entry per application to roll back. |
+| **Revisions to roll back** (`revisionsToRollback`) | `integer` | No (`1`) | Steps N syncs back for any app with no `historyId` or per-app `revisionsToRollback`. |
+| **Prune** (`prune`) | `boolean` | No (`false`) | Prune resources absent from the rolled-back revision. |
+| **Wait until healthy** (`waitTillHealthy`) | `boolean` | No (`false`) | Hold step until all rolled-back apps reach `Healthy`. |
+| **Fail if step times out** (`failOnTimeout`) | `boolean` | No (`false`) | When `waitTillHealthy: true`, fail if `Healthy` not reached before timeout. |
+
+**Per-application target (`applicationsList[*]`):**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Agent** (`agentId`) | `string` | Yes | Harness GitOps agent identifier. |
+| **Application name** (`applicationName`) | `string` | Yes | Argo CD application name. |
+| **History ID** (`historyId`) | `integer` | No | Exact history entry ID. Validated at runtime — missing ID is a pre-flight error. Highest precedence. |
+| **Revisions to roll back** (`revisionsToRollback`) | `integer` | No | Per-app offset. Overrides step-level. Ignored when `historyId` is set. |
+
+**Target resolution:** `per-app historyId` > `per-app revisionsToRollback` > `step-level revisionsToRollback` > default `1`
+
+---
 
 ### GitOps Get App Details
 
-Fetches the current details and status of one or more applications as a JSON payload that subsequent steps can reference via Harness expressions.
+Fetches live application status as a JSON payload that subsequent steps can reference via Harness expressions.
 
-:::info Feature flag
-This step requires `GITOPS_GET_APP_DETAILS_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
 
-- **Hard Refresh:** When enabled, forces a fresh status check from the cluster.
-- **Application Names:** Select specific applications from the dropdown or use runtime input.
-- **Application Regex:** Match up to 1000 applications using a regex pattern (fixed value, runtime input, or expression). Uses **Go (Golang) regex syntax** — not JEXL.
-
-![GitOps Get App Details step](./static/gitops-get-app-details.png)
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Hard Refresh** (`hardRefresh`) | `boolean` | No (`false`) | Force a fresh status check from the cluster instead of using cached state. |
+| **Application Names** (`applicationsList`) | `list<object>` | No | Explicit `{agentId, applicationName}` pairs. |
+| **Application Regex** (`applicationRegex`) | `string` | No | Go regex to match app names. Max 1000 apps. Invalid regex causes the step to fail. |
 
 :::note Limitations
-- Applications are included only if `serviceId`, `envId`, and `clusterId` match the pipeline values.
-- The regex must be valid or the step fails.
-- Maximum 1000 applications per step, with a 512 kB response size limit. Fields like `.app.spec.ignoreDifferences`, `.app.status.resources`, and `.app.status.operationstate.syncresult.resources` are trimmed to stay within the limit.
+- Apps are included only when `serviceId`, `envId`, and `clusterId` match the pipeline values.
+- Maximum 1000 apps per step. Response capped at 512 kB — fields like `.app.spec.ignoreDifferences`, `.app.status.resources`, and `.app.status.operationstate.syncresult.resources` are trimmed to stay within the limit.
 :::
 
-**Example response:**
-
+Example response:
 ```json
 {"applications": [{"name": "my-app", "status": "Healthy", "syncStatus": "Synced"}]}
 ```
 
+![GitOps Get App Details step](./static/gitops-get-app-details.png)
+
+---
+
 ### Revert PR
 
-Reverts the commit from a previous Update Release Repo step and creates a new PR with the reverted changes. Use this in failure strategies or rollback scenarios.
+Creates a new PR that reverts the commit from a previous Update Release Repo step. Use in failure strategies or rollback scenarios. Follow with a Merge PR step to merge the revert automatically.
 
-:::note Limitation
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| **Commit ID** (`commitId`) | `string` | Yes | Commit to revert. Typically the `commitId` output expression from Update Release Repo. |
+| **PR Title** (`prTitle`) | `string` | No | Custom title for the revert PR. |
+| **Disable Git Restraint** (`disableGitRestraint`) | `boolean` | No (`false`) | Remove the Git lock so multiple pipelines can write to the same repo concurrently. |
+
+:::note GitHub secondary rate limits
 Only one Update Release Repo or Revert PR step can run per GitHub token reference at a time, following [GitHub rate limit best practices](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api?apiVersion=2022-11-28#avoid-concurrent-requests).
+
+To avoid hitting [GitHub secondary rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#about-secondary-rate-limits) when multiple pipelines write concurrently, Harness recommends:
+- **Use a GitHub App connector** instead of a Personal Access Token. GitHub Apps have higher rate limit allocations and per-installation limits that do not share a ceiling with user tokens.
+- **Set `disableGitRestraint: true`** on your Update Release Repo and Revert PR steps. This removes the Harness-side Git lock so pipelines can proceed without queuing, letting the GitHub App's higher limits absorb the concurrency rather than serializing it at the Harness layer.
 :::
 
-The step takes a `commitId` as input - typically sourced from the Update Release Repo output expression:
-
-```
-<+pipeline.stages.deploy.spec.execution.steps.updateReleaseRepo.updateReleaseRepoOutcome.commitId>
-```
-
-The Revert PR step creates a new branch, commits the revert, and opens a PR. Add a subsequent Merge PR step to merge it.
+---
 
 ### GitOps Rollout
 
 Controls Argo Rollouts progressive delivery within your pipeline. Use this step to pause, resume, or abort a rollout. For full details, see [Managing Rollouts in Harness Pipelines](/docs/continuous-delivery/gitops/argo-rollouts/managing-rollouts-in-harness-pipelines).
 
-## Pipeline examples
+---
 
-Below are common pipeline patterns showing which steps to use and in what order.
+## Deployment strategies
 
-### Basic: image promotion with approval
+These four strategies cover the most common ways teams use Harness GitOps pipelines. Each strategy includes a complete pipeline YAML you can adapt directly — the YAML comments carry the key behavioral notes per step.
 
-A common PR pipeline updates a config value (for example, an image tag), gets approval, and deploys:
+---
 
+### Strategy 1: Sequential environment promotion with pipeline approval gates
+
+Every deployment produces a tracked PR in Git and passes through an explicit pipeline approval before reaching the next environment. This gives teams a controlled promotion ladder where each stage advances only after a human sign-off, and every promotion is traceable as a merged PR.
+
+**When to use:**
+- Regulated environments where every change to production requires a recorded approval.
+- Teams that want Git history to serve as the deployment audit trail.
+- Pipelines that promote the same artifact across dev, staging, and prod in a single run.
+
+**Key configuration:**
+- `mergeStrategy: squash` on Merge PR keeps the release branch clean.
+- `waitTillHealthy: true` on each GitOps Sync blocks stage advancement until the cluster is healthy.
+- `failOnTimeout: true` combined with a 30-minute step timeout causes the pipeline to fail fast rather than hang.
+
+**Failure handling:** Each stage's `rollbackSteps` contain a Revert PR step (using the commit ID from Update Release Repo) followed by a second Merge PR. The rollback merges the revert PR automatically and a final GitOps Sync restores the previous cluster state.
+
+```yaml
+pipeline:
+  name: image-promotion-three-envs
+  identifier: image_promotion_three_envs
+  variables:
+    - name: image_tag
+      type: String
+      required: true
+      description: "Container image tag to promote (e.g. v2.1.0)"
+  stages:
+    # ── Stage 1: Dev ────────────────────────────────────────────────────────
+    - stage:
+        name: dev
+        identifier: dev
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          gitOpsEnabled: true
+          service:
+            serviceRef: payments_service
+          environment:
+            environmentRef: dev
+            gitOpsClusters:
+              - identifier: dev_cluster
+          execution:
+            steps:
+              - step:
+                  type: GitOpsUpdateReleaseRepo
+                  name: Update Release Repo
+                  identifier: UpdateReleaseRepo
+                  spec:
+                    variables:
+                      - name: image.tag         # writes to stages/dev/values.yaml
+                        type: String
+                        value: <+pipeline.variables.image_tag>
+                    prTitle: "dev: promote <+pipeline.variables.image_tag>"
+                    allowNoFilesChanged: true   # pass safely if tag is already current
+                  timeout: 10m
+              - step:
+                  type: MergePR
+                  name: Merge PR
+                  identifier: MergePR
+                  spec:
+                    mergeStrategy: squash
+                    deleteSourceBranch: true
+                  timeout: 10m
+              - step:
+                  type: GitOpsSync
+                  name: GitOps Sync
+                  identifier: GitOpsSync
+                  spec:
+                    prune: false
+                    waitTillHealthy: true
+                    failOnTimeout: true         # fail fast if cluster does not reach Healthy
+                    applicationsList:
+                      - agentId: account.dev-agent
+                        applicationName: payments-dev
+                  timeout: 30m
+            rollbackSteps:
+              - step:
+                  type: RevertPR
+                  name: Revert PR
+                  identifier: RevertPR
+                  spec:
+                    commitId: <+execution.steps.UpdateReleaseRepo.updateReleaseRepoOutcome.commitId>
+                    prTitle: "revert: dev promote <+pipeline.variables.image_tag>"
+                  timeout: 10m
+              - step:
+                  type: MergePR
+                  name: Merge Revert PR
+                  identifier: MergeRevertPR
+                  spec:
+                    mergeStrategy: squash
+                  timeout: 10m
+    # ── Stage 2: Staging (requires approval) ────────────────────────────────
+    - stage:
+        name: staging
+        identifier: staging
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: HarnessApproval
+                  name: Approve staging promotion
+                  identifier: ApproveStagingPromotion
+                  spec:
+                    approvalMessage: "Approve promotion of <+pipeline.variables.image_tag> to staging"
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      userGroups:
+                        - account.engineering_leads
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                  timeout: 1d
+    - stage:
+        name: staging_deploy
+        identifier: staging_deploy
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          gitOpsEnabled: true
+          service:
+            serviceRef: payments_service
+          environment:
+            environmentRef: staging
+            gitOpsClusters:
+              - identifier: staging_cluster
+          execution:
+            steps:
+              - step:
+                  type: GitOpsUpdateReleaseRepo
+                  name: Update Release Repo
+                  identifier: UpdateReleaseRepo
+                  spec:
+                    variables:
+                      - name: image.tag
+                        type: String
+                        value: <+pipeline.variables.image_tag>
+                    prTitle: "staging: promote <+pipeline.variables.image_tag>"
+                    allowNoFilesChanged: true
+                  timeout: 10m
+              - step:
+                  type: MergePR
+                  name: Merge PR
+                  identifier: MergePR
+                  spec:
+                    mergeStrategy: squash
+                    deleteSourceBranch: true
+                  timeout: 10m
+              - step:
+                  type: GitOpsSync
+                  name: GitOps Sync
+                  identifier: GitOpsSync
+                  spec:
+                    prune: false
+                    waitTillHealthy: true
+                    failOnTimeout: true
+                    applicationsList:
+                      - agentId: account.staging-agent
+                        applicationName: payments-staging
+                  timeout: 30m
+            rollbackSteps:
+              - step:
+                  type: RevertPR
+                  name: Revert PR
+                  identifier: RevertPR
+                  spec:
+                    commitId: <+execution.steps.UpdateReleaseRepo.updateReleaseRepoOutcome.commitId>
+                  timeout: 10m
+              - step:
+                  type: MergePR
+                  name: Merge Revert PR
+                  identifier: MergeRevertPR
+                  spec:
+                    mergeStrategy: squash
+                  timeout: 10m
+    # ── Stage 3: Production (requires 2 approvers) ──────────────────────────
+    - stage:
+        name: production_approval
+        identifier: production_approval
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: HarnessApproval
+                  name: Approve production promotion
+                  identifier: ApproveProductionPromotion
+                  spec:
+                    approvalMessage: "Approve promotion of <+pipeline.variables.image_tag> to production"
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      userGroups:
+                        - account.engineering_leads
+                        - account.release_managers
+                      minimumCount: 2           # two approvers required for production
+                      disallowPipelineExecutor: true
+                  timeout: 2d
+    - stage:
+        name: production
+        identifier: production
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          gitOpsEnabled: true
+          service:
+            serviceRef: payments_service
+          environment:
+            environmentRef: production
+            gitOpsClusters:
+              - identifier: production_cluster
+          execution:
+            steps:
+              - step:
+                  type: GitOpsUpdateReleaseRepo
+                  name: Update Release Repo
+                  identifier: UpdateReleaseRepo
+                  spec:
+                    variables:
+                      - name: image.tag
+                        type: String
+                        value: <+pipeline.variables.image_tag>
+                    prTitle: "prod: promote <+pipeline.variables.image_tag>"
+                    allowNoFilesChanged: true
+                  timeout: 10m
+              - step:
+                  type: MergePR
+                  name: Merge PR
+                  identifier: MergePR
+                  spec:
+                    mergeStrategy: squash
+                    deleteSourceBranch: true
+                  timeout: 10m
+              - step:
+                  type: GitOpsSync
+                  name: GitOps Sync
+                  identifier: GitOpsSync
+                  spec:
+                    prune: false
+                    waitTillHealthy: true
+                    failOnTimeout: true
+                    applicationsList:
+                      - agentId: account.prod-agent
+                        applicationName: payments-prod
+                  timeout: 30m
+            rollbackSteps:
+              - step:
+                  type: RevertPR
+                  name: Revert PR
+                  identifier: RevertPR
+                  spec:
+                    commitId: <+execution.steps.UpdateReleaseRepo.updateReleaseRepoOutcome.commitId>
+                  timeout: 10m
+              - step:
+                  type: MergePR
+                  name: Merge Revert PR
+                  identifier: MergeRevertPR
+                  spec:
+                    mergeStrategy: squash
+                  timeout: 10m
 ```
-Update Release Repo → Merge PR → Approval → GitOps Sync
+
+---
+
+### Strategy 2: PR-review gated promotion (Git provider as approval gate)
+
+Each environment promotion creates a PR and blocks the pipeline until that PR is merged through the Git provider. The PR review in GitHub or GitLab replaces the Harness approval step. This means the deployment record, the review, and the approval are all a single Git event — which satisfies compliance requirements that treat PR merges as change approvals.
+
+**When to use:**
+- Teams whose change management process already runs through PR reviews and want to avoid duplicate gates.
+- Organizations where the Git provider's audit log (who approved, when, on which commit) is the required approval record.
+- Multi-environment pipelines where each environment has its own branch and reviewer group configured in the Git provider.
+
+**Key configuration:**
+- `waitForMerge: true` on Update Release Repo — the step blocks until the Git provider reports the PR merged.
+- No Merge PR step needed. The pipeline resumes only after an external merge.
+- `skipPipelineVariables: false` ensures environment-level variable overrides (set on the Harness environment) are written into the release repo file alongside the step-level variables, without any extra configuration per pipeline.
+
+**Failure handling:** Because the pipeline cannot auto-merge a revert PR (there is no Merge PR step in this flow), add a Revert PR step on the rollback path with `waitForMerge: true` as well — reviewers must also approve the revert, which preserves the change-control record on rollback.
+
+```yaml
+pipeline:
+  name: pr-gated-env-promotion
+  identifier: pr_gated_env_promotion
+  variables:
+    - name: image_tag
+      type: String
+      required: true
+  stages:
+    # ── Stage 1: Staging — PR reviewed by Git provider ──────────────────────
+    - stage:
+        name: staging
+        identifier: staging
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          gitOpsEnabled: true
+          service:
+            serviceRef: checkout_service
+          environment:
+            environmentRef: staging            # env-level overrides (replicas, resource limits)
+            gitOpsClusters:                    # are written to the release repo automatically
+              - identifier: staging_cluster    # because skipPipelineVariables: false (default)
+          execution:
+            steps:
+              - step:
+                  type: GitOpsUpdateReleaseRepo
+                  name: Update Release Repo
+                  identifier: UpdateReleaseRepo
+                  spec:
+                    variables:
+                      - name: image.tag
+                        type: String
+                        value: <+pipeline.variables.image_tag>
+                    prTitle: "staging: <+pipeline.variables.image_tag>"
+                    waitForMerge: true         # pipeline blocks here until PR merged in GitHub/GitLab
+                    skipPipelineVariables: false
+                    allowNoFilesChanged: true
+                  timeout: 7d                  # generous timeout: reviewer merge time is unpredictable
+              - step:
+                  type: GitOpsSync
+                  name: GitOps Sync
+                  identifier: GitOpsSync
+                  spec:
+                    waitTillHealthy: true
+                    failOnTimeout: false        # sync success marks the step done even if health is slow
+                    applicationsList:
+                      - agentId: account.staging-agent
+                        applicationName: checkout-staging
+                  timeout: 30m
+    # ── Stage 2: Production — separate PR, separate reviewer group ───────────
+    - stage:
+        name: production
+        identifier: production
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          gitOpsEnabled: true
+          service:
+            serviceRef: checkout_service
+          environment:
+            environmentRef: production
+            gitOpsClusters:
+              - identifier: production_cluster
+          execution:
+            steps:
+              - step:
+                  type: GitOpsUpdateReleaseRepo
+                  name: Update Release Repo
+                  identifier: UpdateReleaseRepo
+                  spec:
+                    variables:
+                      - name: image.tag
+                        type: String
+                        value: <+pipeline.variables.image_tag>
+                    prTitle: "prod: <+pipeline.variables.image_tag>"
+                    waitForMerge: true
+                    skipPipelineVariables: false
+                    allowNoFilesChanged: true
+                  timeout: 7d
+              - step:
+                  type: GitOpsSync
+                  name: GitOps Sync
+                  identifier: GitOpsSync
+                  spec:
+                    waitTillHealthy: true
+                    failOnTimeout: false
+                    applicationsList:
+                      - agentId: account.prod-agent
+                        applicationName: checkout-prod
+                  timeout: 30m
 ```
-
-1. **Update Release Repo** changes the image tag in `values.yaml` and raises a PR.
-2. **Merge PR** merges the approved PR into the target branch.
-3. **Approval** pauses the pipeline for a manual or automated approval gate before the deployment is applied. This is one of the key advantages of using a pipeline: you get a controlled checkpoint between the Git change and the cluster update.
-4. **GitOps Sync** forces an immediate reconciliation so ArgoCD applies the change without waiting for the polling interval.
-
-### Advanced: progressive delivery with verification
-
-For canary or blue-green rollouts with health verification:
-
-```
-Update Release Repo → Merge PR → GitOps Sync → GitOps Get App Details → GitOps Rollout
-```
-
-1. **Update Release Repo** commits the new configuration and creates a PR.
-2. **Merge PR** merges the PR.
-3. **GitOps Sync** triggers the initial sync, which starts the Argo Rollout.
-4. **GitOps Get App Details** fetches live application status so you can gate progression.
-5. **GitOps Rollout** controls the rollout (promote to next step, pause, or abort based on verification results).
-
-For a complete walkthrough of this pattern with Continuous Verification at each canary stage, go to [Argo Rollouts with Continuous Verification](/docs/continuous-delivery/gitops/argo-rollouts/argo-rollouts-with-cv).
 
 ## PR-based promotion workflows
 
