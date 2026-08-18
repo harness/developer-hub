@@ -71,6 +71,12 @@ Follow the interactive walkthrough to see the flow end to end, or the next secti
    If you select the **Connectivity Mode** as "Connect through a Harness Delegate" and **Channel Type** as "Email", add a <a href="/docs/platform/notifications/add-smtp-configuration" target="_blank">Simple Mail Transfer Protocol (SMTP) configuration</a> to which the Harness delegate has access. If this is not done, then the email notifications fail.
    :::
 
+   :::warning User groups require a notification preference
+   If you target a Harness user group instead of entering a recipient directly, the channel delivers through the channels configured in that group's **Notification Preferences**. When the group has no preference configured for the channel type you selected, no notification is delivered and Harness does not report an error.
+
+   Add the preference to the user group before you rely on the channel. Go to [Edit notification preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences) to add a channel to a user group.
+   :::
+
    <div style={{textAlign: 'center'}}>
       <DocImage path={require('../static/create-new-channel.png')} width="80%" height="40%" title="Click to view full size image" />
    </div>

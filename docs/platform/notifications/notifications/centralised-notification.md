@@ -20,6 +20,20 @@ You can configure centralised notifications for:
 - **GitOps Applications:** Get notified about application sync and health events, such as sync success/failure, out-of-sync drift, and health degradation.
 - **AI Test Automation:** Get notified when Playwright test runs complete, fail, or are aborted.
 
+## Notification channels and user groups
+
+A notification channel delivers to either an email address that you enter directly or a Harness user group. When a channel targets a user group, Harness delivers the notification through the channels configured in that group's **Notification Preferences**.
+
+:::warning
+A channel that is configured for a user group does not send a notification until that group has a notification preference configured for the channel type you selected. Harness does not report an error in this case, so the rule appears to be configured correctly but no notification arrives.
+
+Add the preference to the user group before you rely on the rule. Go to [Edit notification preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences) to add a channel to a user group.
+:::
+
+Channels that specify an email address directly do not depend on user group notification preferences, so they deliver as soon as you enable the rule. If a rule delivers to a directly configured email address but not to a user group, check the notification preferences of that group first.
+
+This requirement applies to every resource type in this topic, including pipelines, delegates, Artifact Registry, GitOps applications, and service account tokens.
+
 ## Pipeline Notifications
 
 :::info Prerequisites
@@ -73,6 +87,7 @@ You can also configure the **Waiting for User Action** event in centralized noti
 4. **Configure Channels**
    - Select notification channels.
    - Choose existing channels or [create new ones](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels)
+   - If a channel targets a user group, confirm that the group has a matching notification preference. Go to [Notification channels and user groups](#notification-channels-and-user-groups) to review this requirement.
    - Click **Submit** to save your configuration
 </TabItem>
 </Tabs>
@@ -136,6 +151,7 @@ These notifications help track delegate disconnection, expiration, and expiring 
 4. **Configure Channels**
    - Select notification channels.
    - Choose existing channels or [create new ones](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels)
+   - If a channel targets a user group, confirm that the group has a matching notification preference. Go to [Notification channels and user groups](#notification-channels-and-user-groups) to review this requirement.
    - Click **Submit** to save your configuration.
 </TabItem>
 </Tabs>
@@ -195,6 +211,7 @@ For background on the exemption workflow, see <a href="/docs/artifact-registry/d
 
 4. **Configure Channels**
    - Choose existing channels or [create new ones](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels)
+   - If a channel targets a user group, confirm that the group has a matching notification preference. Go to [Notification channels and user groups](#notification-channels-and-user-groups) to review this requirement.
    - Toggle **Enable on Save** to activate the rule immediately
    - Click **Submit** to save your configuration
 
@@ -238,6 +255,7 @@ Custom notification templates are not supported for GitOps application notificat
 4. **Configure channels**
    - Select notification channels (Slack, Microsoft Teams, email, webhooks, or PagerDuty).
    - Choose existing channels or [create new ones](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels).
+   - If a channel targets a user group, confirm that the group has a matching notification preference. Go to [Notification channels and user groups](#notification-channels-and-user-groups) to review this requirement.
    - Select **Submit** to save your configuration.
 
 ---
@@ -311,7 +329,7 @@ You can configure notifications for an existing service account or create a new 
    * **Token Expires in 1–4 weeks:** Choose a timeframe between 1 and 4 weeks before expiration. Notifications are sent daily during the selected week. For example, if you select _4 weeks_, you will receive a daily notification during the fourth week before the token expires.
    * **Token Expires in 1 day:** A final reminder sent one day before expiration.
 
-9. Select an existing channel or [create a new channel](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels) to receive alerts.
+9. Select an existing channel or [create a new channel](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels) to receive alerts. If the channel targets a user group, confirm that the group has a matching notification preference. Go to [Notification channels and user groups](#notification-channels-and-user-groups) to review this requirement.
 
 10. Turn on **Enable on Save** to activate the rule immediately after you click **Submit**.
 </TabItem>
