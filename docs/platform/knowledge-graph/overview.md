@@ -20,7 +20,7 @@ Resources such as pipelines, executions, services, environments, infrastructure,
 
 By representing resources and their relationships in a single graph, the Knowledge Graph enables [Harness Query Language (HQL)](/docs/platform/dashboards/dashboard-standard/harness-query-language) and Harness AI to retrieve, analyze, and reason over connected information instead of isolated resources.
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will understand:
 

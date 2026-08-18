@@ -20,7 +20,7 @@ This page covers every Continuous Delivery resource available in the CLI, from p
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will know how to:
 

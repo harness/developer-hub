@@ -30,7 +30,7 @@ Go to the [Harness Community Solutions repository](https://github.com/harness-co
 
 ---
 
-## What you will learn
+## What you will learn in this topic
 
 - **Containerized step groups:** How to configure a containerized step group that runs Ansible inside a Kubernetes pod.
 - **Git integration:** How to clone Ansible playbooks from a Git repository within your pipeline.

@@ -16,7 +16,7 @@ The Harness CLI must be authenticated before it can access Harness resources. Yo
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will know how to:
 

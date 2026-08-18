@@ -31,7 +31,7 @@ The plugin bundles 30 skills, 11 Model Context Protocol (MCP) tools covering 160
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

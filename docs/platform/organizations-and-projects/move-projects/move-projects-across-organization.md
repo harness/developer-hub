@@ -25,7 +25,7 @@ Moving a project transfers a project and all its entities from one organization 
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will understand how to:
 

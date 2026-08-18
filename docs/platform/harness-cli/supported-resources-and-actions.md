@@ -16,7 +16,7 @@ For detailed examples, flags, and usage information, see the module-specific pag
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will know:
 

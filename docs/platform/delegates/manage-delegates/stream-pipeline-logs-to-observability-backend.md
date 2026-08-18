@@ -37,7 +37,7 @@ This functionality offers the following benefits:
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 - How [log streaming architecture](#log-streaming-architecture) works.
 - Which [delegate and infrastructure combinations](#supported-infrastructure) are supported.

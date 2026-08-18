@@ -20,7 +20,7 @@ This page covers all Code Repository resources and actions available in the CLI.
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will know how to:
 

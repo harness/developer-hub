@@ -23,7 +23,7 @@ Within a Harness account, you organize your work using organizations and project
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this section, you will be able to:
 

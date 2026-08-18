@@ -19,7 +19,7 @@ This page covers every Artifact Registry resource and action available in the CL
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will know how to:
 

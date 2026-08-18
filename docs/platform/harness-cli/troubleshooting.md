@@ -16,7 +16,7 @@ Use this page to diagnose and resolve common Harness CLI issues. Most problems f
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will know how to:
 

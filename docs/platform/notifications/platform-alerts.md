@@ -15,7 +15,7 @@ Unlike platform alerts, <a href="/docs/platform/notifications/centralised-notifi
 
 ---
 
-## What will you learn by the end of this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will know how to:
 

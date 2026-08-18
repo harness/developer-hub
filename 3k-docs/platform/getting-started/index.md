@@ -23,7 +23,7 @@ This topic explains what the platform provides and compares Harness NG with Harn
 
 ---
 
-## What you will learn
+## What you will learn in this topic
 
 - What the [Harness Platform](#what-the-harness-platform-provides) is, and how the Account, Organization, and Project hierarchy structures your work.
 - What changes between Harness NG and Harness 3.0, [area by area](#what-changes-at-a-glance).

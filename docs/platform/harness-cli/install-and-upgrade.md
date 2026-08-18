@@ -9,7 +9,7 @@ The Harness CLI is distributed as a self-contained binary for macOS and Linux (a
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this guide, you will be able to:
 

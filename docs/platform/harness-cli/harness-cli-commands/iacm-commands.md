@@ -21,7 +21,7 @@ This page covers all Infrastructure as Code Management resources and actions ava
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will know how to:
 

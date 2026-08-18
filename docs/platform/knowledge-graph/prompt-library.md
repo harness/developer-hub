@@ -26,7 +26,7 @@ All prompts on this page have been validated against live Harness data. These qu
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will understand:
 

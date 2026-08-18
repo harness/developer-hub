@@ -17,7 +17,7 @@ Moving a project from one organization to another requires careful planning to m
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

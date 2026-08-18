@@ -27,7 +27,7 @@ This feature requires the `PL_PROJECT_MOVEMENT_ENABLED` feature flag. Contact [H
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

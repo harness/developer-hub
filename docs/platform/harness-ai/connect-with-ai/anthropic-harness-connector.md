@@ -34,7 +34,7 @@ You connect the connector once in your Claude account, and it applies to the Cla
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 
