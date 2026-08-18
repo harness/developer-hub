@@ -613,7 +613,7 @@ Deployment Frequency measures how frequently a team successfully deploys code to
 
 * Select the tool your team uses to track and measure deployments.
 * Select any existing integrations you wish to use for calculating deployment frequency.
-* Defind the settings for how you want to calculate deployment frequency. The additional filters being used to define the deployments will be applicable to all the integrations that you selected.
+* Define the settings for how you want to calculate deployment frequency. The additional filters being used to define the deployments will be applicable to all the integrations that you selected.
 
 :::tip RECOMMENDATION
 For accurate tracking, use CI/CD tools (e.g., Harness CD, GitHub Actions) or ITSM tools (e.g., ServiceNow) that provide detailed deployment and change request tracking data.

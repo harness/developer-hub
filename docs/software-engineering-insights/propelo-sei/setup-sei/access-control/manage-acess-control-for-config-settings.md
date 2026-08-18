@@ -56,7 +56,7 @@ Perform the following steps to **create a new Resource Group** to define access 
 1. In **Harness**, click **Account Settings**, and then click **Access Control**.
 2. In **Resource Groups**, click on the **+New Resource Group**. For more information on adding and managing resource groups, see [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups).
 3. Choose the scope of the resource group: 
-   1. **Account Only:** Applies permissions across the accoount. This is the only scope which supports defining permissions for Configuration Settings as they are a **Account Level** resource entity.
+   1. **Account Only:** Applies permissions across the account. This is the only scope which supports defining permissions for Configuration Settings as they are a **Account Level** resource entity.
    2. **All (including all Organizations and Projects):** Configuration Settings access is unavailable when selecting this scope as they are a **Account Level** resource entity.
    3. **Specified Organizations (and their Projects):** Configuration Settings access is unavailable when selecting this scope as they are a **Account Level** resource entity.
 4. Under the settings for the SEI module’s shared resources, select **Configuration Settings**.

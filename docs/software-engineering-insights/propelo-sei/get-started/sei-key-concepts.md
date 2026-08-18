@@ -28,7 +28,7 @@ Collection categories are broad classifications that serve as containers for Col
 
 Under each Collection category are one or more levels of Collections. Collections are groupings, or focused classifications, that are subdivisions of Collection categories. Inheritance flows down the Collection levels.
 
-To learn more about the Collection heirarchy refer the below resources.
+To learn more about the Collection hierarchy refer the below resources.
 
 * [Manage Collection Categories](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collection-cat)
 * [Manage Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collections)

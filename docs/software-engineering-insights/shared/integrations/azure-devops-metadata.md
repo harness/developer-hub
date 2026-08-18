@@ -121,7 +121,7 @@ Harness SEI uses Rest APIs to connect to Azure Repos. Using these API calls Harn
           <li>workItemHistories</li>
           <li>workItemFields</li>
           <li>changesets</li>
-          <li>branchs</li>
+          <li>branches</li>
           <li>labels</li>
           <li>iterations</li>
           <li>metadata</li>

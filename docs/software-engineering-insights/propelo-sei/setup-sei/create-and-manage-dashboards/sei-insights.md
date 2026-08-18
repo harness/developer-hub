@@ -166,7 +166,7 @@ The following five Insights are the most frequently used on SEI:
 
 Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Research Assessment) metrics](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics).
 
-If you want to create a DORA Metrics Insight refer to the below resoures.
+If you want to create a DORA Metrics Insight refer to the below resources.
 
 * [Tutorial: Create a DORA Metrics Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight)
 * [DORA widgets](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics)

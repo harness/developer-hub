@@ -293,7 +293,7 @@ Use the baseline insights to define specific improvement objectives for each tea
 <Tabs>
 <TabItem value="team-roadmap" label="Team roadmap" default>
 
-Every team is different in terms of the proceses and tooling thus the same roadmap might now tell the entire story. It is recommended to create team or section specific roadmaps.
+Every team is different in terms of the processes and tooling thus the same roadmap might not tell the entire story. It is recommended to create team or section specific roadmaps.
 
 | Team Level | Quarter 1 | Quarter 2 | Quarter 3 | Quarter 4 |
 |------------|-----------|-----------|-----------|-----------|

@@ -20,7 +20,7 @@ To learn more, go to [DORA Reports](/docs/software-engineering-insights/propelo-
 
 You can configure the DORA profile to measure the MTTR metric using Issue Management Platform or SCM or your Incident monitoring platform. 
 
-### Mean Time to Restore using Issue Manangement or SCM
+### Mean Time to Restore using Issue Management or SCM
 
 If you have configured the DORA profile to measure the MTTR metric using Issue Management Platform or SCM, the DORA MTTR report is displayed as the breakdown of stages across multiple stages. For example, the default configuration for a PR-based Workflow profile will display four stages:
 

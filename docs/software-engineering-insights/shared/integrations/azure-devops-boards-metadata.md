@@ -108,7 +108,7 @@ Harness SEI uses Rest APIs to connect to Azure Boards. Using these API calls, SE
           <li>workItemHistories</li>
           <li>tags</li>
           <li>changesets</li>
-          <li>branchs</li>
+          <li>branches</li>
           <li>labels</li>
           <li>tags</li>
           <li>codeAreas</li>

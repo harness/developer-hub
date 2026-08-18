@@ -205,7 +205,7 @@ By following these recommendations, you can effectively track your deployment fr
 
 #### Configuration Examples for DORA Profile Setup
 
-* **Pipline Configuration:** Configure the profile to analyze pipelines with all statuses, paying special attention to Continuous Delivery pipelines if applicable. Set a specific timeframe to capture recent deployment activities accurately.
+* **Pipeline Configuration:** Configure the profile to analyze pipelines with all statuses, paying special attention to Continuous Delivery pipelines if applicable. Set a specific timeframe to capture recent deployment activities accurately.
 * **Golden / Production Pipeline Standardization:** If you have established a standard "production" pipeline template, utilize Stage Variables for precise control. Associate services with each pipeline execution for accurate tracking and analysis.
 * **Production Environment Monitoring:** Monitor deployments to production environments by capturing data on all pipeline executions linked to a specific production deployment stage, such as `deploy-prod`.
 * **Alignment with Jira Releases (Not Recommended):** Although aligning deployment activities with Jira releases may provide insights into deployment frequency concerning software release cycles, it's not recommended due to potential complexities and overhead.

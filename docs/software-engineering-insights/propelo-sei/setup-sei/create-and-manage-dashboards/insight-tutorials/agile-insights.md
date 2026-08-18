@@ -78,7 +78,7 @@ Use these sprint metric reports to analyze sprint and planning metrics allowing 
 
 ### Sprint Metrics Trend Report
 
-Engineering managers usually use these three key sprint metrics to get a holistic picture of the sprint productiviy:
+Engineering managers usually use these three key sprint metrics to get a holistic picture of the sprint productivity:
 
 1. [Commit Points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-points) (The number of story points you plan to complete during the sprint)
 2. [Commit Done Points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-done-points) (The number of story points actually finished at the end of the sprint)

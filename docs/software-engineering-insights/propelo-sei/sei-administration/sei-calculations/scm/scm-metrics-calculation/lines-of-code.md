@@ -50,7 +50,7 @@ SEI measures the total lines of code that are included in pull requests (PRs) ac
 
 * **Merged Pull Requests (PRs):** SEI calculates the Lines of Code metric for merged PRs using the `merge SHA (Commit ID)`. This approach ensures accuracy by considering the final state of the codebase after merging, which includes the cumulative data of all code modifications. This consists of total lines added, deleted, and files changed as part of the merge commit.
 
-* **PRs in `OPEN` or `CLOSED` States:** Lines of Code metrics for open and closed PRs are determined via the respective SCM tool's API. This includes the total count of lines added, deleted, and the number of files modifed in all the commits that make up the PR.
+* **PRs in `OPEN` or `CLOSED` States:** Lines of Code metrics for open and closed PRs are determined via the respective SCM tool's API. This includes the total count of lines added, deleted, and the number of files modified in all the commits that make up the PR.
 
 :::info
 
@@ -68,7 +68,7 @@ For SCM reports, the values for lines of code added and deleted are the same as 
 
 * To receive the files changed data, make sure you have set the `fetch_commit_files` key in your integration configuration to `Yes`. This will enable SEI to retrieve the necessary data from the SCM tool.
 
-* For BitBucket Cloud and Server to recieve the data for Lines added and Lines deleted for the associated pull request or commit make sure you have set the `fetch_commit_files` key in your integration configuration to `Yes`. This will enable SEI to retrieve the necessary data from the SCM tool.
+* For BitBucket Cloud and Server to receive the data for Lines added and Lines deleted for the associated pull request or commit make sure you have set the `fetch_commit_files` key in your integration configuration to `Yes`. This will enable SEI to retrieve the necessary data from the SCM tool.
 
 :::
 
