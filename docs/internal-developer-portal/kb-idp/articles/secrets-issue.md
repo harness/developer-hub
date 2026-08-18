@@ -59,9 +59,9 @@ spec:
 
 In this case, if the `token` field is defined anywhere outside of Page 1 (e.g. under Page 2's properties), the `ui:widget: password` property is not evaluated and the token is displayed to the user at the "Review" step of the workflow.
 
-## 👉🏻 How to solve the issue (action required)
+## How to solve the issue (action required)
 
-**move your `token` field in the IDP Workflow YAML definition to the first page instead of later pages. This will ensure that the user session token is not displayed on the Review screen to the user.**
+Move your `token` field in the IDP Workflow YAML definition to the first page instead of later pages. This will ensure that the user session token is not displayed on the Review screen to the user.
 
 ## Context on why it happened
 
