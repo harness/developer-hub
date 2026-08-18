@@ -676,7 +676,7 @@ const sidebars: SidebarsConfig = {
       type: 'link',
       label: 'API Reference',
       className: 'sidebar-API_Reference',
-      href: 'https://apidocs.harness.io/tag/repository/',
+      href: 'https://apidocs.harness.io/repository',
       customProps: {
         description: 'Harness API Docs.',
       },
@@ -5675,7 +5675,7 @@ const sidebars: SidebarsConfig = {
       type: 'link',
       label: 'API Reference',
       className: 'sidebar-API_Reference',
-      href: 'https://apidocs.harness.io/tag/repository/',
+      href: 'https://apidocs.harness.io/repository',
       customProps: {
         description: 'Harness API Docs.',
       },

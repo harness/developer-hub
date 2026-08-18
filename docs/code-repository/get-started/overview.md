@@ -94,4 +94,4 @@ Now that you understand the key concepts, you are ready to start using Harness C
 
 - [Get started with Harness Code](/docs/code-repository/get-started/onboarding-guide): Set up repositories, access, and pipelines.
 - [Supported features and functionality](/docs/code-repository/code-supported): Review what Harness Code supports today.
-- [Harness Code API reference](https://apidocs.harness.io/tag/repository): Automate repository management.
+- [Harness Code API reference](https://apidocs.harness.io/repository): Automate repository management.
