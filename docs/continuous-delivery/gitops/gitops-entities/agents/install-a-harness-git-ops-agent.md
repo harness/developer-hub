@@ -182,7 +182,7 @@ The **YAML** option lets you download the manifest YAML for the Harness GitOps A
 
 ## Install the Agent
 
-Select **Download Values Yaml** or **Downlad YAML**. You are prompted to save the YAML file.
+Select **Download Values Yaml** or **Download YAML**. You are prompted to save the YAML file.
 
 Open a terminal and navigate to the folder where you downloaded manifest or override YAML file.
 
@@ -315,9 +315,9 @@ Also, whenever new entities are created in mapped Argo CD projects, they are add
 For steps on setting up the mapping and import, go to [Map existing Argo projects](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness#map-existing-argo-projects).
 
 ## Default In-Cluster
-When you create a GitOps agent, a default in-cluster is automatically created. This in-cluster is special kind of cluster which doesnt have project set so it is always created on scope same as GitOps agent.
+When you create a GitOps agent, a default in-cluster is automatically created. This in-cluster is special kind of cluster which does not have project set so it is always created on scope same as GitOps agent.
 
-- You can remove in-cluster from Harness but that doesnt actually delete in-cluster as it is a special cluster object. If deleted, it can be recreated. 
+- You can remove in-cluster from Harness but that does not actually delete in-cluster as it is a special cluster object. If deleted, it can be recreated. 
 - For a `Namespaced` agent, `in-cluster` is not being created as the cluster access is restricted to the agent's namespace only. If you still want to deploy to the same cluster where the agent is installed, you can add a cluster as usual using a publicly available endpoint for that cluster. Additionally, you can specify namespace/namespaces when creating that cluster to restrict access only to the specified namespaces.
 
 ## Advanced Options

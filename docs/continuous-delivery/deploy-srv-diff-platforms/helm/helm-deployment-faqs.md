@@ -207,7 +207,7 @@ If we do not want to use template command we need to be using native Helm type o
 
 ### How to get Helm chart version from Helm based triggers?
 
-The Helm version is part of the trigger payload. The expression that conatains the Helm version is `<+trigger.manifest.version>` .
+The Helm version is part of the trigger payload. The expression that contains the Helm version is `<+trigger.manifest.version>` .
 
 
 ### After a successful deployment with the namespace "x" and another failed deployment with the same namespace (x), we switched the namespace and now it seems it cannot properly do a Helm history.
@@ -557,7 +557,7 @@ The following workarounds may help, though they may not be suitable for all use 
 Supporting zero-replica deployments for artifact tracking would require significant changes to the instance sync logic, which is complex and would need extensive testing. An enhancement request (CDS-114667) has been created to address this limitation in a future release.
 
 ### How to execute helm lookup expression in helm template?
-We can pass the helm template command option  `--dry-run=server`. These command options can be added in the helm manifest advanced configruation.
+We can pass the helm template command option  `--dry-run=server`. These command options can be added in the helm manifest advanced configuration.
 
 ### Is it possible to provide custom priority order for values.yaml while providing multiple values yaml file?
 We do not have any way to provide customer ordering. We follow a bottom up approach for values yaml priority in case of multiple values yaml provided where the last one gets the highest priority.

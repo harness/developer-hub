@@ -57,7 +57,7 @@ Invoke-WebRequest -Uri "$\{URI}" -Headers $Headers -OutFile "$\{OUT_FILE}" -Prox
 ```
 
 ### How to give the user access to WinRM resources?
-Run command winrm configSDDL default and it should open the the dialogue, check if user configured for login already present in the last otherwise add the user
+Run command winrm configSDDL default and it should open the dialogue, check if user configured for login already present in the last otherwise add the user
 
 ### How to enable certificate authentication while using WinRM?
 Its disabled by default and need to run below command to enable

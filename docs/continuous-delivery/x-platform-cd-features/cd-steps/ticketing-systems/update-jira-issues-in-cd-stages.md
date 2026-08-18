@@ -50,7 +50,7 @@ To use an expression in **Issue Key**, do the following:
 
 1. Identify the step where you want to get the ID from. In this example, we'll use a Jira Create step.
 
-   You'll have to close the Jira Update step to get the the ID from the previous step. An ID is required, so you can just enter any number for now and click **Save**. In the pipeline, select **Execution History**.
+   You'll have to close the Jira Update step to get the ID from the previous step. An ID is required, so you can just enter any number for now and click **Save**. In the pipeline, select **Execution History**.
 
 2. Select a successful execution, and click the Jira Create step in the execution.
 

@@ -336,7 +336,7 @@ For the Terraform provider Docker connector resource, go to [harness_platform_co
 ```json
 # credentials anonymous
 resource "harness_platform_connector_docker" "test" {
-  identifier  = "identifer"
+  identifier  = "identifier"
   name        = "name"
   description = "test"
   tags        = ["foo:bar"]
@@ -348,7 +348,7 @@ resource "harness_platform_connector_docker" "test" {
 
 # credentials username password
 resource "harness_platform_connector_docker" "test" {
-  identifier  = "identifer"
+  identifier  = "identifier"
   name        = "name"
   description = "test"
   tags        = ["foo:bar"]

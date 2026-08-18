@@ -445,7 +445,7 @@ Enter a standard `priorityClassName` like `system-node-critical`.
 
 The standard Kubernetes `nodeSelector`.
 
-Enter a key like `disktype` and and value like `ssd`.
+Enter a key like `disktype` and value like `ssd`.
 
 ### Tolerations
 

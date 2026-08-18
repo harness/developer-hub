@@ -121,7 +121,7 @@ All connections and operations are performed by Harness Delegates. So we'll also
     - Delegate names must be unique within a namespace and should be unique in your cluster.
     - A valid name includes only lowercase letters and does not start or end with a number.
     - The dash character (“-”) can be used as a separator between letters.
-5.  At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
+5.  At a terminal, run the following cURL command to copy the Kubernetes YAML file to the target location for installation.
 
 `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
 
@@ -299,7 +299,7 @@ Next, try the following quickstarts:
 
 ## Clean up the Kustomize deployment
 
-For steps on deleting the Delgate, go to [Delegate a delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).
+For steps on deleting the Delegate, go to [Delegate a delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).
 
 ## Next steps
 

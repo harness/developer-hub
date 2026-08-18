@@ -188,7 +188,7 @@ You add a values file in the same way you added your manifests. You simply selec
 
 In **Manifest Details**, you enter the path to each values.yaml file.
 
-Your values YAML files can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) to reference artifacts in the **Service Definition** (`<+artifact.image>`), Stage and Service variables, and and other Harness variables.
+Your values YAML files can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) to reference artifacts in the **Service Definition** (`<+artifact.image>`), Stage and Service variables, and other Harness variables.
 
 Your manifests reference your values YAML file using [Go templating](https://godoc.org/text/template), as described above.
 

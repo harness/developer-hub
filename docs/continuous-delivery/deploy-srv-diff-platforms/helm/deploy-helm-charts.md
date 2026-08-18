@@ -343,7 +343,7 @@ Once your Helm chart is added, it appears in the **Manifests** section. For exam
 
 ## Using subcharts
 
-Helm charts can have dependencies called subcharts. You can define subcharts in your service YAML. Helm downloads these dependencies from exisiting or seperate repositories. Harness fetches the defined subcharts during pipeline execution.
+Helm charts can have dependencies called subcharts. You can define subcharts in your service YAML. Helm downloads these dependencies from existing or separate repositories. Harness fetches the defined subcharts during pipeline execution.
 
 ### Important notes
 
@@ -359,7 +359,7 @@ To configure Helm subcharts, you must define the subchart name and path in your 
 To resolve dependencies, you must configure the Helm command `Template` with the flag, `--dependency-update`. This allows Harness to fetch your dependencies defined in `Chart.yaml`.
 
 :::important
-Helm charts store their dependencies in the `charts/` folder. Make sure that all subcharts are located within the `charts/` folder inside your parent chart. Look at the sample [Harness respository](https://github.com/thisrohangupta/custom-remote-test-repo/tree/main/parent-chart) for structural guidance.
+Helm charts store their dependencies in the `charts/` folder. Make sure that all subcharts are located within the `charts/` folder inside your parent chart. Look at the sample [Harness repository](https://github.com/thisrohangupta/custom-remote-test-repo/tree/main/parent-chart) for structural guidance.
 
 Here is a sample directory:
 

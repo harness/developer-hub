@@ -667,7 +667,7 @@ The Go templating is converting to the octal equivalent if the numerical input s
 Error: UPGRADE FAILED: unable to build kubernetes objects from current release manifest: resource mapping not found for name: "$RESOURCE_NAME" namespace: "" from "": no matches for kind "HorizontalPodAutoscaler" in version "autoscaling/v2beta2" ensure CRDs are installed first
 ```
 
-This error happens if you have recently upgraded your Kuberenetes Cluster without ensuring that your Helm Releases' API Versions are supported in the new Kubernetes Cluster version. When attempting to upgrade them after, Helm will throw the above error due to the deprecated API no longer existing in the current Kubernetes Cluster. To fix this, you'll need to upgrade the API Version on the Helm Release manually by following the steps in the [Helm Documentation](https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest).
+This error happens if you have recently upgraded your Kubernetes Cluster without ensuring that your Helm Releases' API Versions are supported in the new Kubernetes Cluster version. When attempting to upgrade them after, Helm will throw the above error due to the deprecated API no longer existing in the current Kubernetes Cluster. To fix this, you'll need to upgrade the API Version on the Helm Release manually by following the steps in the [Helm Documentation](https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest).
 
 To avoid this in the future, please make sure to perform any Helm Release upgrades prior to upgrading your Kubernetes Cluster. A detailed list of deprecated and supported Kubernetes APIs can be found in the [Kubernetes Documentation](https://kubernetes.io/docs/reference/using-api/deprecation-guide/)
 
@@ -768,7 +768,7 @@ The safeguard is that no pruning will occur during the first execution or rollba
 #### Is there any feature to alert or approve before pruning happens in Kubernetes within Harness?
 No, currently, there is no feature for providing approvals or alerts before pruning happens as it is built into the Kubernetes steps.
 
-#### Can Kubernetes and NativeHelm Infrastructures be used interchangably?
+#### Can Kubernetes and NativeHelm Infrastructures be used interchangeably?
 No its not possible, as both are treated as separate deployment type to make sure any changes related to that swimlane should not affect other
 
 #### Is the shift traffic feature available for EKS (Elastic Kubernetes Service) deployments?
@@ -818,16 +818,16 @@ Could not start process:
 java.io.IOException: Cannot run program "/bin/bash" (in directory "/tmp"): error=7, Argument list too long at java.base/java.lang.ProcessBuilder.start(Unknown Source) at java.base/java.lang.ProcessBuilder.start(Unknown Source) at org.zeroturnaround.exec.ProcessExecutor.invokeStart(ProcessExecutor.java:977) at
 ```
 
-We have this avaialble as manifest expression so directly assign it within the step like below:
+We have this available as manifest expression so directly assign it within the step like below:
 
 `mymanifestvar=<+execution.steps.render_helm_chart_templates.k8s.manifestDryRun>`
 
 
-### Can we create resource in a differnt namespace than what is defined in the infrastructure?
+### Can we create resource in a different namespace than what is defined in the infrastructure?
 It is not possible. All the resource being created as part of the deployment should be in the same namespace as defined in the infrastructure.
 
 ### Can I deploy two services with the same manifest and different values yaml?
-Kuberenetes does not allow creating two resources with same name. Even if the service spec type is different still only one instance of the service can exist. For example if the same manifest is used to deploy a node port and a load balancer using different values.yaml, one iteration of the deployment will create only one instance of the resource.
+Kubernetes does not allow creating two resources with same name. Even if the service spec type is different still only one instance of the service can exist. For example if the same manifest is used to deploy a node port and a load balancer using different values.yaml, one iteration of the deployment will create only one instance of the resource.
 If we use the same service to deploy a different service type it will overwrite the pre existing one as they have the same name.
 
 ### Is it possible to provide delegate selector for service hooks?

@@ -1,6 +1,6 @@
 ---
 title: Performance Considerations
-description: Learn how to improve perfomance with your Argo deployments
+description: Learn how to improve performance with your Argo deployments
 sidebar_position: 70
 redirect_from:
   - /docs/continuous-delivery/gitops/use-gitops/agent-argocd-performance

@@ -19,11 +19,11 @@ we are not able to perform deployment to target cluster as it throws below error
 
 ## Resolution
 
-From the error it seems the user addd is trying to access secret resource (cluster) of which it does not have access.
+From the error it seems the user add is trying to access secret resource (cluster) of which it does not have access.
 
 We need to update the creds such that the tenent have access to this clusters resources or add the particular role to the AKS cluster that would authorise the access to resources. Adding the group which contained user ID in Cluster admin ClusterRoleBinding should solve the issue [In Cluster configurations].
 
-To further verify if we a list permission which seems to be misssing, we will run the following commands? This will ensure that their creds are valid and have the required permissions?
+To further verify if we a list permission which seems to be missing, we will run the following commands? This will ensure that their creds are valid and have the required permissions?
  
 1. AzCLI Login on Harness Delegate using the creds with which they created the connector
 
@@ -50,7 +50,7 @@ To further verify if we a list permission which seems to be misssing, we will ru
 
 
 ```
-Note that you might have a confusion here becuase,  you already have created a Azure cloud provider connector with same credentials and it passes connectivity test. But the thing to note is In the connectivity test we validate the creds. It does not ensure that you are able to communicate with the Cluster as we do not ask for cluster info.
+Note that you might have a confusion here because,  you already have created a Azure cloud provider connector with same credentials and it passes connectivity test. But the thing to note is In the connectivity test we validate the creds. It does not ensure that you are able to communicate with the Cluster as we do not ask for cluster info.
 
 ```
 After running the commands if you see following error : 

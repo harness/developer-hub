@@ -26,12 +26,12 @@ In the created pipeline you can add a Jira update step with the required details
 
 
 ### How do I provide, the Jira project as an expression for the Jira approval step?
-In the Jira approval step For the the Jira project field, we only support fixed and runtime input for now, Expressions are not supported.
+In the Jira approval step for the Jira project field, we only support fixed and runtime input for now, Expressions are not supported.
 
 
 ### Can we transition to any status in jira using update step?
 
-Jira supports transition to steps as per the workflow defined for the project. Only allowed transition from a specic status to another as per the workflow will be allowed.
+Jira supports transition to steps as per the workflow defined for the project. Only allowed transition from a specific status to another as per the workflow will be allowed.
 
 
 ### How do we add comment with Jira step.
@@ -90,7 +90,7 @@ The pipelines will run just fine, as you used the template and specified differe
 
 ### How do I preserve my Manual approval step msg format in email body?
 
-Emails are rendered in HTML, so different HTML tags can be added to approval steps message and these tag will be resolved as per HTML defination and same will be vivsible in email's body
+Emails are rendered in HTML, so different HTML tags can be added to approval steps message and these tag will be resolved as per HTML definition and same will be vivsible in email's body
 
 
 ### What types of events can trigger notifications in Harness pipelines?
@@ -119,7 +119,7 @@ The maximum limits for a single pipeline run are 35 days for paid plans and 4 ho
 These limits are applied because:
 - There is a limit on the total number of concurrent and queued executions. If some pipelines run/wait for days/weeks, they consume valuable resources from other projects in the account and delay queues.
 - Usually, very long running pipelines are waiting on something (approvals, test results, deployments) that took longer than expected. A quicker timeout makes it clear that something went wrong in the workflow, instead of indefinitely waiting.
-- Long running pipelines impact the availablility of Harness resources.
+- Long running pipelines impact the availability of Harness resources.
 
 For more information, go to [Deloyment logs and limitations](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations) and [Pipeline settings](https://developer.harness.io/docs/platform/pipelines/pipeline-settings).
 
@@ -192,7 +192,7 @@ At present, our authentication system exclusively accommodates user API Key-base
 
 ### Is it possible to insert a hyperlink with markdown in the approval message?
 
-In order to resolve this version as an hyperlink on slack you can use (`|`) symbol to seperate the link and text to creeate a hyperlink. This Slack formatting includes the link and the text you want to display, separated by a pipe (`|`) character. 
+In order to resolve this version as an hyperlink on slack you can use (`|`) symbol to separate the link and text to create a hyperlink. This Slack formatting includes the link and the text you want to display, separated by a pipe (`|`) character. 
 
 Replace the URL and version with your actual values, and enclose the link and the version text inside `<>`, such as `<https://github.com/harness/guestbook/blob/main/.harness/inputover.yaml | Version>`
 

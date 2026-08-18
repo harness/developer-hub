@@ -264,7 +264,7 @@ These logs include detailed information from `status.condition`, `status.contain
 
 ## Clean up the deployment
 
-For steps on deleting the Delgate, go to [delete a delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).
+For steps on deleting the Delegate, go to [delete a delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).
 
 ## Next steps
 

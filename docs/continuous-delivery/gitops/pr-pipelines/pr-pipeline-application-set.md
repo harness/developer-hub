@@ -1,6 +1,6 @@
 ---
 title: ApplicationSets and PR Pipeline
-description: Learn about creating appplications via ApplicationSet through Harness GitOps PR Pipeline
+description: Learn about creating applications via ApplicationSet through Harness GitOps PR Pipeline
 sidebar_position: 2
 ---
 

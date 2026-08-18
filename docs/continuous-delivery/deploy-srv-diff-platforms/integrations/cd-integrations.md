@@ -34,10 +34,10 @@ Harness supports integration with flow modeling tools (LucidChart, Visio etc,) a
 
 These platforms are supported through our native pipeline tools/steps such as the [shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md) or the [http step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md).
 
-For example, let's say you wanted to create a pipeline that transfered a test plan document in LucidChart from your development team to your test team when an artifact succesfully deploys to your QA or Dev environment. To do this you could follow these broad steps: 
-1. Store the the access token for LucidChart's V1 API in the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
+For example, let's say you wanted to create a pipeline that transferred a test plan document in LucidChart from your development team to your test team when an artifact successfully deploys to your QA or Dev environment. To do this you could follow these broad steps: 
+1. Store the access token for LucidChart's V1 API in the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
 2. Use the [http step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md) to build a request for your desired API endpoint. In this example, the API endpoint would be `/transferUserContent` as a `POST` request. Simply fill out the required fields in the step as described in the step reference doc. 
-3. Add the step to the end of your deployment pipeline for artifacts going to the QA or Dev environment pipeline so that the transfer happens after a succesful deployment.
+3. Add the step to the end of your deployment pipeline for artifacts going to the QA or Dev environment pipeline so that the transfer happens after a successful deployment.
 
 ## IT Service Management (ITSM)
 

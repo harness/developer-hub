@@ -207,7 +207,7 @@ If you need to access the file values you need to pull the file from your repo i
 
 ### Accessing a variable in namespace of an environment which is defined in the Shell Script step of the pipeline.
 
-You will need to add a custom stage and then export an output variable in order to use this output variable in the deploy stage environment variable as when the pipeline will execute it will initialize the service and environment before getting to tht shell setup. 
+You will need to add a custom stage and then export an output variable in order to use this output variable in the deploy stage environment variable as when the pipeline will execute it will initialize the service and environment before getting to the shell setup. 
 
 
 ### Can I use shell variables in Harness expressions to fetch a secret in a Shell Script step?
@@ -242,7 +242,7 @@ Therefore to make it work put the Python command in a file and execute it. So, t
 
 ### When do we mask a secret value in shell script?
 
-To mask a secret's value in a script, then that secret should be at least once used or refrenced in the script (referencing the secret as echo \<+secrets.getValue("pattoken")>)
+To mask a secret's value in a script, then that secret should be at least once used or referenced in the script (referencing the secret as echo \<+secrets.getValue("pattoken")>)
 
 
 ### Is delegate token masked in if used in shell script?
@@ -254,11 +254,11 @@ Delegate tokens are already present in the memory and we know those need to be s
 
 with the command the json string should be passed in sigle quotes for example:
 
-python3 eample.py `<+trigger.payload>`
+python3 example.py `<+trigger.payload>`
 
 `<trigger.payload>` resolves to JSON.
 
-### How Do I preserve the formating of multiline secret in shell script?
+### How Do I preserve the formatting of multiline secret in shell script?
 
 Please the use below command-
 ```

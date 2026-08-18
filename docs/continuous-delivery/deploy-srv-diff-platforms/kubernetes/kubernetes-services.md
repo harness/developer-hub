@@ -444,7 +444,7 @@ To add a Helm chart to your service, do the following:
 
 #### Options for connecting to a Helm chart store
 
-The options avialable to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here:
+The options available to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here:
 
     * **Feature flag disabled**. Only one option is available: **OCI Helm Registry Connector**. This option enables you to connect to any OCI-based registry.
     * **Feature flag enabled**. You can choose between connectors in the following categories:
@@ -1111,7 +1111,7 @@ For the Terraform Provider Docker connector resource, go to [harness_platform_co
 ```json
 # credentials anonymous
 resource "harness_platform_connector_docker" "test" {
-  identifier  = "identifer"
+  identifier  = "identifier"
   name        = "name"
   description = "test"
   tags        = ["foo:bar"]
@@ -1123,7 +1123,7 @@ resource "harness_platform_connector_docker" "test" {
 
 # credentials username password
 resource "harness_platform_connector_docker" "test" {
-  identifier  = "identifer"
+  identifier  = "identifier"
   name        = "name"
   description = "test"
   tags        = ["foo:bar"]

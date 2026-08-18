@@ -137,7 +137,7 @@ Once encrypted, SOPS decrypts the data during deployment using the keys stored a
 
 
 ### How to disable pushing logs from the GitOps Agent to Stackdriver?
-To disable logging to Stackdriver in GitOps, set `GITOPS_AGENT_ENABLE_STACK_DRIVER_LOGGER` to False in the the agent ConfigMap.
+To disable logging to Stackdriver in GitOps, set `GITOPS_AGENT_ENABLE_STACK_DRIVER_LOGGER` to False in the agent ConfigMap.
 
 ### How to configure EnvRef and ServiceRef annotations for a GitOps service and environment in an application through Helm?
 

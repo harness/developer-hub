@@ -33,7 +33,7 @@ This topic provides an example of a simple sidecar deployment.
 
 ## Use Harness artifacts
 
-You can hardcode the image location in your sidecar manifests or use the the **Artifacts** settings in the Harness Service Definition to connect Harness to an artifact stream (for example, a Docker registry).
+You can hardcode the image location in your sidecar manifests or use the **Artifacts** settings in the Harness Service Definition to connect Harness to an artifact stream (for example, a Docker registry).
 
 When you use **Artifacts**, your sidecar manifest refers to the sidecar artifact you added in **Artifacts** using the expression `<+artifacts.sidecars.[sidecar_identifier].imagePath>`.
 

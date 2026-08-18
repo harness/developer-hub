@@ -37,6 +37,6 @@ Status : demoservice2-deploy-app1   error: deployment "demoservice2-deploy-app1"
 
 The Deployment controller will keep retrying the Deployment. This defaults to `600`. 
 
-If you are using the Kubernetes deadline parameter `.spec.progressDeadlineSeconds` option, it is important to understand that the Step timeout parameter and the Kubernetes deadline parameter may supercede one another, if both are set (e.g. the one that is shorter will be enforced first). To avoid confusion when troubleshooting, it is a best practice to ensure that you identify whether a timeout is the result of that parameter or the Harness step **Timeout** setting.
+If you are using the Kubernetes deadline parameter `.spec.progressDeadlineSeconds` option, it is important to understand that the Step timeout parameter and the Kubernetes deadline parameter may supersede one another, if both are set (e.g. the one that is shorter will be enforced first). To avoid confusion when troubleshooting, it is a best practice to ensure that you identify whether a timeout is the result of that parameter or the Harness step **Timeout** setting.
 
 

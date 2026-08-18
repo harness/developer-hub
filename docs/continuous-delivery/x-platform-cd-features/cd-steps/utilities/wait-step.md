@@ -19,7 +19,7 @@ When the Wait step is running, it provides **Mark as Success** and **Mark as Fai
 
 The Wait step is available in approval, custom, CD, and feature Flag stages. You can add the Wait step anywhere in those stages.
 
-1. In your stage **Execution** (or **Rollout Strategy** in Feature Flags), select **Add Step**, and then selct **Wait**.
+1. In your stage **Execution** (or **Rollout Strategy** in Feature Flags), select **Add Step**, and then select **Wait**.
 2. Enter a name for the step.
 3. In **Duration**, enter how long the Wait step should run. Once the timeout occurs, the pipeline execution proceeds.  
 When the Wait step runs, the duration is displayed in its **Details**.  

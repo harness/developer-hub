@@ -382,7 +382,7 @@ Certain CF CLI environment variables, such as CF_HOME, CF_PLUGIN_HOME, CF_USERNA
 
 The standard override rules apply to an artifact bundle with these exceptions:
 
-1. If an artifact bundle store type is selected in in the service then it can be only overridden by the artifact bundle store type in **Overrides**. A different store type cannot be used in **Overrides** to override an artifact bundle type.
+1. If an artifact bundle store type is selected in the service then it can be only overridden by the artifact bundle store type in **Overrides**. A different store type cannot be used in **Overrides** to override an artifact bundle type.
 2.  If the **Other** store type is selected in the service, then it cannot be overridden by the artifact bundle store type in **Overrides**. The artifact bundle store type cannot be used in **Overrides** to override a different store type.
 
 :::

@@ -62,7 +62,7 @@ These actions can be applied to the failure strategy as primary action and timeo
 | **Retry** | Harness retries the execution of the failed step automatically. You can set **Retry Count** and **Retry Intervals**. Additionally, you can **define a JEXL condition to retry the step only when a specific condition is met**. | Same as step. | Same as step. |
 | **Abort** | Pipeline execution is aborted. If you select this option, no timeout is needed. | Same as step. | Same as step. |
 | **Rollback Stage** | The stage rolls back to the state prior to stage execution. How the stage rolls back depends on the type of build or deployment it was performing. | Same as step. | Same as step. |
-| **Rollback Step Group** | N/A | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was preforming. | N/A |
+| **Rollback Step Group** | N/A | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was performing. | N/A |
 |**Mark As Failure**|Harness marks the step as **Failed**.|Harness marks the step group as **Failed**.|Harness marks the stage as **Failed**.|
 |**Rollback Pipeline** | The pipeline rolls back to the state prior to pipeline execution. | Same as step |
 |**Proceed with Default Values** |This failure-strategy is used when the user is not able to provide the inputs for any stage/step during the execution. In that case users can define this Failure-strategy on stage/step to continue the execution using the default value configured on the input field. | Same as step | Same as step |

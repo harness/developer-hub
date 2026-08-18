@@ -341,7 +341,7 @@ Enter a standard `priorityClassName` like `system-node-critical`.
 
 The standard Kubernetes `nodeSelector`.
 
-Enter a key like `disktype` and and value like `ssd`.
+Enter a key like `disktype` and value like `ssd`.
 
 ### Tolerations
 
@@ -505,7 +505,7 @@ Here's an example of Terraform provider Docker connector JSON:
 ```json
 # credentials anonymous
 resource "harness_platform_connector_docker" "test" {
-  identifier  = "identifer"
+  identifier  = "identifier"
   name        = "name"
   description = "test"
   tags        = ["foo:bar"]

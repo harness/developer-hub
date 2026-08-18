@@ -190,7 +190,7 @@ When you run a deploy stage, this is the pipeline execution flow:
 1. Harness checks the ``stage`` conditional execution and then starts filling the variable defined in the stage definition.
 2. Checks the ``Service`` step and then fetches the ``Environment and Infrastructure`` information.
 
-![unresolved expresssion execution](./static/unresolved_expression_execution_2.png)
+![unresolved expression execution](./static/unresolved_expression_execution_2.png)
 
 3. When the stage starts, Harness checks the ``step`` conditional execution and proceed to resolve the variable step.
 

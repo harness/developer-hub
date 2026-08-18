@@ -457,7 +457,7 @@ With a multi service to multi infrastructure stage, every combination of service
 
 Consequently, if you are deploying services A and B to infrastructure 1 and the deployment of service A to infrastructure 1 fails, it will only impact the deployment of service B to infrastructure 1 if the services are deployed serially (and service A is first).
 
-If the services are deployed in parallel, the failure of of service A to infrastructure 1 will not impact the deployment of of service B to infrastructure 1. The failed deployment of service A to infrastructure 1 will roll back, but the deployment of of service B to infrastructure 1 will not roll back.
+If the services are deployed in parallel, the failure of service A to infrastructure 1 will not impact the deployment of service B to infrastructure 1. The failed deployment of service A to infrastructure 1 will roll back, but the deployment of service B to infrastructure 1 will not roll back.
 
 ## Triggers and multiple services
 

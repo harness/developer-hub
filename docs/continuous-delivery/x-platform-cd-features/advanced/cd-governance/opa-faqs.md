@@ -40,7 +40,7 @@ Policy step is only supported against a JSON payload.
 
 ### How do I form a OPA Policy to identify pipeline source ?
 
-In pipeline YAML, we dont have pipeline source identifer but the remote pipelines will have githubConfig section, which can be used to form any required policy.
+In pipeline YAML, we dont have pipeline source identifier but the remote pipelines will have githubConfig section, which can be used to form any required policy.
 
 
 ### How do I check what YAML is checked against the OPA policies?
@@ -53,7 +53,7 @@ Click on the required pipeline and open the policy, you can see the actual YAML 
 
 ### How do I filter policy evaluation by status?
 
-Under the evaluations section of policies we have a dropdown to filter based on status of policy evaluations. Currently we only support failed and sucess status not warned/warning
+Under the evaluations section of policies we have a dropdown to filter based on status of policy evaluations. Currently we only support failed and success status not warned/warning
 
 
 ### How do I created a OPA policy to enforce environment type?

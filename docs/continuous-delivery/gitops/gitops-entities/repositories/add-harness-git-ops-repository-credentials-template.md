@@ -40,7 +40,7 @@ If you use a GitOps Repository Credentials Template with a GitOps Repository, th
 
 ## Step 1: Create GitOps Repository Credentials Template
 
-In the GitOps Repository Credentials Template setup, you will select the [Agent](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent.md) to use when synching state. Be sure you have a GitOps Agent set up already.
+In the GitOps Repository Credentials Template setup, you will select the [Agent](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent.md) to use when syncing state. Be sure you have a GitOps Agent set up already.
 
 See [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent.md).
 

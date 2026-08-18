@@ -194,7 +194,7 @@ Follow the steps below to install mTLS GitOps Agent
 
 GitOps Repositories store the source manifests you want to sync with destination environments.
 
-In the Harness GitOps Repository setup, you select the Agent to use when synching state and provide the credentials to use when connecting to the Git repository.
+In the Harness GitOps Repository setup, you select the Agent to use when syncing state and provide the credentials to use when connecting to the Git repository.
 
 <Tabs>
 <TabItem value="Interactive Guide">
@@ -249,7 +249,7 @@ We will use a publicly available GitHub repo and manifests located at [https://g
 
 Clusters are the target deployment environments that are synced with the source manifests you add as Harness GitOps Repositories.
 
-In the Harness GitOps Cluster setup, you select the Harness GitOps Agent to use when synching state and provide the credentials to use when connecting to the target cluster. 
+In the Harness GitOps Cluster setup, you select the Harness GitOps Agent to use when syncing state and provide the credentials to use when connecting to the target cluster. 
 
 In this example, we'll connect using the cluster master URL and a Service Account Token for the **default** namespace.
 
@@ -346,7 +346,7 @@ A GitOps Application collects the Repository (what you want to deploy), Cluster 
 
 <TabItem value= "Step-by-Step">
 
-In the Application setup, you will select the Agent, Repository, and Cluster to use when synching state.
+In the Application setup, you will select the Agent, Repository, and Cluster to use when syncing state.
 
 1. In your Harness Project, select **GitOps**, and then select **New Application**.
    

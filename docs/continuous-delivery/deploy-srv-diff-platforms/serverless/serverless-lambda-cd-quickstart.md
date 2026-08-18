@@ -237,7 +237,7 @@ For limitations when using Serverless V4, including custom config file restricti
 
 ### Old Images
 
-Harness supports different images for Prepare, Package and deploy for sereverless deployment. 
+Harness supports different images for Prepare, Package and deploy for serverless deployment. 
 
 Prepare Rollback:- [`harnessdev/serverless-preparerollback:<LATEST_TAG>`](https://hub.docker.com/r/harnessdev/serverless-preparerollback)
 
@@ -510,7 +510,7 @@ We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate 
         - Delegate names must be unique within a namespace and should be unique in your cluster.
         - A valid name includes only lowercase letters and does not start or end with a number.
         - The dash character (“-”) can be used as a separator between letters.
-    5. At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
+    5. At a terminal, run the following cURL command to copy the Kubernetes YAML file to the target location for installation.
 
     `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
 
@@ -1146,7 +1146,7 @@ Congratulations! You have successfully deployed a function using Serverless Lamb
 
 ## Clean up
 
-For steps on deleting the Delgate, go to [Delete a delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).
+For steps on deleting the Delegate, go to [Delete a delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).
 
 ## Notes
 

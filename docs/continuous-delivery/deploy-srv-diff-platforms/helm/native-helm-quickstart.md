@@ -426,7 +426,7 @@ Enable the **Ignore Release History Failed Status** option to have Harness ignor
 
 #### Options for connecting to a Helm chart store
 
-The options avialable to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here: 
+The options available to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here: 
 
 - **Direct Connection**. Contains the OCI Helm Registry Connector option (shortened to **OCI Helm**), which you can use with any OCI-based registry.
 - **Via Cloud Provider**. Contains connector options for AWS ECR and Google Artifact Registry (GAR). These connectors help you overcome authentication limitations specific to each registry: token expiry for ECR and credential management for GAR. The connector option uses cloud provider connectors and regenerates the required authentication token if the token has expired.

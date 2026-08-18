@@ -283,6 +283,6 @@ For example:
 - Base64 encoded: `fileStore.getAsBase64("account:/folder1/folder2/myfile")`.
 
 :::note
-You can create a two files with same name inside two different folders by having different identifer for one of the file. Path of the file is constructed based on the name not identifer.
+You can create a two files with same name inside two different folders by having different identifier for one of the file. Path of the file is constructed based on the name not identifier.
 :::
 

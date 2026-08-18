@@ -228,7 +228,7 @@ Some important points to note:-
 1. You can add a header by clicking on ``+ Add Header``.
 2. You can delete a header by clicking on delete icon.
 3. A header can either be a ``Fixed value`` or an ``Expression``.
-4.  You can test your webhook integeration by clicking on ``Test``.
+4.  You can test your webhook integration by clicking on ``Test``.
 
 ![](./static/custom_header.png)
 
