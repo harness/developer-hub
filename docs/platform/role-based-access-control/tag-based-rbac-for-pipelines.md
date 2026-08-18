@@ -31,7 +31,7 @@ Tag-based RBAC allows you to control pipeline access using tags instead of manua
 Currently, this feature is behind the feature flag `PIE_TAG_BASED_ACCESS_TO_PIPELINES`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

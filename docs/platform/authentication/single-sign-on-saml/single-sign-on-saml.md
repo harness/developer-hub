@@ -23,7 +23,7 @@ If you use <a href="/docs/self-managed-enterprise-edition/smp-overview"target="_
 ---
 
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to understand:
 - How Harness supports SAML-based single sign-on and how to enable it as the default authentication method.

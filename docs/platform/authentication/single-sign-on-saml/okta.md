@@ -36,7 +36,7 @@ When a user attempts to log in to Harness, Harness redirects them to Okta for au
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

@@ -61,7 +61,7 @@ This page covers **_authentication_**. For information about **_authorization_**
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to understand:
 

@@ -41,7 +41,7 @@ Microsoft Entra ID acts as a SAML identity provider for Harness, allowing users 
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 - [Configure Microsoft Entra ID as a SAML SSO provider in Harness](#endpoint-url-for-azure).

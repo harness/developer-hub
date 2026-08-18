@@ -25,7 +25,7 @@ Service accounts are similar to <a href="/docs/platform/role-based-access-contro
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

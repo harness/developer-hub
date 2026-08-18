@@ -53,7 +53,7 @@ The feature flag `PL_ENABLE_OIDC_AUTHENTICATION` must be enabled. Contact <a hre
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

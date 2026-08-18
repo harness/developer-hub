@@ -19,7 +19,7 @@ This page explains how to view built-in roles, create custom roles, and assign p
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will understand how to:
 

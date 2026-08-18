@@ -34,7 +34,7 @@ When you add a GNU Privacy Guard (GPG) or Secure Shell (SSH) public key to your 
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will know how to:
 

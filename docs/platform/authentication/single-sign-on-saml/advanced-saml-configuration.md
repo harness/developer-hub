@@ -31,7 +31,7 @@ This page covers advanced SAML configuration options in Harness, including local
 If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="_blank">Harness Self-Managed Enterprise Edition</a>, your instance must be accessed via an HTTPS load balancer. SAML authentication will fail over HTTP.
 :::
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 - [Use Harness local login](#harness-local-login) as a fallback when your IdP is unavailable.

@@ -41,7 +41,7 @@ Adding the MCP-specific URL does not affect your existing Harness platform login
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

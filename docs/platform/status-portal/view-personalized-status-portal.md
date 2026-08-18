@@ -23,7 +23,7 @@ The status portal uses optimized data fetching to provide near real-time updates
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

@@ -35,7 +35,7 @@ The key principle is that JIT provisioning only handles user creation automatica
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 - Understand how JIT provisioning works with SAML SSO.

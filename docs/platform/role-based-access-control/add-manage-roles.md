@@ -31,7 +31,7 @@ Roles are scope-specific, and you can create them at any <a href="/docs/platform
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this page, you will be able to:
 

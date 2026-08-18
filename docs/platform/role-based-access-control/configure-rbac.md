@@ -9,7 +9,7 @@ redirect_from:
 
 Role-based access control (RBAC) in Harness controls who can access your resources and what actions they can perform. This page walks you through the complete workflow to configure RBAC in your Harness account, from creating roles and resource groups to assigning them to users and user groups.
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

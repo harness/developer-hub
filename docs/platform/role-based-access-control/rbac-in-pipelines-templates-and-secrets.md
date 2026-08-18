@@ -40,7 +40,7 @@ For more fine-grained control over access to connectors and environments, you ca
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

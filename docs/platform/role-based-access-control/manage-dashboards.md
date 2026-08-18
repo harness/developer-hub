@@ -9,7 +9,7 @@ You can control who can view, create, edit, and delete dashboards in Harness thr
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

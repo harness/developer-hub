@@ -27,7 +27,7 @@ Harness includes some <a href="#built-in-resource-groups" target="_blank">built-
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will know how to:
 

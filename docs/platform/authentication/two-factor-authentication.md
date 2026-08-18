@@ -42,7 +42,7 @@ You can enable 2FA for your own profile without impacting other user accounts, o
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will know how to:
 

@@ -28,7 +28,7 @@ Use impersonation is used to reproduce a problem a user reports, or to confirm t
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 

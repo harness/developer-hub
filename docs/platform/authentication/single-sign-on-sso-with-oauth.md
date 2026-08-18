@@ -45,7 +45,7 @@ Once you enable OAuth 2.0 SSO, users can log into Harness using their GitHub, Go
 
 ---
 
-## What will you learn in this topic?
+## What you will learn in this topic
 
 By the end of this topic, you will be able to:
 - [Set up OAuth 2.0 SSO with your preferred identity provider](#set-up-oauth-20-sso).
