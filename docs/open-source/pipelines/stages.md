@@ -29,7 +29,7 @@ spec:
 
 ## Multiple
 
-Piplines can contain multiple stages. The overall build status is determined by the successful completion of all stages.
+Pipelines can contain multiple stages. The overall build status is determined by the successful completion of all stages.
 
 :::note
 

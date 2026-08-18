@@ -44,7 +44,7 @@ spec:
 It is important to remember that after a container is started, the software running inside the container (e.g. redis) takes time to initialize and begin accepting connections.
 
 There are two approaches to this problem:
-1. Add a [health check](#health-check) (prefered)
+1. Add a [health check](#health-check) (preferred)
 2. Add a [sleep](#sleep)
 
 ### Health check
