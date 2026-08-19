@@ -41,6 +41,7 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
     + Subscription Id
     + Principal and Service Account
     + GovCloud Support
+    + [OIDC Authentication](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector#oidc-authentication)
   - AWS Cloud Connector (EKS Authentication)
     + IRSA
     + Access Key and Secret Key
@@ -218,6 +219,7 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
     - Subscription ID
     - Principal and Service Account
     - GovCloud Support
+    - [OIDC Authentication](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector#oidc-authentication)
   - AWS Cloud Connector (EKS Authentication)
     - IRSA
     - Access Key and Secret Key
@@ -618,6 +620,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - Subscription Id
     - Principal and Service Account
     - GovCloud Support
+    - [OIDC Authentication](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector#oidc-authentication)
 - **Supported platforms for deployment:**
   - Azure cloud, any Region
 - **Versions and tooling support:**
@@ -637,6 +640,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - Subscription Id
     - Principal and Service Account
     - GovCloud Support
+    - [OIDC Authentication](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector#oidc-authentication)
 - **Supported platforms for deployment:**
   - Azure cloud, any Region
 - **Versions and tooling support:**

@@ -1,85 +1,123 @@
 ---
 title: Add a Microsoft Azure connector
-description: Connect Harness to your Azure accounts and services.
+sidebar_label: Microsoft Azure Connector
+description: Connect Harness to your Azure accounts and services for artifact pulls, infrastructure provisioning, and application deployments.
 sidebar_position: 3
-helpdocs_topic_id: 9epdx5m9ae
-helpdocs_category_id: o1zhrfo8n5
-helpdocs_is_private: false
-helpdocs_is_published: true
+keywords:
+  - Azure connector
+  - AKS
+  - ACR
+  - Azure Web Apps
+  - ARM
+  - Blueprint
+  - OIDC
+  - managed identity
+  - service principal
+tags:
+  - Azure
+  - connectors
+  - platform
 ---
 
-With the Microsoft Azure connector, your Harness pipelines can pull Azure artifacts, provision Azure infrastructure, and deploy your applications to Azure.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-The Microsoft Azure connector is for ACR, AKS, ARM, Blueprint, Web Apps, Azure App Service Environments, and virtual machines for traditional (SSH/WinRM) deployments.
+<style>
+{`
+  .tabs--full-width {
+    width: 100%;
+  }
+  .tabs--full-width .tabs__item {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
+`}
+</style>
 
-Use the Azure Repos connector to [connect to Azure SCM repos](../code-repositories/connect-to-a-azure-repo.md)
+Use the Microsoft Azure connector to connect Harness to your Azure accounts and services. With this connector, Harness pipelines can pull artifacts from Azure Container Registry (ACR), provision infrastructure with Azure Resource Manager (ARM) and Azure Blueprints, and deploy applications to Azure Kubernetes Service (AKS), Azure Web Apps, Azure App Service Environments, and virtual machines using SSH or WinRM.
 
-:::tip
+Use the Azure Repos connector to <a href="/docs/platform/connectors/code-repositories/connect-to-a-azure-repo" target="_blank" rel="noopener noreferrer">connect to Azure SCM repositories</a>.
 
-If you're using Harness **Cloud Cost Management (CCM)**, you can [Set Up Cloud Cost Management for Azure](../../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md).
+:::note
+
+If you use Harness Cloud Cost Management (CCM), go to <a href="/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure" target="_blank" rel="noopener noreferrer">Set up Cloud Cost Management for Azure</a> to configure the Azure connector for CCM.
 
 :::
 
+---
+
+## What will you learn in this topic?
+
+- How to [install the kubelogin plugin](#install-the-kubelogin-client-go-credential-exec-plugin-on-the-delegate) on a delegate for AKS authentication using Kubernetes 1.22 and later.
+- How to configure [roles and permissions](#roles-permissions-and-cluster-requirements) for ACR, AKS, Azure Web Apps, ARM, and Blueprints.
+- How to [add an Azure connector](#add-an-azure-connector) at the account, org, or project scope.
+- How to [configure credentials](#configure-credentials) using Service Principal, OIDC authentication, or inherited delegate credentials.
+- How to [select a connectivity mode](#select-connectivity-mode) and complete the connector setup.
+
+---
+
+## Before you begin
+
+- **Azure subscription**: Owner or Contributor access on the subscription or resource group where you want Harness to operate.
+- **Microsoft Entra ID**: Permission to create App Registrations or Managed Identities and assign roles. Go to <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal" target="_blank" rel="noopener noreferrer">Create a Microsoft Entra application and service principal</a> to understand the required setup.
+- **Harness delegate**: A running Harness delegate connected to your Azure environment for delegate-based connectivity. Go to <a href="/docs/platform/delegates/install-delegates/overview" target="_blank" rel="noopener noreferrer">Delegate installation overview</a> to install one.
+- **Harness account ID** (OIDC only): Navigate to **Account Settings** in Harness to find your account ID.
+
+---
+
 ## Auth Provider API and TokenRequest API options
 
-Harness provides the option of using the Auth Provider API or TokenRequest API for authentication.
+Harness supports both the Auth Provider API and the TokenRequest API for AKS authentication.
 
 <details>
-<summary>Summary of Auth Provider and TokenRequest API changes</summary>
+<summary>Auth Provider API vs. TokenRequest API</summary>
 
-In Kubernetes 1.22, the Auth Provider API was deprecated and replaced with a new TokenRequest API. The TokenRequest API is used by client libraries and tools to request an authentication token from the Kubernetes API server.
+In Kubernetes 1.22, the Auth Provider API was deprecated and replaced with the TokenRequest API. The TokenRequest API lets client libraries and tools request an authentication token from the Kubernetes API server dynamically, based on audience, scopes, and other parameters.
 
-The TokenRequest API provides a more flexible and extensible authentication mechanism than the Auth Provider API. Instead of relying on pre-configured authentication plugins, client libraries and tools can now dynamically request authentication tokens from the Kubernetes API server based on their specific needs and requirements.
-
-To use the TokenRequest API for authentication, client libraries and tools can send a TokenRequest object to the Kubernetes API server. The TokenRequest object specifies the audience, scopes, and other parameters for the requested token. The Kubernetes API server then validates the request, generates a token with the requested parameters, and returns the token to the client.
-
-One advantage of the TokenRequest API is that it allows for more fine-grained control over authentication and authorization. For example, a client library or tool can request a token with only the necessary scopes to perform a specific operation, rather than requesting a token with full cluster access.
-
-Another advantage of the TokenRequest API is that it allows for easier integration with external identity providers and authentication systems. Client libraries and tools can use the TokenRequest API to request authentication tokens from external providers, such as OAuth2 providers or custom authentication systems, and use those tokens to authenticate to the Kubernetes API server.
-
-Overall, the TokenRequest API provides a more flexible and extensible authentication mechanism than the deprecated Auth Provider API, and allows for more fine-grained control over authentication and authorization in Kubernetes.
+The key advantages of the TokenRequest API are finer-grained control over authentication and easier integration with external identity providers such as OAuth 2.0 providers.
 
 </details>
 
-
 To select which API to use:
 
-- **Auth Provider API**: this is the current default. You do not have to change the default settings of Harness connectors or the Harness Delegates you use.
-- **TokenRequest API**: you must install the provider-specific plugin on the Harness Delegate(s) to use the TokenRequest API introduced in Kubernetes 1.22.
+- **Auth Provider API**: the current default. You do not have to change the default settings of Harness connectors or the Harness delegates you use.
+- **TokenRequest API**: you must install the provider-specific plugin on the Harness delegate to use the TokenRequest API introduced in Kubernetes 1.22.
+
+---
 
 ### Install the kubelogin client-go credential (exec) plugin on the delegate
 
-When using the Harness Azure connector with Kubernetes version >= 1.22, you can use the **kubelogin client-go credential (exec) plugin** to authenticate to AKS cluster.
+When using the Harness Azure connector with Kubernetes version 1.22 or later, you can use the **kubelogin** client-go credential plugin to authenticate to an AKS cluster.
 
-The Harness Azure connector has 4 authentication types. For each type, you must install the following dependencies in the Harness Delegates you use or Harness will follow the old Auth Provider API format.
+The Azure connector supports four authentication types. Install the following dependencies on the Harness delegates you use, or Harness will fall back to the Auth Provider API format.
 
-- **Secret** (`SERVICE_PRINCIPAL_SECRET`): Kubelogin binary.
-- **Certificate** (`SERVICE_PRINCIPAL_CERT`): Kubelogin binary and azurecli (azurecli is required as kubelogin does not support certificate in PEM format).
-- **System Assigned Managed Identity** (`MANAGED_IDENTITY_SYSTEM_ASSIGNED`): Kubelogin binary.
-- **User Assigned Managed Identity** (`MANAGED_IDENTITY_USER_ASSIGNED`): Kubelogin binary.
+- **Secret** (`SERVICE_PRINCIPAL_SECRET`): kubelogin binary.
+- **Certificate** (`SERVICE_PRINCIPAL_CERT`): kubelogin binary and Azure CLI (required because kubelogin does not support PEM format certificates).
+- **System Assigned Managed Identity** (`MANAGED_IDENTITY_SYSTEM_ASSIGNED`): kubelogin binary.
+- **User Assigned Managed Identity** (`MANAGED_IDENTITY_USER_ASSIGNED`): kubelogin binary.
 
-The **Secret** and **Certificate** options are available when you select the **Specify credentials here** option in the Azure connector.
+**Secret** and **Certificate** are available when you select **Specify credentials here**. **System Assigned Managed Identity** and **User Assigned Managed Identity** are available when you select **Use the credentials of a specific Harness Delegate**.
 
-The **System Assigned Managed Identity** and **User Assigned Managed Identity** options are available when you select the **Use the credentials of a specific Harness Delegate** option in the Azure connector.
-
-You can install the kubelogin plugin on the delegate by creating a delegate with an immutable image and updating the following commands in `INIT_SCRIPT`:
+Perform the following steps to install kubelogin on the delegate using an immutable delegate image and `INIT_SCRIPT`:
 
 <details>
-<summary>RHEL 7 OS</summary>
+<summary>RHEL 7</summary>
 
-```
-// Install dependencies
+```bash
+# Install dependencies
 microdnf install --nodocs openssl util-linux unzip python2 && microdnf clean all
 
-// Download kubelogin
+# Download kubelogin
 curl https://github.com/Azure/kubelogin/releases/download/v0.0.27/kubelogin-linux-amd64.zip -L -o kubelogin.zip
 unzip kubelogin.zip
 chmod 755 /opt/harness-delegate/bin/linux_amd64/kubelogin
 
-// Add the binary to PATH
+# Add the binary to PATH
 mv ./bin/linux_amd64/kubelogin /usr/local/bin
 
-// If the AKS cloud provider auth type is Certificate then we need to install azure-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating a delegate with an immutable image and updating the following commands in INIT_SCRIPT
+# If the AKS cloud provider auth type is Certificate, install azure-cli
+# because kubelogin does not support PEM format
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[azure-cli]
 name=Azure CLI
@@ -89,83 +127,77 @@ gpgcheck=1
 gpgkey=https://packages.microsoft.com/keys/microsoft.asc" | tee /etc/yum.repos.d/azure-cli.repo
 microdnf install azure-cli
 ```
+
 </details>
 
 <details>
 <summary>Ubuntu</summary>
 
-```
-// Download kubelogin
+```bash
+# Download kubelogin
 curl https://github.com/Azure/kubelogin/releases/download/v0.0.27/kubelogin-linux-amd64.zip -L -o kubelogin.zip
 unzip kubelogin.zip
 chmod 755 /opt/harness-delegate/bin/linux_amd64/kubelogin
 
-// Add the binary to PATH
+# Add the binary to PATH
 mv ./bin/linux_amd64/kubelogin /usr/local/bin
 
-// If the AKS cloud provider auth type is Certificate then we need to install az-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating a delegate with an immutable image and updating the following commands in INIT_SCRIPT
+# If the AKS cloud provider auth type is Certificate, install azure-cli
 curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 ```
+
 </details>
 
+Go to <a href="https://github.com/Azure/kubelogin/releases" target="_blank" rel="noopener noreferrer">kubelogin releases</a> on Azure and <a href="/docs/platform/delegates/install-delegates/overview" target="_blank" rel="noopener noreferrer">Delegate installation overview</a> for further details.
 
-For more information, go to [kubelogin](https://github.com/Azure/kubelogin/releases) from Azure and [Delegate installation overview](/docs/platform/delegates/install-delegates/overview.md).
+---
 
-## Roles, permission, and cluster requirements
+## Roles, permissions, and cluster requirements
 
-This section assumes you're familiar with Azure RBAC. For details, go to the Azure documentation: [Assign Azure roles using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal).
+This section covers the minimum Azure Role-Based Access Control (RBAC) roles and cluster configuration required for each Azure service. This section assumes you are familiar with Azure RBAC. Go to <a href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal" target="_blank" rel="noopener noreferrer">Assign Azure roles using the Azure portal</a> for a refresher.
 
-This graphic from Azure is a useful reminder of how Azure manages RBAC:
+For security reasons, Harness uses an application object and service principal rather than a user identity. Go to <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal" target="_blank" rel="noopener noreferrer">Create a Microsoft Entra application and service principal that can access resources</a> for details.
 
-![Azure RBAC hierarchy showing that Resources are managed by Resource groups, which are in turn managed by Subscriptions, and all of these are under a Management group.](../static/add-a-microsoft-azure-connector-64.png)
+<div align="center"><DocImage path={require('../static/add-a-microsoft-azure-connector-64.png')} alt="Azure RBAC hierarchy showing that Resources are managed by Resource groups, which are in turn managed by Subscriptions, and all of these are under a Management group." width="80%" /></div>
 
-For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in the Microsoft Entra documentation: [Create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
+### ACR role requirements
 
-### Azure Container Repository (ACR) role requirements
+The Azure connector you use to connect Harness to ACR must have the **Reader** role at minimum. You can also use a custom role that includes the Reader permissions.
 
-The Harness Azure connectors that you'll use to connect Harness to ACR must have the **Reader** role, at minimum. You can also use a custom role that includes the permissions of the **Reader** role.
+The following tabs describe the Reader role requirements and a sample custom role definition.
 
+<Tabs className="tabs--full-width">
+  <TabItem value="reader" label="Reader role" default>
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+Assign the **Reader** role at the **Subscription** or **Resource Group** level for the Application (client) ID used in the Azure connector. The application must have permission to list all container registries.
 
-
-
-<Tabs>
-  <TabItem value="reader" label="Reader" default>
-
-The **Reader** role must be assigned at the **Subscription** or **Resource Group** level that is used by the Application (Client) Id that you'll use in the Azure connector's settings. The application must have permission to list **all** container registries.
-
-![](../static/add-a-microsoft-azure-connector-65.png)
+<div align="center"><DocImage path={require('../static/add-a-microsoft-azure-connector-65.png')} alt="ACR Reader role assignment in the Azure portal showing the Subscription scope." width="80%" /></div>
 
 :::tip
 
-Make sure you:
-
-* Don't put the **Reader** role in a different IAM section of Azure.
-* Don't provide only the **AcrPull** role, instead of **Reader**. It might appear that the **AcrPull** role gives access to a specific registry, but Harness needs to list **all** registries.
+- Do not assign the **Reader** role in a different IAM section of Azure.
+- Do not assign only the **AcrPull** role instead of **Reader**. AcrPull grants access to a specific registry, but Harness requires the Reader role to list all registries.
 
 :::
 
-
-</TabItem>
+  </TabItem>
   <TabItem value="custom" label="Custom role">
 
+The following permissions are required for any Service Principal or Managed Identity user, regardless of whether you use Kubernetes RBAC or Azure RBAC:
 
-The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
-* `Microsoft.ContainerRegistry/registries/read`
-* `Microsoft.ContainerRegistry/registries/builds/read`
-* `Microsoft.ContainerRegistry/registries/metadata/read`
-* `Microsoft.ContainerRegistry/registries/pull/read`
-* `Microsoft.ContainerService/managedClusters/read`
-* `Microsoft.ContainerService/managedClusters/listClusterUserCredential/action`
-* `Microsoft.Resource/subscriptions/resourceGroup/read`
+- `Microsoft.ContainerRegistry/registries/read`
+- `Microsoft.ContainerRegistry/registries/builds/read`
+- `Microsoft.ContainerRegistry/registries/metadata/read`
+- `Microsoft.ContainerRegistry/registries/pull/read`
+- `Microsoft.ContainerService/managedClusters/read`
+- `Microsoft.ContainerService/managedClusters/listClusterUserCredential/action`
+- `Microsoft.Resource/subscriptions/resourceGroup/read`
 
-For Helm deployments, the version of Helm must be >= 3.2.0. The Harness `HELM_VERSION_3_8_0` feature flag must be activated.
+For Helm deployments, Helm version 3.2.0 or later is required and the `HELM_VERSION_3_8_0` feature flag must be enabled.
 
-You can't use Pod Assigned Managed Identity and System Assigned Managed Identity for the same cluster.
+You cannot use Pod Assigned Managed Identity and System Assigned Managed Identity on the same cluster.
 
-The following JSON sample creates a custom role with the required permissions. To use this sample, replace `xxxx` with the role name, subscription Id, and resource group Id.
+The following JSON creates a custom role with the required permissions. Replace `xxxx` with your role name, subscription ID, and resource group ID.
 
 ```json
 {
@@ -215,79 +247,72 @@ The following JSON sample creates a custom role with the required permissions. T
 }
 ```
 
-
-</TabItem>
+  </TabItem>
 </Tabs>
 
+:::note
 
-:::info
-
-Harness supports 500 images from an ACR repo. If you don't see some of your images, then you might have exceeded this limit. This is the result of an Azure API limitation.
-
-If you connect to an ACR repo via the platform-agnostic [Docker Connector](../../../platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md), the limit is 100.
+Harness supports up to 500 images from an ACR repo. If you do not see all your images, you may have exceeded this limit due to an Azure API restriction. If you connect to ACR via the platform-agnostic <a href="/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference" target="_blank" rel="noopener noreferrer">Docker connector</a>, the limit is 100.
 
 :::
+
+---
 
 ### Azure Web App role requirements
 
-Harness Azure connectors that you'll use to connect to Azure Web Apps with Service Principal or Managed Identity credentials, must have the **Contributor** role, at minimum. You can also use a custom role that includes the permissions of the **Contributor** role.
+The Azure connector used to connect to Azure Web Apps with Service Principal or Managed Identity credentials must have the **Contributor** role at minimum. You can also use a custom role that includes the Contributor permissions.
 
+The following tabs describe the Contributor role permissions and a sample custom role definition.
 
-import Tabs2 from '@theme/Tabs';
-import TabItem2 from '@theme/TabItem';
+<Tabs className="tabs--full-width">
+  <TabItem value="contrib" label="Contributor permissions" default>
 
-
-<Tabs2>
-  <TabItem2 value="contrib" label="Contributor permissions" default>
-
-
-The follow are the Azure RBAC permissions used for System Assigned Managed Identity permissions to perform Azure Web App deployments for container and non-container artifacts:
+The following are the Azure RBAC permissions used for System Assigned Managed Identity to perform Azure Web App deployments for container and non-container artifacts:
 
 ```json
 [
-                    "microsoft.web/sites/slots/deployments/read",
-                    "Microsoft.Web/sites/Read",
-                    "Microsoft.Web/sites/config/Read",
-                    "Microsoft.Web/sites/slots/config/Read",
-                    "microsoft.web/sites/slots/config/appsettings/read",
-                    "Microsoft.Web/sites/slots/*/Read",
-                    "Microsoft.Web/sites/slots/config/list/Action",
-                    "Microsoft.Web/sites/slots/stop/Action",
-                    "Microsoft.Web/sites/slots/start/Action",
-                    "Microsoft.Web/sites/slots/config/Write",
-                    "Microsoft.Web/sites/slots/Write",
-                    "microsoft.web/sites/slots/containerlogs/action",
-                    "Microsoft.Web/sites/config/Write",
-                    "Microsoft.Web/sites/slots/slotsswap/Action",
-                    "Microsoft.Web/sites/config/list/Action",
-                    "Microsoft.Web/sites/start/Action",
-                    "Microsoft.Web/sites/stop/Action",
-                    "Microsoft.Web/sites/Write",
-                    "microsoft.web/sites/containerlogs/action",
-                    "Microsoft.Web/sites/publish/Action",
-                    "Microsoft.Web/sites/slots/publish/Action"
+    "microsoft.web/sites/slots/deployments/read",
+    "Microsoft.Web/sites/Read",
+    "Microsoft.Web/sites/config/Read",
+    "Microsoft.Web/sites/slots/config/Read",
+    "microsoft.web/sites/slots/config/appsettings/read",
+    "Microsoft.Web/sites/slots/*/Read",
+    "Microsoft.Web/sites/slots/config/list/Action",
+    "Microsoft.Web/sites/slots/stop/Action",
+    "Microsoft.Web/sites/slots/start/Action",
+    "Microsoft.Web/sites/slots/config/Write",
+    "Microsoft.Web/sites/slots/Write",
+    "microsoft.web/sites/slots/containerlogs/action",
+    "Microsoft.Web/sites/config/Write",
+    "Microsoft.Web/sites/slots/slotsswap/Action",
+    "Microsoft.Web/sites/config/list/Action",
+    "Microsoft.Web/sites/start/Action",
+    "Microsoft.Web/sites/stop/Action",
+    "Microsoft.Web/sites/Write",
+    "microsoft.web/sites/containerlogs/action",
+    "Microsoft.Web/sites/publish/Action",
+    "Microsoft.Web/sites/slots/publish/Action"
 ]
 ```
 
+  </TabItem>
+  <TabItem value="custom" label="Custom role">
 
-  </TabItem2>
-  <TabItem2 value="custom" label="Custom role">
+The following permissions are required for any Service Principal or Managed Identity user, regardless of whether you use Kubernetes RBAC or Azure RBAC:
 
+- `Microsoft.ContainerRegistry/registries/read`
+- `Microsoft.ContainerRegistry/registries/builds/read`
+- `Microsoft.ContainerRegistry/registries/metadata/read`
+- `Microsoft.ContainerRegistry/registries/pull/read`
+- `Microsoft.ContainerService/managedClusters/read`
+- `Microsoft.ContainerService/managedClusters/listClusterUserCredential/action`
+- `Microsoft.Resource/subscriptions/resourceGroup/read`
 
-The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
-* `Microsoft.ContainerRegistry/registries/read`
-* `Microsoft.ContainerRegistry/registries/builds/read`
-* `Microsoft.ContainerRegistry/registries/metadata/read`
-* `Microsoft.ContainerRegistry/registries/pull/read`
-* `Microsoft.ContainerService/managedClusters/read`
-* `Microsoft.ContainerService/managedClusters/listClusterUserCredential/action`
-* `Microsoft.Resource/subscriptions/resourceGroup/read`
+For Helm deployments, Helm version 3.2.0 or later is required and the `HELM_VERSION_3_8_0` feature flag must be enabled.
 
-For Helm deployments, the version of Helm must be >= 3.2.0. The Harness `HELM_VERSION_3_8_0` feature flag must be activated.
+You cannot use Pod Assigned Managed Identity and System Assigned Managed Identity on the same cluster.
 
-You can't use Pod Assigned Managed Identity and System Assigned Managed Identity for the same cluster.
-
-The following JSON sample creates a custom role with the required permissions. To use this sample, replace `xxxx` with the role name, subscription Id, and resource group Id.
+Replace `xxxx` with your role name, subscription ID, and resource group ID.
 
 ```json
 {
@@ -337,62 +362,39 @@ The following JSON sample creates a custom role with the required permissions. T
 }
 ```
 
+  </TabItem>
+</Tabs>
 
-  </TabItem2>
-</Tabs2>
+---
 
+### Connect Harness to Azure Kubernetes Service (AKS)
 
-### Connect Harness to Azure Kubernetes Services (AKS)
+There are three options for connecting Harness to an AKS cluster. Each option differs in the type of credentials required and the delegate placement.
 
-There are three options for connecting Harness to an AKS cluster:
-
-* Use the platform-agnostic [Kubernetes cluster connector](./add-a-kubernetes-cluster-connector.md) with a Kubernetes or Helm delegate.
-    + You'll need to install a [Kubernetes delegate](../../../platform/delegates/install-delegates/overview.md) in the target AKS cluster, and then use the delegate's credentials for the Kubernetes cluster connector's authentication method.
-	+ You won't need to provide Microsoft Azure Service Principal or Managed Identity credentials.
-* Use a **Microsoft Azure Cloud Provider connector**, as described in this topic, with a Kubernetes delegate.
-    + You'll need to install a [Kubernetes delegate](../../../platform/delegates/install-delegates/overview.md) in the target AKS cluster, and then use the delegate's credentials for the Azure connector's authentication method.
-	+ You'll need to provide the Microsoft Azure Environment.
-	+ If you use a User Assigned Managed Identity, you'll need to provide the Application (client) Id.
-	+ If you use a System Assigned Managed Identity, you won't need to provide any Ids.
-  * It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
-* Use a **Microsoft Azure Cloud Connector** with Service Principal or Managed Identity credentials, as described in this topic.
-    + You must assign the **Owner** role or an equivalent custom role, as explained in [AKS role requirements](#aks-role-requirements).
+- [Platform-agnostic Kubernetes cluster connector](./add-a-kubernetes-cluster-connector.md): install a Kubernetes delegate in the target AKS cluster and use the delegate's credentials. No Azure Service Principal or Managed Identity credentials are required.
+- [Microsoft Azure connector with a Kubernetes delegate](#configure-credentials): install a Kubernetes delegate in the AKS cluster. Provide the Azure environment and, for User Assigned Managed Identity, the Application (client) ID. You can create a connector referencing a non-existent delegate; Harness allows this so you can replace a delegate with one of the same name or tag.
+- [Microsoft Azure connector with Service Principal or Managed Identity credentials](#configure-credentials): assign the **Owner** role or an equivalent custom role as described in [AKS role requirements](#aks-role-requirements).
 
 ### AKS cluster setup requirements
 
-* AKS managed AAD, enabled or disabled.
-* Kubernetes RBAC, enabled.
-* Azure RBAC, enabled or disabled.
+The following AKS cluster configuration is required to use the Azure connector:
 
-For more information, go to the **Deployments (CD)** section of the [Kubernetes cluster connector settings reference](../../connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+- AKS managed Azure Active Directory (AAD): enabled or disabled.
+- Kubernetes RBAC: enabled.
+- Azure RBAC: enabled or disabled.
+
+Go to the **Deployments (CD)** section of the <a href="/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference" target="_blank" rel="noopener noreferrer">Kubernetes cluster connector settings reference</a> for full details.
 
 ### AKS role requirements
 
-If you use the Microsoft Azure connector to connect to AKS with Service Principal or Managed Identity credentials, you must assign the **Owner** role or a custom role that includes the permissions of the **Owner** role.
+If you use the Microsoft Azure connector to connect to AKS with Service Principal or Managed Identity credentials, assign the **Owner** role or a custom role that includes the Owner permissions.
 
+The following tabs provide example role definitions for AKS.
 
-import Tabs3 from '@theme/Tabs';
-import TabItem3 from '@theme/TabItem';
+<Tabs className="tabs--full-width">
+  <TabItem value="custom" label="Custom role" default>
 
-
-<Tabs3>
-  <TabItem3 value="custom" label="Custom role" default>
-
-
-The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
-* `Microsoft.ContainerRegistry/registries/read`
-* `Microsoft.ContainerRegistry/registries/builds/read`
-* `Microsoft.ContainerRegistry/registries/metadata/read`
-* `Microsoft.ContainerRegistry/registries/pull/read`
-* `Microsoft.ContainerService/managedClusters/read`
-* `Microsoft.ContainerService/managedClusters/listClusterUserCredential/action`
-* `Microsoft.Resource/subscriptions/resourceGroup/read`
-
-For Helm deployments, the version of Helm must be >= 3.2.0. The Harness `HELM_VERSION_3_8_0` feature flag must be activated.
-
-You can't use Pod Assigned Managed Identity and System Assigned Managed Identity for the same cluster.
-
-The following JSON sample creates a custom role with the required permissions. To use this sample, replace `xxxx` with the role name, subscription Id, and resource group Id.
+The following permissions are required for any Service Principal or Managed Identity user, regardless of whether you use Kubernetes RBAC or Azure RBAC. Replace `xxxx` with your role name, subscription ID, and resource group ID.
 
 ```json
 {
@@ -442,14 +444,12 @@ The following JSON sample creates a custom role with the required permissions. T
 }
 ```
 
+  </TabItem>
+  <TabItem value="k8sRbac" label="Kubernetes RBAC example">
 
-  </TabItem3>
-  <TabItem3 value="k8sRbac" label="Kubernetes RBAC example">
+The following is an example of Kubernetes RBAC permissions for System Assigned Managed Identity.
 
-
-Here's an example of Kubernetes RBAC permissions used for System Assigned Managed Identity.
-
-```
+```yaml
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -457,7 +457,7 @@ metadata:
   namespace: cdp-qa-app
 rules:
   - apiGroups: ["", "apps"]
-    resources: ["pods", "configmaps", "deployments", "secrets", "events", "services",  "replicasets", "deployments/scale", "namespaces", "resourcequotas", "limitranges"]
+    resources: ["pods", "configmaps", "deployments", "secrets", "events", "services", "replicasets", "deployments/scale", "namespaces", "resourcequotas", "limitranges"]
     verbs: ["get", "watch", "list", "create", "update", "patch", "delete"]
 ---
 kind: RoleBinding
@@ -472,15 +472,13 @@ roleRef:
 subjects:
   - kind: Group
     namespace: cdp-qa-app
-    name: <AD group id to which the SP and MSI users are assigned>
+    name: <AD group ID to which the SP and MSI users are assigned>
 ```
 
+  </TabItem>
+  <TabItem value="azureRbac" label="Azure RBAC example">
 
-  </TabItem3>
-  <TabItem3 value="azureRbac" label="Azure RBAC example">
-
-
-Here's an example of Azure RBAC permissions used for System Assigned Managed Identity. To use this sample, replace `xxxx` with the subscription Id and resource group Id.
+The following is an example of Azure RBAC permissions for System Assigned Managed Identity. Replace `xxxx` with your subscription ID and resource group ID.
 
 ```json
 {
@@ -530,22 +528,22 @@ Here's an example of Azure RBAC permissions used for System Assigned Managed Ide
 }
 ```
 
+  </TabItem>
+</Tabs>
 
-  </TabItem3>
-</Tabs3>
+---
 
+### Azure Resource Management (ARM) role requirements
 
-### Azure Resource Management (ARM)
-
-The roles required depend on the scope type of your ARM template:
+The roles required for ARM depend on the scope type of your ARM template:
 
 - **Resource group**: requires the `Contributor` role.
 - **Subscription**: requires the `Contributor` role.
 - **Management group**: requires the `Contributor` role.
-- **Tenant**: requires the `Contributor` or `Owner` role. For example, creating a Tenant requires the `Contributor` role, but the `Owner` role is required to create role assignments.
-- **Key Vault access**: to enable access to Key Vaults from the ARM templates you use in Harness, make sure you select the **Azure Resource Manager for template deployment** option in the Key Vault Access Policy.
+- **Tenant**: requires the `Contributor` or `Owner` role. Creating a Tenant requires `Contributor`, but creating role assignments requires `Owner`.
+- **Key Vault access**: to enable access to Key Vaults from ARM templates, select the **Azure Resource Manager for template deployment** option in the Key Vault Access Policy.
 
-![picture 0](static/d2be476b98ef01447bf4fc604640ed8432ebd245a35da2ae45b556e86aae4f8a.png)  
+<div align="center"><DocImage path={require('./static/d2be476b98ef01447bf4fc604640ed8432ebd245a35da2ae45b556e86aae4f8a.png')} alt="ARM Key Vault access policy setting showing the Azure Resource Manager for template deployment option." width="80%" /></div>
 
 :::note
 
@@ -553,186 +551,374 @@ The Azure roles provided in the connector must allow Harness to provision the Az
 
 :::
 
-## Azure Blueprints
+---
 
-In Azure, the permissions required to create and delete Blueprints are listed in [Permissions in Azure Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview#permissions-in-azure-blueprints) from Azure.
+### Azure Blueprints role requirements
 
-The Azure roles required on the service principal used by Harness depend on the scope type of your Blueprint definition.
+Go to <a href="https://docs.microsoft.com/en-us/azure/governance/blueprints/overview#permissions-in-azure-blueprints" target="_blank" rel="noopener noreferrer">Permissions in Azure Blueprints</a> for the full list of roles required to create and delete Blueprints.
 
-### Management Scope
+The Azure roles required on the service principal depend on the scope of your Blueprint definition.
 
-* **System-assigned managed identity:**
-	+ **Contributor** role at the management group scope where the Blueprint definitions will be created and published.
-	+ **Owner** role at subscription scope where the assignment will be done.
-* **System-assigned user identity:**
-	+ **Contribute** role at the management group scope where Blueprint definitions will be created and published.
-  
-	Harness does not manage the right and lifecycle of a user-managed identity. You will need to manage the user-managed identity.
+**Management scope**:
 
-### Subscription Scope
+- **System-assigned managed identity**: Contributor role at the management group scope where Blueprint definitions are created and published; Owner role at the subscription scope where the assignment is done.
+- **User-assigned managed identity**: Contributor role at the management group scope where Blueprint definitions are created and published. Harness does not manage the lifecycle of user-managed identities; you are responsible for that.
 
-* **System-assigned managed identity:**
-	+ **Owner** role at the subscription scope.
-* **System-assigned user identity:**
-	+ **Contribute** role to create and publish the Blueprint definition.  
-	Harness does not manage the right and lifecycle of a user-managed identity. You are responsible for managing the right and lifecycle of a user-managed identity that is in charge of assignment.
+**Subscription scope**:
+
+- **System-assigned managed identity**: Owner role at the subscription scope.
+- **User-assigned managed identity**: Contributor role to create and publish the Blueprint definition. Harness does not manage the lifecycle of user-managed identities; you are responsible for that.
+
+---
 
 ## Add an Azure connector
 
-You can add Azure connectors at the account, org, or project level at any time, or you can add them while setting up pipelines. For example, to add a connector at the project level you would select **Project Setup**, select **Connectors**, and then select **New Connector**.
+You can add Azure connectors at the account, org, or project level at any time, or while setting up pipelines.
 
-1. From the Connectors library, select **Azure** under **Cloud Providers**.
-1. Input a **Name**. Harness automatically creates an **Id** ([Entity Identifier](../../../platform/references/entity-identifier-reference.md)) for the connector based on the name. You can edit the Id before saving the connector. Once the connector is saved, the Id is immutable.
-1. Optionally, you can add a description and <a href="/docs/platform/tags/overview#create-tags-for-pipelines">tags</a>.
-1. Select **Continue** to configure the connector's credentials.
+Perform the following steps to add an Azure connector:
+
+1. Navigate to **Project Setup** (or **Account Settings** or **Organization Settings**), then select **Connectors**.
+2. Select **New Connector**, then under **Cloud Providers**, select **Azure Cloud Provider**.
+3. Enter a **Name**. Harness automatically creates an **Id** based on the name using the <a href="/docs/platform/references/entity-identifier-reference" target="_blank" rel="noopener noreferrer">Entity Identifier</a> format. You can edit the ID before saving; once saved, the ID is immutable.
+4. Optionally, add a description and <a href="/docs/platform/tags/overview#create-tags-for-pipelines" target="_blank" rel="noopener noreferrer">tags</a>.
+5. Select **Continue** to configure credentials.
+
+---
 
 ## Configure credentials
 
-There are two primary ways for the Harness connector to authenticate with Azure:
+The Azure connector supports three credential methods. Select the method that matches your Azure setup.
 
-* Select **Specify credentials here** to use an Application (client) and Tenant (directory) Id.
-* Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its credentials from the Harness Delegate that is running in your Azure subscription or AKS cluster.
+- [**Specify credentials here**](#specify-credentials): uses an App Registration with a client secret or certificate.
+- [**OIDC Authentication**](#oidc-authentication): uses short-lived tokens via workload identity federation; no secrets are stored in Harness.
+- [**Inherit credentials from the delegate**](#inherit-from-delegate): the connector inherits credentials from the Harness delegate running in your Azure subscription or AKS cluster.
 
-<Tabs>
-<TabItem value="Specify Credentials">
+<Tabs className="tabs--full-width">
+<TabItem value="specify" label="Specify Credentials" default>
 
-If you select **Specify credentials here**, you must provide Microsoft Azure app registration details.
+### Specify credentials
 
-![A comparison of app registration details and corresponding fields in the Harness connector settings.](../static/add-a-microsoft-azure-connector-63.png)
+Select **Specify credentials here** to authenticate using an Azure App Registration with a client secret or certificate. Provide the App Registration's Application (client) ID and Directory (tenant) ID.
 
-1. In Microsoft Azure, go to the App registration **Overview** or **Managed Identity** page and make note of the **Application (client) ID** and **Directory (tenant) ID**.
+<div align="center"><DocImage path={require('../static/add-a-microsoft-azure-connector-63.png')} alt="A comparison of App Registration details and corresponding fields in the Harness connector settings." width="80%" /></div>
 
-   The **Application (client) ID** is the application Id for the app registration you want to use the Harness connector. To access resources in your Azure subscription, you must assign the Azure App registration using this Application Id to a role in that subscription. For more information, go to the following Microsoft documentation:
+Perform the following steps to configure credentials:
 
-   * [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
-   * [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)
-   * [Use the portal to create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+1. In Microsoft Azure, go to the App Registration **Overview** page and note the **Application (client) ID** and **Directory (tenant) ID**.
 
-   The **Directory (tenant) ID** is the Id for the Microsoft Entra ID that exists in your app. For more information, go to the following Microsoft Entra documentation:
+   - **Application (client) ID**: the ID of the App Registration Harness will use. Assign this App Registration a role in your Azure subscription to grant access. Go to <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app" target="_blank" rel="noopener noreferrer">Register an application with the Microsoft identity platform</a> and <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role" target="_blank" rel="noopener noreferrer">Assign the application to a role</a> for steps.
+   - **Directory (tenant) ID**: the ID for the Microsoft Entra ID tenant that contains your app. Go to <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id" target="_blank" rel="noopener noreferrer">Get tenant ID</a> for steps.
 
-   * [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
-   * [Use the portal to create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+   <div align="center"><DocImage path={require('../static/add-a-microsoft-azure-connector-68.png')} alt="Microsoft Azure App Registration Overview page showing Application (client) ID and Directory (tenant) ID." width="80%" /></div>
 
-   ![Microsoft Azure app registration Overview page.](../static/add-a-microsoft-azure-connector-68.png)
+2. In the Harness Azure connector settings, select the **Environment**: **Azure Global** or **US Government**.
+3. Enter the **Application (client) ID** in the **Application Id** field.
+4. Enter the **Directory (tenant) ID** in the **Tenant Id** field.
+5. For **Authentication**, select **Secret** or **Certificate**, then select or create a <a href="/docs/platform/secrets/add-use-text-secrets" target="_blank" rel="noopener noreferrer">Harness Text Secret</a> or <a href="/docs/platform/secrets/add-file-secrets" target="_blank" rel="noopener noreferrer">Harness File Secret</a>.
 
-2. In the Harness Azure Cloud Provider settings, select the **Environment**: Either **Azure Global** or **US Government**.
-3. Input the **Application (client) ID** from Azure in the connector's **Application Id** field.
-4. Input the **Directory (tenant) ID** from Azure in the connector's **Tenant Id** field.
-5. Provide an authentication key for your app. For **Authentication**, select either **Secret** or **Certificate**, and then select or create a [Harness Text Secret](/docs/platform/secrets/add-use-text-secrets) or [Harness File Secret](/docs/platform/secrets/add-file-secrets).
+   Harness supports PEM files only. PFX files are not supported.
 
-   Harness supports only PEM files. Harness doesn't support PFX files.
+   To create a new client secret, go to **App Registrations** in Microsoft Entra ID, select your app, select **Certificates & secrets**, then select **New client secret**. Go to <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret" target="_blank" rel="noopener noreferrer">Creating a new application secret</a> for steps.
 
-   If you need to create a secret key for your app, go to **App Registrations** in Microsoft Entra ID, select the app you're connecting to Harness, select **Certificates & secrets**, and then select **New client secret**. For more information, go to the Azure documentation about [Creating a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
-
-   ![](../static/add-a-microsoft-azure-connector-69.png)
+   <div align="center"><DocImage path={require('../static/add-a-microsoft-azure-connector-69.png')} alt="Azure App Registration Certificates and secrets panel showing the New client secret option." width="80%" /></div>
 
 6. Select **Continue**.
 
 </TabItem>
 
-<TabItem value="OIDC (Beta)">
+<TabItem value="oidc" label="OIDC Authentication">
 
-:::info
+### OIDC authentication
 
-The Azure OIDC connector supports:
-- Azure Container Registry (ACR)
-- Azure Kubernetes Service (AKS)
-- Azure Web Apps (including Azure App Service Environments)
+Select **OIDC Authentication** to connect Harness to Azure without storing client secrets or certificates. Harness acts as an identity provider and issues short-lived JSON Web Tokens (JWTs) that Azure Active Directory (AD) validates directly using workload identity federation. Supported services: ACR, AKS, and Azure Web Apps. Go to <a href="https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation" target="_blank" rel="noopener noreferrer">Workload identity federation</a> in the Microsoft documentation to understand the underlying Azure mechanism.
 
-:::
+:::note
 
-:::info
-
-Currently, the Azure OIDC connector is behind the feature flag `CDS_AZURE_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Azure OIDC authentication is behind the feature flag `CDS_AZURE_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable it on your account.
 
 :::
 
-1. In Microsoft Azure, go to the App registration **Overview** or **Managed Identity** page and make note of the **Application (client) ID** and **Directory (tenant) ID**.
+**How OIDC authentication works**
 
-   The **Application (client) ID** is the application Id for the app registration you want to use the Harness connector. To access resources in your Azure subscription, you must assign the Azure App registration using this Application Id to a role in that subscription. For more information, go to the following Microsoft documentation:
+When a CD pipeline runs a stage that uses an Azure connector with OIDC authentication:
 
-   * [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
-   * [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)
-   * [Use the portal to create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+1. Harness generates a short-lived ID token (valid for 60 minutes) for the pipeline execution.
+2. The delegate presents this token to Azure AD.
+3. Azure AD validates the token against the federated credential you configured on the App Registration or Managed Identity.
+4. Azure AD issues an access token that grants access to Azure resources based on the RBAC roles you assigned.
 
-   The **Directory (tenant) ID** is the Id for the Microsoft Entra ID that exists in your app. For more information, go to the following Microsoft Entra documentation:
+**Issuer URL**
 
-   * [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
-   * [Use the portal to create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+The Harness OIDC issuer URL format depends on the environment cluster where your Harness account resides. To find your cluster, navigate to **Account Settings**, then select **Overview**. The cluster hosting your account is displayed on the account details page.
 
-   ![Microsoft Azure app registration Overview page.](../static/add-a-microsoft-azure-connector-68.png)
+The issuer URL format is:
 
-2. In the Harness Azure Cloud Provider settings, select the **Environment**: Either **Azure Global** or **US Government**.
-3. Input the **Application (client) ID** from Azure in the connector's **Application Id** field.
-4. Input the **Directory (tenant) ID** from Azure in the connector's **Tenant Id** field.
-5. Optionally, change the **Audience**. By default, this value is `api://AzureADTokenExchange`, and is the recommended value. 
+```text
+https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>
+```
+
+Use the hostname that matches your cluster, even if a vanity URL is set up for your account:
+
+| Cluster      | Hostname               |
+|--------------|------------------------|
+| Prod1/Prod2  | app.harness.io         |
+| Prod3        | app3.harness.io        |
+| Prod0/Prod4  | accounts.harness.io    |
+| EU clusters  | accounts.eu.harness.io |
+
+:::tip
+
+To find your Harness Account ID, navigate to **Account Settings**, then select **Overview**. Your account ID is also visible in your browser URL: `app.harness.io/ng/account/<YOUR_ACCOUNT_ID>/...`.
+
+You can test connectivity to the issuer URL by running:
+
+```bash
+curl https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>/.well-known/openid-configuration
+```
+
+This should return valid information from the endpoint, including the issuer, JWKS URI, and supported claims.
+
+:::
+
+**Subject identifier**
+
+The **subject** claim in the Harness-issued token uses this format:
+
+```text
+Provider:Harness:Account:<YOUR_HARNESS_ACCOUNT_ID>
+```
+
+Enter this exact value as the **Subject identifier** when configuring federated credentials in Azure. Azure uses it to match the incoming token to the correct identity.
+
+**Step 1: Configure federated credentials in Azure**
+
+You can configure OIDC using an App Registration (Service Principal) or a User-Assigned Managed Identity. Use **App Registration** when you need a service principal with explicit RBAC role assignments across one or more subscriptions. Use **User-Assigned Managed Identity** when the delegate runs inside an AKS cluster and you want tighter integration with Azure's managed identity service.
+
+<Tabs className="tabs--full-width">
+<TabItem value="app-reg" label="App Registration" default>
+
+Perform the following steps to add a federated credential to an App Registration:
+
+1. In the <a href="https://portal.azure.com" target="_blank" rel="noopener noreferrer">Azure portal</a>, navigate to **Microsoft Entra ID**, then select **App registrations**.
+2. Select **New registration**, enter a name (for example, `harness-oidc`), and select **Register**.
+3. On the **Overview** page, note the **Application (client) ID** and **Directory (tenant) ID**.
+
+   <div align="center"><DocImage path={require('../static/add-a-microsoft-azure-connector-68.png')} alt="Azure App Registration Overview page showing Application (client) ID and Directory (tenant) ID fields." width="80%" /></div>
+
+4. Select **Certificates & secrets**, then select the **Federated credentials** tab.
+5. Select **Add credential**, then for **Federated credential scenario**, select **Other issuer**.
+6. Enter the following values:
+
+   | Field | Value |
+   |---|---|
+   | **Issuer** | `https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>` (Replace `<HOSTNAME>` with your cluster hostname from the [Issuer URL](#issuer-url) table) |
+   | **Subject identifier** | `Provider:Harness:Account:<YOUR_HARNESS_ACCOUNT_ID>` |
+   | **Audience** | `api://AzureADTokenExchange` |
+   | **Name** | A descriptive name, for example `harness-pipeline` |
+
+   <div align="center"><DocImage path={require('./static/azure-oidc-add-federated-credential.png')} alt="Azure Add a credential panel showing the Other issuer scenario with Issuer, Value, and Audience fields." width="80%" /></div>
+
+7. Select **Add**.
+
+Go to <a href="https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust?pivots=identity-wif-apps-methods-azp" target="_blank" rel="noopener noreferrer">Configure an app to trust an external identity provider</a> in the Microsoft documentation for additional configuration options.
+
+To add the federated credential using the Azure CLI instead, run the following command:
+
+```bash
+az ad app federated-credential create \
+  --id <APPLICATION_ID or OBJECT_ID> \
+  --parameters @federated-credential.json
+```
+
+Where `federated-credential.json` contains:
+
+```json
+{
+  "name": "harness-pipeline",
+  "issuer": "https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>",
+  "subject": "Provider:Harness:Account:<YOUR_HARNESS_ACCOUNT_ID>",
+  "audiences": ["api://AzureADTokenExchange"]
+}
+```
+
+Replace `<HOSTNAME>` with your cluster hostname from the [Issuer URL](#issuer-url) table.
 
 </TabItem>
+<TabItem value="managed-identity" label="User-Assigned Managed Identity">
 
-<TabItem value="Inherit Credentials from the delegate">
+Perform the following steps to add a federated credential to a User-Assigned Managed Identity:
 
-If you have [installed a Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) in your Azure subscription (preferably in your target AKS cluster), select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit authentication credentials from the delegate.
+1. In the <a href="https://portal.azure.com" target="_blank" rel="noopener noreferrer">Azure portal</a>, navigate to **Managed Identities**.
+2. Select **Create**, choose your subscription, resource group, and region, enter a name, and select **Review + create**.
 
-1. For **Environment**, select **Azure Global** or **US Government**.
-2. For **Authentication**, select **System Assigned Managed Identity** or **User Assigned Managed Identity**.
+   <div align="center"><DocImage path={require('./static/azure-oidc-mi-overview.png')} alt="Azure Create User Assigned Managed Identity form showing Subscription, Resource group, Name, and Region fields." width="80%" /></div>
 
-   **System Assigned Managed Identity** uses the AKS cluster predefined [Kubelet Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities). The [Control plane AKS Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities), which has name format `<AKSName>`, must have the **Reader** permission on the AKS cluster itself. If used for image storage, the Kubelet Managed Identity, which has name format `<AKSName>-agentpool`, must have the **acrPull** permission on ACR.
+3. On the managed identity **Overview** page, note the **Client ID**.
+4. Navigate back to **Managed Identities**, select the identity you created, then select **Federated credentials** under **Settings**.
+5. Select **Add credential**, then enter the following values:
 
-   For more information about managed identities, go to the follow Azure documentation:
+   | Field | Value |
+   |---|---|
+   | **Federated credential scenario** | **Other issuer** |
+   | **Issuer** | `https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>` (Replace `<HOSTNAME>` with your cluster hostname from the [Issuer URL](#issuer-url) table) |
+   | **Subject identifier** | `Provider:Harness:Account:<YOUR_HARNESS_ACCOUNT_ID>` |
+   | **Audience** | `api://AzureADTokenExchange` |
+   | **Name** | A descriptive name, for example `harness-pipeline` |
 
-   * [Use managed identities in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity)
-   * [How to use managed identities with Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity) from Azure.
+   <div align="center"><DocImage path={require('./static/azure-oidc-add-federated-credential.png')} alt="Azure Add a credential panel showing the Other issuer scenario with Issuer, Value, and Audience fields." width="80%" /></div>
 
-   ![](../static/add-a-microsoft-azure-connector-66.png)
+6. Select **Add**.
 
-3. If you selected **User Assigned Managed Identity**, input the Managed Identity's **Client Id**, which you can find in your Azure **Managed Identities**. You can also use a [Pod Assigned Managed identity](https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity).
+Go to <a href="https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust-user-assigned-managed-identity?pivots=identity-wif-mi-methods-azp" target="_blank" rel="noopener noreferrer">Configure a user-assigned managed identity to trust an external identity provider</a> in the Microsoft documentation for additional configuration options.
 
-   ![](../static/add-a-microsoft-azure-connector-67.png)
+To add the federated credential using the Azure CLI instead, run the following command:
 
-4. Select **Continue**
+```bash
+az identity federated-credential create \
+  --name harness-pipeline \
+  --identity-name <MANAGED_IDENTITY_NAME> \
+  --resource-group <RESOURCE_GROUP_NAME> \
+  --issuer "https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>" \
+  --subject "Provider:Harness:Account:<YOUR_HARNESS_ACCOUNT_ID>" \
+  --audiences "api://AzureADTokenExchange"
+# Replace <HOSTNAME> with your cluster hostname (see Issuer URL section above)
+```
 
 </TabItem>
 </Tabs>
 
+**Assign Azure RBAC roles**
+
+Assign the App Registration or Managed Identity the minimum role required for each Azure service you intend to use with this connector:
+
+| Service | Minimum role | Assign at scope |
+|---|---|---|
+| Azure Container Registry (ACR) | Reader | Subscription or Resource Group |
+| Azure Kubernetes Service (AKS) | Owner or custom equivalent | Subscription or Resource Group |
+| Azure Web Apps | Contributor | Subscription or Resource Group |
+
+Go to [Roles, permissions, and cluster requirements](#roles-permissions-and-cluster-requirements) for the full role details and custom role JSON examples.
+
+**Step 2: Configure the OIDC connector in Harness**
+
+After completing the Azure setup above, return to the **Details** screen in the Harness connector wizard (the screen where you selected **OIDC** authentication).
+
+<div align="center"><DocImage path={require('./static/azure-oidc-harness-connector.png')} alt="Harness Azure connector Details screen showing the OIDC Authentication option selected with Environment, Application Id, Tenant Id, and Audience fields." width="80%" /></div>
+
+Perform the following steps to complete the configuration:
+
+1. Select the **Environment**: **Azure Global** or **US Government**.
+2. Enter the **Application (client) ID** of the App Registration or User-Assigned Managed Identity in the **Application Id** field.
+3. Enter the **Directory (tenant) ID** in the **Tenant Id** field.
+4. Optionally, enter the **Subscription ID**.
+5. Leave **Audience** as `api://AzureADTokenExchange` unless you configured a custom audience in Azure.
+6. Select **Continue**.
+
+:::note
+
+OIDC authentication requires **Connect through a Harness Delegate** as the connectivity mode. **Connect through Harness Platform** is not supported with OIDC.
+
+:::
+
+<details>
+<summary>YAML reference</summary>
+
+```yaml
+connector:
+  name: azure-oidc  # Replace with your connector name
+  identifier: azure_oidc  # Replace with your connector identifier
+  type: Azure
+  spec:
+    environment: AZURE
+    credential:
+      type: OidcAuthentication
+      spec:
+        tenantId: <YOUR_TENANT_ID>  # Replace with your Directory (tenant) ID
+        applicationId: <YOUR_APPLICATION_ID>  # Replace with your Application (client) ID
+        audience: api://AzureADTokenExchange
+        azureEnvironmentType: AZURE
+    delegateSelectors:
+      - <YOUR_DELEGATE_SELECTOR>  # Replace with your delegate tag
+    executeOnDelegate: true
+```
+
+</details>
+
+</TabItem>
+
+<TabItem value="inherit" label="Inherit from Delegate">
+
+### Inherit from delegate
+
+Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit authentication credentials from a Harness delegate running in your Azure subscription or AKS cluster. This option is useful when the delegate itself has the appropriate Managed Identity or service account permissions.
+
+Perform the following steps to configure inherited credentials:
+
+1. For **Environment**, select **Azure Global** or **US Government**.
+2. For **Authentication**, select **System Assigned Managed Identity** or **User Assigned Managed Identity**.
+
+   **System Assigned Managed Identity** uses the AKS cluster's predefined <a href="https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities" target="_blank" rel="noopener noreferrer">Kubelet Managed Identity</a>. The Control plane AKS Managed Identity (named `<AKSName>`) must have the **Reader** permission on the AKS cluster itself. If used for image storage, the Kubelet Managed Identity (named `<AKSName>-agentpool`) must have the **acrPull** permission on ACR.
+
+   Go to <a href="https://docs.microsoft.com/en-us/azure/aks/use-managed-identity" target="_blank" rel="noopener noreferrer">Use managed identities in Azure Kubernetes Service</a> and <a href="https://docs.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity" target="_blank" rel="noopener noreferrer">How to use managed identities with Azure Container Instances</a> for further details.
+
+   <div align="center"><DocImage path={require('../static/add-a-microsoft-azure-connector-66.png')} alt="Azure connector Authentication settings showing System Assigned Managed Identity selected." width="80%" /></div>
+
+3. If you selected **User Assigned Managed Identity**, enter the Managed Identity's **Client Id** from your Azure **Managed Identities**. You can also use a <a href="https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity" target="_blank" rel="noopener noreferrer">Pod Assigned Managed Identity</a>.
+
+   <div align="center"><DocImage path={require('../static/add-a-microsoft-azure-connector-67.png')} alt="Azure connector User Assigned Managed Identity settings showing the Client Id field." width="80%" /></div>
+
+4. Select **Continue**.
+
+</TabItem>
+</Tabs>
+
+---
+
 ## Select connectivity mode
+
+The connectivity mode determines how Harness communicates with Azure. Perform the following steps to complete the connectivity configuration:
 
 1. Select how you want Harness to connect to Azure:
 
-   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and Azure. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
-   * **Connect through a Harness Delegate:** Harness communicates with Azure through a Harness Delegate in your Azure subscription or AKS cluster. You must choose this option if you chose to inherit delegate credentials.
+   - **Connect through Harness Platform**: direct, secure communication between Harness and Azure. This mode is required for <a href="/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure" target="_blank" rel="noopener noreferrer">Harness Cloud build infrastructure</a>. Not available with OIDC authentication.
+   - **Connect through a Harness Delegate**: Harness communicates with Azure through a Harness delegate in your Azure subscription or AKS cluster. Required when using inherited delegate credentials or OIDC authentication.
 
-2. If connecting through a Harness Delegate, select either:
+2. If connecting through a Harness delegate, select one of the following:
 
-   * **Use any available Delegate:** Harness selects an available delegate at runtime.
-   * **Only use Delegates with all of the following tags:** Use tags to match one or more suitable delegates. You can also install a new delegate at this time.
+   - **Use any available Delegate**: Harness selects an available delegate at runtime.
+   - **Only use Delegates with all of the following tags**: use tags to target one or more specific delegates. You can also install a new delegate at this time.
 
-3. Select **Save and Continue** to run the connection test, and then, if the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
+3. Select **Save and Continue** to run the connection test. If the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
-   If the connection test fails, make sure that your delegate is running and that your credentials are valid. For example, check that the secret has not expired in your App registration.
+   If the connection test fails, confirm that your delegate is running and that your credentials are valid. For example, check that the client secret has not expired in your App Registration.
 
-## Using $\{HARNESS\_KUBE\_CONFIG\_PATH} with Azure
+---
 
-The Harness `${HARNESS_KUBE_CONFIG_PATH}` expression resolves to the path to a Harness-generated kubeconfig file containing the credentials you provided to Harness.
+## Use `${HARNESS_KUBE_CONFIG_PATH}` with Azure
 
-The credentials can be used by kubectl commands by exporting its value to the `KUBECONFIG` environment variable.
+The Harness expression `${HARNESS_KUBE_CONFIG_PATH}` resolves to the path of a Harness-generated kubeconfig file containing the credentials you provided to the connector.
 
-For example, you could use this shell script in a Harness Run step:
+You can use these credentials with `kubectl` commands by exporting the expression value to the `KUBECONFIG` environment variable. For example, add the following to a Harness Shell Script step:
 
-```
+```bash
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n <namespace>
 ```
 
-Steps can be executed on any delegate or you can select specific delegates using the [Delegate Selector](../../delegates/manage-delegates/select-delegates-with-selectors.md) setting.
+Go to <a href="/docs/platform/delegates/manage-delegates/select-delegates-with-selectors" target="_blank" rel="noopener noreferrer">Select delegates with selectors</a> to run steps on a specific delegate.
 
-For Azure deployments, note the following:
+Note the following for Azure deployments:
 
-* If the Azure connector used in the stage's Infrastructure uses Azure Managed Identity for authentication, then the Shell Script step must use a **Delegate Selector** for a delegate running in AKS.
-* If the Azure connector used in the stage's Infrastructure uses Azure Service Principal for authentication, then the Shell Script step can use any delegate.
+- If the Azure connector uses Azure Managed Identity for authentication, the Shell Script step must use a **Delegate Selector** for a delegate running in AKS.
+- If the Azure connector uses Azure Service Principal for authentication, the Shell Script step can use any delegate.
 
-## See also
+---
 
-* [Azure ACR to AKS CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart)
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [Azure OIDC Token Plugin for CI](/docs/continuous-integration/secure-ci/azure-oidc-token-plugin) - Use OIDC to authenticate with Azure services in CI pipelines
-* [Harness Key Concepts](/docs/platform/get-started/key-concepts.md)
-* [CD Pipeline Basics](/docs/continuous-delivery/overview#pipeline)
+## Next steps
+
+You have configured the Microsoft Azure connector. Continue your learning journey with the following:
+
+- <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart" target="_blank" rel="noopener noreferrer">Azure ACR to AKS CD quickstart</a>: deploy a containerized application from ACR to AKS using a CD pipeline.
+- <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart" target="_blank" rel="noopener noreferrer">Kubernetes CD quickstart</a>: deploy to Kubernetes using the platform-agnostic Kubernetes cluster connector.
+- <a href="/docs/continuous-integration/secure-ci/azure-oidc-token-plugin" target="_blank" rel="noopener noreferrer">Azure OIDC token plugin for CI</a>: use OIDC to authenticate with Azure services in Harness CI pipelines.
+- <a href="/docs/platform/get-started/key-concepts" target="_blank" rel="noopener noreferrer">Harness key concepts</a>: understand the core Harness platform concepts.
+- <a href="/docs/continuous-delivery/overview#pipeline" target="_blank" rel="noopener noreferrer">CD pipeline basics</a>: understand the structure of a Harness CD pipeline.

@@ -18,7 +18,7 @@ This page lists commonly requested feature flags across modules. It is not an ex
 | `PL_ENABLE_MULTIPLE_IDP_SUPPORT` | Platform | Enables multiple SAML identity provider support for SSO configurations. | None |
 | `PL_PROJECT_MOVEMENT_ENABLED` | Platform | Enables moving projects between organizations within an account. | None |
 | `OPA_IMPORT_FROM_GIT` | Platform | Enables importing OPA policies from Git repositories instead of inline-only definitions. | None |
-| `CDS_AZURE_OIDC_AUTHENTICATION` | CD | Enables Azure OIDC authentication for CD connectors, allowing passwordless auth with Azure services. | None |
+| `CDS_AZURE_OIDC_AUTHENTICATION` | CD | Enables Azure OIDC authentication for CD connectors, allowing passwordless auth with Azure services. Go to [Azure connector — OIDC Authentication](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector#oidc-authentication) for setup steps. | None |
 | `PL_ENABLE_USER_IMPERSONATION` | Platform | Enables user impersonation for troubleshooting access issues (Beta). | None |
 
 ## How to request feature flag enablement
