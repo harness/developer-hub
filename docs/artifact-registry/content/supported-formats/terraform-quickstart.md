@@ -60,7 +60,7 @@ If a module or provider is not found in your Harness registry, the upstream prox
 
 ## Set up the Terraform client
 
-In your Harness Terraform Artifact Registry, click **Set Up Client** and follow theinstructions to configure Terraform or OpenTofu to use the registry.
+In your Harness Terraform Artifact Registry, click **Set Up Client** and follow the instructions to configure Terraform or OpenTofu to use the registry.
 
 ### Configure a module
 
