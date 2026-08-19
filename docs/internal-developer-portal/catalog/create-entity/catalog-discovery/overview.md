@@ -18,6 +18,7 @@ Integrations allow you to fetch data from Harness modules as well as third-party
 The following integrations are currently available under the `IDP_INTEGRATIONS` feature flag:
 
 - [**Bitbucket Cloud**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/bitbucket-cloud): Auto-discover Bitbucket Cloud repositories and populate the IDP Catalog for service discovery and dependency mapping.
+- [**Catalog Info Yaml**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/catalog-info-yaml): Discover `catalog-info.yaml` files in your GitHub repositories and import the Backstage entity definitions into the IDP Catalog.
 - [**Datadog**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/datadog): Auto-discover Datadog services and import them into the IDP Catalog with monitor health, SLO tracking, and service dependency context.
 - [**Dynatrace**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/dynatrace): Auto-discover Dynatrace services with problems, SLO tracking, and service health context.
 - [**GCP**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integrations/gcp): Auto-discover Google Cloud resources and populate the IDP Catalog with infrastructure, compute, database, and AI resource metadata.
