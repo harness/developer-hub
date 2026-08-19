@@ -1,6 +1,6 @@
 ---
 title: Bandit step configuration
-description: Scan code repositories with with Bandit.
+description: Scan code repositories with Bandit.
 sidebar_label: Bandit step configuration
 sidebar_position: 60
 helpdocs_topic_id: n3dcx6wzb3

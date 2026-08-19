@@ -46,7 +46,7 @@ You can manually override the severity only from the Issues page.
 
 ### View Overridden Severity on Vulnerabilities Page
 
-- On Vulnerabilities page, you can view the new overridden severity being applied from the next scan. You can also add the `Severity Overriden` filter to view only the issues with overridden severity.
+- On Vulnerabilities page, you can view the new overridden severity being applied from the next scan. You can also add the `Severity Overridden` filter to view only the issues with overridden severity.
 
 <DocImage path={require('./static/severity-filters.png')} width="80%" height="80%" title="Click to view full size image" />
 

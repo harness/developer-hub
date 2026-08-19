@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-This topic describes how to create an end-to-end pipeline that builds an image and pushes it to Docker Hub _only_ if the codebase and image contain no critical vulnerabilties. This pipeline uses two free tools:
+This topic describes how to create an end-to-end pipeline that builds an image and pushes it to Docker Hub _only_ if the codebase and image contain no critical vulnerabilities. This pipeline uses two free tools:
 
 - [Semgrep](https://semgrep.dev), a popular [SAST](https://www.gartner.com/en/information-technology/glossary/static-application-security-testing-sast) tool for detecting vulnerabilities in application code. Semgrep can scan a [wide variety of languages](https://semgrep.dev/docs/supported-languages/) and includes a [free version](https://semgrep.dev/pricing/) for individuals who want to scan files locally.
 

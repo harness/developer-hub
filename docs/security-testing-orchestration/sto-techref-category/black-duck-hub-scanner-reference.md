@@ -224,7 +224,7 @@ import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 ### Additional CLI flags
 
-Use this field to run the [`synopsis detect` scanner](https://blackducksoftware.github.io/synopsys-detect) with flags such as: 
+Use this field to run the [`synopsys detect` scanner](https://blackducksoftware.github.io/synopsys-detect) with flags such as: 
 
 `-detect.tools.excluded {DETECTOR, SIGNATURE}`
 

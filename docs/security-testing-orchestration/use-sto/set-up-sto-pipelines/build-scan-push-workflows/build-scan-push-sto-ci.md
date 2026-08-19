@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-This topic describes how to create an end-to-end pipeline that uses STO and CI steps to build an image and pushes it to Docker Hub _only_ if the codebase and image contain no critical vulnerabilties. This pipeline uses two popular open-source tools:
+This topic describes how to create an end-to-end pipeline that uses STO and CI steps to build an image and pushes it to Docker Hub _only_ if the codebase and image contain no critical vulnerabilities. This pipeline uses two popular open-source tools:
 
 - [Bandit](https://bandit.readthedocs.io/en/latest), for scanning Python code.
 

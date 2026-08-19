@@ -1,6 +1,6 @@
 ---
 title: Exemptions for specific issues
-description: You can expempt specific issues from STO failure policies.
+description: You can exempt specific issues from STO failure policies.
 sidebar_label: Exemptions for specific issues
 sidebar_position: 50
 redirect_from:

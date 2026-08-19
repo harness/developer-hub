@@ -45,7 +45,7 @@ Go to [What's supported in Harness STO](/docs/security-testing-orchestration/wha
 
 ## Developer workflow
 
-You're a developer, working in various development branches and merging your code updates. You want to make sure you don't introduce any new vulnerabilities when you merge your code into the upstream branch. Using STO, you can scan your repo automatically and then use the results to pinpoint and fix your vulnerabilties before you merge.
+You're a developer, working in various development branches and merging your code updates. You want to make sure you don't introduce any new vulnerabilities when you merge your code into the upstream branch. Using STO, you can scan your repo automatically and then use the results to pinpoint and fix your vulnerabilities before you merge.
 
 ### Set up your codebase
 

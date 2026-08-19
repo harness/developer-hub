@@ -44,7 +44,7 @@ Search for and add the **Veracode** step to your pipeline. This step can be used
 
 1. **Scan Mode**: Set the **Scan Mode** to **Orchestration**.
 2. **Scan Configuration**: Based on your requirements, choose between [**Default**](#default) or [**Sandbox Scan**](#sandbox-scan) as the scan configuration.
-3. **Target**: The **[Type](#type)** is to Repository by default. For **[Target and Variant Detection](#target-and-variant-detection)**, you can use the [**Auto**](#target-and-variant-detection) option to let STO set the **Name** and **Varient** fields for you. Or, you can manually define them using the **Manual** option.
+3. **Target**: The **[Type](#type)** is to Repository by default. For **[Target and Variant Detection](#target-and-variant-detection)**, you can use the [**Auto**](#target-and-variant-detection) option to let STO set the **Name** and **Variant** fields for you. Or, you can manually define them using the **Manual** option.
 4. **Workspace**(optional): Specify the path to the file or directory you want to scan in the [Workspace](#workspace) field. If this field is left blank, the entire repository will be scanned.
 5. **Authentication**: Select the Authentication [**Type**](#type-1) as either [**API Key**](#api-key) or [**Username and Password**](#username-and-password). Based on the type, configure the **Access Id** and **Access Token**.
 6. **App Id**(optional):  In the **Scan Tool** section, you can enter the Veracode [**App Id**](#app-id) of the application you want to use for the scan. If this field is left blank, the step will attempt to locate an application using the **Target Name** you provided. If no matching application is found, a new Veracode Application will be created automatically with the name format `harness-HARNESS_PROJECT_ID-TARGET_NAME`. Additionally, refer to [this section](#using-an-existing-veracode-application-created-by-sto) to learn more on how to use an existing Veracode Application created by STO.
@@ -61,7 +61,7 @@ Here's how you can configure your Veracode step to Ingest the scan results from 
 
 1. Search for and add the **Veracode** step to your pipeline.
 2. **Scan Mode**: Set the **Scan Mode** to **Ingestion**.
-3. **Target**: The **[Type](#type)** is to Repository by default. For **[Target and Variant Detection](#target-and-variant-detection)**, define the **Name** and **Varient** manually.
+3. **Target**: The **[Type](#type)** is to Repository by default. For **[Target and Variant Detection](#target-and-variant-detection)**, define the **Name** and **Variant** manually.
 4. **Ingestion File**: For the field [**Ingestion File**](#ingestion-file), enter the path where the XML scan results file is saved. for example `/harness/output.xml`
 
 <DocImage path={require('./static/veracode-ingestion.png')} width="40%" height="40%" title="Click to view full size image" />

@@ -226,7 +226,7 @@ With the Snyk Step, or a [Custom Scan Step](https://developer.harness.io/docs/se
 
 ![](../static/sto-7041-override-in-security-tests.png)
 
-Harness will also display the information that the severity was overriden, and the original score, so long as the report follows the Snyk required format
+Harness will also display the information that the severity was overridden, and the original score, so long as the report follows the Snyk required format
 
 ![](../static/sto-6927-override-popup-for-snyk.png)
 

@@ -337,7 +337,7 @@ Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techre
 - [SonarQube doesn't scan the main branch and pull request branches in the same pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-doesnt-scan-the-main-branch-and-pull-request-branches-in-the-same-pipeline)
 
 #### Why am I getting the error Missing target_name for scan_type [repository] scan.
-This error ocurrs if there's no scan target in the Scanner configuration. To fix this, please ensure that the Scan Step configuration properly selects a target.
+This error occurs if there's no scan target in the Scanner configuration. To fix this, please ensure that the Scan Step configuration properly selects a target.
 
 
 #### How does the SonarQube integration work when attempting to perform a branch scan with SonarQube Enterprise?
