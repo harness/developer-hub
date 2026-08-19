@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-08-11T10:00:00
+date: 2026-08-18T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,9 +14,27 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: August 11, 2026
+#### Last updated: August 18, 2026
 
 ## August 2026
+
+### FME Metric Check Step in Harness Pipelines
+----
+#### 2026-08-18
+
+Harness FME now supports the **Metric Check** step in [Harness pipelines](/docs/feature-management-experimentation/pipelines/), allowing teams to evaluate a [feature flag metric](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results#viewing-metrics) during a pipeline execution and automatically gate rollout decisions based on the result. The step also exposes metric and evaluation details as pipeline outputs, allowing downstream steps to reference the results if needed. 
+
+![](./static/fme/pipelines-metric-output.png)
+
+The **Metric Check** step retrieves a metric, evaluates it against user-defined failure criteria using JEXL expressions, and returns a pass or fail result. This enables release monitoring workflows where a pipeline can automatically continue, pause, roll back, or trigger another failure strategy based on live application metrics instead of requiring manual verification.
+
+![](./static/fme/pipelines-metric.png)
+
+This step is available under **Feature Management & Experimentation** in the [Harness pipeline step library](/docs/platform/pipelines/add-a-stage#steps-available-for-custom-stages) and can be combined with existing pipeline capabilities such as approvals, notifications, and failure strategies to validate error rates, latency, conversion rates, or other key metrics after a deployment before continuing a rollout.
+
+#### Related documentation
+
+- [Using Feature Management & Experimentation with Harness Pipelines](/docs/feature-management-experimentation/pipelines/#metric-check)
 
 ### Scheduling in the Change Requests API
 ----

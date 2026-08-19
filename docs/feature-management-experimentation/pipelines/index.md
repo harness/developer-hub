@@ -51,7 +51,7 @@ When you add a <Tooltip id="fme.pipelines.step">step</Tooltip> to a <Tooltip id=
 
 ![](./static/pipeline-steps.png)
 
-Each FME step runs like [any other Harness pipeline step](/docs/platform/pipelines/add-a-stage#steps-available-for-custom-stages) and performs a single, discrete feature flag operation, such as creating a flag, updating metadata, modifying individual targets, or killing a flag. These steps execute in sequence with the rest of your pipeline logic and support standard pipeline capabilities, including [approvals](/docs/platform/approvals/approvals-tutorial), [notifications](/docs/platform/notifications/notifications/configure-notifications#configure-pipeline-notifications), and [custom failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps/).
+Each FME step runs like [any other Harness pipeline step](/docs/platform/pipelines/add-a-stage#steps-available-for-custom-stages) and performs a single, discrete feature management operation. These steps can create or modify feature flags, control rollouts, evaluate feature flag metrics, or execute flag lifecycle actions. FME steps execute in sequence with the rest of your pipeline logic and support standard pipeline capabilities, including [approvals](/docs/platform/approvals/approvals-tutorial), [notifications](/docs/platform/notifications/notifications/configure-notifications#configure-pipeline-notifications), and [custom failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps/).
 
 ## How approvals work with FME steps
 
@@ -101,6 +101,7 @@ To add FME steps to a pipeline:
    | [**Delete Feature Flag**](#delete-feature-flag)                              | Permanently delete a feature flag         | Use when a feature flag is no longer needed and should be removed entirely. Optionally deletes all flag definitions across environments before deletion.             |
    | [**Archive Feature Flag**](#archive-feature-flag)                            | Archive a feature flag                    | Use when a feature flag is no longer active but should be preserved for historical reference rather than permanently deleted.                                        |
    | [**Set Default Allocations**](#set-default-allocations)           | Control default rollout percentages       | Use when you want to define how traffic is split across treatments for users who do not match any targeting rules (for example, 50/50, 75/25, or 100% on).              |
+   | [**Metric Check**](#metric-check) | Evaluate feature flag metrics | Use when you want to validate application metrics during a rollout and automatically determine whether a pipeline should continue, pause, or execute a failure strategy. |
    | [**Set Individual Targets**](#set-individual-targets)                   | Define the full set of individual targets | Use when you want to deterministically set the complete list of individual targets for a flag in an environment, replacing any existing list.        |
    | [**Add/Remove Individual Targets**](#addremove-individual-targets) | Incrementally modify targeting            | Use when you need to add or remove specific users or segments without overwriting existing individual target lists. Useful for gradual rollouts or hand-picked targets. |
    | [**Kill Feature Flag**](#kill-feature-flag)                  | Immediately disable a feature             | Use to kill the flag in the specified environment, serving the [default treatment](/docs/feature-management-experimentation/feature-management/setup/default-treatment).                                                |
@@ -707,6 +708,58 @@ Use this step to apply structured change instructions to a feature flag definiti
    - In the `Baseline Treatment` field, select a baseline treatment.
 
 1. Click **Apply Changes** to add the step to the pipeline.
+
+### Metric Check
+
+Use this step to evaluate metrics for a feature flag during a pipeline execution. The **Metric Check** step acts as a release monitoring gate by evaluating metric values against a JEXL failure condition. If the failure condition evaluates to `true`, the step fails and the pipeline follows the configured failure strategy, if one is defined.
+
+![](./static/metric-check.png)
+
+Common use cases include validating error rates, latency, conversion rates, or other application metrics before continuing a deployment or feature rollout. Use the following JEXL expression examples for common release monitoring scenarios::
+
+| Use case                     | Failure condition                                                                                             |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Error rate increased         | `<+metric("error_rate").treatment("on").mean> > 0.05`                                                         |
+| API latency increased        | `<+metric("api_latency").treatment("on").p95> > 500`                                                          |
+| Conversion rate decreased    | `<+metric("conversion_rate").treatment("on").mean> < 0.12`                                                    |
+| Multiple guardrail metrics exceeded | `<+metric("error_rate").treatment("on").mean> > 0.05 \|\| <+metric("api_latency").treatment("on").p95> > 500` |
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Metric Check** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name (for example, `Validate Checkout Metrics`).
+   - **Timeout**: Specify the maximum amount of time the step can wait for metric evaluation to complete before it fails.
+   - **Environment**: Specify the environment where the feature flag is configured.
+   - **Feature Flag**: Add the feature flag name.
+   - **Lookback Window**: Specify the period of time used to evaluate metric data (for example, `15m` or `1h`).
+   - **Metrics**: Select one or more metrics to evaluate. Click **+Add a metric** to create a metric.
+
+1. In the **Failure Condition** field, enter a [JEXL expression](/docs/platform/variables-and-expressions/expression-v2/#write-expressions-using-jexl) that evaluates to `true` when the step should fail.
+
+   ```text title="Failure Condition Example"
+   <+metric("checkout_error_rate").treatment("on").mean> > 0.05 ||
+   <+metric("checkout_latency").treatment("on").p95> > 500
+   ```
+   
+   :::info Failure Condition
+   The failure condition determines when the **Metric Check** step should fail. You can configure a failure strategy to define what happens next, such as stopping the pipeline or triggering a rollback. **Metric Check** evaluates predefined thresholds and conditions rather than waiting for statistical significance, making it suitable for automated release decisions.
+   :::
+
+   This condition fails the step if:
+
+   - The average checkout error rate exceeds 5%.
+   - The 95th percentile checkout latency exceeds 500 ms.
+
+   In this example, `on` refers to the feature flag treatment being evaluated. Replace it with the treatment name configured for your feature flag.
+
+1. Optionally, configure a [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps/) in the **Advanced** tab to define what happens when the metric check fails, such as rolling back a deployment or stopping the pipeline.
+1. Click **Apply Changes** to add the step to the pipeline.   
+
+After the step executes, you can view the metric evaluation results in the step execution details view, including metric details, evaluated metric values, and the pass/fail result.
+
+![Metric Check step execution details view showing the Details, Input, Output, and Execution Context tabs in the Pipeline execution page](./static/metric-check-1.png)
+*The step execution details view displays the **Details**, **Input**, **Output**, and **Execution Context** tabs, where you can review the Metric Check execution status, configured inputs, evaluated metric results, and runtime information.*
 
 ### Create Segment
 
