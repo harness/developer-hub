@@ -19,7 +19,7 @@ _**Note**: The connector will need to be scoped to the correct location where th
     * `kubernetes_override_image_connector` to modify the image connector used to pull step images
 
 :::note
-If you specify a custom default image connector via `kubernetes_override_image_connector` you will need to make the following images avalible in your registry:
+If you specify a custom default image connector via `kubernetes_override_image_connector` you will need to make the following images available in your registry:
 
 -   harnesssolutionfactory/harness-python-api-sdk:latest
 -   harnesssolutionfactory/harness-cr-mirror-repositories:latest

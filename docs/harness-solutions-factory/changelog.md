@@ -226,7 +226,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - UPDATE: PilotLight setup custom template library
   - UPDATE: .gitignore to skip macos system files
   - UPDATE: PilotLight to include new default custom template library repo and connector
-  - UPDATE: PilotLight::Mirror pipeines to resolve issue with workspace variable expansion in the code
+  - UPDATE: PilotLight::Mirror pipelines to resolve issue with workspace variable expansion in the code
 
 ## [v2.0.7] - 2024-11-08
 
