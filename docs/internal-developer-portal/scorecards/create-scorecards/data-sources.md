@@ -4,7 +4,6 @@ description: Comprehensive guide to all available data sources for Scorecard che
 sidebar_position: 3
 sidebar_label: Data Sources
 redirect_from:
-  - /docs/internal-developer-portal/features/checks-datasources
   - /docs/internal-developer-portal/scorecards/data-sources
 ---
 

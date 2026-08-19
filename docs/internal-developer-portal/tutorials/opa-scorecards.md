@@ -2,8 +2,6 @@
 title: Harness Policy As Code for Services using Scorecards
 description: Learn how to use OPA with Scorecards
 sidebar_position: 6
-redirect_from:
-  - /tutorials/internal-developer-portal/opa-scorecards
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
