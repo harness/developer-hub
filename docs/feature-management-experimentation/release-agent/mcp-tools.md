@@ -63,7 +63,7 @@ Before you begin, ensure you have the following:
 
 1. Save the file and restart Claude Code for the changes to take effect.
 
-Go to [Harness MCP Server documentation](/docs/platform/harness-ai/harness-mcp-server/#configuration) to configure additional MCP-compatible AI tools like Windsurf, Cursor, or VS Code. This includes detailed setup instructions for all supported platforms.
+Go to [Configure your AI client](/docs/platform/harness-ai/connect-with-ai/harness-mcp-server/configure-ai-clients) to configure additional MCP-compatible AI tools like Windsurf, Cursor, or VS Code. This includes detailed setup instructions for all supported platforms.
 
 ### Verify the installation
 
