@@ -15,7 +15,7 @@ You can follow this detailed guide (as described below) to setup Runner and inst
 
 ### 1. SSH into the GCP VM Instance 
 :::info
-To connect to a VM with SSH, you'll need your **SSH Key to propogate into your VM**. Make sure you have a fully functioning SSH Key added into your GCP Console. Refer to this guide to learn more on [how to add a SSH Key to VMs](https://cloud.google.com/compute/docs/connect/add-ssh-keys). 
+To connect to a VM with SSH, you'll need your **SSH Key to propagate into your VM**. Make sure you have a fully functioning SSH Key added into your GCP Console. Refer to this guide to learn more on [how to add a SSH Key to VMs](https://cloud.google.com/compute/docs/connect/add-ssh-keys). 
 :::
 
 You'll have to [SSH into your GCP VM instance](https://cloud.google.com/compute/docs/connect/standard-ssh) to host your Runner and Delegate there. In order to do that, you can follow the given steps: 

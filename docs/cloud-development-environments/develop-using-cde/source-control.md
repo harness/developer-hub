@@ -44,7 +44,7 @@ Using the CLI
 <img width="600" alt="branch-3" src="https://github.com/user-attachments/assets/08fa6a02-cd80-445e-b733-5a7baa1d8f3b"/>
 <img width="600" alt="branch-4" src="https://github.com/user-attachments/assets/e6c047bd-630e-4759-85d4-6317665d6e92"/>
 
-## Commiting Changes to the Remote Repository
+## Committing Changes to the Remote Repository
 After making changes to your source code, you need to add and commit them to the remote repository.
 
 ### Using the CLI
