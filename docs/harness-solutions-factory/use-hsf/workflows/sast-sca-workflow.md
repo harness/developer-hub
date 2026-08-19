@@ -1,6 +1,7 @@
 ---
 title: SAST & SCA Workflow
-description: Understand the SAST & SCA Workflow
+description: Provision Harness SAST and SCA templates so teams can scan repositories for vulnerabilities from day one.
+sidebar_label: SAST & SCA Workflow
 keywords:
   - sast sca workflow
   - security scanning templates
@@ -11,35 +12,41 @@ tags:
 sidebar_position: 40
 ---
 
-Deploy Harness SAST & SCA Templates provisions a suite of step group, stage,
-and pipeline templates that give your teams out-of-the-box security scanning
-capabilities. The goal is day-one operations: teams can start scanning
-repositories for vulnerabilities immediately, even before a CI pipeline
-is in place.
+The **Deploy Harness SAST & SCA Templates** workflow provisions a suite of step group,
+stage, and pipeline templates that give your teams out-of-the-box security scanning
+capabilities. The goal is day-one operations: teams can start scanning repositories
+for vulnerabilities immediately, even before a CI pipeline is in place.
 
-Once this workflow completes, it also creates a second workflow in IDP that
-end users can run to register their own repositories for scanning.
+Once this workflow completes, it also creates a second workflow in IDP that end users
+can run to register their own repositories for scanning.
+
+---
 
 ## Before you begin
 
-- HSF is deployed and post-deployment configuration is complete.
-- A build farm is configured. Run
-  [Harness Central Build Farm Setup](../workflows/central-build-farm-workflow.md) first if you
-  have not already; every repository scan needs a build infrastructure to
-  run on.
-- You have been added to the **HSF Users** or **HSF Admins** group.
+- **HSF deployed:** HSF is deployed and post-deployment configuration is complete. Go to [Post-deployment configuration](/docs/harness-solutions-factory/new-to-hsf/get-started) to complete it.
+- **Build farm configured:** Every repository scan needs build infrastructure to run on. Go to [Central Build Farm Workflow](/docs/harness-solutions-factory/use-hsf/workflows/central-build-farm-workflow) to configure one first.
+- **Group membership:** You have been added to the **HSF Users** or **HSF Admins** group.
+
+---
 
 ## Inputs
+
+The workflow form collects the following values:
 
 | Input | Description | Notes |
 |---|---|---|
 | Build infrastructure type | The infrastructure scans will run on | Must match your configured build farm |
-| Scanner selection | Which security scanners to enable for repository scans | Order does not matter — scanners run in parallel |
+| Scanner selection | Which security scanners to enable for repository scans | Order does not matter, because scanners run in parallel |
 | STO config manager repo | Where to host the config manager configuration | Bring your own repo or let HSF create one |
+
+---
 
 ## Steps
 
-### 1. Choose your build infrastructure
+Complete the following three steps in the workflow form.
+
+### Step 1: Choose your build infrastructure
 
 Every repository scan needs a build infrastructure to execute on. Select the
 same infrastructure type you configured in Central Build Farm Setup to ensure
@@ -51,7 +58,7 @@ for all scans. This prevents individual teams from using different
 infrastructure configurations for their scans.
 :::
 
-### 2. Set up the STO config manager
+### Step 2: Set up the STO config manager
 
 One of the biggest challenges in security scanning is handling the variation
 between applications: different scanners, exclusion rules, and overrides
@@ -63,7 +70,7 @@ DockerHub) lets a central DevSecOps team define scanner configurations and
 overrides at multiple levels (account, org, project, or repo) and resolves
 the hierarchy automatically at scan time.
 
-When setting up the config manager, you can:
+When you set up the config manager, you have two options:
 
 - **Bring your own repo:** point HSF at an existing repository where your
   config manager configuration lives.
@@ -72,18 +79,22 @@ When setting up the config manager, you can:
 
 :::note
 `skipped` variables in the `STO_SCA_SAST_PRIMER` workspace are intentional.
-They act as null placeholders that make future configuration easier — the
-workspace knows how to handle them without errors. To make adjustments after
-provisioning, navigate to the workspace and update the relevant variables.
+They act as null placeholders that make future configuration easier, because
+the workspace knows how to handle them without errors. To make adjustments
+after provisioning, navigate to the workspace and update the relevant variables.
 :::
 
-### 3. Choose your scanners
+### Step 3: Choose your scanners
 
 Select which security scanners you want enabled for repository scans. Scanners
 run in parallel, so the order of selection does not affect execution time or
 results.
 
+---
+
 ## What gets created
+
+The workflow provisions the following resources:
 
 | Resource | Details |
 |---|---|
@@ -95,7 +106,7 @@ results.
 
 ### Expected output
 
-After the workflow completes:
+After the workflow completes, confirm each of the following:
 
 - [ ] Templates are visible in **Account** → **Templates**.
 - [ ] The `STO_SCA_SAST_PRIMER` workspace appears in
@@ -104,8 +115,20 @@ After the workflow completes:
       **IDP** → **Workflows** for end users.
 - [ ] An IDP catalog entry for the workspace is registered automatically.
 
-## Making changes
+---
+
+## Update the configuration after provisioning
 
 To adjust scanner configuration or update the config manager settings after
 provisioning, navigate to **IaCM** → **Workspaces** → `STO_SCA_SAST_PRIMER`,
 update the relevant variable, and re-execute the workspace.
+
+---
+
+## Next steps
+
+Your teams can now scan repositories using the provisioned templates. Continue with the following:
+
+- [Execute a Workflow](/docs/harness-solutions-factory/use-hsf/workflows/execute-a-workflow): Review the end-to-end execution and approval flow for any HSF workflow.
+- [How workflows work](/docs/harness-solutions-factory/use-hsf/workflows/overview): Review the full list of default HSF workflows.
+- [Created resources](/docs/harness-solutions-factory/use-hsf/created-resources): Understand what HSF provisions across your account.

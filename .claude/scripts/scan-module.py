@@ -464,7 +464,19 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
         "Travis", "Nagios", "Sentry", "Prometheus", "Lacework", "PagerDuty",
         "ServiceNow", "GitLab", "CircleCI", "CloudWatch", "BigPanda", "AlertSite",
         "Zendesk", "Kafka",
+        # Harness product names.
+        "Gitspaces",
     }
+
+    # Multi-word product names that are correctly capitalized. known_proper_nouns
+    # is matched per word, so a phrase like "Harness Cloud Development Environments"
+    # cannot go there without exempting "Cloud" in every other heading too (183 of
+    # them across docs/). Words covered by one of these phrases are skipped for that
+    # heading only; every other word in the heading is still checked.
+    known_proper_phrases = (
+        "Harness Cloud Development Environments",
+        "Cloud Development Environments",
+    )
 
     def is_proper_noun(word: str) -> bool:
         """Check if a word is a proper noun using patterns and known terms"""
@@ -490,20 +502,28 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
 
         return False
 
-    # A leading "Step N:" label is a lead-in, not part of the sentence that follows,
-    # so the clause after the colon starts a new sentence and its first word may be
-    # capitalized. "#### Step 1: Preview changes with a dry run" is correct sentence
-    # case; only later words are checked ("Step 1: Preview Changes" still fails).
-    step_label_pattern = re.compile(r'^Step\s+\d+\s*[:.)-]\s*')
+    # A leading step label is a lead-in, not part of the sentence that follows, so the
+    # clause after it starts a new sentence and its first word may be capitalized.
+    # Both the spelled form ("Step 1: Preview changes") and the bare numeric form
+    # ("1. Choose your build infrastructure") count; the latter is the more common
+    # style in the docs. Only later words are checked, so "1. Preview Changes" still
+    # fails. Shared with H-2, which checks the first word of the clause for a gerund.
+    step_label_pattern = re.compile(r'^(?:Step\s+)?\d+\s*[:.)-]\s*')
 
     for match in re.finditer(r'^##+ (.+)$', body, re.MULTILINE):
         heading = match.group(1)
         step_label = step_label_pattern.match(heading)
         words = heading[step_label.end():].split() if step_label else heading.split()
+        phrase_words = set()
+        for phrase in known_proper_phrases:
+            if phrase in heading:
+                phrase_words.update(phrase.split())
         flagged_words = []
         for i, word in enumerate(words[1:], start=1):  # Skip first word
             clean_word = word.strip('`*_:,')
-            if clean_word and clean_word[0].isupper() and not is_proper_noun(clean_word):
+            if not clean_word or clean_word in phrase_words:
+                continue
+            if clean_word[0].isupper() and not is_proper_noun(clean_word):
                 flagged_words.append(clean_word)
 
         if flagged_words:
