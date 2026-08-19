@@ -234,6 +234,9 @@ The following deprecated API endpoints are longer supported:
 
 ### Version 1.161.x <!--August 05, 2026-->
 
+#### New features and enhancements
+- Introduced [**Usage Analytics**](/docs/platform/subscriptions-licenses/usage-analytics), a new in-app, centralized dashboard that shows how deeply teams adopt each Harness module, helping customers validate real usage. This feature is behind the feature flag `PL_ENABLE_USAGE_ANALYTICS`. Contact [Harness Support](mailto:support@harness.io) to enable it. [PL-65816]
+
 #### Fixed issues
 - Fixed an issue where changing scope from **Template Studio** or a settings page failed with a `RESOURCE_NOT_FOUND_EXCEPTION` error. Harness now resolves the target scope without carrying over the current entity identifier, so you land on the equivalent page in the new scope. [PL-70296]
 - Fixed an issue where the Harness application intermittently crashed and displayed a **Something went wrong** error page that required a page refresh. This was resolved by changing how routing is inherently handled on the Harness UI. [PL-72349]
