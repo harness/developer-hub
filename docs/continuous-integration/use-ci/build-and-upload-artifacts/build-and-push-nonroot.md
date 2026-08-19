@@ -161,7 +161,7 @@ This step requires the following specifications:
 
 #### Buildah plugin settings
 
-For information about Buildah plugin settings, go to the [Buildah README](https://github.com/drone-plugins/drone-buildah/blob/master/README.md), the [Buildah Drone Plugins Marketplace page](https://plugins.drone.io/plugins/buildah), and the the `main.go` file for each destination:
+For information about Buildah plugin settings, go to the [Buildah README](https://github.com/drone-plugins/drone-buildah/blob/master/README.md), the [Buildah Drone Plugins Marketplace page](https://plugins.drone.io/plugins/buildah), and the `main.go` file for each destination:
 
 * [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go)
 * [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go)

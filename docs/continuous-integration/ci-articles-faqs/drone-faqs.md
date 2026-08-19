@@ -18,7 +18,7 @@ A malformed license error, such as the following, can occur if the license is no
  {"error":"Malformed License","level":"fatal","msg":"main: invalid or expired license","time":"2024-02-26T11:48:35Z"}
 ```
 
-Check that the [drone-license enviroment variable](https://docs.drone.io/server/reference/drone-license/) is applied correctly and there are no extra lines or whitespace added on the key file.
+Check that the [drone-license environment variable](https://docs.drone.io/server/reference/drone-license/) is applied correctly and there are no extra lines or whitespace added on the key file.
 
 ### A Drone license allows up to 15 users. Is there a limit on the number of Drone instances with that license? Or just a limit on authenticated users?
 

@@ -334,7 +334,7 @@ When a customer mounts a certificate bundle in their build pods, the bundle is c
 
 The secret names follow a specific format: `Podname-filename-hash`.
 
-For Exampple:-
+For Example:-
 **Pod Name**: `harnessci-buildpod-9rwcbkl6`
 **Secret Name**: `harnessci-buildpod-9rwcbkl6-custom-cr-pem-0-pem-1667255857`
 Here, `custom-cr-pem` is the pem file name and `1667255857` is the random hash that is generated during secret creation.

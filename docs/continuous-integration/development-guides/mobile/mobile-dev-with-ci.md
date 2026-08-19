@@ -554,7 +554,7 @@ pipeline:
                       security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $BUILD_KEY_CHAIN_PASSWORD $BUILD_KEY_CHAIN
                       rm -fr *.p12
 
-                      ## Provison profile
+                      ## Provision profile
                       PROFILE_FILE=${DISTRIBUTION_PROVISION_UUID}.mobileprovision
                       echo $DISTRIBUTION_PROVISION_KEY | base64 --decode > $PROFILE_FILE
                       cp ${PROFILE_FILE} "$HOME/Library/MobileDevice/Provisioning Profiles/${DISTRIBUTION_PROVISION_UUID}.mobileprovision"

@@ -58,7 +58,7 @@ For information about the Plugin step settings, go to the [Plugin step settings 
 
 ## Send with username and password authentication
 
-You don't need to provide the SMPT `username` and `password`, but you can include these parameters if you want or need to. For information about Email plugin settings, including the `username` and `password`, go to the [Email plugin documentation](https://github.com/harness-community/drone-email).
+You don't need to provide the SMTP `username` and `password`, but you can include these parameters if you want or need to. For information about Email plugin settings, including the `username` and `password`, go to the [Email plugin documentation](https://github.com/harness-community/drone-email).
 
 ## Send data in the body
 

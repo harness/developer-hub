@@ -489,7 +489,7 @@ By default, a built-in step runs inside a container within the build VM.
 
 ### How to fix the docker rate limiting errors while pulling the Harness internal images when the build is running on Harness cloud?
 
-You could update the deafult docker connector `harnessImage` and point it to the Harness internal GAR/ECR as mentioned in the [doc](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
+You could update the default docker connector `harnessImage` and point it to the Harness internal GAR/ECR as mentioned in the [doc](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
 
 ## Kubernetes clusters
 
@@ -715,7 +715,7 @@ Adding additional Docker options when starting the container via a background st
 
 ### Why Harness internal container lite-engine is requesting a huge cpu/memory within the build pod?
 
-Lite-engine consumes very minimal compute resource however it reserves the resource for the other step containers. More details about how the resources are allocated within the build pod can be reffered in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/)
+Lite-engine consumes very minimal compute resource however it reserves the resource for the other step containers. More details about how the resources are allocated within the build pod can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/)
 
 ### Why the build pod status is showing "not ready" in k8s cluster while the build is running?
 
@@ -783,7 +783,7 @@ When dind is used, the build will run on the dind container instead of the step 
 
 ### Why the docker commands are failing on the run step with the error "command not found: docker" even if we have the dind running as background step?
 
-This happens when the step container configured in the run step doesnt have docker cli installed
+This happens when the step container configured in the run step does not have docker cli installed
 
 ### How can we use buildx while running the build in k8s build infra?
 
@@ -1497,7 +1497,7 @@ Harness publishes updates for all CI images on the second and fourth Monday of e
 
 ### How do I get a list of tags available for an image in the Harness image registry?
 
-To list all available tags for an image in `app.harness.io/regstry`, call the following endpoint and replace `IMAGE_NAME` with the name of the image you want to query.
+To list all available tags for an image in `app.harness.io/registry`, call the following endpoint and replace `IMAGE_NAME` with the name of the image you want to query.
 
 ```
 https://app.harness.io/registry/harness/IMAGE_NAME/tags/list
@@ -1505,7 +1505,7 @@ https://app.harness.io/registry/harness/IMAGE_NAME/tags/list
 
 ### What access does Harness use to pull the Harness internal images from the public image repo?
 
-By default, Harness uses anonymous access to to pull Harness images.
+By default, Harness uses anonymous access to pull Harness images.
 
 If you have security concerns about using anonymous access or pulling Harness-specific images from a public repo, you can [change how your builds connect to the Harness container image registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/).
 
@@ -1737,7 +1737,7 @@ No. Currently, **Build and Push** steps don't support build secrets.
 
 This could happen when you have the build and push to ECR step with a base connecter which is configured with anonymous auth type. Base connector configured in the build and push to ECR step should be an authenticated connector
 
-### Why is the kaniko flags with the built-in in build and push step is not working when we run the build on Harness cloud?
+### Why is the kaniko flags with the built-in build and push step is not working when we run the build on Harness cloud?
 
 The build and push step doesn’t use kaniko while running the build on Harness cloud instead it uses drone-docker plugin hence the kaniko flags wont work
 
@@ -2419,7 +2419,7 @@ This can occur if a Plugin step doesn't have the image's Fully Qualified Name (F
 
 Make sure to use the FQN for the image when pulling from an internal private container registry.
 
-### What tool does a Harness GitHub Action plugin use in the backgound to run an action?
+### What tool does a Harness GitHub Action plugin use in the background to run an action?
 
 The Github Action Drone plugin uses `nektos/act` in the background to run GitHub Actions.
 
@@ -2689,7 +2689,7 @@ To run a step only when a certain file changes, you can [define conditional exec
 
 Alternately, you could isolate the step in a stage by itself, configure a [Git webhook trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines) with a Changed File [trigger condition](https://developer.harness.io/docs/platform/triggers/triggering-pipelines#set-trigger-conditions) that listens for changes to the target file, and then configure the trigger to run [selective stage execution](https://developer.harness.io/docs/platform/triggers/selective-stage-execution-using-triggers) and run all stages that you want to run when that file changes, including the stage with your isolated step.
 
-### Can I use stage variables in my CI stage Parallism Strategy?
+### Can I use stage variables in my CI stage Parallelism Strategy?
 
 When using variables in your Parallelism Strategy, these variables must be resolved before the stage begins execution. Therefore, you can only use pipeline variables or stage variables from previously executed stages.
 
@@ -3017,7 +3017,7 @@ Kaniko executes in user space and creates and destroys the file system repeatedl
 
 In those cases, setting `ignore-path` in Kaniko overrides this behaviour: https://github.com/GoogleContainerTools/kaniko/blob/main/pkg/util/fs_util.go#L233 
 
-To do this within Harness, the following will need to be set as a variable so that `ignore-path` shows up in the Kaniko CLI Arguements.  The environment variable will need to be set with `PLUGIN_IGNORE_PATH` and the path, in this case, `/opt/nodejs`.
+To do this within Harness, the following will need to be set as a variable so that `ignore-path` shows up in the Kaniko CLI Arguments.  The environment variable will need to be set with `PLUGIN_IGNORE_PATH` and the path, in this case, `/opt/nodejs`.
 
 ```
         variables:

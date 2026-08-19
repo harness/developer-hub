@@ -44,7 +44,7 @@ In your pipeline's YAML, add the two debug monitoring steps, as shown in the fol
                       timeout: 10m ## Allow enough time to cover the failing step.
                   - step:
                       type: Run
-                      name: Backgroung Monitor ## This step lists what background tasks are running which impacts step completion.
+                      name: Background Monitor ## This step lists what background tasks are running which impacts step completion.
                       identifier: debug_monitor_3
                       spec:
                         connectorRef: YOUR_DOCKER_CONNECTOR

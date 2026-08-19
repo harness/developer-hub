@@ -167,7 +167,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
 
 4. Add **Save Cache** steps. You need one step for each cache, as identified by a cache key, that you want to save. The **Save Cache** steps don't need failure strategies or conditional executions.
 
-   The following YAML example would add two **Save Cache to GCS** steps to a pipeline. This example uses `sharedPaths` to make the `/.m2/respository/` directory available to the **Save Cache** steps, because this directory is outside the default workspace directory (`/harness`). For more information, go to [Share data between steps in a stage](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
+   The following YAML example would add two **Save Cache to GCS** steps to a pipeline. This example uses `sharedPaths` to make the `/.m2/repository/` directory available to the **Save Cache** steps, because this directory is outside the default workspace directory (`/harness`). For more information, go to [Share data between steps in a stage](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
 
    ```yaml
        - stage:

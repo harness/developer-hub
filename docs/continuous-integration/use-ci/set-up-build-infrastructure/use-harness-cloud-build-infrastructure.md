@@ -306,4 +306,4 @@ Due to a [BitBucket Cloud issue](https://jira.atlassian.com/browse/BCLOUD-23158)
 Atlassian released a fix for this issue; however, if you use a Harness Cloud Windows platform and your build is unable to clone your BitBucket Cloud repo, do the following:
 
 1. [Disable Clone Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages).
-2. At the beginning of your build stage, add a a [Run step](/docs/continuous-integration/use-ci/run-step-settings) that uses the `harness/drone-git` image and Git commands to clone your BitBucket cloud repo.
+2. At the beginning of your build stage, add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) that uses the `harness/drone-git` image and Git commands to clone your BitBucket cloud repo.

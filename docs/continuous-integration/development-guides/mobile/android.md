@@ -346,7 +346,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 <Tabs>
 <TabItem value="Harness Cloud">
 
-Android packages, including Android SDK tools and and [fastlane](https://docs.fastlane.tools/), are pre-installed on Harness Cloud machines. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+Android packages, including Android SDK tools and [fastlane](https://docs.fastlane.tools/), are pre-installed on Harness Cloud machines. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
 ```yaml
 - step:

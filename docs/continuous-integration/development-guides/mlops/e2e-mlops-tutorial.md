@@ -154,7 +154,7 @@ Create Harness connectors to connect to your AWS and GitHub accounts.
 
    ![Connector connectivity status](static/connector-connectivity-status.png)
 
-3. Create another connector. This time, select the [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) and and use the following configuration:
+3. Create another connector. This time, select the [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) and use the following configuration:
 
    - Name: `mlopsgithubconnector`
    - URL Type: `Repository`
@@ -338,7 +338,7 @@ In addition to the model visualization, the `pytest` command also generates a `s
 
    * For **Name**, enter `Export accuracy and fairness variables`.
    * For **Shell**, select **Sh**.
-   * For **Commmand**, enter:
+   * For **Command**, enter:
 
    ```
    # File path

@@ -482,7 +482,7 @@ Let us look at how this workflow is supported in Harness Cloud and Kubernetes
 <Tabs>
 <TabItem value="Cloud" label="Cloud" default>
 
-- Build an image in a native **Build and Push** step with the the following environment variables:
+- Build an image in a native **Build and Push** step with the following environment variables:
   - `PLUGIN_NO_PUSH`: `true` (Skips pushing the image during build)
 - Create separate push steps with:
   - `PLUGIN_PUSH_ONLY`: `true` (Pushes without rebuilding)
@@ -546,7 +546,7 @@ execution:
 :::note
 When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, it is recommended you run a background step with a Docker container(DinD), as shown in the snippet below
 :::
-- Build an image in a native **Build and Push** step with the the following environment variables:
+- Build an image in a native **Build and Push** step with the following environment variables:
   - `PLUGIN_NO_PUSH`: `true` (Skips pushing the image during build)
   - `PLUGIN_BUILDX_LOAD`: `true` (Required) The resulting image is loaded into local Docker image store to make it available in subsequent steps.
 - Create separate push steps with:
