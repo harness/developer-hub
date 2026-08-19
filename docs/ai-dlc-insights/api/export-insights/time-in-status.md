@@ -1,6 +1,6 @@
 ---
 title: Issue Time-in-Status Export API
-description: Learn how to export issue lifecycle and time-in-status analytics from Harness SEI.
+description: Learn how to export issue lifecycle and time-in-status analytics from Harness AIDI.
 sidebar_label: Export Issue Time-in-Status Data
 sidebar_position: 5
 ---

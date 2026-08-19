@@ -149,7 +149,7 @@ Use this setting to specify which metrics should calculate results **only from a
 
 - **Productivity** metrics always honor developer filters by default.
 - **Lead Time for Changes** can be configured to apply or ignore developer filters.
-- Only metrics that are enabled in the team’s active SEI profiles appear in **Advanced Settings**.
+- Only metrics that are enabled in the team’s active AIDI profiles appear in **Advanced Settings**.
 
 To configure metric-level developer filtering:
 

@@ -29,14 +29,14 @@ If you're switching over to Harness AI DLC Insights from Software Engineering In
 | **Step** | **Purpose** | **Documentation** |
 |---------|-------------|-------------------|
 | <a href="/docs/platform/authentication/authentication-overview">Configure SSO</a> | Automate the onboarding of users from external sources | [View Setup Guide](/docs/platform/authentication/authentication-overview) |  
-| <a href="/docs/platform/automation/api/api-quickstart">API Guide</a> | Learn how to programmatically create any resource on SEI using REST APIs | [View Setup Guide](/docs/platform/automation/api/api-quickstart) |
+| <a href="/docs/platform/automation/api/api-quickstart">API Guide</a> | Learn how to programmatically create any resource on AIDI using REST APIs | [View Setup Guide](/docs/platform/automation/api/api-quickstart) |
 
 ### Phase 3: Create integrations
 
 | **Step** | **Purpose** | **Documentation** |
 |---------|-------------|-------------------|
 | <a href="/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview">Create Integrations (Cloud)</a> | Learn how to create cloud integrations for third-party tools | [View Setup Guide](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview) |
-| <a href="/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview">Ingestion Satellite Overview</a> | Use the Ingestion Satellite to connect SEI with on-premise tools | [View Setup Guide](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview) |
+| <a href="/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview">Ingestion Satellite Overview</a> | Use the Ingestion Satellite to connect AIDI with on-premise tools | [View Setup Guide](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview) |
 | <a href="/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration">Create custom CI/CD integrations</a> | Learn how to create custom CI/CD integrations | [View Setup Guide](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration) |
 | <a href="/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview#integration-monitoring">Integration Monitoring</a> | Monitor the health status of the integrations | [View Setup Guide](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview#integration-monitoring) |
 | <a href="/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration">Configure GitHub Integration</a> | Create and configure the integration for GitHub Cloud or GitHub Enterprise | <ul><li>[GitHub Cloud – View Setup Guide](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration)</li><li>[GitHub Enterprise – View Setup Guide](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration)</li></ul> |
@@ -56,14 +56,14 @@ If you're switching over to Harness AI DLC Insights from Software Engineering In
 | **Step** | **Purpose** | **Documentation** |
 |---------|-------------|-------------------|
 | [Prepare CSV Export](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers) | Export your developer records from HRIS systems like Workday as a CSV | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers) |
-| [Upload Developer CSV](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers) | Upload your HRIS-based developer file to SEI | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers) |
+| [Upload Developer CSV](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers) | Upload your HRIS-based developer file to AIDI | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers) |
 
 ### Phase 6: Create the Org Tree
 
 | **Step** | **Purpose** | **Documentation** |
 |---------|-------------|-------------------|
 | [Build Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) | Create an Org Tree using HRIS records to reflect reporting relationships | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) |
-| [Track Changes to the Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) | Learn how SEI tracks changes and allows version control | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) |
+| [Track Changes to the Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) | Learn how AIDI tracks changes and allows version control | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) |
 
 ### Phase 7: Set up teams & view insights
 

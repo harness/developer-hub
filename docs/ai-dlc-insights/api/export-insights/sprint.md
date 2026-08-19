@@ -1,6 +1,6 @@
 ---
 title: Sprint Export API
-description: Learn how to export Efficiency (Sprint) metrics from Harness SEI using the async export API.
+description: Learn how to export Efficiency (Sprint) metrics from Harness AIDI using the async export API.
 sidebar_label: Export Sprint Metrics
 sidebar_position: 2
 ---

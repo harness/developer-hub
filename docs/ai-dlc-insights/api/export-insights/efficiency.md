@@ -31,7 +31,7 @@ All requests require the following headers:
 
 | Header | Value |
 | --- | --- |
-| `authorization` | `ApiKey <YOUR_SEI_API_KEY>` |
+| `authorization` | `ApiKey <YOUR_API_KEY>` |
 | `Content-Type` | `application/json` |
 
 You must also include the following query parameters on all requests:
@@ -102,7 +102,7 @@ The following Efficiency metric groups are available:
 ```bash title="Example Request"
 curl -X POST "${BASE_URL}/v2/insights/efficiency/exports?projectIdentifier=${PROJECT_ID}&orgIdentifier=${ORG_ID}" \
   -H "Content-Type: application/json" \
-  -H "authorization: ApiKey <YOUR_SEI_API_KEY>" \
+  -H "authorization: ApiKey <YOUR_API_KEY>" \
   -d '{
     "scope": {
       "teamId": "team_abc123"

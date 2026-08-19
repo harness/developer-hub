@@ -40,7 +40,7 @@ The following data is collected for AI Engineering Insights metrics:
 | Agent and model identifiers | Which AI coding agent and underlying model was used (for example, Claude Code, `claude-sonnet-4-6`). |
 | Repository identifiers | Repository name and identifier for commit attribution. Source code content is not collected. |
 | Heartbeat and version | Periodic check-in confirming the agent is running and reporting its installed version. |
-| Developer identifier | Name and email address, used to attribute metrics to individual developers in the SEI dashboard. |
+| Developer identifier | Name and email address, used to attribute metrics to individual developers in the AIDI dashboard. |
 
 For a mapping of these signals to dashboard metrics, go to [AI Engineering Insights](/docs/software-engineering-insights/harness-sei/setup-sei/agent#ai-engineering-insights).
 

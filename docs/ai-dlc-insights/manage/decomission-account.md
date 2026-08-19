@@ -1,39 +1,39 @@
 ---
-title: SEI Account Decommissioning and Data Retention 
-description: Learn how to request SEI account decommissioning, understand data deletion behavior, retention policies, and applicable SLAs.
+title: AIDI Account Decommissioning and Data Retention 
+description: Learn how to request AIDI account decommissioning, understand data deletion behavior, retention policies, and applicable SLAs.
 sidebar_label: Decommissioning and Data Retention
 sidebar_position: 5
 ---
 
-Harness AIDI provides a controlled, auditable process for decommissioning the SEI service on a Harness account. This ensures that customer data is removed securely, with full transparency and regulatory compliance.
+Harness AIDI provides a controlled, auditable process for decommissioning the AIDI service on a Harness account. This ensures that customer data is removed securely, with full transparency and regulatory compliance.
 
-This documentation walks you through how to request decommissioning an SEI account, what happens during the decommissioning process, SEI data retention and deletion policies, and applicable SLAs and customer responsibilities.
+This documentation walks you through how to request decommissioning an AIDI account, what happens during the decommissioning process, AIDI data retention and deletion policies, and applicable SLAs and customer responsibilities.
 
 :::info
-This page is intended for cybersecurity teams, compliance reviewers, and administrators responsible for managing the SEI account lifecycle.
+This page is intended for cybersecurity teams, compliance reviewers, and administrators responsible for managing the AIDI account lifecycle.
 :::
 
-## Decommission an SEI account
+## Decommission an AIDI account
 
 SEI account decommissioning is a manual, request-driven process performed by the Harness AIDI Engineering team to ensure data integrity, ownership validation, and regulatory compliance.
 
-Customers typically request decommissioning when consolidating multiple SEI instances or retiring unused or test/sandbox environments.
+Customers typically request decommissioning when consolidating multiple AIDI instances or retiring unused or test/sandbox environments.
 
-To request SEI account decommissioning, submit a ticket with [Harness Support](/docs/software-engineering-insights/sei-support) and include the following details:
+To request AIDI account decommissioning, submit a ticket with [Harness Support](/docs/software-engineering-insights/sei-support) and include the following details:
 
-* **Account Identifier**: Harness Account ID and SEI project name(s).
-* **Confirmation Statement**: Explicit approval to delete the SEI service and all associated data.
+* **Account Identifier**: Harness Account ID and AIDI project name(s).
+* **Confirmation Statement**: Explicit approval to delete the AIDI service and all associated data.
 * **Requested Deletion Date**: Optional. Defaults to the standard SLA window of **up to 30 days** from the date the request is received.
 * **Point of Contact**: For verification and closure.
 
 Once the request is received:
 
-1. The SEI Engineering team validates account ownership and confirms the request.
-1. The SEI Engineering team performs the decommissioning, which includes:
+1. The AIDI Engineering team validates account ownership and confirms the request.
+1. The AIDI Engineering team performs the decommissioning, which includes:
    
    * Disabling data ingestion
    * Removing integration secrets, webhook listeners, and internal connections
-   * Deleting SEI data objects (issues, commits, build and deploy events, metrics, identities, and snapshots)
+   * Deleting AIDI data objects (issues, commits, build and deploy events, metrics, identities, and snapshots)
    * Removing dashboards, insights, configuration artifacts, and account metadata
 
 1. A confirmation is sent to the customer once the process is complete.
@@ -48,7 +48,7 @@ Partial data retention is not supported unless explicitly requested and formally
 Data deletion is **permanent and irreversible**. Once deletion is confirmed and executed, the data cannot be recovered.
 :::
 
-Data is deleted only when a customer requests SEI service decommissioning or a customer requests data deletion without decommissioning (rare but supported).
+Data is deleted only when a customer requests AIDI service decommissioning or a customer requests data deletion without decommissioning (rare but supported).
 
 When a deletion request is processed, the following data is permanently removed:
 
@@ -74,7 +74,7 @@ Yes. Customers can export available datasets using existing [Harness AIDI export
 <details>
 <summary>Does decommissioning affect other Harness modules?</summary>
 
-No. Only the SEI service and its associated data are removed. Other Harness modules remain unaffected.
+No. Only the AIDI service and its associated data are removed. Other Harness modules remain unaffected.
 
 </details>
 <details>

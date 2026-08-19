@@ -21,14 +21,14 @@ To answer these questions, AI DLC Insights introduces a simplified and extensibl
 ```mermaid
 flowchart LR
     %% Left to Right Layout
-    A["**CSV Import**<br><br>Developer data is imported from an HRIS system. <br><br>*Owner: SEI Admin*<br>*Scope: Account*"] --> B["**Developers**<br><br>A collection of all developers is created in SEI. <br><br>*Owner: SEI Admin*<br>*Scope: Account*"] --> C["**Org Tree**<br><br>A hierarchy of developers is formed for team organization.<br><br>*Owner: SEI Admin*<br>*Scope: Project*"] --> D["**Team Settings**<br><br>Team managers configure settings for their teams (e.g. Jira projects, Git repos, and pipelines).<br><br>*Owner: Team Manager*<br>*Scope: Project*"] --> E["**Insights**<br><br>The central page where dashboards are viewed. Includes both out-of-the-box dashboards and custom dashboards created in Studio.<br><br>*Access: SEI Viewers*<br>*Scope: Project*"]
+    A["**CSV Import**<br><br>Developer data is imported from an HRIS system. <br><br>*Owner: AIDI Admin*<br>*Scope: Account*"] --> B["**Developers**<br><br>A collection of all developers is created in SEI. <br><br>*Owner: AIDI Admin*<br>*Scope: Account*"] --> C["**Org Tree**<br><br>A hierarchy of developers is formed for team organization.<br><br>*Owner: AIDI Admin*<br>*Scope: Project*"] --> D["**Team Settings**<br><br>Team managers configure settings for their teams (e.g. Jira projects, Git repos, and pipelines).<br><br>*Owner: Team Manager*<br>*Scope: Project*"] --> E["**Insights**<br><br>The central page where dashboards are viewed. Includes both out-of-the-box dashboards and custom dashboards created in Studio.<br><br>*Access: AIDI Viewers*<br>*Scope: Project*"]
 
     %% Profiles below Org Tree
-    F["**Profiles**<br><br>Defines which insights (e.g. Efficiency, Productivity, Business Alignment) to show and how they are computed. <br><br>*Owner: SEI Admin*<br>*Scope: Account*"] -.-> C
+    F["**Profiles**<br><br>Defines which insights (e.g. Efficiency, Productivity, Business Alignment) to show and how they are computed. <br><br>*Owner: AIDI Admin*<br>*Scope: Account*"] -.-> C
     F -.-> E
 
     %% Integrations at the bottom
-    G["**Integrations**<br><br>Issue Management, Source Code Management, CI/CD, and ITSM.<br><br>*Owner: SEI Admin*<br>*Scope: Account*"] --> A
+    G["**Integrations**<br><br>Issue Management, Source Code Management, CI/CD, and ITSM.<br><br>*Owner: AIDI Admin*<br>*Scope: Account*"] --> A
     G --> B
     G --> C
     G --> F
@@ -54,22 +54,24 @@ flowchart LR
 
 <br />
 
-This data model diagram walks through how SEI handles organizational data and insights, including:
+This data model diagram walks through how AIDI handles organizational data and insights, including:
 
 * [Developers](#developers): Imported from HR systems via CSV and managed at the account level.
 * [Org Tree(s)](#org-tree): Developers are grouped based on attributes like `Manager`, `Location`, `Role`, `Employment Type`, or `Project`. Leaf nods of the Org Tree becomes Teams.
-* [Team](#teams): Team Managers are assigned by the SEI Admin at the project level and configure team-specific settings (e.g. Jira projects, Git repos, production services, and pipelines) influenced by associated Profiles.
+* [Team](#teams): Team Managers are assigned by the AIDI Admin at the project level and configure team-specific settings (e.g. Jira projects, Git repos, production services, and pipelines) influenced by associated Profiles.
 * [Profiles](#profiles): Define which insights to enable and how they are computed, and are associated with one or more Org Trees to guide all insights calculations.
 * [Dashboards in Insights](#dashboards-in-insights): The primary way insights are consumed in AI DLC Insights. Dashboards are generated using data filtered by Profiles, Teams, and Org Tree context, and are [viewed on the **Insights** page](/docs/software-engineering-insights/harness-sei/insights/).
 
 :::tip
-The foundation of Harness AIDI is the account-level [Integrations setup](/docs/category/configure-integrations) by the SEI Admin. These integrations must be configured before importing developers or creating Org Trees.
+The foundation of Harness AIDI is the account-level [Integrations setup](/docs/category/configure-integrations) by the AIDI Admin. These integrations must be configured before importing developers or creating Org Trees.
 :::
 
 ### Developers
 
 Developers are the foundational unit in AI DLC Insights. Every insight, metric, and trend in the platform starts with accurate identification and attribution of developer activity across your toolchain.
-SEI automatically handles the complexity of identity mapping across systems like GitHub, GitLab, Jira, Bitbucket, PagerDuty, and more so you don’t have to based on developer email.
+
+AIDI automatically handles the complexity of identity mapping across systems like GitHub, GitLab, Jira, Bitbucket, PagerDuty, and more so you don’t have to based on developer email.
+
 Developers can belong to multiple teams across different Org Trees and Projects, based on the grouping logic defined in your Org Tree.
 
 ![](/../docs/software-engineering-insights/harness-sei/static/developers-landing-page.png)

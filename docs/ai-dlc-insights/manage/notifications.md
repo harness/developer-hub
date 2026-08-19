@@ -11,7 +11,7 @@ AI DLC Insights allows you to configure email notifications for key system event
 
 To set up notifications in AI DLC Insights:
 
-1. From the Harness AIDI navigation menu, click **Account Management** > **Notifications** under **SEI Settings**.
+1. From the Harness AIDI navigation menu, click **Account Management** > **Notifications**.
 1. Enter the email address(es) where you want to receive notifications. Enter one email at a time and press **Enter** to add it to the list.
 1. Enable one or both checkboxes, depending on your organization's needs:
    

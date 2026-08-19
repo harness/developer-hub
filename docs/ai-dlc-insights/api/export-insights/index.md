@@ -1,5 +1,5 @@
 ---
-title: Export Insights Data Using the Harness SEI API
+title: Export Insights Data Using the Harness AIDI API
 description: Learn how to programmatically export developer, team, and org-level Insights data from Harness AIDI using export APIs.
 sidebar_label: Export Insights
 ---
@@ -21,7 +21,7 @@ Harness AIDI provides asynchronous CSV export APIs for exporting data from the o
 
 ### Harness base URLs
 
-All SEI export APIs are scoped to a region-specific service endpoint. Every API path is a relative URI and must be prefixed with the appropriate SEI base URL for your Harness environment.
+All AIDI export APIs are scoped to a region-specific service endpoint. Every API path is a relative URI and must be prefixed with the appropriate AIDI base URL for your Harness environment.
 
 | Environment | Base URL |
 |------------|----------|

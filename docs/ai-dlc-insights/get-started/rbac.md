@@ -5,7 +5,7 @@ sidebar_label: Harness RBAC for AI DLC Insights
 sidebar_position: 15
 ---
 
-Harness Role-based Access Control (RBAC) allows you to manage permissions for Harness AI DLC Insights resources and users. With AI DLC Insights integrated into the Harness RBAC framework, SEI permissions behave like any other Harness module—enabling consistent, scalable access control across your organization.
+Harness Role-based Access Control (RBAC) allows you to manage permissions for Harness AI DLC Insights resources and users. With AI DLC Insights integrated into the Harness RBAC framework, AIDI permissions behave like any other Harness module—enabling consistent, scalable access control across your organization.
 
 ### Scopes in Harness RBAC
 
@@ -25,13 +25,13 @@ flowchart TD
 
 * **Account Scope**: Includes all organizations and projects within your Harness account. Resources created at the account level are available to all organizations and projects under that account.
 * **Organization Scope**: Groups related projects, resources, and users. Resources created at the organization level are available to all projects within that organization but are not visible outside it.
-* **Project Scope**: Contains resources specific to a project, such as SEI insights. Project-level resources are not shared with other projects or organizations.
+* **Project Scope**: Contains resources specific to a project, such as AIDI insights. Project-level resources are not shared with other projects or organizations.
 
 Before configuring RBAC roles, ensure AI DLC Insights is enabled on your account. For more information about Harness RBAC, see the [Harness Platform documentation](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ## Resources and scopes
 
-Harness AIDI enables you to control who can view, edit, and manage SEI data across account and project scopes.
+Harness AIDI enables you to control who can view, edit, and manage AIDI data across account and project scopes.
 
 | **Resource**              | **Scope(s)**     | **Notes**                                                                     |
 | ------------------------- | ---------------- | ----------------------------------------------------------------------------- |
@@ -45,9 +45,9 @@ Harness AIDI enables you to control who can view, edit, and manage SEI data acro
 
 Harness AIDI provides out-of-the-box roles for setting up access in AI DLC Insights: **SEI Admin**, **SEI Team Manager**, and **SEI Viewer**.
 
-### SEI Admin (Account + Project Level)
+### AIDI Admin (Account + Project Level)
 
-The SEI Admin role enables users full control over SEI configurations and data.
+The AIDI Admin role enables users full control over AIDI configurations and data.
 
 | **Resource**              | **Scope(s)**      | **View** | **Edit** | **Create** | **Delete** | **Notes**                                 |
 | ------------------------- | ----------------- | -------- | -------- | ---------- | ---------- | ----------------------------------------- |
@@ -57,9 +57,9 @@ The SEI Admin role enables users full control over SEI configurations and data.
 | Insights Categories                  | Project           |    ✅   |         |           |           | View insight dashboards.                          |
 | Profiles                  | Account           |    ✅   |    ✅   |    ✅     |    ✅     | Manage org trees and profile assignments. |
 
-### SEI Team Manager (Project Level)
+### AIDI Team Manager (Project Level)
 
-The SEI Team Manager role enables users to manage team configurations and developer records within a project.
+The AIDI Team Manager role enables users to manage team configurations and developer records within a project.
 
 | **Resource**                 | **Scope(s)**           | **View** | **Edit**            | **Create** | **Delete** | **Notes**                                 |
 | ---------------------------- | ---------------------- | -------- | ------------------- | ---------- | ---------- | ----------------------------------------- |
@@ -69,9 +69,9 @@ The SEI Team Manager role enables users to manage team configurations and develo
 | Data settings (Integrations) | Account                | ✅        |                     |            |            | Read-only access.                     |
 | Profiles                     | Project (read-through) | ✅        |                     |            |            | View relevant profile assignments at the project level.                   |
 
-### SEI Viewer (Project Level)
+### AIDI Viewer (Project Level)
 
-The SEI Viewer role enables users read-only access to SEI dashboards and data.
+The AIDI Viewer role enables users read-only access to AIDI dashboards and data.
 
 | **Resource**                 | **Scope(s)** | **View** | **Edit** | **Create** | **Delete** | **Notes**                  |
 | ---------------------------- | ------------ | -------- | -------- | ---------- | ---------- | -------------------------- |
@@ -92,7 +92,7 @@ import TabItem from '@theme/TabItem';
 
 If you're an **Account Admin**, follow these steps to assign an out-of-the-box role (such as `SEI Admin`) with account and project level access to an existing user or group in AI DLC Insights. 
 
-<DocVideo src="https://app.tango.us/app/embed/b85251d7-006c-4a0a-8aa8-fbc63210ca86?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Assign an SEI Admin Role in Harness" />
+<DocVideo src="https://app.tango.us/app/embed/b85251d7-006c-4a0a-8aa8-fbc63210ca86?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Assign an AIDI Admin Role in Harness" />
 
 </TabItem>
 <TabItem value="custom" label="Custom Role">
@@ -145,7 +145,7 @@ flowchart TD
 
 Create a project-level resource group to define which users or user groups have access to specific resources in AI DLC Insights. Each resource group acts as a logical boundary (for example, one per engineering team) and includes both the resources it controls and the associated [role assignments](https://apidocs.harness.io/project-role-assignments).
 
-1. List existing resource groups. Use the following request to confirm which resource groups already exist in your SEI project:
+1. List existing resource groups. Use the following request to confirm which resource groups already exist in your AIDI project:
 
    ```bash
    curl -i -X GET \
@@ -204,7 +204,7 @@ Create a project-level resource group to define which users or user groups have 
    | `color`                 | (Optional) Custom color for visual identification.                              |
    | `tags`                  | Key-value pairs for metadata or categorization.                                 |
    | `included_scope`        | Defines the account, org, and project where the group applies.                  |
-   | `resource_filter`       | Specifies which SEI resources (e.g., profiles, integrations) the group manages. |
+   | `resource_filter`       | Specifies which AIDI resources (e.g., profiles, integrations) the group manages. |
    | `include_all_resources` | Set to `true` to include all resources in the scope.                            |
 
    This request creates a resource group scoped to the `Team Bravo` project.

@@ -107,7 +107,7 @@ These benchmarks are not strict requirements. High-performing teams focus on sus
 
 #### Productivity Insights
 
-| Goal                             | Metric                     | SEI Widget                | Suggested Action                      |
+| Goal                             | Metric                     | Widget                | Suggested Action                      |
 | -------------------------------- | -------------------------- | ------------------------- | ------------------------------------- |
 | All PRs reviewed by 2+ reviewers | PR Cycle Time              | PR Review metrics         | Enforce 2 approvals before merge      |
 | ≥ 1/3 of PRs have comments       | Number of Comments per PR  | PR Engagement             | Encourage PR-based discussion vs chat |
@@ -117,7 +117,7 @@ These benchmarks are not strict requirements. High-performing teams focus on sus
 
 #### Efficiency (Sprint) Insights
 
-| Goal                          | Metric                    | SEI Widget      | Suggested Action               |
+| Goal                          | Metric                    | Widget      | Suggested Action               |
 | ----------------------------- | ------------------------- | --------------- | ------------------------------ |
 | < 35% sprint scope creep       | Sprint Delivery           | Sprint Insights | Lock sprint scope before start |
 | All stories have story points | Sprint Delivery Drilldown | Sprint Insights | Enforce estimation requirement |
@@ -129,7 +129,7 @@ These benchmarks are not strict requirements. High-performing teams focus on sus
 
 #### Efficiency (DORA Metrics) Insights
 
-| Goal                           | Metric                | SEI Widget          | Suggested Action           |
+| Goal                           | Metric                | Widget          | Suggested Action           |
 | ------------------------------ | --------------------- | ------------------- | -------------------------- |
 | Work completed within 1 sprint | Lead Time for Changes | Lead Time           | Break down large stories   |
 | P0/P1 resolved ≤ 7 days        | MTTR / Bugs Lead Time | Incident metrics    | Define hotfix SLA          |
@@ -138,14 +138,14 @@ These benchmarks are not strict requirements. High-performing teams focus on sus
 
 #### Efficiency (Sprint) Insights
 
-| Goal                | Metric                | SEI Widget      | Suggested Action        |
+| Goal                | Metric                | Widget      | Suggested Action        |
 | ------------------- | --------------------- | --------------- | ----------------------- |
 | < 25% scope creep    | Sprint Delivery       | Sprint Insights | Improve sprint planning |
 | > 80% commit-to-done | Sprint Predictability | Sprint Reports  | Reduce sprint overload  |
 
 #### Productivity Insights
 
-| Goal                            | Metric                    | SEI Widget              | Suggested Action           |
+| Goal                            | Metric                    | Widget              | Suggested Action           |
 | ------------------------------- | ------------------------- | ----------------------- | -------------------------- |
 | All PRs linked to Jira          | PR Cycle Time             | PR Traceability         | Enforce ticket in PR title |
 | All devs participate in reviews | PR Cycle Time             | PR Review participation | Auto-assign reviewers      |
@@ -159,28 +159,28 @@ These benchmarks are not strict requirements. High-performing teams focus on sus
 
 #### Efficiency (DORA Metrics) Insights
 
-| Goal                     | Metric               | SEI Widget         | Suggested Action             |
+| Goal                     | Metric               | Widget         | Suggested Action             |
 | ------------------------ | -------------------- | ------------------ | ---------------------------- |
 | < 10% change failure rate | Change Failure Rate  | DORA metrics       | Add canary + automated tests |
 | Deploy weekly or more    | Deployment Frequency | Deployments        | Ship smaller changes         |
 
 #### Efficiency (Sprint) Insights
 
-| Goal                      | Metric                | SEI Widget      | Suggested Action            |
+| Goal                      | Metric                | Widget      | Suggested Action            |
 | ------------------------- | --------------------- | --------------- | --------------------------- |
 | < 15% scope creep          | Sprint Insights       | Sprint Insights | Improve planning discipline |
 | Predictability within 20% | Sprint Predictability | Sprint Insights | Reduce unplanned work       |
 
 #### Productivity Insights
 
-| Goal                   | Metric                  | SEI Widget    | Suggested Action           |
+| Goal                   | Metric                  | Widget    | Suggested Action           |
 | ---------------------- | ----------------------- | ------------- | -------------------------- |
 | Standard PR structure  | PR Metadata consistency | PR reports    | Enforce naming conventions |
 | PR Cycle Time < 2 days | PR Cycle Time           | PR Cycle Time | Enforce small PRs          |
 
 #### Business Alignment Insights
 
-| Goal                   | Metric                  | SEI Widget    | Suggested Action           |
+| Goal                   | Metric                  | Widget    | Suggested Action           |
 | ---------------------- | ----------------------- | ------------- | -------------------------- |
 | < 15% production work     | Business Alignment   | Business Alignment | Reduce KTLO load      |
 

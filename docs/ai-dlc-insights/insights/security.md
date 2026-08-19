@@ -9,7 +9,7 @@ sidebar_position: 4
 Security Insights is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-Security Insights in AI DLC Insights focuses on understanding vulnerability risk across your application and infrastructure assets. Rather than looking at security findings in isolation, SEI surfaces signals that help teams assess exposure, remediation effectiveness, and long-lived risk over time.
+Security Insights in AI DLC Insights focuses on understanding vulnerability risk across your application and infrastructure assets. Rather than looking at security finding in isolation, AIDI surfaces signals that help teams assess exposure, remediation effectiveness, and long-lived risk over time.
 
 This experience is designed to provide a clear, actionable view of security health, whether you're monitoring organization-wide trends or drilling into specific teams and assets. By combining time-based analysis with tool-level filtering, AI DLC Insights helps you identify where risk is accumulating, how quickly vulnerabilities are resolved, and where remediation efforts may need to be prioritized.
 

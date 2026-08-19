@@ -185,7 +185,7 @@ Captures time between successful build and deployment to production.
 </Tabs>
 
 :::info 
-Event correlation such as linking tickets to commits or builds is automatically inferred and derived by the SEI Correlation Engine.
+Event correlation such as linking tickets to commits or builds is automatically inferred and derived by the AIDI Correlation Engine.
 :::
 
 </TabItem>
@@ -262,10 +262,10 @@ Deployment Frequency measures how often code changes are successfully deployed t
 
 Choose a tool type that provides deployment signals. AI DLC Insights supports the following systems:
 
-* **Continuous Deployment**: SEI detects all completed pipeline executions. No additional configuration is required.
-* **Issue Management**: SEI counts all work items in Issue Management systems such as Jira. Selecting this enables `Consider Issue Management Releases`.
-* **Source Code Management**: SEI counts only pull requests merged to your production branch with the labels defined in **Team Settings**. Selecting this enables `Pull Request Merged to Destination Branch`.
-* **Incident Management**: SEI uses change requests and incidents from integrated ITSM systems (such as ServiceNow) to calculate DORA metrics. Selecting this option enables additional configuration for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR).
+* **Continuous Deployment**: AIDI detects all completed pipeline executions. No additional configuration is required.
+* **Issue Management**: AIDI counts all work items in Issue Management systems such as Jira. Selecting this enables `Consider Issue Management Releases`.
+* **Source Code Management**: AIDI counts only pull requests merged to your production branch with the labels defined in **Team Settings**. Selecting this enables `Pull Request Merged to Destination Branch`.
+* **Incident Management**: AIDI uses change requests and incidents from integrated ITSM systems (such as ServiceNow) to calculate DORA metrics. Selecting this option enables additional configuration for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR).
 
 If you selected **Incident Management** as the deployment source, you can click which request statuses indicate a completed deployment: **Closed**, **Resolved**, **Updated**, or **Closed & Resolved**. 
 
@@ -287,11 +287,11 @@ Change Failure Rate measures the percentage of deployments that result in a fail
 
 #### Select a failure detection source
 
-Choose the system from which SEI will detect failure events related to deployments. You can measure change failures using one of the following sources:
+Choose the system from which AIDI will detect failure events related to deployments. You can measure change failures using one of the following sources:
 
-* **Continuous Deployment**: SEI detects all pipeline executions that result in a failure, such as a rollback or job failure. No additional configuration is required.
-* **Issue Management** (e.g., Jira): SEI counts all work items in Issue Management systems (e.g., Jira) that are marked as incidents, bugs, or failures caused by a deployment. Selecting this enables consideration of issue-based failure events.
-* **Incident Management**: SEI uses change requests and incidents from integrated ITSM systems (such as ServiceNow) to calculate DORA metrics. Selecting this option enables additional configuration for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR).
+* **Continuous Deployment**: AIDI detects all pipeline executions that result in a failure, such as a rollback or job failure. No additional configuration is required.
+* **Issue Management** (e.g., Jira): AIDI counts all work items in Issue Management systems (e.g., Jira) that are marked as incidents, bugs, or failures caused by a deployment. Selecting this enables consideration of issue-based failure events.
+* **Incident Management**: AIDI uses change requests and incidents from integrated ITSM systems (such as ServiceNow) to calculate DORA metrics. Selecting this option enables additional configuration for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR).
 
 If you selected **Incident Management** as the production incident source, you can click which incident statuses indicate a failed deployment: **Created**, **Updated**, **Closed**, **Resolved**, or **Closed & Resolved**. 
 
@@ -317,8 +317,8 @@ Mean Time to Restore (MTTR) measures the average time it takes for your teams to
 
 Harness AIDI supports MTTR measurement using:
 
-* **Issue Management** (e.g., Jira): SEI counts incidents or issues tracked in your Issue Management system that mark service downtime or failures. Selecting this enables Harness AIDI to measure Mean Time to Restore based on issue resolution events.
-* **Incident Management**: SEI uses change requests and incidents from integrated ITSM systems (such as ServiceNow) to calculate DORA metrics. Selecting this option enables additional configuration for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR).
+* **Issue Management** (e.g., Jira): AIDI counts incidents or issues tracked in your Issue Management system that mark service downtime or failures. Selecting this enables Harness AIDI to measure Mean Time to Restore based on issue resolution events.
+* **Incident Management**: AIDI uses change requests and incidents from integrated ITSM systems (such as ServiceNow) to calculate DORA metrics. Selecting this option enables additional configuration for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR).
 
 If you selected **Incident Management** as the production incident source, you can define which incidents are included and how resolution time is calculated.
 

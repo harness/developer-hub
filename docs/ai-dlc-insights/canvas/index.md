@@ -68,9 +68,9 @@ Access to Studio is governed by [Harness RBAC](/docs/software-engineering-insigh
 
 To view and manage Studio dashboards, ensure your role includes the following permissions:
 
-- **View SEI Studio** (`sei_seicanvas_view`)
-- **Create/Edit SEI Studio** (`sei_seicanvas_create` and `sei_seicanvas_edit`)
-- **Delete SEI Studio** (`sei_seicanvas_delete`)
+- **View Studio** (`sei_seicanvas_view`)
+- **Create/Edit Studio** (`sei_seicanvas_create` and `sei_seicanvas_edit`)
+- **Delete Studio** (`sei_seicanvas_delete`)
 
 ![](../static/canvas-4.png)
 
@@ -87,7 +87,7 @@ Access to Studio dashboards is also scoped through [Harness resource groups](/do
 
 1. Click **Save**.
 
-Next, associate the role with users or user groups by clicking **Manage Role Bindings**, selecting the role (such as `SEI Team Manager`), associating it with the appropriate resource group (such as all account-level resources), and clicking **Save**.
+Next, associate the role with users or user groups by clicking **Manage Role Bindings**, selecting the role (such as `AIDI Team Manager`), associating it with the appropriate resource group (such as all account-level resources), and clicking **Save**.
 
 ## Create a Studio dashboard
 
@@ -229,7 +229,7 @@ The following data columns are exposed:
 | `project`        | string    | Jira or Azure DevOps project identifier.        |
 | `integration_id` | string    | Unique identifier for the integration instance. |
 
-For example, the following HQL query filters SEI issues based on the team's configured projects and integrations: 
+For example, the following HQL query filters AIDI issues based on the team's configured projects and integrations: 
 
 ```sql
 find entity "sei:issues"
@@ -249,7 +249,7 @@ The following data columns are exposed:
 | `repo_id`        | string    | Git repository identifier.                      |
 | `integration_id` | string    | Unique identifier for the integration instance. |
 
-For example, the following query filters data based on the SEI SCM pull request reviews configured for the team:
+For example, the following query filters data based on the SCM pull request reviews configured for the team:
 
 ```sql
 find entity "sei:scm_pullrequests_reviews"

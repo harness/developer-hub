@@ -11,15 +11,15 @@ This page provides information to help you troubleshoot issues with Software Eng
 
 AI DLC Insights includes three pre-defined roles:
 
-- SEI Admin: Full control over SEI data, settings, and configurations.
-- SEI Team Manager: Manage teams and developer records at the project level.
-- SEI Viewer: Read-only access to SEI data and dashboards.
+- AIDI Admin: Full control over AIDI data, settings, and configurations.
+- AIDI Team Manager: Manage teams and developer records at the project level.
+- AIDI Viewer: Read-only access to AIDI data and dashboards.
 
 </details>
 <details>
-<summary>What can an SEI Team Manager do?</summary>
+<summary>What can an AIDI Team Manager do?</summary>
 
-An SEI Team Manager can:
+An AIDI Team Manager can:
 
 - Manage team settings and developer records at the project level.
 - View integrations and profiles.
@@ -27,7 +27,7 @@ An SEI Team Manager can:
 
 </details>
 <details>
-<summary>Can I create custom SEI roles in AI DLC Insights?</summary>
+<summary>Can I create custom AIDI roles in AI DLC Insights?</summary>
 
 Yes. Account Admins can create custom roles with specific AI DLC Insights permissions such as View, Edit, Create, or Delete, depending on the needs of the organization.
 
@@ -41,25 +41,25 @@ Team represents a group of developers working together within your organization�
 <details>
 <summary>How are Teams created in AI DLC Insights?</summary>
 
-Teams are auto-derived from your organization’s hierarchy (Org Tree). You don’t have to manually create them; SEI automatically identifies every leaf node as a Team.
+Teams are auto-derived from your organization’s hierarchy (Org Tree). You don’t have to manually create them; AIDI automatically identifies every leaf node as a Team.
 
 </details>
 <details>
 <summary>Why do Team settings matter?</summary>
 
-While SEI auto-builds teams, each must be contextualized through configuration. Correct settings ensure that metrics like Deployment Frequency, Lead Time, MTTR, and Change Failure Rate accurately reflect your team’s real workflow and delivery lifecycle.
+While AIDI auto-builds teams, each must be contextualized through configuration. Correct settings ensure that metrics like Deployment Frequency, Lead Time, MTTR, and Change Failure Rate accurately reflect your team’s real workflow and delivery lifecycle.
 
 </details>
 <details>
 <summary>Is selecting integrations mandatory?</summary>
 
-Yes. You must select and save integrations before you can continue configuring other team settings. This ensures SEI knows where to pull data from.
+Yes. You must select and save integrations before you can continue configuring other team settings. This ensures AIDI knows where to pull data from.
 
 </details>
 <details>
 <summary>Why do I need to update developer identifiers?</summary>
 
-To measure metrics like coding days and PR activity, SEI must know which developer performed which action in each system.
+To measure metrics like coding days and PR activity, AIDI must know which developer performed which action in each system.
 
 </details>
 <details>
@@ -79,7 +79,7 @@ Business Alignment maps work items to high-level organizational categories, such
 
 Once saved:
 
-- SEI starts attributing data to your team based on the filters and identifiers you defined.
+- AIDI starts attributing data to your team based on the filters and identifiers you defined.
 - Metrics are automatically calculated.
 - Team dashboards update to reflect accurate insights.
 
@@ -95,7 +95,7 @@ Typically, dashboards update automatically within minutes after configurations a
 
 In the Productivity Insights dashboard, the **Work Completed Per Developer** widget does not attribute work to the issue’s current Jira assignee; instead, it attributes work to historical assignments during configured development statuses from the **Issue Management** tab in Team Settings.
 
-A Jira issue may still appear under a developer even if it is currently unassigned (or assigned to someone else) because SEI attributes completed work using the person who owned the issue while it was in an active development state, not in its final state.
+A Jira issue may still appear under a developer even if it is currently unassigned (or assigned to someone else) because AIDI attributes completed work using the person who owned the issue while it was in an active development state, not in its final state.
 
 An issue is attributed to a developer if:
 

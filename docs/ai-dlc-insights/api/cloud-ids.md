@@ -7,13 +7,13 @@ sidebar_position: 2
 
 This page explains how to add or update developer identities using cloud IDs, provides best practices for integrating with external systems, and includes troubleshooting information to validate developer data before applying changes. 
 
-In some cases, SEI cannot automatically fetch user details such as emails, cloud IDs, and account IDs, from source integrations due to API restrictions or security limitations. This helps you:
+In some cases, AIDI cannot automatically fetch user details such as emails, cloud IDs, and account IDs, from source integrations due to API restrictions or security limitations. This helps you:
 
 - Add or update developer cloud IDs and emails.
 - Map developer contributions accurately in AI DLC Insights from integrations where Harness AIDI cannot fetch user records.
 - Correct identity mismatches for accurate metric reporting.
 
-To ensure accurate identity mapping, SEI provides two options:
+To ensure accurate identity mapping, AIDI provides two options:
 
 - **Developer Identity API** (JSON-based upload): Add or update identities via API calls.
 - **CSV Upload API** (File-based upload): Bulk upload identities using a CSV file.
@@ -254,5 +254,5 @@ curl --location 'https://<sei-cluster-base-url>/v2/developers/cloud-ids/upload' 
 ## Best practices
 
 - The developers in your organization should use consistent emails across integrations to improve automatic correlation.
-- If your organization has additional security restrictions that block the SEI system from fetching user identity details, we recommend automating periodic syncs of developer identities into SEI via the API.
-- The team managers or admins should periodically review developer mappings in the SEI UI to ensure accurate attribution of developer effort in the metrics.
+- If your organization has additional security restrictions that block the AIDI system from fetching user identity details, we recommend automating periodic syncs of developer identities into AIDI via the API.
+- The team managers or admins should periodically review developer mappings in the AIDI UI to ensure accurate attribution of developer effort in the metrics.

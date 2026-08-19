@@ -7,7 +7,7 @@ sidebar_position: 4
 
 Developers are the fundamental unit of measurement in AI DLC Insights. Every insight, metric, and analysis ultimately ties back to individual contributors, the people writing code, completing work items, and deploying software. 
 
-Managing developer records ensures that each individual is accurately represented, mapped to the right teams, roles, and organization hierarchies. Properly managed developer data is essential for reliable metrics across SEI dashboards.
+Managing developer records ensures that each individual is accurately represented, mapped to the right teams, roles, and organization hierarchies. Properly managed developer data is essential for reliable metrics across AIDI dashboards.
 
 AI DLC Insights supports two approaches for maintaining developer data:
 
@@ -70,7 +70,7 @@ To upload developer records:
    ![](../static/developers-2.png)
 
 3. Click **Choose File** or drop your CSV file containing developer data.
-4. Review the **Developer Preview** screen and map each column from your CSV to the corresponding SEI field.
+4. Review the **Developer Preview** screen and map each column from your CSV to the corresponding AIDI field.
 
    ![](../static/map-csv.png)
 
@@ -120,8 +120,8 @@ To review or export existing developer data:
 
    | Email                     | Manager Email            | Full Name       | Role       | Site         | Team | Sub Role | Department |
    | ------------------------- | ----------------------- | --------------- | ---------- | ------------ | ---- | -------- | ----------  |
-   | `frank@example.com`         | `eve.manager@example.com`  | Frank Castle    | SWE        | USA          | SEI  | SWE      |            |
-   | `grace@example.com`         | `eve.manager@example.com`  | Grace Hopper    | SWE        | USA          | SEI  | SWE      |            |
-   | `heidi@example.com`         | `frank.manager@example.com`| Heidi Klum      | Manager    | USA          | SEI  | Manager  |            |
-   | `ivan@example.com`          | `frank.manager@example.com`| Ivan Petrov     | Manager    | India        | SEI  | Manager  |            |
-   | `judy@example.com`          | `heidi.manager@example.com`| Judy Garland    | SWE        | India        | SEI  | SWE      |            |
+   | `frank@example.com`         | `eve.manager@example.com`  | Frank Castle    | SWE        | USA          | AIDI  | SWE      |            |
+   | `grace@example.com`         | `eve.manager@example.com`  | Grace Hopper    | SWE        | USA          | AIDI  | SWE      |            |
+   | `heidi@example.com`         | `frank.manager@example.com`| Heidi Klum      | Manager    | USA          | AIDI  | Manager  |            |
+   | `ivan@example.com`          | `frank.manager@example.com`| Ivan Petrov     | Manager    | India        | AIDI  | Manager  |            |
+   | `judy@example.com`          | `heidi.manager@example.com`| Judy Garland    | SWE        | India        | AIDI  | SWE      |            |

@@ -1,17 +1,17 @@
 ---
-title: SEI Subscriptions and Licenses
-description: Upgrade, Manage and View the SEI License usage data
+title: AIDI Subscriptions and Licenses
+description: Upgrade, Manage and View the AIDI License usage data
 sidebar_position: 20
 sidebar_label: Subscriptions and Licenses
 ---
 
-You can manage your SEI subscription and monitor license usage directly from your Harness account.
+You can manage your AIDI subscription and monitor license usage directly from your Harness account.
 
-Your SEI subscription includes a specific number of **Developer licenses**, which determine the number of developers for whom SEI generates insights.
+Your AIDI subscription includes a specific number of **Developer licenses**, which determine the number of developers for whom AIDI generates insights.
 
 ### Who is a Developer?
 
-SEI's Developer licensing model gives SEI admins full control over license consumption. A Developer is an engineer in your organization for whom you choose to generate engineering insights. You can import and manage the list of developers that should receive insights through the Developer table.
+AIDI's Developer licensing model gives AIDI admins full control over license consumption. A Developer is an engineer in your organization for whom you choose to generate engineering insights. You can import and manage the list of developers that should receive insights through the Developer table.
 
 Only developers who are included in the organization tree and for whom insights are surfaced are eligible to consume a Developer license. Simply importing a developer does not automatically consume a license unless they meet these criteria.
 
@@ -37,7 +37,7 @@ The **Activity & usage** section provides real-time data on how many Developer l
 
 ![](../../software-engineering-insights/propelo-sei/get-started/static/activity-usage.png)
 
-If your license usage exceeds the number of purchased licenses, review your Developer table and remove developers who no longer require insights. Removing a developer stops SEI from generating new insights for that developer and reduces Developer license consumption.
+If your license usage exceeds the number of purchased licenses, review your Developer table and remove developers who no longer require insights. Removing a developer stops AIDI from generating new insights for that developer and reduces Developer license consumption.
 
 You can always update the Developer table to only have the right intended Developers, and hence control license consumption. Note that doing so, ensures that no Insights are generated for the Developers that are removed from the Developer table.
 

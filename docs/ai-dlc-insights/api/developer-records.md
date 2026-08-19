@@ -11,11 +11,11 @@ For a complete list of endpoints and schema definitions, see the [Harness API re
 
 ## Before you begin
 
-To call the SEI API, you’ll need:
+To call the AIDI API, you’ll need:
 
 - A Harness API key
 - A Harness account identifier 
-- A base URL. All API URIs are relative to the SEI service endpoint for your region.
+- A base URL. All API URIs are relative to the AIDI service endpoint for your region.
   
   - Prod 1: `https://app.harness.io/prod1/sei/api/`
   - Prod 2: `https://app.harness.io/gratis/sei/api/` 
@@ -27,7 +27,7 @@ All Harness AIDI APIs require authentication using a Harness API key.
 
 To authenticate:
 
-1. Create a [Harness API key](/docs/software-engineering-insights/harness-sei/manage/api-keys#create-an-sei-api-key).
+1. Create a [Harness API key](/docs/ai-dlc-insights/manage/api-keys).
 1. Include the API key in your request header:
 
    ```bash

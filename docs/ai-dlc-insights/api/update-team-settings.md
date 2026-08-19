@@ -19,8 +19,8 @@ Filters depend on integrations; you must configure integrations before applying 
 
 Before you begin, you need:
 
-- An SEI API key with admin permissions
-- Your account's base URL. All API URIs are relative to the SEI service endpoint for your region:
+- An AIDI API key with admin permissions
+- Your account's base URL. All API URIs are relative to the AIDI service endpoint for your region:
   - **Prod 1:** `https://app.harness.io/prod1/sei/api/`
   - **Prod 2:** `https://app.harness.io/gratis/sei/api/`
   - **EU:** `https://accounts.eu.harness.io/sei/api/`

@@ -12,7 +12,7 @@ Activity Logs in AI DLC Insights provide traceability and compliance coverage ac
 These logs provide admins and auditors a transparent, end-to-end view of key events, helping your teams maintain compliance, investigate issues, and manage engineering insights at scale.
 
 :::info
-Access to Activity Logs in AI DLC Insights depends on [your role](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/sei-roles-and-permissions/#permissions). SEI Admins and Account Admins can view and manage logs, while SEI Collection Admins and Account Viewers have limited or no access. 
+Access to Activity Logs in AI DLC Insights depends on [your role](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/sei-roles-and-permissions/#permissions). AIDI Admins and Account Admins can view and manage logs, while AIDI Collection Admins and Account Viewers have limited or no access. 
 
 Users need at least **View** permission to open Activity Logs and apply filters.
 :::
@@ -21,7 +21,7 @@ Users need at least **View** permission to open Activity Logs and apply filters.
 
 To access Activity Logs in Harness AIDI:
 
-1. In your SEI project, navigate to **Account Management**.
+1. In your AIDI project, navigate to **Account Management**.
 1. Under **SEI Settings**, click **Activity Logs**.
 1. Click on an individual log from the list for additional details on what changed.
    
