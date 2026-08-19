@@ -12,7 +12,7 @@ When the instance registration is enabled, Deck makes some API requests to Gate 
    After the change, Deck does NOT call these endpoints   A user can also validate that the Header plugin has been updated by viewing the request to /plugins/deck/plugin-manifest.json and reviewing the ```Armory.ArmoryHeader ``` version to be 0.2.2
 
 Validate that the change has been successfully implemented in Gate:
-     View the Gate logs and verify that the following log DOES NOT exist: ```i.a.c.cloud.config.CloudConfiguration  : Cloud service is enabled```     In case the the armory.cloud config was never enabled, and the customer doesn't have a clientId/clientSecret. The following block can be safely ignored:
+     View the Gate logs and verify that the following log DOES NOT exist: ```i.a.c.cloud.config.CloudConfiguration  : Cloud service is enabled```     In case the armory.cloud config was never enabled, and the customer doesn't have a clientId/clientSecret. The following block can be safely ignored:
 ```
         armory.cloud:
           enabled: false

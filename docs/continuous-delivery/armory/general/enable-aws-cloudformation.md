@@ -19,7 +19,7 @@ aws:
 ```
 ### Halconfig
 Make sure to enable the aws provider, (if you don’t have the provider enable please refer to the background section to find the links).
-Also you need to have setted up at least one region. To add a region you can use this instruction:
+Also you need to have set up at least one region. To add a region you can use this instruction:
 ```
 export AWS_ACCOUNT_NAME=aws-1
 hal config provider aws account edit ${AWS_ACCOUNT_NAME} --regions us-east-1,us-west-2

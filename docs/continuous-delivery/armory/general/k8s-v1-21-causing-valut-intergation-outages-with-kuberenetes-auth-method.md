@@ -1,5 +1,5 @@
 ---
-title: K8s v1.21 causing Valut intergation outages (with kuberenetes auth method)
+title: K8s v1.21 causing Valut integration outages (with kubernetes auth method)
 redirect_from:
   - /docs/continuous-delivery/armory/general/k8s-v1.21-causing-valut-intergation-outages-with-kuberenetes-auth-method
 ---

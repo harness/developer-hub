@@ -6,7 +6,7 @@ title: Artifact Store Compatibility 1.32.x to 1.34.x
 
 Armory CD 2.32.0 (OSS Spinnaker 1.32.0) introduced support for [artifact storage](https://spinnaker.io/changelogs/1.32.0-changelog/#artifact-store) 
 with AWS S3.
-This feature compresses embdedded/base64 artifacts to remote/base64 and uploads them to an AWS S3 bucket significantly
+This feature compresses embedded/base64 artifacts to remote/base64 and uploads them to an AWS S3 bucket significantly
 reducing the artifact size in the execution context.
 
 Armory CD 2.32.x (OSS Spinnaker 1.32.x) releases the Artifacts are stored in the following location in the artifact storage S3 bucket:

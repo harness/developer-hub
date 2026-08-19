@@ -7,7 +7,7 @@ When executing a pipeline the ```Wait For Manifest To Stabilize``` stage gets 
 
 ## Cause
 This can be caused by a few different reasons.  In order to narrow down the potential root cause, please check the following:
-* If the execution was initiated by *non-admin* user and when an *admin* user starts the the pipeline, it gets stuck 
+* If the execution was initiated by *non-admin* user and when an *admin* user starts the pipeline, it gets stuck 
 * If manually triggering the pipeline shows the same behavior
 * If there is a difference in behavior when checking the above, then the issue may be due to the moniker naming convention. 
 

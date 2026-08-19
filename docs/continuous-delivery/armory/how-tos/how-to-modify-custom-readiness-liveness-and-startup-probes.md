@@ -8,7 +8,7 @@ As a best practice, customers should be looking to set up various probes to dete
  
 
 ## Prerequisites
-* Kubenetes cluster (EKS,AKS,GKE etc..)* Spinnaker manifest access
+* Kubernetes cluster (EKS,AKS,GKE etc..)* Spinnaker manifest access
  
 
 ## Instructions

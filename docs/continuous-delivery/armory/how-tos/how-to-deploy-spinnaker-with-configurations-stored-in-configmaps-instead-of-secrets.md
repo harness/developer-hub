@@ -12,7 +12,7 @@ This feature is available starting in ```armory-operator: 1.8.0```
 
 ## Instructions
 Below are the steps to enable the function
-* Ensure your operator deployment is using the correct image  **armory-operator: 1.8.0** or greater ([https://hub.docker.com/r/armory/armory-operator/tags](https://hub.docker.com/r/armory/armory-operator/tags))Within the the halyard configmap named ```halyard-config-map```, set ```halyard.configSourceType``` to ```configMap``` instead of the default ```secret```.
+* Ensure your operator deployment is using the correct image  **armory-operator: 1.8.0** or greater ([https://hub.docker.com/r/armory/armory-operator/tags](https://hub.docker.com/r/armory/armory-operator/tags))Within the halyard configmap named ```halyard-config-map```, set ```halyard.configSourceType``` to ```configMap``` instead of the default ```secret```.
 data:
   halyard.yml: |
     halyard:

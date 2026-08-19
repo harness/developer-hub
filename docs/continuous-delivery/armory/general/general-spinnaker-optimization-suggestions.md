@@ -179,7 +179,7 @@ spec:
       clouddriver:
         kubernetes:
           useExecHealthCheck: false
-        #Examples of common settings can be set/overriden.  HIGHLY recommend an APM agent for monitoring various aspects including jvm details not available through other metrics.  
+        #Examples of common settings can be set/overridden.  HIGHLY recommend an APM agent for monitoring various aspects including jvm details not available through other metrics.  
         #env:
           #JAVA_OPTS: -Dnewrelic.config.file=/opt/apmagent/config/newrelic.yml -javaagent:/opt/apmagent/newrelic/newrelic.jar -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djdk.tls.client.protocols=TLSv1.2 -XX:MaxRAMPercentage=50.0
       dinghy:
@@ -342,7 +342,7 @@ Note: We GENERALLY recommend NOT using the embedded Redis. POC's can override th
 ```clouddriver.yml```
 kubernetes:
   useExecHealthCheck: false
-#Examples of common settings can be set/overriden.  HIGHLY recommend an APM agent for monitoring various aspects including jvm details not available through other metrics.  
+#Examples of common settings can be set/overridden.  HIGHLY recommend an APM agent for monitoring various aspects including jvm details not available through other metrics.  
 #env:
   #JAVA_OPTS: -Dnewrelic.config.file=/opt/apmagent/config/newrelic.yml -javaagent:/opt/apmagent/newrelic/newrelic.jar -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djdk.tls.client.protocols=TLSv1.2 -XX:MaxRAMPercentage=50.0
 ```dinghy.yml```, `````````echo.yml```, `````````front50.yml```, `````````fiat.yml```, `````````gate.yml```, ```igor.yml```, `````````kayenta.yml```, `````````orca.yml```, `````````rosco.yml``` each need to have the following lines added into an existing file, or added to a newly created file

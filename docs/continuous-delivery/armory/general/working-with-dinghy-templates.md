@@ -70,7 +70,7 @@ This module represents a Bake (manifest) stage. If we go to the Spinnaker UI we 
 }},                                                   // Remember to close the module brakects, and since we haven't finished, 
                                                       // we add a "," in here (We need a valid JSON at the end.)           
 
-The other module in here is similar. We set the name, ids and it's predecesor.
+The other module in here is similar. We set the name, ids and it's predecessor.
 {{ module "stage.deployManifest.module" 
     "name" "deploy manifest"
     "refId" 2
@@ -83,7 +83,7 @@ The other module in here is similar. We set the name, ids and it's predecesor.
     "applicationName" "training"                      // Your application name
     "namespaceOverride" "karlo"                       // If you are overriding the namespace of your manifest.
     "source" "artifact"                               // Either text or Artifact, in this case our source is an artifact
-    "manifestArtifactId" "helmBakedNginxId"           // The id we setted up for our output artifact.
+    "manifestArtifactId" "helmBakedNginxId"           // The id we set up for our output artifact.
     "manifestArtifactAccount" "embedded-artifact"     // Default value since we baked the artifact
 
   }}

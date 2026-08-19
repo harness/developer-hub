@@ -15,7 +15,7 @@ This exception shows a permission denied, but the root reason is that the ```kus
  
 **How to check:**
  
-1. Acccess into spin-rosco container, for example:
+1. Access into spin-rosco container, for example:
 ```kubectl exec -it spin-rosco-7c6d6444c8-t6w5h -- sh```
 In the spin-rosco container, you will be directed to the directory ```/packer```.
 ```/packer $```

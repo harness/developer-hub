@@ -1,5 +1,5 @@
 ---
-title: Armory Continous Deployment Managed High Availability and Disaster Recovery SLA Information
+title: Armory Continuous Deployment Managed High Availability and Disaster Recovery SLA Information
 ---
 
 

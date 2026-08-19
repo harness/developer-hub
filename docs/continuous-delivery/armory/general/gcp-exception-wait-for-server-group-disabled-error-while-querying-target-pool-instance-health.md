@@ -5,7 +5,7 @@ redirect_from:
 ---
 
 ## Issue
-When creating a cluster in GKE within a pipeline , users may look to to deploy an image and then Destroy it to Disable it.
+When creating a cluster in GKE within a pipeline , users may look to deploy an image and then Destroy it to Disable it.
 When trying to run the stage ```Destroy Server Group``` with a GCP cluster, a time out is hit after ```30 min``` in the ```Wait For Server Group Disabled``` task.
 The following exception can be seen within the Spinnaker UI:
 Exception ( Wait For Server Group Disabled )

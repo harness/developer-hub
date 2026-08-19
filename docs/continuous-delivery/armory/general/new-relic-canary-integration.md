@@ -29,7 +29,7 @@ This will create a block in Halyard like:
 You will need your applications to report metrics to New Relic as an example I used their K8s setup.[https://docs.newrelic.com/docs/integrations/kubernetes-integration/installation/kubernetes-installation-configuration](https://docs.newrelic.com/docs/integrations/kubernetes-integration/installation/kubernetes-installation-configuration)Now we need to create our Canary-config. 
 
 Go to Delivery(1) -> CANARY CONFIGS(2) -> Add configuration (3)Add a name to your configuration (4), this is visible on the UI, select newrelic as your Metric Store (5) and click on Add Metric (6)
-Then include your NewRelic SQL query, in this example we are quering our application in the K8sPodSample for traffic.
+Then include your NewRelic SQL query, in this example we are querying our application in the K8sPodSample for traffic.
 ```SELECT average (net.rxBytesPerSecond) FROM K8sPodSample```
 
 Click Ok and scroll down, you need to make all the metrics add up to 100, this is how much weight each metric has for the final score. 

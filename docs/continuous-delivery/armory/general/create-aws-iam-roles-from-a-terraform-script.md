@@ -3,7 +3,7 @@ title: Create AWS IAM Roles from a Terraform Script
 ---
 
 ## Introduction
-This document will show you how to create the AWS IAM roles from a Terraform Script. This document is based on the idea to automatize this manual process [Deploying to AWS from Spinnaker (using IAM instance roles)](https://docs.armory.io/spinnaker-install-admin-guides/add-aws-account-iam/) using a terraform script. That means you have two options to create the AWS IAM roles.
+This document will show you how to create the AWS IAM roles from a Terraform Script. This document is based on the idea to automate this manual process [Deploying to AWS from Spinnaker (using IAM instance roles)](https://docs.armory.io/spinnaker-install-admin-guides/add-aws-account-iam/) using a terraform script. That means you have two options to create the AWS IAM roles.
 
 ## Prerequisites
 Terraform should be installed:

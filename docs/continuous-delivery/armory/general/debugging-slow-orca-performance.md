@@ -8,5 +8,5 @@ Orca is displaying unresponsiveness and the following behavior is being observed
 * 30 second **Wait stages** take longer than 30 seconds to complete.
 
 ## Cause
-Under the hood, Orca uses Redis to store a queue of tasks to perform. During each polling cycle, Orca it will attempt to read any messages that haven’t been delivered and are past due. In some cases, these messsages may be deemed “undelieverable” and requeued. If enough of these messages build up, you may experience a slow down in your Pipeline executions.
+Under the hood, Orca uses Redis to store a queue of tasks to perform. During each polling cycle, Orca it will attempt to read any messages that haven’t been delivered and are past due. In some cases, these messages may be deemed “undelieverable” and requeued. If enough of these messages build up, you may experience a slow down in your Pipeline executions.
 

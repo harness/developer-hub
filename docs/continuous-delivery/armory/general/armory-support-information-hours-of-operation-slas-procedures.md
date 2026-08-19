@@ -25,7 +25,7 @@ If you can’t find an answer to your question or concern at any given time, you
 * [SLA Matrix - Armory Essential Support for OSS Cases](#mcetoc_1h4ot4buh13)
 * [SLA Matrix - Armory CD Self-Hosted Support Cases](#mcetoc_1h4ot4buh14)
 * [SLA Matrix - Armory Global Premium Support Cases](#mcetoc_1h4ot4buh15)
-* [Armory Continous Deployment - Managed: High Availability and Disaster Recovery SLA Information](#mcetoc_1h4ot7pqp3c)
+* [Armory Continuous Deployment - Managed: High Availability and Disaster Recovery SLA Information](#mcetoc_1h4ot7pqp3c)
 [How is Priority Determined during Case Creation?](#mcetoc_1h4ot4buh16)
 [Escalation Policies](#mcetoc_1h4ot4buh17)
 

@@ -7,7 +7,7 @@ An organization may encounter an error of ```Maximum call stack size exceeded```
 
 ## Cause
 This error means that somewhere in the pipeline code, a function or stage is being called which in turn calls another function  or stage and so forth, until you hit the call stack limit.
-An example would be a pipeline Json that has an incorrect dependancy, such as a stage that depends on a non-existing stage.
+An example would be a pipeline Json that has an incorrect dependency, such as a stage that depends on a non-existing stage.
 
 ```
 "stages": [

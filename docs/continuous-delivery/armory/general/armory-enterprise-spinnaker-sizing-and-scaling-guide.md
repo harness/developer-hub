@@ -190,7 +190,7 @@ AreaAlert ConditionActionsConcernsPod CPU request/limits usage>95% for 360 minsI
 AreaAlert ConditionActionsConcernsWrite latencyBaseline deviation for 15 minsIdentify the root cause of the increased latencyNoneRead latencyBaseline deviation for 15 minsIdentify the root cause of the increased latencyNoneCPU utilisation> 70% for 15 minsIncrease Aurora cluster instance typeNone
 
 ### Redis cluster
-AreaAlert ConditionActionsConcernsRedis Get LatencyBaseline deviation for 15 minsIdentify the root cause of the increased latencyNoneRedis Set LatencyBaseline deviation for 15 minsIdentify the root cause of the increased latencyNoneRedis CPU utilisation>90% for 15 minsIncrease Redis cluster instance typeNoneRedis Storage utlisation>85% for 15 mins- Run Redis keys cleanup job for Rosco and Terraformer keys- If cleanup doesnt resolve the alert then increase the instance typeNone
+AreaAlert ConditionActionsConcernsRedis Get LatencyBaseline deviation for 15 minsIdentify the root cause of the increased latencyNoneRedis Set LatencyBaseline deviation for 15 minsIdentify the root cause of the increased latencyNoneRedis CPU utilisation>90% for 15 minsIncrease Redis cluster instance typeNoneRedis Storage utilization>85% for 15 mins- Run Redis keys cleanup job for Rosco and Terraformer keys- If cleanup does not resolve the alert then increase the instance typeNone
 
 ### Armory Enterprise application metrics
 AreaAlert ConditionActionsConcernsJDBC connections usage>50% for 3 minsIncrease the available connection pool of the serviceNoneClouddriver Caching agents>85% for 10 minsIncrease the max-concurrent-caching agents config and/or increase the available Clouddriver replicasNumberOfConfiguredRegions
@@ -483,7 +483,7 @@ Scaling Front50 depends on the number of applications, pipelines, and the stage 
 ####  Terraformer and Rosco
 Scaling either the Terraformer service or Rosco service depends on the concurrent executions of Terraform or Bake stages. Expect to increase the resources and replicas.
 ### EKS node pools
-The major load increase comes from the horizontal and vertical scaling of Clouddriver. Only a small portion is allocated to scaling the other Spinnaker services. Only Clouddriver scaling will be taken into consideration for the bellow calculations
+The major load increase comes from the horizontal and vertical scaling of Clouddriver. Only a small portion is allocated to scaling the other Spinnaker services. Only Clouddriver scaling will be taken into consideration for the below calculations
 Number of Nodes+30%+50%+100%9101112
 The following VPC IPs are calculated to be reserved (without changes to the configuration for warm pool).
 Reserved IPs+30% (10 Nodes)+50% (11 Nodes)+100% (12 Nodes)540600660720

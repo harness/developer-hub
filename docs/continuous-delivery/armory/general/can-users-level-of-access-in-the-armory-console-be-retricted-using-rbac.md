@@ -1,5 +1,5 @@
 ---
-title: Can Users' Level of Access in the Armory Console be Retricted using RBAC
+title: Can Users' Level of Access in the Armory Console be Restricted using RBAC
 redirect_from:
   - /docs/continuous-delivery/armory/general/can-users'-level-of-access-in-the-armory-console-be-retricted-using-rbac
 ---

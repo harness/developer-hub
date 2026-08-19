@@ -1,5 +1,5 @@
 ---
-title: Is it Possible to Restrict User Access to Certain Envrionments with RBAC
+title: Is it Possible to Restrict User Access to Certain Environments with RBAC
 ---
 
 ## Introduction

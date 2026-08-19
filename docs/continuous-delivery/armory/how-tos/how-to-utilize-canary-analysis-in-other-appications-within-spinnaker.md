@@ -1,5 +1,5 @@
 ---
-title: How to utilize Canary analysis in other Appications within Spinnaker
+title: How to utilize Canary analysis in other Applications within Spinnaker
 ---
 
 ## Introduction
