@@ -22,15 +22,15 @@ Create a single pipeline to provision or update resources during deployment. Thi
 
 ## Before you begin
 
-- **Harness account with IaCM and CD enabled:** You need both **Infrastructure as Code Management** and **Continuous Delivery** modules. For how to access or create a Harness account, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
+- **Harness account with IaCM and CD enabled:** You need both **Infrastructure as Code Management** and **Continuous Delivery** modules. For how to access or create a Harness account, go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
 
     :::info Contact Harness support:
 
-    If IaCM or CD does not appear, see [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+    If IaCM or CD does not appear, go to [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
 
     :::
 
-- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). To get these, an administrator must assign you a role that includes them. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
+- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). To get these, an administrator must assign you a role that includes them. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
 - **IaCM workspace configured:** You need an existing workspace with Terraform or OpenTofu configuration. Go to [Create a workspace](/docs/infra-as-code-management/workspaces/create-workspace) to set one up.
 
 ---
@@ -54,7 +54,7 @@ After executing a pipeline, select the **Apply** step to view all [OpenTofu](htt
 
 ![OpenTofu output variables](./static/output.png)
 
-### Example: Pass a variable
+### Example: pass a variable
 
 To use the "bucket_name" as an input, copy the current value or the path to the variables. This ensures the value is fetched at runtime:
 

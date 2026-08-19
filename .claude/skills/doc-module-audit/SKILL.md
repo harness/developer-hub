@@ -242,9 +242,10 @@ FAIL if the YAML frontmatter block (between `---` delimiters) does not contain a
 FAIL if the frontmatter block does not contain a `description:` field with a non-empty value.
 **Exempt:** DMS content files (path contains `/content/`).
 
-**FM-3 — `sidebar_position` present and multiple of 10**
+**FM-3 — `sidebar_position` present**
 WARN if the frontmatter block does not contain a `sidebar_position:` field.
-FAIL if `sidebar_position` is present but not a multiple of 10 (e.g., 15, 23 are wrong; 10, 20, 30 are correct).
+FAIL if `sidebar_position` is present but is not an integer multiple of 5 (e.g., 12, 23 are wrong; 5, 10, 15, 20 are correct).
+Prefer multiples of 10 (10, 20, 30) when adding new pages so there is room to insert pages later without updating several files. Do **not** score multiples of 5 as violations.
 **Exempt:** DMS content files (path contains `/content/`) and index pages that don't appear in sidebar navigation.
 
 **FM-4 — No H1 in body**
@@ -255,8 +256,10 @@ The page title is set via frontmatter; a `# Heading` in the body is always wrong
 **H-1 — Sentence case in headings**
 WARN for any `##` or `###` heading where a non-first, non-proper-noun word is capitalized.
 
+**Step labels start a new sentence:** When a heading leads with a `Step N:` label, the label is a lead-in rather than part of the sentence that follows, so the first word after it may be capitalized and is **not** a violation. `#### Step 1: Preview changes with a dry run` and `#### Step 2: Start with a small batch` are correct. Later words are still checked, so `#### Step 1: Preview Changes With A Dry Run` fails.
+
 **Proper noun detection uses pattern matching:**
-- **Known terms:** Harness modules (IaCM, CI, CD, STO, CCM, etc.), common tech (Kubernetes, Terraform, AWS, GitHub, Docker, PostgreSQL, MySQL, BigQuery, Liquibase, Flyway, etc.)
+- **Known terms:** Harness modules (IaCM, CI, CD, STO, CCM, etc.), common tech (Kubernetes, Terraform, Ansible, AWS, GitHub, Docker, PostgreSQL, MySQL, BigQuery, Liquibase, Flyway, etc.)
 - **CamelCase/PascalCase:** Words with internal capitals (e.g., BigQuery, CloudSQL, OpenTofu)
 - **Words with numbers:** Jinja2, MySQL8, PostgreSQL15, OAuth2
 - **Acronyms:** All-caps 2+ letter words (API, REST, JSON, YAML, JDBC, SDK, HTTP, HTTPS, SSH, SSL, TLS, CLI, UI, URL, DNS, IP)
@@ -268,12 +271,27 @@ This reduces false positives for legitimate product/framework names while still 
 
 **For hybrid pages:** H-1 violations should be reviewed carefully. Hybrid pages may legitimately contain **mixed heading styles** — imperative headings for procedural sections ("Configure X", "Enable Y") and descriptive noun phrases for conceptual sections ("Configuration levels", "How it works", "Workspace lifecycle"). A page with both styles is not necessarily wrong if the heading style matches the section type. The scanner reports these as WARN, not FAIL, so they can be reviewed in context.
 
-**H-2 — No gerund headings**
-FAIL for any `##` or `###` heading that ends with a word matching `\w+ing` as the final token
-(e.g. "## Configuring the connector", "### Installing delegates").
-Exceptions: `## Troubleshooting`, `## Before you begin` — these are standard section names.
+**H-2 — No leading gerund headings**
+FAIL when the **first word** of a `##` / `###` heading (or the first word after a `Step N:` lead-in) is a gerund used as a verb or adjective (matches `\w+ing`).
+- **Wrong:** `## Troubleshooting migrations`, `### Installing delegates`, `### Configuring the connector`
+- **Fine:** `### Migration troubleshooting`, `## Delegate troubleshooting`, `## Cost monitoring` (the gerund is a noun later in the heading, not the lead verb)
+Exceptions: the standalone landmark `## Troubleshooting`.
 **Exempt:** FAQ pages (`is_faq: true`) — FAQ category headings are noun phrases by design, not imperatives.
-**For hybrid pages:** Gerund headings are always wrong regardless of page type. Use imperative forms ("Configure X", not "Configuring X") for procedural sections and noun phrases ("Configuration overview", not "Configuring overview") for conceptual sections.
+**For hybrid pages:** A leading gerund is always wrong regardless of page type. Use imperative forms ("Configure X", not "Configuring X") for procedural sections and noun phrases ("Migration troubleshooting", not "Troubleshooting migrations") for conceptual sections.
+
+**L-1 — Broken internal link**
+FAIL for any site-relative link whose target does not resolve to a real route. `onBrokenLinks: 'throw'` means these break `docusaurus build`, so they are never cosmetic.
+
+The resolver models the routing rules that make a link resolve or 404:
+- **Folder-index collapsing:** `rbac/rbac.md`, `x/index.md`, and `x/README.md` are served at the **folder path**. Linking to `/docs/internal-developer-portal/rbac/rbac` is broken; the route is `/docs/internal-developer-portal/rbac`. This is the duplicate-segment trap in `.cursor/rules/doc-linking.mdc`, and the violation text names the correct path.
+- **Number prefixes:** `5-use-ccm-cost-governance/` routes as `use-ccm-cost-governance`.
+- **`slug` and `redirect_from`:** both are honored, so a page with a custom slug or a preserved old URL is not flagged.
+- **`_category_.json` generated-index:** the folder path counts as a route.
+- **`_server-redirects`:** listed sources count as routes.
+
+**Checked:** `/docs/...`, `/3k-docs/...`, `/release-notes/...`, `/university/...`, `/roadmap/...`.
+**Not checked (known gaps):** `/<base>/category/<slug>` routes, which are generated from sidebar labels including dedup suffixes and cannot be resolved from disk; asset paths (`.png`, `.pdf`, and similar); relative links such as `](../other.md)`; and anchor fragments, so `#section` is stripped before lookup rather than verified.
+**Links with a `.md` extension** resolve to the extensionless route, so they are a style issue rather than a broken link.
 
 **H-3 — Body content at `##` level**
 WARN if the file uses `##` headings for body sections rather than only the standard landmarks
@@ -387,6 +405,7 @@ After scanning all files, compute a **compliance score** per file using a two-ca
 2. **Editorial score** (starts at 100):
    - FM-1, FM-2, FM-3, FM-4: Frontmatter issues (-15 for FM-1, -15 for FM-2, -5 for FM-3 WARN/-15 for FM-3 FAIL, -15 for FM-4; cap at 5 violations for FM-4)
    - H-1, H-2, H-3: Heading issues (-5 for H-1, -15 for H-2, -5 for H-3, cap at 5 violations each)
+   - L-1: Broken internal links (-15 each, cap at 5 violations)
    - S-1 through S-7: Style violations (-15 for FAIL rules, -5 for WARN rules, cap at 5 violations each)
    - T-2, T-3: Template compliance (-15 for T-2, variable for T-3 including -50 for old FAQ structure)
    - ST-1: Section order (-5)
@@ -467,17 +486,18 @@ The report file is saved with today's date. The audits directory is created if i
 
 ## Rule breakdown
 
-**Rule prefix key:** FM = Frontmatter · H = Heading · S = Style · C = Content · T = Troubleshoot · ST = Structure
+**Rule prefix key:** FM = Frontmatter · H = Heading · L = Link · S = Style · C = Content · T = Troubleshoot · ST = Structure
 
 | Rule | Description | Failures | Warnings |
 |---|---|---|---|
 | FM-1 | Missing title | N | — |
 | FM-2 | Missing description | N | — |
-| FM-3 | Missing/invalid sidebar_position | N (not multiple of 10) | N (missing) |
+| FM-3 | Missing/invalid sidebar_position | N (not multiple of 5) | N (missing) |
 | FM-4 | H1 in body | N | — |
 | H-1 | Heading case violations | — | N |
-| H-2 | Gerund headings | N | — |
+| H-2 | Leading gerund headings | N | — |
 | H-3 | Body content at ## level | — | N |
+| L-1 | Broken internal links | N | — |
 | S-1 | Em dashes | N | — |
 | S-2 | Link phrasing (see/refer to) | N | — |
 | S-3 | Bare link text (here/click here) | N | — |

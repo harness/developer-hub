@@ -2,7 +2,7 @@
 title: Drift Detection and Ephemeral Workspaces
 sidebar_label: Drift & Ephemeral Workspaces
 description: Configure scheduled drift detection and automatic workspace lifecycle (ephemeral workspaces) at the workspace and project level in Harness IaCM.
-sidebar_position: 85
+sidebar_position: 130
 keywords:
   - drift detection
   - ephemeral workspaces
@@ -27,7 +27,7 @@ Harness IaCM provides two native automation features that keep your infrastructu
 
 ---
 
-## What you will learn
+## What you will learn from this topic
 
 - What Drift Detection and Ephemeral Workspaces do, and how they relate.
 - The two configuration levels (workspace and project, per provisioner) and how they override each other.
@@ -89,7 +89,7 @@ When you disable a feature at the workspace level, that workspace is explicitly 
 
 ---
 
-## Drift Detection
+## Drift detection
 
 Drift Detection runs a pipeline on a schedule to check whether your live infrastructure still matches your Terraform, OpenTofu, or Terragrunt state. When the scheduled run detects drift, the pipeline fails and the workspace is marked drifted.
 
@@ -198,7 +198,7 @@ View the workspace status on the workspace detail page or in the workspace list.
 
 ---
 
-## Ephemeral Workspaces
+## Ephemeral workspaces
 
 Ephemeral Workspaces are time-limited environments that automatically destroy their infrastructure after a period of inactivity. Optionally, Harness deletes the workspace record itself after a further delay.
 

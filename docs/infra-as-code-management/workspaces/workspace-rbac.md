@@ -11,7 +11,7 @@ tags:
   - iacm
   - workspaces
   - rbac
-sidebar_position: 60
+sidebar_position: 80
 redirect_from:
   - /docs/infra-as-code-management/manage-projects/workspace-rbac
 ---

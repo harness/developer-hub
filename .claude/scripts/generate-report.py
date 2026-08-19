@@ -10,10 +10,12 @@ from pathlib import Path
 RULE_DESCRIPTIONS = {
     "FM-1": "Missing title",
     "FM-2": "Missing description",
-    "FM-3": "H1 in body",
+    "FM-3": "Missing/invalid sidebar_position",
+    "FM-4": "H1 in body",
     "H-1": "Heading case violations",
-    "H-2": "Gerund headings",
+    "H-2": "Leading gerund headings",
     "H-3": "Body content at ## level",
+    "L-1": "Broken internal links",
     "S-1": "Em dashes",
     "S-2": "Link phrasing (see/refer to)",
     "S-3": "Bare link text (here/click here)",
@@ -215,7 +217,8 @@ def generate_report(results: list, module_config: dict, output_path: str):
                 "C-2": "Add language identifiers to code blocks",
                 "S-7": "Expand contractions to full forms",
                 "C-1": "Add landmark sections",
-                "H-2": "Convert gerund headings to imperative",
+                "H-2": "Rewrite a leading gerund as an imperative or a noun phrase (Configuring X → Configure X or X configuration)",
+                "L-1": "Repoint broken internal links to a route that exists",
             }.get(rule, f"Fix {desc}")
 
             f.write(f"{idx}. **{rule} — {desc}:** {count} violations across {file_count} files. Fix: {fix_desc}\n\n")

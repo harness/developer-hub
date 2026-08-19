@@ -52,3 +52,7 @@ yarn.lock
 .claude/skills/doc-audit/audits/
 .claude/skills/doc-audit-check/audits/
 .claude/skills/doc-module-audit/audits/
+
+# Python bytecode from the audit scanner
+__pycache__/
+*.pyc

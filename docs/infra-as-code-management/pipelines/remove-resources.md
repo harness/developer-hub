@@ -8,7 +8,7 @@ Sometimes, scenarios arise where infrastructure resources, like an AWS EC2 insta
 
 This guide explains how to safely remove such resources from your current state file and import them into a new one, ensuring no downtime or unintended consequences. With the removed and import commands, you can seamlessly transition resources between teams or workflows while keeping them operational.
 
-### Use Case
+### Use case
 A common scenario is when a new team takes over the management of a resource. For example:
 - Team A currently manages the resource using one state file.
 - The resource needs to remain live and operational but should now be managed by Team B using a different state file.
@@ -21,7 +21,7 @@ Previously, users needed to manually edit state files and update Terraform code.
 ### Solution
 The removed and import commands streamline this process, ensuring resources remain live and operational while transitioning between state files.
 
-### Step-by-Step Guide
+### Step-by-step guide
 1. Removing the Resource from the Current State File
 Add the removed block to your Terraform code to detach the resource from the current state file.
 
@@ -100,4 +100,5 @@ The `lifecycle { destroy = false }` directive is required. Without it, Terraform
 - Use version control to track changes to Terraform configuration files.
 
 ## Additional Resources
-Go to [OpenTofu resource syntax](https://opentofu.org/docs/language/resources/syntax/#removing-resources) for more information on resources types, behavior and removal. Also see [supported CLI commands](/docs/infra-as-code-management/cli-commands/terraform-plugins#import).
+- [OpenTofu resource syntax](https://opentofu.org/docs/language/resources/syntax/#removing-resources): explains resources types, behavior and removal. 
+- [Supported CLI import command](/docs/infra-as-code-management/cli-commands/terraform-plugins#import): lists supported CLI commands including the import command.

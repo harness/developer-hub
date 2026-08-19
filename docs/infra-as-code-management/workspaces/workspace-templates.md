@@ -1,7 +1,7 @@
 ---
 title: Workspace templates
 description: Create workspace templates to standardize configurations, and learn how template-locked fields behave when you update a linked workspace.
-sidebar_position: 60
+sidebar_position: 90
 sidebar_label: Workspace Templates
 keywords:
   - workspace template
@@ -34,7 +34,7 @@ With workspace templates, you standardize workspace configurations across your p
    allowfullscreen="true"
 ></iframe>
 
-## What you will learn
+## What you will learn from this topic
 
 - How to create, edit, and apply a workspace template.
 - The difference between linking a workspace to a template and copying a template.

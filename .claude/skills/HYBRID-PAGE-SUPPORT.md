@@ -90,7 +90,7 @@ Updated the audit skills to recognize and appropriately score hybrid pages.
 
 **Changes:**
 - Added note to H-1 (Sentence case in headings): Hybrid pages may legitimately have mixed heading styles; violations should be reviewed in context
-- Added note to H-2 (No gerund headings): Gerunds are always wrong regardless of page type, but hybrids may have different heading styles for different section types
+- Added note to H-2 (No leading gerund headings): A gerund as the first verb or adjective is always wrong regardless of page type; a gerund later in a noun phrase ("Migration troubleshooting") is allowed
 
 **Impact:** Module-wide scans now flag potential hybrid pages for manual review rather than auto-failing them. The Python scanner (`.claude/scripts/scan-module.py`) remains rule-based and doesn't need page type classification — it reports violations, and the skill interprets them.
 

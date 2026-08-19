@@ -1,7 +1,7 @@
 ---
 title: Provision Workspaces
 description: Learn how to provision workspaces using an interactive guide, step-by-step instructions, and YAML.
-sidebar_position: 20
+sidebar_position: 30
 keywords:
   - provision
   - workspace

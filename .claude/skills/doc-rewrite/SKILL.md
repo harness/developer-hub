@@ -102,7 +102,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
 - Answers: Every `<details>` body must contain at least one full sentence of content.
 - Components: Use static `<details>`/`<summary>` for all entries. Only use `<FAQ>` component if the page has fewer than 10 questions total. Never use `<Troubleshoot>`.
 - Banned sections: No `## Before you begin`, `## Next steps`, `## Troubleshooting`, `## What you will learn from this topic`, or `## Introduction`.
-- Frontmatter: `sidebar_label: FAQ`, `title: FAQ — [Feature Name]`, `faq` tag required, `sidebar_position` (multiple of 10).
+- Frontmatter: `sidebar_label: FAQ`, `title: FAQ — [Feature Name]`, `faq` tag required, `sidebar_position` (prefer multiples of 10; multiples of 5 are allowed).
 
 **For Instructional pages:**
 - Structure: Frontmatter → Introduction (2-3 paragraphs) → Before you begin → Step-by-step instructions → Troubleshooting (with Troubleshoot component) → Next steps
@@ -121,7 +121,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
 1. **Frontmatter fixes:**
    - Add missing `keywords` and `tags`
    - Add `sidebar_label` if needed (Title Case)
-   - Add `sidebar_position` if missing (must be a multiple of 10, requires checking sibling pages in section to determine appropriate positioning)
+   - Add `sidebar_position` if missing. Prefer a multiple of 10 so there is room to insert pages later without updating several files. Multiples of 5 are allowed when you need to slot a page between existing tens. Check sibling pages in the section to determine the appropriate position.
    - Add `redirect_from` if URLs are being superseded
    - Ensure `slug` doesn't include `/docs/` prefix
    - **Check sidebar configuration:** Module-root files `/docs/[module]/file.md` need explicit entry in `sidebars.ts`. Nested files (in subfolders) auto-generate and only need `sidebar_position` in frontmatter. See CLAUDE.md "Sidebar Navigation Configuration" for details.
@@ -231,7 +231,7 @@ After applying changes:
    - `sidebar_label: FAQ` present in frontmatter
    - `title` follows `FAQ — [Feature Name]` format
    - `faq` tag is first in tags list
-   - `sidebar_position` present (multiple of 10)
+   - `sidebar_position` present (prefer multiples of 10; multiples of 5 are allowed)
    - Every `<summary>` ends with `?`
    - Every `<details>` body has at least one full sentence (not just a link)
    - No `###` or deeper headings anywhere in the body
@@ -240,7 +240,7 @@ After applying changes:
    - No `<Troubleshoot>` component used
    
    **Additional checks for Instructional/Overview pages:**
-   - `sidebar_position` present in frontmatter (multiple of 10)
+   - `sidebar_position` present in frontmatter (prefer multiples of 10; multiples of 5 are allowed)
    - Troubleshooting section (Instructional only) has at least 3 `<Troubleshoot>` component entries
 
 4. **Calculate expected score improvement:**

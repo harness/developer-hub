@@ -11,7 +11,7 @@ keywords:
 tags:
   - iacm
   - workspaces
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 import Tabs from '@theme/Tabs';

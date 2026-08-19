@@ -1,7 +1,7 @@
 ---
 title: Create a workspace
 description: Learn how to create a workspace.
-sidebar_position: 10
+sidebar_position: 20
 sidebar_label: Create or Clone Workspace
 keywords:
   - IaCM

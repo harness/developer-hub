@@ -11,9 +11,16 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Set
 
 
+# modules.json always sits next to this script: `.claude/scripts/` in the
+# developer-hub checkout, `scoring/` in the vendored doc-health-dashboards copy.
+# Resolving it from __file__ (absolute, so it survives --repo-root's chdir) lets a
+# single byte-identical file serve both repos. Override with --modules.
+MODULES_FILE = Path(__file__).resolve().parent / "modules.json"
+
+
 def load_module_config(module_code: str) -> dict:
     """Load module configuration from modules.json"""
-    modules_file = Path(".claude/scripts/modules.json")
+    modules_file = MODULES_FILE
     if not modules_file.exists():
         raise FileNotFoundError(f"modules.json not found at {modules_file}")
 
@@ -192,6 +199,169 @@ def is_best_practices_page(file_path: str, content: str) -> bool:
     return False
 
 
+# Content trees and their routeBasePath, mirroring the docs plugin instances in
+# docusaurus.config.ts. Only links whose first segment matches one of these are
+# resolved; anything else (/img/..., /api/..., external hosts) is left alone.
+CONTENT_ROUTES = {
+    "docs": "docs",
+    "3k-docs": "3k-docs",
+    "release-notes": "release-notes",
+    "university": "university",
+    "roadmap": "roadmap",
+}
+
+# Filenames Docusaurus treats as a folder's index document. A file named after its
+# own folder counts too, which is handled separately since it depends on the folder.
+_INDEX_STEMS = {"index", "readme", "_index"}
+
+_LINK_INDEX = None
+
+
+def _read_frontmatter(path: Path) -> str:
+    """Return the raw frontmatter block of a doc, or '' when it has none."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except Exception:
+        return ""
+    m = re.match(r'^---\n(.*?)\n---', text, re.DOTALL)
+    return m.group(1) if m else ""
+
+
+def _slug_values(frontmatter: str) -> tuple:
+    """Extract (slug, [redirect_from...]) from a frontmatter block."""
+    slug = None
+    m = re.search(r'^slug:[ \t]*(\S+)', frontmatter, re.MULTILINE)
+    if m:
+        slug = m.group(1).strip('"\'')
+
+    redirects = []
+    block = re.search(r'^redirect_from:[ \t]*\n((?:[ \t]*-[ \t]*\S+[ \t]*\n?)+)',
+                      frontmatter, re.MULTILINE)
+    if block:
+        redirects = [x.strip('"\'') for x in re.findall(r'-[ \t]*(\S+)', block.group(1))]
+    inline = re.search(r'^redirect_from:[ \t]*\[(.+?)\]', frontmatter, re.MULTILINE)
+    if inline:
+        redirects += [x.strip().strip('"\'') for x in inline.group(1).split(',')]
+    return slug, redirects
+
+
+def _normalize_route(url: str) -> str:
+    """Reduce a site path to the form used in the route index.
+
+    Strips anchors, query strings, and trailing slashes, and drops a `.md`/`.mdx`
+    extension. Docusaurus resolves Markdown-suffixed links to the extensionless
+    route, so `/docs/x/y.md` is a style problem, not a broken link.
+    """
+    url = url.split('#', 1)[0].split('?', 1)[0]
+    url = re.sub(r'\.mdx?$', '', url)
+    if len(url) > 1:
+        url = url.rstrip('/')
+    return url
+
+
+# Ported from DefaultNumberPrefixParser in
+# @docusaurus/plugin-content-docs/lib/numberPrefix.js so routes match the build.
+# Version-like and date-like segments (`2-0-overview`, `2021-11-release`) keep their
+# prefix; a true prefix (`5-use-ccm-cost-governance`) is stripped.
+_IGNORED_NUMBER_PREFIX = re.compile(r'^\d+[-_.]\d+')
+_NUMBER_PREFIX = re.compile(r'^\d+\s*[-_.]+\s*([^-_.\s].*)$')
+
+
+def _strip_number_prefix(segment: str) -> str:
+    """Drop a Docusaurus number prefix, so `5-use-ccm-cost-governance` routes bare."""
+    if _IGNORED_NUMBER_PREFIX.match(segment):
+        return segment
+    match = _NUMBER_PREFIX.match(segment)
+    return match.group(1) if match else segment
+
+
+def build_link_index() -> Set[str]:
+    """Collect every valid site route reachable from the repo's content trees.
+
+    Covers the URL shapes that make an internal link resolve or 404:
+      * the default path derived from the file path
+      * folder-index collapsing, where `rbac/rbac.md`, `x/index.md`, and `x/README.md`
+        are served at the folder path and NOT at the repeated segment. This is the
+        duplicate-segment trap in .cursor/rules/doc-linking.mdc
+      * frontmatter `slug` overrides, which are relative to the content root
+      * frontmatter `redirect_from` paths, which stay reachable
+      * `_category_.json` generated-index routes at the folder path
+      * `_server-redirects` sources
+    """
+    global _LINK_INDEX
+    if _LINK_INDEX is not None:
+        return _LINK_INDEX
+
+    routes: Set[str] = set()
+
+    for content_dir, route_base in CONTENT_ROUTES.items():
+        root = Path(content_dir)
+        if not root.is_dir():
+            continue
+        routes.add(f"/{route_base}")
+
+        for doc in list(root.rglob("*.md")) + list(root.rglob("*.mdx")):
+            posix = doc.as_posix()
+            if "/shared/" in posix or "/static/" in posix:
+                continue
+            # release-notes excludes content/ from its plugin instance; docs/ does not.
+            if content_dir == "release-notes" and "/content/" in posix:
+                continue
+
+            parts = list(doc.relative_to(root).with_suffix("").parts)
+            stem = parts[-1]
+            if stem.lower() in _INDEX_STEMS or (len(parts) > 1 and stem == parts[-2]):
+                parts = parts[:-1]
+            parts = [_strip_number_prefix(p) for p in parts]
+
+            default_route = "/" + "/".join([route_base] + parts) if parts else f"/{route_base}"
+            routes.add(default_route)
+
+            frontmatter = _read_frontmatter(doc)
+            if not frontmatter:
+                continue
+            slug, redirects = _slug_values(frontmatter)
+            if slug:
+                if slug.startswith('/'):
+                    routes.add(_normalize_route(f"/{route_base}{slug}"))
+                else:
+                    parent = list(doc.relative_to(root).parent.parts)
+                    routes.add(_normalize_route("/" + "/".join([route_base] + parent + [slug])))
+            for r in redirects:
+                if r.startswith('/'):
+                    routes.add(_normalize_route(r))
+
+        for category in root.rglob("_category_.json"):
+            try:
+                data = json.loads(category.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            link = data.get("link") or {}
+            if not isinstance(link, dict):
+                continue
+            folder = [_strip_number_prefix(p) for p in category.relative_to(root).parent.parts]
+            if link.get("type") == "generated-index":
+                slug = link.get("slug")
+                if slug:
+                    routes.add(_normalize_route(f"/{route_base}{slug}" if slug.startswith('/')
+                                                else "/" + "/".join([route_base] + folder + [slug])))
+                else:
+                    routes.add("/" + "/".join([route_base] + folder) if folder else f"/{route_base}")
+
+    server_redirects = Path("_server-redirects")
+    if server_redirects.is_file():
+        for line in server_redirects.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            source = line.split()[0]
+            if source.startswith('/'):
+                routes.add(_normalize_route(source))
+
+    _LINK_INDEX = routes
+    return _LINK_INDEX
+
+
 def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq: bool) -> List[Dict]:
     """Check all compliance rules and return violations"""
     violations = []
@@ -251,6 +421,28 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
     if not is_dms_content and not re.search(r'^description:', frontmatter, re.MULTILINE):
         violations.append({"rule": "FM-2", "text": "Missing description in frontmatter"})
 
+    # FM-3: sidebar_position present and a multiple of 5.
+    # WARN (-5) when the field is missing; FAIL (-15) when it is present but is not
+    # a whole multiple of 5 (5, 10, 15, 20 are correct; 12, 23, 2.5 are not).
+    # Multiples of 10 are preferred so new pages can be slotted in without
+    # updating several files, but multiples of 5 are not scored as violations.
+    # Exempt: DMS content files, and index pages, which take their position from the
+    # containing category (_category_.json / autogenerated sidebar) rather than
+    # carrying one of their own.
+    if not is_dms_content and Path(file_path).name not in {"index.md", "_index.md"}:
+        sp_match = re.search(r'^sidebar_position:[ \t]*(\S+)', frontmatter, re.MULTILINE)
+        if not sp_match:
+            violations.append({"rule": "FM-3", "text": "Missing sidebar_position in frontmatter", "severity": -5})
+        else:
+            raw_sp = sp_match.group(1).strip('"\'')
+            try:
+                sp_value = int(raw_sp)
+            except ValueError:
+                violations.append({"rule": "FM-3", "text": f"sidebar_position is not an integer: {raw_sp}", "severity": -15})
+            else:
+                if sp_value % 5 != 0:
+                    violations.append({"rule": "FM-3", "text": f"sidebar_position not a multiple of 5: {sp_value}", "severity": -15})
+
     # FM-4: H1 in body (exempt DMS content). Runs on the code-masked body so "# ..."
     # comment lines inside code blocks are not mistaken for Markdown H1 headings.
     if not is_dms_content:
@@ -260,7 +452,7 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
     # H-1: Heading case violations
     known_proper_nouns = {
         "Harness", "IaCM", "CI", "CD", "STO", "CCM", "AIDI", "FF", "SRM", "FME",
-        "Kubernetes", "Terraform", "OpenTofu", "AWS", "GCP", "Azure", "GitHub", "Docker",
+        "Kubernetes", "Terraform", "OpenTofu", "Ansible", "AWS", "GCP", "Azure", "GitHub", "Docker",
         "Helm", "Argo", "Vault", "OPA", "Rego", "PostgreSQL", "MySQL", "MongoDB",
         "BigQuery", "CloudSQL", "Liquibase", "Flyway", "Jinja2", "CockroachDB",
         "Backstage", "OAuth", "API", "REST", "JSON", "YAML", "JDBC", "SDK", "HTTP",
@@ -298,9 +490,16 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
 
         return False
 
+    # A leading "Step N:" label is a lead-in, not part of the sentence that follows,
+    # so the clause after the colon starts a new sentence and its first word may be
+    # capitalized. "#### Step 1: Preview changes with a dry run" is correct sentence
+    # case; only later words are checked ("Step 1: Preview Changes" still fails).
+    step_label_pattern = re.compile(r'^Step\s+\d+\s*[:.)-]\s*')
+
     for match in re.finditer(r'^##+ (.+)$', body, re.MULTILINE):
         heading = match.group(1)
-        words = heading.split()
+        step_label = step_label_pattern.match(heading)
+        words = heading[step_label.end():].split() if step_label else heading.split()
         flagged_words = []
         for i, word in enumerate(words[1:], start=1):  # Skip first word
             clean_word = word.strip('`*_:,')
@@ -314,12 +513,22 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
                 "line": body[:match.start()].count('\n')
             })
 
-    # H-2: Gerund headings (exempt FAQ pages and standard sections)
+    # H-2: Leading gerund as the first verb or adjective. A gerund later in the
+    # heading as a noun is allowed ("Migration troubleshooting" is fine;
+    # "Troubleshooting migrations" is not). After a "Step N:" lead-in, check
+    # the first word of the clause. Exempt FAQ pages and the standalone
+    # "Troubleshooting" landmark.
     if not is_faq:
-        standard_sections = {"Troubleshooting", "Prerequisites"}
-        for match in re.finditer(r'^##+ (.+ing)$', body, re.MULTILINE):
+        gerund_first = re.compile(r'^[A-Za-z][A-Za-z0-9]*ing$')
+        for match in re.finditer(r'^##+ (.+)$', body, re.MULTILINE):
             heading = match.group(1).strip()
-            if heading not in standard_sections:
+            if heading == "Troubleshooting":
+                continue
+            step_label = step_label_pattern.match(heading)
+            clause = heading[step_label.end():] if step_label else heading
+            words = clause.split()
+            first = words[0].strip('`*_:,') if words else ""
+            if first and gerund_first.match(first):
                 violations.append({"rule": "H-2", "text": f"Gerund heading: {heading}", "line": body[:match.start()].count('\n')})
 
     # H-3: Body content at ## level (heuristic). Exempt pages that show intentional
@@ -345,6 +554,42 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
     # S-4: Hardcoded domain links
     for match in re.finditer(r'https://developer\.harness\.io/docs/', body):
         violations.append({"rule": "S-4", "text": "Hardcoded domain link", "line": body[:match.start()].count('\n')})
+
+    # L-1: Broken internal link. Resolves every site-relative link into a known route
+    # and flags the ones that do not exist. `onBrokenLinks: 'throw'` means these fail
+    # docusaurus build, so they are FAIL severity. The most common cause is the
+    # duplicate-segment trap: linking to /docs/<folder>/<folder> when the same-named
+    # file is served at /docs/<folder>.
+    link_index = build_link_index()
+    if link_index and Path("docs").is_dir():
+        seen_links = set()
+        link_patterns = [r'\]\((/[^)\s]+)\)', r'href=["\'](/[^"\']+)["\']']
+        for pattern in link_patterns:
+            for match in re.finditer(pattern, body):
+                raw = match.group(1)
+                route = _normalize_route(raw)
+                segment = route.lstrip('/').split('/', 1)[0]
+                if segment not in CONTENT_ROUTES:
+                    continue
+                # /<base>/category/<slug> routes are generated from sidebar labels,
+                # including dedup suffixes, so they cannot be resolved from disk.
+                if route.startswith(f"/{segment}/category/"):
+                    continue
+                # Asset paths are not doc routes; S-4 and image review cover those.
+                if re.search(r'\.(png|jpe?g|gif|svg|webp|pdf|zip|ya?ml|json|txt|csv)$', route, re.I):
+                    continue
+                if route in link_index or route in seen_links:
+                    continue
+                seen_links.add(route)
+                hint = ""
+                parts = route.split('/')
+                if len(parts) > 2 and parts[-1] == parts[-2]:
+                    hint = f" (same-named file is served at /{'/'.join(parts[1:-1])})"
+                violations.append({
+                    "rule": "L-1",
+                    "text": f"Broken internal link: {raw}{hint}",
+                    "line": body[:match.start()].count('\n')
+                })
 
     # S-5: "please" in body
     for match in re.finditer(r'\bplease\b', body, re.IGNORECASE):
@@ -455,7 +700,10 @@ def calculate_score(violations: List[Dict]) -> int:
     if "FM-1" in violation_counts:
         editorial_score -= min(violation_counts["FM-1"], 5) * 15
     if "FM-3" in violation_counts:
-        editorial_score -= min(violation_counts["FM-3"], 5) * 15
+        # Per-violation severity: -5 when sidebar_position is missing (WARN), -15 when
+        # it is present but invalid (FAIL). Capped at 5 violations like its neighbours.
+        for v in [x for x in violations if x["rule"] == "FM-3"][:5]:
+            editorial_score += v.get("severity", -15)   # severity is already negative
     if "FM-4" in violation_counts:
         editorial_score -= min(violation_counts["FM-4"], 5) * 15
     if "H-1" in violation_counts:
@@ -472,6 +720,9 @@ def calculate_score(violations: List[Dict]) -> int:
         editorial_score -= min(violation_counts["S-3"], 5) * 5
     if "S-4" in violation_counts:
         editorial_score -= min(violation_counts["S-4"], 5) * 15
+    if "L-1" in violation_counts:
+        # Broken links fail the Docusaurus build, so they carry FAIL severity.
+        editorial_score -= min(violation_counts["L-1"], 5) * 15
     if "S-5" in violation_counts:
         editorial_score -= min(violation_counts["S-5"], 5) * 5
     if "S-6" in violation_counts:
@@ -579,10 +830,23 @@ def main():
     parser = argparse.ArgumentParser(description="Scan a module for documentation compliance")
     parser.add_argument("--module", required=True, help="Module code (e.g., iacm, ccm, dbdevops)")
     parser.add_argument("--output", help="Output JSON file path (default: audits/<module>-phase1-results.json)")
+    parser.add_argument("--repo-root", help="Path to a developer-hub checkout to scan (docs/ + git history live here)")
+    parser.add_argument("--modules", help="Path to modules.json (default: the copy next to this script)")
     args = parser.parse_args()
 
+    global MODULES_FILE
+    if args.modules:
+        MODULES_FILE = Path(args.modules).resolve()
+    # Resolve an explicit --output against the caller's cwd *before* any chdir.
+    if args.output:
+        args.output = str(Path(args.output).resolve())
+    if args.repo_root:
+        os.chdir(args.repo_root)
     if not args.output:
-        output_dir = Path(".claude/skills/doc-module-audit/audits")
+        # In a developer-hub checkout, results belong with the audit skill. In the
+        # vendored copy (no such skill), fall back to an audits/ dir beside the script.
+        skill_audits = Path(".claude/skills/doc-module-audit/audits")
+        output_dir = skill_audits if skill_audits.parent.exists() else MODULES_FILE.parent / "audits"
         output_dir.mkdir(parents=True, exist_ok=True)
         args.output = str(output_dir / f"{args.module}-phase1-results.json")
 

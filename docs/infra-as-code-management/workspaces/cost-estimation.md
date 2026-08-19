@@ -14,7 +14,7 @@ keywords:
 tags:
   - iacm
   - workspaces
-sidebar_position: 40
+sidebar_position: 60
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';

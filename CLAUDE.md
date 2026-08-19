@@ -120,7 +120,7 @@ import { FAQ } from '@site/src/components/AdaptiveAIContent';
 ## Markdown headers
 
 - **No `#` (h1) in doc Markdown bodies.** Use `##` as the first in-file heading; the page title comes from frontmatter `title`. Use `sidebar_label` (Title Case) when the nav label must differ from `title`.
-- **Sentence case** for `##` / `###` headings: capitalize the first word and **proper nouns** only (e.g. **Kubernetes**, **Terraform**, **IaCM**, **Harness**).
+- **Sentence case** for `##` / `###` headings: capitalize the first word and **proper nouns** only (e.g. **Kubernetes**, **Terraform**, **Ansible**, **IaCM**, **Harness**).
 - **Sidebar:** labels in the left nav use **Title Case** (set via `sidebar_label` or a Title Case `title`).
 
 ### Heading style by page type
@@ -393,12 +393,12 @@ releaseNotes: [
 
 1. Create a `_category_.json` file in the new folder
 2. Set the `label`, `position`, and `link` type
-3. Individual page ordering within the folder uses frontmatter `sidebar_position`:
+3. Individual page ordering within the folder uses frontmatter `sidebar_position`. Prefer multiples of 10 (10, 20, 30) so you can insert a new page later without updating several files. Multiples of 5 (15, 25) are allowed when you need to slot a page between existing tens:
 
 ```yaml
 ---
 title: Get started
-sidebar_position: 1
+sidebar_position: 10
 ---
 ```
 

@@ -13,7 +13,7 @@ tags:
   - iacm
   - ansible
   - configuration
-sidebar_position: 65
+sidebar_position: 60
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
@@ -33,7 +33,7 @@ Harness Policy As Code evaluates OPA policies, written in Rego, against your pip
 
 - **An Ansible pipeline:** A pipeline with an IACM stage that runs the `IACMAnsiblePlugin` step. Go to [Get started with Ansible](/docs/infra-as-code-management/configuration-management/ansible/get-started#step-4-integrate-ansible-with-a-pipeline) to create one.
 - **Policy As Code concepts:** Familiarity with policies, policy sets, and Rego. Go to [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview) to review the model.
-- **Governance permissions:** You need **View**, **Create/Edit** permissions for Policies and Policy Sets. To get these, an administrator must assign you a role that includes them. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
+- **Governance permissions:** You need **View**, **Create/Edit** permissions for Policies and Policy Sets. To get these, an administrator must assign you a role that includes them. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ---
 

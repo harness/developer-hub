@@ -1,7 +1,7 @@
 ---
 title: Workspace Expressions
 description: Discover how to utilize workspace expressions for dynamic CI/CD pipeline customization in Harness IaCM.
-sidebar_position: 50
+sidebar_position: 70
 ---
 
 import Tabs from '@theme/Tabs';
