@@ -22,6 +22,14 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## August 2026
+
+### Version 1.206.6
+
+#### Fixed Issues
+
+STO now more accurately categorizes findings from [Wiz repository scan](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz) configured with Scan Configuration = Wiz Directory, correctly labeling them as SAST or SCA issues. As a result, you may notice a change in the distribution of issues for existing scans, for example, more SCA issues and fewer SAST issues than before. (STO-12498)
+
 ## July 2026
 
 ### Version 1.205.3
