@@ -367,7 +367,7 @@ steps:
       url: "YOUR_PIPELINE_URL"
       inputSetName: ${{ parameters.inputSetName }}
       triggerName: ${{ parameters.triggerName }}
-      apikey: ${{ parameters.token }}
+      apiKey: ${{ parameters.token }}
 ```
 ### 3. `harness:create-secret`
 
@@ -380,7 +380,7 @@ Here is a list of **inputs** required to use the action:
 | **projectId** *(Mandatory)*	| Project Identifier	| Project Identifier where secret will be created	| `string`|
 | **orgId** *(Mandatory)*	| Organization Identifier	| Organization Identifier where secret will be created	| `string`|
 | **secretValue** *(Mandatory)*	| Secret Value	| Secret Value | `string` |
-| **apikey**	| Harness x-api-key	| Harness Token to Authenticate Secret Creation	| `string` |
+| **apiKey**	| Harness x-api-key	| Harness Token to Authenticate Secret Creation	| `string` |
 
 #### Output
 Here is what we get as an **output** from the action: 
