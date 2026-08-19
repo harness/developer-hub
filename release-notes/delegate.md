@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## August 2026
 
+### Version 26.08.89804 <!-- August 19, 2026 -->
+
+#### Fixed issues
+- Fixed a rate limit issue for gitrepo installation token by adding caching behind a temporary environment variable `GITHUB_APP_TOKEN_CACHE_ENABLED=true`.  This enables re-use of installation tokens instead of creating a token on every request.  Allows 500 tokens for 55 minutes of re-use per token.  Adds logs when enabled to output cache hit/miss rates when enabled.  Helps when doing high parallel GitHub App operations that would immediately trigger rate limit failures. [CDS-129429]]
+
 ### Version 26.08.89802 <!-- August 15, 2026 -->
 
 #### Fixed issues
