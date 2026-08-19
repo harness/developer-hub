@@ -69,8 +69,8 @@ Set the metadata, pick an environment, and choose the root configuration.
 - **Name** (required). Plus optional **Description** and **Tags**.
 - **Select Environment** (required). Pick an existing environment or click **+ New Environment**.
 - **Root Configuration:**
-  - **Root User** *(default)* — Can run **all** Linux faults, but the install command runs as root.
-  - **Non-Root User** — Restricts the infrastructure to the subset of faults that do not require root. Go to [Root vs Non-Root user](#root-vs-non-root-user) for the trade-off.
+  - **Root User** *(default)* - Can run **all** Linux faults, but the install command runs as root.
+  - **Non-Root User** - Restricts the infrastructure to the subset of faults that do not require root. Go to [Root vs Non-Root user](#root-vs-non-root-user) for the trade-off.
 
 Click **Configure Details** to continue.
 

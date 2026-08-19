@@ -34,9 +34,9 @@ Users
   Ramp-Up    Steady State
 ```
 
-**Ramp-Up Phase** — Virtual users are added linearly from 0 to the target number over the **Ramp-Up Duration**. This gradual increase avoids overwhelming the system at the start and lets you observe how it responds as load increases.
+**Ramp-Up Phase** - Virtual users are added linearly from 0 to the target number over the **Ramp-Up Duration**. This gradual increase avoids overwhelming the system at the start and lets you observe how it responds as load increases.
 
-**Steady-State Phase** — After ramp-up completes, the configured number of virtual users continues running for the remainder of the **Test Duration**. Steady-state duration = `Test Duration - Ramp-Up Duration`.
+**Steady-State Phase** - After ramp-up completes, the configured number of virtual users continues running for the remainder of the **Test Duration**. Steady-state duration = `Test Duration - Ramp-Up Duration`.
 
 **Example**: 600s total duration with 120s ramp-up gives 480s at peak load.
 
@@ -83,7 +83,7 @@ Assertions define success criteria for each request. A failed assertion marks th
 
 Response extraction captures a dynamic value from a response (such as a token returned after a login request) and makes it available as a variable in subsequent requests. This enables realistic multi-step flows like:
 
-1. POST `/auth/login` — extract `access_token` from response body
+1. POST `/auth/login` - extract `access_token` from response body
 2. GET `/api/user/profile` with `Authorization: Bearer {{access_token}}`
 
 ### Host URL
@@ -97,7 +97,7 @@ Load tests run on infrastructure managed by the Harness chaos agent. Two **targe
 | Target Type | How it works | Best for |
 |---|---|---|
 | **Linux VM** | The agent on a Linux host runs the Locust process locally and streams results back to Harness. | Simple setups, on-premises hosts, direct network access to internal services. |
-| **Kubernetes** | The agent orchestrates a master pod and optional worker pods inside a Kubernetes cluster. Requires **v1.85.3+**. Load testing is enabled by default — no additional configuration needed. | Scalable distributed testing, cloud-native environments, high-concurrency workloads. |
+| **Kubernetes** | The agent orchestrates a master pod and optional worker pods inside a Kubernetes cluster. Requires **v1.85.3+**. Load testing is enabled by default - no additional configuration needed. | Scalable distributed testing, cloud-native environments, high-concurrency workloads. |
 
 When creating a load test, you select a target type first, and the **Load Test Infrastructure** dropdown filters to show only infrastructure matching that type. See [Infrastructure](../chaos-testing/infrastructure) for setup instructions.
 
@@ -107,7 +107,7 @@ The available test definition modes depend on the framework and target type you 
 
 | Mode | Locust | k6 | JMeter | Description |
 |---|---|---|---|---|
-| **Define test via UI** | ✅ | ✅ | — | Build HTTP scenarios visually without writing code. Harness generates the script at execution time. |
+| **Define test via UI** | ✅ | ✅ | - | Build HTTP scenarios visually without writing code. Harness generates the script at execution time. |
 | **Upload a script or plan** | ✅ (`.py`) | ✅ (`.js`) | ✅ (`.jmx`, `.xml`, `.zip`) | Upload a custom script or test plan for full control over user behavior. |
 | **Using Image** | ✅ | ✅ | ✅ | Use a prebuilt container image as the load test source. For Locust, this mode is available on Kubernetes only since the image runs as a pod in the cluster. |
 

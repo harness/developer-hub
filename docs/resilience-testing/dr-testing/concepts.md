@@ -55,9 +55,9 @@ The Step Library includes three step types under the **Disaster Recovery** categ
 
 A typical DR workflow follows the **Probe → Fault → Probe** pattern:
 
-1. **Chaos Probe** — Verify baseline health (pre-disaster)
-2. **Chaos Fault** — Inject the failure
-3. **Chaos Probe** — Verify recovery (post-disaster)
+1. **Chaos Probe** - Verify baseline health (pre-disaster)
+2. **Chaos Fault** - Inject the failure
+3. **Chaos Probe** - Verify recovery (post-disaster)
 
 This pattern validates that the system recovers to a healthy state after the simulated disaster. You can add standard Harness steps (shell scripts, HTTP calls, approvals, notifications) alongside DR steps for a complete recovery workflow.
 

@@ -29,7 +29,7 @@ Also known as Enterprise hub, it comes out-of-the-box with HCE and consists of p
 ##### Reason for adding custom ChaosHub
 
 * Add custom experiments suited to specific needs in your organization.
-* Share your experiments with others in your Harness project or in other Harness projects—you can add the same custom hub(s) to many projects.
+* Share your experiments with others in your Harness project or in other Harness projects-you can add the same custom hub(s) to many projects.
 * Maintain and upgrade experiments in one place so those you share your hubs with always have the latest version.
 * Provide secure access to your custom experiments.
 

@@ -49,8 +49,8 @@ Datadog APM probe allows you to query Datadog metrics or run Synthetic tests and
 
    | Data source | Description | Required params |
    |-------------|-------------|-----------------|
-   | `metrics` | Datadog metrics query | `query` — Datadog metrics query string (for example, `sum:trace.servlet.request.hits{service:account-service}.as_count()`) |
-   | `apm_metrics` | Datadog APM metrics | `stat` — APM statistic (for example, `latency_p95`, `error_rate`). `service` is typically required. `env`, `span_kind`, `group_by`, and `query_filter` are optional |
+   | `metrics` | Datadog metrics query | `query` - Datadog metrics query string (for example, `sum:trace.servlet.request.hits{service:account-service}.as_count()`) |
+   | `apm_metrics` | Datadog APM metrics | `stat` - APM statistic (for example, `latency_p95`, `error_rate`). `service` is typically required. `env`, `span_kind`, `group_by`, and `query_filter` are optional |
 
    **Synthetic Test mode:**
 
