@@ -1,11 +1,11 @@
 {
-    "label":"ArmorCode",
-    "position": 1,
+    "label":"Armorcode",
+    "position": 2,
     "collapsible":"true",
     "collapsed":"true",
     "className": "sidebar-item-beta",
     "link":{
        "type":"generated-index",
-       "title":"ArmorCode"
+       "title":"Armorcode"
     }
  }
