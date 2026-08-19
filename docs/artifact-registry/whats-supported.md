@@ -55,6 +55,7 @@ Artifact Registry supports the following registry types:
 - **Conda:** Python and R packages with Anaconda-compatible workflows.
 - **Puppet:** Puppet Forge-compatible modules with `r10k` support.
 - **Terraform:** Infrastructure as Code modules and providers for cloud provisioning.
+- **R (CRAN):** Private R packages with CRAN-compatible publish and install workflows, including optional CRAN upstream proxy caching.
 
 ### Coming soon
 

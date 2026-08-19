@@ -63,6 +63,7 @@ The migration tool supports the following artifact types:
 | `COMPOSER` | Composer (PHP) packages |
 | `SWIFT` | Swift packages |
 | `TERRAFORM` | Terraform modules and providers |
+| `CRAN` | R packages (CRAN format) |
 
 ### Configuration structure
 
