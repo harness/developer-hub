@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-08-03T10:00
+date: 2026-08-17T10:00
 sidebar_position: 10
 ---
 
@@ -54,6 +54,70 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## August 2026
+
+### Version 1.153.0
+
+<!-- August 2026 -->
+
+#### New Features and Enhancements
+
+- Added Workload Identity support for CI Run steps, enabling OIDC cloud authentication (AWS, GCP, Azure, Vault) without requiring a connector. You can now define an `identities` block in your Run step to mint and federate OIDC tokens directly. (CI-23932)
+
+- Added support for resource overrides for Build Intelligence and Cache Intelligence in V1 YAML pipelines. You can now configure custom resource limits directly in V1 pipeline YAML and templates. (CI-22033)
+
+- Added Azure Blob Storage support for Docker Layer Caching (DLC) in V1 YAML pipelines. (CI-24192)
+
+- Updated Harness Cloud default VM images. The Linux `latest` image tag now points to Ubuntu 24.04 (previously Ubuntu 22.04), and the macOS `latest` image tag now points to macOS Sequoia (previously macOS Sonoma). Pipelines explicitly pinned to a specific image version are not affected. macOS Sonoma is now deprecated.
+
+#### Fixed Issues
+
+- Fixed an issue where the drone-git image update to version 1.7.23 or higher failed on ARM64 nodes due to an incorrect multi-architecture manifest resolution, causing "exec format error" during Git Clone steps. (CI-23890, ZD-119773)
+
+- Fixed an issue where Gradle auto-injection corrupted the `gradle.properties` file when it did not end with a trailing newline, causing build failures. (CI-24154, ZD-121100)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/drone-git` | ARM64 manifest fix (CI-23890) | 1.7.20 | 1.7.25 |
+| `harness/drone-git` (rootless) | ARM64 manifest fix (CI-23890) | 1.7.20-rootless | 1.7.25-rootless |
+| `plugins/cache` (all variants) | Gradle auto-injection fix (CI-24154) | 1.10.9 | 1.10.10 |
+
+---
+
+### Version 1.152.0
+
+<!-- August 2026 -->
+
+#### New Features and Enhancements
+
+- Added support for internal CA certificate injection in Windows build pods. When configured, custom CA certificates are automatically imported into the Windows certificate store during CI builds, enabling connectivity to internal registries and services behind corporate CAs. This feature is behind a feature flag. (CI-24139)
+
+- Improved egress proxy support for Build and Push steps using the buildx driver. Standard proxy environment variables are now forwarded to the buildx builder, and custom BuildKit containers trust the configured CA certificate path. (CI-23744)
+
+#### Fixed Issues
+
+- Fixed an issue where the ci-addon process crashed when calculating tests in parallel with Test Intelligence enabled and no matching test files were found. (CI-23548, ZD-117896)
+
+- Fixed an issue where Cache Intelligence selected an incorrect or default cache path instead of the user-specified source paths. Auto-detection is now disabled when custom source paths are provided. (CI-24161, ZD-120996, ZD-121307)
+
+- Fixed an issue where Build Intelligence did not honor the AWS connector cross-account role for S3 backend with IRSA (IAM Roles for Service Accounts). (CI-23624, ZD-118233)
+
+- Improved hcli security by resolving known vulnerabilities. (CI-23724, ZD-120547)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Windows CA cert injection (CI-24139) | 1.18.27 | 1.18.29 |
+| `harness/ci-lite-engine` | Windows CA cert injection (CI-24139) | 1.18.27 | 1.18.29 |
+| `plugins/buildx` | Egress proxy improvements (CI-23744) | 1.3.23 | 1.3.25 |
+| `plugins/buildx-ecr`, `buildx-acr`, `buildx-gcr`, `buildx-gar` | Egress proxy improvements (CI-23744) | 1.5.3 | 1.5.5 |
+| `harness/buildkit` | Egress proxy CA trust (CI-23744) | 1.0.19 | 1.0.20 |
+| `plugins/docker`, `ecr`, `acr`, `gcr`, `gar` | Version update | 21.3.2 | 21.3.3 |
+| `harness/harness-cache-server` | Version update | 1.7.23 | 1.7.25 |
+
+---
 
 ### Version 1.151.0
 
