@@ -27,6 +27,28 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 --- 
 
+## August 2026 - Version 1.100.0
+#### Deployment Date: August 18, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- **Anthropic connector supports Platform and Enterprise product types:** You can now select a product type, Anthropic Platform or Anthropic Enterprise, when you set up an Anthropic AI connector. This lets you track Claude Enterprise usage and developer API usage separately. [CCM-34807]
+- **Connect Devin as an AI cost provider:** You can now add a Devin connector on the Cloud Integration page to ingest and view Devin cost and usage data alongside your other AI connectors. [CCM-34748]
+- **Cost Explorer clearly marks unsaved changes:** Cost Explorer now marks each section that has unsaved changes, so you can see what will be saved before you apply or discard your edits. [CCM-33094]
+
+### Fixed Issues
+
+- **Recommendation Jira status now stays in sync:** We have fixed an issue where the Jira status shown on a recommendation did not update after the status changed in Jira. Recommendation Jira statuses now refresh as expected. [CCM-34979]
+- **Recommendations Explore now honors cost categories:** We have fixed an issue where costs in Recommendations Explore appeared as unattributed instead of mapping to the correct cost category. Governance recommendations now support Azure subscription name in cost category mapping, so costs are grouped correctly. [CCM-34933]
+- **Label filters no longer overwrite each other in Cost Explorer:** We have fixed an issue where applying a label filter from a drilldown replaced other existing label filters, because labels share the same field ID. Filters are now matched by both ID and name, so each label filter is preserved. [CCM-34890]
+- **Applied node pool recommendations now show complete metrics:** We have fixed an issue where applied (inferred or manually evaluated) Kubernetes node pool recommendations showed empty or zero values in the details view, including node count, CPU and memory comparison, utilization, and spot availability. Applied recommendations now capture and display a frozen 30-day utilization and recommendation snapshot at apply time, consistent with workload and ECS recommendations. [CCM-34821]
+- **AWS cost data ingests reliably across CUR path formats:** We have fixed an issue where AWS cost data stopped updating for some accounts because the report source path format (for example, `yearMonth=YYYYMM`) was not handled for both CUR 1.0 and CUR 2.0. Ingestion now recognizes both path formats. [CCM-34685]
+- **Anomalies remain visible when you return to Cost Explorer:** We have fixed an issue where navigating to the Anomalies page and back to Cost Explorer showed unsaved changes and hid the anomalies. Returning now preserves the previous view state. [CCM-34052]
+- **Edit button stays available with the maximum Unit Cost filters:** We have fixed an issue where the Edit button disappeared after you added the maximum of five Unit Cost filters, which prevented further changes. The Edit button now remains available. [CCM-33666]
+- **Clearer error for unresolved perspectives in trend stats:** We have fixed an issue where a trend stats request that referenced a perspective which could not be resolved returned an unclear failure. The request now returns a clear error instead. [CCM-34811]
+
+---
+
 ## August 2026 - Version 1.99.0
 #### Deployment Date: August 10, 2026 (Prod-1)
 
