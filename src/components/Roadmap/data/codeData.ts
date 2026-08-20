@@ -9,35 +9,30 @@ export const codeData: Horizon = {
     description: "Q3 2026, August 2026 - October 2026",
     feature: [
       {
-        tag: [{ value: "Code Quality" }],
-        title: "Code Coverage",
-        description: "Display a coverage overlay in the code view and show a PR status summary for overall and changed code coverage—helping teams track gaps, enforce thresholds, and improve test completeness.",
-      },
-      {
         tag: [{ value: "AI" }, { value: "Developer Experience" }, { value: "beta" }],
         title: "Automated Code Review",
         description: "AI-powered code review suggestions to improve developer efficiency.",
       },
       {
-        tag: [{ value: "Governance" }],
-        title: "Enforce Signed-Commits",
-        description: "Ensure that all repository commits are signed by a known developer.",
-      },
-      {
         tag: [{ value: "Reliability" }, { value: "Platform" }],
         title: "Disaster Recovery for Harness Code",
         description: "Implement disaster recovery capabilities for Harness Code repositories, ensuring business continuity and data resilience.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }, { value: "Reliability" }],
+        title: "Merge Queue with CI",
+        description: "Enhance the merge queue to automatically manage pull request merges with integrated CI validation, ensuring each change passes tests before reaching the target branch.",
+      },
+      {
+        tag: [{ value: "Code Quality" }, { value: "Developer Experience" }],
+        title: "Surface Code Coverage in PR Comments",
+        description: "Display code coverage metrics and deltas directly in pull request comments, providing immediate visibility into coverage impact before merging.",
       }
     ],
   },
   Next: {
     description: "Q4 2026, November 2026 - January 2027",
     feature: [
-      {
-        tag: [{ value: "Code Quality" }, { value: "Insights" }],
-        title: "Unified Coverage Dashboard for Cross-Pipeline Insights",
-        description: "Visualize code coverage metrics aggregated across multiple pipelines and repositories, providing comprehensive insights into test coverage trends and gaps.",
-      },
       {
         tag: [{ value: "Code Quality" }, { value: "Developer Experience" }],
         title: "Surface Flaky Tests and Coverage in PR Comments and Status Checks",
@@ -47,6 +42,26 @@ export const codeData: Horizon = {
         tag: [{ value: "AI" }, { value: "Code Quality" }],
         title: "AI-Generated Tests",
         description: "Generate unit tests from repository code using AI, guided by coverage results to target untested areas and help improve overall code coverage.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Repo Insights",
+        description: "Summary insights including PR and commit metrics and security scanning results.",
+      },
+      {
+        tag: [{ value: "Platform" }, { value: "Integrations" }],
+        title: "Platform Notifications Integration",
+        description: "Integrate Harness Code with the unified Platform Notifications system for consistent notification delivery across channels.",
+      },
+      {
+        tag: [{ value: "Scalable" }, { value: "Reliability" }],
+        title: "Reliability at Scale",
+        description: "Enhance system reliability and resilience for large-scale deployments with improved monitoring, alerting, and fault tolerance.",
+      },
+      {
+        tag: [{ value: "Secure" }, { value: "Code Quality" }],
+        title: "SAST Integration",
+        description: "Integrate static application security testing capabilities to identify security vulnerabilities in code during development.",
       },
     ],
   },
@@ -75,11 +90,6 @@ export const codeData: Horizon = {
       },
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Repo Insights",
-        description: "Summary insights including PR and commit metrics and security scanning results.",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
         title: "Pipeline View",
         description: "Visualize all CI pipeline runs for a repository, branch, or pull request.",
       },
@@ -87,11 +97,6 @@ export const codeData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "Issue Tracking",
         description: "Plan and track all developer-related work across your projects in Harness Code.",
-      },
-      {
-        tag: [{ value: "Governance" }],
-        title: "Enhance Open Policy Agent (OPA) Integration",
-        description: "Introduce additional events for OPA enforcement.",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -108,6 +113,26 @@ export const codeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Scalable" }, { value: "Performance" }],
+        title: "Large Repository Support",
+        description: "Support for large repositories up to 60GB+ with optimized storage and Git operations, enabling teams to manage enterprise-scale codebases efficiently.",
+      },
+      {
+        tag: [{ value: "Performance" }, { value: "Platform" }],
+        title: "Query Caching and API Optimizations",
+        description: "Improved API response times and reduced latency through intelligent caching and optimized API-level locking mechanisms.",
+      },
+      {
+        tag: [{ value: "Scalable" }, { value: "Developer Experience" }],
+        title: "Support for Extra-Large Pull Requests",
+        description: "Handle pull requests with extensive changes, enabling efficient code review workflows for large-scale refactoring and feature development.",
+      },
+      {
+        tag: [{ value: "Governance" }],
+        title: "Enforce Signed-Commits",
+        description: "Ensure that all repository commits are signed by a known developer.",
+      },
       {
         tag: [{ value: "Governance" }, { value: "Secure" }],
         title: "RBAC Controls for Pull Request Approvals",
