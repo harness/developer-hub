@@ -282,7 +282,7 @@ Wondering where versions 1.140.xx and 1.141.xx are? Those releases were rolled i
 
 #### New features and enhancements
 
-- The pipeline execution listing page now displays an improved card-based layout. The **Service** and **Environment** columns have been replaced by an **Update Summary** column that shows service-to-environment mappings for CD stages and schema-to-instance mappings for Database DevOps stages. You can hover over entries to view artifact details and infrastructure information, and expand execution cards for stage-level breakdowns. This feature was previously behind the feature flag `CDS_EXECUTION_LIST_CARD_VIEW` and is now generally available. For more information, go to [Pipeline execution history](/docs/continuous-delivery/x-platform-cd-features/executions/execution-history/#execution-reference).
+- The pipeline execution listing page now displays an improved card-based layout. The **Service** and **Environment** columns have been replaced by an **Update Summary** column that shows service-to-environment mappings for CD stages and schema-to-instance mappings for Database DevOps stages. You can hover over entries to view artifact details and infrastructure information, and expand execution cards for stage-level breakdowns. For more information, go to [Pipeline execution history](/docs/continuous-delivery/x-platform-cd-features/executions/execution-history/#execution-reference).
 
 #### Fixed issues
 

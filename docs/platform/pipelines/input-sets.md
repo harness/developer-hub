@@ -471,11 +471,10 @@ To apply updated inputs reliably, always use the **From Specific Stage** option 
 ## View and Filter Executions by Input Set
 
 :::note
-To view and filter executions by input set, the following feature flags must be enabled:  
-- `CDS_EXECUTION_LIST_CARD_VIEW` – Enables the new execution page UI.  
+To view and filter executions by input set, the following feature flag must be enabled:  
 - `PIPE_ENABLE_INPUT_SET_FILTER` – Enables input set-based filtering in the execution list.  
 
-Contact [Harness Support](mailto:support@harness.io) to enable these flags.
+Contact [Harness Support](mailto:support@harness.io) to enable this flag.
 :::
 
 You can now view and filter pipeline executions based on the input sets used.

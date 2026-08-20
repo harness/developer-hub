@@ -140,7 +140,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | GITOPS_FILTER_PANE_ENABLED | When enabled, GitOps users can create and save application filters in the GitOps Applications page. <b> This is a Beta feature </b> |
 | FF_PIE_SET_ADVISORS_PROCESSED | When enabled the calculation of `<+stage.CurrentStatus>` exclude steps where the failure strategy has not yet been triggered. This ensures that steps are not prematurely skipped due to transient failure states, resulting in more reliable execution. <b>This is a Beta feature.</b> |
 | CDS_EXECUTION_LIST_FILTERS | Enable this feature to improve filter UI on the execution list view. Use the new UI to add filter parameters, make custom filters, and save them, easier than before. **This is a Beta feature**. |
-| CDS_EXECUTION_LIST_CARD_VIEW | Enable this feature to improve the cards for the execution list view. This allows for other modules data to be displayed in each card on the list. **This is a Beta feature** |
 | CDS_AWS_LAMBDA_ROLLBACK_V2 | When enabled, users can deploy Lambda artifacts larger than 50 MB stored in S3 **This is a Beta feature**. |
 | CDS_GITLAB_TRIGGER_TAG_EVENT | When enabled, u​sers can trigger pipelines in GitLab upon the creation or pushing of tags. **This is a Beta feature**. |
 | CDS_INCLUDE_EMPTY_VALUE | When enabled, this will allow empty values to be accepted as an allowed value for runtime inputs. **This is a Beta feature**. |
