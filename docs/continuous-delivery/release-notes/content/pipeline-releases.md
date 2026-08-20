@@ -1,5 +1,14 @@
 ## August 2026
 
+### Pipeline service 1.202.2
+
+#### Fixed issues
+
+- Fixed an issue where pipeline executions became stuck indefinitely and did not abort properly. This fix requires feature flag `PIE_CONTAINER_STEP_ABORT_USE_UPSERT`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-35723**, **ZD-118793**)
+- Fixed an issue where template deletion was blocked by phantom references, caused by EntitySetupUsage records incorrectly tracking references from Git-backed pipelines that never existed on the default branch. (**PIPE-36105**, **ZD-119637**)
+- Fixed an issue where the pipeline annotation API returned "unauthorized" errors for valid API keys because the endpoint requires internal lite-engine service JWT tokens, not customer API keys. The endpoint is now correctly marked as hidden and not customer-callable. (**PIPE-36412**, **ZD-121375**)
+- Fixed an issue where the backend API allowed saving invalid YAML configurations where a containerized step group contained a nested step group as a container, or included a run step inside a nested step group, bypassing frontend validations that correctly restrict this configuration. This fix requires feature flag `CDS_CONTAINER_STEP_GROUP_REJECT_NESTED_INFRA`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-36002**)
+
 ### Pipeline service 1.201.1
 
 #### New features and enhancements

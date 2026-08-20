@@ -1,5 +1,15 @@
 ## August 2026
 
+### Version 1.163.5
+
+#### Fixed issues
+
+- Fixed an issue where the CD license usage API returned incorrect data after the v2 UI migration, affecting Developer 360 and custom integrations. (**CDS-128336**, **ZD-120063**)
+- Fixed an issue where the chart version API returned a 400 error with the message "pipeline identifier cannot be empty" when fetching Helm chart versions on non-default Git branches. (**CDS-128590**, **ZD-120228**)
+- Fixed an issue where service rollback operations failed with an "Environment data not found" error when attempting to roll back to a previous deployment. (**CDS-129140**, **ZD-119629**)
+- Fixed an issue where role bindings with scoped Resource Groups did not correctly grant "View Services" permission during deployment, causing the service permission check to apply to all services instead of only those within the scoped resource group. (**CDS-129544**, **ZD-119589**)
+- Fixed an issue where GitOps deployments failed when using an organization-level environment with explicitly selected organization-level clusters. (**CDS-129649**)
+
 ### Version 1.162.2
 
 #### Fixed issues
