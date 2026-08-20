@@ -126,7 +126,7 @@ Derived from the initial setup steps of your workspace, including cost estimatio
 #### Advanced options
 Workspaces configuration advanced options offer the ability to configure additional settings for your workspace, including:
 - **Submodules:** Use submodules from your repository's `modules/` folder. Go to [Submodule usage](/docs/infra-as-code-management/registry/module-registry/module-registry-overview#root%26submoduleusage) to configure them.
-- **Sparse checkout:** Provide paths to directories to do a sparse checkout on given patterns to clone specific directories from the repository. Go to [Git sparse-checkout documentation](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) for the pattern syntax.
+- **Sparse checkout:** Provide paths to directories to do a sparse checkout on given patterns to clone specific directories from the repository. Sparse checkout patterns apply to both module source directories and any referenced `.tfvars` variable files, so include the paths for every variable file your workspace consumes in addition to the module paths. Go to [Git sparse-checkout documentation](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) for the pattern syntax.
 
 ---
 
