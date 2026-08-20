@@ -133,7 +133,7 @@ Natural language is the primary interface, so you describe the outcome you want 
 
 Use the following prompts as starting points for common workflows.
 
-**Pipeline management:**
+**Pipeline management**:
 
 ```text
 Create a CI pipeline for my Node.js app that builds, tests, and pushes a Docker image to ECR
@@ -143,7 +143,7 @@ Create a CI pipeline for my Node.js app that builds, tests, and pushes a Docker 
 Debug my last failed deployment. What went wrong and how do I fix it?
 ```
 
-**Infrastructure and resources:**
+**Infrastructure and resources**:
 
 ```text
 Create a GitHub connector for harness/my-repo using the PAT stored in secret github_pat
@@ -153,7 +153,7 @@ Create a GitHub connector for harness/my-repo using the PAT stored in secret git
 Set up staging and production environments for the payments service
 ```
 
-**Governance and observability:**
+**Governance and observability**:
 
 ```text
 Show me DORA metrics for the platform project over the last quarter

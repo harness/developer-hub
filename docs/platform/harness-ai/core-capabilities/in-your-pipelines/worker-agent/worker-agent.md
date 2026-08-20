@@ -115,10 +115,10 @@ This approach is useful for quickly scaffolding agents and pipelines using natur
 
 You can also create and manage Worker Agents from any IDE or terminal that supports MCP, including Cursor, Windsurf, VS Code (Copilot), and Claude Code. With the <a href="/docs/platform/harness-ai/harness-mcp-server" target="_blank">Harness MCP Server</a> installed, your IDE gains access to `agent` and `agent_run` resource types, enabling you to:
 
-- **List existing agents:** View all agents in your project.
-- **Create new agents:** Provide the agent YAML spec to create an agent.
-- **Update agent configurations:** Modify instructions, inputs, and environment variables.
-- **Trigger agent runs:** Execute agents and inspect outputs.
+- **List existing agents**: View all agents in your project.
+- **Create new agents**: Provide the agent YAML spec to create an agent.
+- **Update agent configurations**: Modify instructions, inputs, and environment variables.
+- **Trigger agent runs**: Execute agents and inspect outputs.
 
 Go to <a href="/docs/platform/harness-ai/harness-mcp-server" target="_blank">Harness MCP Server</a> to install and configure the MCP Server for your IDE or terminal.
 
@@ -302,8 +302,8 @@ Worker Agents execute in isolated Docker containers to ensure secure, reproducib
 
 Worker Agents run inside Docker containers in an isolated VM. You can run agents on **Harness Cloud** or on your own infrastructure in a **Kubernetes cluster**.
 
-- **Harness Cloud:** Harness manages the compute infrastructure. Select `Cloud` as the runtime type in your pipeline stage configuration. Available for CI, STO, SCS, and IACM stages.
-- **Self-hosted infrastructure:** Run agents on your own Kubernetes cluster using a Harness Delegate. The agent container executes in an isolated VM on your infrastructure, giving you full control over networking, data residency, and compute resources.
+- **Harness Cloud**: Harness manages the compute infrastructure. Select `Cloud` as the runtime type in your pipeline stage configuration. Available for CI, STO, SCS, and IACM stages.
+- **Self-hosted infrastructure**: Run agents on your own Kubernetes cluster using a Harness Delegate. The agent container executes in an isolated VM on your infrastructure, giving you full control over networking, data residency, and compute resources.
 
 For CD and Custom stages, the Agent step requires a <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups" target="_blank">Containerized Step Group</a> to provide the container execution environment.
 
@@ -319,9 +319,9 @@ The scoped token grants the agent access based on the `permissions` block declar
 
 ### Isolation model
 
-- **Container isolation:** Each agent runs in its own Docker container within an isolated VM. Agents do not share memory, filesystem, or network namespaces with other workloads.
-- **Network scoping:** The agent can only reach external services and APIs that the scoped token and network configuration permit.
-- **No ambient permissions:** Agents have no implicit access beyond what the scoped token grants. MCP connectors, secrets, and connectors must be explicitly configured on the agent definition.
+- **Container isolation**: Each agent runs in its own Docker container within an isolated VM. Agents do not share memory, filesystem, or network namespaces with other workloads.
+- **Network scoping**: The agent can only reach external services and APIs that the scoped token and network configuration permit.
+- **No ambient permissions**: Agents have no implicit access beyond what the scoped token grants. MCP connectors, secrets, and connectors must be explicitly configured on the agent definition.
 
 ---
 
@@ -340,8 +340,8 @@ With policy governance on agents, you can write policies that:
 
 Policies are evaluated at two points:
 
-- **On save:** When a user creates or updates a Worker Agent, Harness evaluates the agent configuration against your policies. An agent that violates a policy cannot be saved until the violation is resolved.
-- **On run:** When a pipeline runs an Agent step, Harness evaluates whether the agent is properly configured in the pipeline before execution proceeds.
+- **On save**: When a user creates or updates a Worker Agent, Harness evaluates the agent configuration against your policies. An agent that violates a policy cannot be saved until the violation is resolved.
+- **On run**: When a pipeline runs an Agent step, Harness evaluates whether the agent is properly configured in the pipeline before execution proceeds.
 
 Go to <a href="/docs/platform/governance/policy-as-code/harness-governance-overview" target="_blank">Harness Policy As Code overview</a> to learn about OPA-based governance in Harness.
 
@@ -357,12 +357,12 @@ If you override the default model using the optional **Model Name** field, you m
 
 The following limitations apply to Worker Agents:
 
-- **MCP connector requirements:** MCP connectors require both a valid hosted MCP URL and an API key. A connector name alone is not sufficient.
-- **Model provider support:** Anthropic (**direct Anthropic** and **AWS Bedrock** endpoints) and **OpenAI** are supported as model providers.
-- **Expression resolution timing:** Harness expressions in the Instructions field are resolved at pipeline execution time, not at agent save time.
-- **Max turns:** The `max_turns` parameter caps the agent's reasoning steps per execution to manage cost and latency.
-- **Network access:** The agent container image must be accessible from your Harness delegate network.
-- **Agent settings:** The `agentSettings` field is currently reserved. Leave it as an empty string.
+- **MCP connector requirements**: MCP connectors require both a valid hosted MCP URL and an API key. A connector name alone is not sufficient.
+- **Model provider support**: Anthropic (**direct Anthropic** and **AWS Bedrock** endpoints) and **OpenAI** are supported as model providers.
+- **Expression resolution timing**: Harness expressions in the Instructions field are resolved at pipeline execution time, not at agent save time.
+- **Max turns**: The `max_turns` parameter caps the agent's reasoning steps per execution to manage cost and latency.
+- **Network access**: The agent container image must be accessible from your Harness delegate network.
+- **Agent settings**: The `agentSettings` field is currently reserved. Leave it as an empty string.
 
 ---
 

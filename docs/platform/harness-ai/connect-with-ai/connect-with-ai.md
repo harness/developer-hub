@@ -51,16 +51,16 @@ Harness AI supports three model connector types to access different LLM provider
 
 Connect to Claude models through direct Anthropic API or AWS Bedrock endpoints.
 
-**Supported models:**
+**Supported models**:
 - Claude Opus (latest)
 - Claude Sonnet (latest)
 - Claude Haiku (latest)
 
-**Connection methods:**
+**Connection methods**:
 - Direct Anthropic API
 - AWS Bedrock (cross-region inference profiles supported)
 
-**Best for:** Teams using Claude models for Worker Agents, especially those with AWS Bedrock infrastructure.
+**Best for**: Teams using Claude models for Worker Agents, especially those with AWS Bedrock infrastructure.
 
 Go to <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-model-connector" target="_blank">Anthropic Model Connector</a> for more information on configuration steps.
 
@@ -69,10 +69,10 @@ Go to <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-model-connect
 
 Connect to Claude.ai using OAuth authentication for direct access to Anthropic hosted models.
 
-**Authentication method:**
+**Authentication method**:
 - OAuth 2.0 with Claude.ai
 
-**Best for:** Teams who prefer OAuth authentication and direct access to Claude.ai without managing API keys.
+**Best for**: Teams who prefer OAuth authentication and direct access to Claude.ai without managing API keys.
 
 Go to <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-harness-connector" target="_blank">Anthropic Connector</a> for more information on configuration steps.
 
@@ -80,15 +80,15 @@ Go to <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-harness-conne
 
 Connect to GPT models with configurable reasoning effort levels.
 
-**Supported models:**
+**Supported models**:
 - GPT-5.5 with reasoning effort configuration
 
-**Reasoning effort levels:**
+**Reasoning effort levels**:
 - Low
 - Medium
 - High
 
-**Best for:** Teams using OpenAI GPT models with specific reasoning requirements for complex tasks.
+**Best for**: Teams using OpenAI GPT models with specific reasoning requirements for complex tasks.
 
 Go to <a href="/docs/platform/harness-ai/connect-with-ai/openai-model-connector" target="_blank">OpenAI Model Connector</a> for more information on configuration steps.
 
@@ -102,22 +102,22 @@ Select your model connector based on your infrastructure, model preference, and 
 
 Consider these factors when choosing a connector.
 
-**Infrastructure:**
+**Infrastructure**:
 - Do you have existing AWS Bedrock infrastructure? Use Anthropic Model Connector with Bedrock.
 - Do you prefer direct API access? Use Anthropic Model Connector or OpenAI Model Connector.
 - Do you need OAuth authentication? Use Anthropic Connector (OAuth).
 
-**Model preference:**
+**Model preference**:
 - Need Claude models (Opus, Sonnet, Haiku)? Use Anthropic Model Connector or Anthropic Connector (OAuth).
 - Need GPT models with reasoning effort control? Use OpenAI Model Connector.
 - Need cross-region model access via Bedrock? Use Anthropic Model Connector with inference profiles.
 
-**Authentication:**
+**Authentication**:
 - API key management: Anthropic Model Connector or OpenAI Model Connector.
 - OAuth 2.0: Anthropic Connector (OAuth).
 - AWS IAM / Bedrock: Anthropic Model Connector with Bedrock.
 
-**Cost and billing:**
+**Cost and billing**:
 - AWS consolidated billing: Anthropic Model Connector with Bedrock.
 - Direct provider billing: Anthropic Model Connector (direct API) or OpenAI Model Connector.
 - Claude.ai subscription: Anthropic Connector (OAuth).
@@ -153,8 +153,8 @@ The Model Connector defines the LLM provider and default model for your Worker A
 
 Harness supports the following Model Connectors:
 
-- **Anthropic Model Connector:** Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to [Anthropic Model Connector](/docs/platform/harness-ai/connect-with-ai/anthropic-model-connector) to review supported models and setup options.
-- **OpenAI Model Connector:** Run agents on GPT-5.5 with configurable reasoning effort. Go to [OpenAI Model Connector](/docs/platform/harness-ai/connect-with-ai/openai-model-connector) to review supported models, effort levels, and setup options.
+- **Anthropic Model Connector**: Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to [Anthropic Model Connector](/docs/platform/harness-ai/connect-with-ai/anthropic-model-connector) to review supported models and setup options.
+- **OpenAI Model Connector**: Run agents on GPT-5.5 with configurable reasoning effort. Go to [OpenAI Model Connector](/docs/platform/harness-ai/connect-with-ai/openai-model-connector) to review supported models, effort levels, and setup options.
 
 If you do not have access to a model provider, Harness offers a managed LLM connector you can use instead.
 
@@ -168,7 +168,7 @@ Harness offers a managed LLM connector for teams without their own model provide
 Until August 2026, usage of the Harness-managed LLM connector is included in your Harness subscription at no additional cost. After August 2026, Harness bills managed LLM connector usage separately, in addition to your Harness subscription.
 :::
 
-**When to use:**
+**When to use**:
 - Evaluating Harness AI Worker Agents.
 - No existing model provider relationship.
 - Want simplified setup without managing API keys.

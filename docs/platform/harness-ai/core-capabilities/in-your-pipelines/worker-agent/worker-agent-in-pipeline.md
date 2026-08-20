@@ -287,9 +287,9 @@ pipeline:
 
 This pipeline follows three steps:
 
-1. **Prepare Terraform Plan:** Copies a Terraform JSON plan file to the shared agent output directory at `/harness/.agent/output/tfplan.json`.
-2. **Assess Plan Safety:** The `iacm_plan_safety_agent` Worker Agent reads the plan, evaluates risk across destructive actions, public exposure, encryption removal, and IAM expansion, then publishes output variables (`RECOMMENDATION`, `RISK_LEVEL`, `MAX_RISK_SCORE`, `VALIDATION_STATUS`, `RISK_ASSESSMENT_PATH`).
-3. **Gate On Agent Outputs:** A downstream Run step reads the agent's output variables using Harness expressions and fails the pipeline if `VALIDATION_STATUS` is `FAIL`, blocking unsafe infrastructure changes from proceeding.
+1. **Prepare Terraform Plan**: Copies a Terraform JSON plan file to the shared agent output directory at `/harness/.agent/output/tfplan.json`.
+2. **Assess Plan Safety**: The `iacm_plan_safety_agent` Worker Agent reads the plan, evaluates risk across destructive actions, public exposure, encryption removal, and IAM expansion, then publishes output variables (`RECOMMENDATION`, `RISK_LEVEL`, `MAX_RISK_SCORE`, `VALIDATION_STATUS`, `RISK_ASSESSMENT_PATH`).
+3. **Gate On Agent Outputs**: A downstream Run step reads the agent's output variables using Harness expressions and fails the pipeline if `VALIDATION_STATUS` is `FAIL`, blocking unsafe infrastructure changes from proceeding.
 
 ---
 

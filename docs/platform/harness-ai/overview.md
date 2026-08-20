@@ -129,13 +129,13 @@ Harness AI can generate in widely used languages including English, Dutch, Spani
 
 Yes. Harness AI provides code translation capabilities powered by large language models (LLMs). You can convert logic from one programming language to another using natural language prompts directly within your IDE.
 
-**Example prompts:**
+**Example prompts**:
 - "Convert this Python script to Java"
 - "Refactor this C++ logic into Go"
 
 The system achieves high-fidelity translations through specialized models that understand language-specific idioms and framework equivalences.
 
-**Supported languages and versions:**
+**Supported languages and versions**:
 
 | Programming Language | Version |
 |---------------------|---------|

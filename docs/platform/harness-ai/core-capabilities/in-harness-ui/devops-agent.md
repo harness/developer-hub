@@ -119,7 +119,7 @@ Features include:
 
 Create pipelines and stages across all Harness modules, enabling teams to build end-to-end workflows that span the entire software delivery lifecycle.
 
-**Supported modules and stage types:**
+**Supported modules and stage types**:
 
 | **Module** | **Description** |
 |------------|-----------------|
@@ -133,16 +133,16 @@ Create pipelines and stages across all Harness modules, enabling teams to build 
 | **Chaos Engineering** | Chaos experiment stages for resilience testing |
 | **Custom** | Custom stages and steps for specialized workflows |
 
-**IaCM pipeline creation:**
+**IaCM pipeline creation**:
 
 The DevOps Agent can create Infrastructure as Code Management (IaCM) pipelines that provision and manage infrastructure using Terraform and other IaC tools.
 
-**Example prompts:**
+**Example prompts**:
 - "Create an IACM Pipeline that provisions AWS Infrastructure with the IACM Steps."
 - "Build a pipeline with an IACM stage to manage my Terraform workspace."
 - "Create a pipeline that runs Terraform plan and apply for my cloud infrastructure."
 
-**Cross-module pipeline examples:**
+**Cross-module pipeline examples**:
 - "Create a pipeline with a CI stage to build my app, an STO stage to scan for vulnerabilities, and a CD stage to deploy to production."
 - "Build a pipeline with a Chaos Engineering stage after deployment to validate resilience."
 - "Create a pipeline with an IDP workflow stage to provision a new environment, then deploy my service to it."
@@ -177,7 +177,7 @@ When a pipeline fails, Harness AI performs:
 - **Root cause analysis**: Determines the specific step and command causing the issue
 - **Automated recommendations**: Suggests prioritized action items with justifications
 
-**Analyze a pipeline error:**
+**Analyze a pipeline error**:
 
 1. Navigate to the failed pipeline execution.
 2. Select **Analyze Error**.
@@ -200,7 +200,7 @@ Each recommendation targets a specific problem, such as:
 - Replacing placeholder commands with actual build steps
 - Implementing proper error handling
 
-**Automatically fix pipeline YAML:**
+**Automatically fix pipeline YAML**:
 
 1. In the analysis panel, select **Help me fix the pipeline yaml**.
 2. Review the Pipeline Fix Summary showing:
@@ -210,14 +210,14 @@ Each recommendation targets a specific problem, such as:
 3. Examine the Updated Step YAML in the preview panel.
 4. Select **Accept** to apply the changes to your pipeline.
 
-**Use pipeline error analysis to:**
+**Use pipeline error analysis to**:
 - Diagnose failures faster than manual log review
 - Identify whether failures stem from code changes or infrastructure issues
 - Learn from historical failure patterns across your organization
 - Generate fixes for common pipeline configuration errors
 - Assess the blast radius of pipeline failures
 
-**View audit trail:**
+**View audit trail**:
 
 To see the complete history of pipeline changes:
 
@@ -241,7 +241,7 @@ The DevOps Agent analyzes:
 
 Harness AI then generates a natural language summary explaining the pipeline's purpose, key steps, and outcomes.
 
-**Generate a pipeline summary:**
+**Generate a pipeline summary**:
 
 1. Navigate to your pipeline in the Harness platform.
 2. Select **AI Summarize** in the three dots menu.
@@ -253,7 +253,7 @@ The summary appears in the pipeline details view and includes:
 - Deployment targets and environments
 - Recent execution patterns
 
-**Use pipeline summaries to:**
+**Use pipeline summaries to**:
 - Onboard new team members to existing pipelines
 - Document pipeline behavior for compliance
 - Quickly understand inherited or legacy pipelines
@@ -276,7 +276,7 @@ Harness AI creates services by:
 - **Connecting artifacts**: Links to artifact registries with appropriate image references
 - **Adding metadata**: Includes descriptions, tags, and identifiers for organization
 
-**Create a service:**
+**Create a service**:
 
 1. Open the Harness AI assistant in your project.
 2. Describe the service you want to create. For example:
@@ -292,14 +292,14 @@ Harness AI creates services by:
 4. Preview the complete YAML in the YAML Preview panel.
 5. Select **Create** to add the service to your project.
 
-**Use AI service creation to:**
+**Use AI service creation to**:
 - Quickly onboard new applications without manual YAML writing
 - Standardize service configurations across projects
 - Generate baseline configurations for customization
 - Learn proper service structure through examples
 - Migrate applications to Harness faster
 
-**Best practices:**
+**Best practices**:
 - **Provide specific details**: More context leads to better configurations (for example, "Create a Kubernetes service for a Node.js API with 5 replicas")
 - **Verify connector references**: Ensure referenced connectors exist in your project before creating the service
 - **Update image tags**: Replace `latest` tags with specific versions for production services
@@ -320,13 +320,13 @@ Harness AI creates connectors by:
 - **Validating credentials**: Tests connections and identifies permission issues
 - **Generating complete YAML**: Creates connector definitions with all required fields
 
-**Connector details:**
+**Connector details**:
 - **Name**: Human-readable connector name
 - **Identifier**: Unique connector identifier for API and service references
 - **Type**: Connector category (Kubernetes, AWS, Docker Registry, Git, etc.)
 - **Description**: Auto-generated description with creation timestamp
 
-**Authentication configuration:**
+**Authentication configuration**:
 - **Auth method**: Recommended authentication approach:
   - Service account tokens (Kubernetes)
   - IAM roles or access keys (AWS, Azure, GCP)
@@ -348,7 +348,7 @@ Harness AI creates environments by:
 - **Setting environment type**: Classifies as Production or Pre-Production based on context
 - **Adding metadata**: Includes descriptions, tags, and identifiers for organization
 
-**Create an environment:**
+**Create an environment**:
 
 1. Open the Harness AI assistant in your project.
 2. Describe the environment you want to create. For example:
@@ -364,13 +364,13 @@ Harness AI creates environments by:
 4. Preview the complete YAML in the YAML Preview panel.
 5. Select **Create** to add the environment to your project.
 
-**Environment details:**
+**Environment details**:
 - **Name**: Human-readable environment name (for example, `production`, `staging-us-east`)
 - **Identifier**: Unique environment identifier for API and pipeline references
 - **Type**: Production or Pre-Production classification
 - **Description**: Auto-generated description with creation timestamp
 
-**Use AI environment creation to:**
+**Use AI environment creation to**:
 - Quickly set up deployment environments without manual YAML writing
 - Replicate environment configurations across projects
 - Generate baseline configurations for customization
@@ -394,7 +394,7 @@ Harness AI creates secret configurations by:
 For security reasons, Harness AI creates the secret object structure but cannot and will not generate actual secret values. After AI creates the secret, you must provide the real credential, token, password, or sensitive data through the Harness UI. This ensures your sensitive information remains secure and under your control.
 :::
 
-**Create a secret:**
+**Create a secret**:
 
 1. Open the Harness AI assistant in your project or account settings.
 2. Describe the secret you need to create. For example:
@@ -417,7 +417,7 @@ Harness AI generates identifiers following these patterns:
 - **Identifier**: Converts name to lowercase with underscores (for example, `docker_hub_password`)
 - **Description**: Explains what the secret is for (for example, "Docker Hub authentication password for nginx images")
 
-**Use AI secret creation to:**
+**Use AI secret creation to**:
 - Quickly set up credential storage with proper naming
 - Standardize secret naming across projects
 - Create secrets at the appropriate scope level
@@ -485,7 +485,7 @@ The DevOps Agent supports 8 generator types: list, git, clusters, matrix, merge,
 | **Create** | Create an ApplicationSet with any supported generator type |
 | **Update** | Modify an ApplicationSet's generators, template, or sync policy |
 
-**Example prompts:**
+**Example prompts**:
 - "Create an ApplicationSet using a list generator with dev, staging, and prod environments."
 - "Create an ApplicationSet using a git directory generator scanning all folders in my repo."
 - "Create a matrix ApplicationSet combining environments (list) and directories (git)."
@@ -497,11 +497,11 @@ The DevOps Agent supports 8 generator types: list, git, clusters, matrix, merge,
 
 Perform actions directly on Kubernetes resources managed by your GitOps applications. You can first discover what actions are available for a specific resource, then execute them.
 
-**Supported actions:**
+**Supported actions**:
 - **Deployments**: restart, pause, resume, scale
 - **Argo Rollouts**: restart, pause, resume, promote-full, abort, retry, skip-current-step
 
-**Example prompts:**
+**Example prompts**:
 - "What actions can I run on the web Deployment in app my-app?"
 - "Restart the web Deployment in app my-app."
 
@@ -511,14 +511,14 @@ Perform actions directly on Kubernetes resources managed by your GitOps applicat
 
 The DevOps Agent can retrieve detailed information for troubleshooting GitOps applications.
 
-**Available capabilities:**
+**Available capabilities**:
 - **Events**: View Kubernetes events for an application (sync events, health changes)
 - **Pod logs**: Stream logs from specific containers in an application's workloads
 - **Managed resources**: List all Kubernetes resources tracked by an application
 - **Resource tree**: View the full resource hierarchy (Deployment, ReplicaSet, Pod, Service, and so on) with parent-child relationships
 - **Dashboard**: Get a high-level summary of your GitOps environment, including total app counts, health status, and sync status breakdown
 
-**Example prompts:**
+**Example prompts**:
 - "Show recent events for app my-app."
 - "Get the last 100 lines of logs from pod web-abc123 in app my-app."
 - "What Kubernetes resources does app my-app manage?"
@@ -531,7 +531,7 @@ The DevOps Agent can retrieve detailed information for troubleshooting GitOps ap
 
 Ask the DevOps Agent questions about your GitOps environment in natural language. The agent queries across agents, applications, ApplicationSets, clusters, repositories, and the dashboard to answer.
 
-**Example prompts:**
+**Example prompts**:
 - "What applications are out of sync? How long have they been out of sync? Which project are the out-of-sync applications in?"
 - "What syncs failed in the past 24 hours?"
 - "Which applications are unhealthy in the production environment?"
@@ -545,7 +545,7 @@ Ask the DevOps Agent questions about your GitOps environment in natural language
 
 You can initiate GitOps operations directly from the AI chat.
 
-**Example prompts:**
+**Example prompts**:
 - "Sync the app my-app with pruning enabled."
 - "Bulk sync apps app1 and app2."
 - "Hard refresh all apps on my agent."

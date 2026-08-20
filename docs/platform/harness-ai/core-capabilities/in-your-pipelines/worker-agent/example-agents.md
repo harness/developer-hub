@@ -115,10 +115,10 @@ This agent is trigger-aware and diff-scoped. It retrieves the exact PR and diff 
 
 Key differences from the Staff Engineer example:
 
-- **Trigger-aware targeting:** Uses `<+trigger.prNumber>`, `<+trigger.sourceBranch>`, `<+trigger.targetBranch>`, `<+trigger.commitSha>`, and `<+trigger.baseCommitSha>` for precise PR targeting via Harness MCP.
-- **Diff-scoped review:** Reviews only files and lines changed by the diff, not the entire repository.
-- **Lower cost:** `max_turns: 40` (compared to 150) for faster, lower-cost execution.
-- **Explicit failure mode:** Stops and reports if the exact diff cannot be retrieved.
+- **Trigger-aware targeting**: Uses `<+trigger.prNumber>`, `<+trigger.sourceBranch>`, `<+trigger.targetBranch>`, `<+trigger.commitSha>`, and `<+trigger.baseCommitSha>` for precise PR targeting via Harness MCP.
+- **Diff-scoped review**: Reviews only files and lines changed by the diff, not the entire repository.
+- **Lower cost**: `max_turns: 40` (compared to 150) for faster, lower-cost execution.
+- **Explicit failure mode**: Stops and reports if the exact diff cannot be retrieved.
 
 <details>
 <summary>Diff-scoped PR Reviewer Agent definition (full YAML)</summary>
@@ -201,10 +201,10 @@ This agent inspects a Terraform or OpenTofu JSON plan file and produces a struct
 
 Key features of this example:
 
-- **Output declarations:** The `output` array in the `with` block declares each variable the agent publishes. Each entry maps a `name` (the key written to the output file) to an `alias` (the name exposed as a step output variable).
-- **Shell-based output publishing:** The agent instructions include shell commands that extract values from a JSON report and write `KEY=value` lines to `$HARNESS_OUTPUT` and `$DRONE_OUTPUT`.
-- **MCP-augmented context:** The agent uses Harness MCP to look up pipeline and execution metadata, enriching the assessment with deployment context.
-- **Structured JSON contract:** The agent writes a validated JSON assessment file and publishes key fields as output variables for pipeline-level consumption.
+- **Output declarations**: The `output` array in the `with` block declares each variable the agent publishes. Each entry maps a `name` (the key written to the output file) to an `alias` (the name exposed as a step output variable).
+- **Shell-based output publishing**: The agent instructions include shell commands that extract values from a JSON report and write `KEY=value` lines to `$HARNESS_OUTPUT` and `$DRONE_OUTPUT`.
+- **MCP-augmented context**: The agent uses Harness MCP to look up pipeline and execution metadata, enriching the assessment with deployment context.
+- **Structured JSON contract**: The agent writes a validated JSON assessment file and publishes key fields as output variables for pipeline-level consumption.
 
 ### Agent definition YAML
 
@@ -512,9 +512,9 @@ Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/wor
 
 This use case demonstrates three Worker Agents chained in a single pipeline to automate a spec-driven development workflow. When a pull request adds or modifies a `Features.md` file, the pipeline:
 
-1. **Feature Analyzer Agent:** reads the features file from the PR diff and generates a `Spec.md` in the same directory, then commits it to the PR source branch.
-2. **Plan Generator Agent:** reads the spec and generates a `Plan.md` with a task-level work breakdown, then commits it to the PR source branch.
-3. **Implementation Agent:** reads the plan, implements tasks in order, runs tests, and commits code changes to the PR source branch. It tracks progress in a sidecar status file.
+1. **Feature Analyzer Agent**: reads the features file from the PR diff and generates a `Spec.md` in the same directory, then commits it to the PR source branch.
+2. **Plan Generator Agent**: reads the spec and generates a `Plan.md` with a task-level work breakdown, then commits it to the PR source branch.
+3. **Implementation Agent**: reads the plan, implements tasks in order, runs tests, and commits code changes to the PR source branch. It tracks progress in a sidecar status file.
 
 Each agent is a standalone Worker Agent definition that can be reused independently. The pipeline chains them sequentially so each agent builds on the artifacts produced by the previous one.
 
@@ -1070,10 +1070,10 @@ pipeline:
 
 ### Customize this workflow
 
-- **Run only spec and plan generation:** Remove the Implementation Agent step for teams that want AI-generated specs and plans but prefer manual implementation.
-- **Gate between agents:** Add an <a href="/docs/platform/approvals/approvals-tutorial" target="_blank">Approval step</a> between the Plan Generator and Implementation agents so a human reviews the plan before code generation starts.
-- **Limit implementation scope:** Set the `maxTasksPerRun` input on the Implementation Agent to control how many tasks are implemented per pipeline run.
-- **Trigger on labels:** Configure the pipeline trigger to fire only when a specific label (such as `agent-implement`) is applied to the PR, so implementation runs on demand rather than on every push.
+- **Run only spec and plan generation**: Remove the Implementation Agent step for teams that want AI-generated specs and plans but prefer manual implementation.
+- **Gate between agents**: Add an <a href="/docs/platform/approvals/approvals-tutorial" target="_blank">Approval step</a> between the Plan Generator and Implementation agents so a human reviews the plan before code generation starts.
+- **Limit implementation scope**: Set the `maxTasksPerRun` input on the Implementation Agent to control how many tasks are implemented per pipeline run.
+- **Trigger on labels**: Configure the pipeline trigger to fire only when a specific label (such as `agent-implement`) is applied to the PR, so implementation runs on demand rather than on every push.
 
 ---
 

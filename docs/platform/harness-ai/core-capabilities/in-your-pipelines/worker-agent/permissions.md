@@ -204,20 +204,20 @@ Support for trigger-started Worker Agents is available in production. It require
 
 Complete these steps before you start a pipeline that contains Worker Agent steps from a trigger:
 
-1. **Enable feature flags:** Enable `HARNESS_INJECT_TOKEN` and `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY` for the account.
-2. **Open pipeline settings:** In your Harness account, go to **Account Settings** > **Account Resources** > **Default Settings** > **Pipeline**.
-3. **Require an executor identity:** Set **Enforce Executor Identity for Triggers** to **True**, then save the setting.
+1. **Enable feature flags**: Enable `HARNESS_INJECT_TOKEN` and `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY` for the account.
+2. **Open pipeline settings**: In your Harness account, go to **Account Settings** > **Account Resources** > **Default Settings** > **Pipeline**.
+3. **Require an executor identity**: Set **Enforce Executor Identity for Triggers** to **True**, then save the setting.
 
 <DocImage path={require('../../../../triggers/static/trigger-enforce-executor-setting.png')} alt="Account pipeline settings with Enforce Executor Identity for Triggers set to True" title="Click to view full size" />
 <p align="center"><em>Enable Enforce Executor Identity for Triggers in the account pipeline settings.</em></p>
 
-4. **Open the trigger:** In the pipeline, select **Triggers**, then create a trigger or edit an existing trigger.
-5. **Assign the executor:** In **Run pipeline as**, select your user identity or a service account that you can manage. The selected identity must have the permissions that the pipeline and its Worker Agent steps require. Go to [Trigger executor identity](/docs/platform/triggers/trigger-executor-identity) to review identity selection and RBAC rules.
+4. **Open the trigger**: In the pipeline, select **Triggers**, then create a trigger or edit an existing trigger.
+5. **Assign the executor**: In **Run pipeline as**, select your user identity or a service account that you can manage. The selected identity must have the permissions that the pipeline and its Worker Agent steps require. Go to [Trigger executor identity](/docs/platform/triggers/trigger-executor-identity) to review identity selection and RBAC rules.
 
 <DocImage path={require('../../../../triggers/static/trigger-run-pipeline-as.png')} alt="Trigger Configuration page with the Run pipeline as user or service account field" title="Click to view full size" />
 <p align="center"><em>Select the identity that Harness uses for trigger-started pipeline executions.</em></p>
 
-6. **Save and start the trigger:** Save the trigger, start it, and confirm that the Worker Agent steps pass authentication. The steps can now use the scoped token to access the LLM Gateway and Harness-managed models.
+6. **Save and start the trigger**: Save the trigger, start it, and confirm that the Worker Agent steps pass authentication. The steps can now use the scoped token to access the LLM Gateway and Harness-managed models.
 
 ### Trigger-compatible pipeline example
 
@@ -489,10 +489,10 @@ The first two cases surface as a permission-denied error when the agent calls th
 
 ## Current limitations
 
-- **Trigger support requires two feature flags:** Trigger-started Worker Agent runs require both `HARNESS_INJECT_TOKEN` and `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY`. This capability is available in production when both feature flags are enabled.
-- **Verbs are unvalidated:** There is no verb enum, so a mistyped or unsupported verb fails silently rather than raising an error. Confirm every verb against the resource's RBAC actions.
-- **Resource keys not listed are dropped:** Any key outside <a href="#supported-resources-by-module">Supported resources by module</a> grants nothing. New keys are added as modules onboard to the scoped-token model.
-- **`scs_evidence_vault` (Beta):** Requires the corresponding feature flag.
+- **Trigger support requires two feature flags**: Trigger-started Worker Agent runs require both `HARNESS_INJECT_TOKEN` and `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY`. This capability is available in production when both feature flags are enabled.
+- **Verbs are unvalidated**: There is no verb enum, so a mistyped or unsupported verb fails silently rather than raising an error. Confirm every verb against the resource's RBAC actions.
+- **Resource keys not listed are dropped**: Any key outside <a href="#supported-resources-by-module">Supported resources by module</a> grants nothing. New keys are added as modules onboard to the scoped-token model.
+- **`scs_evidence_vault` (Beta)**: Requires the corresponding feature flag.
 
 ---
 

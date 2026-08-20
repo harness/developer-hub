@@ -50,9 +50,9 @@ GUI apps (Cursor, Claude Desktop, Windsurf, VS Code) do not inherit your shell's
 ```
 
 Find your paths with `which npx` and `which node` in a terminal. Common locations:
-- **Homebrew (macOS):** `/opt/homebrew/bin/npx`
-- **nvm:** `~/.nvm/versions/node/v20.x.x/bin/npx` (run `nvm which current` for the exact path)
-- **System Node:** `/usr/local/bin/npx`
+- **Homebrew (macOS)**: `/opt/homebrew/bin/npx`
+- **nvm**: `~/.nvm/versions/node/v20.x.x/bin/npx` (run `nvm which current` for the exact path)
+- **System Node**: `/usr/local/bin/npx`
 :::
 
 ---

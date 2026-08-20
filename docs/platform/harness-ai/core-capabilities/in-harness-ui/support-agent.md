@@ -71,7 +71,7 @@ Access the Support Agent through the Harness AI chat interface. The agent recogn
 
 Ask the Support Agent anything about Harness products, features, or configurations. The agent searches the documentation knowledge base and returns the relevant information.
 
-**Example questions:**
+**Example questions**:
 
 - "How do I create a Kubernetes connector?"
 - "What are the required permissions for a GitHub connector?"
@@ -83,7 +83,7 @@ Ask the Support Agent anything about Harness products, features, or configuratio
 
 The Support Agent retrieves specific examples from the documentation, including YAML configurations, API examples, and step-by-step guides.
 
-**Example prompts:**
+**Example prompts**:
 
 - "Show me an example of a Kubernetes deployment manifest"
 - "Give me a sample pipeline YAML for a CI/CD workflow"
@@ -94,18 +94,18 @@ The Support Agent retrieves specific examples from the documentation, including 
 
 The Support Agent keeps track of your conversation within a chat session, so you can ask follow-up questions without restating what you already told it.
 
-**Example conversation:**
+**Example conversation**:
 
-1. **You:** "How do I set up a Docker connector?"
-2. **Support Agent:** *Provides documentation on Docker connector setup*
-3. **You:** "What permissions does it need?"
-4. **Support Agent:** *Provides permissions information specific to Docker connectors, understanding the context from the previous question*
+1. **You**: "How do I set up a Docker connector?"
+2. **Support Agent**: *Provides documentation on Docker connector setup*
+3. **You**: "What permissions does it need?"
+4. **Support Agent**: *Provides permissions information specific to Docker connectors, understanding the context from the previous question*
 
 ### Get troubleshooting guidance
 
 When you hit an error, the Support Agent helps you find the troubleshooting documentation that covers it.
 
-**Example prompts:**
+**Example prompts**:
 
 - "I'm getting a 'delegate not found' error. How do I fix this?"
 - "My pipeline is failing with a connection timeout. What should I check?"
@@ -130,7 +130,7 @@ The Support Agent combines natural language understanding with full documentatio
 
 The Support Agent interprets your intent rather than matching keywords, so you do not need to know the exact terminology to find the right page.
 
-**How it works:**
+**How it works**:
 
 1. You ask a question in natural language.
 2. The agent analyzes your question to understand the intent.
@@ -189,10 +189,10 @@ To get the most accurate responses from the Support Agent:
 - **Use follow-ups**: Start broad and narrow down with follow-up questions.
 - **Include error messages**: When troubleshooting, include the exact error text.
 
-**Good example:**
+**Good example**:
 > "How do I configure a GitHub connector with a personal access token for a private repository?"
 
-**Less effective example:**
+**Less effective example**:
 > "How do connectors work?"
 
 ### Use session context effectively

@@ -40,25 +40,25 @@ Each tool routes to a `resource_type`. Go to [Resource types](./resource-types.m
 
 ## Tool examples
 
-**Discover available resources:**
+**Discover available resources**:
 
 ```json
 { "resource_type": "pipeline" }
 ```
 
-**List pipelines in a project:**
+**List pipelines in a project**:
 
 ```json
 { "resource_type": "pipeline", "search_term": "deploy", "size": 10 }
 ```
 
-**Get a specific service:**
+**Get a specific service**:
 
 ```json
 { "resource_type": "service", "resource_id": "my-service-id" }
 ```
 
-**Run a pipeline:**
+**Run a pipeline**:
 
 ```json
 {
@@ -69,7 +69,7 @@ Each tool routes to a `resource_type`. Go to [Resource types](./resource-types.m
 }
 ```
 
-**Toggle a feature flag:**
+**Toggle a feature flag**:
 
 ```json
 {
@@ -81,25 +81,25 @@ Each tool routes to a `resource_type`. Go to [Resource types](./resource-types.m
 }
 ```
 
-**Search across all resource types:**
+**Search across all resource types**:
 
 ```json
 { "query": "payment-service" }
 ```
 
-**Diagnose a failed execution:**
+**Diagnose a failed execution**:
 
 ```json
 { "execution_id": "abc123XYZ" }
 ```
 
-**Diagnose from a Harness URL:**
+**Diagnose from a Harness URL**:
 
 ```json
 { "url": "https://app.harness.io/ng/account/.../pipelines/myPipeline/executions/abc123XYZ/pipeline" }
 ```
 
-**Get project health status:**
+**Get project health status**:
 
 ```json
 { "org_id": "default", "project_id": "my-project", "limit": 5 }
@@ -111,14 +111,14 @@ Each tool routes to a `resource_type`. Go to [Resource types](./resource-types.m
 
 You can reduce execution-time input errors with the following:
 
-1. **Discover required runtime inputs:**  
+1. **Discover required runtime inputs**:  
    `harness_get(resource_type="runtime_input_template", resource_id="<pipeline_id>")`  
    The returned template shows `<+input>` placeholders that need values.
 
-2. **Choose input strategy:**
-   - **Simple variables:** Pass flat key-value `inputs` (for example, `{"branch":"main","env":"prod"}`).
-   - **Complex inputs:** Use `input_set_ids` for CI codebase or build blocks and nested template inputs.
-   - **CI codebase shorthand keys:**
+2. **Choose input strategy**:
+   - **Simple variables**: Pass flat key-value `inputs` (for example, `{"branch":"main","env":"prod"}`).
+   - **Complex inputs**: Use `input_set_ids` for CI codebase or build blocks and nested template inputs.
+   - **CI codebase shorthand keys**:
 
      | Shorthand key | Expanded structure |
      |---|---|
@@ -127,7 +127,7 @@ You can reduce execution-time input errors with the following:
      | `pr_number` | `build.type=PR`, `build.spec.number=<value>` |
      | `commit_sha` | `build.type=commitSha`, `build.spec.commitSha=<value>` |
 
-3. **Execute the run:**  
+3. **Execute the run**:  
    `harness_execute(resource_type="pipeline", action="run", resource_id="<pipeline_id>", ...)`
 
 If required fields are unresolved, the tool returns a pre-flight error with expected keys and suggested input sets.

@@ -22,8 +22,8 @@ The Harness MCP Server is an open-source [Model Context Protocol](https://modelc
 
 Unlike MCP servers that map one tool per API endpoint (which degrades LLM tool-selection accuracy as tool count grows), this server keeps the tool count small and the schema footprint minimal. Agents discover organizations and projects dynamically, so multi-project workflows work out of the box without hardcoded environment variables. Twenty-seven pre-built prompt templates cover common workflows such as debugging failed pipelines, reviewing DORA metrics, triaging vulnerabilities, and optimizing cloud costs.
 
-- **Source code:** [github.com/harness/mcp-server](https://github.com/harness/mcp-server)
-- **npm package:** [harness-mcp-v2 on npm](https://www.npmjs.com/package/harness-mcp-v2)
+- **Source code**: [github.com/harness/mcp-server](https://github.com/harness/mcp-server)
+- **npm package**: [harness-mcp-v2 on npm](https://www.npmjs.com/package/harness-mcp-v2)
 
 ---
 

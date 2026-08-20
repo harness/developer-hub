@@ -51,8 +51,8 @@ The Model Connector defines the LLM provider and default model for your Worker A
 
 Harness supports the following Model Connectors:
 
-- **Anthropic Model Connector:** Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-model-connector" target="_blank">Anthropic Model Connector</a> to review supported models and setup options.
-- **OpenAI Model Connector:** Run agents on GPT-5.5 with configurable reasoning effort. Go to <a href="/docs/platform/harness-ai/connect-with-ai/openai-model-connector" target="_blank">OpenAI Model Connector</a> to review supported models, effort levels, and setup options.
+- **Anthropic Model Connector**: Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-model-connector" target="_blank">Anthropic Model Connector</a> to review supported models and setup options.
+- **OpenAI Model Connector**: Run agents on GPT-5.5 with configurable reasoning effort. Go to <a href="/docs/platform/harness-ai/connect-with-ai/openai-model-connector" target="_blank">OpenAI Model Connector</a> to review supported models, effort levels, and setup options.
 
 If you do not have access to a model provider, use a Harness-managed LLM connector instead of configuring your own credentials. Harness auto-provisions view-only managed connectors at the account level, `harnessAnthropic` for Claude models and `harnessOpenAI` for GPT models, that route requests through the Harness **LLM Gateway**. Inspect them under **Account Settings** > **Account Resources** > **Connectors**; you cannot edit or delete them.
 
@@ -172,7 +172,7 @@ MCP connectors require **both** a valid hosted MCP URL and an API key. A connect
 
 The following examples show the connector YAML for Harness MCP and GitHub MCP. You can create these connectors via the API or by importing the YAML in the Harness Connector settings.
 
-**Harness MCP Connector:**
+**Harness MCP Connector**:
 
 ```yaml
 connector:
@@ -192,7 +192,7 @@ connector:
     executeOnDelegate: false
 ```
 
-**GitHub MCP Connector:**
+**GitHub MCP Connector**:
 
 ```yaml
 connector:
@@ -419,10 +419,10 @@ For example, to gate a deployment based on an agent's risk assessment, add a con
 
 ### Best practices for agent outputs
 
-- **Write to both output files:** Check both `$HARNESS_OUTPUT` and `$DRONE_OUTPUT`. If both point to the same path, write only once to avoid duplicate entries.
-- **Validate before publishing:** Read back any generated JSON and verify it is valid before extracting output values. If invalid, overwrite with corrected JSON first.
-- **Use consistent key names:** Define output keys that are descriptive and stable across agent versions so downstream steps do not break.
-- **Keep values concise:** Output values are visible in the pipeline UI. Limit strings (such as summaries) to 500 characters or fewer.
+- **Write to both output files**: Check both `$HARNESS_OUTPUT` and `$DRONE_OUTPUT`. If both point to the same path, write only once to avoid duplicate entries.
+- **Validate before publishing**: Read back any generated JSON and verify it is valid before extracting output values. If invalid, overwrite with corrected JSON first.
+- **Use consistent key names**: Define output keys that are descriptive and stable across agent versions so downstream steps do not break.
+- **Keep values concise**: Output values are visible in the pipeline UI. Limit strings (such as summaries) to 500 characters or fewer.
 
 ---
 

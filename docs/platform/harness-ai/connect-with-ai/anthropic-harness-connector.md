@@ -50,11 +50,11 @@ By the end of this topic, you will be able to:
 
 Before you configure the Anthropic Harness Connector, ensure you have the following:
 
-- **Harness SaaS account:** An active Harness SaaS account, which is the deployment type that [hosted MCP with OAuth](/docs/platform/harness-ai/connect-with-ai/harness-mcp-server#harness-hosted-mcp-saas-oauth) supports.
-- **OAuth enabled:** OAuth enabled at the account level, which [Harness Support](https://support.harness.io) turns on for your account.
-- **SSO configured for MCP:** On a SAML or OIDC Identity Provider, the MCP-specific ACS URL or redirect URI added to your IdP, as described in [Single Sign-On (SSO) for Harness MCP](/docs/platform/authentication/single-sign-on-for-harness-mcp).
-- **Harness permissions:** A [role](/docs/platform/role-based-access-control/add-manage-roles) with **View** on the resources you query, plus **Create/Edit** and **Execute** on any resource you want Claude to change or run.
-- **Claude account:** An active Claude Pro, Max, Team, or Enterprise account, where on Team and Enterprise plans an organization Owner adds the connector first.
+- **Harness SaaS account**: An active Harness SaaS account, which is the deployment type that [hosted MCP with OAuth](/docs/platform/harness-ai/connect-with-ai/harness-mcp-server#harness-hosted-mcp-saas-oauth) supports.
+- **OAuth enabled**: OAuth enabled at the account level, which [Harness Support](https://support.harness.io) turns on for your account.
+- **SSO configured for MCP**: On a SAML or OIDC Identity Provider, the MCP-specific ACS URL or redirect URI added to your IdP, as described in [Single Sign-On (SSO) for Harness MCP](/docs/platform/authentication/single-sign-on-for-harness-mcp).
+- **Harness permissions**: A [role](/docs/platform/role-based-access-control/add-manage-roles) with **View** on the resources you query, plus **Create/Edit** and **Execute** on any resource you want Claude to change or run.
+- **Claude account**: An active Claude Pro, Max, Team, or Enterprise account, where on Team and Enterprise plans an organization Owner adds the connector first.
 
 ---
 
@@ -142,8 +142,8 @@ The connector acts as your Harness user, so Harness RBAC applies to every reques
 
 Write operations depend on MCP elicitation, the mechanism that asks you to confirm a change before Harness applies it. In a client without elicitation support, Harness applies create, update, and execute operations with no confirmation dialog, and blocks delete operations so Claude cannot remove a resource:
 
-- **Claude Desktop:** Elicitation support is pending, so writes apply without a confirmation dialog and deletes are blocked.
-- **Claude web and mobile apps:** The [elicitation support matrix](/docs/platform/harness-ai/connect-with-ai/harness-mcp-server#elicitation) does not list these apps yet, so treat write confirmation as unavailable on both.
+- **Claude Desktop**: Elicitation support is pending, so writes apply without a confirmation dialog and deletes are blocked.
+- **Claude web and mobile apps**: The [elicitation support matrix](/docs/platform/harness-ai/connect-with-ai/harness-mcp-server#elicitation) does not list these apps yet, so treat write confirmation as unavailable on both.
 
 Grant **Create/Edit** and **Execute** only on the resources you intend Claude to change, because the Claude apps apply those changes without a confirmation step.
 

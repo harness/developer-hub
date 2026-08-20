@@ -263,9 +263,9 @@ RUN chmod +x ./my-agent-plugin ./bin/*
 ENTRYPOINT ["/root/my-agent-plugin"]
 ```
 
-**Runtime dependencies:** `ca-certificates` for HTTPS API calls, `git` for repository operations, `bash` for shell script execution.
+**Runtime dependencies**: `ca-certificates` for HTTPS API calls, `git` for repository operations, `bash` for shell script execution.
 
-**Image size notes:** Agent binaries are ~24–27 MB each. Use `debian:bookworm-slim` as the base and `CGO_ENABLED=0` for a statically-linked Go binary.
+**Image size notes**: Agent binaries are ~24–27 MB each. Use `debian:bookworm-slim` as the base and `CGO_ENABLED=0` for a statically-linked Go binary.
 
 :::warning Multi-Stage Builds
 Always use multi-stage Docker builds. Never include the Go toolchain, source code, or build artifacts in the runtime image.
@@ -290,7 +290,7 @@ POST /log-service/blob/download
     &prefix={logBaseKey}
 ```
 
-**Failed step detection:** traverse the execution graph, look for steps with status `Failed` or `IgnoreFailed`, validate `failureInfo` for error messages, then extract the `logBaseKey` field for log retrieval.
+**Failed step detection**: traverse the execution graph, look for steps with status `Failed` or `IgnoreFailed`, validate `failureInfo` for error messages, then extract the `logBaseKey` field for log retrieval.
 
 ```go title="plugin.go"
 func (p *Plugin) fetchFailedStepLogs() (string, error) {
@@ -414,10 +414,10 @@ intelligent modifications using Claude AI.
 
 ### Metadata Validation Rules
 
-- **Directory names:** lowercase with hyphens (e.g., `my-custom-agent`)
-- **Metadata name:** lowercase with spaces (e.g., `"my custom agent"`)
-- **Input names in `pipeline.yaml`:** camelCase (e.g., `anthropicKey`)
-- **Version:** semantic versioning (e.g., `"1.0.0"`)
+- **Directory names**: lowercase with hyphens (e.g., `my-custom-agent`)
+- **Metadata name**: lowercase with spaces (e.g., `"my custom agent"`)
+- **Input names in `pipeline.yaml`**: camelCase (e.g., `anthropicKey`)
+- **Version**: semantic versioning (e.g., `"1.0.0"`)
 
 :::info Automated Review
 Submit your template as a pull request to the agents repository. GitHub Actions runs automated Claude Code review to validate naming conventions, security rules, and cross-file consistency.
