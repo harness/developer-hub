@@ -1,5 +1,12 @@
 [
   {
+    "flagKey": "TAG_CONDITIONAL_FILTER",
+    "description": "Filter the pipeline execution list by tags with conditional match rules, so you can narrow executions to the tag combinations you care about.",
+    "gaStartDate": "2026-08-10",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
+  },
+  {
     "flagKey": "ENABLE_ETL_CHUNKED_PROCESSING",
     "description": "Enables chunked processing for ETL jobs in AI DLC Insights, improving performance and scalability for large datasets.",
     "gaStartDate": "2026-08-17",
