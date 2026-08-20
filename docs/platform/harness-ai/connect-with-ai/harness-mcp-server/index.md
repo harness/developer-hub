@@ -49,6 +49,8 @@ Before you configure MCP server, ensure you have the following:
 
 :::note
 If you use the [Harness Hosted MCP](/docs/platform/harness-ai/connect-with-ai/harness-mcp-server/hosted-mcp) endpoint, you need to authenticate with OAuth through Harness ID. This does not need an API key in your client configuration.
+
+If your Harness account signs in through a SAML or OIDC Identity Provider, an administrator must add the MCP-specific ACS URL or redirect URI to that Identity Provider before you connect. For more information, see [Single Sign-On (SSO) for Harness MCP](/docs/platform/authentication/single-sign-on-for-harness-mcp).
 :::
 
 ---

@@ -19,6 +19,8 @@ Harness provides a **hosted MCP** endpoint for **Harness SaaS** customers. You a
 
 Hosted MCP requires **OAuth to be enabled** on your Harness account. Contact **[Harness Support](https://support.harness.io)** to enable OAuth before you use Hosted MCP. Without OAuth enabled, you receive authentication errors even when your Harness login credentials are valid.
 
+If your account authenticates through a SAML or OIDC Identity Provider, sign-in also requires an MCP-specific ACS URL (SAML) or redirect URI (OIDC) in that Identity Provider. Add it by following [Single Sign-On (SSO) for Harness MCP](/docs/platform/authentication/single-sign-on-for-harness-mcp) before you configure a client.
+
 :::note SaaS only
 
 Hosted MCP with OAuth is available for **Harness SaaS** accounts only. If you run the MCP server self-hosted or open source, use an API key instead. Go to [Configure your AI client](./configure-ai-clients.md) to set up API key authentication. **OAuth for open source and self-hosted MCP is coming soon.**
@@ -131,6 +133,12 @@ Accept any trust prompt for the server, then follow Copilot chat prompts to sign
   issue="Invalid credentials error when connecting to Hosted MCP through OAuth"
   mode="general"
   fallback="OAuth has not been enabled for your Harness account. This is the most common issue when first setting up Hosted MCP, and it occurs even when the same credentials work for a normal Harness login. Contact Harness Support to request OAuth enablement and account data migration, then retry the connection once support confirms the migration is complete."
+/>
+
+<Troubleshoot
+  issue="Hosted MCP sign-in fails at the SAML or OIDC Identity Provider with a reply URL or redirect URI mismatch"
+  mode="general"
+  fallback="The MCP-specific ACS URL (SAML) or redirect URI (OIDC) is missing from your Identity Provider, so the IdP rejects the MCP authentication response even though Harness platform login works. In Harness, go to Account Settings > Security and Governance > Authentication, edit your SAML or OIDC provider, and copy the value from Additional Reply URL for MCP (Optional). Add that exact value to your Harness application in the IdP, then retry the connection. For per-IdP steps, see /docs/platform/authentication/single-sign-on-for-harness-mcp."
 />
 
 ---

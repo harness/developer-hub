@@ -15,7 +15,7 @@ tags:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Use this page to resolve errors related to startup, authentication, and tool-calls. For more information on Hosted MCP OAuth failures, see [Harness Hosted MCP](./hosted-mcp.md#troubleshooting).
+Use this page to resolve errors related to startup, authentication, and tool-calls. For more information on Hosted MCP OAuth failures, see [Harness Hosted MCP](./hosted-mcp.md#troubleshooting). If sign-in fails at your SAML or OIDC Identity Provider, add the MCP-specific ACS URL or redirect URI as described in [Single Sign-On (SSO) for Harness MCP](/docs/platform/authentication/single-sign-on-for-harness-mcp).
 
 ---
 
