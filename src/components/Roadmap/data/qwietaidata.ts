@@ -5,38 +5,13 @@ export const qwietaiModuleTheme = { ...DEFAULT_MODULE_THEME, moduleKey: "qwietai
 
 export const QwietaiData: Horizon = {
   Now: {
-    description: "Q2 2026, May 2026 - July 2026",
-    feature: [  
+    description: "Q3 2026, Aug 2026 - Oct 2026",
+    feature: [ 
       {
-        tag: [{ value: "Platform" }, { value: "Performance" }],
-        title: "Single-Tenant Database Support",
-        description: "Add single-tenancy database architecture to improve performance isolation and scalability."
-      },
-      {
-        tag: [{ value: "Integration" }, { value: "IDE"}, { value: "AI"}],
-        title: "MCP Integration for IDEs",
-        description: "Integrate with Harness MCP to support SAST/SCA scanning and actions directly from IDEs.",
-      },
-      {
-        tag: [{ value: "AI" }, { value: "IDE" }],
-        title: "Security Skills",
-        description: "Provide guided security operations through reusable AI-powered Skills.",
-      },
-      {
-        tag: [{ value: "SAST" }, { value: "AI"}],
-        title: "AI-Enhanced SAST",
-        description: "Extend SAST coverage and reduce false positives through AI-enhanced vulnerability detection.",
-      },
-      {
-        tag: [{ value: "Visibility" }, { value: "Platform" }],
-        title: "Enhanced Scan Logging",
-        description: "Improve scan logging to provide clearer status and actionable feedback."
-      },
-      {
-        tag: [{ value: "Governance" }, { value: "Risk Management" }],
-        title: "Application Severity Adjustment",
-        description: "Allow super admins to adjust application risk severity based on key contextual factors."
-      },
+        tag: [{ value: "AI" }, { value: "Automation" }],
+        title: "Security AI Agents",
+        description: "Enable AI-powered agents to detect, triage, and remediate security issues through automated or on-demand workflows.",
+      }, 
       {
         tag: [{ value: "Reporting" }, { value: "Visibility" }],
         title: "AppSec Metrics Dashboard",
@@ -48,54 +23,114 @@ export const QwietaiData: Horizon = {
         description: "Enhance visibility into transitive dependencies and associated vulnerabilities."
       },
       {
-        tag: [{ value: "Remediation" }, { value: "SCA" }],
-        title: "Autofix for OSS Vulnerabilities",
-        description: "Extend Autofix capabilities to address open-source vulnerabilities."
-      },
-      {
-        tag: [{ value: "Standards" }, { value: "Compliance" }],
-        title: "OWASP 2025 Support",
-        description: "Extend detection coverage for vulnerabilities aligned with OWASP 2025."
-      },
-      {
         tag: [{ value: "SAST" }, { value: "Language Support" }],
-        title: "T-SQL Language Support",
+        title: "T-SQL Language Support (Beta)",
         description: "Add native SAST scanning support for T-SQL."
       },
       {
-        tag: [{ value: "SCA" }, { value: "Language Support" }],
-        title: "Support for TOML config files",
-        description: "Scan TOML configuration files in SCA."
+        tag: [{ value: "Integrations" }, { value: "SAST" }],
+        title: "Bitbucket Data Center Support",
+        description: "Enable Autofix workflows for repositories hosted on Bitbucket Data Center."
       },
       {
-        tag: [{ value: "SCA" }, { value: "Language Support" }],
-        title: "Export SBOM via CLI",
-        description: "Export SBOM via CLI for SCA."
+        tag: [{ value: "SCA" }, { value: "AI" }],
+        title: "Slopsquatting Detection",
+        description: "Detect potentially malicious or hallucinated package dependencies introduced by AI-generated code."
       },
       {
-        tag: [{ value: "SCA" }, { value: "Language Support" }],
-        title: "CPE identifiers support",
-        description: "Expand SCA vulnerability detection to include CPE identifiers."
+        tag: [{ value: "Platform" }, { value: "Visibility" }],
+        title: "CI Source Visibility",
+        description: "Show the CI source associated with scans for better visibility and traceability."
       },
       {
-        tag: [{ value: "Visibility" }, { value: "SAST" }, { value: "SCA" }],
-        title: "Scan Summary Enhancements",
-        description: "Refine scan summaries to show only actionable findings."
+        tag: [{ value: "AI Risk" }, { value: "Remediation" }],
+        title: "AI Risk Autofix",
+        description: "Provide automated remediation recommendations and fixes for detected AI Risks."
       },
-    ],
-  },
-  Next: {
-    description: "Q3 2026, Aug 2026 - Oct 2026",
-    feature: [
       {
-        tag: [{ value: "SAST" }, { value: "Language Support" }],
-        title: "Rust Language Support",
-        description: "Add native SAST scanning support for Rust."
+        tag: [{ value: "AI Risk" }, { value: "Compliance" }],
+        title: "AI Risk OWASP Mapping",
+        description: "Map detected AI risks to relevant OWASP Agent Skills categories."
+      },
+      {
+        tag: [{ value: "Integrations" }, { value: "Ticketing" }],
+        title: "Multiple Azure Boards Support",
+        description: "Support creating and managing security tickets across multiple Azure Boards projects."
       },
       {
         tag: [{ value: "Platform" }, { value: "IDE" }],
         title: "Windows + ARM Support",
         description: "Enable support for Windows on ARM environments."
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Artifact Security" }],
+        title: "Package Scanning Support",
+        description: "Extend SCA scanning to non-OCI packages and artifacts across supported package ecosystems."
+      },
+      {
+        tag: [{ value: "Governance" }, { value: "Policy" }],
+        title: "Policy Management Through UI",
+        description: "Allow users to configure and manage application security policies directly through the UI."
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "SBOM" }],
+        title: "SBOM Support for Spinnaker",
+        description: "Enable reliable SBOM generation for Spinnaker applications and dependencies."
+      },
+      {
+        tag: [{ value: "Platform" }, { value: "Developer Experience" }],
+        title: "Check-Analysis Validation Enhancements",
+        description: "Improve check-analysis validation behavior for more flexible CI/CD security workflows."
+      },
+      {
+        tag: [{ value: "SAST" }, { value: "IaC" }],
+        title: "Azure Bicep Support",
+        description: "Add security scanning support for infrastructure defined using Azure Bicep."
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Container Security" }],
+        title: "Deep Container Analysis",
+        description: "Differentiate base image and application-layer vulnerabilities to improve container risk prioritization."
+      },
+      {
+        tag: [{ value: "Secure AI Coding" }, { value: "IDE" }],
+        title: "Secure AI Coding for VS Code",
+        description: "Bring Secure AI Coding capabilities directly into VS Code to detect and remediate security issues as developers write code."
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Language Support" }],
+        title: "CPE identifiers support",
+        description: "Expand SCA vulnerability detection to include CPE identifiers."
+      }
+    ],
+  },
+  Next: {
+    description: "Q4 2026, Nov 2026 - Jan 2027",
+    feature: [
+      {
+        tag: [{ value: "AI SAST" }, { value: "Detection" }],
+        title: "AI-Enhanced SAST V2",
+        description: "Advance AI-powered SAST with deeper contextual reasoning, improved detection accuracy, validation, and risk prioritization."
+      },
+      {
+        tag: [{ value: "SAST" }, { value: "Language Support" }],
+        title: "Rust Language Support (GA)",
+        description: "Add native SAST scanning support for Rust."
+      },
+      {
+        tag: [{ value: "SAST" }, { value: "Language Support" }],
+        title: "Objective-C Support (Beta)",
+        description: "Add SAST scanning and vulnerability detection support for Objective-C applications."
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Dependency Management" }],
+        title: "SCA Package Upgrade Validation",
+        description: "Validate package upgrades to identify security issues and potential risks before adoption."
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Remediation" }],
+        title: "OSS Risk Autofix",
+        description: "Provide automated fixes and upgrade recommendations for open-source dependency risks."
       },
       {
         tag: [{ value: "IDE" }, { value: "SAST" }, { value: "SCA" }],
@@ -106,21 +141,6 @@ export const QwietaiData: Horizon = {
         tag: [{ value: "Platform" }, { value: "Deployment" }],
         title: "SMP + FIPS Support",
         description: "Enable Harness SAST and SCA support for air-gapped deployments on the Self-Managed Platform."
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Governance" }],
-        title: "Skills & MCP Security Scanner",
-        description: "Detect malicious patterns and security risks in AI agent Skills and MCP configurations.",
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Automation" }],
-        title: "Security AI Agents",
-        description: "Enable AI-powered agents to detect, triage, and remediate security issues through automated or on-demand workflows.",
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Automation"}],
-        title: "Advanced AI Capabilities",
-        description: "Enhance AI-driven agentic workflows across IDEs, governance, remediation, and onboarding.",
       },
       {
         tag: [{ value: "Visibility" }, { value: "Reporting"}],
@@ -135,27 +155,17 @@ export const QwietaiData: Horizon = {
     ],
   },
   Later: {
-    description: "Q4 2026+, November 2026 & beyond",
+    description: "Q1 2027+, February 2027 & beyond",
     feature: [
       {
-        tag: [{ value: "SAST" }, { value: "Visibility" }],
-        title: "Data Flow Code Snippets",
-        description: "Display code snippets within data flow views to improve analysis clarity."
-      },
-      {
         tag: [{ value: "AI" }, { value: "Integration"}, {value: "Developer Experience"}],
-        title: "Vercel Integration",
-        description: "Serve as the native security integration for Vercel to ship secure code by default.",
+        title: "Emergent AI Integration",
+        description: "Serve as the native security integration for Emergent AI to ship secure code by default.",
       },
       {
         tag: [{ value: "AI" }, { value: "Integration"}, {value: "Developer Experience"}],
         title: "Replit Integration",
         description: "Serve as the native security integration for Replit to ship secure code by default.",
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Integration"}, {value: "Developer Experience"}],
-        title: "Lovable Integration",
-        description: "Serve as the native security integration for Lovable to ship secure code by default.",
       },
       {
         tag: [{ value: "Integration" }, { value: "Ticketing"}],
@@ -164,18 +174,18 @@ export const QwietaiData: Horizon = {
       },
       {
         tag: [{ value: "SAST" }, { value: "Language Support" }],
-        title: "Perl Language Support",
+        title: "Perl Language Support (Beta)",
         description: "Add native SAST scanning support for Perl."
-      },
-      {
-        tag: [{ value: "Container" }, { value: "Visibility" }],
-        title: "Deep Container Analysis",
-        description: "Deliver layer-by-layer visibility into container risks with OS and application dependency attribution."
       },
       {
         tag: [{ value: "SCA" }, { value: "Binary Analysis" }],
         title: "Expanded Binary Analysis",
         description: "Extend binary scanning support across additional binary formats and package types."
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Framework Support" }],
+        title: "Extended Framework Support",
+        description: "Extend SCA framework support to include additional frameworks and libraries.",
       },
     ],
   },
@@ -183,6 +193,74 @@ export const QwietaiData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "SCA" }, { value: "Reachability" }],
+        title: "Deep Code Reachability",
+        description: "Provide function-level reachability evidence to identify exploitable vulnerable dependencies.",
+        link: "https://docs.shiftleft.io/sast/ui-v2/application-details/findings?_highlight=reacha#understanding-reachability-tab"
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Governance" }],
+        title: "Skills & MCP Security Scanner (AI Risk)",
+        description: "Detect malicious patterns and security risks in AI agent Skills and MCP configurations.",
+        link: "https://docs.shiftleft.io/sast/analyzing-applications/ai-risks"
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Language Support" }],
+        title: "Export SBOM via CLI",
+        description: "Export SBOM via CLI for SCA.",
+        link: "https://docs.shiftleft.io/cli/reference/sbom"
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Language Support" }],
+        title: "Support for TOML config files",
+        description: "Scan TOML configuration files in SCA."
+      },
+      {
+        tag: [{ value: "Standards" }, { value: "Compliance" }],
+        title: "OWASP 2025 Support",
+        description: "Extend detection coverage for vulnerabilities aligned with OWASP 2025.",
+        link: "https://docs.shiftleft.io/sast/ui-v2/application-details/compliance"
+      },
+      {
+        tag: [{ value: "Remediation" }, { value: "SCA" }],
+        title: "Autofix for OSS Vulnerabilities",
+        description: "Extend Autofix capabilities to address open-source vulnerabilities."
+      },
+      {
+        tag: [{ value: "Governance" }, { value: "Risk Management" }],
+        title: "Contextual Severity and Severity Override",
+        description: "Allow super admins to adjust application risk severity based on key contextual factors.",
+        link: "https://docs.shiftleft.io/sast/ui-v2/application-details/settings#application-context"
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "Platform" }],
+        title: "Enhanced Scan Logging",
+        description: "Improve scan logging to provide clearer status and actionable feedback."
+      },
+      {
+        tag: [{ value: "SAST" }, { value: "AI"}],
+        title: "AI-Enhanced SAST",
+        description: "Extend SAST coverage and reduce false positives through AI-enhanced vulnerability detection.",
+        link: "https://docs.shiftleft.io/sast/analyzing-applications/ai-sast"
+      },
+      {
+        tag: [{ value: "AI" }, { value: "IDE" }],
+        title: "Security Skills",
+        description: "Provide guided security operations through reusable AI-powered Skills.",
+        link: "https://docs.shiftleft.io/sast/integrations/mcp?_highlight=skills#agent-skills"
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "IDE"}, { value: "AI"}],
+        title: "MCP Integration for IDEs",
+        description: "Integrate with Harness MCP to support SAST/SCA scanning and actions directly from IDEs.",
+        link: "https://docs.shiftleft.io/sast/integrations/mcp"
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "SAST" }, { value: "SCA" }],
+        title: "Scan Summary Enhancements",
+        description: "Refine scan summaries to show only actionable findings."
+      },
       {
         tag: [{ value: "Integration" }, { value: "IDE"}, { value: "AI"}],
         title: "Secure Vibe Coding",
