@@ -2161,5 +2161,12 @@
     "gaStartDate": "2026-08-12",
     "module": "Continuous Delivery",
     "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "CDS_CV_DYNATRACE_GRAIL_METRICS_ENABLED",
+    "description": "Enables Dynatrace Grail Metrics in Health Source UI and delegate compatibility.",
+    "gaStartDate": "2026-08-20",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   }
 ]
