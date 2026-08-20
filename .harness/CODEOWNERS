@@ -85,13 +85,13 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 
 
 # Continuous Integration Docs
-/docs/continuous-integration/ nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io
-/release-notes/continuous-integration.md nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io
+/docs/continuous-integration/ nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io anshul@harness.io
+/release-notes/continuous-integration.md nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io anshul@harness.io
 /src/components/Roadmap/data/ciData.ts nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io
 /src/components/Docs/data/continuousIntegrationData.ts nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io
 
 # CODE Docs
-/docs/code-repository/ nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io abhinav.singh@harness.io
+/docs/code-repository/ nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io abhinav.singh@harness.io anshul@harness.io
 /release-notes/code-repository.md nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io abhinav.singh@harness.io
 /src/components/Roadmap/data/codeData.ts nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io abhinav.singh@harness.io
 /src/components/Docs/data/codeRepositoryData.tsx nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io abhinav.singh@harness.io
@@ -150,10 +150,10 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /docs/faqs/resilience-testing-faqs vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
 
 # Platform Docs
-/docs/platform/ prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io navaneeth.kn@harness.io mohit.garg@harness.io ambuj.lal@harness.io smriti.satyanarayana@harness.io mohit.suman@harness.io amrutha.bhat@harness.io
-/release-notes/delegate.md prateek.mittal@harness.io abhishek.thamman@harness.io anshul@harness.io navaneeth.kn@harness.io mohit.garg@harness.io vikram.sahu@harness.io vishal.vishwaroop@harness.io akshit.madan@harness.io prasad.satam@harness.io sakshi.jain@harness.io rohit.karelia@harness.io vinicius.calasans@harness.io marko.milic@harness.io
-/release-notes/platform.md prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io navaneeth.kn@harness.io mohit.garg@harness.io ambuj.lal@harness.io smriti.satyanarayana@harness.io mohit.suman@harness.io amrutha.bhat@harness.io
-/release-notes/self-managed-enterprise-edition.md prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io navaneeth.kn@harness.io mohit.garg@harness.io ambuj.lal@harness.io @anshul-harness @raviyadalam smriti.satyanarayana@harness.io mohit.suman@harness.io amrutha.bhat@harness.io
+/docs/platform/ prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io navaneeth.kn@harness.io mohit.garg@harness.io ambuj.lal@harness.io smriti.satyanarayana@harness.io mohit.suman@harness.io amrutha.bhat@harness.io anshul@harness.io
+/release-notes/delegate.md prateek.mittal@harness.io abhishek.thamman@harness.io anshul@harness.io navaneeth.kn@harness.io mohit.garg@harness.io vikram.sahu@harness.io vishal.vishwaroop@harness.io akshit.madan@harness.io prasad.satam@harness.io sakshi.jain@harness.io rohit.karelia@harness.io vinicius.calasans@harness.io marko.milic@harness.io anshul@harness.io
+/release-notes/platform.md prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io navaneeth.kn@harness.io mohit.garg@harness.io ambuj.lal@harness.io smriti.satyanarayana@harness.io mohit.suman@harness.io amrutha.bhat@harness.io anshul@harness.io
+/release-notes/self-managed-enterprise-edition.md prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io navaneeth.kn@harness.io mohit.garg@harness.io ambuj.lal@harness.io @anshul-harness @raviyadalam smriti.satyanarayana@harness.io mohit.suman@harness.io amrutha.bhat@harness.io anshul@harness.io
 /src/components/Roadmap/data/platformData.ts prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io navaneeth.kn@harness.io mohit.garg@harness.io ambuj.lal@harness.io smriti.satyanarayana@harness.io mohit.suman@harness.io amrutha.bhat@harness.io
 /src/components/Docs/data/platformData.ts prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io navaneeth.kn@harness.io mohit.garg@harness.io ambuj.lal@harness.io smriti.satyanarayana@harness.io mohit.suman@harness.io amrutha.bhat@harness.io
 
@@ -168,11 +168,11 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /docs/faqs/self-managed-ee-faq/ prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io smriti.satyanarayana@harness.io
 
 # Delegate docs
-/docs/platform/delegates/ vishal.vishwaroop@harness.io akshit.madan@harness.io prasad.satam@harness.io rohit.karelia@harness.io vinicius.calasans@harness.io marko.milic@harness.io
-/docs/platform/delegates-v2/ vishal.vishwaroop@harness.io akshit.madan@harness.io prasad.satam@harness.io rohit.karelia@harness.io vinicius.calasans@harness.io marko.milic@harness.io
+/docs/platform/delegates/ vishal.vishwaroop@harness.io akshit.madan@harness.io prasad.satam@harness.io rohit.karelia@harness.io vinicius.calasans@harness.io marko.milic@harness.io anshul@harness.io
+/docs/platform/delegates-v2/ vishal.vishwaroop@harness.io akshit.madan@harness.io prasad.satam@harness.io rohit.karelia@harness.io vinicius.calasans@harness.io marko.milic@harness.io anshul@harness.io
 
 # Pipeline Docs
-/docs/platform/pipelines/ vishal.vishwaroop@harness.io sudarshan.purohit@harness.io @anshul-harness navaneeth.kn@harness.io mohit.garg@harness.io @rohitk-h prasad.satam@harness.io @navaneeth akshit.madan@harness.io
+/docs/platform/pipelines/ vishal.vishwaroop@harness.io sudarshan.purohit@harness.io @anshul-harness navaneeth.kn@harness.io mohit.garg@harness.io @rohitk-h prasad.satam@harness.io @navaneeth akshit.madan@harness.io anshul@harness.io
 /docs/platform/git-experience/ vishal.vishwaroop@harness.io prasad.satam@harness.io @anshul-harness navaneeth.kn@harness.io mohit.garg@harness.io @rohitk-h @navaneeth akshit.madan@harness.io
 /docs/platform/templates/ vishal.vishwaroop@harness.io sudarshan.purohit@harness.io @anshul-harness navaneeth.kn@harness.io mohit.garg@harness.io @rohitk-h prasad.satam@harness.io @navaneeth akshit.madan@harness.io
 /docs/platform/variables-and-expressions/ vishal.vishwaroop@harness.io sudarshan.purohit@harness.io @anshul-harness navaneeth.kn@harness.io mohit.garg@harness.io @rohitk-h prasad.satam@harness.io @navaneeth akshit.madan@harness.io
@@ -232,7 +232,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /src/components/Docs/data/softwareEngineeringInsightsData.ts austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io
 
 # DB DevOps Docs
-/docs/database-devops/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io sarthak.setia@harness.io
+/docs/database-devops/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io sarthak.setia@harness.io anshul@harness.io
 /release-notes/database-devops.md stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
 /src/components/Docs/data/databaseDevOpsData.ts stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
 /src/components/Roadmap/data/dbdevopsData.ts stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io vikram.sahu@harness.io wei.guo@harness.io
