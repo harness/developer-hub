@@ -352,6 +352,12 @@ To install the Helm chart, do the following:
    helm install my-release harness/harness -n <namespace> -f override.yaml
    ```
 
+:::note install the umbrella chart, not individual sub-charts
+
+The supported install path is `helm install`/`helm upgrade` against the single umbrella chart shown above, with modules toggled through `override.yaml`. Applying individual sub-charts directly with `kubectl apply` (for example, applying only the `srm` and `cd` sub-charts) is not a supported install method. The umbrella chart's bootstrap database layer (MongoDB, PostgreSQL, TimescaleDB) is a dependency of the other modules; if it isn't installed and ready first, dependent services fail to start, for example a GitOps pod stuck in `Init:CrashLoopBackOff` waiting on Mongo or Postgres, or CV Nextgen failing schema migrations against an uninitialized database.
+
+:::
+
 ## Verify the installation
 
 After the installation completes, the services that were installed are enumerated with their status.
