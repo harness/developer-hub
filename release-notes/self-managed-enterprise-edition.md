@@ -462,6 +462,33 @@ upgrades:
 </details>  
 :::
 
+## August 17, 2026, Version 0.41.3 <!-- August 17, 2026 -->
+
+:::warning Important
+If you use Infrastructure as Code Management, follow this upgrade path.
+
+- **You are on 0.41.x and your upgrade to 0.42.0 or later failed:** Version 0.42.0 and later introduce an IaCM database migration that requires every IaCM record to carry an internal identifier. The background job that creates these identifiers was not enabled in earlier releases, so the database was not in a state where the migration could complete, and the upgrade failed. Upgrade to **0.41.3** first. This release enables that job so it prepares the database. Allow the job time to finish before you upgrade to 0.42.0 or later. The job runs on an interval, and how long it takes depends on how much IaCM data your installation holds.
+- **You upgraded successfully to 0.42.0 or 0.43.0:** Upgrade to **0.44.0** before you upgrade any further.
+:::
+
+This table lists the module, its components, its version and the release notes versions associated with it.
+
+<SmpVersionTable version="0.41.3" />
+
+**Air-gap bundle download method**
+:::info Note on new airgap bundle structure
+Starting with version 0.38.x, the airgap bundle structure has been redesigned. Components are now grouped into core modules and execution components, allowing you to download exactly what you need using our new interactive scripts.
+:::
+For a comprehensive guide on installing Harness Self-Managed Enterprise Edition in an air-gapped environment, go to the **Version 0.38.x and later** tab in [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment) to download airgap bundles using the interactive scripts, organize the core modules and execution components, and push them to your private container registry.
+
+### Fixed issues
+
+#### Infrastructure as Code Management
+
+- Fixed an issue where some IaCM records were missing the internal identifier that the database migration in 0.42.0 and later requires, which caused that migration to fail and blocked the upgrade. The IaC server now assigns a stable identifier to these records, so the upgrade completes.
+- The background job that assigns these identifiers now runs by default instead of requiring an environment variable to enable it. To turn it off, set `DISABLE_BACKFILL_JOB_PRODUCER` or `DISABLE_BACKFILL_JOB_CONSUMER` to `true` on the IaC server.
+- Patched reported CVEs in the IaC server Self-Managed image.
+
 ## August 10, 2026, Version 0.44.0 <!-- August 10, 2026 -->
 
 :::danger Breaking changes
