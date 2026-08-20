@@ -21,7 +21,7 @@ Learn more about each option below, including recommended use cases, supported p
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Paid plans" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-When you [use Harness Cloud](./use-harness-cloud-build-infrastructure.md), your builds run in isolation on Harness-managed machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
+When you [use Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), your builds run in isolation on Harness-managed machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
 Harness hosts, maintains, and upgrades these machines so that you can focus on developing software instead of maintaining build farms.
 
@@ -46,7 +46,7 @@ Self-managed build infrastructure options include local machines, Kubernetes clu
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Paid plans" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-When you [use a local runner](./define-a-docker-build-infrastructure.md), also known as a Docker runner, you run builds on a local machine. You can execute build steps in Docker containers or directly on the host machine.
+When you [use a local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), also known as a Docker runner, you run builds on a local machine. You can execute build steps in Docker containers or directly on the host machine.
 
 **This option is recommended for small, limited-scale builds, such as one-off builds on your local machine. It is commonly used to build custom apps that have specific build machine requirements, such as legacy Windows apps that must be built on a custom Windows VM.**
 
@@ -59,9 +59,9 @@ Self-managed local build infrastructure is available with all CI plans.
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Paid plans" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-When you [use a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md), you can run ephemeral builds-at-scale in your own self-managed Kubernetes clusters. In this case, each CI stage executes in a pod, and the stage's steps share the pod's resources.
+When you [use a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure), you can run ephemeral builds-at-scale in your own self-managed Kubernetes clusters. In this case, each CI stage executes in a pod, and the stage's steps share the pod's resources.
 
-If you are familiar with Kubernetes, this option is relatively easy to set up and manage, but there are [some cluster configuration requirements](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#create-a-kubernetes-cluster).
+If you are familiar with Kubernetes, this option is relatively easy to set up and manage, but there are [some cluster configuration requirements](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#create-a-kubernetes-cluster).
 
 </details>
 
@@ -74,7 +74,7 @@ You can [run builds on self-managed AWS, GCP, or Azure VMs](/docs/category/set-u
 
 This option can be challenging to configure and manage if you're not already familiar with managing cloud-provider VMs. However, compared to the Kubernetes cluster build infrastructure option, it allows you more freedom with Docker commands, offers native support for Windows, can support Docker builds on Windows (based on the VM configuration), and supports Linux, Windows, and macOS platforms.
 
-While you can use an Anka registry to configure a macOS build farm, Harness recommends using [Harness Cloud](./use-harness-cloud-build-infrastructure) for macOS builds.
+While you can use an Anka registry to configure a macOS build farm, Harness recommends using [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) for macOS builds.
 
 </details>
 
@@ -92,7 +92,7 @@ The following table shows the supported operating systems and architectures for 
 
 :::info
 
-**Harness recommends [Harness Cloud](./use-harness-cloud-build-infrastructure) for macOS builds.**
+**Harness recommends [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) for macOS builds.**
 
 This recommendation is due to licensing requirements and the complexity of configuring and managing macOS VMs with Anka virtualization.
 
@@ -107,8 +107,8 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 
 | Feature | Harness Cloud | Self-managed local runner | Self-managed Kubernetes cluster | Self-managed AWS/GCP/Azure VMs |
 | - | - | - | - | - |
-| [Build Intelligence](docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence.md) | ✅ Supported - Linux only | ❌ Not supported | ✅ Supported - Linux only  | ❌ Not supported|
-| [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| [Build Intelligence](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) | ✅ Supported - Linux only | ❌ Not supported | ✅ Supported - Linux only  | ❌ Not supported|
+| [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Cache to S3/GCS](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
