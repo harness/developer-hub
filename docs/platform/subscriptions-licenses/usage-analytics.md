@@ -2,7 +2,7 @@
 title: Usage Analytics
 description: Understand how your teams engage with each Harness module through feature-level adoption metrics, and connect that engagement to your license usage.
 sidebar_label: Usage Analytics
-sidebar_position: 3
+sidebar_position: 4
 keywords:
   - usage analytics
   - adoption metrics

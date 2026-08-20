@@ -2,7 +2,7 @@
 title: Subscription Overview and Management
 description: Learn how to view and manage your Harness subscriptions and licenses, including updates, usage tracking, and license details.
 sidebar_label: Manage Subscriptions
-sidebar_position: 1
+sidebar_position: 2
 redirect_from:
   - /docs/platform/get-started/pl-subscription-mgmt
   - /docs/platform/get-started/subscriptions
