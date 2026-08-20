@@ -635,7 +635,12 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'doc',
-          label: 'Getting Started',
+          label: 'Overview',
+          id: 'platform/get-started/key-concepts',
+        },
+        {
+          type: 'doc',
+          label: "What's New",
           id: 'platform/getting-started/index',
         },
         'platform/platform-whats-supported',
@@ -758,13 +763,6 @@ const sidebars: SidebarsConfig = {
             'platform/getting-started/pipelines/advanced',
           ]
         },
-        {
-          type: 'html',
-          value: 'New to Harness 3.0?',
-          className: 'horizontal-bar',
-        },
-        'platform/get-started/key-concepts',
-        'platform/get-started/onboarding-guide',
         {
           type: 'html',
           value: 'Harness Platform Resources',

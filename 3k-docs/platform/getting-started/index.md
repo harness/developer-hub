@@ -1,6 +1,6 @@
 ---
-title: Harness Platform Overview
-sidebar_label: Overview
+title: What's New
+sidebar_label: What's New
 id: index
 slug: /platform/getting-started
 sidebar_position: 1
@@ -20,17 +20,6 @@ The Harness Platform is the foundation that the rest of Harness is built on. It 
 Harness 3.0 rebuilds that platform around a simplified pipeline format and a container-based execution model. Your existing Harness NG resources continue to work, but the way you author pipelines, run them, and navigate the UI changes.
 
 This topic explains what the platform provides and compares Harness NG with Harness 3.0 so you know what to expect before you migrate.
-
----
-
-## What you will learn in this topic
-
-- What the [Harness Platform](#what-the-harness-platform-provides) is, and how the Account, Organization, and Project hierarchy structures your work.
-- What changes between Harness NG and Harness 3.0, [area by area](#what-changes-at-a-glance).
-- What [Harness Agents](#harness-agents) are, and how they bring governed AI automation into your pipelines.
-- How [pipeline YAML v1](#pipeline-yaml-format) differs from v0, and how [Drone and GitHub Actions](#drone--github-actions-compatibility) pipelines fit in.
-- How [containerized steps](#containerized-step-execution), [typed inputs](#typed-inputs), [versioned steps](#versioned-steps), and [Delegate 3.0](#delegate-30) change pipeline execution.
-- What changes in the UI, including the [Pipeline Studio](#redesigned-pipeline-studio), [navigation](#redesigned-navigation), [Harness Code](#harness-code), and the [AI Assistant](#ai-assistant).
 
 ---
 

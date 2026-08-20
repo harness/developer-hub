@@ -22,8 +22,6 @@ canonical_url: https://www.harness.io/blog/general-availability-harness-develope
 
 import Link from '@docusaurus/Link';
 
-## Harness Platform overview
-
 The Harness Platform is the foundation that everything else in Harness is built on. Think of it as the common layer that handles all the shared capabilities your teams need- user management, access control, secrets, connectors, auditing, and notifications. You define these capabilities once and reuse them everywhere.
 
 On top of this foundation sit the Harness modules, such as Continuous Integration, Continuous Delivery and GitOps, Feature Flags, and more. Because these modules run on the platform, they automatically inherit all platform capabilities.
