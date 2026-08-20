@@ -208,6 +208,10 @@ When setting up your AWS Secrets Manager in Harness, you can choose one of the f
 
       ![aws-secret-manager-iam-role](../../secrets/static/add-aws-secret-manager-2.png)
 
+      :::note not valid for IRSA-based delegates
+      **Assume IAM Role on Delegate** isn't valid for IAM roles for service accounts (IRSA). If your Harness Delegate runs in an EKS cluster configured with IRSA, use IRSA instead. Go to [Assume IAM Role vs Use IRSA](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#assume-iam-role-vs-use-irsa) to determine which option your delegate needs.
+      :::
+
       #### Prerequisites
 
         - Ensure the Delegate host has the appropriate IAM role assigned.
