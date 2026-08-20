@@ -75,7 +75,7 @@ To check that the proxy can reach the app server you can SSH into the proxy VM a
 
 Once you have a terminal session on the proxy VM:
 - Install the necessary tools: `sudo apt install net-tools`
-- To validate the app port is open: `nc -z -v <ip of app server> <dstination port>` 
+- To validate the app port is open: `nc -z -v <ip of app server> <destination port>` 
 - If you see no output, that means we cannot access the destination port, and you need to check the security groups on the application server
 - If you see output about a connection, this validates the proxy can reach the application
 

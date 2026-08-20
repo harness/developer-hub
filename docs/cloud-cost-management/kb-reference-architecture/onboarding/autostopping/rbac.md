@@ -19,7 +19,7 @@ For example a viewer role might have "viewer" while an editor role may have "vie
 
 You will also need to grant `Connector:View` so that users can load all the information on the autostopping rules.
 
-If the user trying to access autostopping dosn't have `User:View` on `_all_account_resources` they will get an error in the autostopping UI that they lack this permissions. This is because the UI makes API calls to get information on users in the Harness account to be able to display who made changes on the rules.
+If the user trying to access autostopping does not have `User:View` on `_all_account_resources` they will get an error in the autostopping UI that they lack this permissions. This is because the UI makes API calls to get information on users in the Harness account to be able to display who made changes on the rules.
 
 ## Resource Group
 
@@ -27,7 +27,7 @@ To control the cloud accounts a user can perform the above actions on, you need 
 
 Under "Shared Resources" select "Connectors" and then "Specified". Here you can select all the CACM AWS Account Connectors for the accounts which you want to give access to.
 
-You will create as many resource groups as needed depending on how many seperate access patterns you have.
+You will create as many resource groups as needed depending on how many separate access patterns you have.
 
 ![](../../static/ccm-onboarding-autostopping-rbac-2.png)
 

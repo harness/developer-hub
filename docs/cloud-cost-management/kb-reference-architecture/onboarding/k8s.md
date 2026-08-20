@@ -142,7 +142,7 @@ metadata:
   namespace: default
 ```
 
-Next, we create a `harness-ccm-visibility` `ClusterRole` with exactly the permissions neeeded for CACM k8s visibility:
+Next, we create a `harness-ccm-visibility` `ClusterRole` with exactly the permissions needed for CACM k8s visibility:
 ```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole

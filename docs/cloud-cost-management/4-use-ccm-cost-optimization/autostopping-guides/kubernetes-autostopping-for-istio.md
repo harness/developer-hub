@@ -89,7 +89,7 @@ After applying this rule, both of the virtualservices are reconfigured for AutoS
 
 If you have a setup where a virtualservice is pointing to a Kubernetes service in a different namespace with its FQDN, you can configure AutoStopping for those services as given in the following example.
 
-Assume `httpbin1` is your Istio virtualservice in default namesapce and echo is your Kubernetes service in namespace development.
+Assume `httpbin1` is your Istio virtualservice in default namespace and echo is your Kubernetes service in namespace development.
 
 ```
 apiVersion: ccm.harness.io/v1

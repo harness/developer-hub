@@ -658,7 +658,7 @@ global:
   # -- CACM uses `us-east-1` as the default region where the respective endpoint URLs are used for STS (Security Token Service), ECS (Elastic Container Service), and CloudWatch services. However, if there is a need to specify a different region, you have the option to customize the endpoint URLs using the following configuration:
   # -- Set the `global.awsServiceEndpointUrls.enabled` parameter to true to enable endpoint URLs.
   # -- Set a valid AWS region in the `global.awsServiceEndpointUrls.endPointRegion.host` parameter to specify the region where this endpoint is accessible.
-  # -- Set the the STS (Security Token Service) endpoint URL in the `global.awsServiceEndpointUrls.stsEndPointUrl` parameter.
+  # -- Set the STS (Security Token Service) endpoint URL in the `global.awsServiceEndpointUrls.stsEndPointUrl` parameter.
   # -- Set the ECS (Elastic Container Service) endpoint URL in the `global.awsServiceEndpointUrls.ecsEndPointUrl` parameter.
   # -- Set the CloudWatch endpoint URL in the `global.awsServiceEndpointUrls.cloudwatchEndPointUrl` parameter.
   awsServiceEndpointUrls:

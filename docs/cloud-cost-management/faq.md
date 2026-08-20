@@ -978,7 +978,7 @@ You can only tune nodepod and workload recommendations. You can't tune VM recomm
 </details>
 
 <details>
-<summary><strong>How can we get GCP compute recommenations.</strong></summary>
+<summary><strong>How can we get GCP compute recommendations.</strong></summary>
 
 You can get GCP compute recommendations by enabling governance. Go to [Asset governance recommendations](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/recommendations) to review the supported GCP recommendations.
 

@@ -27,6 +27,6 @@ Step 2 : Generate unique email address and copy it.
 
 ![](./static/slackemail.png)
 
-Use the copied email address in place of email address for sechusling slack channel/user alert for dashbaord
+Use the copied email address in place of email address for scheduling slack channel/user alert for dashboard
 
 ![](./static/email.png)

@@ -7,7 +7,7 @@ redirect_from:
 
 # Overview
 
-Unlike normal setup of AWS and Azure cost ingestion, because of the hard seperation of cloud provider's China regions, you cannot simply create a role, export, and ingest cost through a Harness connector.
+Unlike normal setup of AWS and Azure cost ingestion, because of the hard separation of cloud provider's China regions, you cannot simply create a role, export, and ingest cost through a Harness connector.
 
 To ingest cost from a China region, you will need to create cost exports, sync the exports to a global region location, and then create a connector to ingest the exports.
 
@@ -22,7 +22,7 @@ You should set up cost exports in the China regions following the normal process
 
 Create a bucket or storage account in the normal global region. This could be the same bucket/account used for your global based cost exports.
 
-You will need to automate a process of syncing the data between the China and global region locations. A popular tool is [rclone](https://rclone.org/) which will let you define different targets with seperate credentials, and then sync the locations.
+You will need to automate a process of syncing the data between the China and global region locations. A popular tool is [rclone](https://rclone.org/) which will let you define different targets with separate credentials, and then sync the locations.
 
 You should set this process to perform a sync at least once a day, if not multiple times to make sure data is always up to date.
 
@@ -38,4 +38,4 @@ All the export settings on the connector need to match the setup of the connecto
 
 The connector you create for AWS China costs will fail because we will be unable to check the setting on the China export, and this connector will always be in a "failed" state.
 
-For Azure the connector should perform a check as noraml and show green when it can see exports in the location specifed. 
+For Azure the connector should perform a check as normal and show green when it can see exports in the location specified. 

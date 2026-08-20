@@ -7,7 +7,7 @@ redirect_from:
 
 # Prereq
 
-[Follow this guide](https://developer.harness.io/kb/cloud-cost-management/articles/onboarding/k8s#delegate-architecture) to get a delegate installed in your cluster, with a cooresponding k8s and ccm k8s connector in Harness. 
+[Follow this guide](https://developer.harness.io/kb/cloud-cost-management/articles/onboarding/k8s#delegate-architecture) to get a delegate installed in your cluster, with a corresponding k8s and ccm k8s connector in Harness. 
 
 # Preparing your cluster for orchestrator
 

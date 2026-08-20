@@ -267,7 +267,7 @@ Harness CACM also supports multiple statuses for evaluations. Currently CACM sup
 4. You can see all the Evaluations of Rules listed on  the window.
 4. Select the rule for which you want to view the Evaluation details. The target subscription, region, identified resources and evaluation logs are displayed.
 
-In the output window, users can see the resources identified in form of a Table or JSON. The table view supports all the filters and flattening of the table is supported as well. That essentially means, nested propoerties are flattened. By default, nested objects and arrays are collapsed and can be expanded upto two levels. Further nested properties are shown as formatted JSON.
+In the output window, users can see the resources identified in form of a Table or JSON. The table view supports all the filters and flattening of the table is supported as well. That essentially means, nested properties are flattened. By default, nested objects and arrays are collapsed and can be expanded up to two levels. Further nested properties are shown as formatted JSON.
 
 <DocImage path={require('./static/evaluations-azure-table.png')} width="90%" height="90%" title="Click to view full size image" />
 </TabItem>

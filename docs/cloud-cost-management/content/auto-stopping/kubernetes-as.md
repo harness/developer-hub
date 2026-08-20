@@ -129,7 +129,7 @@ To create a fixed schedule for your rule, do the following:
     2. In **Ends on**, select the end date and time for your schedule. You can select a date and specify the time. Ensure that **Never ends** checkbox is unselected to set the end time.  
       
       If you don't specify an end time, the schedule continues to run until you manually update the settings or remove the schedule.
-6. Select the checbox **Never ends** if you do not want to set end time for your schedule.
+6. Select the checkbox **Never ends** if you do not want to set end time for your schedule.
 7. You can also set a recurring schedule for the rule. If you want to set a recurring schedule, in **Uptime/Downtime in the selected period**, in **Repeats**, select the repeat frequency.
     1. Select which days of the week you'd like your schedule to repeat. You can choose any day between Sunday and Saturday.
     2. Select **Everyday**, to set the schedule for all seven days of the week.
@@ -143,7 +143,7 @@ To create a fixed schedule for your rule, do the following:
 
 ### Step 2: Setup Access
 
-You can see the the resource definition YAML of the Kubernetes AutoStopping Rule that will be applied to the cluster. The specification here is the same as a Kubernetes ingress, with additional Harness metadata. Edit the below template with the right HTTP/HTTPS service details. Validate the YAML to proceed.
+You can see the resource definition YAML of the Kubernetes AutoStopping Rule that will be applied to the cluster. The specification here is the same as a Kubernetes ingress, with additional Harness metadata. Edit the below template with the right HTTP/HTTPS service details. Validate the YAML to proceed.
 
 ***Example YAML:**
 

@@ -104,7 +104,7 @@ variable "cluster" {
 
   default = {
     name                     = "cluster-xxx-xxx"                                                   // Replace with your EKS cluster Name
-    oidc_arn                 = "arn:aws:iam::xxx:oidc-provider/oidc.eks.xxx.amazonaws.com/id/xxxx" // Replace with your OIDC Provder ARN for the cluster
+    oidc_arn                 = "arn:aws:iam::xxx:oidc-provider/oidc.eks.xxx.amazonaws.com/id/xxxx" // Replace with your OIDC Provider ARN for the cluster
     subnets                  = ["eksctl-xxx"]                                                      // Replace with the names of subnets used in your EKS cluster
     security_groups          = ["eks-cluster-sg-xxx"]                                              // Replace with the names of security groups used in your EKS cluster
     ami                      = "ami-i0xxxxxxxxx"                                                   // Replace with the id of AMI used in your EKS cluster

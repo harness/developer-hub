@@ -42,7 +42,7 @@ Commitment Orchestrator provides you with an option to choose the child accounts
 <DocImage path={require('./static/stepthree.png')} width="100%" height="100%" title="Click to view full size image" />
 
 :::important note 
-The purchases will happen only at master account level and thus will be in turn applicable for child accounts as well. The exclusion list will only be considered for the compute spend calulations and actual RI/SP may be used against the instances if they are part of child accounts.
+The purchases will happen only at master account level and thus will be in turn applicable for child accounts as well. The exclusion list will only be considered for the compute spend calculations and actual RI/SP may be used against the instances if they are part of child accounts.
 :::
 
 </TabItem>

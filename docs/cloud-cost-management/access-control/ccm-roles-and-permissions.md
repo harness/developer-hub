@@ -48,8 +48,8 @@ The following table describes the Permissions enabled in the default Harness Rol
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Recommendations | Recommendations: View | Y | Y | N | Y | Y | View the Recommendations irrespective of Perspective View Permission |
 | Anomalies | Anomalies: View | Y | Y | N | Y | Y | View the Anomalies irrespective of Perspective View Permission |
-| Currency Preference | Currency Preference: View | Y | Y | N | Y | Y | View the set currency perferences |
-| Currency Preference | Currency Preference: Edit | Y | N | N | Y | N | Edit the currency perferences |
+| Currency Preference | Currency Preference: View | Y | Y | N | Y | Y | View the set currency preferences |
+| Currency Preference | Currency Preference: Edit | Y | N | N | Y | N | Edit the currency preferences |
 | Overview Page | Overview | Y | Y | N | Y | Y | View the Overview page |
 | Cost Categories | Cost Categories: View | Y | Y | N | Y | Y | View all the cost categories |
 | Cost Categories | Cost Categories: Edit | Y | N | N | Y | N | Create a new cost category and edit existing cost categories |

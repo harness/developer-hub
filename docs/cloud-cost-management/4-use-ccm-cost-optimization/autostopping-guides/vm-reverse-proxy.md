@@ -61,7 +61,7 @@ frontend www-http
 
 backend uiserver
    mode http
-   server dashbaord (replace ec2 IP with the Harness AutoStopping proxy IP)
+   server dashboard (replace ec2 IP with the Harness AutoStopping proxy IP)
 ```
 
 After you reload the HAProxy configuration after this, the setup looks like the diagram below.

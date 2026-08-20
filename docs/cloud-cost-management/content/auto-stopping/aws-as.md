@@ -72,7 +72,7 @@ The table below shows the resources supported by AutoStopping and the appropriat
 
 <DocImage path={require('../static/aws-lb.png')} width="50%" height="50%" title="Click to view full size image" />
 
-1. In the AutoStopping Rules page, click **Load Balancers** in the top right. Please refer to offcial [AWS documentation for details](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html).
+1. In the AutoStopping Rules page, click **Load Balancers** in the top right. Please refer to official [AWS documentation for details](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html).
 2. Enter a name and select **AWS** in **Cloud Provider**
 3. Choose a cloud connector or create a [new one](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws). 
 4. Enter **Load Balancer Configuration**:

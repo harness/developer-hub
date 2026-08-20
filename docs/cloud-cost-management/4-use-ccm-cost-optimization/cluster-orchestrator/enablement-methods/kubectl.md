@@ -90,7 +90,7 @@ After your selections, you will be asked to run a shell script in your terminal 
 
     - **Resource Utilization Thresholds:** This is used to set minimum CPU and memory usage levels to determine when a node is considered underutilized. This helps balance cost savings and performance by ensuring nodes are consolidated only when their resources fall below the specified thresholds.
 
-- **Node Disruption Using Karpenter:** This option can be utilised to activate Karpenter's node disruption management to optimize resource utilization and maintain application stability. Cluster orchestrator provders three optional settings here:
+- **Node Disruption Using Karpenter:** This option can be utilised to activate Karpenter's node disruption management to optimize resource utilization and maintain application stability. Cluster orchestrator provides three optional settings here:
     - **Node deletion criteria:** The setting ensures that the nodes are deleted either when they are empty or under utilised as set by the user
     - **Node deletion delay:** The setting ensures that the nodes with no pods are deleted after a specified time and the delay time can be set by the user
     - **Disruption Budgets:** This feature allows users to define limits on the percentage of nodes that can be disrupted at any given time. This option comes with an added setting of selecting the reason and enabling or disabling budget scheduling

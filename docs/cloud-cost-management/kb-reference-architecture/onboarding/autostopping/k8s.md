@@ -21,7 +21,7 @@ Harness can monitor the traffic of an ingress rule and bring pods up and down ba
 
 When the router does not see traffic for a specified amount of idle time, the controller modifies the deployment that backs the service to have zero replicas.
 
-When the router sees traffic again, the controller modifies the the deployment that backs the service to have the amount of replicas that it had whenever it reduced the pods after seeing no traffic.
+When the router sees traffic again, the controller modifies the deployment that backs the service to have the amount of replicas that it had whenever it reduced the pods after seeing no traffic.
 
 ![](../../static/k8s-autostop-router.png)
 
@@ -192,11 +192,11 @@ The first thing you should check is the `harness-autostopping` service account a
 
 Get all cluster role bindings with `kubectl get clusterrolebinding` and look for a line which assigns `ClusterRole/harness-ccm-autostopping` to it:
 
-If you see something like `harness-ccm-autostopping    ClusterRole/harness-ccm-autostopping`, that means permissions are most likley correct.
+If you see something like `harness-ccm-autostopping    ClusterRole/harness-ccm-autostopping`, that means permissions are most likely correct.
 
 ### Selector Labels
 
-The next thing to check is that the selector labels for the service match the selector lables for the deployment. If they are not matching, it will result in this error.
+The next thing to check is that the selector labels for the service match the selector labels for the deployment. If they are not matching, it will result in this error.
 
 - Get the service selector labels: `kubectl -n whoami get service/<service name> -o jsonpath='{.spec.selector}'`
 - Get the deployment selector labels: `kubectl -n whoami get deployment/<deployment name> -o jsonpath='{.spec.selector}'`
