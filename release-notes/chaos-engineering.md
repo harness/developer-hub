@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2025-04-17T10:00
+date: 2026-08-21T10:00
 sidebar_position: 5
 ---
 
@@ -19,6 +19,53 @@ The release notes describe recent changes to Harness Chaos Engineering.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## August 2026
+
+### New features and enhancements
+
+#### Version 1.98.7
+
+<details open>
+<summary>Required images</summary>
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.98.0
+- harness/chaos-ddcr-faults:1.98.0
+- harness/chaos-log-watcher:1.98.0
+- harness/service-discovery-collector:0.79.0
+
+</details>
+
+- Replaced the Chaos landing page with the Resilience Testing Overview. New accounts see a Get Started empty state. Existing accounts see an Overview with scans and tests, including empty states when those sections have no data.
+- Added a service-risks scan step to onboarding, including skip-to-complete so you can finish onboarding without waiting on a scan.
+- Pointed infrastructure creation at service-based onboarding, so creating infrastructure takes you into the same onboarding path as services.
+- Added Resilience Testing activity on the service page, including disaster recovery (DR) executions for associated services.
+- Added a JMeter sample load test and renamed sample button labels so Locust, k6, and JMeter samples are easier to tell apart.
+- Relabeled **Load Test Type** to **Load Test Engine** so the field names the engine (JMeter, k6, Locust) rather than a generic type.
+- Surfaced load-test licensing usage in IRM and usage dashboards so you can track consumption against your license.
+- Replaced the split button on Create experiment with a dropdown for choosing how you start an experiment.
+- Improved out-of-the-box Chaos dashboards and tightened Overview and Get Started copy and number formatting.
+
+### Fixed issues
+
+#### Version 1.98.7
+
+- Fixed Overview not auto-refreshing for a new account when onboarding starts, and when you start a new scan.
+- Fixed the JMeter Script tab showing a base64 string instead of the file list used on the load test details page.
+- Fixed a blank page after you click **Go** when you start onboarding from the Resilience Infrastructure page.
+- Replaced **Chaos Agent** with **Chaos Infrastructure** on the individual service page.
+- Fixed empty Resilience Testing Activity on individual service pages.
+- Removed **CF**, **Container**, and **K8sV2** from the category filter.
+- Fixed the Risks empty state for services that have no scanned risks, so a zero-day message appears instead of an empty table.
+- Fixed empty details in the Risks Summary **Scanned using services metadata** section.
+- Fixed the Risks table Source filter returning the same data for both source types.
+- Stopped the Risks Detected table on a pipeline scan from repeating the service name in the Risk column.
+- Fixed risk-scan retry during service onboarding so the UI polls again instead of staying on the error until you refresh.
+- Fixed the **+1** overflow for services attached to a load test on the details page.
+- Reset the load test list to the first page when filters change.
+- Fixed ChaosHub import of probe or action templates whose names include capital letters or spaces.
 
 ## July 2026
 
