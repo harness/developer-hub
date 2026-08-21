@@ -2182,5 +2182,40 @@
     "gaStartDate": "2026-08-20",
     "module": "Continuous Delivery",
     "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "AI_REMEDIATION_WORKFLOW",
+    "description": "Enables the Zero-Day Remediation Agent for an account, allowing automated AI-driven remediation workflows for zero-day vulnerabilities.",
+    "gaStartDate": "2026-08-21",
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "DYNAMIC_PIPELINES_EXECUTION",
+    "description": "Enables dynamic pipeline execution, allowing Platform Pipelines Management (PMS) to execute dynamically generated pipelines.",
+    "gaStartDate": "2026-08-21",
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "ENABLE_AI_AGENTS",
+    "description": "Enables AI agents in Platform pipelines, allowing AI-powered agents to execute within pipeline workflows.",
+    "gaStartDate": "2026-08-21",
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "AI_AGENTS",
+    "description": "Enables all Software Composition Analysis (SCA) and Software Supply Chain Security (SCS) AI agents for an account.",
+    "gaStartDate": "2026-08-21",
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "ZERO_DAY_PLATFORM_ALERT",
+    "description": "Enables platform alerts for zero-day vulnerabilities in Software Supply Chain Security (SCS).",
+    "gaStartDate": "2026-08-21",
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
   }
 ]
