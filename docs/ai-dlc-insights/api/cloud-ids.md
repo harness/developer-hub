@@ -73,6 +73,8 @@ curl -X PATCH \
   -F 'file=@"/PATH/Downloads/sample_developer.csv"'
 ```
 
+For the exact CSV column format and a sample file, see [CSV Upload API](#csv-upload-api-file-based) below.
+
 </TabItem> 
 <TabItem value="old" label="Previous">
 
@@ -172,7 +174,21 @@ Use the CSV Upload API in the following scenarios:
 
 ### Request Format
 
-Use `Content-Type: multipart/form-data` to upload a CSV file.
+Use `Content-Type: multipart/form-data` to upload a CSV file. The CSV must include a header row with the following columns, matching the JSON fields used by the [Developer Identity API](#developer-identity-api):
+
+| Column          | Required | Description                                                                    |
+| --------------- | -------- | ------------------------------------------------------------------------------- |
+| `email`         | Yes      | Developer's primary email address. Used for identity correlation.              |
+| `integrationId` | Yes      | The numeric ID of the source integration the identity belongs to.              |
+| `identity`      | Yes      | The unique user identifier from the integration (e.g., username, account ID).  |
+
+#### Sample CSV file
+
+```csv title="identities.csv"
+email,integrationId,identity
+alice@harness.io,1,alice_123
+bob@harness.io,2,bob_456
+```
 
 #### Example cURL request
 
