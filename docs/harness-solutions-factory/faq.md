@@ -33,7 +33,7 @@ HSF is provided as a no-additional cost solution delivered as part of an existin
 <details>
 <summary>What modules do I need for HSF?</summary>
 
-HSF leverages Harness Internal Developer Portal and Infrastructure as Code Management. You do not need to purchase additional modules specifically for HSF. If you do not have IDP or IaCM licensed, we will provide you a limited license in order to use HSF and manage Harness entities.
+HSF leverages Harness Internal Developer Portal and Infrastructure as Code Management. You do not need to purchase additional modules specifically for HSF. If you do not have IDP or IaCM licensed, we will provide you a limited license in order to use HSF and manage Harness entities. Restrictions may apply.
 
 If you do not want to leverage Harness Internal Developer Portal there is an option to run a headless version called Hub. 
 </details>

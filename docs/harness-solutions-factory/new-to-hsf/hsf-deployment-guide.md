@@ -9,7 +9,7 @@ sidebar_position: 20
 
 Before HSF can be deployed, confirm the following:
 
-- IaCM is required. Depending on your architecture and the operating mode you choose, you may also need IDP and Harness Code Repository. If your account is not licensed for the modules you need, Harness can provide a limited license covering HSF usage for managing Harness entities.
+- IaCM is required. Depending on your architecture and the operating mode you choose, you may also need IDP and Harness Code Repository. If your account is not licensed for the modules you need, Harness can provide a limited license covering HSF usage for managing Harness entities. Restrictions may apply.
 - You have an account with admin-level permissions, or can coordinate with someone who does to generate a temporary Personal Access Token (PAT). This token is used to create account-level resources during deployment and can be deleted afterward.
 - No account-level OPA policies are in place that would block pipeline execution.
 - You have OpenTofu installed locally, or the mise environment configured.
