@@ -12,7 +12,27 @@ tags:
   - gitops
 ---
 
-Harness GitOps supports the same rollback operation as Argo CD (`argocd app rollback`). You can restore a previous deployment revision from the application **History & Rollback** tab, or automate the same action with a **GitOps Rollback** pipeline step.
+Harness GitOps supports the same rollback operation as Argo CD (`argocd app rollback`). You can restore a previous deployment revision from the application **History & Rollback** tab, automate the same action with a **GitOps Rollback** pipeline step, or trigger a post-production rollback from the **Services** dashboard after a successful deployment.
+
+---
+
+## What will you learn in this topic?
+
+- How to [trigger a post-production rollback](#post-production-rollback-from-the-services-dashboard) from the Services dashboard after a successful deployment.
+- How to [manually roll back](#roll-back-from-the-history-and-rollback-tab) a GitOps application to a previous revision from the History and Rollback tab.
+- How to [automate rollback](#roll-back-with-the-gitops-rollback-step) with the GitOps Rollback pipeline step.
+- How [revisions work](#how-revisions-work) and what settings affect rollback availability.
+
+---
+
+## Before you begin
+
+- **GitOps Application:** Create and sync a GitOps Application that has at least one previous deployment revision. Go to [Add a Harness GitOps Application](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-4-add-a-harness-gitops-application) to create one.
+- **Deployment history:** Rollback is available only for previous revisions. The current revision does not show a 'Rollback' action.
+- **Successful pipeline deployment (post-production rollback only):** The **Rollback** button only appears for GitOps applications that were successfully deployed through a pipeline. Failed or in-progress deployments do not show the button.
+- **Rollback steps configured (post-production rollback only):** Your pipeline must have rollback steps defined in the **Rollback** tab of the deployment stage. If no rollback steps are configured, the button still appears but the rollback execution will have no steps to run.
+- **Pipeline access (post-production rollback only):** You need Execute permission on the pipeline that was used for the original deployment.
+- **Pipeline stage (pipeline step only):** Use a deployment stage with GitOps enabled when you add the GitOps Rollback step.
 
 ---
 
@@ -55,15 +75,7 @@ Harness expressions, Vault refs, and external secrets re-resolve with their curr
 
 ---
 
-## Before you begin
-
-- **GitOps Application:** Create and sync a GitOps Application that has at least one previous deployment revision. Go to [Add a Harness GitOps Application](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-4-add-a-harness-gitops-application) to create one.
-- **Deployment history:** Rollback is available only for previous revisions. The current revision does not show a 'Rollback' action.
-- **Pipeline stage (pipeline step only):** Use a deployment stage with GitOps enabled when you add the GitOps Rollback step.
-
----
-
-## Roll back from the History & Rollback tab
+## Roll back from the History and Rollback tab
 
 1. In your GitOps project, go to **Deployments** > **GitOps** > **Applications**, and then select your application.
 2. Select the **History & Rollback** tab.
@@ -136,6 +148,44 @@ The current revision is marked with a **Current** badge and does not include a '
 ### Target resolution precedence
 
 `per-app historyId` > `per-app revisionsToRollback` > `step-level revisionsToRollback` > default `1`
+
+---
+
+## Post-production rollback from the Services dashboard
+
+After a successful GitOps deployment through a pipeline, you can trigger a rollback directly from the **Services** dashboard. This capability executes the rollback steps that you configured in your pipeline.
+
+:::note This feature requires a feature flag
+This feature is behind the feature flag `CDS_GITOPS_POST_PROD_ROLLBACK`. Contact <a href="mailto:support@harness.io" target="_blank" rel="noopener noreferrer">Harness Support</a> to enable this feature.
+:::
+
+### Workflow
+
+When you deploy a GitOps application using a Harness pipeline and the deployment succeeds, a **Rollback** button appears next to the application in the **Services** tab.
+
+<div align="center">
+  <DocImage path={require('./static/rollback-gitops-post-production.png')} alt="Rollback button in Instance Details for successful GitOps deployment" width="80%" />
+</div>
+
+When you select the button, Harness runs the rollback steps that you defined in the **Rollback** tab of the deployment stage that is linked to the service. The rollback uses the same stage configuration that was used for the original deployment to sync the GitOps applications linked to that service.
+
+After the rollback completes, the Kubernetes instance state updates in the Harness UI to reflect the rollback. The **Rollback** button becomes inactive and you cannot perform another post-production rollback for that deployment. The pipeline execution history shows both the original deployment and the rollback execution.
+
+### Trigger a post-production rollback
+
+1. In your Harness project, go to **Deployments** > **Services**.
+2. Locate the GitOps application that you want to roll back. The application must show a successful deployment status.
+3. Select the **Rollback** button next to the application.
+
+Harness runs the rollback steps configured in the stage that is linked to the service. You can monitor the rollback execution in the pipeline execution history. The rollback executes only the rollback steps defined in that specific stage, not the entire pipeline.
+
+### Differences from other rollback methods
+
+| Rollback Method | Trigger Location | What It Does | When to Use |
+|---|---|---|---|
+| **Post-production rollback** | Services dashboard | Runs the rollback steps defined in the stage linked to the service (one stage only, not the entire pipeline) | After a successful production deployment when you need to revert using your stage's rollback logic |
+| **History and Rollback tab** | Application details | Argo CD rollback to a specific revision | When you want to restore a specific application revision manually |
+| **GitOps Rollback step** | Pipeline execution | Automated Argo CD rollback during pipeline | When you want to automate rollback as part of your pipeline flow (for example, after verification fails) |
 
 ---
 
