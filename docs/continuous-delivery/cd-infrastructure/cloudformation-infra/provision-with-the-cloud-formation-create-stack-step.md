@@ -1,5 +1,5 @@
 ---
-title: Provision with the CloudFormation Create Stack step
+title: CloudFormation Create Stack step
 description: Provision using the CloudFormation Create Stack step.
 sidebar_position: 3
 sidebar_label: CloudFormation Create Stack Step
@@ -22,9 +22,7 @@ tags:
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import DocImage from '@site/src/components/DocImage';
 
-This topic describes how to provision resources in a CD stage's deployment infrastructure using the CloudFormation **Create Stack** step.
-
-You use the CloudFormation **Create Stack** step in a CD stage's **Execution** section as part of the deployment process. Add the Create Stack step at the point in your deployment workflow where you need the infrastructure provisioned. Typically, you add it before steps that deploy your application to the provisioned infrastructure. The **Create Stack** step runs the CloudFormation template and supporting files that you supply inline or from your repositories (Git, AWS S3). Harness provisions the CloudFormation stack defined in the template as part of the stage's **Execution**.
+Use the CloudFormation **Create Stack** step in a CD stage's **Execution** section as part of the deployment process. Add the Create Stack step at the point in your deployment workflow where you need the infrastructure provisioned. Typically, you add it before steps that deploy your application to the provisioned infrastructure. The **Create Stack** step runs the CloudFormation template and supporting files that you supply inline or from your repositories (Git, AWS S3). Harness provisions the CloudFormation stack defined in the template as part of the stage's **Execution**.
 
 You can also use **Create Stack** in the **Infrastructure** section of a CD stage for dynamic provisioning. When you use Create Stack in the Infrastructure section, Harness provisions the infrastructure before running any Execution steps. You can map CloudFormation template outputs to Infrastructure Definition settings to tell Harness where to deploy. During deployment, Harness first provisions the target deployment infrastructure and then the stage's Execution steps deploy to the provisioned infrastructure. Go to [Provision target infrastructure dynamically](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-target-deployment-infra-dynamically-with-cloud-formation) to configure dynamic provisioning.
 
@@ -32,7 +30,7 @@ You can also use **Create Stack** in the **Infrastructure** section of a CD stag
 
 ## Before you begin
 
-- **Harness account with Continuous Delivery enabled:** You need **Continuous Delivery** under **Deployments** in Harness. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to access or create a Harness account.
+- **Harness account with Continuous Delivery enabled**: You need **Continuous Delivery** under **Deployments** in Harness. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to access or create a Harness account.
 
     :::info Contact Harness support
 
@@ -40,15 +38,15 @@ You can also use **Create Stack** in the **Infrastructure** section of a CD stag
 
     :::
 
-- **Pipeline and Deploy stage permissions:** You need **Create/Edit** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#continuous-delivery), **View** and **Create/Edit** for [Environments](/docs/platform/role-based-access-control/permissions-reference#continuous-delivery), and **View** for [Connectors](/docs/platform/role-based-access-control/permissions-reference#connectors). An administrator must assign you a role that includes these permissions. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to configure roles.
+- **Pipeline and Deploy stage permissions**: You need **Create/Edit** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#continuous-delivery), **View** and **Create/Edit** for [Environments](/docs/platform/role-based-access-control/permissions-reference#continuous-delivery), and **View** for [Connectors](/docs/platform/role-based-access-control/permissions-reference#connectors). An administrator must assign you a role that includes these permissions. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to configure roles.
 
-- **AWS account:** Access to create CloudFormation stacks and provision target resources (EC2, EKS, ECS, Lambda, etc.). Go to [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) to understand IAM role requirements.
+- **AWS account**: Access to create CloudFormation stacks and provision target resources (EC2, EKS, ECS, Lambda, etc.). Go to [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) to understand IAM role requirements.
 
-- **CloudFormation template knowledge:** Basic understanding of CloudFormation template structure, parameters, outputs, and stack states. Go to [AWS CloudFormation template anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html) to learn template basics.
+- **CloudFormation template knowledge**: Basic understanding of CloudFormation template structure, parameters, outputs, and stack states. Go to [AWS CloudFormation template anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html) to learn template basics.
 
-- **Existing CD pipeline with Deploy stage:** A CD pipeline with a Deploy stage configured. Go to [Add a stage](/docs/platform/pipelines/add-a-stage) to set up pipelines and stages.
+- **Existing CD pipeline with Deploy stage**: A CD pipeline with a Deploy stage configured. Go to [Add a stage](/docs/platform/pipelines/add-a-stage) to set up pipelines and stages.
 
-- **CloudFormation provisioning fundamentals:** Understanding of how CloudFormation provisioning works in Harness. Go to [CloudFormation provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-provisioning-with-harness) to understand CloudFormation integration concepts.
+- **CloudFormation provisioning fundamentals**: Understanding of how CloudFormation provisioning works in Harness. Go to [CloudFormation provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-provisioning-with-harness) to understand CloudFormation integration concepts.
 
 ---
 
@@ -57,7 +55,6 @@ You can also use **Create Stack** in the **Infrastructure** section of a CD stag
 In the **Execution** section of your Deploy stage, click **Add Step**, and then select the **CloudFormation Create Stack** step.
 
 <DocImage path={require('../../cd-advanced/cloudformation-howto/static/provision-with-the-cloud-formation-create-stack-step-00.png')} alt="Add Step menu showing CloudFormation Create Stack option" title="Click to view full size" />
-<p align="center"><em>Select CloudFormation Create Stack from the Add Step menu</em></p>
 
 The **Create Stack** step is where you connect Harness to your templates and provide additional settings.
 
@@ -94,7 +91,6 @@ Only one **Create Stack** step with a specific **Provisioner Identifier** can be
 The most common use of **Provisioner Identifier** is between the Create Stack, Delete Stack, and Rollback Stack steps. For example, in the case of a **Create Stack** failure, the **Rollback Stack** step rolls back the provisioning from the **Create Stack** step using its **Provisioner Identifier**.
 
 <DocImage path={require('../../cd-advanced/cloudformation-howto/static/provision-with-the-cloud-formation-create-stack-step-01.png')} alt="Provisioner Identifier field in Create Stack step and matching identifier in Rollback Stack step" title="Click to view full size" />
-<p align="center"><em>Provisioner Identifier links Create Stack and Rollback Stack steps together</em></p>
 
 Ultimately, Harness determines what stack to roll back to using a combination of `Provisioner Identifier + Harness account id + Harness org id + Harness project id`.
 
@@ -134,7 +130,7 @@ For example, to give full access to create and manage EKS clusters, you could us
  }
 ```
 
-Ensure that the credentials include the `ec2:DescribeRegions` policy. This is required by default. It can be made optional with the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL`. Go to [AWS Connector DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional) for details.
+The credentials must include the `ec2:DescribeRegions` policy. This is required by default. It can be made optional with the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL`. Go to [AWS Connector DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional) for details.
 
 Harness delegates execute CloudFormation operations. Ensure your delegate has network access to AWS and the AWS CLI installed. Go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview) to configure delegates.
 
@@ -150,9 +146,9 @@ Select the AWS region where you want to provision resources in the **Region** fi
 
 You can add your CloudFormation template in the following ways:
 
-* **Inline:** Enter the template directly in the **Template File** field. You can use CloudFormation-compliant JSON or YAML.
-* **AWS S3:** Enter the URL of the S3 bucket containing the template file. This can be a public or private URL. If you use a private URL, the AWS credentials in the **AWS Connector** setting authenticate the request. Ensure the credentials include the **AmazonS3ReadOnlyAccess** policy and the `ec2:DescribeRegions` policy described in [AWS Connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference). The `ec2:DescribeRegions` policy is required by default. Go to [AWS Connector DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional) for details.
-* **Remote:** Select a Git repository where your template is located. Add or select a Harness Git Connector for the repository. Go to [Code Repo Connectors](/docs/category/code-repo-connectors) to configure Git Connectors.
+* **Inline**: Enter the template directly in the **Template File** field. You can use CloudFormation-compliant JSON or YAML.
+* **AWS S3**: Enter the URL of the S3 bucket containing the template file. This can be a public or private URL. If you use a private URL, the AWS credentials in the **AWS Connector** setting authenticate the request. Ensure the credentials include the **AmazonS3ReadOnlyAccess** policy and the `ec2:DescribeRegions` policy described in [AWS Connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference). The `ec2:DescribeRegions` policy is required by default. Go to [AWS Connector DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional) for details.
+* **Remote**: Select a Git repository where your template is located. Add or select a Harness Git Connector for the repository. Go to [Code Repo Connectors](/docs/category/code-repo-connectors) to configure Git Connectors.
 
 #### Expression and secret support in templates
 
@@ -208,13 +204,12 @@ To add parameter files:
 1. In **CloudFormation Parameter Files**, click **Add**.
 2. In **Parameter File Connector**, select your Git platform, then select or add a Git Connector. Go to [Code Repo Connectors](/docs/category/code-repo-connectors) to configure Git Connectors. For AWS S3, go to [Add an AWS Connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
 3. In **Parameter File Details**, enter the following:
-   - **Identifier:** Enter an Identifier for the file. This name indicates what the parameters are for.
-   - **Repo Name:** If the Git Connector does not have the repository path, enter it here.
-   - **Git Fetch Type:** Select **Latest from Branch** or use a Git commit ID or tag.
-   - **Parameter File Details:** Enter the path to the file from the root of the repository. To add multiple files, click **Add Path File**.
+   - **Identifier**: Enter an Identifier for the file. This name indicates what the parameters are for.
+   - **Repo Name**: If the Git Connector does not have the repository path, enter it here.
+   - **Git Fetch Type**: Select **Latest from Branch** or use a Git commit ID or tag.
+   - **Parameter File Details**: Enter the path to the file from the root of the repository. To add multiple files, click **Add Path File**.
 
 <DocImage path={require('../../cd-advanced/cloudformation-howto/static/provision-with-the-cloud-formation-create-stack-step-02.png')} alt="CloudFormation parameter file configuration showing Git connector, repository details, and file paths" title="Click to view full size" />
-<p align="center"><em>CloudFormation parameter file configuration in the Create Stack step</em></p>
 
 #### Encrypted text secrets and expressions in parameter files
 
@@ -284,6 +279,184 @@ In **Continue Based on Stack Statuses**, add the stack states that allow provisi
 
 Harness checks if the stack is in `ROLLBACK_COMPLETE` state before deployment. If the stack is in `ROLLBACK_COMPLETE`, Harness deletes the stack and then triggers the deployment. ROLLBACK_COMPLETE indicates a previous stack creation failed and left the stack in an incomplete state. Deleting the stack removes any partially-created resources and allows a clean stack creation.
 
+### YAML example
+
+<details>
+<summary>Complete ad hoc provisioning pipeline YAML</summary>
+
+This example shows a complete ad hoc CloudFormation provisioning pipeline with Create Stack, Display Outputs, Delete Stack, and Rollback Stack steps.
+
+```yaml
+pipeline:
+  name: CloudFormation Ad Hoc Provisioning
+  identifier: CloudFormation_Ad_Hoc_Provisioning
+  projectIdentifier: your_project
+  orgIdentifier: default
+  variables:
+    - name: stack_name
+      type: String
+      value: my-adhoc-stack
+    - name: aws_region
+      type: String
+      value: us-east-2
+  stages:
+    - stage:
+        name: Provision Infrastructure
+        identifier: Provision_Infrastructure
+        type: Deployment
+        spec:
+          deploymentType: AwsLambda
+          service:
+            serviceRef: your_service
+            serviceInputs:
+              serviceDefinition:
+                type: AwsLambda
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: your_environment
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: your_infrastructure
+          execution:
+            steps:
+              - step:
+                  type: CreateStack
+                  name: Create S3 Bucket Stack
+                  identifier: Create_Stack
+                  spec:
+                    provisionerIdentifier: s3_provisioner
+                    configuration:
+                      connectorRef: your_aws_connector
+                      region: <+pipeline.variables.aws_region>
+                      stackName: <+pipeline.variables.stack_name>
+                      templateFile:
+                        type: Inline
+                        spec:
+                          templateBody: |
+                            AWSTemplateFormatVersion: '2010-09-09'
+                            Description: Ad hoc S3 bucket provisioning
+
+                            Resources:
+                              S3Bucket:
+                                Type: AWS::S3::Bucket
+                                Properties:
+                                  BucketName: !Sub 'my-bucket-${AWS::AccountId}'
+                                  Tags:
+                                    - Key: ManagedBy
+                                      Value: Harness
+
+                            Outputs:
+                              BucketName:
+                                Description: Name of the S3 bucket
+                                Value: !Ref S3Bucket
+                              BucketArn:
+                                Description: ARN of the S3 bucket
+                                Value: !GetAtt S3Bucket.Arn
+                              Region:
+                                Description: AWS Region
+                                Value: !Ref AWS::Region
+                  timeout: 10m
+
+              - step:
+                  type: ShellScript
+                  name: Display Stack Outputs
+                  identifier: Display_Stack_Outputs
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          echo "=========================================="
+                          echo "CloudFormation Stack Outputs"
+                          echo "=========================================="
+                          echo "Bucket Name: <+pipeline.stages.Provision_Infrastructure.spec.execution.steps.Create_Stack.output.BucketName>"
+                          echo "Bucket ARN:  <+pipeline.stages.Provision_Infrastructure.spec.execution.steps.Create_Stack.output.BucketArn>"
+                          echo "Region:      <+pipeline.stages.Provision_Infrastructure.spec.execution.steps.Create_Stack.output.Region>"
+                          echo "=========================================="
+
+              - step:
+                  type: DeleteStack
+                  name: Delete S3 Bucket Stack
+                  identifier: Delete_Stack
+                  spec:
+                    configuration:
+                      type: Inline
+                      spec:
+                        connectorRef: your_aws_connector
+                        region: <+pipeline.variables.aws_region>
+                        stackName: <+pipeline.variables.stack_name>
+                      connectorRef: your_aws_connector
+                  timeout: 10m
+
+            rollbackSteps:
+              - step:
+                  type: RollbackStack
+                  name: Rollback Stack
+                  identifier: Rollback_Stack
+                  spec:
+                    configuration:
+                      provisionerIdentifier: s3_provisioner
+                  timeout: 10m
+
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+```
+
+</details>
+
+<details>
+<summary>CloudFormation Create Stack step with S3 template</summary>
+
+This example shows a Create Stack step that retrieves the template from an S3 URL.
+
+```yaml
+- step:
+    type: CreateStack
+    name: Create CloudFormation Stack
+    identifier: Create_Stack
+    spec:
+      provisionerIdentifier: cfn_infrastructure
+      configuration:
+        connectorRef: account.aws_connector
+        region: us-east-1
+        templateFile:
+          type: S3Url
+          spec:
+            connectorRef: account.aws_connector
+            region: us-east-1
+            urls:
+              - https://s3.amazonaws.com/my-bucket/template.yaml
+        stackName: harness-stack-<+pipeline.sequenceId>
+        parameterFiles:
+          - type: S3Url
+            spec:
+              connectorRef: account.aws_connector
+              region: us-east-1
+              urls:
+                - https://s3.amazonaws.com/my-bucket/parameters.json
+        roleArn: arn:aws:iam::123456789012:role/CloudFormationRole
+        capabilities:
+          - CAPABILITY_NAMED_IAM
+        tags:
+          - key: Environment
+            value: Production
+          - key: ManagedBy
+            value: Harness
+    timeout: 10m
+```
+
+</details>
+
 ---
 
 ## Advanced settings
@@ -334,8 +507,6 @@ The Create Stack step supports standard Harness step settings. Configure advance
 
 ## Next steps
 
-You have configured the CloudFormation Create Stack step. Harness provisions your CloudFormation stack during pipeline execution using the template and settings you specified.
-
-- [Provision target infrastructure dynamically](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-target-deployment-infra-dynamically-with-cloud-formation): Use Create Stack in the Infrastructure section for dynamic provisioning
-- [CloudFormation How-tos](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos): Advanced CloudFormation features and rollback strategies
-- [CloudFormation Delete Stack step](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/remove-provisioned-infra-with-the-cloud-formation-delete-step): Remove provisioned resources
+- <a href="/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-target-deployment-infra-dynamically-with-cloud-formation" target="_blank" rel="noopener noreferrer">Provision target deployment infrastructure dynamically with CloudFormation</a>: Use Create Stack in the Infrastructure section for dynamic provisioning.
+- <a href="/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/remove-provisioned-infra-with-the-cloud-formation-delete-step" target="_blank" rel="noopener noreferrer">CloudFormation Delete Stack step</a>: Remove provisioned resources.
+- <a href="/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/rollback-provisioned-infra-with-the-cloud-formation-rollback-step" target="_blank" rel="noopener noreferrer">CloudFormation Rollback Stack step</a>: Roll back to the last successfully provisioned version.

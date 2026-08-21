@@ -762,7 +762,7 @@ Harness supports the following infrastructure provisioning tools:
 - [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
 - [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
 - [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
-- [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
+- [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-provisioning-with-harness)
 - [Shell script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning) (custom)
 
 ### Terraform version support

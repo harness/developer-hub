@@ -157,7 +157,7 @@ Yes, you can use:
 - [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
 - [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
 - Azure ARM and Blueprint
-- [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
+- [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-provisioning-with-harness)
 - Shell script (custom)
 
 ### What deployment strategies can I use with Kubernetes?

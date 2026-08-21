@@ -1,5 +1,5 @@
 ---
-title: Provision target deployment infrastructure dynamically with CloudFormation
+title: Provision infrastructure dynamically
 description: Provision a CD stage's target deployment infra using CloudFormation.
 sidebar_position: 3
 sidebar_label: Provision Infrastructure Dynamically
@@ -22,7 +22,7 @@ tags:
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import DocImage from '@site/src/components/DocImage';
 
-You can use CloudFormation in Harness CD pipelines to provision target deployment infrastructure dynamically during pipeline execution. Dynamic provisioning means Harness automatically creates the infrastructure your application needs before deploying to it. This guide shows you how to configure the CloudFormation Create Stack step to provision infrastructure, map outputs to your deployment targets, and set up automatic rollback.
+Use CloudFormation in Harness CD pipelines to provision target deployment infrastructure dynamically during pipeline execution. Dynamic provisioning means Harness automatically creates the infrastructure your application needs before deploying to it. This guide shows you how to configure the CloudFormation Create Stack step to provision infrastructure, map outputs to your deployment targets, and set up automatic rollback.
 
 :::info Dynamic provisioning scope
 Dynamic provisioning is limited to what is available in the target environment. For example, cloud-agnostic Kubernetes Cluster Connectors (connectors that work with any Kubernetes cluster regardless of cloud provider) require an existing cluster, so you cannot provision a new cluster. However, you can provision a namespace within an existing cluster.
@@ -32,7 +32,7 @@ Dynamic provisioning is limited to what is available in the target environment. 
 
 ## Before you begin
 
-- **Harness account with Continuous Delivery enabled:** You need **Continuous Delivery** under **Deployments** in Harness. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to access or create a Harness account.
+- **Harness account with Continuous Delivery enabled**: You need **Continuous Delivery** under **Deployments** in Harness. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to access or create a Harness account.
 
     :::info Contact Harness support
 
@@ -40,15 +40,15 @@ Dynamic provisioning is limited to what is available in the target environment. 
 
     :::
 
-- **Pipeline and Environment permissions:** View and Create/Edit permissions on Environments, Create/Edit on Pipelines, and View on Connectors. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
+- **Pipeline and Environment permissions**: View and Create/Edit permissions on Environments, Create/Edit on Pipelines, and View on Connectors. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
 
-- **AWS account:** Access to create CloudFormation stacks and provision target resources (EC2, EKS, ECS, Lambda, etc.). Go to [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) to understand IAM role requirements.
+- **AWS account**: Access to create CloudFormation stacks and provision target resources (EC2, EKS, ECS, Lambda, etc.). Go to [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) to understand IAM role requirements.
 
-- **CloudFormation template knowledge:** Basic understanding of CloudFormation template structure, Outputs section, and Parameters. Go to [AWS CloudFormation template anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html) to learn template basics.
+- **CloudFormation template knowledge**: Basic understanding of CloudFormation template structure, Outputs section, and Parameters. Go to [AWS CloudFormation template anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html) to learn template basics.
 
-- **Existing pipeline and environment:** A CD pipeline with an environment configured. Go to [Create pipelines](/docs/platform/pipelines/add-a-stage) and [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) to set up pipelines and environments.
+- **Existing pipeline and environment**: A CD pipeline with an environment configured. Go to [Create pipelines](/docs/platform/pipelines/add-a-stage) and [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) to set up pipelines and environments.
 
-- **Deployment type knowledge:** Dynamic provisioning configuration varies by deployment type. Choose your deployment type below and review its specific requirements:
+- **Deployment type knowledge**: Dynamic provisioning configuration varies by deployment type. Choose your deployment type below and review its specific requirements:
 
   - [Kubernetes infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure): Also used for Helm, Native Helm, and Kustomize
   - [Azure Web Apps](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
@@ -69,9 +69,9 @@ When you enable dynamic provisioning in a CD Deploy stage's **Environment** sett
 
 The automatically-added steps include:
 
-- **Create Stack step:** Connects to your CloudFormation template repository and creates your stack.
-- **Manual Approval step:** Optional approval gate between Create Stack and Delete Stack steps. You can remove this step or configure it. Go to [Using manual approval steps in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages) to configure manual approvals or [Using Jira and ServiceNow approval steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-jira-and-service-now-approval-steps-in-cd-stages) to use Jira or ServiceNow approvals.
-- **Delete Stack step:** Removes resources provisioned by the Create Stack step. The Delete Stack step is optional. You can configure whether to delete the stack after deployment, keep it for subsequent deployments, or delete it only on pipeline failure.
+- **Create Stack step**: Connects to your CloudFormation template repository and creates your stack.
+- **Manual Approval step**: Optional approval gate between Create Stack and Delete Stack steps. You can remove this step or configure it. Go to [Using manual approval steps in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages) to configure manual approvals or [Using Jira and ServiceNow approval steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-jira-and-service-now-approval-steps-in-cd-stages) to use Jira or ServiceNow approvals.
+- **Delete Stack step**: Removes resources provisioned by the Create Stack step. The Delete Stack step is optional. You can configure whether to delete the stack after deployment, keep it for subsequent deployments, or delete it only on pipeline failure.
 
 :::tip CloudFormation timing
 CloudFormation stack creation can take 10-30 minutes depending on the resources being provisioned. Monitor progress in the pipeline execution console under the Create Stack step logs. Harness waits for the stack to reach CREATE_COMPLETE status before proceeding to the deployment steps.
@@ -115,7 +115,7 @@ For example, to give full access to create and manage EKS clusters, you could us
  }
 ```
 
-Ensure that the credentials include the `ec2:DescribeRegions` policy. This is required by default. It can be made optional with the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL`. Go to [AWS Connector DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional) for details.
+The credentials must include the `ec2:DescribeRegions` policy. This is required by default. It can be made optional with the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL`. Go to [AWS Connector DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional) for details.
 
 Harness delegates execute CloudFormation operations. Ensure your delegate has network access to AWS and the AWS CLI installed. Go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview) to configure delegates.
 
@@ -131,9 +131,9 @@ Select the AWS region where you want to provision resources in the **Region** fi
 
 You can add your CloudFormation template in the following ways:
 
-* **Inline:** Enter the template directly in the **Template File** field. You can use CloudFormation-compliant JSON or YAML.
-* **AWS S3:** Enter the URL of the S3 bucket containing the template file. This can be a public or private URL. If you use a private URL, the AWS credentials in the **AWS Connector** setting authenticate the request. Ensure the credentials include the **AmazonS3ReadOnlyAccess** policy and the `ec2:DescribeRegions` policy described in [AWS Connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference). The `ec2:DescribeRegions` policy is required by default. Go to [AWS Connector DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional) for details.
-* **Remote:** Select a Git repository where your template is located. Add or select a Harness Git Connector for the repository. Go to [Code Repo Connectors](/docs/category/code-repo-connectors) to configure Git Connectors.
+* **Inline**: Enter the template directly in the **Template File** field. You can use CloudFormation-compliant JSON or YAML.
+* **AWS S3**: Enter the URL of the S3 bucket containing the template file. This can be a public or private URL. If you use a private URL, the AWS credentials in the **AWS Connector** setting authenticate the request. Ensure the credentials include the **AmazonS3ReadOnlyAccess** policy and the `ec2:DescribeRegions` policy described in [AWS Connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference). The `ec2:DescribeRegions` policy is required by default. Go to [AWS Connector DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional) for details.
+* **Remote**: Select a Git repository where your template is located. Add or select a Harness Git Connector for the repository. Go to [Code Repo Connectors](/docs/category/code-repo-connectors) to configure Git Connectors.
 
 #### Expression and secret support in templates
 
@@ -185,13 +185,12 @@ To add parameter files:
 1. In **CloudFormation Parameter Files**, click **Add**.
 2. In **Parameter File Connector**, select your Git platform, then select or add a Git Connector. Go to [Code Repo Connectors](/docs/category/code-repo-connectors) to configure Git Connectors. For AWS S3, go to [Add an AWS Connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
 3. In **Parameter File Details**, enter the following:
-   - **Identifier:** Enter an Identifier for the file. This name indicates what the parameters are for.
-   - **Repo Name:** If the Git Connector does not have the repository path, enter it here.
-   - **Git Fetch Type:** Select **Latest from Branch** or use a Git commit ID or tag.
-   - **Parameter File Details:** Enter the path to the file from the root of the repository. To add multiple files, click **Add Path File**.
+   - **Identifier**: Enter an Identifier for the file. This name indicates what the parameters are for.
+   - **Repo Name**: If the Git Connector does not have the repository path, enter it here.
+   - **Git Fetch Type**: Select **Latest from Branch** or use a Git commit ID or tag.
+   - **Parameter File Details**: Enter the path to the file from the root of the repository. To add multiple files, click **Add Path File**.
 
 <DocImage path={require('./static/provision-target-deployment-infra-dynamically-with-cloud-formation-03.png')} alt="CloudFormation parameter file configuration showing Git connector, repository details, and file paths" title="Click to view full size" />
-<p align="center"><em>CloudFormation parameter file configuration in the Create Stack step</em></p>
 
 #### Encrypted text secrets and expressions in parameter files
 
@@ -267,6 +266,46 @@ In **Continue Based on Stack Statuses**, you can add the stack states that allow
 
 Harness checks if the stack is in `ROLLBACK_COMPLETE` state before deployment. If the stack is in `ROLLBACK_COMPLETE`, Harness deletes the stack and then triggers the deployment. This prevents conflicts with existing failed stacks. Deleting the stack removes any partially-created resources and allows a clean stack creation.
 
+<details>
+<summary>CloudFormation Create Stack YAML example</summary>
+
+```yaml
+- step:
+    type: CreateStack
+    name: Provision EC2 Infrastructure
+    identifier: ProvisionEC2
+    spec:
+      provisionerIdentifier: cfn_dynamic
+      configuration:
+        connectorRef: account.aws_connector
+        region: us-east-1
+        templateFile:
+          type: S3Url
+          spec:
+            connectorRef: account.aws_connector
+            region: us-east-1
+            urls:
+              - https://s3.amazonaws.com/my-bucket/ec2-template.yaml
+        stackName: harness-dynamic-stack-<+pipeline.sequenceId>
+        parameterFiles:
+          - type: S3Url
+            spec:
+              connectorRef: account.aws_connector
+              region: us-east-1
+              urls:
+                - https://s3.amazonaws.com/my-bucket/parameters.json
+        capabilities:
+          - CAPABILITY_NAMED_IAM
+        tags:
+          - key: Environment
+            value: Production
+          - key: ManagedBy
+            value: Harness
+    timeout: 10m
+```
+
+</details>
+
 ---
 
 ## Advanced settings
@@ -287,8 +326,8 @@ Now that the Create Stack step is configured in **Dynamic provisioning**, Harnes
 
 There are two provisioning use cases:
 
-1. **Provisioning supporting resources:** If you are provisioning a resource in your deployment infrastructure that is not the deployment target (such as an AWS secret or IAM role), define the deployment target in **Infrastructure Definition** as usual.
-2. **Provisioning the deployment target:** If you will deploy directly into the provisioned resource as part of the deployment target (such as an EKS cluster or VPC), you need to map CloudFormation outputs to the required **Infrastructure Definition** settings so Harness can target and deploy to the provisioned infrastructure.
+1. **Provisioning supporting resources**: If you are provisioning a resource in your deployment infrastructure that is not the deployment target (such as an AWS secret or IAM role), define the deployment target in **Infrastructure Definition** as usual.
+2. **Provisioning the deployment target**: If you will deploy directly into the provisioned resource as part of the deployment target (such as an EKS cluster or VPC), you need to map CloudFormation outputs to the required **Infrastructure Definition** settings so Harness can target and deploy to the provisioned infrastructure.
 
 This section covers use case 2: provisioning the deployment target.
 
@@ -301,7 +340,6 @@ To map CloudFormation template outputs to Infrastructure Definition settings:
 2. In the **Infrastructure Definition** setting that requires a value from your template output, select **Expression**.
 
 <DocImage path={require('./static/provision-target-deployment-infra-dynamically-with-cloud-formation-05.png')} alt="Infrastructure Definition field with Expression option selected" title="Click to view full size" />
-<p align="center"><em>Select Expression to map CloudFormation outputs to Infrastructure Definition settings</em></p>
 
 3. Enter a Harness expression that references the output. The expression format is:
 
@@ -310,14 +348,12 @@ To map CloudFormation template outputs to Infrastructure Definition settings:
    You can find the Create Stack step ID in the step settings:
 
    <DocImage path={require('./static/provision-target-deployment-infra-dynamically-with-cloud-formation-06.png')} alt="Create Stack step showing the step ID field" title="Click to view full size" />
-   <p align="center"><em>Find the step ID in the Create Stack step settings</em></p>
 
    For example, for a Kubernetes deployment, you need to map the `namespace` output to the **Namespace** setting in Infrastructure Definition. For a Create Stack step with the ID **create123** and an output named **namespace**, the expression is:
 
    `<+infrastructureDefinition.provisioner.steps.create123.output.namespace>`
 
    <DocImage path={require('./static/provision-target-deployment-infra-dynamically-with-cloud-formation-07.png')} alt="Infrastructure Definition Namespace field populated with CloudFormation output expression" title="Click to view full size" />
-   <p align="center"><em>Map the namespace output to the Infrastructure Definition Namespace field</em></p>
 
 Now Harness has the provisioned target infrastructure configured and will deploy to the dynamically-created infrastructure.
 
@@ -329,7 +365,7 @@ By default, Harness adds a Manual Approval step between the Create Stack and Del
 
 You can also use other approval step types. Go to [Using Jira and ServiceNow approval steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-jira-and-service-now-approval-steps-in-cd-stages) to use Jira or ServiceNow approvals.
 
-Ensure that the AWS Connector credentials include the `ec2:DescribeRegions` policy. This is required by default. It can be made optional with the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL`. Go to [AWS Connector DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional) for details.
+The AWS Connector credentials must include the `ec2:DescribeRegions` policy. This is required by default. It can be made optional with the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL`. Go to [AWS Connector DescribeRegions - Optional](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions---optional) for details.
 
 ---
 
@@ -338,7 +374,6 @@ Ensure that the AWS Connector credentials include the `ec2:DescribeRegions` poli
 The CloudFormation Rollback Stack step is automatically added to the **Rollback** section of your stage.
 
 <DocImage path={require('./static/provision-target-deployment-infra-dynamically-with-cloud-formation-08.png')} alt="Pipeline editor showing the CloudFormation Rollback Stack step in the Rollback section" title="Click to view full size" />
-<p align="center"><em>CloudFormation Rollback Stack step appears automatically in the Rollback section</em></p>
 
 When rollback happens, Harness runs the last successfully provisioned version of the stack. The "last successfully provisioned version" means the most recent CloudFormation stack that reached CREATE_COMPLETE or UPDATE_COMPLETE status in a previous successful pipeline execution. If this is the first deployment and no previous successful version exists, rollback deletes the stack.
 
@@ -388,8 +423,6 @@ If you have made these settings expressions, Harness uses the values it obtains 
 
 ## Next steps
 
-You have configured dynamic provisioning with CloudFormation for your CD pipeline. Harness now provisions target infrastructure automatically during deployment and rolls back changes on failure.
-
-- [Provision with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness): Use Terraform as an alternative infrastructure provisioner
-- [CloudFormation How-tos](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos) — advanced CloudFormation features and rollback strategies
-- [Create environments](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments) — manage multiple provisioned environments
+- <a href="/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-provisioning-with-harness" target="_blank" rel="noopener noreferrer">CloudFormation provisioning</a>: Understand CloudFormation provisioning modes and capabilities in Harness.
+- <a href="/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/remove-provisioned-infra-with-the-cloud-formation-delete-step" target="_blank" rel="noopener noreferrer">CloudFormation Delete Stack step</a>: Clean up provisioned stacks after testing or deployment.
+- <a href="/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness" target="_blank" rel="noopener noreferrer">Provision with Terraform</a>: Use Terraform as an alternative infrastructure provisioner.
