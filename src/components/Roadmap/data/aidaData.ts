@@ -5,47 +5,57 @@ export const aidaModuleTheme = { ...DEFAULT_MODULE_THEME, moduleKey: "aida", mod
 
 export const aidaData: Horizon = {
   Now: {
-    description: "Q2 2026, Apr-Jun 2026",
+    description: "Q3 2026, Jul-Sep 2026",
     feature: [
       {
         tag: [{value: "AI Platform"}],
-        title: "Worker Agents",
-        description: "Autonomous AI agents that execute DevOps tasks inside Harness pipelines as a native step type. Supported across CI, CD, Custom, STO, SCS, IaCM, and IDP stages. Features include 9 Harness Managed Agents, an Agent Builder GUI, three-layer governance, and a full audit trail.",
+        title: "Intelligent Chat Experience",
+        description: "Provides page-aware instant analysis and recommends the next best action when you open AI Chat from a Harness page.",
       },
       {
         tag: [{value: "AI Platform"}],
-        title: "Skills",
-        description: "Structured instruction files that teach AI coding assistants how to work with Harness. Compatible with Claude Code, Cursor, GitHub Copilot, and OpenAI Codex.",
+        title: "Sandboxes",
+        description: "Provides isolated environments where Worker Agents can run tasks, test changes, and use approved tools and resources.",
       },
       {
         tag: [{value: "AI Platform"}],
-        title: "Prompts",
-        description: "Curated, ready-to-use prompt library for Harness AI organized by module and use case. Usable in AI Chat, via MCP, or as base instructions for Worker Agents.",
+        title: "Simplified Worker Agent YAML",
+        description: "Reduces the YAML required to define a Worker Agent. Harness-managed defaults and templates encapsulate runtime configuration so authors can focus on instructions, connectors, tools, and limits.",
       },
       {
         tag: [{value: "AI Platform"}],
-        title: "Bring Your Own Model Keys",
-        description: "Connect your preferred LLM provider to Worker Agents and Harness AI through existing Harness connectors. Supports Anthropic, OpenAI, Azure OpenAI, Google Gemini, Vertex AI, and AWS Bedrock.",
+        title: "Skills, Plugins, and Max Budgets for Worker Agents",
+        description: "Adds reusable skills and plugins to Worker Agents, plus configurable maximum budgets that bound agent execution.",
       },
       {
         tag: [{value: "AI Platform"}],
-        title: "Expert Agent",
-        description: "Conversational AI agent grounded in the Harness Knowledge Graph. Powers AI Chat and the MCP Server. Answers questions about delivery data, generates pipeline YAML, and troubleshoots failures through natural language.",
+        title: "GitHub Copilot Support for Worker Agents",
+        description: "Adds GitHub Copilot SDK support to Worker Agents for governed, pipeline-native agent execution.",
+      },
+      {
+        tag: [{value: "AI Platform"}],
+        title: "Skills and Prompts in AI Chat",
+        description: "Allows users to discover and apply reusable Harness skills and curated prompts directly in AI Chat.",
+      },
+      {
+        tag: [{value: "AI Platform"}],
+        title: "Expert Agents",
+        description: "Provides specialized conversational agents in AI Chat that use Harness context to answer questions, analyze delivery data, create resources, and troubleshoot failures.",
       },
     ],
   },
   Next: {
-    description: "Q3 2026, Jul-Sep 2026",
+    description: "Q4 2026, Oct-Dec 2026",
     feature: [
-      {
-        tag: [],
-        title: "Knowledge Graph",
-        description: "Extends the intelligence layer underlying Harness AI with a richer, pipeline-centric knowledge graph connecting all delivery entities. Includes entity modeling, inter-module relationships, and coverage confidence scoring.",
-      },
       {
         tag: [{value: "AI Platform"}],
         title: "AI Usage Insights",
         description: "Provides account admins with visibility into how Harness AI is used across their organization. Includes prompts, tokens, actions, cost attribution per team, and exportable reports for FinOps and compliance.",
+      },
+      {
+        tag: [{value: "AI Platform"}],
+        title: "AI for SMP",
+        description: "Extends Harness AI capabilities to Self-Managed Platform deployments.",
       },
     ],
   },
@@ -53,12 +63,12 @@ export const aidaData: Horizon = {
     description: "Q4 2026+, Oct 2026 & beyond",
     feature: [
       {
-        tag: ["AI Platform"],
+        tag: [{value: "AI Platform"}],
         title: "Slack Bot",
         description: "Allows users to interact with the Harness Unified Agent directly from Slack. Natural language queries, pipeline failure and deployment status alerts, governed by the same RBAC and audit trail as AI Chat.",
       },
       {
-        tag: ["AI Platform"],
+        tag: [{value: "AI Platform"}],
         title: "MS Teams Bot",
         description: "Allows users to interact with the Harness Unified Agent via a Microsoft Teams Bot. Natural language pipeline queries, alert routing, channel and DM support with enterprise SSO and RBAC.",
       },
@@ -67,6 +77,21 @@ export const aidaData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{value: "AI Platform"}],
+        title: "Worker Agents",
+        description: "Autonomous AI agents that execute DevOps tasks inside Harness pipelines as a native step type. Supported across CI, CD, Custom, STO, SCS, IaCM, and IDP stages. Features include 9 Harness Managed Agents, an Agent Builder GUI, three-layer governance, and a full audit trail.",
+      },
+      {
+        tag: [{value: "AI Platform"}],
+        title: "Bring Your Own Model Keys for Worker Agents",
+        description: "Connect your preferred LLM provider to Worker Agents through existing Harness connectors. Supports Anthropic, OpenAI, Azure OpenAI, Google Gemini, Vertex AI, and AWS Bedrock.",
+      },
+      {
+        tag: [{value: "AI Platform"}],
+        title: "Knowledge Graph Integration with AI Chat",
+        description: "Integrates the Harness Knowledge Graph with AI Chat to connect delivery entities and relationships, improve context, and support more relevant analysis and answers.",
+      },
       {
         tag: [{value: "AI Platform"}],
         title: "AI Chat 3.0",
