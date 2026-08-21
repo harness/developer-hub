@@ -44,7 +44,7 @@ The Log section will show developer details about the Test Step chosen on the le
 ![](./static/test-run-details-log.png)
 ## Validate
 
-The Validate sections provides what problems occured, even if overall they did not cause the test to fail. If the "Details" tab is chosen, Harness AIT provides a break down or the error as well as a step log. The Stacktrace can also be seen from this view and if there are any Suggested Actions based on the results.
+The Validate section provides what problems occurred, even if overall they did not cause the test to fail. If the "Details" tab is chosen, Harness AIT provides a breakdown of the error as well as a step log. The Stacktrace can also be seen from this view and if there are any Suggested Actions based on the results.
 
 ## Compare
 

@@ -3,7 +3,7 @@
 - Test suite run page changes - Test run count is clickable
 - Ability to bulk archive tests from the test listing page
 - Ability to handle large texts in write and set param commands
-- Ability to store response bodies in a paramter within an API call
+- Ability to store response bodies in a parameter within an API call
 - Bug fixes
 
 ## Mar 1st, 2024
@@ -70,7 +70,7 @@
 - Separate columns for Error Status and API Method in the API errors tab (s…
 - Let users change the no-op value of a test step
 - Rename User Flows Title to User Flows for Testing
-- sessions listing page enchancements
+- sessions listing page enhancements
 - Show no-op actions by default based on the feature flag
 - Show filter condition on the chip
 - Fix missing new step button in edit test pages

@@ -15,7 +15,7 @@ To iterate a set of tests for different combinations or instances of data, we ca
 
 ### File format
 
-Below is an example of of the JSON file we would upload to drive the testing in AI Test Automation:
+Below is an example of the JSON file we would upload to drive the testing in AI Test Automation:
 
 ```javascript
 {
