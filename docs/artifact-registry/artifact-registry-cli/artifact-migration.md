@@ -64,6 +64,7 @@ The migration tool supports the following artifact types:
 | `SWIFT` | Swift packages |
 | `TERRAFORM` | Terraform modules and providers |
 | `CRAN` | R packages (CRAN format) |
+| `RUBY` | RubyGems packages |
 
 ### Configuration structure
 

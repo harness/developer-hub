@@ -137,6 +137,11 @@ Select your artifact format below to get started:
       path: "/artifact-registry/content/supported-formats/cran-quickstart.md",
       logo: "cran-logo.svg",
       logoSize: 24
+    },
+    RubyGems: {
+      path: "/artifact-registry/content/supported-formats/rubygems-quickstart.md",
+      logo: "ruby-logo.svg",
+      logoSize: 24
     }
   }}
   disableSort={true}

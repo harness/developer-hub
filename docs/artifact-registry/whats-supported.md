@@ -56,11 +56,11 @@ Artifact Registry supports the following registry types:
 - **Puppet:** Puppet Forge-compatible modules with `r10k` support.
 - **Terraform:** Infrastructure as Code modules and providers for cloud provisioning.
 - **R (CRAN):** Private R packages with CRAN-compatible publish and install workflows, including optional CRAN upstream proxy caching.
+- **RubyGems:** Ruby packages with gem CLI and Bundler workflows.
 
 ### Coming soon
 
 - **Alpine:** Alpine Linux packages.
-- **RubyGems:** Ruby packages.
 
 ---
 
