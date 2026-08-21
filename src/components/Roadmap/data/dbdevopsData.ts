@@ -15,61 +15,41 @@ export const DbdevopsData: Horizon = {
     description: "What has been released in the last ~2 Quarters",
     feature: [
       {
-        title: "Snowflake Support",
+        title: "Oracle Native Executor",
         description:
-          "support using DBDevOps against Snowflake.",
-        tag: [{ value: "Database Support" }, {value: "Q1"}],
-        link: "https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/#prerequisites-for-snowflake"
+          "leverage native oracle cli to deploy your changes when using liquibase.",
+        tag: [{ value: "Database Support" }, {value: "Q3"}],
+      },  
+      {
+        title: "MS SQL Native Executor",
+        description:
+          "leverage native MS SQL cli to deploy your changes when using liquibase.",
+        tag: [{ value: "Database Support" }, {value: "Q3"}],
+      },  
+      {
+        title: "Database Change Impact Analysis",
+        description:
+          "Automatically analyze changes against db metadata before applying to surface possible unintended consequences.",
+        tag: [{ value: "Core Features" }, {value: "AI"}, {value: "Q3"}],
+      },  
+      {
+        title: "AI Authoring Rules Support",
+        description:
+          "can now centrally define rules when using AI change authoring.",
+        tag: [{ value: "AI" }, {value: "Q3"}],
       },
       {
-        title: "DB2 Support",
+        title: "Pin Image UI",
         description:
-          "support using DBDevOps against DB2 (LUW, iseries, or zOS).",
-        tag: [{ value: "Database Support" }, {value: "Q1"}],
-        link: "https://developer.harness.io/docs/database-devops/use-database-devops/set-up-db2-connector"
+          "Allow pinning drone images through project settings instead of only via API",
+        tag: [{ value: "Core Features" }, {value: "Q2"}]
       },
       {
-        title: "BigQuery Support",
+        title: "Execution Time Optimization Part 2",
         description:
-          "support using DBDevOps against Google Bigquery.",
-        tag: [{ value: "Database Support" }, {value: "Q1"}],
-        link: "https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors#setting-up-bigquery"
+          "Optomize liquibase container execution time.",
+        tag: [{ value: "Core Features" }, {value: "Q2"}]
       },
-      {
-        title: "GCP Keyless auth for Liquibase",
-        description:
-          "support using DBDevOps to connect with the delegate service account for GCP and Liquibase.",
-        tag: [{ value: "Authentication" }, {value: "Q1"}],
-        link: "https://developer.harness.io/docs/database-devops/features/keyless-authentication"
-      },
-      {
-        title: "GCP OIDC auth for Liquibase",
-        description:
-          "support using DBDevOps to connect with the OIDC for GCP and Liquibase.",
-        tag: [{ value: "Authentication" }, {value: "Q1"}],
-        link: "https://developer.harness.io/docs/database-devops/features/oidc-authentication"
-      },
-      {
-        title: "Kerberos Auth",
-        description:
-          "support using DBDevOps to connect with Kerberos Auth for Oracle and MSSQL.",
-        tag: [{ value: "Authentication" }, {value: "Q1"}],
-        link: "https://developer.harness.io/docs/database-devops/features/kerberos-authentication/"
-      },
-      {
-        title: "Support Percona Toolkit",
-        description:
-          "Allow using Database DevOps with the percona online schema change plugin for mysql",
-        tag: [{ value: "Integrations" }, {value: "Q1"}],
-        link: "https://developer.harness.io/docs/database-devops/features/using-percona-for-mysql/"
-      },
-      {
-        title: "Execution Time Optimization Part 1",
-        description:
-          "Decreases how many containers the apply step runs. This is behind a feature flag currently, contact Harness for access.",
-        tag: [{ value: "Core Features" }, {value: "Q1"}],
-        link: "https://developer.harness.io/release-notes/database-devops#release-197x"
-      }
     ],
   },
   "Now": {
@@ -84,115 +64,127 @@ export const DbdevopsData: Horizon = {
       {
         title: "BigTable support",
         description:
-          "support applying database changes to Google BigTable",
-        tag: [{ value: "Database Support" }],
-      },   
-      {
-        title: "DynamoDB support",
-        description:
-          "support applying database changes to Google BigTable",
-        tag: [{ value: "Database Support" }],
-      },  
-      {
-        title: "Oracle Native Executor",
-        description:
-          "leverage native oracle cli to deploy your changes when using liquibase.",
-        tag: [{ value: "Database Support" }],
-      },  
-      {
-        title: "MS SQL Native Executor",
-        description:
-          "leverage native MS SQL cli to deploy your changes when using liquibase.",
+          "support applying database changes to Google BigTable. Currently available in Beta for everything except Author DB Change.",
         tag: [{ value: "Database Support" }],
       },
       {
         title: "ECS Runner Support",
         description:
-          "support using DB DevOps with an ECS runner instead of requiring a Kubernetes delegate.",
+          "support using DB DevOps with an ECS runner instead of requiring a Kubernetes delegate. Currently available within 1 AWS account in Beta.",
         tag: [{ value: "Integrations" }],
-      },
-      {
-        title: "Impact Analysis",
-        description: 
-          "Automatically analyze changes against db metadata before applying to surface possible unintended consequences.",
-        tag: [{ value: "Core Features" }],
-      },
-      {
-        title: "Pin Image UI",
-        description:
-          "UI for managing drone image versions used by DB DevOps.",
-        tag: [{ value: "Core Features" }],
       },
       {
         title: "AI Author DB Change - v2",
         description:
           "simplify setup of AI Authorings ability to open a PR for the generated change.",
+        tag: [{ value: "Core Features"},{value: "AI"}],
+      },
+      {
+        title: "Execution Time Optimization Part 3",
+        description:
+          "further decrease container account and execution time of DBD steps.",
+        tag: [{ value: "Core Features" }]
+      },
+      {
+        title: "Governance for MongoDB/BigTable",
+        description:
+          "Allow OPA policies to analyze the yaml of a change, not just the SQL it compiles to.",
+        tag: [{ value: "Core Features" }]
+      },
+      {
+        title: "Simplify Pipeline Config",
+        description:
+          "Simplify configuration of several pipeline DB Change patterns.",
+        tag: [{ value: "Core Features" }]
+      },  
+      {
+        title: "Cassandra support",
+        description:
+          "Support using Database DevOps with Cassandra.",
+        tag: [{ value: "Database Support" }],
+      },
+      {
+        title: "Databricks support",
+        description:
+          "Support using Database DevOps with Databricks.",
+        tag: [{ value: "Database Support" }],
+      },
+      {
+        title: "Neo4j support",
+        description:
+          "Support using Database DevOps with Neo4j.",
+        tag: [{ value: "Database Support" }],
+      },
+      {
+        title: "Entra Auth support",
+        description:
+          "Support using Entra Authentication with Azure databases.",
+        tag: [{ value: "Authentication" }],
+      },
+      {
+        title: "Relationship Diagram",
+        description:
+          "Visual diagram of the tables that currently exist in the database and how they relate.",
         tag: [{ value: "Core Features" }],
       },
       {
-        title: "Execution Time Optimization Part 2",
+        title: "ProxySQL Support",
         description:
-          "Decreases execution time for the new containers the apply step runs.",
-        tag: [{ value: "Core Features" }, {value: "Q1"}]
-      }
+          "Add support for using proxySQL to switch which database instance traffic is routed to for database blue/green deployments.",
+        tag: [{ value: "Integrations" }],
+      },
+      {
+        title: "LLM Authoring Files Support",
+        description:
+          "Add support for using LLM Authoring for changes that span multiple changelog files.",
+        tag: [{ value: "AI" }],
+      },
+      {
+        title: "OOTB Policy Library",
+        description:
+          "Out of the box example OPS policies in the product.",
+        tag: [{ value: "Core Features" }],
+      },
     ],
   },
   "Next": {
     description: "What we'll build next, next ~2 quarters",
     feature: [
       {
-        title: "Relationship Diagram",
+        title: "Databricks Support 2.0",
         description:
-          "visualize the state of database tables within a db instance",
+          "additional change types when using databricks",
+        tag: [{ value: "Database Support" }],
+      },
+      {
+        title: "Support: Procedures, triggers, functions",
+        description:
+          "Add first class change types and diff supports for several additional db object types",
         tag: [{ value: "Core Features" }],
       },
       {
-        title: "Author DB Change Files Support",
+        title: "Drift Detection (Liquibase)",
         description:
-          "Allow Providing files that author db change leverages during authoring (e.g. a CSV file)",
+          "Native, fully automated, visual drift detection, when deploying using liquibase",
         tag: [{ value: "Core Features" }],
       },
       {
-        title: "Entra Auth for Liquibase",
+        title: "State-Based Migrations",
         description:
-          "First class for authenticating using Entra authentication when deploying using liquibase",
-        tag: [{ value: "Authentication" }],
+          "Ability to deploy all deltas in a db snapshot to the DB as a changetype",
+        tag: [{ value: "Core Features" }],
       },
       {
-        title: "Neo4j Support",
+        title: "DACPACs Support",
         description:
-          "support applying database changes to Neo4j",
+          "a first class changetype for syncing a MSSQL database to the schema state in a microsoft dacpac",
         tag: [{ value: "Database Support" }],
       },
       {
-        title: "Databricks Support",
+        title: "DynamoDB support",
         description:
-          "support applying database changes to Databricks",
+          "support applying database changes to Amazon DynamoDB",
         tag: [{ value: "Database Support" }],
-      },
-      {
-        title: "Yugabyte Support",
-        description:
-          "support applying database changes to Yugabyte",
-        tag: [{ value: "Database Support" }],
-      },
-      {
-        title: "Entra Auth for Liquibase",
-        description:
-          "First class for authenticating using Entra authentication when deploying using liquibase",
-        tag: [{ value: "Authentication" }],
-      },
-      {
-        title: "Governance for MongoDB",
-        description: 
-          "Ability to write rego policies when deploying to MongoDB",
-        tag: [{ value: "Governance" }],
-      },
-      {
-        title: "OOTB Policy Library",
-        description: 
-          "a Library of example policies in product",
-        tag: [{ value: "Governance" }],
       },
     ]
   },
@@ -200,10 +192,58 @@ export const DbdevopsData: Horizon = {
     description: "typically > 6 months out",
     feature: [
       {
-        title: "Support for Spanner for postgresql",
+        title: "Auto-gen Rollback Scripts",
         description: 
-          "Add support for the postgres version of the Google spanner database as a supported database type.",
-        tag: [{ value: "Database Support" }],
+          "Automatically generate rollback scripts at rollback time for changes that lack them.",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "Rollback without Custom Pipeline",
+        description: 
+          "Allow automated rollback through UI without authoring a custom pipeline.",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "AI Index Optomization",
+        description: 
+          "Automatically identify slow queries, and review indexes, and open PRs to optomize.",
+        tag: [{ value: "Core Features" },{ value: "AI" }],
+      },
+      {
+        title: "Native Local Dev",
+        description: 
+          "Seemlessly run DBD SaaS pipelines through a cli locally.",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "Automated DB Testing",
+        description: 
+          "Natively support frameworks like DBFit and DBUnit.",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "Refactoring Change Types",
+        description: 
+          "First class change types for high-level complex changes that can be done with 0 downtime",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "Cross-ENV Checksum enforcement",
+        description: 
+          "Further enforce that changes are always consistent across environments",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "Test Data Generation",
+        description: 
+          "generated anonymized synthetic test data for use in staging environments",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "Xenv Relationship Diagram Diff",
+        description: 
+          "Allow an object-level diff view of what tables/objects existign in the database on the relationship diagram",
+        tag: [{ value: "Core Features" }],
       },
       {
         title: "Support for AWS Redshift",
@@ -242,9 +282,9 @@ export const DbdevopsData: Horizon = {
           "Allow developers to run ad-hoc read queries against DBs, with an ability to anonymize results",
       },
       {
-        title: "Drift Detection",
+        title: "Drift Detection (Flyway)",
         description:
-          "Detect and surface schema differences between a database and its expected state",
+          "Detect and surface schema differences between a database and its expected state for flyway schema types",
         tag: [{ value: "Core Features" }],
       },
       {
