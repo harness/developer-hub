@@ -12,27 +12,32 @@ export const ciModuleTheme: ModuleTheme = {
 
 export const CiData: Horizon = {
   Now: {
-    description: "Q2 2026, May 2026 - July 2026",
-    feature: [ 
+    description: "Q3 2026, August 2026 - October 2026",
+    feature: [
       {
         tag: [{ value: "Code Quality" }],
-        title: "Code Coverage",
-        description: "Upload code coverage reports to Harness. Visualize overall coverage and coverage for changed code, track trends over time, gain insights into coverage gaps, enforce thresholds, and improve test completeness.",
+        title: "Code Coverage with Test Intelligence for Python and Java",
+        description: "Enable code coverage reporting when using Test Intelligence, showing accurate coverage metrics even when only a subset of tests is executed.",
+      },
+      {
+        tag: [{ value: "Code Quality" }],
+        title: "Visualize Code Coverage across branches and repositories",
+        description: "Track code coverage trends over time across different branches and repositories, gaining insights into coverage gaps and improvements.",
+      },
+      {
+        tag: [{ value: "Code Quality" }],
+        title: "View coverage on Pull Requests and Status Checks",
+        description: "See code coverage metrics directly on pull requests with status checks that enforce coverage thresholds before merging.",
       },
       {
         tag: [{ value: "Insights" }],
-        title: "Test Insights",
-        description: "Visualize test metrics such as pass/fail rates, duration trends, and flake frequency across builds.",
+        title: "View detailed test level execution and flake history",
+        description: "Visualize test metrics such as pass/fail rates, duration trends, and flake frequency across builds with detailed test-level insights.",
       },
       {
         tag: [{ value: "Intelligence" }],
-        title: "Test Intelligence for Java integration tests",
-        description: "Test intelligence will learn the full dependency chain for each test across service boundaries, allowing tests that hit external services to also be selectively run.",
-      },
-      {
-        tag: [{ value: "Self-hosted" }],
-        title: "Azure Blob Storage support for Build Intelligence and Docker Layer Caching",
-        description: "Use Azure Blob Storage as a backend for Build Intelligence and Docker Layer Caching when using self-hosted build infrastructure.",
+        title: "Test Intelligence for Integration Tests",
+        description: "Test Intelligence will learn the full dependency chain for each test across service boundaries, allowing tests that hit external services to also be selectively run.",
       },
       {
         tag: [{ value: "Cloud" }],
@@ -41,86 +46,64 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Cloud" }, { value: "Networking" }],
-        title: "PrivateLink Productisation",
-        description: "Enable self-service of AWS PrivateLink for Harness Cloud CI workflows, enabling secure connectivity to private services (artifact registries, code repositories, etc).",
+        title: "Native Support for Reverse Proxy",
+        description: "Add native reverse proxy support for Harness Cloud CI workflows, enabling secure connectivity to private services (artifact registries, code repositories, etc) and replacing 'Secure Connect'.",
       },
       {
         tag: [{ value: "Cloud" }, { value: "Networking" }],
-        title: "Native Support for Reverse Proxy",
-        description: "Add native reverse proxy support for Harness Cloud CI workflows, , enabling secure connectivity to private services (artifact registries, code repositories, etc) and replacing 'Secure Connect'.",
+        title: "Egress Control for Harness Cloud",
+        description: "Production launch of native egress control for Harness Cloud on Linux and Windows, enabling secure firewall rules to control outbound traffic from build environments.",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Upload and Display Artifacts",
         description: "Upload build artifacts and metadata to Harness-managed storage. View them directly in the browser alongside pipeline execution results or download for inspection and debugging.",
       },
-    ],
-  },
-  Next: {
-    description: "Q3 2026, August 2026 - October 2026",
-    feature: [
       {
         tag: [{ value: "AI" }],
         title: "AI-powered errors classification",
         description: "AI-powered error classification to enable meaningful pipeline failure messages and dashboards, surfacing human-readable insights on the root cause, build and test failures.",
       },
-      {
-        tag: [{ value: "Intelligence" }],
-        title: "Support for Code Coverage integration with Test Intelligence",
-        description: "Show accurate code coverage metrics even when only a subset of tests is executed through Test Intelligence, helping teams maintain visibility without running the full suite.",
-      },
+    ],
+  },
+  Next: {
+    description: "Q4 2026, November 2026 - January 2027",
+    feature: [
       {
         tag: [{ value: "Intelligence" }],
         title: "Test Intelligence for JavaScript-based languages with Cypress",
         description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related to the code changes made.",
       },
-
       {
         tag: [{ value: "Fast" }],
-        title: "Smart Parallelism with Test Intelligence",
-        description: "Optimize resource usage by intelligently allocating only the required number of parallel stages based on selected tests, eliminating idle machines when parallelism exceeds test groups. Support for Java, C#, Ruby, Scala, and Kotlin (Python is already supported).",
+        title: "Build Intelligence for Go",
+        description: "Speed up Golang builds by reusing outputs from previous runs and avoiding redundant compilation of unchanged code.",
       },
-      {
-        tag: [{ value: "Fast" }],
-        title: "Test Intelligence for Integration Tests",
-        description: "Enable test selection and insights for integration tests, extending Test Intelligence beyond unit testing.",
-      },
-      {
-        tag: [{ value: "Intelligence" }],
-        title: "CocoaPods Support with Cache Intelligence",
-        description: "Accelerate mobile development and build times with Cache Intelligence for CocoaPods.",
-      }
     ],
   },
   Later: {
-    description: "November 2026 & beyond",
-    feature: [       
+    description: "February 2027 & beyond",
+    feature: [
       {
         tag: [{ value: "Integrations" }, { value: "Mobile" }],
         title: "Native integration with Fastlane",
         description: "Simplify building and publishing iOS and Android applications with native Fastlane integration.",
       },
       {
-        tag: [{ value: "Mobile" }],
-        title: "MobileOps",
-        description: "Solutions to simplify and streamline mobile device testing, helping teams improve the efficiency and reliability of their mobile development workflows.",
+        tag: [{ value: "Intelligence" }],
+        title: "CocoaPods Support with Cache Intelligence",
+        description: "Accelerate mobile development and build times with Cache Intelligence for CocoaPods.",
       },
       {
-        tag: [{ value: "Fast" }],
-        title: "Build Intelligence for Go",
-        description: "Speed up Golang builds by reusing outputs from previous runs and avoiding redundant compilation of unchanged code.",
-      }
-    ], 
+        tag: [{ value: "Intelligence" }],
+        title: "Matrix Support for Test Intelligence",
+        description: "Enable Test Intelligence to work seamlessly across matrix build configurations, intelligently selecting tests for each matrix combination.",
+      },
+    ],
   },
   Released: {
     description: "What has been released",
     feature: [
-      {
-        tag: [{ value: "Cloud" }],
-        title: "Save and Restore Cache Steps for Azure",
-        description: "Save and restore CI caches with Azure Blob Storage using dedicated YAML steps and Microsoft identity provider authentication.",
-        link: "/docs/continuous-integration/use-ci/caching-ci-data/save-cache-azure"
-      },
       {
         tag: [{ value: "Fast" }, { value: "beta" }],
         title: "Flaky Test Detection",
@@ -133,13 +116,8 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Fast" }],
-        title: "Smart Parallelism with Test Intelligence for Python",
-        description: "Optimize resource usage by intelligently allocating only the required number of parallel stages based on selected tests, eliminating idle machines when parallelism exceeds test groups.",
-      },
-      {
-        tag: [{ value: "Fast" }],
-        title: "Error Classification",
-        description: "Rule-based error classification to enable meaningful pipeline failure messages and dashboards, surfacing human-readable insights on the root cause, build and test failures.",
+        title: "Smart Parallelism with Test Intelligence",
+        description: "Optimize resource usage by intelligently allocating only the required number of parallel stages based on selected tests, eliminating idle machines when parallelism exceeds test groups. Support for Python, Java, C#, Ruby, Scala, and Kotlin.",
       },
       {
         tag: [{ value: "Cloud" }],
@@ -148,30 +126,24 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Branch-Based Version Counters",
-        description: "Track build numbering independently per branch, including pipelines with codebase disabled that use trigger event data.",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
         title: "Real-Time Status for Containerized Step Groups",
         description: "Show real-time step status updates during execution for containerized step groups.",
-      },
-      {
-        tag: [{ value: "Adoption" }],
-        title: "Seamless Migration from Drone to Harness",
-        description: "Run existing Drone pipelines natively on the Harness platform with automatic runtime conversion and dynamic pipelines—making migration frictionless and significantly faster."
-      },
-      {
-        tag: [{ value: "Secure" }, { value: "Cloud" }],
-        title: "Azure Workload Identity for ACR Build and Push",
-        description: "Authenticate Build and Push to Azure Container Registry steps with delegate-based User Assigned Managed Identity.",
-        link: "/docs/continuous-integration/secure-ci/azure-oidc-token-plugin"
       },
       {
         tag: [{ value: "Fast" }, {value: "beta" }],
         title: "Test Intelligence for JavaScript-based languages with Jest",
         description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related to the code changes made.",
-      }
+      },
+      {
+        tag: [{ value: "Self-hosted" }],
+        title: "Azure Blob Storage support for Build Intelligence and Docker Layer Caching",
+        description: "Use Azure Blob Storage as a backend for Build Intelligence and Docker Layer Caching when using self-hosted build infrastructure.",
+      },
+      {
+        tag: [{ value: "Cloud" }, { value: "Networking" }],
+        title: "PrivateLink Productisation",
+        description: "Enable self-service of AWS PrivateLink for Harness Cloud CI workflows, enabling secure connectivity to private services (artifact registries, code repositories, etc).",
+      },
     ],
   },
 };
