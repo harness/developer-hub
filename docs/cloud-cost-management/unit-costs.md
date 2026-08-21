@@ -17,7 +17,7 @@ By tracking unit metrics alongside your cloud costs, you can calculate **unit ec
 - Ingest data via API, CSV upload, or JSON paste
 - Visualize metric trends with interactive charts
 - Monitor key statistics (totals, averages, date ranges)
-- Calculate cost-per-unit (Coming soon)
+- Calculate cost per unit
 
 ### What is a Unit Metric?
 
@@ -84,6 +84,75 @@ Aggregation determines how your metric values are combined when you're viewing d
 :::note
 All unit metric data is stored at **daily granularity** as cloud provider bills are typically calculated and delivered at daily granularity
 :::
+----
+
+## Preconfigured unit cost metrics
+
+Harness Cloud & AI Cost Management supports unit cost metrics by default. The costs are calculated automatically from your cost and usage data, with no additional setup. Each metric divides a cost by a count to show your spend per unit, such as cost per million tokens or cost per VM.
+
+### GenAI costs view
+
+The following metrics are derived from generative AI (GenAI) provider cost and token data.
+
+| Metric | Numerator | Denominator | Description |
+|---|---|---|---|
+| Cost per million tokens | Total token cost | Number of tokens (in millions) | Your effective price for every 1 million tokens processed |
+| Cost per million input tokens | Input token cost | Number of input tokens (in millions) | Your effective price for every 1 million tokens sent to the model |
+| Cost per million output tokens | Output token cost | Number of output tokens (in millions) | Your effective price for every 1 million tokens the model generates |
+| Cost per inference | Total inference cost | Inference count | Average cost of a single model call, per provider |
+| Cached token count % | Cached tokens | Total tokens | Share of tokens served from cache instead of fresh processing |
+| Cached token cost % | Cached token cost | Total AI cost | Share of AI spend attributable to cached tokens |
+| Input-to-output token ratio | Input tokens | Output tokens | Balance of tokens sent to the model versus generated |
+
+### All cloud costs view
+
+The following metrics are derived from cloud resource cost and inventory data.
+
+| Metric | Numerator | Denominator | Description |
+|---|---|---|---|
+| Cost per VM | Total VM cost | Number of VMs | Average spend per virtual machine, per provider (AWS, Azure, GCP) |
+| Cost per storage volume | Total storage cost | Number of storage volumes | Average spend per storage volume, per provider |
+
+### AI traces view
+
+The following metrics are derived from AI trace and agent telemetry.
+
+| Metric | Numerator | Denominator | Description |
+|---|---|---|---|
+| Cost per million tokens | Total token cost | Number of tokens (in millions) | Your effective price for every 1 million tokens across traces |
+| Cost per million input tokens | Input token cost | Number of input tokens (in millions) | Your effective price for every 1 million input tokens |
+| Cost per million output tokens | Output token cost | Number of output tokens (in millions) | Your effective price for every 1 million output tokens |
+| Cost per inference or request | Total cost | Inference count | Average cost of one model call or request |
+| Cost per trace or run | Total cost | Number of traces or runs | Average cost of one agent trace or run |
+| Cost per session | Total cost | Number of sessions | Average cost of one session |
+| Cost per service | Total cost | Number of services | Average cost attributed to each service |
+| Cost per agent | Total cost | Number of agents | Average cost attributed to each agent |
+| Error rate | Error traces | Total traces | Share of traces that ended in an error |
+| Average retries per trace or run | Total retries | Total traces | How often runs retry, a signal of wasted spend |
+| Cached token count % | Cached tokens | Total tokens | Share of tokens served from cache instead of fresh processing |
+| Cached token cost % | Cached token cost | Total AI cost | Share of AI spend attributable to cached tokens |
+| Input-to-output token ratio | Input tokens | Output tokens | Balance of tokens sent to the model versus generated |
+
+### Engineering efficiency view
+
+The following metrics are derived by combining cost data with your Git provider (SCM), issue tracker (IM), and AI tool telemetry.
+
+| Metric | Numerator | Denominator | Description |
+|---|---|---|---|
+| Cost per pull request (PR) | Total cost | Number of PRs merged | Average cost to ship one merged pull request, also viewable by PR size |
+| Cost per AI-assisted PR | Total cost | Number of AI-assisted PRs merged | Average cost to ship one PR that an AI tool helped write |
+| Cost per AI-assisted commit | Total cost | Number of AI-assisted commits | Average cost of one commit that an AI tool helped write |
+| Cost per work item | Total cost | Number of work items resolved | Average cost to resolve one work item, also viewable by work type |
+| Cost per AI-assisted work item | Total cost | Number of AI-assisted work items resolved | Average cost to resolve one work item that an AI tool helped with |
+| Cost per KLOC committed | Total cost | Lines of code committed (in thousands) | Average cost per 1,000 lines of code committed |
+| Cost per commit | Total cost | Number of commits | Average cost of a single commit |
+| Ship rate | AI lines of code committed | Total AI lines of code generated | How much AI-generated code actually makes it into your codebase |
+| Error rate | AI tool call failures | Total AI tool calls | Share of AI tool calls that failed |
+| Cache hit rate | Cache hits | Total cacheable requests | How often the AI prompt cache is reused, a cost-saving signal (Claude only) |
+| AI-committed code % | AI lines of code committed | Total lines of code committed | Share of all committed code written with AI |
+| AI-assisted PR % | AI-assisted PRs merged | Number of PRs merged | Share of merged PRs that used AI, also viewable by tool |
+| AI-assisted work item % | AI-assisted work items resolved | Number of work items resolved | Share of resolved work items that used AI, also viewable by tool |
+
 ----
 
 ## Creating a Unit Metric

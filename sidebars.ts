@@ -3244,6 +3244,7 @@ const sidebars: SidebarsConfig = {
         },
         'cloud-cost-management/ai-cost-troubleshooting',
         'cloud-cost-management/whats-supported',
+        'cloud-cost-management/provider-integrations/data-ingestion-reference',
         'cloud-cost-management/feature-permissions',
         'cloud-cost-management/oidc-auth',
         'cloud-cost-management/product-behaviour',

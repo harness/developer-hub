@@ -120,7 +120,6 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 /docs/software-supply-chain-assurance/get-started/onboarding-guide /docs/software-supply-chain-assurance/get-started/
 /docs/software-supply-chain-assurance/sbom/generate-sbom /docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories
 
-=======
 # Added by ivikramsahu for self-managed enterprise edition documentation revamp.
 
 /docs/self-managed-enterprise-edition/get-started/onboarding-guide /docs/self-managed-enterprise-edition/smp-overview
@@ -230,5 +229,9 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 # redirect_from frontmatter is only honored for docs/ pages, so 3k-docs/ moves need server redirects.
 /3k-docs/platform/getting-started/migration /3k-docs/platform/migrations-and-compatibility/migration
 /3k-docs/platform/getting-started/compatibility /3k-docs/platform/migrations-and-compatibility/compatibility
+
+# Added by arpit.agrawal for HDH-1397 - force 301 for renamed page (External Cost Data Ingestion -> Custom Cost Provider).
+# The auto-generated redirect is non-forced, so Netlify serves the client-side redirect stub (HTTP 200) and Google keeps the old title/snippet. Forcing 301! here (copied into _redirects before the auto rules) makes the server return a real 301.
+/docs/cloud-cost-management/get-started/onboarding-guide/external-data-ingestion /docs/cloud-cost-management/provider-integrations/custom-cost-provider 301!
 
 # Redirects generated from Front Matter [sytem generated goes below here]:
