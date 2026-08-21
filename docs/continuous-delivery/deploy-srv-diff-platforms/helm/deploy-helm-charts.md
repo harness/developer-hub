@@ -252,7 +252,36 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 - **Chart Version**: Enter the version of the chart you want to deploy. This is found in the Chart.yaml `version` label in your chart. You can list all available versions of a chart using the `search repo` command with the `--versions` option. See [helm search repo](https://helm.sh/docs/helm/helm_search_repo) from Helm.
   - If you leave **Chart Version** empty Harness gets the latest chart.
   - If you are going to use a Harness trigger to run this pipeline when a new version is added to your chart repo, select the **Runtime Input** option. When you set up the trigger, you will select this chart and Harness will listen on the repo for new versions. See [Trigger Pipelines on New Helm Chart](/docs/platform/triggers/trigger-pipelines-on-new-helm-chart). For example, `1.4.1`.
-- **Helm Version**: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm. Only Helm v3 is supported; select `Version 3`.
+- **Helm Version**: Select the version of Helm used in your chart. Harness supports Helm v3 and v4. Select the version that matches your chart requirements.
+  - **Version 3**: Stable and widely adopted version. Harness ships Helm v3.15.4 and supports Helm v3 versions up to v3.21.1.
+  - **Version 4**: Latest version with enhanced features including Server-Side Apply, kstatus-based wait strategies, and improved plugin system.
+  
+  Go to <a href="https://helm.sh/docs/topics/version_skew/" target="_blank" rel="noopener noreferrer">Helm Version Support Policy</a> for version compatibility details.
+  
+  <div align="center">
+    <DocImage path={require('./static/helm-v4-version.png')} alt="Helm Version dropdown showing Version 3 and Version 4 options" width="70%" />
+  </div>
+  
+  :::note Using Helm v4 in Harness
+  
+  **Automatic flag translation:** Harness automatically translates Helm v3 command flags to their v4 equivalents. When you select Helm v4, deprecated flags like `--atomic`, `--force`, and `--dry-run` are automatically converted to v4-compatible flags (`--rollback-on-failure`, `--force-replace`, `--dry-run=client`) in the backend. You do not need to manually update command flags in your service configuration.
+  
+  **Shell script usage:** If you use Helm commands in shell script steps, use the `helm4` binary for Helm v4 operations:
+  ```bash
+  # Helm v3
+  helm template . test
+  
+  # Helm v4
+  helm4 template . test
+  ```
+  
+  **Key changes in Helm v4:**
+  - `helm registry login` now accepts domain only, not full URL paths.
+  - Removed flags: `--recreate-pods` has been removed.
+  - New wait strategies: v4 introduces event-driven wait using kstatus by default instead of polling-based waits.
+  
+  For detailed migration guidance, go to <a href="https://helm.sh/blog/helm-4-released/" target="_blank" rel="noopener noreferrer">Helm 4 Release Notes</a>.
+  :::
 - **Values YAML**: Your chart will have a default values.yaml file in its root folder.
 
   - If you do not enter a values.yaml in **Values YAML**, Harness uses the default values.yaml file in the root of the chart.

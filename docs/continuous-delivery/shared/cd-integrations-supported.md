@@ -62,7 +62,7 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
-    - Helm - Helm v3.15.4 (shipped); Helm v3 versions up to v3.21.1 are supported
+    - Helm - Helm v3.15.4 (shipped); Helm v3 versions up to v3.21.1 and Helm v4 are supported
 - **Limitations:**
   - Helm:
     - Helm Hooks are not supported for this swimlane. Harness manages and orchestrates the manifests and their release.
@@ -232,15 +232,15 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
   - AWS Elastic Kubernetes Service
   - Red Hat OpenShift
 - **Versions and tooling support:**
-  - Helm Client Versions: Harness ships Helm v3.15.4; Helm v3 versions up to v3.21.1 are supported
+  - Helm Client Versions: Harness ships Helm v3.15.4; Helm v3 versions up to v3.21.1 and Helm v4 are supported
   - We support what each of the Cloud Providers support, we recommend users to keep their binary versions up to date
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
-    - Helm - Helm v3.15.4 (shipped)
+    - Helm - Helm v3.15.4 (shipped); Helm v4 is also supported
 - **Limitations:**
-  - Helm v2 is not supported. Only Helm v3 is supported.
-  - Helm 3 is now the default for Harness Helm Chart Deployments.
+  - Helm v2 is deprecated and not recommended for new deployments. Helm v3 and v4 are supported.
+  - Helm 3 is the default for Harness Helm Chart Deployments.
   - Helm Plugins are not supported
   - Only Basic Deployment Strategy supported (No Canary or Blue-Green Support Out of the box)
 - **Supported integrations:**

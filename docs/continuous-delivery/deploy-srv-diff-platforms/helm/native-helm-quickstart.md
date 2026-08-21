@@ -61,7 +61,31 @@ helm rollback  release-1d0bcdea6247c9f82cc9204b1d81593e7b985651
 
 ### Helm version support
 
-Harness ships Helm v3.15.4 and supports Helm v3 versions up to v3.21.1. Helm v2 is no longer shipped or supported. If your pipelines referenced Helm v2, update them to use Helm v3.
+Harness supports Helm v3 and v4:
+- **Helm v3**: Harness ships Helm v3.15.4 and supports Helm v3 versions up to v3.21.1. Widely adopted and stable.
+- **Helm v4**: Latest version with enhanced features including Server-Side Apply, kstatus-based wait strategies, and improved plugin system.
+
+Select the Helm version in your service manifest configuration that matches your chart requirements.
+
+<div align="center">
+  <DocImage path={require('./static/helm-v4-version.png')} alt="Helm Version dropdown showing Version 3 and Version 4 options" width="70%" />
+</div>
+
+Go to <a href="https://helm.sh/docs/topics/version_skew/" target="_blank" rel="noopener noreferrer">Helm Version Support Policy</a> for version compatibility details.
+
+:::note Using Helm v4 in Harness
+
+**Automatic flag translation:** Harness automatically translates Helm v3 command flags to their v4 equivalents when you select Helm v4. Deprecated flags like `--atomic`, `--force`, and `--dry-run` are automatically converted in the backend.
+
+**Shell script usage:** If you use Helm commands in shell script steps, use the `helm4` binary for Helm v4:
+```bash
+# Helm v3
+helm template . test
+
+# Helm v4
+helm4 template . test
+```
+:::
 
 :::caution Known Helm issue with multiple API versions for the same Kind
 There is an outstanding Helm bug ([helm/helm#10748](https://github.com/helm/helm/issues/10748)) where Helm does not remove a resource during an upgrade if another resource with the same `Kind` but a different `apiVersion` exists in the same release. Helm merged a fix but subsequently reverted it due to a regression, and the issue remains unresolved.
@@ -130,7 +154,7 @@ To add a Helm chart in this example, we will add a Harness connector to the HTTP
    * **Manifest Identifier**: enter **nginx**.
    * **Chart Name**: enter **nginx**.
    * **Chart Version**: enter **8.8.1**.
-   * **Helm Version**: select **Version 3**.
+   * **Helm Version**: select **Version 3** (or **Version 4** if you want to use the latest Helm features).
 
 The Helm chart is added to the Service Definition.
 

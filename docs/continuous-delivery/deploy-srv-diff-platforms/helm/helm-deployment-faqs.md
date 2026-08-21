@@ -278,9 +278,13 @@ It will be feasible for them to consider adding a line at the top of their manif
 While it's not officially supported, you can obtain all Helm flags used in the Service step. Here's an example of how to retrieve them: `<+pipeline.stages.deploy.spec.manifests.Helm_hello_world.commandFlags>`
 
 
-### What recommendation can be made if a service's chart is currently on v3?
+### What Helm versions does Harness support?
 
-If the chart is v3, the service should be configured for v3 as well. Harness no longer ships Helm v2; only Helm v3 is supported.
+Harness supports Helm v3 and v4:
+- **Helm v3**: Harness ships Helm v3.15.4 and supports Helm v3 versions up to v3.21.1. Stable and widely adopted.
+- **Helm v4**: Latest version with enhanced features including Server-Side Apply and kstatus-based wait strategies.
+
+When selecting a Helm version in your service manifest, ensure it matches the version used to package your chart. Go to <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts#add-the-helm-chart" target="_blank" rel="noopener noreferrer">Deploy Helm charts</a> for detailed configuration guidance.
 
 
 ### What is the default release name used for k8s/Helm deployment done via Harness pipeline?
