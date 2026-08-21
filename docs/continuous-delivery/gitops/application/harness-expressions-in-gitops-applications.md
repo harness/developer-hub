@@ -1,212 +1,235 @@
 ---
-title: Use Harness expressions in GitOps applications
-description: Use Harness expressions in ArgoCD manifests to inject service variables, environment variables, and fixed variables during manifest generation.
+title: Use Harness expressions in GitOps manifests
+description: Inject Harness service variables, environment variables, and secrets into Argo CD manifests at manifest generation time.
 sidebar_position: 31
+keywords:
+  - gitops
+  - argocd
+  - expressions
+  - variables
+  - secrets
+tags:
+  - GitOps
+  - Argo CD
 ---
 
+Inject dynamic values from Harness services and environments into your Kubernetes manifests during Argo CD's manifest generation phase, before anything touches the cluster.
 
+## What you will learn from this topic
 
-Harness GitOps supports using Harness expressions directly in your ArgoCD application manifests. This allows you to inject dynamic values from your service and environment configurations into Kubernetes manifests during the manifest generation phase, before deployment.
+- How to [configure the plugin](#configure-the-harness-argo-cd-plugin) on new or existing GitOps agents
+- How the plugin [detects your manifest tool](#manifest-tool-selection) (Helm, Kustomize, or plain manifests)
+- How to [use expressions](#expression-reference) for service variables, environment variables, and secrets
+- How to [override variables](#override-priority) per environment
+- How to [troubleshoot](#troubleshooting) common expression resolution issues
 
-Instead of maintaining separate manifest files for each environment or hardcoding values, you can use expressions to reference variables defined in Harness services and environments. This provides a single source of truth for your configurations and makes it easier to manage deployments across multiple environments.
-
-Expressions are resolved during manifest generation via the ConfigManagementPlugin, which means values are injected before the manifest is applied to your cluster. This approach provides better security, traceability, and consistency across your GitOps deployments.
-
-## Prerequisites
-
-Before using Harness expressions in GitOps applications, ensure you have:
-
-- **Minimum agent version:** v0.105.x or later
-- **Minimum version for gitops-agent-installer-helper:** v0.0.11 or later
-- **ArgoCD Harness Plugin enabled:** When installing the GitOps agent, ensure the **Enable ArgoCD Harness Plugin (Required for Harness expression resolution)** checkbox is selected
-
-![Enable ArgoCD Harness Plugin checkbox](./static/agent-checkbox.png)
-
-:::important
-
-**For existing Agent installations (BYOA or Harness-installed Argo):** The **Enable ArgoCD Harness Plugin** checkbox cannot be changed after the initial installation. You must configure the Harness ArgoCD plugin by running a patch script on your existing Argo CD installation. For detailed setup instructions, go to [Enable Harness Expression Resolution for Existing Installations](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness#enable-harness-expression-resolution-for-byoa).
-
-**For new Agent installations:** Enable the **Enable ArgoCD Harness Plugin (Required for Harness expression resolution)** checkbox during GitOps agent installation to use this feature.
-
+:::info Secrets and security
+This topic covers expressions and tool detection. For Vault and Secret Manager integration, and the security model, go to <a href="/docs/continuous-delivery/gitops/security/secret-injection-harness-plugin" target="_blank" rel="noopener noreferrer">Secret injection in GitOps applications</a>.
 :::
 
-## Supported expression types
+---
 
-Harness GitOps supports the following expression types in ArgoCD manifests:
+## Before you begin
 
-- **Service variables:** `<+serviceVariables.*>` – Variables defined at the service level.
-- **Environment variables:** `<+env.variables.*>` – Variables defined at the environment level.
-- **Environment properties:** `<+env.*>` – Environment metadata (name, type, identifier, etc.).
-- **Fixed variables:** `<+variable.*>` – Account, organization, or project-level variables.
-- **Secrets:** `<+serviceVariables.*>` or `<+env.variables.*>` (when referencing variables of type Secret) – **Supported only in Kubernetes objects of kind: Secret**; secrets will be resolved and actual values injected during manifest generation.
+Before using Harness expressions in GitOps manifests, ensure you have:
 
-**Resolution timing:** Manifest generation time (pre-deployment, not runtime)
+- **GitOps Agent**: Agent version v0.105.x or later installed and running. Go to <a href="/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent" target="_blank" rel="noopener noreferrer">Install a Harness GitOps Agent</a> for installation steps.
+- **Agent installer helper**: `gitops-agent-installer-helper` version v0.0.16 or later (v0.0.18 or later is required for Kustomize support).
+- **Harness service**: A GitOps service configured with variables. Go to <a href="/docs/continuous-delivery/gitops/gitops-entities/service/service" target="_blank" rel="noopener noreferrer">GitOps services</a> to create and configure services.
+- **Harness environment**: An environment configured with variables and linked to your service. Go to <a href="/docs/platform/get-started/key-concepts#environment" target="_blank" rel="noopener noreferrer">Environments</a> for environment concepts.
 
-**Override priority:** ENV_SERVICE > Service > ENV_GLOBAL > Environment
+---
 
-## Use service variables
+## Configure the Harness Argo CD plugin
 
-Service variables are defined at the service level and are specific to that service. They're useful for values that vary by service but may need different values per environment.
+**For new Agent installations:** Select the **Enable ArgoCD Harness Plugin (Required for Harness expression resolution)** checkbox during GitOps agent installation to use this feature. No additional configuration is needed.
 
-### Define service variables
+<div align="center">
+  <DocImage path={require('./static/enable-argo-cd-harness-plugin.png')} alt="Enable ArgoCD Harness Plugin checkbox in GitOps Agent installation wizard" width="80%" />
+</div>
 
-1. In your Harness project, go to **Deployments** > **Services**.
-2. Select your service, then go to the **Configuration** tab.
-3. Under **Variables**, click **Add Variable**.
-4. Enter a name, select a type (String, Number, Secret, etc.), and provide a value.
-5. Save the service.
+**For existing Agent installations (BYOA or Harness-installed Argo):** The **Enable ArgoCD Harness Plugin (Required for Harness expression resolution)** checkbox cannot be changed after the initial installation. You must configure the Harness Argo CD plugin manually. Go to [Enable the plugin on an existing agent or BYOA](#enable-the-plugin-on-an-existing-agent-or-byoa) for instructions.
 
-### Use service variables in manifests
+Once enabled, point your Argo CD Application at the plugin and use expressions in your manifests:
 
-Reference service variables in your manifests using the `<+serviceVariables.variableName>` syntax:
+**Step 1.** Point your Application at the plugin
 
-```yaml
+Set the plugin name explicitly (recommended), or add `.harness.yaml` to the source directory to trigger auto-discovery:
+
+```yaml title="application.yaml"
+spec:
+  source:
+    repoURL: https://github.com/your-org/your-repo
+    targetRevision: HEAD
+    path: manifests/
+    plugin:
+      name: argocd-harness-plugin
+```
+
+**Step 2.** Use expressions in your manifests
+
+```yaml title="manifests/deployment.yaml"
+spec:
+  replicas: <+serviceVariables.replicas>
+  template:
+    spec:
+      containers:
+        - name: app
+          image: myapp:<+serviceVariables.imageTag>
+          env:
+            - name: LOG_LEVEL
+              value: <+env.variables.logLevel>
+            - name: ENV_NAME
+              value: <+env.name>
+```
+
+**Step 3.** Sync the application
+
+Expressions resolve at manifest generation time. Sync (or let auto-sync trigger) and the deployed manifest contains the resolved values.
+
+### Limitations
+
+| Limitation | Details |
+|---|---|
+| Kustomize `secretGenerator` | Secret resolution inside `secretGenerator`-produced `Secret` objects is unverified; use plain `Secret` manifests instead until confirmed. |
+| Application source type shows as `Plugin` | Argo CD shows source type as **Plugin** instead of Helm/Directory. Path listing in UI will not work; specify paths manually. |
+| `HELM_ARGS` | Shell-injection risk; see [warning below](#helm_args-environment-variable). |
+
+---
+
+## Manifest tool selection
+
+The plugin automatically determines which manifest rendering tool to use based on your application configuration and repository contents.
+
+### Application discovery
+
+The plugin takes over manifest generation for an Application in two ways:
+
+| Method | How |
+|---|---|
+| **Explicit plugin name** (recommended) | `spec.source.plugin.name: argocd-harness-plugin` set on the Application |
+| **Auto-discovery** | `.harness.yaml` is present in the Application's source directory |
+
+With the explicit plugin name, Argo CD routes directly to the plugin regardless of what files are in the repo. Auto-discovery only runs when no plugin name is set: Argo CD probes the source directory for `.harness.yaml` and claims the Application if found.
+
+### Tool selection at generation time
+
+Once the plugin is handling an Application, it auto-detects the manifest tool at generation time by inspecting the source directory:
+
+| Priority | Condition | Tool used |
+|---|---|---|
+| 1 | `.harness.yaml` contains `tool: <value>` | Explicit pin: `helm`, `kustomize`, or `native` |
+| 2 | `kustomization.yaml`, `kustomization.yml`, or `Kustomization` exists | `kustomize build .` |
+| 3 | `Chart.yaml` or `values.yaml` exists | `helm template` |
+| 4 | None of the above | Plain manifests (native) |
+
+`tool:` in `.harness.yaml` is optional. Without it, the plugin auto-detects based on files present. Use it only to pin a specific tool or resolve ambiguity (e.g., a repo that has both `Chart.yaml` and `kustomization.yaml`).
+
+Expressions are resolved on the tool's **output**, after Helm or Kustomize has already rendered the manifests.
+
+### Plain manifests
+
+No `Chart.yaml` or `kustomization.yaml`: just raw manifests. No extra configuration needed:
+
+```yaml title="manifests/configmap.yaml"
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  log-level: <+env.variables.logLevel>
+  cluster: <+env.variables.clusterName>
+```
+
+### Helm
+
+Plugin runs `helm template` and resolves expressions in the output. Helm subchart dependencies (`helm dependency build`) run automatically; no need to vendor `charts/`:
+
+```yaml title="values.yaml"
+replicaCount: <+serviceVariables.replicas>
+image:
+  tag: <+serviceVariables.imageTag>
+```
+
+### Kustomize
+
+Plugin runs `kustomize build .` and resolves expressions in the output. Expressions can appear in any resource Kustomize renders, including patches:
+
+```yaml title="overlays/production/patch-replicas.yaml"
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: myapp
 spec:
   replicas: <+serviceVariables.replicas>
-  template:
-    spec:
-      containers:
-      - name: myapp
-        image: myapp:<+serviceVariables.imageTag>
-        env:
-        - name: API_KEY
-          value: <+serviceVariables.apiKey>
 ```
 
-Common use cases for service variables:
-- Replica counts
-- Image tags
-- Service-specific configuration values
-- API keys or tokens
-
-## Use environment variables
-
-Environment variables are defined at the environment level and apply to all services deployed to that environment. They're useful for values that are consistent across all services in an environment.
-
-### Define environment variables
-
-1. In your Harness project, go to **Deployments** > **Environments**.
-2. Select your environment, then go to the **Configuration** tab.
-3. Under **Variables**, click **Add Variable**.
-4. Enter a name, select a type, and provide a value.
-5. Save the environment.
-
-### Use environment variables in manifests
-
-Reference environment variables using the `<+env.variables.variableName>` syntax:
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-config
-  namespace: <+env.variables.namespace>
-data:
-  log-level: <+env.variables.logLevel>
-  cluster-name: <+env.variables.clusterName>
-```
-
-Common use cases for environment variables:
-- Namespace names
-- Cluster names
-- Environment-specific configuration (log levels, feature flags)
-- Database connection strings
-
-## Use environment properties
-
-Environment properties provide access to environment metadata that's automatically available in Harness. These are read-only values that describe the environment itself.
-
-### Available environment properties
-
-- `<+env.name>` - Environment display name
-- `<+env.identifier>` - Environment identifier
-- `<+env.type>` - Environment type: "Production" or "PreProduction"
-- `<+env.description>` - Environment description
-- `<+env.color>` - Environment color code
-
-### Example usage
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-config
-data:
-  environment-name: <+env.name>
-  environment-type: <+env.type>
-  environment-id: <+env.identifier>
-```
-
-## Use fixed variables
-
-Fixed variables are defined at the account, organization, or project level and are accessible across all services and environments. These cannot be overridden at the service or environment level, making them ideal for global configuration values.
-
-### Define fixed variables
-
-1. Go to **Account Settings**, **Organization Settings**, or **Project Settings** (depending on scope).
-2. Navigate to **Variables**.
-3. Click **Add Variable** and define your variable.
-4. Save the settings.
-
-### Use fixed variables in manifests
-
-Reference fixed variables using the appropriate scope prefix:
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-config
-data:
-  account-id: <+variable.account.companyId>
-  org-region: <+variable.org.defaultRegion>
-  project-name: <+variable.projectCode>
-```
-
-:::info Variable type distinctions
-
-- `<+env.variables.xyz>` - Environment variables (can be overridden at ENV_GLOBAL level)
-- `<+env.name>` - Environment metadata properties (fixed, read-only)
-- `<+variable.account.xyz>` - Fixed variables (cannot be overridden)
-
+:::warning Kustomize + `secretGenerator`
+Expression resolution for `kind: Secret` objects produced by Kustomize's `secretGenerator` is not yet verified. Use plain `Secret` manifests (not `secretGenerator`) if you need secret injection with Kustomize.
 :::
 
-## Use secret variables
+### `.harness.yaml` (optional)
 
-When you define a variable as type **Secret** in Harness, it follows a two-stage resolution process to ensure secure handling of sensitive values.
+`.harness.yaml` in the source directory serves two independent purposes:
 
-### How secret resolution works
+1. **Auto-discovery trigger**: when `spec.source.plugin.name` is not set on the Application, the plugin claims it if this file is present.
+2. **Tool pin**: the optional `tool:` field forces a specific manifest generation tool, overriding auto-detection.
 
-Secret variables resolve in two stages:
+```yaml title=".harness.yaml"
+tool: kustomize   # optional: one of helm, kustomize, native
+```
 
-1. **Expression resolution (manifest generation):** The expression `<+serviceVariables.secretName>` is converted to `<+secrets.getValue('secretReference')>` format
-2. **Secret retrieval (deployment time):** The actual secret value is injected when the manifest is applied to the cluster
+The file is valid with or without `tool:`. An empty `.harness.yaml` (or one without `tool:`) still triggers auto-discovery; the tool is then auto-detected from the directory contents at generation time.
 
-This two-stage approach ensures that:
-- Secret references are properly formatted during manifest generation
-- Actual secret values are only retrieved at deployment time
-- Harness doesn't need to access your secret manager during the manifest generation phase
+---
 
-### Define a secret variable
+## Expression reference
 
-1. In your service or environment, add a variable with type **Secret**.
-2. In the value field, provide the reference to your Harness secret (for example, `account.prodDbPassword` or `org.apiKey`).
-3. Save the configuration.
+All expressions resolve at **manifest generation time** (pre-deployment, not runtime).
 
-### Use secret variables in manifests
+### Expression types
 
-```yaml
-# Service variable definition in Harness
-variables:
-  - name: dbPassword
-    type: Secret
-    value: account.prodDbPassword
+| Expression | Source | Example |
+|---|---|---|
+| `<+serviceVariables.name>` | Service-level variables | `<+serviceVariables.replicas>` |
+| `<+env.variables.name>` | Environment-level variables | `<+env.variables.logLevel>` |
+| `<+env.name>` | Environment display name | `production` |
+| `<+env.identifier>` | Environment identifier | `prod` |
+| `<+env.type>` | Environment type | `Production` or `PreProduction` |
+| `<+env.description>` | Environment description | |
+| `<+variable.account.name>` | Account-scope fixed variable | `<+variable.account.companyId>` |
+| `<+variable.org.name>` | Org-scope fixed variable | `<+variable.org.defaultRegion>` |
+| `<+variable.name>` | Project-scope fixed variable | `<+variable.projectCode>` |
+| `<+secrets.getValue("ref")>` | Secret (direct reference) | `<+secrets.getValue("vault_secret")>` |
+| `<+serviceVariables.name>` (Secret type) | Secret via service variable | resolves to `<+secrets.getValue(...)>` |
 
-# In your Kubernetes manifest
+### Define variables
+
+- **Service variables:** Deployments → Services → [Service] → Configuration → Variables
+- **Environment variables:** Deployments → Environments → [Environment] → Configuration → Variables
+- **Fixed variables:** Account/Org/Project Settings → Variables
+
+### Override priority
+
+When the same variable name exists at multiple levels, the highest-priority override wins:
+
+```
+ENV_SERVICE  >  Service (base)  >  ENV_GLOBAL  >  Environment (base)
+```
+
+| Override type | How to configure | Scope |
+|---|---|---|
+| **ENV_SERVICE** | Environment → Service Overrides → select service | Overrides a service variable for a specific service+environment pair |
+| **ENV_GLOBAL** | Environment → Configuration → Variables | Overrides an environment variable for all services in that environment |
+
+### Secret variables
+
+Variables defined as type **Secret** in Harness go through two-stage resolution:
+
+1. **Manifest generation:** `<+serviceVariables.dbPassword>` → `<+secrets.getValue('account.prodDbPassword')>`
+2. **Deployment time:** actual secret value injected into the cluster
+
+```yaml title="Secret manifest"
 apiVersion: v1
 kind: Secret
 metadata:
@@ -214,329 +237,260 @@ metadata:
 type: Opaque
 stringData:
   db-password: <+serviceVariables.dbPassword>
+  api-key: <+serviceVariables.apiKey>
 ```
 
-**Resolution process:**
-
-1. **After expression resolution (Stage 1):**
-   ```yaml
-   stringData:
-     db-password: <+secrets.getValue('account.prodDbPassword')>
-   ```
-
-2. **After secret retrieval (Stage 2 - deployment time):**
-   ```yaml
-   stringData:
-     db-password: actual-secret-value-from-harness
-   ```
-
 :::tip
-
-Secret variables should only be used in Kubernetes `Secret` objects. The ConfigManagementPlugin only resolves `<+secrets.getValue()>` expressions when they appear within a Secret resource.
-
+Secret expressions (`<+secrets.getValue()>`) are only resolved when they appear inside a `kind: Secret` resource.
 :::
 
-## Override variables per environment
+### Complete example
 
-You can override variable values for specific service and environment combinations. This allows you to use different values for the same variable depending on where the service is deployed.
-
-### Override service variables (ENV_SERVICE)
-
-Service variables can be overridden for a specific service+environment combination. This is useful when a service needs different configuration values in different environments.
-
-**Override priority:** ENV_SERVICE override > Base service variable
-
-**Example:** Override replica count for production
-
-1. In your service, define a base variable:
-   ```yaml
-   variables:
-     - name: replicas
-       value: "3"
-   ```
-
-2. Create an ENV_SERVICE override for the production environment:
-   - Go to **Deployments** > **Environments** > Select your environment
-   - Go to **Service Overrides**
-   - Select your service
-   - Add an override for the `replicas` variable with value `"10"`
-
-3. When deploying to production:
-   ```yaml
-   spec:
-     replicas: <+serviceVariables.replicas>  # Resolves to "10" in prod, "3" elsewhere
-   ```
-
-### Override environment variables (ENV_GLOBAL)
-
-Environment variables can be overridden at the environment level, affecting all services deployed to that environment.
-
-**Override priority:** ENV_GLOBAL override > Base environment variable
-
-**Example:** Override log level for all services in production
-
-1. Define a base environment variable:
-   ```yaml
-   # Environment: production
-   variables:
-     - name: logLevel
-       value: "INFO"
-   ```
-
-2. Create an ENV_GLOBAL override:
-   - Go to **Deployments** > **Environments** > Select your environment
-   - Go to **Configuration** > **Variables**
-   - Override the `logLevel` variable with value `"DEBUG"`
-
-3. All services in production will use:
-   ```yaml
-   env:
-   - name: LOG_LEVEL
-     value: <+env.variables.logLevel>  # Resolves to "DEBUG" for all services in prod
-   ```
-
-### Override scope summary
-
-| Variable Type | Override Level | Scope |
-|--------------|----------------|-------|
-| Service variables | ENV_SERVICE | Service-specific per environment |
-| Environment variables | ENV_GLOBAL | Environment-wide for all services |
-
-## Understand GitOps vs pipeline expressions
-
-GitOps expressions differ from pipeline expressions in several important ways. Understanding these differences helps you choose the right expression type for your use case.
-
-### Key differences
-
-| Aspect | GitOps Expressions | Pipeline Expressions |
-|--------|-------------------|---------------------|
-| **Resolution Time** | Manifest generation (pre-deployment) | Runtime (during pipeline execution) |
-| **Context** | Service + Environment + Metadata only | Full pipeline context (stage, step, infrastructure, etc.) |
-| **Override Types** | ENV_SERVICE, ENV_GLOBAL | Multiple override levels (infrastructure, stage, service, etc.) |
-| **Available Expressions** | `serviceVariables.*`, `env.*`, `secrets.getValue()`, `variable.*` | Full library (`pipeline.*`, `artifact.*`, `infra.*`, `stage.*`, etc.) |
-
-### Limitations
-
-GitOps expressions do not support:
-
-- Pipeline-specific expressions (`<+pipeline.*>`, `<+stage.*>`)
-- Artifact expressions (`<+artifact.*>`)
-- Infrastructure expressions (`<+infra.*>`)
-- Output variables from previous pipeline steps
-- Runtime pipeline context (execution details, step outputs, etc.)
-
-### When to use GitOps expressions
-
-Use GitOps expressions when:
-- You need values that are known at manifest generation time
-- Values are tied to service or environment configuration
-- You want to inject values into Kubernetes manifests before deployment
-- You need environment-specific or service-specific configuration
-
-### When to use pipeline expressions
-
-Use pipeline expressions when:
-- You need runtime values (artifact versions, build numbers, etc.)
-- Values depend on pipeline execution context
-- You need step outputs or infrastructure details
-- Values are generated during pipeline execution
-
-## Example: Complete application manifest
-
-This example shows a complete Kubernetes deployment manifest using various Harness expression types.
-
-### Deployment with multiple expression types
-
-```yaml
+```yaml title="deployment.yaml"
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: myapp
-  namespace: <+env.variables.namespace>  # Environment variable
+  namespace: <+env.variables.namespace>
   labels:
-    environment: <+env.type>  # Environment property (Production/PreProduction)
-    app: myapp
+    environment: <+env.type>
 spec:
-  replicas: <+serviceVariables.replicas>  # Service variable (Number type)
-  selector:
-    matchLabels:
-      app: myapp
+  replicas: <+serviceVariables.replicas>
   template:
-    metadata:
-      labels:
-        app: myapp
     spec:
       containers:
-      - name: myapp
-        image: myapp:<+serviceVariables.imageTag>  # Service variable (String)
-        env:
-        - name: LOG_LEVEL
-          value: <+env.variables.logLevel>  # Environment variable
-        - name: API_KEY
-          valueFrom:
-            secretKeyRef:
-              name: app-secrets
-              key: api-key
-        - name: REGION
-          value: <+serviceVariables.region>  # Service variable
-        - name: ENVIRONMENT_NAME
-          value: <+env.name>  # Environment property
-        resources:
-          limits:
-            memory: <+serviceVariables.memoryLimit>
-            cpu: <+serviceVariables.cpuLimit>
-          requests:
-            memory: <+serviceVariables.memoryRequest>
-            cpu: <+serviceVariables.cpuRequest>
+        - name: myapp
+          image: myapp:<+serviceVariables.imageTag>
+          env:
+            - name: LOG_LEVEL
+              value: <+env.variables.logLevel>
+            - name: REGION
+              value: <+serviceVariables.region>
+            - name: ENV_NAME
+              value: <+env.name>
+          resources:
+            limits:
+              memory: <+serviceVariables.memoryLimit>
+              cpu: <+serviceVariables.cpuLimit>
 ```
 
-### ConfigMap example
+### GitOps expressions vs pipeline expressions
 
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-config
-  namespace: <+env.variables.namespace>
-data:
-  # Environment metadata
-  environment-name: <+env.name>
-  environment-type: <+env.type>
-  environment-id: <+env.identifier>
-  
-  # Service variables
-  max-connections: "<+serviceVariables.maxConnections>"
-  cache-ttl: <+serviceVariables.cacheTtl>
-  
-  # Environment variables
-  log-level: <+env.variables.logLevel>
-  cluster-name: <+env.variables.clusterName>
-  
-  # Nested expressions
-  api-endpoint: "https://api.<+serviceVariables.region>.example.com"
-  
-  # Fixed variables
-  company-id: <+variable.account.companyId>
-```
+GitOps expressions are a subset of Harness expressions: they only have access to service and environment context, not pipeline runtime context.
 
-### Secret example
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: app-secrets
-  namespace: <+env.variables.namespace>
-type: Opaque
-stringData:
-  # Secret variables resolve in two stages:
-  # 1. Expression resolution: <+serviceVariables.apiKey> → <+secrets.getValue('account.myApiKey')>
-  # 2. Secret retrieval: Actual value injected at deployment time
-  api-key: <+serviceVariables.apiKey>
-  db-password: <+serviceVariables.dbPassword>
-  oauth-token: <+serviceVariables.oauthToken>
-```
-
-## Troubleshoot common issues
-
-### Expression not resolving
-
-:::note
-
-Try performing a hard refresh of the application to invalidate cache. Most issues must be fixed by this.
-
+:::note Exception for PR Pipelines
+When syncing manifests within PR Pipelines (for example, using the GitOps Sync step), GitOps expressions can access pipeline runtime context. This allows you to reference pipeline variables, execution details, and other pipeline-level expressions during PR Pipeline execution.
 :::
 
-**Symptom:** Expression appears literally in the deployed manifest instead of the resolved value (for example, `<+serviceVariables.replicas>` instead of `3`).
+| | GitOps expressions | Pipeline expressions |
+|---|---|---|
+| **When resolved** | Manifest generation (pre-deploy) | Pipeline runtime |
+| **Context** | Service + environment + metadata | Full pipeline (`artifact.*`, `infra.*`, `stage.*`, etc.) |
+| **Not available** | `pipeline.*`, `stage.*`, `artifact.*`, `infra.*` | |
 
-**Possible causes and solutions:**
+Use GitOps expressions when the value is known at manifest generation time and tied to service or environment config. Use pipeline expressions for artifact versions, build numbers, or step outputs.
 
-1. **Variable doesn't exist:**
-   - Verify the variable exists in Harness UI (Service → Variables or Environment → Variables)
-   - Check that the variable name matches exactly (expressions are case-sensitive)
-   - Ensure you're using the correct scope (service variable vs environment variable)
+---
 
-2. **ConfigManagementPlugin not configured:**
-   - Verify the ArgoCD Harness Plugin is enabled in your GitOps agent
-   - Check that your application is using the Harness plugin for manifest generation
-   - Review the agent installation logs for plugin configuration errors
+## Enable the plugin on an existing agent or BYOA
 
-3. **Typo in expression:**
-   - Double-check the expression syntax: `<+serviceVariables.variableName>`
-   - Ensure there are no extra spaces or special characters
-   - Verify the variable name matches the exact spelling in Harness
+The **Enable ArgoCD Harness Plugin** checkbox can only be set at initial Agent installation. Use one of these patch paths if your agent is already installed.
 
-### Override not working
+### Helm chart installations
 
-**Symptom:** Variable override is configured but the original value is still being used.
+1. Set in `values.yaml`:
 
-**Possible causes and solutions:**
+   ```yaml title="values.yaml"
+   harness:
+     argocdHarnessPlugin:
+       enabled: true
+   ```
 
-1. **Wrong override scope:**
-   - Service variables must be overridden at ENV_SERVICE level (Service Overrides in environment)
-   - Environment variables must be overridden at ENV_GLOBAL level (Environment Variables)
-   - You cannot override service variables using ENV_GLOBAL overrides
+2. Upgrade the release:
 
-2. **Override not saved:**
-   - Verify the override was saved in Harness UI
-   - Check that you selected the correct service+environment combination for ENV_SERVICE overrides
-   - Ensure the variable name in the override matches exactly (case-sensitive)
+   ```bash
+   helm upgrade <release-name> gitops-agent/gitops-helm \
+     --values values.yaml \
+     --namespace <agent-namespace>
+   ```
 
-3. **Override value is invalid:**
-   - Check that the override value is not null or empty
-   - Verify the value type matches the variable type (Number vs String)
-   - Ensure the override is enabled and active
+3. Verify Kustomize is available (requires sidecar image ≥ `v0.0.18`):
+
+   ```bash
+   kubectl exec -n <agent-namespace> <argocd-repo-server-pod> \
+     -c argocd-harness-plugin -- kustomize version
+
+   kubectl exec -n <agent-namespace> <argocd-repo-server-pod> \
+     -c argocd-harness-plugin -- helm version
+   ```
+
+   If `kustomize version` returns "command not found," bump the sidecar image tag above `v0.0.18` and re-apply.
+
+### Plain Kubernetes manifest installations
+
+1. Apply the plugin ConfigMap:
+
+   ```bash
+   kubectl apply -n <agent-namespace> -f - <<'EOF'
+   apiVersion: v1
+   kind: ConfigMap
+   metadata:
+     name: argocd-harness-plugin
+     namespace: <agent-namespace>
+   data:
+     harness.yaml: |
+       ---
+       apiVersion: argoproj.io/v1alpha1
+       kind: ConfigManagementPlugin
+       metadata:
+         name: argocd-harness-plugin
+       spec:
+         version: v1.0
+         allowConcurrency: true
+         discover:
+           find:
+             command:
+               - /bin/sh
+               - -c
+               - "test -f .harness.yaml"
+         init:
+           command:
+             - /bin/sh
+             - -c
+             - |
+               set -o pipefail
+               if [ -f "Chart.yaml" ]; then
+                 helm dependency build > /dev/null 2>&1 || true
+               fi
+         generate:
+           command:
+             - /bin/sh
+             - -c
+             - |
+               set -o pipefail
+               if [ -f ".harness.yaml" ] && grep -q '^tool:' ".harness.yaml"; then
+                 TOOL=$(grep '^tool:' ".harness.yaml" | head -1 | cut -d: -f2 | tr -d ' "')
+               else
+                 TOOL=""
+               fi
+
+               if [ "$TOOL" = "kustomize" ] || { [ -z "$TOOL" ] && { [ -f "kustomization.yaml" ] || [ -f "kustomization.yml" ] || [ -f "Kustomization" ]; }; }; then
+                 kustomize build . | argocd-harness-plugin generate -
+               elif [ "$TOOL" = "helm" ] || { [ -z "$TOOL" ] && { [ -f "Chart.yaml" ] || [ -f "values.yaml" ]; }; }; then
+                 helm template $ARGOCD_APP_NAME -n $ARGOCD_APP_NAMESPACE ${ARGOCD_ENV_HELM_ARGS} --include-crds . \
+                   | argocd-harness-plugin generate -
+               else
+                 argocd-harness-plugin generate .
+               fi
+         lockRepo: false
+   EOF
+   ```
+
+2. Patch the `argocd-repo-server` Deployment to add the sidecar (skip if already present):
+
+   ```bash
+   kubectl patch deployment argocd-repo-server -n <agent-namespace> --type=json -p='[
+     {"op": "add", "path": "/spec/template/spec/containers/-", "value": {
+       "name": "argocd-harness-plugin",
+       "command": ["/var/run/argocd/argocd-cmp-server"],
+       "image": "harness/gitops-agent-installer-helper:v0.0.18",
+       "imagePullPolicy": "IfNotPresent",
+       "securityContext": {"runAsUser": 999, "runAsGroup": 999, "capabilities": {"drop": ["NET_RAW"]}},
+       "volumeMounts": [
+         {"name": "var-files", "mountPath": "/var/run/argocd"},
+         {"name": "plugins", "mountPath": "/home/argocd/cmp-server/plugins"},
+         {"name": "tmp", "mountPath": "/tmp"},
+         {"name": "argocd-harness-plugin", "mountPath": "/home/argocd/cmp-server/config/plugin.yaml", "subPath": "harness.yaml"}
+       ]
+     }},
+     {"op": "add", "path": "/spec/template/spec/volumes/-", "value": {
+       "name": "argocd-harness-plugin",
+       "configMap": {"name": "argocd-harness-plugin"}
+     }}
+   ]'
+   ```
+
+3. Verify:
+
+   ```bash
+   kubectl rollout status deployment/argocd-repo-server -n <agent-namespace>
+   kubectl exec -n <agent-namespace> <argocd-repo-server-pod> \
+     -c argocd-harness-plugin -- kustomize version
+   ```
+
+:::note Upgrading from an older plugin install
+If you already have an `argocd-harness-plugin` ConfigMap from a previous install, re-applying the ConfigMap in step 1 is sufficient; you do not need to re-patch the Deployment. Just verify the sidecar image tag is ≥ `v0.0.18`.
+:::
+
+### `HELM_ARGS` environment variable
+
+The plugin passes `${ARGOCD_ENV_HELM_ARGS}` directly to `helm template`:
+
+```yaml
+spec:
+  source:
+    plugin:
+      name: argocd-harness-plugin
+      env:
+        - name: HELM_ARGS
+          value: -f values-dev.yaml --set replicaCount=3
+```
+
+:::warning Shell injection risk
+`HELM_ARGS` is passed to `helm template` without escaping. Only use it when all users with `Application` edit access are trusted. Prefer chart-native `values.yaml` overrides in shared or multi-tenant clusters.
+:::
+
+---
+
+## Troubleshooting
+
+### Expression appears literally in the deployed manifest
+
+The expression was not resolved: it shows as `<+serviceVariables.replicas>` instead of `3`.
+
+**Try first:** Hard-refresh the Argo CD application to invalidate the manifest cache.
+
+**Then check:**
+
+1. **Variable exists?** Verify the variable name and scope in Harness UI (exact match, case-sensitive).
+2. **Plugin enabled?** Check that `spec.source.plugin.name: argocd-harness-plugin` is set on the Application.
+3. **Typo?** Check for extra spaces or incorrect syntax; expressions are `<+serviceVariables.name>` not `<+ serviceVariables.name>`.
+
+### Kustomize: "command not found"
+
+```
+kustomize: command not found
+```
+
+The sidecar image predates Kustomize support. Bump the image tag to ≥ `v0.0.18` and re-apply. See [Enable the plugin on an existing agent or BYOA](#enable-the-plugin-on-an-existing-agent-or-byoa).
+
+### Override not taking effect
+
+1. **Wrong scope:** Service variables must be overridden at ENV_SERVICE level; environment variables at ENV_GLOBAL. You cannot override a service variable using ENV_GLOBAL.
+2. **Not saved?** Verify the override is saved and the correct service+environment combination is selected.
+3. **Name mismatch?** Override variable name must match exactly (case-sensitive).
+
+### Numeric value rendered as string
+
+Define the variable as type **Number** (not String) in Harness:
+
+```yaml
+variables:
+  - name: replicas
+    type: Number   # not String
+    value: 3
+```
 
 ### Secret not resolving
 
-**Symptom:** Secret variable shows the expression or `<+secrets.getValue()>` in the deployed pod instead of the actual secret value.
+1. Variable must be type **Secret** (not String) to trigger two-stage resolution.
+2. Secret must exist in Harness Secrets Manager before being referenced.
+3. Check secret reference format: `account.secretName` or `org.secretName`.
 
-**Troubleshooting steps:**
+---
 
-1. **Check variable type:**
-   - Verify the variable is defined as type **Secret** (not String)
-   - Secret variables must be type Secret to trigger the two-stage resolution
-
-2. **Verify secret reference:**
-   - Check that the secret exists in Harness Secrets Manager
-   - Verify the secret reference format is correct (`account.secretName` or `org.secretName`)
-   - Ensure you have access to the secret at the appropriate scope
-
-3. **Check pod environment:**
-   ```bash
-   # Check actual pod environment
-   kubectl exec pod-name -- env | grep API_KEY
-   # Should show actual secret value, not expression
-   ```
-   - If the literal expression appears in the pod, ConfigManagementPlugin secret resolution failed
-   - If the value is null or empty, the secret doesn't exist or access is denied
-   - Review ConfigManagementPlugin logs for secret resolution errors
-
-### Numeric variable becomes string
-
-**Symptom:** Numeric value appears as a string in the manifest (for example, `replicas: "3"` instead of `replicas: 3`).
-
-**Cause:** Variable was defined as String type instead of Number type.
-
-**Solution:**
-
-1. Go to your service or environment variables
-2. Edit the variable and change the type from **String** to **Number**
-3. Save the configuration
-4. The value will now be preserved as a number in the manifest
-
-```yaml
-# Correct variable definition
-variables:
-  - name: replicas
-    type: Number  # Not String
-    value: 3
-```
 ## Next steps
 
-You can now use Harness expressions in your GitOps application manifests to inject dynamic values based on service and environment configurations.
-
-- [Manage GitOps Applications](/docs/continuous-delivery/gitops/application/manage-gitops-applications)
-- [Use Harness Secret Expressions in Application Manifests](/docs/continuous-delivery/gitops/application/manage-gitops-applications#harness-secret-expressions-in-application-manifests)
-- [Secret Injection Harness Plugin](/docs/continuous-delivery/gitops/security/secret-injection-harness-plugin)
-
+- <a href="/docs/continuous-delivery/gitops/security/secret-injection-harness-plugin" target="_blank" rel="noopener noreferrer">Secret injection in GitOps applications</a>: Vault, Harness Secret Manager, and security model
+- <a href="/docs/continuous-delivery/gitops/application/manage-gitops-applications" target="_blank" rel="noopener noreferrer">Manage GitOps Applications</a>: Create, sync, and manage ArgoCD applications in Harness
+- <a href="/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics" target="_blank" rel="noopener noreferrer">Harness GitOps basics</a>: Core concepts and architecture of Harness GitOps
