@@ -2,8 +2,16 @@
 title: Harness Solutions Factory 2.X Overview
 description: Comprehensive overview guide to HSF 2.X
 sidebar_label: HSF 2.X Overview
-sidebar_position: 30
+sidebar_position: 40
 ---
+## HSF 2.5
+:::note
+HSF 2.5 was released in July of 2026
+:::
+HSF 2.5 removes the dependency on Harness Code Repository and provides a code refresh. Here's what's new:
+
+- Harness Solutions Factory and Harness Template Library are source available and can be found on Github.
+
 ## HSF 2.4
 :::note
 HSF 2.4 was released in February of 2026

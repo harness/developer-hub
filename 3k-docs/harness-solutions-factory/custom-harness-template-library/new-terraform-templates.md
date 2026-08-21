@@ -6,7 +6,7 @@ tags:
   - /kb/reference-architectures/hsf/htl/new-terraform-templates
 ---
 
-import Hsf from '@site/docs/harness-solutions-factory/custom-harness-template-library/new-terraform-templates.md';
+import Hsf from '@site/docs/harness-solutions-factory/template-library/new-terraform-templates.md';
 
 <Hsf />
 

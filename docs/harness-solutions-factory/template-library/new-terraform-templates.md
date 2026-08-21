@@ -10,6 +10,7 @@ tags:
   - templates
 sidebar_position: 40
 redirect_from: 
+    - /docs/harness-solutions-factory/custom-harness-template-library/new-terraform-templates
     - /kb/reference-architectures/hsf/htl/new-terraform-templates
 ---
 
@@ -17,7 +18,7 @@ This document will guide the user through the creation of new Terraform template
 
 ## Before you begin
 
-This document assumes that your local development environment has followed the steps outline in the [Developer Environment Setup](../configurations/developer-env-setup.md) guide.  Please review those requirements to ensure that you have all the tools necessary to proceed.
+This document assumes that your local development environment has followed the steps outline in the [Developer Environment Setup](../use-hsf/configurations/developer-env-setup.md) guide.  Please review those requirements to ensure that you have all the tools necessary to proceed.
 
 ## Walk-thru
 

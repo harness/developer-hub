@@ -4433,6 +4433,8 @@ internaldeveloperportal: [
           className: "horizontal-bar",
         },
         'harness-solutions-factory/new-to-hsf/overview',
+        'harness-solutions-factory/new-to-hsf/how-hsf-works',
+        'harness-solutions-factory/new-to-hsf/hsf-deployment-guide',
         'harness-solutions-factory/new-to-hsf/get-started',
         'harness-solutions-factory/new-to-hsf/hsf2-x',
         'harness-solutions-factory/new-to-hsf/hsf-upgrade',

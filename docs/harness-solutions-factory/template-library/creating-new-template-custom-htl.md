@@ -11,6 +11,8 @@ tags:
   - hsf
   - templates
 sidebar_position: 30
+redirect_from:
+    - /docs/harness-solutions-factory/custom-harness-template-library/creating-new-template-custom-htl
 ---
 
 import Tabs from '@theme/Tabs';
@@ -32,7 +34,7 @@ In this tutorial you will build a new template for the Harness Solutions Factory
 
 ## Before you begin
 
-- **Custom Harness Template Library repo:** When HSF is deployed into your account, it automatically creates a repository called `custom-harness-template-library` in the **Harness Platform Management** organization. Navigate to **Harness Platform Management** > **Repositories**, then clone `custom-harness-template-library` locally. Go to [Using your own SCM for Custom Harness Template Library](/docs/harness-solutions-factory/custom-harness-template-library/setup-custom-htl) to use your own SCM provider instead.
+- **Custom Harness Template Library repo:** When HSF is deployed into your account, it automatically creates a repository called `custom-harness-template-library` in the **Harness Platform Management** organization. Navigate to **Harness Platform Management** > **Repositories**, then clone `custom-harness-template-library` locally. Go to [Using your own SCM for Custom Harness Template Library](/docs/harness-solutions-factory/template-library/setup-custom-htl) to use your own SCM provider instead.
 - **Harness account access:** You need access to the Harness account where HSF is deployed. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to create or access an account.
 - **Template permissions:** You need **View**, **Create**, and **Edit** for [Templates](/docs/platform/role-based-access-control/permissions-reference#shared-resources) at the scope where you deploy (account, org, or project).
 - **Pipeline permissions:** You need **View** and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines) on the **Solutions Factory** project, so you can trigger the IACM workspace pipeline.
@@ -44,8 +46,8 @@ In this tutorial you will build a new template for the Harness Solutions Factory
     If any of these variables are missing or empty, the hidden fields in your workflow pass empty strings, and the provisioning pipeline fails with no clear error. Verify them before you author `catalog_template.yaml` in Step 10.
     :::
 
-- **Local tools:** Terraform or OpenTofu, `git`, and optionally Docker and `mise`. Go to [Developer Environment Setup](/docs/harness-solutions-factory/configurations/developer-env-setup) to install them, or open the repo in the bundled `.devcontainer/` and select **Reopen in Container** to get every tool preinstalled.
-- **Optional, `mise`:** `mise` (mise-en-place) is a task runner and tool version manager. It reads `.mise.toml` at the repo root and gives you consistent commands across operating systems. Every step below also gives the `make` equivalent, so `mise` is not required. Go to [Local Development Using mise](/docs/harness-solutions-factory/configurations/using-mise) to set it up, then run `mise tasks` to list the available tasks.
+- **Local tools:** Terraform or OpenTofu, `git`, and optionally Docker and `mise`. Go to [Developer Environment Setup](/docs/harness-solutions-factory/use-hsf/configurations/developer-env-setup) to install them, or open the repo in the bundled `.devcontainer/` and select **Reopen in Container** to get every tool preinstalled.
+- **Optional, `mise`:** `mise` (mise-en-place) is a task runner and tool version manager. It reads `.mise.toml` at the repo root and gives you consistent commands across operating systems. Every step below also gives the `make` equivalent, so `mise` is not required. Go to [Local Development Using mise](/docs/harness-solutions-factory/use-hsf/configurations/using-mise) to set it up, then run `mise tasks` to list the available tasks.
 
 ---
 
@@ -297,7 +299,7 @@ If you provide a `project_id`, you must also provide an `organization_id`. The p
 
 The files inside `templates/` define the actual Harness resources: pipelines, stages, steps, and step groups. Terraform renders them through the [`templatefile()`](https://developer.hashicorp.com/terraform/language/functions/templatefile) function, so they use interpolation placeholders rather than plain YAML.
 
-Go to [Configuring Stage Infrastructure](/docs/harness-solutions-factory/configurations/configuring-stage-infra) to review examples of inputs and templates with stage infrastructure details blended in.
+Go to [Configuring Stage Infrastructure](/docs/harness-solutions-factory/use-hsf/configurations/configuring-stage-infra) to review examples of inputs and templates with stage infrastructure details blended in.
 
 :::note
 To reduce the potential for errors, copy these files from a template that Harness Template Library already provides, then adapt them.
@@ -748,7 +750,7 @@ Edit `terraform.tfvars` with real values from your account, then run the followi
     make teardown
     ```
 
-Go to [Local Testing Using Make](/docs/harness-solutions-factory/configurations/local-testing-using-make) to review every available target.
+Go to [Local Testing Using Make](/docs/harness-solutions-factory/use-hsf/configurations/local-testing-using-make) to review every available target.
 
 </TabItem>
 <TabItem value="mise" label="mise">
@@ -840,7 +842,7 @@ Any time you update `catalog_template.yaml` and merge to `main`, run the **Regis
 
 You have built, tested, and registered a custom template that any user in your account can deploy from the IDP catalog. Extend it by adding stage infrastructure options, or use the same pattern to build additional templates in your library.
 
-- [Configuring Stage Infrastructure](/docs/harness-solutions-factory/configurations/configuring-stage-infra): Blend build infrastructure details into your stage templates.
-- [How to customize an existing template using Custom Harness Template Library](/docs/harness-solutions-factory/custom-harness-template-library/customizing-using-custom-htl): Modify a template Harness already ships instead of starting from scratch.
-- [Create new Terraform templates](/docs/harness-solutions-factory/custom-harness-template-library/new-terraform-templates): Review the scaffold file reference in more detail.
+- [Configuring Stage Infrastructure](/docs/harness-solutions-factory/use-hsf/configurations/configuring-stage-infra): Blend build infrastructure details into your stage templates.
+- [How to customize an existing template using Custom Harness Template Library](/docs/harness-solutions-factory/template-library/customizing-using-custom-htl): Modify a template Harness already ships instead of starting from scratch.
+- [Create new Terraform templates](/docs/harness-solutions-factory/template-library/new-terraform-templates): Review the scaffold file reference in more detail.
 - [Execute a workflow](/docs/harness-solutions-factory/use-hsf/workflows/execute-a-workflow): Run your registered workflow and interpret its output.

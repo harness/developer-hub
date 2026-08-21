@@ -12,6 +12,7 @@ tags:
 sidebar_position: 10
 redirect_from:
   - /kb/reference-architectures/hsf/htl/developer-env-setup
+  - /docs/harness-solutions-factory/configurations/developer-env-setup
 ---
 
 Developing for the Harness Template Library (HTL) requires a local environment with
@@ -54,7 +55,7 @@ A robust `Makefile` configuration is included within this repository. The comman
 - A supported version of Docker or a [Docker-compatible engine](https://code.visualstudio.com/remote/advancedcontainers/docker-options)
 - `Make` installed for your OS: [Windows](https://gnuwin32.sourceforge.net/packages/make.htm), or Mac with Xcode command line tools installed [or with Homebrew GNU Make](https://formulae.brew.sh/formula/make)
 
-Go to [Local Testing Using Make](/docs/harness-solutions-factory/configurations/local-testing-using-make) to review the testing workflow in detail.
+Go to [Local Testing Using Make](/docs/harness-solutions-factory/use-hsf/configurations/local-testing-using-make) to review the testing workflow in detail.
 
 To get the current list of available commands, enter `make help` in a Terminal session in this directory:
 
@@ -85,6 +86,6 @@ generate         Generate a new directory using a template type. The argument `n
 
 Your local environment is ready for Harness Template Library development. Continue with the following:
 
-- [Local Testing Using Make](/docs/harness-solutions-factory/configurations/local-testing-using-make): Run the full test suite against your templates locally.
-- [Using mise](/docs/harness-solutions-factory/configurations/using-mise): Manage Terraform and OpenTofu tool versions consistently.
-- [Create a new template in a custom HTL](/docs/harness-solutions-factory/custom-harness-template-library/creating-new-template-custom-htl): Build your first template once your environment is set up.
+- [Local Testing Using Make](/docs/harness-solutions-factory/use-hsf/configurations/local-testing-using-make): Run the full test suite against your templates locally.
+- [Using mise](/docs/harness-solutions-factory/use-hsf/configurations/using-mise): Manage Terraform and OpenTofu tool versions consistently.
+- [Create a new template in a custom HTL](/docs/harness-solutions-factory/template-library/creating-new-template-custom-htl): Build your first template once your environment is set up.

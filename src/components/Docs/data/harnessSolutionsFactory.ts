@@ -43,10 +43,10 @@ export const docsCards: CardSections = [
         link: "/docs/harness-solutions-factory/use-hsf/workflows/overview",
       },
       {
-        title: "Custom Template Library",
+        title: "Template Library",
         module: MODULES.hsf,
-        description: "Explore how to customize workflows and add it to the Custom Harness Template Library",
-        link: "/docs/harness-solutions-factory/custom-harness-template-library/customizing-using-custom-htl",
+        description: "Explore how to customize workflows and add it to your template library",
+        link: "/docs/harness-solutions-factory/template-library/customizing-using-custom-htl",
       },
     ],
   },

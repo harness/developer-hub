@@ -41,6 +41,8 @@ Because workspaces maintain ongoing state, you can go back into a workspace at a
 
 If you do not want to maintain ongoing state for a resource, for example for short-lived environments, you can choose to create an ephemeral workspace when submitting the workflow. Ephemeral workspaces are torn down automatically after execution completes. This can be done by going into the YAML of the workflow and setting the variable `is_ephemeral` to true.
 
+Go to [Ephemeral vs Managed Workspaces](../ephemeral-workspaces.md) to decide which setting fits a workflow.
+
 **Approvals**
 
 Via the Create and Manage IaCM pipeline, every workflow goes through two approval gates before resources are created or modified:

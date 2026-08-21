@@ -62,8 +62,8 @@ Secrets are also created at the organization level to securely manage authentica
 
 There are three repositories included in the deployment and exist under the organization level. You can find them under Harness Platform Management (organization) → Solutions Factory (account) → Code Repository (module) → Repositories:
 
-- The `harness-solutions-factory` repository houses all of the source code that is required to standup and run Harness Solutions Factory. A code branch rule called `harness_solutions_factory_codeowners` is created in this repository.
-- The `harness-template-library` repository houses all of the scaffold and templates for how to manage Harness resources. A code branch rule called `harness_solutions_factory_codeowners` is created in this repository.
+- The [`harness-solutions-factory` repository](https://github.com/harness/harness-solutions-factory) houses all of the source code that is required to standup and run Harness Solutions Factory. A code branch rule called `harness_solutions_factory_codeowners` is created in this repository.
+- The [`harness-template-library` repository](https://github.com/harness/harness-template-library) houses all of the scaffold and templates for how to manage Harness resources. A code branch rule called `harness_solutions_factory_codeowners` is created in this repository.
 - The `custom-harness-template-library` repository houses customized templates created to support Harness entity management and provisioning. It is created via a point in time mirror of `harness-template-library` when your instance of HSF is deployed.
 
 ### Projects

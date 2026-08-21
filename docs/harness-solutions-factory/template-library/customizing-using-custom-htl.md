@@ -10,6 +10,7 @@ tags:
   - templates
 sidebar_position: 20
 redirect_from: 
+    - /docs/harness-solutions-factory/custom-harness-template-library/customizing-using-custom-htl
     - /kb/reference-architectures/hsf/htl/customizing-using-custom-htl
 ---
 

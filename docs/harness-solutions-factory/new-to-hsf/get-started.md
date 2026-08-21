@@ -2,22 +2,10 @@
 title: Get started with HSF Post Deployment
 sidebar_label: Post Deployment Guide
 description: Onboarding guide for HSF
-keywords:
-  - hsf post deployment
-  - hsf onboarding
-  - hsf admins setup
-tags:
-  - hsf
-  - new-to-hsf
-sidebar_position: 20
+sidebar_position: 30
 ---
 
-Your Harness account team will handle the initial HSF deployment. Once
-deployment is complete, you can complete the configuration
-steps below.
-
-If you have not been through deployment yet or have questions about getting
-started, reach out to your Harness account team.
+If you haven't been through deployment yet or have questions about getting started, reach out to your Harness account team.
 
 ## Before you begin
 
@@ -70,8 +58,18 @@ the notification channel that works best for your team.
 
 Supported channels: **Slack**, **Email**, **Microsoft Teams**
 
-To configure notifications, navigate to the HSF Admins user group settings
-and add the appropriate notification connector.
+1. Navigate to **Account Settings**, then select **Access Control**.
+2. Select **User Groups**, then select **HSF Admins**.
+3. Under **Notification Preferences**, click **+Channel**.
+4. Select your channel and enter its details:
+   - **Slack:** the Slack channel incoming webhook URL.
+   - **Email/Alias:** the group email addresses that receive notifications.
+   - **Microsoft Teams:** the Microsoft Teams incoming webhook URL.
+5. Click **Test** to confirm the channel details are valid, then click
+   **Apply**.
+
+Go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences) to review the full list of notification
+channels and their settings.
 
 ## Review token configuration
 
@@ -137,14 +135,19 @@ update the following:
 ## Configure Kubernetes execution (optional)
 
 By default, HSF pipelines run on Harness Cloud infrastructure. To run
-pipelines on your own Kubernetes cluster, go to [Converting to Kubernetes](../configurations/converting-to-kubernetes.md).
+pipelines on your own Kubernetes cluster, go to [Convert your HSF installation to use Kubernetes](/docs/harness-solutions-factory/use-hsf/configurations/converting-to-kubernetes).
 
 ## Verify your installation
 
 Once you have completed the steps above, confirm everything is working:
 
-- [ ] Navigate to **IDP** → **Workflows** to see the default HSF
-      workflows listed.
+- [ ] Confirm the workflow layer is available for your operating mode:
+  - **Core+IDP:** Navigate to **IDP**, then select **Workflows**. The default
+    HSF workflows are listed.
+  - **Core+Hub:** Navigate to the **HSF Hub** project, then select
+    **Pipelines**. The HSF Hub pipelines are listed and available to run. These
+    pipelines are the Hub equivalent of the IDP workflows. Go to
+    [HSF Hub](../use-hsf/hsf-hub.md) to understand how they map to each other.
 - [ ] Confirm the `harness-platform-manager` service account exists at the
       account level.
 - [ ] Confirm the **HSF Admins**, **HSF Users**, and **HSF Mirror Reviewers**
@@ -162,7 +165,7 @@ go to [Created Resources](../use-hsf/created-resources.md).
 
 - Run your first workflow: execute an IDP workflow end to end and verify
   the output.
-- [Customize a workflow](../custom-harness-template-library/customizing-using-custom-htl.md): modify a default workflow using Custom Template
+- [Customize a workflow](../template-library/customizing-using-custom-htl.md): modify a default workflow using Custom Template
   Library.
 - [Upgrade HSF](../new-to-hsf/hsf-upgrade.md): how to pull and apply new HSF releases when they are
   available.

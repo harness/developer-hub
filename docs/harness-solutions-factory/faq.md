@@ -33,7 +33,9 @@ HSF is provided as a no-additional cost solution delivered as part of an existin
 <details>
 <summary>What modules do I need for HSF?</summary>
 
-HSF leverages Harness Internal Developer Portal, Infrastructure as Code Management and Harness Code Repository. You do not need to purchase additional modules specifically for HSF. If you do not have IDP, IaCM or HCR licensed, we will provide you a limited license in order to use HSF and manage Harness entities.
+HSF leverages Harness Internal Developer Portal and Infrastructure as Code Management. You do not need to purchase additional modules specifically for HSF. If you do not have IDP or IaCM licensed, we will provide you a limited license in order to use HSF and manage Harness entities.
+
+If you do not want to leverage Harness Internal Developer Portal there is an option to run a headless version called Hub. 
 </details>
 
 ---
@@ -43,9 +45,13 @@ HSF leverages Harness Internal Developer Portal, Infrastructure as Code Manageme
 <details>
 <summary>What is required to get HSF deployed?</summary>
 
-An **active Harness account** and a **personal access token** are the only requirements. 
+Before HSF can be deployed, confirm the following:
 
-Your token will be used to create account-level resources, but can be deleted after deployment.
+- IaCM is required. Depending on your architecture and the operating mode you choose, you may also need IDP and Harness Code Repository. If your account isn't licensed for the modules you need, Harness can provide a limited license covering HSF usage for managing Harness entities.
+- You have an account with admin-level permissions, or can coordinate with someone who does to generate a temporary Personal Access Token (PAT). This token is used to create account-level resources during deployment and can be deleted afterward.
+- No account-level OPA policies are in place that would block pipeline execution.
+
+Go to [Harness Solutions Factory (HSF) Overview](/docs/harness-solutions-factory/new-to-hsf/overview) to choose your onboarding path.
 </details>
 
 <details>

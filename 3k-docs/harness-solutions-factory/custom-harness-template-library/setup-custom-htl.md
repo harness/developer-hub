@@ -6,7 +6,7 @@ tags:
   - /kb/reference-architectures/hsf/htl/setup-custom-htl
 ---
 
-import Hsf from '@site/docs/harness-solutions-factory/custom-harness-template-library/setup-custom-htl.md';
+import Hsf from '@site/docs/harness-solutions-factory/template-library/setup-custom-htl.md';
 
 <Hsf />
 

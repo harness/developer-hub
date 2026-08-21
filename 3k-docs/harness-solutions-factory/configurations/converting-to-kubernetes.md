@@ -6,7 +6,7 @@ tags:
   - /kb/reference-architectures/hsf/htl/converting-to-kubernetes
 ---
 
-import Hsf from '@site/docs/harness-solutions-factory/configurations/converting-to-kubernetes.md';
+import Hsf from '@site/docs/harness-solutions-factory/use-hsf/configurations/converting-to-kubernetes.md';
 
 <Hsf />
 

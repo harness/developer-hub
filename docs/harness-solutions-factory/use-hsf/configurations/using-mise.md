@@ -9,6 +9,8 @@ tags:
   - hsf
   - configurations
 sidebar_position: 20
+redirect_from:
+    - /docs/harness-solutions-factory/configurations/using-mise
 ---
 
 This document explains what mise is, how it is used in the HSF repository,

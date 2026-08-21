@@ -9,6 +9,8 @@ tags:
   - hsf
   - templates
 sidebar_position: 10
+redirect_from:
+    - /docs/harness-solutions-factory/custom-harness-template-library/setup-custom-htl
 ---
 
 Custom Harness Template Library is a point-in-time mirror of HTL that your organization controls. You can copy templates from HTL into Custom HTL and modify them there. If Harness releases an update to a template in HTL, it will not overwrite your customizations in Custom HTL: you choose when to adopt Harness updates. The Custom Harness Template Library is included with the deployment of your Harness Solutions Factory.
@@ -47,7 +49,7 @@ _**Note**: The steps detailed here will assume that you have permissions to crea
 
 A Terraform scaffold is included within the baseline repository (`scaffolds/terraform`).  This scaffold includes everything required to begin building out new templates for use with the Solutions Factory.
 
-[Learn more about creating new templates](/docs/harness-solutions-factory/configurations/developer-env-setup)
+[Learn more about creating new templates](/docs/harness-solutions-factory/use-hsf/configurations/developer-env-setup)
 
 ## Update Harness-provided samples and baseline templates
 

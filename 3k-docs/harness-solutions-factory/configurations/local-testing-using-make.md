@@ -6,7 +6,7 @@ tags:
   - /kb/reference-architectures/hsf/htl/local-testing-using-make
 ---
 
-import Hsf from '@site/docs/harness-solutions-factory/configurations/local-testing-using-make.md';
+import Hsf from '@site/docs/harness-solutions-factory/use-hsf/configurations/local-testing-using-make.md';
 
 <Hsf />
 

@@ -6,7 +6,7 @@ tags:
   - /kb/reference-architectures/hsf/htl/configuring-stage-infra
 ---
 
-import Hsf from '@site/docs/harness-solutions-factory/configurations/configuring-stage-infra.md';
+import Hsf from '@site/docs/harness-solutions-factory/use-hsf/configurations/configuring-stage-infra.md';
 
 <Hsf />
 

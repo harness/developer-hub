@@ -6,7 +6,7 @@ tags:
   - /kb/reference-architectures/hsf/htl/developer-env-setup
 ---
 
-import Hsf from '@site/docs/harness-solutions-factory/configurations/developer-env-setup.md';
+import Hsf from '@site/docs/harness-solutions-factory/use-hsf/configurations/developer-env-setup.md';
 
 <Hsf />
 

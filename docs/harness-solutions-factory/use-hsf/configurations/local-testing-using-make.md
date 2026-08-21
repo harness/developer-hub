@@ -4,6 +4,7 @@ description: This document details the available Makefile commands.  The goal is
 sidebar_position: 20
 redirect_from: 
     - /kb/reference-architectures/hsf/htl/local-testing-using-make
+    - /docs/harness-solutions-factory/configurations/local-testing-using-make
 ---
 This document details the available Makefile commands.  The goal is to simplify the various commands to rapid testing and prototyping.
 

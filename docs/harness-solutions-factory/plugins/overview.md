@@ -14,7 +14,15 @@ sidebar_position: 10
 Harness Solutions Factory (HSF) provides a small set of plugins that package common automation tasks into reusable, pipeline-friendly steps. Below is a description of each available plugin and the problem it is designed to solve.
 
 :::note
-All of these plugins are publicly available and all the images are stored in [DockerHub](https://hub.docker.com/u/harnesssolutionfactory). 
+All of these plugins are publicly available and all the images are stored in [DockerHub](https://hub.docker.com/u/harnesssolutionfactory).
+
+| Plugin Name | Latest Version |
+|---|---|
+| harnesssolutionfactory/harness-manage-iacm-workspace | v1.7.7 |
+| harnesssolutionfactory/harness-token-rotation | v1.2.4 |
+| harnesssolutionfactory/harness-cr-mirror-repositories | v1.2.1 |
+| harnesssolutionfactory/harness-idp-resource-manager | v1.3.6 |
+| harnesssolutionfactory/harness-python-api-sdk | v1.14.0 |
 :::
 
 ### Harness Code Repository Mirror Repositories Plugin
@@ -25,14 +33,7 @@ Synchronizes a specified Git reference (branch, tag, or commit SHA) from a sourc
 
 Automates the rotation of service account tokens and updates corresponding secrets. This plugin helps enforce security best practices by ensuring expired tokens are removed and credentials remain current without manual intervention.
 
-### Harness STO Configuration Manager Plugin
-
-Iterates over a repository to discover a hierarchical set of configuration files and arguments, then applies them to the selected Harness STO scanner. This plugin enables centralized, repository-driven management of STO scan configurations.
 
 ### [Manage IACM Plugin](/docs/harness-solutions-factory/plugins/harness-manage-iacm-workspace)
 
 Manages Harness IDP entities through Harness APIs. The solution also supports backward compatibility by registering and updating IDP 1.0-style configurations via Git sync.
-
-### Harness IDP Service Manager Plugin
-
-A container-based tool for managing Harness Internal Developer Portal (IDP) entities by processing Harness services and generating corresponding IDP components with proper hierarchical organization.

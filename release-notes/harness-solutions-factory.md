@@ -45,7 +45,7 @@ These release notes summarize what changed in the [Harness Solutions Factory](ht
 
 - **Legacy AWS factory connector:** The dedicated **HSF Solutions Factory Connector** and related deprecated AWS connector metadata are **removed effective with HSF repository v2.4.0 (February 2026)** and are no longer delivered in updated Pilot Light bundles. **Action required:** Before you mirror or apply v2.4.0, configure a standard Harness [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) (overview: [Connect to a cloud provider](/docs/platform/connectors/cloud-providers/connect-to-a-cloud-provider)) and align workspace variables using [Harness Solutions Factory Docs](/docs/harness-solutions-factory) and [Created resources](/docs/harness-solutions-factory/use-hsf/created-resources); then run `Manage Pilot Light` so the upgrade does not depend on the removed connector.
 
-- **Register Official IDP Templates pipeline:** The **Register Official IDP Templates** pipeline is **removed in HSF v2.4.0 (February 2026)**. Register templates with **Register Custom IDP Templates** and the custom Harness template library instead. **Migration:** Use [Workflows](/docs/harness-solutions-factory/use-hsf/workflows/overview) for how default workflows are registered and for **Register Custom IDP Templates**, and [Customize using Custom HTL](/docs/harness-solutions-factory/custom-harness-template-library/customizing-using-custom-htl) for `idp_registry_mgr.yaml` and registration scope.
+- **Register Official IDP Templates pipeline:** The **Register Official IDP Templates** pipeline is **removed in HSF v2.4.0 (February 2026)**. Register templates with **Register Custom IDP Templates** and the custom Harness template library instead. **Migration:** Use [Workflows](/docs/harness-solutions-factory/use-hsf/workflows/overview) for how default workflows are registered and for **Register Custom IDP Templates**, and [Customize using Custom HTL](/docs/harness-solutions-factory/template-library/customizing-using-custom-htl) for `idp_registry_mgr.yaml` and registration scope.
 
 ---
 
@@ -219,7 +219,7 @@ These release notes summarize what changed in the [Harness Solutions Factory](ht
 
 ### Feature Improvements
 
-- **Template library documentation:** Expanded guidance for local development, creating and customizing templates, and moving between Harness Cloud and self-managed Kubernetes. See [Custom Harness Template Library Docs](/docs/harness-solutions-factory/custom-harness-template-library/setup-custom-htl).
+- **Template library documentation:** Expanded guidance for local development, creating and customizing templates, and moving between Harness Cloud and self-managed Kubernetes. See [Custom Harness Template Library Docs](/docs/harness-solutions-factory/template-library/setup-custom-htl).
 
 - **Scaffold and layout cleanup:** Template files were reorganized for easier customization; Artifactory assets moved to clearer directory names; OCI Helm path typos were corrected; several variables were renamed for consistency.
 
