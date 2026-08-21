@@ -6119,6 +6119,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'release-management/inputs-and-variables/overview',
             'release-management/inputs-and-variables/input-store',
+            'release-management/inputs-and-variables/supported-expressions',
             {
               type: 'category',
               label: 'Variables',
