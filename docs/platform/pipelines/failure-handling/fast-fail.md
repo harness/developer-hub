@@ -35,3 +35,11 @@ Here is a sample YAML for setting up fail fast in your pipeline:
 ```
 
 Adding `failAll: true` to the **failure strategy** at **stage level** will enable fail fast behavior.
+
+## Fail fast with matrix iterations
+
+`failAll: true` also applies when the failing stage uses a [matrix strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#matrix-strategies). When one matrix iteration fails, Harness triggers the configured failure strategy for the stage, for example rolling back through **PipelineRollback**.
+
+`failAll: true` does not cancel matrix iterations that are already running. Iterations that have started continue to completion; only iterations that haven't started yet are skipped. This matches the general parallel-execution behavior described in [Failure strategy support for multiservice, multi-infrastructure, and matrix deployment](/docs/continuous-delivery/x-platform-cd-features/failure-strategy-service-env#failure-strategy-support-for-multiservice-multi-infrastructure-and-matrix-deployment): already-started deployments in a parallel group cannot be stopped, even when a failure occurs elsewhere in the group.
+
+Once every iteration reaches a terminal state, the configured failure strategy runs once for the stage, for example a single **PipelineRollback** that rolls back all matrix iterations together.
