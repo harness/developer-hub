@@ -44,6 +44,8 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 
 ### New features and enhancements
 
+- **[AI Blast Radius Agent](/docs/infra-as-code-management/pipelines/blast-radius-agent) (Beta):** Infrastructure changes can carry risk beyond the resources you directly modify. A single misconfigured resource can affect dozens of dependent services. The AI Blast Radius Agent is a native Harness pipeline step that runs immediately after a Terraform or OpenTofu plan to analyze the scope and potential risk of those changes before you apply them. It combines resource dependency analysis with LLM-powered reasoning to assign a risk score from 1–10, identify the main risk drivers, and summarize what could be affected. The execution Resources tab also provides an interactive dependency graph that shows how changes propagate across your infrastructure. Contact [Harness Support](mailto:support@harness.io) to request access.
+
 - **[Workspace Overview](/docs/infra-as-code-management/workspaces/workspace-overview) (Beta):** The workspace Overview tab has been redesigned with a new layout that surfaces resource counts, live cloud costs, cost optimization opportunities, provisioner details, and recent activity at a glance. A new **Cloud Cost Management Integration** toggle in workspace configuration connects a workspace to Harness CCM to display actual monthly infrastructure costs and optimization recommendations on the Overview tab. Contact [Harness Support](mailto:support@harness.io) to request access.
 
   ![Workspace overview](./static/workspace-overview-ccm.png)

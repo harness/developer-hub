@@ -1,5 +1,12 @@
 [
   {
+    "flagKey": "BLAST_RADIUS_AGENT",
+    "description": "Enables the AI Blast Radius Agent step in IaCM pipelines. The step analyzes a Terraform or OpenTofu plan to assign a risk score (1–10), generate a summary of risk drivers, and render an interactive resource dependency graph on the execution Resources tab.",
+    "gaStartDate": "2026-08-19",
+    "module": "Infrastructure as Code Management",
+    "lifecycleState": "Beta"
+  },
+  {
     "flagKey": "TAG_CONDITIONAL_FILTER",
     "description": "Filter the pipeline execution list by tags with conditional match rules, so you can narrow executions to the tag combinations you care about.",
     "gaStartDate": "2026-08-10",

@@ -8,6 +8,8 @@ keywords:
   - pr automation
   - queue step
   - pipeline operations
+  - blast radius
+  - risk score
 tags:
   - iacm
   - pipelines
@@ -24,7 +26,7 @@ redirect_from:
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Harness IaCM pipelines support several operational features that help you manage infrastructure changes safely and efficiently. These operations integrate into your provision workflows to add approval gates, detect configuration drift, automate pull request reviews, and prevent concurrent execution conflicts.
+Harness IaCM pipelines support several operational features that help you manage infrastructure changes safely and efficiently. These operations integrate into your provision workflows to add approval gates, score deployment risk with AI analysis, detect configuration drift, automate pull request reviews, and prevent concurrent execution conflicts.
 
 This guide covers the available pipeline operations and when to use each one.
 
@@ -52,6 +54,7 @@ Choose the operation that fits your workflow:
 
 | Operation | Use case | When to use |
 |---|---|---|
+| **[AI Blast Radius Agent](/docs/infra-as-code-management/pipelines/blast-radius-agent)** | Score deployment risk and visualize resource dependencies from a Terraform or OpenTofu plan | When you want engineers and approvers to see a risk score, plain-language summary, and dependency graph before applying changes |
 | **Approval step** | Review and approve infrastructure changes before applying them | When you need manual review of Terraform plan output, cost estimates, or policy evaluation before applying changes |
 | **Queue step** | Serialize pipeline executions targeting the same workspace | When multiple pipelines or triggers could run concurrently against the same workspace, preventing state file conflicts |
 | **Drift detection** | Identify manual changes made outside of your IaC workflow | When you want to detect resources created or modified directly in the cloud console instead of through code |
@@ -86,6 +89,12 @@ Select an operation to view the full guide:
     }
   }}
 />
+
+:::tip AI Blast Radius Agent
+The **AI Blast Radius Agent** step analyzes your Terraform or OpenTofu plan output and returns a 1–10 risk score, a plain-language summary of the main risk drivers, and an interactive resource dependency graph. Because it is a standalone pipeline step with dedicated configuration options, it has its own guide.
+
+Go to [AI Blast Radius Agent](/docs/infra-as-code-management/pipelines/blast-radius-agent) to add it to your pipeline.
+:::
 
 ---
 
@@ -139,12 +148,25 @@ Select an operation to view the full guide:
   fallback="Check that the webhook trigger is configured correctly with the same connector as the workspace. For public repositories, add the HARNESS_PASSWORD_API environment variable with your git token."
 />
 
+<Troubleshoot
+  issue="IACM Blast Radius Agent step fails with a missing plan file error"
+  mode="fallback-only"
+  fallback="The Blast Radius Agent step requires a Terraform or OpenTofu plan step to run immediately before it in the same IaCM stage. Add a plan step before the Blast Radius Agent step and re-run the pipeline."
+/>
+
+<Troubleshoot
+  issue="AI Blast Radius Analysis banner does not appear on the Resources tab after the Blast Radius Agent step completes"
+  mode="general"
+  fallback="Verify that you have been granted access to the AI Blast Radius Agent Beta. If access is confirmed and the step completed without errors, refresh the pipeline execution page. If the banner still does not appear, contact Harness Support."
+/>
+
 ---
 
 ## Next steps
 
 You have reviewed the available IaCM pipeline operations. Choose the operations that fit your team's workflow and add them to your provision pipelines.
 
+- Go to [AI Blast Radius Agent](/docs/infra-as-code-management/pipelines/blast-radius-agent) to score deployment risk and visualize resource dependencies before you apply.
 - Go to [Provision workspace](/docs/infra-as-code-management/workspaces/provision-workspace) to create a provision pipeline.
 - Go to [Default pipelines](/docs/infra-as-code-management/pipelines/default-pipelines) to configure reusable pipeline templates.
 - Go to [OPA policies](/docs/infra-as-code-management/policies-governance/opa-workspace) to enforce governance rules during pipeline execution.

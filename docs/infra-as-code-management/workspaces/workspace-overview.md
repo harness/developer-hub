@@ -15,16 +15,6 @@ tags:
 sidebar_position: 10
 ---
 
-
-<CTABanner
-buttonText="Learn more"
-title="Coming soon!"
-tagline="The new workspace overview experience is currently pending release and will be available soon!"
-link="/docs/infra-as-code-management/workspaces/workspace-overview"
-closable={true}
-target="_blank"
-/>
-
 :::warning Pending release
 The new workspace overview is currently **pending release**. Contact [Harness Support](mailto:support@harness.io) to request access.
 :::
