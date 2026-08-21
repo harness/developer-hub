@@ -1,0 +1,11 @@
+{
+    "label":"Agents",
+    "position": 55,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Configure and manage prebuilt SCS agents to automate software supply chain security workflows."
+    }
+ }
