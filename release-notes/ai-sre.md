@@ -21,7 +21,17 @@ The release notes describe recent changes to Harness AI SRE.
 
 #### New Features and Enhancements
 
+- **SLO Management Migrated from SRM:** AI-SRE now manages SLOs independently from Harness SRM, with a native SLO experience including listing, details, create/edit screens, and integrated alerts. The migration preserves all existing SLO configurations while providing a streamlined interface designed for incident response workflows. SLOs created in AI-SRE automatically generate alerts that feed into the incident management system. Navigate to **On-Call > SLOs** to manage your service level objectives. Go to [Harness SLO Integration](/docs/ai-sre/integrations/monitoring/harness-slo) to configure SLO tracking.
+
 - **Worker Agent and Pipeline Outputs in Root Cause Analysis:** Extend the data the AI Investigator reasons over during root-cause analysis. A runbook flagged as exposed to AI runs during an investigation, either triggered automatically or executed with a human in the loop, and the output of its actions is fed into the RCA interpretation. Within a runbook you compose out-of-the-box actions and Harness Pipeline executions, including worker agents, so if a task can run in a pipeline, such as pulling logs, querying an internal service, or reading source to trace an error, its results can enrich the investigation. This is an Early Access feature; contact your Harness representative to enable it. Go to [Use Investigator Agent Pipelines](/docs/ai-sre/ai-agent/investigator-agent-pipelines) to configure a runbook exposed to the AI Investigator.
+
+- **Ask AI SRE:** Query incident data, investigation context, and on-call status through a conversational AI interface. Type natural language questions about incidents, service health, or on-call schedules and get instant answers powered by AI. Access Ask AI SRE from the main navigation or within incident details.
+
+- **On-Call Schedule Sharing:** Share on-call schedules with stakeholders via email digest or Slack command. Schedule owners can configure automated daily or weekly email digests showing who is on call for each schedule, and users in Slack can run `/harness oncall` to see current on-call assignments across all schedules they have access to. Configure email digests under **On-Call > Schedules** by selecting a schedule and navigating to the **Sharing** tab. Go to [Configure On-Call Schedules](/docs/ai-sre/oncall/create-oncall-schedules) to set up schedule sharing.
+
+- **Unified Data Platform Integration:** AI-SRE data is now integrated into the Harness Knowledge Graph and available via MCP (Model Context Protocol) for cross-module analytics and insights. Incident and alert data can be queried alongside deployment, CI/CD, and infrastructure data for comprehensive engineering intelligence. This enables correlation across the platform and powers custom analytics workflows. Contact your Harness representative for access to UDP data sources.
+
+- **Custom Dashboards for Incident Analytics:** Build custom dashboards using Harness Platform Dashboards with AI-SRE incident and alert data. Create tailored reporting views with incident volume trends, MTTR metrics, alert-to-incident ratios, and service health indicators. Dashboards support filtering by service, severity, time range, and custom dimensions. Navigate to **Platform > Dashboards** to create custom incident analytics dashboards. Go to [Platform Dashboards](/docs/platform/dashboards/dashboard-standard/overview) to get started.
 
 ## June 2026
 
