@@ -1,5 +1,5 @@
 ---
-title: Use looping strategies
+title: Looping strategies
 sidebar_label: Looping Strategies
 description: Looping strategies include matrix, repeat, and parallelism strategies.
 sidebar_position: 1
@@ -22,20 +22,18 @@ redirect_from:
   - /docs/platform/pipelines/run-a-stage-or-step-multiple-times-using-a-matrix
 ---
 
-Looping strategies optimize your pipelines by running steps or stages concurrently, or by running stages or steps multiple times with different inputs. Looping strategies make pipelines more organized, readable, and easier to maintain. Harness offers three looping strategies:
+Looping strategies allow you run pipeline stages or steps concurrently or repeat them with different inputs. They make pipelines easier to organize, read, and maintain.
 
-- **Parallelism:** Save time by running steps and stages concurrently.
-  - For example, if you have a Build stage with 20 unit tests, you can reduce the overall test time by running tests in parallel (such as 4 groups of 5 tests each), rather than all 20 tests sequentially.
-- **Matrix:** Repeat stages or steps multiple times with different input for each instance. Supports complex inputs and input combinations.
-  - For example, to test a UI feature in multiple browsers and platforms, you could define a matrix that specifies the browsers and platforms to test.
-  - With a matrix strategy, you do not need to make a separate step for each variation. You can iterate over one step that swaps out the matrix input each time it runs.
-- **Repeat:** Repeat stages or steps multiple times. Supports iterating over a simple list.
-  - For example, to build artifacts for multiple Java Development Kit (JDK) versions in the same Build stage, you can loop over one step, rather than making separate copies for each JDK version.
+Harness supports three looping strategies:
+
+* **Parallelism**: Run multiple instances concurrently to reduce execution time. For example, run test suites in parallel instead of sequentially.
+* **Matrix**: Run stages or steps for multiple combinations of inputs. For example, test across different browsers and operating systems without duplicating steps.
+* **Repeat**: Run stages or steps multiple times using a count or a list of values. For example, build artifacts for multiple JDK versions using a single step.
 
 :::info Looping strategy limits
 
 - There is no limit on the number of dimensions you can include in a matrix or the number of looping strategies you can define in a pipeline.
-- Avoid complex looping scenarios unless you clearly understand the resources your scenario requires. Go to [Best practices for looping strategies](./best-practices-for-looping-strategies.md) to plan resource usage.
+- Avoid complex looping scenarios unless you clearly understand the resources your scenario requires. For more information, refer to [Best practices for looping strategies](./best-practices-for-looping-strategies.md).
 
 :::
 
@@ -47,7 +45,7 @@ Regardless of your strategy, the maximum number of stages you can run in paralle
 
 ---
 
-## What you will learn in this topic
+## What you will learn from this topic
 
 - How the [parallelism](#parallelism-strategies), [matrix](#matrix-strategies), and [repeat](#repeat-strategies) looping strategies work and when to use each.
 - How to configure [matrix dimensions](#configure-a-matrix-strategy), [exclude combinations](#exclude-combinations), [limit concurrency](#limit-resource-usage), and [customize instance names](#customize-matrix-stage-names).
@@ -55,27 +53,82 @@ Regardless of your strategy, the maximum number of stages you can run in paralle
 
 ---
 
+## Before you begin
+
+- **Harness project access:** You need Create/Edit permissions on pipelines to configure looping strategies. For more information, refer to <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank" rel="noopener noreferrer">RBAC in Harness</a>.
+- **Pipeline basics:** You should understand stages and steps in pipelines. For more information, refer to <a href="/docs/platform/pipelines/add-a-stage" target="_blank" rel="noopener noreferrer">Add a stage</a>.
+- **Harness expressions:** Familiarity with expressions helps you reference looping variables. For more information, refer to <a href="/docs/platform/variables-and-expressions/harness-variables" target="_blank" rel="noopener noreferrer">Harness expressions and variables</a>.
+
+---
+
+## Which strategy should I use?
+
+Choose the looping strategy that matches your use case:
+
+| Use case | Strategy | Example |
+|---|---|---|
+| Run N identical instances concurrently | **Parallelism** | Run 10 identical test batches in parallel |
+| Run once for every combination of multiple dimensions | **Matrix** | Test 4 browsers × 3 operating systems = 12 combinations |
+| Run N times or once for every item in a list | **Repeat** | Build artifacts for 6 JDK versions sequentially |
+
+**Matrix vs Repeat:** Use Matrix when you need combinations of multiple dimensions (browser AND operating system). Use Repeat when you have a simple count or a single list of values (just JDK versions).
+
+**Repeat vs Parallelism:** Both can run N identical instances, but `repeat` provides iteration-specific expressions (`<+strategy.iteration>`) and supports `maxConcurrency`, while `parallelism` is simpler but lacks these features.
+
+---
+
+## Configure a looping strategy in the Visual editor
+
+You can configure looping strategies at the **stage level** or **step level**:
+
+- **Stage-level looping:** Duplicates and runs the entire stage for each iteration. Use this when you need to run all steps in a stage multiple times with different inputs.
+- **Step-level looping:** Repeats only a particular step while the rest of the stage runs once. Use this when you need to loop over a single step within a stage.
+- **Nested looping:** Combine stage and step looping when you need multiple dimensions of iteration (for example, run stages for multiple services, and within each stage run steps for multiple environments).
+
+Perform the following steps to add a looping strategy:
+
+1. Open your pipeline in the Visual editor.
+2. Select the stage or step where you want to apply a looping strategy.
+3. Select the **Advanced** tab.
+4. Locate the **Looping Strategy** section.
+5. Select **Add Strategy** and choose the strategy type:
+   - [**Parallelism**](#parallelism-strategies)
+   - [**Matrix**](#matrix-strategies)
+   - [**Repeat**](#repeat-strategies)
+6. Configure the strategy inputs (see the strategy-specific sections below for details).
+7. Optionally set **Max Concurrency** to limit parallel execution (not supported for parallelism).
+8. Save the pipeline and run it to verify the generated instances.
+
+<div align="center"><DocImage path={require('./static/matrix-looping.png')} alt="Custom stage names generated from the nodeName expression" width="80%" /></div>
+
+---
+
 ## Parallelism strategies
 
-Parallelism saves time by running steps and stages concurrently.
+Parallelism saves time by running steps and stages concurrently by creating N identical instances that all run at the same time.
 
 A common use case for parallelism is Build stages that include a lot of tests. For example, a Build stage with 100 tests takes much less time to run if you run the tests in concurrent batches, rather than all 100 tests sequentially.
 
-You can set `parallelism` strategies on steps or stages. The following YAML example produces ten instances of the step or stage where you specify it.
+You can set `parallelism` strategies on steps or stages.
+
+:::warning Important
+`maxConcurrency` is NOT supported with `parallelism`. All instances run concurrently, subject only to system resource limits. Use `repeat` with `maxConcurrency` if you need to control concurrent execution.
+:::
+
+<details>
+<summary>YAML example</summary>
+
+The following YAML example produces ten instances of the step or stage where you specify it.
 
 ```yaml
 parallelism: 10
 ```
 
-:::info maxConcurrency support
-
-`maxConcurrency` with `parallelism` is not supported.
-
-:::
+</details>
 
 To configure parallelism strategies, go to the following topics:
 
-- [Split tests in Run steps](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism): Distribute tests across parallel Run steps in Continuous Integration (CI).
+- <a href="/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism" target="_blank" rel="noopener noreferrer">Split tests in Run steps</a>: Distribute tests across parallel Run steps in Continuous Integration (CI).
 - [Run stages in parallel](./run-stages-in-parallel.md): Run multiple stages at the same time.
 
 ---
@@ -90,6 +143,13 @@ Matrix strategies are flexible and support complex combinations of variable inpu
 
 When a pipeline with a matrix strategy runs, Harness creates multiple copies of the stage or step, according to the specifications in the `matrix` strategy, and runs them in parallel.
 
+:::warning Calculate matrix instance count
+The number of matrix instances is the **product** of the number of values in each dimension, minus any excluded combinations. For example, 4 browsers × 3 operating systems = 12 instances. The resulting execution must respect the **256-stage parallel limit**. Before adding dimensions, calculate the expected number of combinations and configure `maxConcurrency` when appropriate to avoid resource constraints.
+:::
+
+<details>
+<summary>YAML example</summary>
+
 The following YAML example includes a matrix with two dimensions: `service` and `env`. The `service` dimension has three values, and the `env` dimension has two values. When the pipeline runs, Harness produces six instances, one for each `service` value combined with each `env` value (svc1 on env1, svc1 on env2, svc2 on env1, and so on).
 
 ```yaml
@@ -97,6 +157,7 @@ matrix:
   service: [svc1, svc2, svc3] ## There are three services to iterate over.
   env: [env1, env2] ## There are two environments to iterate over.
 ```
+</details>
 
 <details>
 <summary>Pipeline YAML example with matrix strategies</summary>
@@ -176,13 +237,21 @@ stages:
 
 First, define a matrix of configurations that you want the stage or step to iterate over. A matrix is a series of dimensions, each consisting of a tag you define (such as `env`, `service`, `platform`, `browser`, `jdk`, and so on) and a list of values. You can do this in the YAML editor or in the **Advanced** settings for the stage or step in the Visual editor.
 
+<details>
+<summary>YAML example</summary>
+
 ```yaml
 matrix:
   tag1: [value1, value2, value3]
   tag2: [value1, value2]
 ```
 
+</details>
+
 Then, use `<+matrix.TAG>` expressions (such as `<+matrix.jdk>`, `<+matrix.env>`, or `<+matrix.service>`) in your step or stage settings to call the list of values for each tag. For example, this **Run** step references a matrix that iterates over values for `browser` and `os`.
+
+<details>
+<summary>YAML example</summary>
 
 ```yaml
 - step:
@@ -196,7 +265,12 @@ Then, use `<+matrix.TAG>` expressions (such as `<+matrix.jdk>`, `<+matrix.env>`,
         ...
 ```
 
-You can also use matrix values as variable values. For example, this [Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) iterates over a list of Python versions to install multiple versions of Python in the build workspace.
+</details>
+
+You can also use matrix values as variable values. For example, this <a href="/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step" target="_blank" rel="noopener noreferrer">Action step</a> iterates over a list of Python versions to install multiple versions of Python in the build workspace.
+
+<details>
+<summary>YAML example</summary>
 
 ```yaml
 - step:
@@ -209,6 +283,8 @@ You can also use matrix values as variable values. For example, this [Action ste
         python-version: <+stage.matrix.pythonVersion>
         token: <+secrets.getValue("github_token")>
 ```
+
+</details>
 
 ### Avoid hyphens and periods in matrix tag/dimension names
 
@@ -242,6 +318,9 @@ Use the `exclude` keyword to filter out combinations that you do not want to ite
 
 The following YAML example excludes two specific combinations from the matrix:
 
+<details>
+<summary>YAML example</summary>
+
 ```yaml
 matrix:
   service: [svc1, svc2, svc3]
@@ -253,7 +332,12 @@ matrix:
       env: env2
 ```
 
+</details>
+
 You can also exclude any combination containing a specific value. The following YAML example includes a matrix strategy that excludes any combination containing `macos`:
+
+<details>
+<summary>YAML example</summary>
 
 ```yaml
 matrix:
@@ -263,6 +347,8 @@ matrix:
     - os: macos
 ```
 
+</details>
+
 #### Skip execution when all combinations are excluded
 
 Matrix exclude lists are evaluated upfront at the beginning of the loop. When all matrix combinations are removed by the `exclude` list, the stage or step is skipped gracefully without failing the pipeline.
@@ -271,7 +357,7 @@ Matrix exclude lists are evaluated upfront at the beginning of the loop. When al
 This feature is behind the feature flag `PIPE_SKIP_MATRIX_LOOP_ON_ZERO_ITERATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-Harness determines the final iteration count before starting the loop. When zero iterations remain after applying exclusions, the matrix step or stage simply skips execution. This allows conditional workflow patterns where all matrix iterations might be filtered out based on runtime conditions.
+Harness determines the final iteration count before starting the loop. When zero iterations remain after applying exclusions, the matrix step or stage skips execution. This allows conditional workflow patterns where all matrix iterations might be filtered out based on runtime conditions.
 
 For example, the following configuration would skip execution without error when all combinations are excluded:
 
@@ -305,12 +391,17 @@ This is particularly useful when using runtime inputs or expressions in the `exc
 
 Use the `maxConcurrency` keyword to limit the number of parallel runs and prevent overtaxing pipeline resources.
 
+<details>
+<summary>YAML example</summary>
+
 ```yaml
 matrix:
   service: [svc1, svc2, svc3]
   env: [env1, env2]
   maxConcurrency: 2 ## Run no more than 2 instances at once.
 ```
+
+</details>
 
 If the matrix strategy produces more instances than are allowed by the `maxConcurrency`, the additional instances are queued.
 
@@ -336,12 +427,17 @@ Perform the following steps to enable matrix labels by name:
 
 You can use the `nodeName` key in your `matrix` YAML to define a matrix stage naming convention. Expressions are supported, so you can customize the name as required. For example:
 
+<details>
+<summary>YAML example</summary>
+
 ```yaml
 matrix:
   service: [svc1, svc2, svc3]
   env: [env1, env2]
   nodeName: stage_<+matrix.service>_<+matrix.env>
 ```
+
+</details>
 
 When you specify a `nodeName`, the original/parent stage name is prepended to the `nodeName`. Therefore, the final, resolved name of each stage is `OriginalStageName_nodeName`.
 
@@ -364,18 +460,22 @@ You can use `repeat` as an alternative to `parallelism` or one-dimensional `matr
 
 Use `times` to specify a number of times to repeat a step or stage. You can use `maxConcurrency` to prevent overtaxing pipeline resources by limiting the number of repeated instances that run at once.
 
+<details>
+<summary>YAML example</summary>
+
 ```yaml
 repeat:
   times: 6
   maxConcurrency: 3
 ```
 
-The above YAML example is equivalent to the following `parallelism` strategy:
+</details>
 
-```yaml
-parallelism: 6
-  maxConcurrency: 3
-```
+:::note Repeat vs Parallelism
+While `repeat: times: 6` and `parallelism: 6` both run 6 iterations, they differ in concurrency control:
+- **Repeat** supports `maxConcurrency` to limit parallel execution and provides iteration-specific expressions (`<+strategy.iteration>`).
+- **Parallelism** runs all instances concurrently (subject to system resource limits) and does NOT support `maxConcurrency`.
+:::
 
 In your steps and stages, you can use the following expressions to access the index values for each iteration. For example, this is useful for tracking repeat progress in step logs or tagging images or artifacts produced by repeated steps.
 
@@ -386,11 +486,16 @@ In your steps and stages, you can use the following expressions to access the in
 
 Use `items` to iterate over a list of values. Use the expression `<+repeat.item>` in your stage/step settings to access values in the list. This option also supports `maxConcurrency`.
 
+<details>
+<summary>YAML example</summary>
+
 ```yaml
 repeat:
   items: ["18", "17", "16", "15", "14", "13", "12", "11", "10", "9"]
   maxConcurrency: 5
 ```
+
+</details>
 
 The `items` configuration is equivalent to a one-dimensional `matrix`.
 
@@ -409,7 +514,7 @@ repeat:
   items: <+stage.output.hosts>
 ```
 
-Go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances) to configure this behavior.
+Go to <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances" target="_blank" rel="noopener noreferrer">Run a step on multiple target instances</a> to configure this behavior.
 
 ### Customize repeat stage and step names
 
@@ -418,6 +523,9 @@ You can use the keyword `nodeName` when specifying your repeat items to define y
 #### Customize the stage name
 
 The following YAML example sets a custom stage name with the `nodeName` key at the stage level:
+
+<details>
+<summary>YAML example</summary>
 
 ```yaml
   tags: {}
@@ -454,11 +562,16 @@ The following YAML example sets a custom stage name with the `nodeName` key at t
             nodeName: TestDeploy_<+repeat.item>
 ```
 
-<div align="center"><DocImage path={require('./static/looping_name_example_1.png')} alt="Custom stage names generated from the nodeName expression" /></div>
+</details>
+
+<div align="center"><DocImage path={require('./static/looping-name-example-1.png')} alt="Custom stage names generated from the nodeName expression" width="50%" /></div>
 
 #### Customize the step name
 
 The following YAML example sets a custom step name with the `nodeName` key at the step level:
+
+<details>
+<summary>YAML example</summary>
 
 ```yaml
 tags: {}
@@ -492,18 +605,18 @@ tags: {}
                         - host2
                         - host3
                       nodeName: Test_Deploy_step_<+repeat.item>
-
-
 ```
 
-<div align="center"><DocImage path={require('./static/looping_name_example_2.png')} alt="Custom step names generated from the nodeName expression" /></div>
+</details>
+
+<div align="center"><DocImage path={require('./static/looping-name-example-2.png')} alt="Custom step names generated from the nodeName expression" width="50%" /></div>
 
 :::info nodeName behavior
 
 - In a CI pipeline where both the stage and step use a looping strategy, and you want to use expressions inside `nodeName` in the step, you must use ``Test_Deploy_step_<+step.item>`` instead of ``Test_Deploy_step_<+repeat.item>``.
 - When you use `nodeName`, the final name of the stages is ``OriginalStageName_nodeName``, and the original stage name is retained.
 - If the evaluated value of `nodeName` is the same in multiple stages, Harness automatically appends ``OriginalStageName_nodeName_0``, ``OriginalStageName_nodeName_1``, and so on to the repeats.
-- For SSH deployments, you can control whether the remaining iterations of a `repeat` strategy run after one iteration fails. Go to [Control deployments after a host failure](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng#control-deployments-after-a-host-failure) to configure this SSH-specific behavior.
+- For SSH deployments, you can control whether the remaining iterations of a `repeat` strategy run after one iteration fails. For more information, refer to <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng#control-deployments-after-a-host-failure" target="_blank" rel="noopener noreferrer">Control deployments after a host failure</a>.
 
 :::
 
@@ -511,23 +624,21 @@ tags: {}
 
 ## Looping strategies as runtime input
 
-You can configure stage, step, and step group looping strategies as [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) in your pipelines and templates.
+You can configure stage, step, and step group looping strategies as <a href="/docs/platform/variables-and-expressions/runtime-inputs" target="_blank" rel="noopener noreferrer">runtime input</a> in your pipelines and templates.
 
 When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run a pipeline with a `parallelism` strategy and then run the same pipeline with a `matrix` strategy by providing different runtime input.
 
-To do this, go to the **Looping Strategy** settings where you want to configure the looping strategy to be specified at runtime, select the **Thumbtack** icon, and change the input type to **Runtime Input**.
-
-<div align="center"><DocImage path={require('./static/looping-runtime-input.png')} alt="Selecting runtime input for the looping strategy" /></div>
+<div align="center"><DocImage path={require('./static/looping-runtime-input.png')} alt="Selecting runtime input for the looping strategy" width="80%" /></div>
 
 When you run the pipeline, you are prompted to define the looping strategy configuration ([parallelism](#parallelism-strategies), [matrix](#matrix-strategies), or [repeat](#repeat-strategies)) for that run.
 
-Due to the potential complexity of looping strategies, [input sets](/docs/platform/pipelines/input-sets) are useful for looping strategies as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually enter the entire looping strategy each time.
+Due to the potential complexity of looping strategies, <a href="/docs/platform/pipelines/input-sets" target="_blank" rel="noopener noreferrer">input sets</a> are useful for looping strategies as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually enter the entire looping strategy each time.
 
 ---
 
 ## Looping strategy expressions
 
-You can use [Harness expressions](/docs/platform/variables-and-expressions/harness-variables) to reference stage/step instances generated by looping strategies, retrieve the execution status of a stage/step in a looping strategy, or get instance counts in looping strategies. These expressions are available in pipelines during execution and rollback.
+You can use <a href="/docs/platform/variables-and-expressions/harness-variables" target="_blank" rel="noopener noreferrer">Harness expressions</a> to reference stage/step instances generated by looping strategies, retrieve the execution status of a stage/step in a looping strategy, or get instance counts in looping strategies. These expressions are available in pipelines during execution and rollback.
 
 ### Current looping strategy status
 
@@ -542,7 +653,7 @@ The value of the expression depends on where both the expression and looping str
 
 Possible statuses for nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, or `SUCCESS`.
 
-Go to [Status expressions](/docs/platform/variables-and-expressions/harness-variables#status-expressions) to review status expression syntax.
+Go to <a href="/docs/platform/variables-and-expressions/harness-variables#status-expressions" target="_blank" rel="noopener noreferrer">Status expressions</a> to review status expression syntax.
 
 ### Status of a specific node
 
@@ -562,7 +673,7 @@ echo <+strategy.node.get("ShellScript_1").currentStatus>
 
 Possible statuses for nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, or `SUCCESS`.
 
-Because stages and steps cannot have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. Go to [Indexed identifiers in looping strategies](#indexed-identifiers-in-looping-strategies) to understand how the index value is appended.
+Because stages and steps cannot have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. For more information, refer to [Indexed identifiers in looping strategies](#indexed-identifiers-in-looping-strategies).
 
 ### Iteration counts
 
@@ -663,15 +774,51 @@ Here are some examples of the looping strategy status logic:
 
 ---
 
+## Control iteration behavior after a failure
+
+You can control whether remaining iterations continue after one iteration fails using the `onFailure` field. This field is available for `matrix` and `repeat` strategies (it is not applicable to `parallelism`).
+
+**Supported strategies:**
+- **Matrix:** Use `onFailure` to control whether remaining matrix combinations continue after one combination fails
+- **Repeat:** Use `onFailure` to control whether remaining iterations continue after one iteration fails
+- **Parallelism:** NOT supported (all instances run independently)
+
+**Configuration options:**
+- `onFailure: ignore` - Continue with remaining iterations even if one fails
+- `onFailure: abort` - Stop all remaining iterations if one fails (default behavior)
+
+<details>
+<summary>YAML example</summary>
+
+```yaml
+matrix:
+  browser: [chrome, firefox, safari]
+  os: [windows, mac, linux]
+  maxConcurrency: 3
+  onFailure: ignore  # Continue testing other combinations even if one fails
+```
+
+```yaml
+repeat:
+  items: ["v18", "v17", "v16"]
+  onFailure: abort  # Stop building remaining versions if one fails
+```
+
+</details>
+
+**SSH deployments:** For SSH deployments specifically, you can control whether remaining hosts continue after one host fails. For more information, refer to <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng#control-deployments-after-a-host-failure" target="_blank" rel="noopener noreferrer">Control deployments after a host failure</a>.
+
+---
+
 ## Limitations
 
-- `continueOnFailure` is not a looping strategy property. To control iteration behavior after a failure, use the `onFailure` field, which is available for `matrix` and `repeat` strategies (it is not applicable to `parallelism`). For SSH deployments, go to [Control deployments after a host failure](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng#control-deployments-after-a-host-failure) to configure this behavior.
+- `continueOnFailure` is not a looping strategy property. Use the `onFailure` field instead as described in [Control iteration behavior after a failure](#control-iteration-behavior-after-a-failure).
 
 ---
 
 ## Related concepts
 
-- [Best practices for looping strategies](./best-practices-for-looping-strategies.md): Plan resource usage and avoid common pitfalls.
-- [Matrix examples](./additional-matrix-examples.md): Review complete matrix strategy examples.
-- [Run stages in parallel](./run-stages-in-parallel.md): Run multiple stages at the same time.
-- [Harness variables and expressions](/docs/platform/variables-and-expressions/harness-variables): Reference the full expression syntax used with looping strategies.
+- <a href="./best-practices-for-looping-strategies" target="_blank" rel="noopener noreferrer">Best practices for looping strategies</a>: Plan resource usage and avoid common pitfalls.
+- <a href="./additional-matrix-examples" target="_blank" rel="noopener noreferrer">Matrix examples</a>: Review complete matrix strategy examples.
+- <a href="./run-stages-in-parallel" target="_blank" rel="noopener noreferrer">Run stages in parallel</a>: Run multiple stages at the same time.
+- <a href="/docs/platform/variables-and-expressions/harness-variables" target="_blank" rel="noopener noreferrer">Harness variables and expressions</a>: Reference the full expression syntax used with looping strategies.

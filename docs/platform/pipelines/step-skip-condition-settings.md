@@ -1,19 +1,50 @@
 ---
-title: Define conditional executions for stages and steps
-description: You can define conditional execution settings for stages and steps.
+title: Conditional executions for stages and steps
+sidebar_label: Conditional executions for stages and steps
+description: You can define conditional execution settings for stages and steps to control when they run based on pipeline status and JEXL conditions.
 sidebar_position: 17
 helpdocs_topic_id: i36ibenkq2
 helpdocs_category_id: lussbhnyjt
 helpdocs_is_private: false
 helpdocs_is_published: true
+keywords:
+  - conditional execution
+  - when condition
+  - JEXL
+  - stage execution
+  - step execution
+  - pipeline status
+tags:
+  - pipelines
+  - conditional-execution
 redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings
   - /docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings
 ---
 
-Conditional executions specify when a stage or step should run. For example, you can specify that a particular stage should run only if the prior pipeline or stage failed.
+Conditional executions let you control **when a stage or step runs** based on the outcome of your pipeline or other conditions. This allows you to build more dynamic pipelines that respond to different scenarios without requiring manual intervention.
 
-Conditional executions and [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) are powerful tools you can use to make your pipelines more dynamic and responsive to failures. You can use them individually or together. For example, you can [check if a cache was restored and then install dependencies if the cache *was not* restored](/docs/continuous-integration/use-ci/caching-ci-data/run-if-no-cache).
+You can use conditional executions independently or together with [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps). For example, you can configure a step to run only when a previous step fails, or check whether a cache was restored and install dependencies only when the cache is not available.
+
+---
+
+## What you will learn from this topic
+
+- How to [configure conditional executions](#configure-conditional-executions) for stages, steps, and step groups.
+- How to [add stage-level conditional execution](#add-a-stage-conditional-execution) settings using pipeline status and JEXL conditions.
+- How to [add step-level conditional execution](#add-a-step-conditional-execution) settings to override stage conditions.
+- How to use [JEXL expressions and variables](#variables-and-expressions-in-conditional-execution-settings) in conditional execution conditions.
+- How Harness [prioritizes and handles](#conditional-execution-priority-and-failure-handling) conditional executions and failure strategies.
+
+---
+
+## Before you begin
+
+- **Harness project access:** You need View or Execute permissions on pipelines. For more information, refer to <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank" rel="noopener noreferrer">RBAC in Harness</a>.
+- **Pipeline basics:** You should understand pipelines, stages, and steps. For more information, refer to <a href="/docs/platform/pipelines/add-a-stage" target="_blank" rel="noopener noreferrer">Add a stage</a>.
+- **JEXL expressions:** Familiarity with JEXL syntax helps you write custom conditions. For more information, refer to <a href="/docs/platform/variables-and-expressions/harness-variables" target="_blank" rel="noopener noreferrer">Harness expressions and variables</a>.
+
+---
 
 ## Configure conditional executions
 
@@ -21,33 +52,25 @@ In Harness, conditional executions are *when* conditions that can be broad, such
 
 You can configure conditional executions for:
 
-* **Stages:** A stage's conditional execution settings apply to all steps in that stage that don't have their own step-level conditional execution settings.
-  * If you use [pipeline chaining](/docs/platform/pipelines/pipeline-chaining), you can configure conditional executions for child pipelines.
+* **Stages:** A stage's conditional execution settings apply to all steps in that stage that do not have their own step-level conditional execution settings.
+  * If you use <a href="/docs/platform/pipelines/pipeline-chaining" target="_blank" rel="noopener noreferrer">pipeline chaining</a>, you can configure conditional executions for child pipelines.
 * **Steps:** A step's conditional execution settings overrides the stage's conditional execution settings.
 * **Step groups:** A step group's conditional execution determines when to run that step group. Step group conditional execution settings apply to all steps in the group, and you can apply step-level conditional executions to steps within the group.
 
-For details about how Harness prioritizes stage and step conditional executions, go to [Prioritization and handling](#prioritization-and-handling).
+For details about how Harness prioritizes stage and step conditional executions, go to [Conditional execution priority and failure handling](#conditional-execution-priority-and-failure-handling).
 
 ### Add a stage conditional execution
 
 The stage conditional execution applies to all steps in the stage that do not have their own conditional execution configured.
 
-Here's an example of a stage conditional execution that runs if the pipeline has executed successfully so far and the build type is PR.
-
-```yaml
-    when:
-      pipelineStatus: Success
-      condition: <+codebase.build.type>=="PR"
-```
-
 To add a stage conditional execution:
 
-1. In your pipeline, select the [stage](/docs/platform/pipelines/add-a-stage) where you want to add the conditional execution.
+1. In your pipeline, select the <a href="/docs/platform/pipelines/add-a-stage" target="_blank" rel="noopener noreferrer">stage</a> where you want to add the conditional execution.
 2. Select the **Advanced** tab.
 3. Under **Conditional Execution**, select a broad condition for when you want to execute the stage:
 
    * **If the pipeline executes successfully up to this point (default):** Run this stage if all previous stages in the pipeline were successful. This is the default and most commonly used setting.
-   * **If the previous pipeline or stage fails:** Run this stage only if the prior stage or [chained pipeline](/docs/platform/pipelines/pipeline-chaining) failed.
+   * **If the previous pipeline or stage fails:** Run this stage only if the prior stage or <a href="/docs/platform/pipelines/pipeline-chaining" target="_blank" rel="noopener noreferrer">chained pipeline</a> failed.
    * **Always:** Run this stage regardless of the status of prior stages or pipelines.
 
 4. You can add [JEXL](https://commons.apache.org/proper/commons-jexl/) conditions to further refine the conditional execution requirements. To do this, select **And execute this stage only if the following JEXL Condition evaluates to true**, and then enter your JEXL condition.
@@ -60,17 +83,25 @@ To add a stage conditional execution:
    * `<+environment.name> != "QA"`
    * `<+variable.Boolean1> == "True" && <+variable.Boolean2> == "True"`
 
-### Add a step conditional execution
+5. Save the stage.
 
-A step's conditional execution settings overrides the stage's conditional execution settings.
+<div align="center"><DocImage path={require('./static/conditional-excecutions.png')} alt="conditional execution overview" width="100%" /></div>
 
-Here's an example of a step conditional execution that runs if the stage has executed successfully so far and the build type is PR.
+<details>
+<summary>YAML example</summary>
+
+Here's an example of a stage conditional execution that runs if the stage has executed successfully so far and the build type is PR.
 
 ```yaml
     when:
       stageStatus: Success
       condition: <+codebase.build.type>=="PR"
 ```
+ </details>
+
+### Add a step conditional execution
+
+A step's conditional execution settings overrides the stage's conditional execution settings.
 
 To add a step conditional execution:
 
@@ -85,123 +116,176 @@ To add a step conditional execution:
 4. You can add [JEXL expressions](http://commons.apache.org/proper/commons-jexl/reference/examples.html) to further refine the conditional execution requirements. To do this, select **And execute this step only if the following JEXL Condition evaluates to true**, and then enter your JEXL condition.
 
    The step runs if both the broad condition AND your JEXL condition evaluate to *true*.
+5. Click **Apply Changes**.
 
-   Your JEXL condition can include [Harness expressions and variables](#variables-and-expressions-in-conditional-execution-settings), including the output of previous steps. For example:
+<div align="center"><DocImage path={require('./static/step-conditions.png')} alt="conditional execution overview" width="80%" /></div>
 
-   * `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status> == "SUCCEEDED"`
-   * `<+environment.name> != "QA"`
-   * `<+variable.Boolean1> == "True" && <+variable.Boolean2> == "True"`
+<details>
+<summary>YAML example</summary>
+
+Here is an example of a step conditional execution that runs if a previous step fails.
+
+```yaml
+- step:
+    type: ShellScript
+    name: ShellScript_1
+    identifier: ShellScript_1
+    spec:
+      shell: Bash
+      executionTarget: {}
+      source:
+        type: Inline
+        spec:
+          script: echo hello
+      environmentVariables: []
+      outputVariables: []
+    timeout: 10m
+    when:        #indicates the condition
+      stageStatus: Failure
+```
+</details>
+
+You can also configure conditional execution for a **step group**. The condition applies to all steps in the group, while a conditional execution configured on an individual step overrides the step group's condition.
+
+For more information, go to [Organize steps in step groups](/docs/platform/pipelines/use-step-groups/).
 
 ### Remove conditional executions
 
-To clear a stage, step, or step group's conditional execution settings, go to the **Conditional Execution** settings (on the stage/step **Advanced** tab) and select **Reset**.
+To clear a stage, step, or step group's conditional execution settings, 
+
+1. Go to the **Conditional Execution** settings (on the stage/step **Advanced** tab). 
+2. Select **Reset**.
+3. In the dialog box, click **Remove** to remove the condition.
 
 ### Conditional executions as runtime input
 
-You can also define stage, step group, and step conditional executions settings at runtime by configuring them as [runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs).
+You can also define stage, step group, and step conditional executions settings at runtime by configuring them as <a href="/docs/platform/variables-and-expressions/runtime-inputs" target="_blank" rel="noopener noreferrer">runtime inputs</a>.
 
-To do this, go to the **Conditional Execution** settings where you want to configure a condition to be specified at runtime, select the **Thumbtack** icon, and change the input type to **Runtime Input**.
+To do this, go to the **Conditional Execution** settings where you want to configure a condition to be specified at runtime, change the input type to **Runtime Input**.
+
+<div align="center"><DocImage path={require('./static/conditional-inputs.png')} alt="conditional execution overview" width="80%" /></div>
 
 When you run the pipeline, you'll be prompted to define the conditional execution settings for that run.
 
-Due to the potential complexity of JEXL expressions in conditional executions, [input sets](/docs/platform/pipelines/input-sets) are useful for conditional executions as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually enter the entire conditional execution each time.
+Due to the potential complexity of JEXL expressions in conditional executions, <a href="/docs/platform/pipelines/input-sets" target="_blank" rel="noopener noreferrer">input sets</a> are useful for conditional executions as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually enter the entire conditional execution each time.
 
-### Configuring a Step/Template in the Rollback Section with Custom when Condition
+### Configure conditional execution for steps in the execution and rollback sections
 
 When using templates with conditional execution based on custom JEXL expressions, you need to configure the `when` conditions separately for the execution and rollback sections to ensure they run as expected during rollbacks.
 
-1. **In Step Template :**
+- In Step Template: Set the `when` condition as a runtime input:
 
-Set the `when` condition as a runtime input:
+  ```yaml
+  when: <+input>
+  ```
+- Specify the `when` condition to run the step only on successful execution `thus far` in production environments:
 
-```yaml
-when: <+input>
-```
+  ```yaml
+  when:
+    stageStatus: Success
+    condition: <+env.type> == "Production"
+  ```
+- Specify the `when` condition to run the step always in production environments:
 
-2. **Specify the `when` condition to run the step only on successful execution `thus far` in production environments:**
-
-```yaml
-when:
-  stageStatus: Success
-  condition: <+env.type> == "Production"
-```
-
-3. **Specify the `when` condition to run the step always in production environments:**
-
-```yaml
-when:
-  stageStatus: All
-  condition: <+env.type> == "Production"
-```
+  ```yaml
+  when:
+    stageStatus: All
+    condition: <+env.type> == "Production"
+  ```
+---
 
 ## Variables and expressions in conditional execution settings
 
-In conditional execution settings, your JEXL conditions can include [Harness expressions and variables](/docs/platform/variables-and-expressions/harness-variables), including the output of previous steps.
+Conditional execution settings support [Harness expressions and variables](/docs/platform/variables-and-expressions/harness-variables), including values produced by previous steps.
 
-### Values must be available at evaluation time
+### Ensure values are available at evaluation time
 
-The variables and expressions in a JEXL condition must be resolved before the point at which the condition is evaluated.
+The variables and expressions used in a JEXL condition must be resolved before the condition is evaluated.
 
-Conditional execution settings determine whether to run a stage; therefore, a conditional execution can't rely on a variable that isn't resolved until the stage runs.
+Because conditional execution determines whether a stage or step runs, the condition cannot depend on a value that is produced only after that stage or step starts.
 
-For example, for a stage conditional execution, the values required for the variables/expressions in the JEXL condition must have been resolved prior to the start of that stage. If the JEXL condition references, for example, a value from a step within the stage, Harness can't resolve the value and the condition can't be evaluated (or evaluates with a `null` value).
+For example, for a stage-level conditional execution, all variables and expressions referenced in the JEXL condition must be resolved before the stage starts. If the condition references a value produced by a step within the same stage, Harness cannot resolve that value when evaluating the condition. As a result, the condition might not be evaluated as expected or the value might resolve to `null`.
 
-### Comparing strings to Booleans
+### Compare strings and Booleans
 
-Comparing strings to Booleans always evaluates to `true` unless the string is literally the word `false`.
+When comparing a string with a Boolean, the comparison evaluates to `true` unless the string is literally `false`.
 
-### Referencing pipeline, stage, and step statues
+### Reference pipeline, stage, and step statuses
 
-The status values for pipelines, stages, and steps are Java enums. You can find the list of values in the **Status** filter on the execution, deployment, or build history page.
+The status values for pipelines, stages, and steps are Java enum values. You can find the available values in the **Status** filter on the pipeline **Execution History** page.
 
-![](./static/step-skip-condition-settings-10.png)
+<div align="center"><DocImage path={require('./static/step-skip-condition-settings-10.png')} alt="Status filter dropdown showing available pipeline status values for conditional execution" width="80%" /></div>
 
-You can reference these status values in your JEXL conditions. These expressions must reference stages or steps that have already executed at [evaluation time](#values-must-be-available-at-resolution-time).
+You can reference these status values in JEXL conditions. However, the referenced stage or step must have already executed when the condition is evaluated.
 
-* **Stage status:** To get a stage's status, use the expression `<+pipeline.stages.STAGE_ID.status>`, such as:
+- **Stage status:** To get the status of a stage, use `<+pipeline.stages.STAGE_ID.status>`. For example:
 
-   ```yaml
-   <+pipeline.stages.somestage.status> == "FAILED"
-   ```
+  ```text
+  <+pipeline.stages.somestage.status> == "FAILED"
 
-* **Step status:** To get a step's status, use the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>`, for example:
+- **Step status:** To get a step's status, use the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>`, for example:
 
    ```yaml
    <+pipeline.stages.somestage.spec.execution.steps.somestep.status> == "FAILED"
    ```
 
-## Prioritization and handling
+---
 
-The hierarchy for conditional execution settings is as follows:
 
-1. **Stage:** Stage-level conditional execution settings determine when a stage should run. If triggered, the step and step groups in the stage start running.
-2. **Step group:** Step group-level conditional execution settings determine when a step group should run. If triggered, the steps in the group start running.
-3. **Step:** Step-level conditional execution settings determine if individual steps should run. Step conditions are evaluated after stage and step group conditions. This means that step-level conditional execution settings effectively override the stage and step group conditional execution settings. For example, if a stage-level condition evaluates to true and causes a stage to run, each individual step-level condition within that stage is evaluated separately to determine if each individual step should run.
+
+## Conditional execution priority and failure handling
+
+Conditional execution settings are evaluated hierarchically. Stage-level conditions are evaluated first, followed by step group and step-level conditions.
+
+1. **Stage:** Stage-level conditional execution determines whether a stage runs. If the condition is met, the stage starts and its step groups and steps are evaluated.
+
+2. **Step group:** Step group-level conditional execution determines whether a step group runs. If the condition is met, the steps in the group are evaluated.
+
+3. **Step:** Step-level conditional execution determines whether an individual step runs. Step conditions are evaluated after the stage and step group conditions. As a result, a step-level condition can prevent an individual step from running even when its stage and step group are running.
 
 :::info
+In Deploy stages, the **Rollback** phase takes precedence over **Conditional Execution**. As a result, steps configured with **Condition: Always** might not run as expected when a rollback is triggered.
 
- In Deploy stages, the **Rollback** phase is given higher precedence than **Conditional Execution**. This means that steps configured with Condition: `Always` may not execute as expected if the rollback process is triggered.
-
- For more information, refer to [Deploy Stage and Step Conditional Execution Settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/#failure-strategy-takes-precedence-over-conditional-execution).
-
+For more information, go to [Deploy Stage and Step Conditional Execution Settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/#failure-strategy-takes-precedence-over-conditional-execution).
 :::
 
-### Important note
+### Understand the effect of a false condition
 
-For users setting a JEXL Boolean condition, it is important to remember that a conditional that evaluates false will result in a skipped step or stage.  
+When a JEXL Boolean condition evaluates to `false`, the associated step or stage is skipped.
 
-This will still show a step or stage as completed successfully.
-![](./static/conditional-skipped.png)
+A skipped step or stage can still appear as successfully completed. This might be the expected behavior when you intentionally want to skip execution. If you need the pipeline to fail instead, configure a [failure strategy for the step or stage](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
 
-Depending on the situation, this might be the desired effect. Otherwise, you should [implement a failure strategy for the step/stage](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md).
-### Failure strategies take precedence over conditional executions
+<div align="center"><DocImage path={require('./static/conditional-skipped.png')} alt="Pipeline execution showing a stage marked as completed successfully despite being conditionally skipped" width="80%" /></div>
 
-Your stages and steps can include both conditional executions and [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
+### Failure strategies take precedence over conditional execution
 
-![](./static/step-skip-condition-settings-09.png)
+Stages and steps can have both conditional execution and [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps). When you use both, the failure strategy can affect whether a conditional execution is triggered.
 
-When using these settings together in multiple stages, you must consider how they could interact.
+For example, assume a pipeline has two stages, `stage1` and `stage2`:
 
-For example, assume you have a pipeline with two stages: `stage1` and `stage2`. Assume `stage2` has a **Conditional Execution** set to **Execute this stage only if prior pipeline or stage failed**, and `stage1` has a **Failure Strategy** set to **Rollback Stage** on **All Errors**. With this configuration, if `stage1` has any error, it rolls back and it isn't marked as failed; therefore, the **Conditional Execution** for `stage2` isn't triggered and `stage2` doesn't run. To get `stage2` to run, you can set the **Failure Strategy** for `stage1` to **Ignore Failure**. This causes the pipeline to proceed (instead of rolling back) when `stage1` fails, and, since `stage1` is now marked as failed, the **Conditional Execution** for `stage2` is triggered and `stage2` runs.
+- `stage2` has a **Conditional Execution** setting configured to **Execute this stage only if prior pipeline or stage failed**.
+- `stage1` has a **Failure Strategy** configured to **Rollback Stage** for **All Errors**.
 
-If you want to run particular steps when a stage fails, make sure you add those steps to the stage's **Rollback** failure strategy settings. Typically, you don't want a rollback to continue when there is an error. However, if you want to force a step to run whether or not the rollback fails, include the required step in the stage's **Rollback** settings, configure the required step's conditional execution to **Always**, and then set the preceding step's failure strategy to **Mark as failure** for **All errors**. This ensures the required step runs even if the previous step fails.
+If `stage1` encounters an error, the failure strategy rolls back the stage instead of leaving it in a failed state. Because `stage1` is not marked as failed, the conditional execution for `stage2` is not triggered, and `stage2` does not run.
+
+To allow `stage2` to run, configure the failure strategy for `stage1` to **Ignore Failure**. This allows the pipeline to continue while marking `stage1` as failed. The conditional execution for `stage2` can then detect the failure and run `stage2`.
+
+### Run steps when a stage fails
+
+If you want specific steps to run when a stage fails, add those steps to the stage's **Rollback** failure strategy settings.
+
+Typically, you do not want a rollback to continue after an error. However, if you need a step to run regardless of whether the rollback succeeds or fails:
+
+1. Add the step to the stage's **Rollback** settings.
+2. Set the step's conditional execution to **Always**.
+3. Configure the preceding step's failure strategy to **Mark as failure** for **All Errors**.
+
+This configuration ensures that the required step runs even when the preceding step fails.
+
+---
+
+## Next steps
+
+- <a href="/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps" target="_blank" rel="noopener noreferrer">Define a failure strategy on stages and steps</a>: Learn how to configure failure strategies that work together with conditional executions.
+- <a href="/docs/platform/variables-and-expressions/harness-variables" target="_blank" rel="noopener noreferrer">Harness expressions and variables</a>: Explore the full reference of Harness expressions you can use in JEXL conditions.
+- <a href="/docs/platform/pipelines/input-sets" target="_blank" rel="noopener noreferrer">Input sets and overlays</a>: Create reusable sets of runtime input values for your conditional execution settings.

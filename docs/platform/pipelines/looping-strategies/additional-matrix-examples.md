@@ -1,22 +1,46 @@
 ---
-title: Matrix examples
-description: Examples of matrix strategies
-sidebar_position: 5
+title: Matrix looping strategy examples
+sidebar_label: Matrix Looping Strategy Examples
+description: Examples and patterns for matrix strategies in Harness pipelines, including basic matrices, nested loops, runtime input, and complex JSON values.
+keywords:
+  - matrix strategy
+  - looping strategy
+  - matrix examples
+  - nested matrices
+  - runtime input
+  - matrix dimensions
+tags:
+  - pipelines
+  - looping-strategies
+  - matrix
+sidebar_position: 30
 redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/additional-matrix-examples
 ---
 
-Here are some examples of matrix strategies you can use in your stages or steps. For information about how matrix strategies work and instructions for creating different types of looping strategies, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
+This topic provides examples and patterns for matrix strategies in Harness pipelines. Matrix strategies allow you to run stages or steps multiple times with different combinations of inputs, such as testing an application across multiple browsers and operating systems, or deploying multiple services to multiple environments.
 
-## Loop versus matrix
+Go to <a href="/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism" target="_blank" rel="noopener noreferrer">Looping strategies</a> to understand how matrix strategies work and how to configure them.
 
-A matrix is a pattern that iterates over a series of elements. You might know this as a loop or `for` loop.
+---
 
-These examples compare how you would write a loop to iterate over a series of elements versus how you would use a matrix to achieve the same iterating "for each" effect.
+## What you will learn
+
+- How [matrix strategies compare to traditional for loops](#matrix-versus-loop-patterns) and when to use each pattern.
+- How to create [basic one-dimensional matrices and nested multi-dimensional matrices](#basic-matrix-patterns) for complex iteration scenarios.
+- How to use [runtime input for matrix dimensions](#runtime-input-for-matrix-values), multiple dimensions, or entire matrix strategies to make pipelines flexible.
+- How to use [expressions to populate matrix dimensions](#expression-based-matrix-values) from pipeline variables, trigger payloads, or previous step outputs.
+- How to use [JSON functors to extract and iterate over complex object structures](#complex-json-values-in-matrices) in matrix strategies.
+
+---
+
+## Matrix versus loop patterns
+
+A matrix is a pattern that iterates over a series of elements. You might know this as a loop or for loop. The examples below compare how you would write a traditional loop to iterate over a series of elements versus how you would use a matrix strategy in Harness to achieve the same effect.
 
 ### Basic loop
 
-With a basic loop, you provide a list of elements and iterate over the list. In a Harness pipeline, the iterations could be individual steps or entire stages.
+With a basic loop, you provide a list of elements and iterate over the list. In a Harness pipeline, the iterations can be individual steps or entire stages.
 
 For example, assume you want to repeat an entire stage for each item in a list.
 
@@ -43,7 +67,7 @@ In your steps, you use expressions to indicate where you want to insert the matr
 
 Just as you can write nested `for` loops, you can create nested matrices in Harness.
 
-Here's an example of nested `for` loops in Python:
+Here is an example of nested `for` loops in Python:
 
 ```python
 for(String s: listA) {
@@ -73,7 +97,9 @@ This matrix produces a total of 9 iterations:
 
 Referencing values from nested matrices is the same as with one-dimensional matrices. In your steps, you use expressions to indicate where you want to insert the matrix values. For example, in the above example, to refer to the elements from `listA`, you would use the expression `<+matrix.listA>`, and to refer to elements from `listB`, you would use the expression `<+matrix.listB>`.
 
-## Basic matrix: Repeat over a list
+---
+
+## Basic matrix patterns
 
 The simplest form of a matrix strategy is one-dimensional. It includes a single list of values to iterate over.
 
@@ -91,7 +117,7 @@ matrix:
   maxConcurrency: 2
 ```
 
-A one-dimensional matrix is the only form of matrix strategy that you can also define in a [repeat strategy](./looping-strategies-matrix-repeat-and-parallelism.md#repeat-strategies). For example:
+A one-dimensional matrix is the only form of matrix strategy that you can also define in a <a href="/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#repeat-strategies" target="_blank" rel="noopener noreferrer">repeat strategy</a>. For example:
 
 ```yaml
 repeat:
@@ -99,9 +125,11 @@ repeat:
   maxConcurrency: 2 ## Optional but recommended. Specify the maximum number of instances that can run concurrently.
 ```
 
-## Use fixed values for matrix values
+---
 
-The following examples use fixed values for the [matrix strategy](./looping-strategies-matrix-repeat-and-parallelism.md#matrix-strategies) dimensions.
+## Fixed-value matrix examples
+
+The following examples use fixed values for matrix strategy dimensions.
 
 ### Run an app on multiple browsers and operating systems
 
@@ -120,7 +148,7 @@ Use `maxConcurrency` to specify the maximum number of instances that can run at 
 
 ### Deploy multiple services to multiple environments
 
-You can use a matrix strategy on a Deploy stage to deploy multiple services to multiple environments. The following example includes dimensions to deploy three services on two environments. It uses [`exclude`](./looping-strategies-matrix-repeat-and-parallelism.md#exclude-combinations) to ignore one combination, and it sets the [`maxConcurrency`](./looping-strategies-matrix-repeat-and-parallelism.md#limit-resource-usage) to `2`.
+You can use a matrix strategy on a Deploy stage to deploy multiple services to multiple environments. The following example includes dimensions to deploy three services on two environments. It uses <a href="/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#exclude-combinations" target="_blank" rel="noopener noreferrer">exclude</a> to ignore one combination, and it sets <a href="/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#limit-resource-usage" target="_blank" rel="noopener noreferrer">maxConcurrency</a> to `2`.
 
 ```yaml
 matrix:
@@ -134,13 +162,15 @@ matrix:
 
 The `service` and `environment` are the dimensions of the matrix. Each matrix dimension consists of a user-specified tag with a comma-separated list of values.
 
-In a pipeline where you used the above matrix strategy, you could use the expression `<+matrix.service>` on the Service tab of the Deploy stage to call the `service` values.
+In a pipeline where you use the above matrix strategy, use the expression `<+matrix.service>` on the Service tab of the Deploy stage to call the `service` values.
 
-![](./static/run-a-stage-or-step-multiple-times-using-a-matrix-40.png)
+<div align="center"><DocImage path={require('./static/run-a-stage-or-step-multiple-times-using-a-matrix-40.png')} alt="Matrix strategy used in Deploy stage Service tab showing matrix.service expression" width="80%" /></div>
 
-## Use runtime input for matrix values
+---
 
-You can use [runtime input](../../variables-and-expressions/runtime-inputs.md) (`<+input>`) for values and entire matrix strategies.
+## Runtime input for matrix values
+
+You can use <a href="/docs/platform/variables-and-expressions/runtime-inputs" target="_blank" rel="noopener noreferrer">runtime input</a> (`<+input>`) for individual matrix dimension values or for entire matrix strategies.
 
 When you run the pipeline, you are prompted to provide the values (which you can provide as an array) or the entire strategy definition, depending on how you specified the runtime input.
 
@@ -154,6 +184,9 @@ matrix:
 ```
 
 For example, the matrix strategy used in the following pipeline would prompt you to provide a list of values for `goVersion` at pipeline runtime:
+
+<details>
+<summary>Pipeline YAML example</summary>
 
 ```yaml
 pipeline:
@@ -190,7 +223,12 @@ pipeline:
 
 ```
 
+</details>
+
 Here is an example of a possible input set for this pipeline:
+
+<details>
+<summary>Input set YAML example</summary>
 
 ```yaml
 pipeline:
@@ -211,6 +249,7 @@ pipeline:
                         - 1.1.0
                         - 1.1.1
 ```
+</details>
 
 ### Use runtime input for multiple dimensions
 
@@ -230,6 +269,9 @@ You can use runtime input for multiple dimensions in a matrix. You can also use 
 The number of instances generated by this strategy depends on the number of values you provide for each runtime input. It is a good idea to include `maxConcurrency` with this strategy in case a lot of values are provided.
 
 Here is a YAML example of a pipeline with the above matrix strategy:
+
+<details>
+<summary>Pipeline YAML example</summary>
 
 ```yaml
 pipeline:
@@ -269,7 +311,12 @@ pipeline:
                        - "core"
 ```
 
+</details>
+
 Here is an example of a possible input set for this pipeline. Note that `tags` is not included because those values are fixed values.
+
+<details>
+<summary>Input set YAML example</summary>
 
 ```yaml
 pipeline:
@@ -293,14 +340,18 @@ pipeline:
                         - latest
                         - 1.2.0
 ```
+</details>
 
 ### Use runtime input for the entire matrix strategy
 
 To require runtime input for an entire matrix strategy, use `matrix: <+input>`. You'll have to provide the entire matrix strategy when you run the pipeline.
 
-For example, you could use this if you need to input different dimensions, values, and exclusions at runtime.
+For example, use this when you need to input different dimensions, values, and exclusions at runtime.
 
 Here is an example of a pipeline that uses runtime input for the entire matrix strategy:
+
+<details>
+<summary>Pipeline YAML example</summary>
 
 ```yaml
 pipeline:
@@ -336,7 +387,12 @@ pipeline:
         tags: {}
 ```
 
+</details>
+
 Here is an example of an input set for this pipeline:
+
+<details>
+<summary>Input set YAML example</summary>
 
 ```yaml
 pipeline:
@@ -365,11 +421,18 @@ pipeline:
                           version: 12
 ```
 
-## Get matrix values from expressions
+</details>
+
+---
+
+## Expression-based matrix values
 
 You can use expressions as values for matrix dimensions. You can also use expressions to extract values from elsewhere, such as from pipeline or stage variables.
 
-For example, the following pipeline uses a matrix strategy that loops over a series of Jira issues. The issue numbers are derived from the pipeline variable `jiraTickets`, which is populated at runtime (as indicated by it's value `<+input>`). The matrix strategy uses an expression with the split method to separate the individual issue numbers from the pipeline variable: `<+<+pipeline.variables.example>.split(',')>`.
+For example, the following pipeline uses a matrix strategy that loops over a series of Jira issues. The issue numbers are derived from the pipeline variable `jiraTickets`, which is populated at runtime (as indicated by its value `<+input>`). The matrix strategy uses an expression with the split method to separate the individual issue numbers from the pipeline variable: `<+<+pipeline.variables.example>.split(',')>`.
+
+<details>
+<summary>Pipeline YAML example</summary>
 
 ```yaml
 pipeline:
@@ -420,6 +483,8 @@ pipeline:
       value: <+input>
 ```
 
+</details>
+
 Here is an example of a possible input set for this pipeline:
 
 ```yaml
@@ -431,9 +496,11 @@ pipeline:
       value: cd-1,cd-2,cd-3 ## Jira issue numbers provided at runtime.
 ```
 
-## Get matrix values from trigger payloads
+---
 
-To provide the axis value from a trigger, use [codebase expressions](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) or [trigger payload expressions](/docs/platform/triggers/triggers-reference#attributes) to define the axis values.
+## Matrix values from trigger payloads
+
+To provide the axis value from a trigger, use <a href="/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference" target="_blank" rel="noopener noreferrer">codebase expressions</a> or <a href="/docs/platform/triggers/triggers-reference#attributes" target="_blank" rel="noopener noreferrer">trigger payload expressions</a> to define the axis values.
 
 For example:
 
@@ -443,13 +510,18 @@ For example:
         payload: [<+trigger.payload.user.username>, <+trigger.prNumber>]
 ```
 
-You can use `<+trigger.payload.PATH_IN_JSON>` to [reference any field in the trigger's JSON payload](/docs/platform/triggers/triggers-reference#reference-payload-fields), such as `<+trigger.payload.pull_request.user.login>`.
+You can use `<+trigger.payload.PATH_IN_JSON>` to <a href="/docs/platform/triggers/triggers-reference#reference-payload-fields" target="_blank" rel="noopener noreferrer">reference any field in the trigger's JSON payload</a>, such as `<+trigger.payload.pull_request.user.login>`.
 
-## Use complex JSON for matrix values
+---
+
+## Complex JSON values in matrices
 
 If you are not sure about the value of an item in a pipeline, you can store it as a JSON string instead. This way, if an object is an output of the previous step, you can use the JSON functor to get a list from that object.
 
 The following example shows a pipeline that provides a custom object using JSON functor. The matrix strategy references a pipeline variable containing the JSON object.
+
+<details>
+<summary>Pipeline YAML example</summary>
 
 ```yaml
 pipeline:
@@ -498,25 +570,32 @@ pipeline:
       value: "1.0.0"
 ```
 
+</details>
+
 Escaping is required for some punctuation. Note the use of double quotes around the entire object.
 
 Also, when an expression is used in a JSON string, it must be wrapped in quotation marks, for example, `<+pipeline.variables.version>` in the above pipeline YAML.
 
 
-### Generate random integers using a matrix and then find their aggregate sum.
+### Generate random integers using a matrix and then find their aggregate sum
 
-Solution:
+This example uses a matrix strategy to generate random integers and calculate their aggregate sum across multiple parallel instances.
 
-Requirements:-
-1. Enable project setting **Enable Json Support for expressions**.
-2. Install jq library.
+Prerequisites:
 
-![](./static/project_setting.png)
+1. Enable the **Enable JSON Support for Expressions** project setting in **Project Settings → General Settings → Pipeline**.
+   <div align="center"><DocImage path={require('./static/project_setting.png')} alt="Project settings showing Enable Json Support for expressions option enabled" width="80%" /></div>
+2. Install the jq library.
 
-We are going to create a two-step process: the first step is for generating random integers, and the second step is for calculating their aggregate sum.
+The example consists of two steps: the first generates random integers, and the second calculates their aggregate sum.
 
-#### First step 
-In this step we are using built-in variable in Bash `$RANDOM` that generates a random integer, here it generates a random integer between 1 and 100 and stores it in the variable `random_number` and we are using this variable as an **output variable** that can be referenced in other step as well.
+**Step 1:**
+
+This step uses the built-in variable in Bash `$RANDOM` that generates a random integer, here it generates a random integer between 1 and 100 and stores it in the variable `random_number`. Use this variable as an **output variable** that can be referenced in other step as well.
+
+<details>
+<summary>Step 1 YAML example</summary>
+
 ```yaml
 pipeline:
   name: 
@@ -558,8 +637,14 @@ pipeline:
                         - name: thirdGroup
 ```
 
-#### Second step
-In step 2, we are using [json.format](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors.md#format) and jq to extract those values and add them together.
+</details>
+
+**Step 2:**
+Use <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors#format" target="_blank" rel="noopener noreferrer">json.format</a> and jq to extract those values and add them together.
+
+<details>
+<summary>Step 2 YAML example</summary>
+
 ```yaml
               - step:
                   type: ShellScript
@@ -579,5 +664,16 @@ In step 2, we are using [json.format](/docs/continuous-delivery/x-platform-cd-fe
                     outputVariables: []
                   timeout: 10m
 ```
+</details>
 
-![](./static/output_example_matrix_example.png)
+<div align="center"><DocImage path={require('./static/output_example_matrix_example.png')} alt="Pipeline execution output showing aggregate sum calculation from matrix-generated random numbers" width="80%" /></div>
+
+The pipeline execution output shows the aggregate sum of all random numbers generated across the matrix iterations. Each matrix instance generates a random number, and the second step collects and sums them using jq.
+
+---
+
+## Related concepts
+
+- <a href="/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism" target="_blank" rel="noopener noreferrer">Looping strategies</a>: Understand how matrix, parallelism, and repeat strategies work and when to use each.
+- <a href="/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies" target="_blank" rel="noopener noreferrer">Looping strategy best practices</a>: Plan resource usage and avoid common pitfalls when implementing matrix strategies.
+- <a href="/docs/platform/pipelines/looping-strategies/run-stages-in-parallel" target="_blank" rel="noopener noreferrer">Run stages in parallel</a>: Run multiple stages at the same time without using looping strategies.

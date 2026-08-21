@@ -17,7 +17,7 @@ Harness handles a blank input variable differently depending on whether you run 
 
 ---
 
-## What you will learn in this topic
+## What you will learn from this topic
 
 - How [Harness handles a blank input variable](#how-harness-handles-blank-input-variables) with and without an input set.
 - How to [enable Save Blank Fields as Empty String](#enable-the-save-blank-fields-as-empty-string-setting) with the account-level settings.
@@ -100,7 +100,7 @@ The two ways of running a pipeline (without an input set and with an input set) 
 
 If you run the pipeline without an input set and check the execution, you see this output:
 
-<div align="center"><DocImage path={require('./static/without_input_set_runform.png')} alt="Execution output treating input_variable as empty when run without an input set" width="100%" /></div>
+<div align="center"><DocImage path={require('./static/without-input-set-runform.png')} alt="Execution output treating input_variable as empty when run without an input set" width="100%" /></div>
 
 The output takes the value of `input_variable` as empty, which is expected because you provided an empty value for `input_variable` at runtime.
 
@@ -108,11 +108,11 @@ The output takes the value of `input_variable` as empty, which is expected becau
 
 Now, run the pipeline using the input set `input_set`.
 
-<div align="center"><DocImage path={require('./static/with_input_set_running.png')} alt="Running the pipeline with the input_set input set" width="100%" /></div>
+<div align="center"><DocImage path={require('./static/with-input-set-running.png')} alt="Running the pipeline with the input_set input set" width="100%" /></div>
 
 If you run the pipeline using an input set and check the execution, you see this output:
 
-<div align="center"><DocImage path={require('./static/with_input_set_runform.png')} alt="Execution output treating input_variable as null when run with an input set" width="100%" /></div>
+<div align="center"><DocImage path={require('./static/with-input-set-runform.png')} alt="Execution output treating input_variable as null when run with an input set" width="100%" /></div>
 
 The output treats `input_variable` as **null** when it is left empty.
 
@@ -139,14 +139,14 @@ Enable the following account-level settings to use this feature. Both settings a
 - **Show checkbox to Save Blank Fields as Empty String** (`display_raw_mode_setting`): Displays the **Save Blank Fields as Empty String** checkbox when creating input sets, triggers, or running a pipeline. If disabled, the checkbox is hidden and blank fields continue to resolve as `null`.
 - **Default Value of Blank Fields Checkbox** (`default_raw_mode_setting_value`): Selects the checkbox by default wherever it is available.
 
-<div align="center"><DocImage path={require('./static/blank_field_as_empty_account_setting.png')} alt="Save Blank Fields as Empty String account-level settings" width="100%" /></div>
+<div align="center"><DocImage path={require('./static/blank-field-as-empty-account-setting.png')} alt="Save Blank Fields as Empty String account-level settings" width="100%" /></div>
 
 :::note
 When Harness saves a blank String field as an empty string (`""`), it treats that empty string as a resolved value. As a result, an expression such as `<+expression.isResolved(<+pipeline.variables.input_variable>)>` returns `true` even when no value was entered. 
 
 Harness cannot distinguish an intentionally empty string from a value that was never provided, so it cannot validate against empty strings during execution. 
 
-To require an actual value, mark the variable as required instead of depending on an emptiness check. Go to [Check expression isResolved isUnresolved null replacement](/docs/platform/variables-and-expressions/harness-expressions-reference#check-expression-isresolved-isunresolved-null-replacement) to understand this evaluation.
+To require an actual value, mark the variable as required instead of depending on an emptiness check. For more information, refer to <a href="/docs/platform/variables-and-expressions/harness-expressions-reference#check-expression-isresolved-isunresolved-null-replacement" target="_blank" rel="noopener noreferrer">Check expression isResolved isUnresolved null replacement</a>.
 :::
 
 ---
@@ -157,7 +157,7 @@ This section uses the same example pipeline and input set from [How Harness hand
 
 After you enable the settings, a **Save Blank Fields as Empty String** checkbox appears when you create an input set. Select the checkbox and save the input set. This ensures that Harness treats a blank value as an empty string, not null.
 
-<div align="center"><DocImage path={require('./static/save_blank_field_empty_input_set_creation.png')} alt="Save Blank Fields as Empty String checkbox shown while creating an input set" width="100%" /></div>
+<div align="center"><DocImage path={require('./static/save-blank-field-empty-input-set-creation.png')} alt="Save Blank Fields as Empty String checkbox shown while creating an input set" width="100%" /></div>
 
 Run the pipeline again to see the change in both ways of running a pipeline.
 
@@ -169,11 +169,11 @@ A direct run (without an input set) already treats a blank input variable as an 
 
 Now, run the pipeline using the input set `input_set` with the **Save Blank Fields as Empty String** checkbox enabled.
 
-<div align="center"><DocImage path={require('./static/with_input_set_feature_enabled.png')} alt="Input set with the Save Blank Fields as Empty String checkbox enabled" width="100%" /></div>
+<div align="center"><DocImage path={require('./static/with-input-set-feature-enabled.png')} alt="Input set with the Save Blank Fields as Empty String checkbox enabled" width="100%" /></div>
 
 If you run the pipeline using an input set and check the execution, you see this output:
 
-<div align="center"><DocImage path={require('./static/with_input_set_running_feature_enabled.png')} alt="Execution output treating input_variable as an empty string after enabling the setting" width="100%" /></div>
+<div align="center"><DocImage path={require('./static/with-input-set-running-feature-enabled.png')} alt="Execution output treating input_variable as an empty string after enabling the setting" width="100%" /></div>
 
 In this case, the output treats `input_variable` as an **empty string** when it is left empty.
 
@@ -183,6 +183,6 @@ The pipeline now treats blank input values consistently as empty strings, regard
 
 ## Next steps
 
-- [Pipeline settings](/docs/platform/pipelines/pipeline-settings#save-blank-fields-as-empty-string-settings): Review the account-level settings reference.
-- [Input sets and overlays](/docs/platform/pipelines/input-sets): Create reusable sets of runtime input values.
-- [Use runtime input](/docs/platform/variables-and-expressions/runtime-input-usage): Understand how runtime input values are validated.
+- <a href="/docs/platform/pipelines/pipeline-settings#save-blank-fields-as-empty-string-settings" target="_blank" rel="noopener noreferrer">Pipeline settings</a>: Review the account-level settings reference.
+- <a href="/docs/platform/pipelines/input-sets" target="_blank" rel="noopener noreferrer">Input sets and overlays</a>: Create reusable sets of runtime input values.
+- <a href="/docs/platform/variables-and-expressions/runtime-input-usage" target="_blank" rel="noopener noreferrer">Use runtime input</a>: Understand how runtime input values are validated.
