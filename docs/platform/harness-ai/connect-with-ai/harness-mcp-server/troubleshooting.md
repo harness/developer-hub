@@ -87,6 +87,31 @@ The Inspector displays a URL you can open in your browser to inspect tool calls 
   fallback="Send an initialize request first to create a session, then include the mcp-session-id header on all subsequent POST, GET, and DELETE requests to /mcp. Sessions expire after 30 minutes of idle time."
 />
 
+<Troubleshoot
+  issue="VS Code stuck in a session 404 or 401 reconnect loop"
+  mode="fallback-only"
+  fallback={`VS Code may repeatedly log a cycle like this in the MCP server output and never recover:
+
+\`\`\`text
+Connection state: Running
+Connection state: Error 404 status sending message to https://mcp.harness.io/mcp:
+  {"jsonrpc":"2.0","error":{"code":-32000,"message":"Session not found. Send an
+  initialize request to start a new session."},"id":null}; will retry with new session ID
+\`\`\`
+
+You may also see a 401 response with a \`www-authenticate\` header that never resolves into a completed sign-in prompt.
+
+This is caused by a known VS Code behavior ([microsoft/vscode#253854](https://github.com/microsoft/vscode/issues/253854)): VS Code caches the dynamic authentication provider for an MCP server so it does not re-prompt you on every connection. When that cached authentication or registration goes stale, the server returns a 401 or 404, and VS Code retries with the same stale state instead of starting a fresh OAuth flow.
+
+**Resolution:** Remove the cached dynamic authentication provider, then reconnect.
+
+1. Open the Command Palette and run **MCP: Remove Dynamic Authentication Provider** (or open the Account menu in the lower-left corner and sign out of the Harness dynamic authentication entry).
+2. Reload the window or restart the MCP server.
+3. Reconnect and complete the OAuth sign-in flow again.
+
+You do not need to reinstall VS Code or clear its full local state to resolve this.`}
+/>
+
 ---
 
 ## Next steps
