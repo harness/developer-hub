@@ -1,40 +1,69 @@
 ---
-title: Understanding Execution Graph API
-description: A guide to understanding and working with the execution graph API in Harness.
+title: Pipeline execution graph API
+sidebar_label: Pipeline Execution Graph API
+description: Learn how to use the execution graph API to retrieve pipeline execution details in Harness.
 sidebar_position: 21
+keywords:
+  - execution graph
+  - execution graph API
+  - pipeline execution
+  - node execution
+  - execution details
+  - subgraph API
+tags:
+  - pipelines
+  - execution
+  - api
 ---
 
-## Overview
+The Pipeline **Execution Graph API** provides a structured representation of a pipeline's execution in Harness. It details the flow, dependencies, statuses, and outcomes of tasks within a pipeline.
 
-The Execution Graph API provides a structured representation of a pipeline's execution in Harness, detailing the flow, dependencies, statuses, and outcomes of different tasks within a pipeline. This API enables users to retrieve execution details at various levels, including stages, steps, and specific nodes.
+Use this API to retrieve execution details at various levels, including stages, steps, and specific nodes. You can extract execution metadata, output variables, task delegation information, and logs for debugging and analysis.
 
-## API to Get Execution Subgraph for Node Execution
+---
 
-The **Execution Subgraph API** provides detailed information about a specific node's execution in the pipeline.
+## What you will learn in this topic?
 
-### API Endpoint
+- How the [execution subgraph API endpoint](#api-endpoint) retrieves node-level execution details.
+- How to [interpret the execution graph JSON response](#example-execution-graph-response).
+- How to [extract output variables](#extract-output-variables-from-an-execution-subgraph) from the execution graph using HTTP steps.
 
-```GET /executions/{executionId}/subgraph/{nodeExecutionId}```
+---
+
+## Get an execution subgraph
+
+The Execution Subgraph API provides detailed information about a specific node's execution in the pipeline. Use this endpoint to retrieve the execution graph for a particular node within a pipeline execution.
+
+:::note Node type restriction
+If the `PIE_RESTRICT_SUBGRAPH_API_TO_STEP_GROUP` feature flag is enabled on your account, the API only works with step group nodes. Contact <a href="mailto:support@harness.io" target="_blank" rel="noopener noreferrer">Harness Support</a> if you need to check the flag status or modify this behavior.
+:::
+
+### API endpoint
+
+```bash
+GET /executions/{executionId}/subgraph/{nodeExecutionId}
+```
+
+**Path parameters:**
 
 - **executionId**: The ID of the execution.
 - **nodeExecutionId**: The ID of the node within the execution whose subgraph details are to be fetched.
 
-For detailed documentation, refer to the [Pipeline Execution Details API](https://apidocs.harness.io/tag/Pipeline-Execution-Details/?_gl=1*smd27j*_gcl_au*MTMxODM4MjQ4LjE3MzYxODY4MjA.*_ga*MTE3NTQ1ODQ5Ny4xNzI4NDAwNDc3*_ga_46758J5H8P*MTczODIyNzY5OS4yNTAuMS4xNzM4MjI4OTI3LjYwLjAuMA..#operation/getExecutionSubGraphForNodeExecution).
+For more information, refer to <a href="https://apidocs.harness.io/tag/Pipeline-Execution-Details/?_gl=1*smd27j*_gcl_au*MTMxODM4MjQ4LjE3MzYxODY4MjA.*_ga*MTE3NTQ1ODQ5Ny4xNzI4NDAwNDc3*_ga_46758J5H8P*MTczODIyNzY5OS4yNTAuMS4xNzM4MjI4OTI3LjYwLjAuMA..#operation/getExecutionSubGraphForNodeExecution" target="_blank" rel="noopener noreferrer">Pipeline Execution Details API</a>.
 
-## Execution Graph Components 
+### Example execution graph response
 
-Key Elements:
-- Root Node: The entry point of the pipeline execution.
-- Execution Nodes: Represents individual steps such as script execution, API calls, or deployments.
-- Dependencies: Defines relationships between nodes, including sequential or parallel execution.
-- Task Delegation: Assigns tasks to worker agents or delegates for execution.
-- Status Tracking: Monitors execution states (Success, Failed, Running, etc.).
-- Output Variables: Captures and stores data produced by execution steps.
-- Logs: Stores detailed execution logs for debugging and analysis.
- 
-## Example Execution Graph JSON
+The execution graph contains the following key elements:
 
-Below is an example of the JSON response representing the execution graph:
+- **Root Node**: The entry point of the pipeline execution.
+- **Execution Nodes**: Represents individual steps such as script execution, API calls, or deployments.
+- **Dependencies**: Defines relationships between nodes, including sequential or parallel execution.
+- **Task Delegation**: Assigns tasks to worker agents or delegates for execution.
+- **Status Tracking**: Monitors execution states (Success, Failed, Running, etc.).
+- **Output Variables**: Captures and stores data produced by execution steps.
+- **Logs**: Stores detailed execution logs for debugging and analysis.
+
+The following example shows a JSON response from the execution graph API:
 
 ```json
 {
@@ -368,10 +397,13 @@ Below is an example of the JSON response representing the execution graph:
 }
 ```
 
-### Extracting Output Variables via Execution Graph API
+---
 
-You can extract output variables via Execution Graph response JSON using HTTP step and Shell script:-
-Here is a sample YAML :-
+## Extract output variables from an execution subgraph
+
+You can extract output variables from the execution graph response JSON using an HTTP step and Shell script.
+
+The following YAML example demonstrates how to retrieve output variables from a specific step:
 
 ```yaml
 pipeline:
@@ -425,8 +457,20 @@ pipeline:
 
 ```
 
-You need to specify the specific step `uuid` if you want to extract output variables from a specific step, same can ne extracted from JSON.
+You need to specify the specific step `uuid` if you want to extract output variables from a specific step. The same can be extracted from the JSON response.
 
-Output:-
+### Output
 
-![](./static/execution_graph.png)
+The Shell script step displays the extracted output variables from the execution graph.
+
+<div align="center"><DocImage path={require('./static/execution_graph.png')} alt="Shell script output showing extracted output variables from execution graph" width="80%" /></div>
+
+---
+
+## Next steps
+
+- <a href="/docs/platform/pipelines/run-specific-stage-in-pipeline" target="_blank" rel="noopener noreferrer">Run specific stages</a>: Select which stages to run during pipeline execution.
+- <a href="/docs/platform/variables-and-expressions/runtime-inputs" target="_blank" rel="noopener noreferrer">Runtime inputs</a>: Learn how runtime inputs and output variables work in pipelines.
+- <a href="/docs/category/executions-and-logs" target="_blank" rel="noopener noreferrer">Executions and logs</a>: View and analyze pipeline execution history and logs.
+
+---
