@@ -14,7 +14,7 @@ To maximize savings, consider modifying your Dockerfile to [use the cache effici
 
 :::
 
-## Docker Layer Caching, an Intelligence Feature 
+## Docker Layer Caching, an Intelligence Feature
 
 With **Docker Layer Caching (DLC)** , a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, Harness seamlessly caches Docker layers between builds to  accelerate the time it takes to build Docker images.
 
@@ -22,11 +22,9 @@ You can use DLC with any [build infrastructure](/docs/continuous-integration/use
 
 :::info
 
-* Docker Layer Caching is now Generally Available (GA). 
-* Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
+* Docker Layer Caching is now Generally Available (GA).
 
-
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+If this feature is not yet enabled in your account, reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::
 
 
@@ -42,7 +40,7 @@ When you use Docker Layer Caching with [Harness CI Cloud](/docs/continuous-integ
 
 All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
 
-The cache storage limit depends on your subscription plan type. Please visit [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#usage-limits) page to learn more about usage limits.
+The cache storage limit depends on your subscription plan type. Go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#usage-limits) to review usage limits.
 
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
 
@@ -56,7 +54,7 @@ When running builds in self-managed infrastructures, [configure default object s
 
 If your storage is not S3-compatible or you do not want to use access key and secret key for authentication, consider using [remote cache image](#remote-cache-image) instead.
 
-We suggest that you consider setting bucket level retention policy for efficient cache management. 
+Set a bucket-level retention policy for efficient cache management.
 
 :::info
 - Enabling DLC when running on Kubernetes requires *privileged mode* on the cluster where the builds run. 
@@ -81,7 +79,7 @@ DLC stores cached layers in Harness-managed storage on Harness CI Cloud or in ob
 
    This is not required for Harness Cloud build infrastructure. For more information, go to [Cache storage](#cache-storage).
 
-2. To enable Docker layer caching with Harness CI cloud, select __Enable Docker layer caching__ in your [Build and Push steps](/docs/category/build-and-push).
+2. To enable Docker layer caching with Harness CI cloud, select **Enable Docker layer caching** in your [Build and Push steps](/docs/category/build-and-push).
 
 Here is a YAML example of a  **Build and Push an image to Docker Registry** step that uses DLC.
 
@@ -164,7 +162,7 @@ In addition to reducing build times, excluding unnecessary files and packages ma
 
 ### I use DLC but I do not observe time savings
 
-Distributed Layer Caching (DLC) provides caching benefits, but certain operations may not see significant improvements due to how caching works. For example, `FROM` statements never use cache, as base image layers are always pulled to ensure freshness. Additionally, external dependencies (like copying files from non-cached sources) may not be fully cached. DLC primarily caches self-contained operations, and checksum-based steps (like `COPY` or `ADD`) only reuse cache when source files remain unchanged. To maximize caching benefits, optimize Dockerfile instructions to reduce dependency on external sources.
+Docker Layer Caching (DLC) provides caching benefits, but certain operations may not see significant improvements due to how caching works. For example, `FROM` statements never use cache, as base image layers are always pulled to ensure freshness. Additionally, external dependencies (like copying files from non-cached sources) may not be fully cached. DLC primarily caches self-contained operations, and checksum-based steps (like `COPY` or `ADD`) only reuse cache when source files remain unchanged. To maximize caching benefits, optimize Dockerfile instructions to reduce dependency on external sources.
 
 See [Optimize Docker images and Dockerfiles](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching/#optimize-docker-images-and-dockerfiles) to learn more.
 

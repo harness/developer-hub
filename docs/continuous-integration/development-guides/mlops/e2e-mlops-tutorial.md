@@ -1,19 +1,36 @@
 ---
 title: Tutorial - End-to-end MLOps CI/CD pipeline with Harness and AWS
-description: Build and deploy an ML model using Harness and AWS.
-sidebar_position: 3
+sidebar_label: End-To-End Tutorial
+description: Build, test, govern, and deploy a machine learning model to AWS Lambda with a Harness CI/CD pipeline.
+sidebar_position: 30
+keywords:
+  - mlops
+  - tutorial
+  - aws lambda
+  - ecr
+  - model deployment
+tags:
+  - ci
+  - mlops
+  - tutorial
 ---
 
 MLOps tackles the complexities of building, testing, deploying, and monitoring machine learning models in real-world environments.
 
 Integrating machine learning into the traditional software development lifecycle poses unique challenges due to the intricacies of data, model versioning, scalability, and ongoing monitoring.
 
-In this tutorial, you'll create an end-to-end MLOps CI/CD pipeline that will:
+In this tutorial, you build an end-to-end MLOps CI/CD pipeline that trains a credit card approval model, gates its promotion on accuracy and fairness, and deploys it to AWS Lambda.
 
-* Build and push an ML model to AWS ECR.
-* Run security scans and tests.
-* Deploy the model to AWS Lambda.
-* Add policy enforcement and monitoring for the model.
+---
+
+## What you will learn from this topic
+
+- **Model build and scan:** Build the model image, push it to AWS ECR, and scan it with Security Testing Orchestration.
+- **Quality gates:** Export accuracy and fairness metrics as output variables, then enforce thresholds with Open Policy Agent policies.
+- **Deployment:** Deploy the model to AWS Lambda with a Harness CD stage.
+- **Monitoring and triggers:** Alert on a stale model and rerun the pipeline from a Git event.
+
+---
 
 ## The story
 
@@ -21,11 +38,11 @@ This tutorial uses a fictional bank called _Harness Bank_. Assume that this fict
 
 Assume that the current process to update this hypothetical ML model is manual. A data scientist builds a new image locally, runs tests, and manually ensures that the model passes the required threshold for accuracy and fairness.
 
-In this tutorial, you'll automate the model maintenance process and increase the build and delivery velocity.
+In this tutorial, you automate the model maintenance process and increase the build and delivery velocity.
 
 ### Design and architecture
 
-Before diving into the implementation, review the MLOps architecture.
+Review the MLOps architecture before you start the implementation.
 
 ```mermaid
 graph LR;
@@ -41,22 +58,23 @@ For this tutorial, assume you are given a Python data science project, and you a
 - Run security scans on the container image.
 - Upload model visualization data to S3.
 - Publish model visualization data within the pipeline.
-- Run test on the model to find out accuracy and fairness scores.
+- Run tests on the model to determine accuracy and fairness scores.
 - Based on those scores, use Open Policy Agent (OPA) policies to either approve or deny the model.
 - Deploy the model.
 - Monitor the model and ensure the model is not outdated.
-- Trigger the pipeline based on certain git events.
+- Trigger the pipeline based on Git events.
 - (Optional) Add approval gates for production deployment.
 
 For this tutorial, assume that the data is already processed.
 
-## Prerequisites
+---
 
-This tutorial requires:
+## Before you begin
 
-* A Harness account with access to the Continuous Integration, Continuous Delivery, and Security Testing Orchestration modules. If you are new to Harness, [you can sign up for free](https://app.harness.io/auth/#/signup/?&utm_campaign=cicd-devrel).
-* [An AWS account, credentials, and a Harness AWS connector.](#prepare-aws)
-* [A GitHub account, credentials, and a Harness GitHub connector.](#prepare-github)
+- **Harness account:** Access to the Continuous Integration, Continuous Delivery, and Security Testing Orchestration modules. Go to the [Harness signup page](https://app.harness.io/auth/#/signup/?&utm_campaign=cicd-devrel) to create a free account.
+- **AWS access:** An AWS account and credentials with permission to create ECR, S3, and Lambda resources. Go to [Prepare AWS](#prepare-aws) to complete the setup.
+- **GitHub access:** A GitHub account and a personal access token. Go to [Prepare GitHub](#prepare-github) to fork the sample repository.
+- **Harness delegate:** Required for the **Custom** stage that runs policy checks. Go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview) to review delegate requirements.
 
 ### Prepare AWS
 
@@ -78,7 +96,7 @@ You need an AWS account with sufficient permissions to create/modify/view resour
 
 2. Create ECR repos. From your AWS console, navigate to Elastic Container Registry (ECR) and create two private repositories named `ccapproval` and `ccapproval-deploy`. Under **Image scan settings**, enable **Scan on Push** for both repositories.
 
-3. Create an S3 bucket. Navigate to S3 and create a bucket named something like `mlopswebapp`. You'll use this bucket to host a static website for the credit card approval application demo, along with a few other artifacts.
+3. Create an S3 bucket. Navigate to S3 and create a bucket named something like `mlopswebapp`. Use this bucket to host a static website for the credit card approval application demo, along with a few other artifacts.
 
    Make sure all options under **Block public access (bucket settings)** are unchecked, and then apply the following bucket policy:
 
@@ -107,7 +125,7 @@ You need an AWS account with sufficient permissions to create/modify/view resour
    * Architecture: `x86_64`
    * From Advanced: Select **Enable function URL** to make the function URL public. Anyone with the URL can access your function. For more information, go to the [AWS documentation on Lambda function URLs](https://docs.aws.amazon.com/lambda/latest/dg/lambda-urls.html).
 
-5. Select **Create function** to create the function. You'll notice an info banner confirming that the function URL is public.
+5. Select **Create function** to create the function. An info banner appears confirming that the function URL is public.
 
    ![Lambda Function URL](static/lambda-function-url.png)
 
@@ -164,17 +182,19 @@ Create Harness connectors to connect to your AWS and GitHub accounts.
    - Personal Access Token: Use your `git_pat` secret
    - Connectivity Mode: Connect through Harness Platform
 
+---
+
 ## Create the Harness pipeline
 
 In Harness, you create pipeline to represent workflows. Pipeline can have multiple stages, and each stage can have multiple steps.
 
-1. In your Harness project, [create a pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md) named `Credit Card Approval MLops`.
+1. In your Harness project, [create a pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) named `Credit Card Approval MLops`.
 2. Add a **Build** stage named `Train Model`.
 3. Make sure **Clone Codebase** is enabled.
 4. Select **Third-party Git provider**, and then select your `mlopsgithubconnector` GitHub connector. The repository name should populate automatically.
 5. Select **Set Up Stage**.
 
-In the following sections of this tutorial, you'll configure this stage to build and push the data science image, and you'll add more stages to the pipeline to meet the [tutorial's objectives](#design-and-architecture).
+In the following sections of this tutorial, you configure this stage to build and push the data science image, and you add more stages to the pipeline to meet the [tutorial's objectives](#design-and-architecture).
 
 :::tip
 
@@ -205,7 +225,7 @@ Configure your `Train Model` stage to build and push the data science image and 
 
 4. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
-Next, you'll add steps to your build stage to retrieve the results of the ECR repo security scan.
+Next, add steps to your build stage to retrieve the results of the ECR repo security scan.
 
 Because scanning is enabled on your ECR repositories, each image pushed to the repo by the **Build and Push to ECR** step is scanned for vulnerabilities. In order to successfully retrieve the scan results, your pipeline needs to wait for the scan to finish and then request the results.
 
@@ -241,7 +261,7 @@ Because scanning is enabled on your ECR repositories, each image pushed to the r
 At this point, you can run the pipeline to test the Build stage.
 
 8. Select **Run Pipeline** to test the Build stage. For **Git Branch**, enter `main`.
-9. Wait while the pipeline runs, and then check your `ccapproval` ECR repository to find an image with a SHA matching the pipeline execution ID. Select **Copy URI** to copy the image URI; you'll need it in the next section.
+9. Wait while the pipeline runs, and then check your `ccapproval` ECR repository to find an image with a SHA matching the pipeline execution ID. Select **Copy URI** to copy the image URI; you need it in the next section.
 10. Make sure the image scan also ran. In the Harness [Build details](/docs/continuous-integration/use-ci/viewing-builds), you can find the scan results in the **AWS ECR Scan** step logs. For example:
 
    ```shell
@@ -269,7 +289,7 @@ At this point, you can run the pipeline to test the Build stage.
    }
    ```
 
-You've successfully completed the first part of this tutorial: Configuring a Build stage that builds, pushes, and scans a trained data science image.
+You have successfully completed the first part of this tutorial: Configuring a Build stage that builds, pushes, and scans a trained data science image.
 
 Continue the tutorial in the next sections and continue building your MLOps pipeline.
 
@@ -297,7 +317,7 @@ Add another **Build** stage to your pipeline that will run tests, build a Lambda
    AWS_ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/AWS_ECR_REPO_NAME:<+pipeline.executionId>
    ```
 
-The data science project includes two Dockerfiles: One for building the source and one for AWS Lambda deployment. Next, you'll add a step to build and push the image using the Dockerfile designed for AWS Lambda deployment.
+The data science project includes two Dockerfiles: One for building the source and one for AWS Lambda deployment. Next, add a step to build and push the image using the Dockerfile designed for AWS Lambda deployment.
 
 5. Select **Add Step** and add a **Build and Push to ECR** step configured as follows:
 
@@ -332,7 +352,7 @@ The `pytest` command from the **Run** step generates an HTML file with some visu
    artifact_file: artifact.txt
    ```
 
-In addition to the model visualization, the `pytest` command also generates a `shared_env_variables.txt` file to export the model's accuracy and fairness metrics. However, this data is lost when the build ends because Harness stages run in isolated containers. Therefore, you must add a step to export the `ACCURACY` and `EQUAL_OPPORTUNITY_FAIRNESS_PERCENT` values as [output variables](/docs/continuous-integration/use-ci/run-step-settings.md#output-variables).
+In addition to the model visualization, the `pytest` command also generates a `shared_env_variables.txt` file to export the model's accuracy and fairness metrics. However, this data is lost when the build ends because Harness stages run in isolated containers. Therefore, you must add a step to export the `ACCURACY` and `EQUAL_OPPORTUNITY_FAIRNESS_PERCENT` values as [output variables](/docs/continuous-integration/use-ci/run-step-settings#output-variables).
 
 8. After the **Plugin** step, add a **Run** step configured as follows:
 
@@ -386,24 +406,24 @@ In addition to the model visualization, the `pytest` command also generates a `s
    20.799999999999997
    ```
 
-Congratulations! So far, you've completed half the requirements for this MLOps project:
+So far, you have completed half the requirements for this MLOps project:
 
 - [x] Build and push an image for this project.
 - [x] Run security scans on the container image.
 - [x] Upload model visualization data to S3.
 - [x] Publish model visualization data within the pipeline.
-- [x] Run test on the model to find out accuracy and fairness scores.
+- [x] Run tests on the model to determine accuracy and fairness scores.
 - [ ] Based on those scores, use Open Policy Agent (OPA) policies to either approve or deny the model.
 - [ ] Deploy the model.
 - [ ] Monitor the model and ensure the model is not outdated.
-- [ ] Trigger the pipeline based on certain git events.
+- [ ] Trigger the pipeline based on Git events.
 - [ ] (Optional) Add approval gates for production deployment.
 
 Continue on with policy enforcement in the next section.
 
 ### Add ML model policy checks
 
-In this section, you'll author OPA policies in Harness and use a **Custom** stage to add policy enforcement to your pipeline.
+In this section, you author OPA policies in Harness and use a **Custom** stage to add policy enforcement to your pipeline.
 
 Harness [Policy As Code](/docs/platform/governance/policy-as-code/harness-governance-overview) uses Open Policy Agent (OPA) as the central service to store and enforce policies for the different entities and processes across the Harness platform. You create individual policies, add them to policy sets, and select the entities (such as pipelines) to evaluate those policies against.
 
@@ -442,9 +462,9 @@ For this tutorial, the policy requirements are that the model accuracy is over 9
 6. Edit your MLOps pipeline, and add a **Custom** stage after the second **Build** stage. Name the stage `Model Policy Checks`.
 7. Select a Harness Delegate to use for the **Custom** stage.
 
-   The **Build** stages run on Harness Cloud build infrastructure, which doesn't require a Harness Delegate. However, **Custom** stages can't use this build infrastructure, so you need a [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview).
+   The **Build** stages run on Harness Cloud build infrastructure, which does not require a Harness Delegate. However, **Custom** stages cannot use this build infrastructure, so you need a [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview).
 
-   If you don't already have one, [install a delegate](https://developer.harness.io/docs/platform/get-started/tutorials/install-delegate). Then, on the **Custom** stage's **Advanced** tab, select your delegate in **Define Delegate Selector**.
+   If you do not already have one, [install a delegate](/docs/platform/get-started/tutorials/install-delegate). Then, on the **Custom** stage's **Advanced** tab, select your delegate in **Define Delegate Selector**.
 
 8. Add a **Shell Script** step to relay the accuracy and fairness output variables from the previous stage to the current stage. Configure the **Shell Script** step as follows:
 
@@ -497,11 +517,13 @@ allow {
 }
 ```
 
-Since the model accuracy is around 92% and the fairness margin is around 20%, this policy definition should produce a warning. Make sure to revert the change to the policy definition once you're done experimenting.
+Since the model accuracy is around 92% and the fairness margin is around 20%, this policy definition should produce a warning. Make sure to revert the change to the policy definition once you finish experimenting.
+
+---
 
 ## Deploy AWS Lambda function
 
-In Harness, you can specify the location of a function definition, artifact, and AWS account, and then Harness deploys the Lambda function and automatically routes traffic from the old version of the Lambda function to the new version on each deployment. In this part of the tutorial, you'll update an existing Lambda function by adding a **Deploy** stage with service, environment, and infrastructure definitions.
+In Harness, you can specify the location of a function definition, artifact, and AWS account, and then Harness deploys the Lambda function and automatically routes traffic from the old version of the Lambda function to the new version on each deployment. In this part of the tutorial, you update an existing Lambda function by adding a **Deploy** stage with service, environment, and infrastructure definitions.
 
 1. Edit your MLOPs pipeline, and add a **Deploy** stage named `lambdadeployment`.
 2. **Deployment Type**, select **AWS Lambda**, and then select **Continue**.
@@ -571,15 +593,17 @@ In Harness, you can specify the location of a function definition, artifact, and
    }
    ```
 
-   * Select **Test** to execute the function with your `testmodel` test event. Once the function finishes execution, you'll get the result with a **Function URL**.
+   * Select **Test** to execute the function with your `testmodel` test event. Once the function finishes execution, you get the result with a **Function URL**.
 
    ![Test Lambda Function](static/lambda-execution.png)
 
 12. Note the **Function URL** resulting from the lambda function test. This is the endpoint that your [ML web application](#use-the-ml-model-in-a-web-application) would call. Depending on the prediction of `0` or `1`, the web application either approves or denies the demo credit card application.
 
+---
+
 ## Monitor the model
 
-There are many ways to monitor ML models. In this tutorial, you'll monitor if the model was recently updated. If it hasn't been updated recently, Harness sends an email alerting you that the model might be stale.
+There are many ways to monitor ML models. In this tutorial, you monitor whether the model was recently updated. If it has not been updated recently, Harness sends an email alerting you that the model might be stale.
 
 1. Edit your MLOPs pipeline, and add a **Build** stage after the **Deploy** stage.
 
@@ -635,7 +659,7 @@ There are many ways to monitor ML models. In this tutorial, you'll monitor if th
    * For **Timeout**, enter `10m`.
    * For **To**, enter the email address to receive the notification, such as the email address for your Harness account.
    * For **Subject**, enter `Credit card approval ML model has not been updated in a week.`
-   * For **Body**, enter `It has been 7 days since the credit card approval ML model was updated. Please update the model.`
+   * For **Body**, enter `It has been 7 days since the credit card approval ML model was updated. Update the model.`
    * On the step's **Advanced** tab, add a [conditional execution](/docs/platform/pipelines/step-skip-condition-settings) so the **Email** step only runs if the `model_stale` variable (from the `Monitor Model` step) is `true`:
       * For **Execute this step**, select **If the stage executes successfully up to this point**.
       * Select **And execute this step only if the following JEXL Condition evaluates to true**.
@@ -647,11 +671,13 @@ There are many ways to monitor ML models. In this tutorial, you'll monitor if th
 
 5. Save and run the pipeline. For **Git Branch**, enter `main`, and for **Tag**, enter `<+pipeline.executionId>`.
 
+---
+
 ## Trigger pipeline based on Git events
 
-So far, this tutorial used manually triggered builds. However, as the number of builds and pipeline executions grow, it's not scalable to manually trigger builds. In this part of the tutorial, you'll add a [Git event trigger](/docs/platform/triggers/triggering-pipelines).
+So far, this tutorial used manually triggered builds. However, as the number of builds and pipeline executions grow, it is not scalable to manually trigger builds. In this part of the tutorial, you add a [Git event trigger](/docs/platform/triggers/triggering-pipelines).
 
-Assume your team has a specific requirement where they want the MLOps pipeline to run *only* if there's an update to the Jupyter notebook in the codebase.
+Assume your team has a specific requirement where they want the MLOps pipeline to run *only* if there is an update to the Jupyter notebook in the codebase.
 
 1. In your MLOps pipeline, select **Triggers** at the top of the Pipeline Studio, and then select **New Trigger**.
 2. Select the GitHub webhook trigger.
@@ -675,7 +701,7 @@ Assume your team has a specific requirement where they want the MLOps pipeline t
 
 6. Select **Create Trigger**.
 
-   The trigger webhook should automatically register in your GitHub repository. If it doesn't, you'll need to manually register the webhook:
+   The trigger webhook should automatically register in your GitHub repository. If it does not, you need to manually register the webhook:
 
    * On the list of triggers in Harness, select the **Link** icon to copy the webhook URL for the trigger.
 
@@ -691,6 +717,8 @@ Assume your team has a specific requirement where they want the MLOps pipeline t
    ![Webhook Success](static/webhook-success.png)
 
 With the trigger in place, whenever you push a change to the `credit_card_approval.ipynb` file on the `main` branch, the MLOps pipeline runs. In the trigger settings, you could adjust or remove the **Conditions** (branch name, changed files, and so on) according to your requirements, if you wanted to use a Git event trigger in a live development or production scenario.
+
+---
 
 ## Add an approval gate before prod deployment
 
@@ -714,31 +742,33 @@ Assume that you have a different image for production, and a different AWS Lambd
 
 Next time you run the pipeline, someone from the Harness project must approve the promotion of artifact to the production environment before the final **Deploy** stage runs.
 
+---
+
 ## Use the model in a web application
 
 In a live MLOps scenario, the ML model would likely power a web application. While this app development is outside the scope of this tutorial, the following animation demonstrates a simple web application developed using plain HTML/CSS/JS. The outcome of the credit card application uses the response from the public AWS Lambda function URL invocation.
 
 ![Credit Card Application Demo App](static/creditcardapprovalapp.gif)
 
-## Conclusion
+---
 
-Congratulations! Here's what you've accomplished in this tutorial:
+## Next steps
+
+You have accomplished the following in this tutorial:
 
 - [x] Build and push an image for this project.
 - [x] Run security scans on the container image.
 - [x] Upload model visualization data to S3.
 - [x] Publish model visualization data within the pipeline.
-- [x] Run test on the model to find out accuracy and fairness scores.
+- [x] Run tests on the model to determine accuracy and fairness scores.
 - [x] Based on those scores, use Open Policy Agent (OPA) policies to either approve or deny the model.
 - [x] Deploy the model.
 - [x] Monitor the model and ensure the model is not outdated.
-- [x] Trigger the pipeline based on certain git events.
+- [x] Trigger the pipeline based on Git events.
 - [x] (Optional) Add approval gates for production deployment.
 
-Now that you've built an MLOps pipeline on Harness and used the Harness platform to train the model, check out the following guides to learn how you can integrate other popular ML tools and platforms into your Harness CI/CD pipelines:
+This tutorial trains the model on Harness build infrastructure. If your model already lives on a managed ML platform, the same pipeline shape applies with the training step replaced by a Plugin step.
 
-- [AWS SageMaker](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-sagemaker)
-- [Databricks](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-databricks)
-- [Google Vertex AI](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-vertexai)
-- [Azure ML](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-azureml)
-- [MLflow](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-mlflow)
+- [Integrate ML platforms with Harness CI](/docs/continuous-integration/development-guides/mlops/mlops-integrations): Run training and deployment jobs on Azure ML, AWS SageMaker, Databricks, Google Vertex AI, or MLflow.
+- [MLOps best practices](/docs/continuous-integration/development-guides/mlops/mlops-best-practices): Review the practices that keep model pipelines reproducible and governed.
+- [MLOps with Harness](/docs/continuous-integration/development-guides/mlops/mlops-overview): Understand which Harness capability covers each stage of the ML lifecycle.

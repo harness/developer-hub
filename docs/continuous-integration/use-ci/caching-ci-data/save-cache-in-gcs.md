@@ -15,7 +15,7 @@ Modern continuous integration systems execute pipelines inside ephemeral environ
 In addition to loading dependencies faster, you can also use caching to share data across stages in your Harness CI pipelines. You need to use caching to share data across stages because each stage in a Harness CI pipeline has its own build infrastructure.
 
 :::tip
-Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, to automatically caches and restores software dependencies - hassle free.
+Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, to automatically cache and restore software dependencies with no extra configuration.
 :::
 
 This topic explains how you can use the **Save Cache to GCS** and **Restore Cache from GCS** steps in your CI pipelines to save and retrieve cached data from Google Cloud Storage (GCS) buckets. For more information about caching in GCS, go to the Google Cloud documentation on [caching](https://cloud.google.com/storage/docs/caching). In your pipelines, you can also [save and restore cached data from S3](saving-cache.md) or use Harness [Cache Intelligence](./cache-intelligence.md).
@@ -35,7 +35,7 @@ This topic assumes you have created a pipeline and that you are familiar with th
 
 ## GCP connector and GCS bucket requirements
 
-You need a dedicated GCS bucket for your Harness cache operations. Don't save files to the bucket manually. The Retrieve Cache operation fails if the bucket includes any files that don't have a Harness cache key.
+You need a dedicated GCS bucket for your Harness cache operations. Don't save files to the bucket manually. The Restore Cache operation fails if the bucket includes any files that don't have a Harness cache key.
 
 You need a [GCP connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/) that authenticates through a GCP service account key. To do this:
 
@@ -460,7 +460,7 @@ Add the following `when` definition to the end of your **Save Cache** step.
 This `when` definition causes the step to run only if *both* of the following conditions are met:
 
 * `stageStatus: Success`: Execute this step if the stage execution is successful thus far.
-* `condition: <+strategy.iteration> == 0`: Execution this step if the JEXL expression evaluates to true.
+* `condition: <+strategy.iteration> == 0`: Execute this step if the JEXL expression evaluates to true.
 
 </TabItem>
 </Tabs>

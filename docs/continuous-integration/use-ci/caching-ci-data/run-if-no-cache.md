@@ -131,7 +131,7 @@ pipeline:
                       bundle check || bundle install
                   when:
                     stageStatus: Success
-                    condition: <+execution.steps.L2_Cache.status> == "IGNORE_FAILED"
+                    condition: <+execution.steps.gemfile_cache.status> == "IGNORE_FAILED"
               - step: # Add other steps to the pipeline as needed.
                 ...
               - step:

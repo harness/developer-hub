@@ -1,7 +1,8 @@
 ---
 title: MLOps with Harness
-description: Use Harness for MLOps.
-sidebar_position: 1
+sidebar_label: Overview
+description: Understand how Harness CI and CD map onto the machine learning lifecycle, and which Harness capability covers each MLOps stage.
+sidebar_position: 10
 ---
 
 import Ci from '@site/docs/continuous-integration/development-guides/mlops/mlops-overview.md';

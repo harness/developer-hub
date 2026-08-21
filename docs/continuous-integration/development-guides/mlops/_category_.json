@@ -5,7 +5,7 @@
    "collapsed":"true",
    "className":"default",
    "link":{
-      "type":"generated-index",
-      "title":"MLOps"
+      "type":"doc",
+      "id":"continuous-integration/development-guides/mlops/mlops-overview"
    }
 }

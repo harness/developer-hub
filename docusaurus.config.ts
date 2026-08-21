@@ -627,6 +627,26 @@ const config: Config = {
             to: '/3k-docs/category/aws-rds',
           },
           {
+            from: '/3k-docs/continuous-integration/development-guides/mlops/mlops-azureml',
+            to: '/3k-docs/continuous-integration/development-guides/mlops/mlops-integrations',
+          },
+          {
+            from: '/3k-docs/continuous-integration/development-guides/mlops/mlops-sagemaker',
+            to: '/3k-docs/continuous-integration/development-guides/mlops/mlops-integrations',
+          },
+          {
+            from: '/3k-docs/continuous-integration/development-guides/mlops/mlops-databricks',
+            to: '/3k-docs/continuous-integration/development-guides/mlops/mlops-integrations',
+          },
+          {
+            from: '/3k-docs/continuous-integration/development-guides/mlops/mlops-vertexai',
+            to: '/3k-docs/continuous-integration/development-guides/mlops/mlops-integrations',
+          },
+          {
+            from: '/3k-docs/continuous-integration/development-guides/mlops/mlops-mlflow',
+            to: '/3k-docs/continuous-integration/development-guides/mlops/mlops-integrations',
+          },
+          {
             from: '/docs/infra-as-code-management/content/get-started/opentofu-quickstart',
             to: '/docs/infra-as-code-management/get-started#opentofu',
           },

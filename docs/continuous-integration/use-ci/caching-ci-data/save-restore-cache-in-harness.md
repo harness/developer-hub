@@ -4,11 +4,6 @@ description: Caching enables data sharing across steps, now natively supported w
 sidebar_position: 30
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-# Save and Restore Cache with Harness Storage
-
 Harness CI provides built-in steps to save and restore build cache, helping you reduce build times by reusing dependencies and artifacts across executions. 
 
 Previously, Harness-managed storage for caching was only available via [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence), for customers running on Harness Cloud. 
@@ -71,10 +66,9 @@ The `RestoreCache` step retrieves artifacts stored by a previous SaveCache step 
 ## Output Variables
 The Restore Cache step produces output variables that indicate whether the cache was successfully restored. You can use these variables in subsequent steps to make decisions (for example, skipping dependency installation if the cache was hit).
 
-| **Property**                | **Type**                                       | **Description** |
-| ------------------------ | ------------------------------------------------ | --------------- |
-| `key` | Fixed Value, Runtime Input, Expression | **Required**. The unique key of the cache to restore. This should match the key used in the Save Cache step. |
-| `archiveFormat` | Fixed Value, Runtime Input, Expression | **Optional**. The archiving format to use. Supported values are Tar, Gzip, and Zstd. Default is Tar. |
+| **Output variable** | **Type** | **Description** |
+| --- | --- | --- |
+| `cacheHit` | String | `true` if a cache matching the step's `key` was found and restored. `false` if no matching cache was found. |
 
 ### Example Usage of Output Variable
 You can reference the output variable using the syntax `<+steps.stepIdentifier.output.outputVariables.cacheHit>`.

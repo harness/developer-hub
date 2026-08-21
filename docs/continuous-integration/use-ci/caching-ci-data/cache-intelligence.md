@@ -10,14 +10,14 @@ import TabItem from '@theme/TabItem';
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
 
-With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, Harness automatically caches and restores software dependencies to speed up your builds - hassle free.
+With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, Harness automatically caches and restores software dependencies to speed up your builds with no extra configuration.
 
-You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+Cache Intelligence is supported on Harness Cloud and Kubernetes [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md). It is not supported on local (self-managed) build infrastructure.
 
 :::info
 * Cache Intelligence is GA.
 * Supported on Cloud and Kubernetes build infrastructure.
-* Cache Intelligence is enabled by default for newly created CI stages (configurable in [CI Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/).
+* Cache Intelligence is enabled by default for newly created CI stages (configurable in [CI Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/)).
 
 **S3 options via stage variables (applies to both Cache Intelligence _and_ S3 cache steps):**
 - **Path Style**: Set `PLUGIN_PATH_STYLE: "true"` as a **stage variable**. This is injected into all steps and used by Cache Intelligence and S3 cache steps.
@@ -62,7 +62,7 @@ When you use Cache Intelligence with [Harness CI Cloud](/docs/continuous-integra
 
 All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
 
-The cache storage limit depends on your subscription plan type. Please visit [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#usage-limits) page to learn more about usage limits.
+The cache storage limit depends on your subscription plan type. Go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#usage-limits) to review usage limits.
 
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
 
@@ -75,7 +75,7 @@ For blobs larger than 5 GB, multi-part upload (enabled via FF `CI_ENABLE_MULTIPA
 
 When running builds in self-managed infrastructures, [configure default object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or any S3-compatible storage)](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
 
-We suggest that you consider setting bucket level retention policy for efficient cache management.
+Set a bucket-level retention policy for efficient cache management.
 
 You can also override the storage connector and configure sidecar container settings at the stage level. Go to [Override storage and sidecar settings](#override-storage-and-sidecar-settings) to configure per-stage overrides.
 
@@ -129,13 +129,9 @@ When using custom paths, you must also provide a cache key. **If a cache path is
 
    On Windows platforms, you might need to specify the cache path from `C:`, such as `C:\harness\node_modules`.
 
-   <!-- ![](./static/cache_int_paths.png) -->
-
    <DocImage path={require('./static/cache_int_paths.png')} />
 
 3. Cache paths outside the `/harness` directory must _also_ be declared in **[Shared Paths](../set-up-build-infrastructure/ci-stage-settings.md#shared-paths)**.
-
-   <!-- ![](./static/cache_int_shared_paths.png) -->
 
    <DocImage path={require('./static/cache_int_shared_paths.png')} />
 
@@ -201,8 +197,6 @@ When **Cache Intelligence** is enabled, the cache plugin automatically detects b
 
 1. In the same stage where you enabled Cache Intelligence, go to the **Overview** tab, and make sure **Enable Cache Intelligence** is selected.
 2. Enter the custom key value in **Key**.
-
-   <!-- ![](./static/cache_int_custom_key.png) -->
 
    <DocImage path={require('./static/cache_int_custom_key.png')} />
 

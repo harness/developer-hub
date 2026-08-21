@@ -1,177 +1,118 @@
 ---
 title: MLOps best practices
-description: MLOps best practices
-sidebar_position: 2
+sidebar_label: Best Practices
+description: Recommended practices for running machine learning workloads in Harness, and what breaks when you skip them.
+sidebar_position: 40
+keywords:
+  - mlops
+  - best practices
+  - model governance
+  - reproducibility
+tags:
+  - ci
+  - mlops
+  - best-practices
 ---
 
-MLOps (Machine Learning Operations) is a set of practices that streamline and automate the lifecycle of machine learning models. It involves collaboration across multiple teams, including data scientists, ML engineers, and DevOps, to efficiently manage the development, deployment, monitoring, and maintenance of ML models in production.
+These are the practices that keep machine learning pipelines reproducible, governable, and cheap enough to run continuously. Each one states what to do and what breaks when you skip it. Go to [MLOps with Harness](/docs/continuous-integration/development-guides/mlops/mlops-overview) to understand how Harness maps onto the machine learning lifecycle before you apply these.
 
-## MLOps benefits
+---
 
-MLOps is important because it addresses the complexities and challenges of operationalizing machine learning models. By adopting MLOps practices, organizations can deliver more robust, scalable, and effective machine learning solutions, driving innovation and achieving better outcomes.
+## Version code, data, and models together
 
-MLOps offers these benefits:
+A model is the product of three inputs, so version all three and record which combination produced a given artifact.
 
-<details>
-<summary>Faster time to market</summary>
+- **Code:** Keep training scripts, notebooks, and pipeline definitions in Git. Store your pipeline as code with [pipeline Git experience](/docs/platform/git-experience/configure-git-experience-for-harness-entities) so a pipeline change is reviewable alongside the model change.
+- **Data:** Version datasets, or at minimum record an immutable dataset identifier such as an object store path with a version ID.
+- **Models:** Version the trained model with the parameters, training script commit, and environment that produced it. Tag model images with the build identifier rather than only `latest`.
 
-MLOps facilitates the rapid deployment of machine learning models to production by automating and monitoring the ML lifecycle stages, including data preparation, model training, validation, deployment, and monitoring.
+If you do not version all three, you cannot reproduce a result or roll back to a known-good model. A rollback that restores the previous code but retrains on current data produces a different model than the one you were trying to restore, which turns an incident into a research project.
 
-This automation helps reduce manual errors and speeds up the process of getting models into production, enabling organizations to leverage their data insights more quickly and gain a competitive edge.
+---
 
-</details>
+## Automate training and validation in a pipeline
 
-<details>
-<summary>Reproducibility and traceability</summary>
+Run training, testing, and packaging as pipeline steps rather than on a workstation. Go to [CI pipeline components](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) to structure the stages, and to [Integrate ML platforms with Harness CI](/docs/continuous-integration/development-guides/mlops/mlops-integrations) to run the training job on a managed ML platform.
 
-Machine learning models depend heavily on data, parameters, and code.
+If training stays manual, the model that reaches production is the one a single person built on a machine nobody else can inspect. Onboarding, audits, and incident response all stall on that person's availability.
 
-MLOps practices ensure that every aspect of the machine learning process, from data preprocessing to model training and inference, is version-controlled, documented, and reproducible.
+**Trade-off:** Pipeline-based training costs more to set up than a notebook run, and short experiments are genuinely faster on a laptop. Keep exploration local. Move to a pipeline at the point where a model becomes a candidate for release.
 
-This makes it easier to trace back the steps of the model development process, understand decision-making, and replicate successful models.
+---
 
-</details>
+## Gate promotion on model quality, not only on tests passing
 
-<details>
-<summary>Quality and reliability</summary>
+Write an explicit threshold check for the metrics that matter to your use case, such as accuracy, precision, recall, or AUC-ROC, and fail the pipeline when the model misses the bar. Add [Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) to enforce rules that must hold across every model, and an [approval step](/docs/platform/approvals/approvals-tutorial) before the production stage.
 
-By incorporating continuous integration and continuous deployment (CI/CD) practices, MLOps ensures that models are rigorously tested and validated before being deployed.
+If the pipeline only checks that the code ran, a model that trained successfully on bad data ships successfully too. A green pipeline then means "the job completed", not "the model is fit to serve", and the difference surfaces in production predictions.
 
-This not only enhances the quality and performance of models but also ensures they are reliable and stable in production environments.
+Attach no `Ignore` failure strategy to a quality gate. An ignored failing check is worse than no check, because it reports safety it does not provide.
 
-</details>
+---
 
-<details>
-<summary>Scalability</summary>
+## Containerize the training and serving environment
 
-MLOps provides frameworks and methodologies for managing and deploying machine learning models at scale.
+Package training code, libraries, and dependencies into a container image, and serve inference from an image built on the same dependency set. Use [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) to produce the images, and orchestrate them with Kubernetes or your platform equivalent for scaling.
 
-This includes managing resources efficiently, handling multiple models, and ensuring models can serve predictions under varying loads.
+If environments drift between training and serving, a model that scores well during validation returns different predictions in production because a library version changed underneath it. These defects are expensive to diagnose because the model itself is correct.
 
-Scalability is crucial for businesses that rely on machine learning to process large volumes of data or require real-time insights.
+---
 
-</details>
+## Track experiments and log metrics to a durable store
 
-<details>
-<summary>Efficient resource utilization</summary>
+Log parameters, metrics, dataset identifiers, and outcomes for every training run to a store that outlives the pipeline execution, such as an MLflow tracking server. Publish test results to Harness as JUnit reports so pass and fail status is visible in the execution.
 
-Machine learning models, especially deep learning models, can be resource-intensive to train and deploy.
+If run metadata lives only in build logs, it disappears with your log retention window. You lose the ability to explain why one model was chosen over another, which is exactly the question an auditor or a post-incident review asks.
 
-MLOps practices help optimize resource usage, reducing computational costs and ensuring that the infrastructure is efficiently utilized.
+---
 
-This includes selecting the appropriate hardware, managing cloud resources, and optimizing model performance.
+## Store every credential as a secret
 
-</details>
+Reference cloud keys, tokens, and tracking server credentials through [text secrets](/docs/platform/secrets/add-use-text-secrets) and expressions such as `<+secrets.getValue("aws_access_key_id")>`. Never write a credential into pipeline YAML or a notebook.
 
-<details>
-<summary>Collaboration</summary>
+If credentials sit in YAML, they enter Git history, appear in build logs, and reach everyone with repository read access. Rotating them afterwards means rewriting history, and you cannot prove the old key was never used.
 
-MLOps fosters better collaboration between data scientists, ML engineers, and operations teams.
+---
 
-It standardizes processes and tools, enabling seamless communication and workflow management across teams with different expertise.
+## Restrict and record who promotes a model
 
-This cross-functional collaboration is vital for the successful deployment and maintenance of ML systems.
+Grant deployment permissions through [RBAC](/docs/platform/role-based-access-control/rbac-in-harness) so training is broadly available but promotion to production is not. Confirm that [audit trails](/docs/platform/governance/audit-trail) capture pipeline and model changes.
 
-</details>
+Without this separation, any user who can run a pipeline can put a model in front of customers. In a regulated context you also cannot answer who approved a given model version, which is a compliance finding rather than an engineering inconvenience.
 
-<details>
-<summary>Compliance and governance</summary>
+---
 
-With increasing data privacy regulations and ethical considerations, MLOps ensures that machine learning processes are compliant with relevant laws and ethical guidelines.
+## Evaluate models for bias before release
 
-This includes managing data access, ensuring model transparency, and implementing bias detection and mitigation strategies.
+Test for fairness across the groups your model affects, and treat a fairness regression as a release blocker on the same footing as an accuracy regression. Document the evaluation and its result with the model version.
 
-</details>
+A model trained on historical decisions reproduces the bias in those decisions. If you do not test for it, the first evidence arrives as a discriminatory outcome affecting real people, with regulatory exposure attached under data protection and fair lending rules.
 
-<details>
-<summary>Continuous monitoring and improvement</summary>
+---
 
-MLOps involves continuous monitoring of deployed models to detect performance degradation, data drift, or concept drift.
+## Monitor for drift and schedule retraining
 
-This proactive approach allows for timely model updates or retraining, ensuring that the models remain effective and relevant over time.
+Monitor prediction quality and input distributions after release, and use [triggers](/docs/platform/triggers/triggers-reference) or scheduled pipelines to retrain when drift crosses a threshold or when a model exceeds a freshness limit.
 
-</details>
+A model degrades quietly as production data moves away from its training distribution. Without drift monitoring, nothing fails and no alert fires. You discover the decay through a business metric weeks later, by which time the model has been making poor decisions for the whole interval.
 
-## MLOps best practices
+---
 
-By adopting these best practices, organizations can achieve more efficient, reliable, and scalable ML operations, leading to faster deployment of high-quality ML models and more impactful business outcomes.
+## Control training and inference cost
 
-<details>
-<summary>Version control</summary>
+Right-size compute for training jobs, shut down evaluation endpoints when a run finishes, and set budgets on the accounts hosting your ML workloads. Delete test endpoints explicitly in the pipeline rather than leaving cleanup to whoever remembers.
 
-Version control everything, including:
+Training instances and inference endpoints bill by the hour whether or not they serve traffic. An endpoint left running after an experiment is the most common source of unexpected ML spend, and it produces no signal until the invoice arrives.
 
-- **Code:** Use version control systems like Git for all ML model code, scripts, and notebooks.
-- **Data:** Version control your datasets to track changes over time, enabling reproducibility and rollback if needed.
-- **Models:** Version your models along with their parameters, training scripts, and environment requirements.
+**Trade-off:** Smaller instances lengthen training time, and aggressive endpoint teardown adds cold-start latency to the next evaluation. Size for your iteration speed during development and for your service level in production.
 
-</details>
+---
 
-<details>
-<summary>CI/CD</summary>
+## Next steps
 
-Continuous integration (CI) and continuous delivery (CD) pipelines can automate testing, building, and deployment of ML models. This includes automated testing of code, data validation, model training, and deployment to production.
+Apply these practices to a working pipeline, then harden it with governance and platform controls.
 
-As part of CI/CD, it is especially useful to automate your testing. Ensure you include comprehensive tests for data validation, model validation, and integration tests to ensure reliability and performance of ML models. Employ techniques like A/B testing, shadow mode, and canary deployments to validate models in production environments.
-
-There are a variety of CI/CD tools on the market today, including [Harness CI](/docs/continuous-integration) and [Harness CD](/docs/continuous-delivery).
-
-</details>
-
-<details>
-<summary>Containerization</summary>
-
-Use containers (such as Docker) to package your ML models, libraries, and dependencies. This ensures consistency across different environments and facilitates easier deployment and scaling.
-
-Kubernetes or similar container orchestration tools can manage containerized applications for scaling and high availability.
-
-</details>
-
-<details>
-<summary>Tracking and monitoring</summary>
-
-Track experiments with detailed logging of model parameters, metrics, training data, and outcomes to compare models and reproduce results.
-
-Implement monitoring for model performance (accuracy, precision, recall, etc.), data drift, concept drift, and operational metrics (latency, throughput, errors).
-
-Use observability tools to log, trace, and visualize model predictions and system performance, enabling faster debugging and optimization.
-
-</details>
-
-<details>
-<summary>Data and model management</summary>
-
-Ensure robust data management practices, including secure data storage, access controls, and data privacy compliance (e.g., GDPR, CCPA).
-
-Manage the lifecycle of your models with strategies for updating, retraining, and deprecating models as needed.
-
-Use a model registry to manage and catalog models, including versioning and metadata, facilitating easier rollback, audit trails, and governance.
-
-</details>
-
-<details>
-<summary>Collaboration</summary>
-
-Foster collaboration across teams (data scientists, ML engineers, DevOps) with shared tools, platforms, and practices.
-
-Document models, experiments, and decision-making processes to build institutional knowledge and aid in compliance efforts.
-
-</details>
-
-<details>
-<summary>Ethics and bias evaluation</summary>
-
-Integrate ethical considerations and bias detection in your ML workflows.
-
-Regularly evaluate models for fairness and unintended biases, and implement corrective measures as necessary.
-
-</details>
-
-<details>
-<summary>Scalability and cost management</summary>
-
-Design your MLOps architecture for scalability, considering both the infrastructure and the model complexity.
-
-Monitor and optimize resource usage and costs, using cloud services effectively and choosing the right compute resources for training and inference.
-
-</details>
+- [Tutorial - End-to-end MLOps CI/CD pipeline with Harness and AWS](/docs/continuous-integration/development-guides/mlops/e2e-mlops-tutorial): Build a pipeline that scans, gates, and deploys a model.
+- [Integrate ML platforms with Harness CI](/docs/continuous-integration/development-guides/mlops/mlops-integrations): Run training and deployment on your ML platform.
+- [Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview): Enforce rules that every model pipeline must satisfy.
+- [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness): Control who can promote a model to production.
