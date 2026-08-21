@@ -21,7 +21,7 @@ For details on Harness provisioning, go to [Provisioning overview](/docs/continu
 
 ---
 
-## What will you learn in this topic?
+## What you will learn from this topic
 
 - How to [provision resources ad hoc or dynamically](#provisioning-modes) with your own inline or remote shell scripts.
 - How to [add a Shell Script Provision step](#create-a-shell-script-provision-step) with a script and input variables.
