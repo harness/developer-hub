@@ -31,7 +31,7 @@ All requests require the following headers:
 
 | Header | Value |
 | --- | --- |
-| `authorization` | `ApiKey <YOUR_API_KEY>` |
+| `authorization` | `ApiKey <YOUR_SEI_API_KEY>` |
 | `Content-Type` | `application/json` |
 
 You must also include the following query parameters on all requests:
@@ -56,18 +56,24 @@ POST {BASE_URL}/v2/insights/efficiency/exports
 ```json title="Request Body"
 {
   "scope": {
-    "teamId": "team_abc123",    // String identifier; use either teamId OR orgTreeName (not both)
+    "teamId": "team_abc123",        // String identifier; use either teamId OR orgTreeName (not both)
     "orgTreeName": "string",
-    "orgIdentifier": "string",  // Required when using orgTreeName
-    "projectIdentifier": "string"
+    "orgIdentifier": "string",      // Required when using orgTreeName
+    "projectIdentifier": "string",
+    "managerEmailId": "string"      // Optional; scope export to a manager's teams
   },
   "dateRange": {
-    "start": "2026-01-01", // Required
-    "end": "2026-03-31" // Required
+    "start": "2026-01-01",          // Required (yyyy-MM-dd)
+    "end": "2026-03-31"             // Required (yyyy-MM-dd)
   },
-  "metricGroups": ["lttc", "df", "mttr", "cfr"], // Required
+  "metricGroups": ["lttc", "df", "mttr", "cfr", "summary"], // Use metricGroups OR metrics (mutually exclusive)
+  "metrics": ["LTTC_Mean_Days", "DF_Deployment_Count", "CFR_Failure_Rate_Percent"], // Alternative to metricGroups
   "options": {
-    "granularity": "MONTHLY" // Required
+    "granularity": "MONTHLY",       // Required
+    "aggregation": "mean",          // Optional; mean, median, p90, p95
+    "format": "csv",                // Optional; csv, json
+    "compression": "gzip",          // Optional
+    "workCategoryFilter": ["BUGS", "FEATURES"] // Optional; lttc only. Values: ["ALL"] (default, no split) | ["BUGS"] | ["FEATURES"] | ["BUGS","FEATURES"] (both)
   }
 }
 ```
@@ -76,15 +82,18 @@ The following request fields are available:
 
 | Field | Description |
 | --- | --- |
-| `scope.teamId` | Export data for a specific team. |
+| `scope.teamId` | Export data for a specific team. Use either `teamId` or `orgTreeName`, not both. |
 | `scope.orgTreeName` | Export data for an organization tree. |
+| `scope.managerEmailId` | Optional. Scopes the export to a manager's teams. |
 | `dateRange.start` | Export start date (`yyyy-MM-dd`). |
 | `dateRange.end` | Export end date (`yyyy-MM-dd`). |
-| `metricGroups` | Supported DORA metrics such as [Lead Time for Changes](/docs/software-engineering-insights/harness-sei/insights/efficiency#lead-time-for-changes) (`lttc`), [Deployment Frequency](/docs/software-engineering-insights/harness-sei/insights/efficiency#deployment-frequency) (`df`), [Mean Time to Restore](/docs/software-engineering-insights/harness-sei/insights/efficiency#mean-time-to-restore) (`mttr`), [Change Failure Rate](/docs/software-engineering-insights/harness-sei/insights/efficiency#change-failure-rate) (`cfr`), or aggregate DORA summary metrics (`summary`). |
-| `metrics` | Individual metric columns such as `LTTC_Mean_Days` or `DF_Deployment_Count`. |
+| `metricGroups` | Supported DORA metrics such as [Lead Time for Changes](/docs/software-engineering-insights/harness-sei/insights/efficiency#lead-time-for-changes) (`lttc`), [Deployment Frequency](/docs/software-engineering-insights/harness-sei/insights/efficiency#deployment-frequency) (`df`), [Mean Time to Restore](/docs/software-engineering-insights/harness-sei/insights/efficiency#mean-time-to-restore) (`mttr`), [Change Failure Rate](/docs/software-engineering-insights/harness-sei/insights/efficiency#change-failure-rate) (`cfr`), or aggregate DORA summary metrics (`summary`). Use `metricGroups` or `metrics`, not both. |
+| `metrics` | Individual metric columns such as `LTTC_Mean_Days` or `DF_Deployment_Count`. Use `metrics` or `metricGroups`, not both. |
 | `options.granularity` | Reporting interval (`WEEKLY`, `MONTHLY`, `QUARTERLY`). |
 | `options.aggregation` | Aggregation method (`mean`, `median`, `p90`, `p95`). |
+| `options.format` | Export file format (`csv`, `json`). |
 | `options.compression` | Export compression format (`gzip`). |
+| `options.workCategoryFilter` | Optional. Applies only when `lttc` is included in `metricGroups`/`metrics`. Splits Lead Time for Changes by work item category. Values: `["ALL"]` (default, no split), `["BUGS"]`, `["FEATURES"]`, or `["BUGS","FEATURES"]` (both). |
 
 ### Available metric groups
 
@@ -102,7 +111,7 @@ The following Efficiency metric groups are available:
 ```bash title="Example Request"
 curl -X POST "${BASE_URL}/v2/insights/efficiency/exports?projectIdentifier=${PROJECT_ID}&orgIdentifier=${ORG_ID}" \
   -H "Content-Type: application/json" \
-  -H "authorization: ApiKey <YOUR_API_KEY>" \
+  -H "authorization: ApiKey <YOUR_SEI_API_KEY>" \
   -d '{
     "scope": {
       "teamId": "team_abc123"
@@ -111,11 +120,12 @@ curl -X POST "${BASE_URL}/v2/insights/efficiency/exports?projectIdentifier=${PRO
       "start": "2026-01-01",
       "end": "2026-03-31"
     },
-    "metricGroups": ["lttc", "df", "mttr", "cfr"], // Required
+    "metricGroups": ["lttc", "df", "mttr", "cfr", "summary"], // Use metricGroups OR metrics
     "options": {
       "granularity": "MONTHLY",
+      "aggregation": "mean",
       "format": "csv",
-      "compression": "gzip"
+      "workCategoryFilter": ["BUGS", "FEATURES"] // ALL | BUGS | FEATURES | ["BUGS","FEATURES"]
     }
   }'
 ```
@@ -197,7 +207,7 @@ curl -X POST "${BASE_URL}/v2/insights/teams/reports?format=csv&projectIdentifier
     "dateEnd": "2024-12-31",
     "teamRefId": 123,
     "efficiency": {
-      "metrics": ["LEAD_TIME_FOR_CHANGES", "DEPLOYMENT_FREQUENCY", "MEAN_TIME_TO_RESTORE"],
+      "metrics": ["LEAD_TIME_FOR_CHANGES", "DEPLOYMENT_FREQUENCY", "MEAN_TIME_TO_RESTORE"]
     }
   }' \
   --output efficiency_report.csv
