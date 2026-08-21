@@ -62,7 +62,7 @@ This overview provides insights into the database states in both production and 
 
   ![A screenshot of the Harness Database DevOps Pipeline UI](./static/db-devops-pipelines-page.png)
 
-On the DB DevOps **Pipelines** UI, you are provided with a detailed, yet straightforward overview that offers userful information 
+On the DB DevOps **Pipelines** UI, you are provided with a detailed, yet straightforward overview that offers useful information 
 for understanding the status of the pipelines in your environments. The following fields appear on the Harness Database DevOps **Pipelines** interface:
 
  - **Pipeline Name**: The name of the pipeline

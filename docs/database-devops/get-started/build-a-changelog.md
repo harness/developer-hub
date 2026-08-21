@@ -220,7 +220,7 @@ This step will ensure that the generated changelog file is committed to your Git
 ## How changesets work
 A changeset is the smallest deployable unit of change to a database. When using database DevOps practices, changesets can be applied or rolled back individually. Which changesets have been applied are tracked inside the database itself in a tracking table called  `databasechangelog`. 
 
-A changeset looks somthing like this:
+A changeset looks something like this:
 
 ```yaml
 databaseChangeLog:

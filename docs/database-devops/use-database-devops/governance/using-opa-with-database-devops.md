@@ -67,7 +67,7 @@ deny[msg] {
 
 ### Sample Payload:
 
-You can test the polcy on sample payloads
+You can test the policy on sample payloads
 
 ```json
 {

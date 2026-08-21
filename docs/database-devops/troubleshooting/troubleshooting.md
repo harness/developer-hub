@@ -91,7 +91,7 @@ Liquibase throws this error when it cannot find the changelog file. This can occ
 This error comes up when Harness DB DevOps cannot find the `databaseChangeLog` node in the changelog file. This can occur if the file is not formatted correctly or is missing the required node. This issue typically surfaces when the changelog file contains unexpected content. 
 
 :::info
-Most common occurence of this issue will be while setting up DB Schema with a custom script.
+Most common occurrence of this issue will be while setting up DB Schema with a custom script.
 :::
 **Error Message**:
 

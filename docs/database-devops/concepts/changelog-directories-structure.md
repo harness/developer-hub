@@ -248,7 +248,7 @@ prod1 branch    → Production Instance 1
 prod2 branch    → Production Instance 2
 ```
 
-Below attached screen shows the structure of branch-based approach, where we have created `prod` instance for specfic production environment.
+Below attached screen shows the structure of branch-based approach, where we have created `prod` instance for specific production environment.
 
 ![Branch-Based Approach](./static/branch-based.png)
 
@@ -292,7 +292,7 @@ db/
 │           └── 002-prod2-specific-config.yaml
 ```
 
-Below attached screen shows the structure of directory-based approach, where we are taking the path to specfic directory from **environment variable**.
+Below attached screen shows the structure of directory-based approach, where we are taking the path to specific directory from **environment variable**.
 
 ![Directory-Based Approach](./static/directory-based.png)
 
