@@ -135,7 +135,7 @@ pipeline:
 </TabItem>
 </Tabs>
 
-That's it! You have successfully created a DB Schema and deployed it using a custom script. You can now use this pipeline to deploy your DB Schema to the database instance.
+That is it! You have successfully created a DB Schema and deployed it using a custom script. You can now use this pipeline to deploy your DB Schema to the database instance.
 
 ## Next steps
 - Go to [Rollback automation](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure automated rollback for failed deployments.

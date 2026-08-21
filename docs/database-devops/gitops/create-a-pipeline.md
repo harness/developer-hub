@@ -31,8 +31,8 @@ tags:
  4. In the pipeline configuration, add the stage, or multiple stages, that align with the actions you want to perform. The options are:
     1. **Add a Stage for Database Deployment**: a stage that will handle the deployment of your database schema changes. 
     1. **Add a Stage for Application Deployment**: This stage will manage the deployment of your application code. 
- 5. Configure the Database Deployment stage to your liking if it's a step you've added. 
- 6. Configure the Application Deployment stage to your liking if it's a step you've added. 
+ 5. Configure the Database Deployment stage to your liking if it is a step you have added. 
+ 6. Configure the Application Deployment stage to your liking if it is a step you have added. 
  7. Continue following the steps, set up the rollback mechanisms and validate the pipeline configuration. 
  9. Once the pipeline is configured to your liking, select **Save pipeline**.
 

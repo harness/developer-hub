@@ -137,7 +137,7 @@ A deployment pipeline deploys your database changes when it runs. In addition to
 1. Under Pipelines, Click Create a Pipeline.
 2. Click **Add Stage** and Choose **Custom stage**.
 3. Choose **Add step group** and Turn on **Enable Containerized Stage**.
-4. Choose the Kubernetes cluster you'd like to run on.
+4. Choose the Kubernetes cluster you would like to run on.
 5. Click **Add Step** and Choose the **Apply Schema** step under DB DevOps.
 6. For the step name, enter "Deploy Database Schema".
    ![dbops-step-apply-schema](./static/dbops-step-apply-schema.png)

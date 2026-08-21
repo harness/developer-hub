@@ -23,7 +23,7 @@ tags:
 
 When you create a pipeline in Harness Database DevOps, the Liquibase command step can help play a role in managing database changes. This step allows users to apply schema modifications and execute SQL scripts seamlessly within the pipeline.
 
-Here's how you can add the Liquibase command step to your pipeline:
+Here is how you can add the Liquibase command step to your pipeline:
 
  1. In Harness, go to the **Database DevOps** module and select your **Project**. 
  2. Under the **Pipeline** tab, select the pipeline that you want to add the Liquibase command step to. 
@@ -34,7 +34,7 @@ Here's how you can add the Liquibase command step to your pipeline:
     1. **Schema Name**: Enter the name of the database schema that the command will affect. 
     1. **Instance Name**: Specify the database instance where the command will be executed. 
     1. **Tag**: This is an optional step but you can create a tag that indicates the version or state you want to apply or rollback changes to. 
- 6. At the next step after these configurations, review the configuration to ensure it's set how you'd like. 
+ 6. At the next step after these configurations, review the configuration to ensure it is set how you would like. 
  7. Select **Save the pipeline**. 
  8. Run the pipeline and monitor the execution. 
 

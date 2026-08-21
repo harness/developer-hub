@@ -184,7 +184,7 @@ Run the following SQL to allow deletes even without a primary key:
 ```sql
 ALTER TABLE databasechangelog REPLICA IDENTITY FULL;
 ```
-This tells PostgreSQL to use the full row for replication tracking. We're planning to update DB DevOps to add a primary key to this table automatically in future versions.
+This tells PostgreSQL to use the full row for replication tracking. We are planning to update DB DevOps to add a primary key to this table automatically in future versions.
 
 :::important note
 Apply the workaround only if your environment uses logical replication and encounters this error. In non-replicated environments, this issue typically does not occur
@@ -301,7 +301,7 @@ Check that the roles/iam.workloadIdentityUser binding is correctly configured an
 The connection will fail if Workload Identity not enabled or missing KSA annotation/IAM roles on GSA.
 
 ## 24. Why am I getting permission errors?
-Either there's missing `roles/iam.workloadIdentityUser` or Incorrect database IAM roles
+Either there is missing `roles/iam.workloadIdentityUser` or Incorrect database IAM roles
 
 ---
 

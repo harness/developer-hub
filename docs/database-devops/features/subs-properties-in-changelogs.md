@@ -31,9 +31,9 @@ The supported format includes alphanumeric characters, +, -, . , and _. Example 
 4. Consistency Across Environments
 5. Dynamic Configuration
 
-Let's have a look at the below example to understand the above-mentioned uses.
+Let us have a look at the below example to understand the above-mentioned uses.
 
-Here's the YAML for the example:
+Here is the YAML for the example:
 ```yaml
 databaseChangeLog:
   - changeSet:
@@ -247,7 +247,7 @@ databaseChangeLog:
 ### Missing Properties
 If the content of `${property-name}` does not match a property, it is left as-is, and it is not removed. Once a property has been set, it cannot be changed. Only the first definition is used, others will fail with checksum error.
 
-Let's look at the below changeset:
+Let us look at the below changeset:
 ```yaml
   - changeSet:
      id: 123
@@ -265,13 +265,13 @@ Let's look at the below changeset:
          columnName: state
 ```
 
-if `${column.updatedBy}` is missing in substitute properties, the token won't be replaced, and it is left as-is:
+if `${column.updatedBy}` is missing in substitute properties, the token will not be replaced, and it is left as-is:
 ```sql
 ALTER TABLE person ADD [${column.createdBy}] varchar(10);
 ```
 
 ### Escaping Property Substitution
-If you don't want a `${property-name}` placeholder to be replaced, add a colon **:** right after the `${`.
+If you do not want a `${property-name}` placeholder to be replaced, add a colon **:** right after the `${`.
 
 For example, `${:property-name}` will always stay as `${property-name}`, even if property-name is defined. It is often useful when you want to show an example without real substitution:
 

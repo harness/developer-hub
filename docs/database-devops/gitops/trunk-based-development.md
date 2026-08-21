@@ -209,7 +209,7 @@ Every time you commit to `main`, Harness will:
 
 Trunk-based development in Harness Database DevOps empowers teams to manage schema changes with agility, consistency, and confidence. By centralizing changes in a single branch and orchestrating environment-specific deployments through pipelines and contexts, this approach simplifies delivery workflows while improving traceability and compliance.
 
-Harness provides out-of-the-box support for Liquibase contexts, multi-environment pipeline steps, approval strategies, and Git-based automation—making it easy to scale database delivery alongside application deployments. Whether you're just getting started or modernizing legacy workflows, trunk-based development offers a streamlined, GitOps-friendly path to continuous database evolution.
+Harness provides out-of-the-box support for Liquibase contexts, multi-environment pipeline steps, approval strategies, and Git-based automation—making it easy to scale database delivery alongside application deployments. Whether you are just getting started or modernizing legacy workflows, trunk-based development offers a streamlined, GitOps-friendly path to continuous database evolution.
 
 
 ## FAQs

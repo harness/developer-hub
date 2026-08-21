@@ -1,7 +1,7 @@
 ---
-title: What's Supported by Harness DB DevOps
+title: What is Supported by Harness DB DevOps
 description: Explore supported database platforms, source control providers, and feature flags available in Harness DB DevOps.
-sidebar_label: What's supported
+sidebar_label: What is supported
 sidebar_position: 2
 keywords:
   - supported databases
@@ -23,7 +23,7 @@ tags:
 
 This page describes supported platforms and technologies for Harness DB DevOps specifically.
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](https://developer.harness.io/docs/platform/platform-whats-supported).
+For information about what is supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](https://developer.harness.io/docs/platform/platform-whats-supported).
 
 ## Harness DB DevOps supported platforms and technologies
 
@@ -52,7 +52,7 @@ Harness Database DevOps currently supports several database platforms, including
 Harness Database DevOps supports all database providers for Postgres and MySQL such as AWS RDS, Aurora DB, Azure Database for PostgreSQL, Azure Database for MySQL, and more. 
 :::
 
-It's worth noting that **MongoDB** is a NoSQL database which brings some limitations to your experience of Harness DB DevOps if this is your database of choice. One of the limitations being: 
+It is worth noting that **MongoDB** is a NoSQL database which brings some limitations to your experience of Harness DB DevOps if this is your database of choice. One of the limitations being: 
 
  - You cannot enforce policy against SQL initially. 
 

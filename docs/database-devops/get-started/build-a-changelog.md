@@ -104,7 +104,7 @@ databaseChangeLog:
 
 
 <TabItem value="Generate Changelog SQL Command">
-You can create a changelog by using the `generate-changelog` command. This method is useful if you want to generate a changelog based on the current state of your database. This approach allows you to create a changelog file that reflects the current state of your database schema. For MongoDB, the command isn't supported, to generate the changelog for MongoDB, refer to [this documentation](https://developer.harness.io/docs/database-devops/mongodb-changelog-generation).
+You can create a changelog by using the `generate-changelog` command. This method is useful if you want to generate a changelog based on the current state of your database. This approach allows you to create a changelog file that reflects the current state of your database schema. For MongoDB, the command is not supported, to generate the changelog for MongoDB, refer to [this documentation](https://developer.harness.io/docs/database-devops/mongodb-changelog-generation).
 
 ### Steps to Create a Changelog with the `generate-changelog` Command
 

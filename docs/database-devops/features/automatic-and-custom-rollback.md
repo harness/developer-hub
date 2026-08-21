@@ -24,7 +24,7 @@ SQL changelogs, do not support auto rollback, regardless of the Change Type. You
 ## Automatic rollback statements
 For many Change Types, such as `createTable`, `addColumn`, and `renameColumn`, Liquibase **automatically generates** the SQL statements necessary to complete the rollback, so you can simply run a command like rollback on your desired changeset(s) and be done.
 
-When you run the update command on a createTable changeset, Liquibase executes the SQL statement CREATE TABLE myTable. When you run the rollback command to revert that changeset, Liquibase recognizes that the inverse of the original change is DROP TABLE myTable and executes that statement. In this case, you aren't required to add anything special to your changelog.
+When you run the update command on a createTable changeset, Liquibase executes the SQL statement CREATE TABLE myTable. When you run the rollback command to revert that changeset, Liquibase recognizes that the inverse of the original change is DROP TABLE myTable and executes that statement. In this case, you are not required to add anything special to your changelog.
 
 ``` text
 Liquibase command 'rollback' was executed successfully.

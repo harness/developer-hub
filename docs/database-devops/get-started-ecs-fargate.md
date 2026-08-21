@@ -157,7 +157,7 @@ Create the following AWS resources using the AWS Console, AWS CLI, Terraform, or
 6. **IAM Roles:** Create the Task Execution Role and Task Role with the permissions specified in the tables above.
 7. **ECR Repository:** (Optional) Create an ECR repository to store the runner image, or use an existing container registry.
 
-After creating these resources, note down the following values - you'll need them for deployment:
+After creating these resources, note down the following values - you will need them for deployment:
 
 - **Region:** `us-east-1` (or your chosen region)
 - **Cluster Name:** Example: `runner-ecs-cluster`
@@ -171,7 +171,7 @@ After creating these resources, note down the following values - you'll need the
 
 ### Get the runner image
 
-Contact Harness Support to obtain the Database DevOps runner Docker image. You'll receive:
+Contact Harness Support to obtain the Database DevOps runner Docker image. You will receive:
 - **Runner image URI:** The container image location (ECR or Docker Hub)
 - **Image tag:** The specific version to use (for example, `latest` or `1.0.0`)
 
@@ -236,7 +236,7 @@ Contact Harness Support to obtain the Database DevOps runner Docker image. You'l
 
 1. In Harness, go to **Delegates** under **Project Setup** (or **Account Settings** > **Account Resources** > **Delegates**).
 2. Verify the ECS runner appears with status **Connected**.
-3. Note the delegate name or tags - you'll use these when creating the AWS connector.
+3. Note the delegate name or tags - you will use these when creating the AWS connector.
 4. If not connected, check CloudWatch logs for errors:
 
    ```bash
