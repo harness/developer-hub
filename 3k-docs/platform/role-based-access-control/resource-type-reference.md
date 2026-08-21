@@ -4,12 +4,20 @@ description: Resource type reference for Harness RBAC.
 sidebar_position: 130
 ---
 
-This topic lists resource types relevant to [RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness).
+This topic lists resource types relevant to [RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness). Each resource type has an identifier used in APIs and YAML, and a permission key used to construct permission strings such as `core_pipeline_view`.
+
+---
 
 ## Resource types
 
+Resource types are grouped by the Harness module or platform area that owns them. Platform resource types are available to every module, and module resource types require a license for that module.
+
+### Harness Platform
+
+These resource types apply across Harness and are not specific to a single module.
+
 | Identifier | Permission key |
-| ---  | ----------- |
+| --- | --- |
 | `ACCOUNT` | account |
 | `ORGANIZATION` | organization |
 | `PROJECT` | project |
@@ -17,11 +25,27 @@ This topic lists resource types relevant to [RBAC in Harness](/docs/category/pla
 | `DELEGATE` | delegate |
 | `DELEGATECONFIGURATION` | delegateconfiguration |
 | `SECRET` | secret |
-| `PIPELINE` | pipeline |
-| `SERVICE` | service |
-| `ENVIRONMENT` | environment |
-| `ENVIRONMENT_GROUP` | environmentgroup |
 | `AUDIT` | audit |
+| `DASHBOARDS` | dashboards |
+| `TEMPLATE` | template |
+| `TICKET` | ticket |
+| `FILE` | file |
+| `VARIABLE` | variable |
+| `SMTP` | smtp |
+| `SETTING` | setting |
+| `STREAMING_DESTINATION` | streamingDestination |
+| `MODULE` | module |
+| `GITX_WEBHOOKS` | gitxWebhooks |
+| `CERTIFICATE` | certificate |
+| `PROVIDER` | provider |
+| `RELEASES` | releases |
+| `INPUT_SET` | inputset |
+| `BANNER` | banner |
+| `OIDC_ID_TOKEN` | oidcIdToken |
+| `DATA_SINK` | dataSink |
+| `AI_RULES` | rules |
+| `BRANDING` | branding |
+| `LLM_GATEWAY` | llmgateway |
 | `USER` | user |
 | `SERVICEACCOUNT` | serviceaccount |
 | `USERGROUP` | usergroup |
@@ -29,16 +53,25 @@ This topic lists resource types relevant to [RBAC in Harness](/docs/category/pla
 | `RESOURCEGROUP` | resourcegroup |
 | `LICENSE` | license |
 | `AUTHSETTING` | authsetting |
-| `FEATUREFLAG` | featureflag |
-| `FF_PROXYAPIKEY` | proxyapikey |
-| `TARGET` | target |
-| `TARGETGROUP` | targetgroup |
-| `DASHBOARDS` | dashboards |
-| `TEMPLATE` | template |
+| `ACCESS_POLICIES` | accessPolicies |
+| `NOTIFICATION` | notification |
+| `NOTIFICATION_CHANNEL` | notificationchannel |
+| `NOTIFICATION_RULE` | notificationrule |
+| `DEFAULT_NOTIFICATION_TEMPLATE_SET` | defaultNotificationTemplateSet |
 | `GOVERNANCEPOLICY` | governancePolicy |
 | `GOVERNANCEPOLICYSETS` | governancePolicySets |
-| `MONITOREDSERVICE` | monitoredservice |
-| `SLO` | slo |
+| `NETWORK_MAP` | networkmap |
+
+### Continuous Delivery and GitOps
+
+These resource types apply to pipelines, deployments, and GitOps.
+
+| Identifier | Permission key |
+| --- | --- |
+| `PIPELINE` | pipeline |
+| `SERVICE` | service |
+| `ENVIRONMENT` | environment |
+| `ENVIRONMENT_GROUP` | environmentgroup |
 | `GITOPS_AGENT` | agent |
 | `GITOPS_APP` | application |
 | `GITOPS_REPOSITORY` | repository |
@@ -46,23 +79,80 @@ This topic lists resource types relevant to [RBAC in Harness](/docs/category/pla
 | `GITOPS_GPGKEY` | gpgkey |
 | `GITOPS_CERT` | cert |
 | `GITOPS_APPLICATIONSET` | applicationset |
+| `DEPLOYMENTFREEZE` | deploymentfreeze |
+
+### Code Repository
+
+These resource types apply to Harness Code Repository.
+
+| Identifier | Permission key |
+| --- | --- |
+| `CODE_REPOSITORY` | repo |
+
+### Artifact Registry
+
+These resource types apply to Harness Artifact Registry.
+
+| Identifier | Permission key |
+| --- | --- |
+| `ARTIFACT_REGISTRY` | artregistry |
+| `ARTIFACT_FIREWALL_EXCEPTIONS` | firewallexceptions |
+| `HAR_REGISTRY` | harregistry |
+
+### Security Testing Orchestration
+
+These resource types apply to Harness STO.
+
+| Identifier | Permission key |
+| --- | --- |
 | `STO_TESTTARGET` | testtarget |
 | `STO_EXEMPTION` | exemption |
 | `STO_ISSUE` | issue |
 | `STO_SCAN` | scan |
 | `STO_OVERRIDE` | override |
-| `TICKET` | ticket |
-| `FILE` | file |
-| `VARIABLE` | variable |
-| `CHAOS_HUB` | chaoshub |
-| `CHAOS_INFRASTRUCTURE` | chaosinfrastructure |
-| `CHAOS_EXPERIMENT` | chaosexperiment |
-| `CHAOS_GAMEDAY` | chaosgameday |
-| `CHAOS_PROBE` | chaosprobe |
-| `CHAOS_FAULT` | chaosfault |
-| `CHAOS_ACTION` | chaosaction |
-| `CHAOS_IMAGE_REGISTRY` | chaosimageregistry |
-| `CHAOS_SECURITY_GOVERNANCE` | chaossecuritygovernance |
+
+### Supply Chain Security
+
+These resource types apply to Harness SCS.
+
+| Identifier | Permission key |
+| --- | --- |
+| `SSCA_REMEDIATION_TRACKER` | remediationtracker |
+| `SSCA_ENFORCEMENT_EXEMPTION` | enforcementexemption |
+
+### Feature Flags
+
+These resource types apply to the Harness Feature Flags module.
+
+| Identifier | Permission key |
+| --- | --- |
+| `FEATUREFLAG` | featureflag |
+| `FF_PROXYAPIKEY` | proxyapikey |
+| `TARGET` | target |
+| `TARGETGROUP` | targetgroup |
+
+### Feature Management and Experimentation
+
+These resource types apply to Harness FME.
+
+| Identifier | Permission key |
+| --- | --- |
+| `FME_ENVIRONMENT` | fmeenvironment |
+| `FME_TRAFFIC_TYPE` | fmetraffictype |
+| `FME_FEATURE_FLAG` | fmefeatureflag |
+| `FME_SEGMENT` | fmesegment |
+| `FME_LARGE_SEGMENT` | fmelargesegment |
+| `FME_METRIC` | fmemetric |
+| `FME_EXPERIMENT` | fmeexperiment |
+| `FME_CONFIG` | fmeconfig |
+| `FME_AICONFIG` | fmeaiconfig |
+
+### Cloud & AI Cost Management
+
+These resource types apply to Harness CACM, including AutoStopping and Cloud Asset Governance.
+
+| Identifier | Permission key |
+| --- | --- |
 | `CCM_OVERVIEW` | overview |
 | `CCM_PERSPECTIVE` | perspective |
 | `CCM_FOLDER` | folder |
@@ -82,53 +172,26 @@ This topic lists resource types relevant to [RBAC in Harness](/docs/category/pla
 | `CCM_ANOMALIES` | anomalies |
 | `CCM_RECOMMENDATIONS` | recommendations |
 | `CCM_COMMITMENT_ORCHESTRATOR` | commitmentOrchestrator |
-| `SMTP` | smtp |
-| `SETTING` | setting |
-| `DEPLOYMENTFREEZE` | deploymentfreeze |
-| `STREAMING_DESTINATION` | streamingDestination |
+| `CCM_ANOMALIES_WHITELIST_RULE` | anomaliesWhitelistRule |
+
+### Service Reliability Management
+
+These resource types apply to Harness SRM.
+
+| Identifier | Permission key |
+| --- | --- |
+| `MONITOREDSERVICE` | monitoredservice |
+| `SLO` | slo |
 | `DOWNTIME` | downtime |
-| `MODULE` | module |
-| `IDP_CATALOG` | catalog |
-| `IDP_ENVIRONMENT` | idpenvironment |
-| `IDP_ENVIRONMENT_BLUEPRINT` | environmentblueprint |
-| `IDP_WORKFLOW` | workflow |
-| `IDP_PLUGIN` | plugin |
-| `IDP_SCORECARD` | scorecard |
-| `IDP_LAYOUT` | layout |
-| `IDP_CATALOG_ACCESS_POLICY` | catalogaccesspolicy |
-| `IDP_INTEGRATION` | integration |
-| `IDP_ADVANCED_CONFIGURATION` | advancedconfiguration |
-| `IDP_AGGREGATION_RULE` | aggregationrule |
-| `CODE_REPOSITORY` | repo |
-| `NETWORK_MAP` | networkmap |
-| `CET_AGENT` | agents |
-| `CET_TOKEN` | token |
-| `CET_CRITICAL_EVENT` | criticalevent |
-| `IAC_WORKSPACE` | workspace |
-| `IAC_REGISTRY` | registry |
-| `IAC_PROVIDER_REGISTRY` | providerregistry |
-| `IAC_VARIABLE_SET` | variableset |
-| `SEI_CONFIGURATION_SETTINGS` | seiconfigurationsettings |
-| `SEI_COLLECTIONS` | seicollections |
-| `SEI_INSIGHTS` | seiinsights |
-| `SEI_PANORAMA` | seipanorama |
-| `SEI_DATA_SETTINGS` | seidatasettings |
-| `SEI_DEVELOPERS` | seidevelopers |
-| `SEI_INTEGRATIONS` | seiintegrations |
-| `SEI_TEAMS` | seiteams |
-| `SEI_CANVAS` | seicanvas |
-| `SEI_PROFILES` | seiprofiles |
-| `SEI_GOALS` | seigoals |
-| `SEI_INSIGHTS_CATEGORY` | seiinsightscategory |
-| `NOTIFICATION` | notification |
-| `NOTIFICATION_CHANNEL` | notificationchannel |
-| `NOTIFICATION_RULE` | notificationrule |
-| `SSCA_REMEDIATION_TRACKER` | remediationtracker |
-| `SSCA_ENFORCEMENT_EXEMPTION` | enforcementexemption |
-| `GITX_WEBHOOKS` | gitxWebhooks |
-| `CERTIFICATE` | certificate |
-| `ACCESS_POLICIES` | accessPolicies |
 | `MONITORING_AGENT` | monitoringagent |
+| `METRIC_SOURCE` | metricsource |
+
+### Incident Response
+
+These resource types apply to Harness Incident Response.
+
+| Identifier | Permission key |
+| --- | --- |
 | `IRO_MANAGER` | iromanager |
 | `IRO_ALERT` | alert |
 | `IRO_ALERT_RULE` | alertrule |
@@ -140,29 +203,110 @@ This topic lists resource types relevant to [RBAC in Harness](/docs/category/pla
 | `IRO_ESCALATION_POLICY` | iroescalationpolicy |
 | `IRO_SCHEDULE` | iroschedule |
 | `IRO_SCHEDULE_OVERRIDE` | iroscheduleoverride |
-| `METRIC_SOURCE` | metricsource |
-| `ARTIFACT_REGISTRY` | artregistry |
-| `ARTIFACT_FIREWALL_EXCEPTIONS` | firewallexceptions |
-| `PROVIDER` | provider |
-| `FME_ENVIRONMENT` | fmeenvironment |
-| `FME_TRAFFIC_TYPE` | fmetraffictype |
-| `FME_FEATURE_FLAG` | fmefeatureflag |
-| `FME_SEGMENT` | fmesegment |
-| `FME_LARGE_SEGMENT` | fmelargesegment |
-| `FME_METRIC` | fmemetric |
-| `FME_EXPERIMENT` | fmeexperiment |
+
+### Resilience Testing
+
+These resource types apply to Harness Resilience Testing.
+
+| Identifier | Permission key |
+| --- | --- |
+| `CHAOS_HUB` | chaoshub |
+| `CHAOS_INFRASTRUCTURE` | chaosinfrastructure |
+| `CHAOS_EXPERIMENT` | chaosexperiment |
+| `CHAOS_GAMEDAY` | chaosgameday |
+| `CHAOS_PROBE` | chaosprobe |
+| `CHAOS_FAULT` | chaosfault |
+| `CHAOS_ACTION` | chaosaction |
+| `CHAOS_IMAGE_REGISTRY` | chaosimageregistry |
+| `CHAOS_SECURITY_GOVERNANCE` | chaossecuritygovernance |
+
+### Continuous Error Tracking
+
+These resource types apply to Harness CET.
+
+| Identifier | Permission key |
+| --- | --- |
+| `CET_AGENT` | agents |
+| `CET_TOKEN` | token |
+| `CET_CRITICAL_EVENT` | criticalevent |
+
+### Internal Developer Portal
+
+These resource types apply to Harness IDP.
+
+| Identifier | Permission key |
+| --- | --- |
+| `IDP_CATALOG` | catalog |
+| `IDP_ENVIRONMENT` | idpenvironment |
+| `IDP_ENVIRONMENT_BLUEPRINT` | environmentblueprint |
+| `IDP_WORKFLOW` | workflow |
+| `IDP_PLUGIN` | plugin |
+| `IDP_SCORECARD` | scorecard |
+| `IDP_LAYOUT` | layout |
+| `IDP_CATALOG_ACCESS_POLICY` | catalogaccesspolicy |
+| `IDP_INTEGRATION` | integration |
+| `IDP_ADVANCED_CONFIGURATION` | advancedconfiguration |
+| `IDP_AGGREGATION_RULE` | aggregationrule |
+
+### Infrastructure as Code Management
+
+These resource types apply to Harness IaCM.
+
+| Identifier | Permission key |
+| --- | --- |
+| `IAC_WORKSPACE` | workspace |
+| `IAC_REGISTRY` | registry |
+| `IAC_PROVIDER_REGISTRY` | providerregistry |
+| `IAC_VARIABLE_SET` | variableset |
+
+### AI DLC Insights and Software Engineering Insights
+
+Every resource type in this group uses the `SEI_` identifier prefix and the `sei` permission key prefix, because AI DLC Insights (AIDI) evolved from Software Engineering Insights (SEI). The prefix does not tell you which capability a resource type belongs to, so the following tables separate them.
+
+Note that an identifier does not always match the label you see in the product. For example, `SEI_CANVAS` controls Studio.
+
+#### AI DLC Insights
+
+These resource types apply to Harness AIDI. Go to [Harness RBAC for AI DLC Insights](/docs/ai-dlc-insights/get-started/rbac) to review the scopes and out-of-the-box roles that use them.
+
+| Identifier | Permission key | Product label |
+| --- | --- | --- |
+| `SEI_CANVAS` | seicanvas | Studio |
+| `SEI_INSIGHTS_CATEGORY` | seiinsightscategory | Insights Categories |
+| `SEI_TEAMS` | seiteams | Teams |
+| `SEI_DATA_SETTINGS` | seidatasettings | Data Settings |
+| `SEI_DEVELOPERS` | seidevelopers | Data Settings, developer records |
+| `SEI_INTEGRATIONS` | seiintegrations | Data Settings, integrations |
+| `SEI_PROFILES` | seiprofiles | Profiles |
+
+#### Software Engineering Insights
+
+These resource types apply to Harness SEI 1.0. Go to [SEI roles and permissions](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/sei-roles-and-permissions) to review the roles that use them.
+
+| Identifier | Permission key | Product label |
+| --- | --- | --- |
+| `SEI_COLLECTIONS` | seicollections | Collections |
+| `SEI_INSIGHTS` | seiinsights | Insights |
+| `SEI_CONFIGURATION_SETTINGS` | seiconfigurationsettings | Configuration Settings |
+
+The `SEI_PANORAMA` (seipanorama) and `SEI_GOALS` (seigoals) resource types also exist in this namespace.
+
+{/* HDH: SEI_PANORAMA and SEI_GOALS are not yet attributed to AIDI or SEI 1.0. Confirm ownership with the SEI team and move each into the correct table above. SEI_PROFILES and SEI_INTEGRATIONS are listed under AIDI per docs/ai-dlc-insights/get-started/rbac.md, but SEI 1.0 also exposes Profiles and Integrations resources, so confirm whether these identifiers are shared across both capability sets. */}
+
+### Database DevOps
+
+These resource types apply to Harness Database DevOps.
+
+| Identifier | Permission key |
+| --- | --- |
 | `DB_SCHEMA` | schema |
 | `DB_INSTANCE` | instance |
-| `HAR_REGISTRY` | harregistry |
-| `RELEASES` | releases |
-| `INPUT_SET` | inputset |
-| `BANNER` | banner |
-| `DEFAULT_NOTIFICATION_TEMPLATE_SET` | defaultNotificationTemplateSet |
+
+### Cloud Development Environments
+
+These resource types apply to Harness CDE Gitspaces.
+
+| Identifier | Permission key |
+| --- | --- |
 | `CDE_GITSPACE` | gitspace |
 | `CDE_INFRAPROVIDER` | infraprovider |
-| `OIDC_ID_TOKEN` | oidcIdToken |
-| `DATA_SINK` | dataSink |
-| `AI_RULES` | rules |
-| `BRANDING` | branding |
-| `CCM_ANOMALIES_WHITELIST_RULE` | anomaliesWhitelistRule |
-| `LLM_GATEWAY` | llmgateway |
