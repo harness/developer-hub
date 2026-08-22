@@ -225,12 +225,14 @@ Fine-grained permissions for who can:
 
 ### Risks
 
-Automated identification and tracking of system weaknesses:
-- **Resilience Risks**: Potential failure points in your system
-- **Performance Risks**: Bottlenecks and capacity issues
-- **Compliance Risks**: Gaps in meeting RTO/RPO targets
+Automated identification and tracking of system weaknesses. A scan reads your application manifests, matches them against the Harness resilience rules, and records a risk for every condition that is likely to fail under stress. Each risk falls into one of four categories:
 
-Risks are discovered automatically and can be validated through targeted tests.
+- **Availability**: Redundancy and failover gaps, such as a single-replica workload
+- **Performance**: Capacity and resource issues, such as unset CPU or memory limits
+- **Resilience**: Recovery after a failure has already occurred, such as missing liveness or readiness probes
+- **Config**: Declared settings that weaken the workload, such as a container running as root
+
+Risks are detected automatically and start out as passive, which means they are unproven. Associate a risk rule with a probe and run an experiment to confirm it. Go to [Risks](./chaos-testing/risks) to understand risk scoring and the passive to confirmed lifecycle.
 
 ## Next Steps
 

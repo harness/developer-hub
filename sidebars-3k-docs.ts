@@ -3654,6 +3654,29 @@ const sidebars: SidebarsConfig = {
           value: 'Shared Capabilities',
           className: 'horizontal-bar',
         },
+        {
+          type: 'category',
+          label: 'Risks',
+          className: 'sidebar-item-new',
+          link: {
+            type: 'doc',
+            id: 'resilience-testing/chaos-testing/risks',
+          },
+          collapsed: true,
+          items: [
+            {
+              type: 'doc',
+              id: 'resilience-testing/chaos-testing/risks',
+              label: 'Overview',
+            },
+            'resilience-testing/chaos-testing/risk-scans',
+          ],
+        },
+        {
+          type: 'doc',
+          id: 'resilience-testing/chaos-testing/recommendations',
+          className: 'sidebar-item-new',
+        },
         "resilience-testing/chaos-testing/application-maps",
         "resilience-testing/chaos-testing/service-discovery",
         "resilience-testing/chaos-testing/image-registry",
