@@ -29,7 +29,14 @@ If you are new to Harness IaCM, go to the [onboarding guide](/docs/infra-as-code
 :::
 
 ## Workspace tabs
-This document walks through each tab of a workspace, explaining its data, settings, and usage to help you configure and manage your workspace effectively.
+
+Each tab exposes a different part of your workspace. The sections below explain the data, settings, and usage for each one.
+
+### Insights
+
+The Insights tab consolidates the actionable findings for a workspace, including resources that have drifted from your configuration and, when Cloud Cost Management is connected, cost optimization opportunities. From each insight, you can start a fix with the IaCM Remediation Agent. Go to [Insights](/docs/infra-as-code-management/workspaces/insights) to review the tab, and [IaCM Remediation Agent](/docs/infra-as-code-management/workspaces/remediation-agent) to remediate drift.
+
+---
 
 ### Resources
 The Resources tab surfaces infrastructure state from OpenTofu/Terraform in a structured and readable format. It lists all managed resources, referenced data sources, and exposed outputs defined in your workspace configuration.

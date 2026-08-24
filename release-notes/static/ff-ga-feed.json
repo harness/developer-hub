@@ -29,7 +29,7 @@
   },
   {
     "flagKey": "COST_INTEGRATION",
-    "description": "Enables Cloud Cost Management (CCM) Integration on IaCM workspaces, displaying actual monthly infrastructure costs and cost optimization recommendations sourced from Harness CCM on the workspace Overview tab.",
+    "description": "Enables Cloud Cost Management (CCM) Integration on IaCM workspaces, displaying actual monthly infrastructure costs and cost optimization recommendations sourced from Harness CCM on the workspace Overview and Insights tabs.",
     "gaStartDate": "2026-08-10",
     "module": "Infrastructure as Code Management",
     "lifecycleState": "Beta"
@@ -38,6 +38,13 @@
     "flagKey": "OVERVIEW_V3",
     "description": "Introduces a redesigned workspace Overview tab with a new layout showing resource counts, live cloud costs, cost optimization opportunities, provisioner details, and recent provisioning activity at a glance.",
     "gaStartDate": "2026-08-10",
+    "module": "Infrastructure as Code Management",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "REMEDIATION_AGENT",
+    "description": "Enables the IaCM Remediation Agent and the workspace Insights tab drift card. When a workspace resource drifts, you can trigger the agent from the Insights tab to generate a pull request that reconciles your Terraform or OpenTofu code with the actual cloud state.",
+    "gaStartDate": "2026-08-21",
     "module": "Infrastructure as Code Management",
     "lifecycleState": "Beta"
   },

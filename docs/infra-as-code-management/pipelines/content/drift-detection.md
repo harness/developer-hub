@@ -46,7 +46,7 @@ Click a resource to view its drifted attributes.
 
 ![Drifted resource attributes](../static/drift-attributes.png)
 
-### Using YAML
+### Detect drift using YAML
 
 You can also run drift detection by configuring a plugin step in your pipeline YAML. This is useful when you are customizing pipeline execution outside the UI.
 
@@ -77,6 +77,7 @@ To promote best practices, always treat your IaC repository as the source of tru
 - **Reconcile the infrastructure** using a provision pipeline to bring resources back in sync.
 - **Use plan-refresh-only** to refresh the state without applying new configuration changes.
 - **Manually import or delete** the drifted resources depending on your intent.
+- **Remediate with the agent** from the workspace [Insights](/docs/infra-as-code-management/workspaces/insights) tab. Go to the [IaCM Remediation Agent](/docs/infra-as-code-management/workspaces/remediation-agent) to reconcile drift with a generated pull request.
 
 :::tip When to use plan-refresh-only
 Use `plan-refresh-only` if there are drifted resources in your environment, but your code also has unreviewed changes. This ensures only the state is updated to match the real environment, without applying unrelated code updates.
