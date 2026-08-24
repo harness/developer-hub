@@ -56,7 +56,7 @@ Issues with GenAI trace instrumentation and trace-based cost.
 <Troubleshoot
   issue="High trace data volume or storage cost"
   mode="docs"
-  fallback="Large prompt and response payloads and over-instrumentation inflate span volume and storage cost. Disable payload capture (HA_GEN_AI_PAYLOAD_CAPTURE_ENABLED=false for the Harness SDK), scope instrumentation to LLM calls only, and sample a percentage of traces in high-traffic production."
+  fallback="Large prompt and response payloads and over-instrumentation inflate span volume and storage cost. Disable payload capture (HARNESS_GEN_AI_PAYLOAD_CAPTURE_ENABLED=false for the Harness SDK), scope instrumentation to LLM calls only, and sample a percentage of traces in high-traffic production."
 />
 
 <Troubleshoot

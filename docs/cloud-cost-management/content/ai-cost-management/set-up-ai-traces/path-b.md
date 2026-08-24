@@ -51,17 +51,17 @@ The Harness SDK is a Python wrapper around OpenTelemetry that simplifies instrum
 
 #### Installation
 
-Install the SDK with the extra for the LLM client. <!-- TODO(harness-team): VERIFY — confirm the current pinned SDK versions below. Last verified: [date — to be confirmed] -->
+Install the SDK with the extra for the LLM client.
 
 ```bash
 # For LiteLLM
-pip install "harness-sdk[litellm]==1.0.1"
+pip install "harness-sdk[litellm]"
 
 # For Anthropic Python client
-pip install "harness-sdk[anthropic]==1.0.1"
+pip install "harness-sdk[anthropic]"
 
 # For OpenAI SDK
-pip install "harness-sdk[openai]==1.0.1"
+pip install "harness-sdk[openai]"
 ```
 
 **Note for Anthropic extra:**
@@ -76,10 +76,10 @@ pip install opentelemetry-instrumentation-anthropic opentelemetry-util-genai
 Set these environment variables to point the SDK at the Harness endpoint:
 
 ```bash
-export HA_SERVICE_NAME="my-ai-service"
-export HA_REPORTING_ENDPOINT="https://app.harness.io/udp-ingest/otel/v1/traces?accountIdentifier=<ACCOUNT_ID>&routingId=<ACCOUNT_ID>"
-export HA_REPORTING_TRACE_REPORTER_TYPE=OTLP_HTTP
-export HA_REPORTING_TOKEN="<YOUR_TOKEN>"
+export HARNESS_SERVICE_NAME="my-ai-service"
+export HARNESS_REPORTING_ENDPOINT="https://app.harness.io/udp-ingest/otel/v1/traces?accountIdentifier=<ACCOUNT_ID>&routingId=<ACCOUNT_ID>"
+export HARNESS_REPORTING_TRACE_REPORTER_TYPE=OTLP_HTTP
+export HARNESS_REPORTING_TOKEN="<YOUR_TOKEN>"
 ```
 
 <details>
@@ -87,9 +87,9 @@ export HA_REPORTING_TOKEN="<YOUR_TOKEN>"
 
 | Variable | Purpose |
 |----------|---------|
-| `HA_SERVICE_NAME` | Service name that appears in Cost Explorer (example: `customer-support-bot`, `research-agent`) |
-| `HA_REPORTING_ENDPOINT` | Harness UDP ingest endpoint with account ID. Replace `<ACCOUNT_ID>` with the actual account identifier (find it in the Harness URL when logged in). |
-| `HA_REPORTING_TOKEN` | Service account token generated in Path A, Step 1 |
+| `HARNESS_SERVICE_NAME` | Service name that appears in Cost Explorer (example: `customer-support-bot`, `research-agent`) |
+| `HARNESS_REPORTING_ENDPOINT` | Harness UDP ingest endpoint with account ID. Replace `<ACCOUNT_ID>` with the actual account identifier (find it in the Harness URL when logged in). |
+| `HARNESS_REPORTING_TOKEN` | Service account token generated in Path A, Step 1 |
 
 **Where to get these values:**
 - `<ACCOUNT_ID>`: In the Harness URL when logged in (example: `app.harness.io/ng/account/abc123/...` → account ID is `abc123`)
@@ -199,7 +199,7 @@ print(resp.choices[0].message.content)
 3. Wait for traces to appear. They usually show within a few minutes; allow up to about 20 minutes for ingestion and cost enrichment.
 4. Go to **Cloud & AI Cost Management** > **Cost Explorer**.
 5. Select the **AI Traces** view or group by **Service Name**.
-6. Look for the service name (from `HA_SERVICE_NAME` environment variable).
+6. Look for the service name (from `HARNESS_SERVICE_NAME` environment variable).
 7. Select a service row to open the **Service Traces** drawer.
 8. Inspect spans, token counts, and per-span cost.
 

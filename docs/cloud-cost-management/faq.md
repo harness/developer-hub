@@ -1403,7 +1403,7 @@ Common questions about connecting providers, instrumenting traces, and interpret
 <FAQ
   question="Who can see my prompts and completions?"
   mode="fallback-only"
-  fallback="Access to trace data maps to Harness RBAC. If prompts or completions may contain sensitive data, disable payload capture so raw text is not stored on spans. Set HA_GEN_AI_PAYLOAD_CAPTURE_ENABLED=false for the Harness SDK."
+  fallback="Access to trace data maps to Harness RBAC. If prompts or completions may contain sensitive data, disable payload capture so raw text is not stored on spans. Set HARNESS_GEN_AI_PAYLOAD_CAPTURE_ENABLED=false for the Harness SDK."
 />
 
 <FAQ
