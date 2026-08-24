@@ -1,3 +1,20 @@
+## August 2026
+
+### GitOps Service 1.65.0, GitOps Agent 0.125.0
+
+#### New features and enhancements
+
+- GitOps now supports post-production rollback for applications directly from the Services dashboard. After a successful pipeline deployment, a Rollback button appears in the Services tab, allowing you to execute the pipeline's rollback steps without navigating to the pipeline or application details. The Rollback button becomes inactive after use. (**CDS-121668**)
+
+- The GitOps service now displays service instance details for GitOps services based on application sync operations, providing visibility into the deployment state and instance information after each sync. (**CDS-123147**)
+
+- The Harness Vault plugin now supports Kustomize manifests. You can now use the Harness Config Management Plugin with Kustomize to inject secrets from Harness Secret Manager into your Kubernetes manifests during GitOps application deployments. (**CDS-120168**)
+
+#### Fixed issues
+
+- Fixed an issue where the GitOps agent failed to deliver pod logs to Harness, with the WebSocket connection closing with a protocol error shortly after the agent sent a batch of pod logs. (**CDS-128666**)
+- Fixed a directory traversal vulnerability in the go-git dependency used by the GitOps agent and GitOps service. (**CDS-129598**, **CDS-129599**)
+
 ## July 2026
 
 ### GitOps Service 1.62.3, GitOps Agent 0.122.0

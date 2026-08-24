@@ -30,6 +30,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| CDS_GITOPS_POST_PROD_ROLLBACK | Enables post-production rollback for GitOps applications from the Services dashboard. After a successful pipeline deployment, a Rollback button appears in the Services tab allowing you to execute the pipeline's rollback steps. Go to [Post-production rollback from the Services dashboard](/docs/continuous-delivery/gitops/application/rollback-gitops-applications#post-production-rollback-from-the-services-dashboard) for more information. **This feature is in Beta.** |
 | OPA_GITX_PARITY | Enables enhanced Git Experience UI features for OPA policies. **This feature is in Limited GA.** |
 | OPA_GITX_DIRECT_FETCH | Enables direct batch fetch of policy content from Git during evaluation, improving performance and error reporting. **This feature is in Limited GA.** |
 | CDS_AWS_DESCRIBE_REGIONS_OPTIONAL | When enabled, Harness uses `sts:GetCallerIdentity` instead of `ec2:DescribeRegions` for AWS connector validation, removing the EC2 IAM permission requirement. Requires delegate version `889xx` or later. For details, go to [DescribeRegions and connector validation](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#describeregions-and-connector-validation). **This feature is in Limited GA.** |
