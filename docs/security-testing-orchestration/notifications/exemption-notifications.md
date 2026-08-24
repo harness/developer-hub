@@ -21,8 +21,7 @@ To start receiving notifications for STO exemptions, you need to configure **[No
 Channels are the delivery methods for your notifications. You can use existing channels or create new ones.
 
 1. Navigate to the desired scope (**Project**, **Organization**, or **Account**) and select **Settings**.
-2. Select **Notifications Management**.
-3. Go to the **Channels** tab.
+2. Under **Notifications and alerts**, select **Notification Channels**.
 
 For detailed instructions on setting up different channel types, go to the Harness Platform documentation on [Notification Settings](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels).
 
@@ -30,8 +29,8 @@ For detailed instructions on setting up different channel types, go to the Harne
 
 Once you have your channels, you can create rules to trigger notifications for specific STO events.
 
-1. In **Notifications Management**, go to the **Rules** tab.
-2. Select **New Notification Rule**.
+1. In **Settings**, under **Notifications and alerts**, select **Notification Rules**.
+2. Click **+ New Notification**.
 3. Enter a **Name** for your rule (e.g., "STO Pending Exemption Alerts").
 4. Under **Select Resource Type**, choose **Security Test Exemptions** from the dropdown menu.
 5. Depending on the scope you're in, you can select specific **Organizations** or **Projects**. You can also choose to apply the rule to all.   

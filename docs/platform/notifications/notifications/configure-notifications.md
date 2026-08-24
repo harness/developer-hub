@@ -51,7 +51,7 @@ Follow the interactive walkthrough to see the flow end to end, or the next secti
 <div style={{ position: 'relative', paddingBottom: 'calc(50.5208% + 41px)', height: '0', width: '100%' }}><iframe src="https://demo.arcade.software/jkqOeBievR5MDNVdwNOF?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Notification channels" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write; autoplay" style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', colorScheme: 'light' }}></iframe></div>
 <!--ARCADE EMBED END-->
 
-1. To set up a channel, navigate to **Settings** in your desired scope (Account or Organization or Project scope) -> **General** -> **Notifications and alerts**, and click **Notification Channels**.
+1. To set up a channel, navigate to **Settings** in your desired scope (Account, Organization, or Project), then under **Notifications and alerts**, select **Notification Channels**.
 
 2. Click **New Channel** and enter a **Channel Name**. Click **Continue**.
 

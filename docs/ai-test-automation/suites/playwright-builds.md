@@ -336,7 +336,7 @@ You can also pick a **Category** for the failure (for example **Timing issue**) 
 
 Configure centralised notifications to get alerted when Playwright runs complete, fail, or are aborted. Notifications use the Harness Platform notification system and can be delivered through Slack, Email, Microsoft Teams, PagerDuty, or Webhooks.
 
-1. Go to **Project Settings** → **General** → **Notifications Management**.
+1. Navigate to **Project Settings**, then under **Notifications and alerts**, select **Notification Rules**.
 2. Click **+ New Notification**.
 3. Select **AI Test Automation** as the resource type.
 4. Add a condition and select the events you want to be notified about: **Playwright Run Completed**, **Playwright Run Failed**, or **Playwright Run Aborted**.

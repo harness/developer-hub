@@ -37,7 +37,7 @@ You can setup alerts by [creating a channel](#create-a-channel) and [defining co
 
 ### Create a Channel
 
-1. Navigate to **Chaos Engineering** module. Select **Project Settings** and then **Notifications Management**.
+1. Navigate to **Chaos Engineering** module. Select **Project Settings**, then under **Notifications and alerts**, select **Notification Channels**.
 
     ![](./static/alert-integration/notification-5.png)
 
@@ -45,7 +45,7 @@ You can setup alerts by [creating a channel](#create-a-channel) and [defining co
 Notification management should be configured at the project settings level within the **Chaos Engineering** module. This is because HCE supports chaos experiments as a project-level entity, making the rule a project-level entity.
 :::
 
-2. Select **Channels** and then **+ New Channel**.
+2. Click **+ New Channel**.
 
     ![](./static/alert-integration/channel-6.png)
 
@@ -63,7 +63,7 @@ Ensure you create a channel before creating a rule because a channel decides whi
 
 ### Create a Rule
 
-1. To create a new rule, select **+ New Notification**.
+1. Navigate to **Project Settings**, then under **Notifications and alerts**, select **Notification Rules**. To create a new rule, click **+ New Notification**.
 
     ![](./static/alert-integration/notification-8-2.png)
 
