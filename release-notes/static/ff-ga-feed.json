@@ -1,5 +1,12 @@
 [
   {
+    "flagKey": "ENABLE_DEPENDENCY_BASED_EXECUTION",
+    "description": "Enables DAG pipelines, letting you define explicit stage dependencies through the dependsOn field so independent execution paths progress as soon as their prerequisites finish instead of following strict sequential stage order. Also enables converting existing pipelines to DAG mode.",
+    "gaStartDate": "2026-08-24",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
+  },
+  {
     "flagKey": "BLAST_RADIUS_AGENT",
     "description": "Enables the AI Blast Radius Agent step in IaCM pipelines. The step analyzes a Terraform or OpenTofu plan to assign a risk score (1–10), generate a summary of risk drivers, and render an interactive resource dependency graph on the execution Resources tab.",
     "gaStartDate": "2026-08-19",
