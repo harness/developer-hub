@@ -426,7 +426,7 @@ These are the resource keys each module recognizes. A key not listed here is dro
 </details>
 
 <details>
-<summary>Software Engineering Insights (SEI)</summary>
+<summary>AI DLC Insights (AIDI)</summary>
 
 `sei_data_settings`, `sei_developers`, `sei_integrations`, `sei_teams`, `sei_canvas`, `sei_profiles`, `sei_goals`, `sei_insights_category`
 
@@ -450,7 +450,7 @@ If a stage or step group has no `permissions` block, Harness injects a small rea
 | Code Repository | `code_repo_view` |
 | Harness AI | `ai_rules_view` |
 | CCM | `ccm_perspective_view` |
-| FME | `fme_fmefeatureflag_view` |
+| Feature Management & Experimentation | `fme_fmefeatureflag_view` |
 | IaCM | `iac_workspace_view` |
 | IRO | `iro_incident_view` |
 | STO | `sto_scan_view` |

@@ -188,7 +188,7 @@ Secret values are never returned. Go to [Approvals and safety](./approvals-and-s
 
 ---
 
-## Feature flags
+## Feature Management & Experimentation (FME)
 
 | Resource Type | List | Get | Create | Update | Delete | Execute Actions |
 |---------------|:----:|:---:|:------:|:------:|:------:|-----------------|
