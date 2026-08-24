@@ -12,33 +12,12 @@ export const fmeModuleTheme: ModuleTheme = {
 
 export const FmeData: Horizon = {
   Now: {
-    description: "Q2 2026, May-Jul 2026",
+    description: "Q3 2026, Aug-Oct 2026",
     feature: [
-      {
-        tag: [{ value: "Better Together" }],
-        title: "Harness multi-environment support",
-        description:
-          "Support for additional Harness environments, including EU and Single Tenancy.",
-      },
       {
         tag: [{ value: "Configuration Management" }],
         title: "Config Management",
         description: "Enterprise-grade configuration management with approvals, audit logging, impression tracking, schema validations, and real-time delivery.",
-      },
-      {
-        tag: [{ value: "Dashboards" }],
-        title: "Harness dashboards for FME",
-        description: "A unified set of dashboards that combine production activity and usage insights to keep teams aligned on system health and impact.",
-      },
-      {
-        tag: [{ value: "Better Together" }],
-        title: "Metric checks in automated release pipelines",
-        description: "Integrate built-in data checks in your pipelines to automatically validate release health based on performance metrics.",
-      },
-      {
-        tag: [{ value: "Configuration Management" }],
-        title: "AI Config Management",
-        description: "Extended Config Management to include out-of-the-box templates for AI product configurations.",
       },
       {
         tag: [{ value: "Configuration Management" }],
@@ -51,42 +30,45 @@ export const FmeData: Horizon = {
         description: "Granular control over Config Management through RBAC, OPA policy enforcement, and enhanced audit trails.",
       },
       {
+        tag: [{ "value": "Better Together" }],
+        title: "Pipeline-gated flag changes",
+        description: "Enforce strict release workflows by gating feature flag updates behind your pipelines, third-party integrations like ServiceNow, cross-system validations and more.",
+      },
+      {
+        tag: [{ value: "Configuration Management" }],
+        title: "AI Config Management",
+        description: "Extended Config Management to include out-of-the-box templates for AI product configurations.",
+      },
+      {
+        tag: [{ value: "Configuration Management" }, { value: "AI" }],
+        title: "Config Management, continued",
+        description: "Continued expansion of Config Management across both standard and AI configs, including progressing AI Configs from alpha toward general availability.",
+      },
+      {
+        tag: [{ value: "Dashboards" }],
+        title: "Harness dashboards for FME",
+        description: "A unified set of dashboards that combine production activity and usage insights to keep teams aligned on system health and impact.",
+      },
+      {
         tag: [{ "value": "SDK" }],
         title: "Dart SDK support",
         description: "Extend cross-platform coverage with the introduction of Dart SDK, enabling direct use on native Dart applications.",
       },
       {
-        tag: [{value: "Experimentation"}],
-        title: "Additional data warehouse support",
-        description:
-          "Extend Warehouse Native Experimentation to support Databricks.",
+        tag: [{ "value": "Release Monitoring"}],
+        title: "Expanded guardrail metric insights",
+        description: "Understand the impact of feature releases on guardrail metrics with causal insights for percentage-based rollouts and correlational insights for all other releases.",
       },
       {
-        tag: [{ "value": "AI" }],
-        title: "Feature Flag Cleanup Agent",
-        description: "Automate technical debt reduction with an agent that identifies and helps remove stale feature flags directly within the new UI experience.",
-      },
-      {
-        tag: [{ "value": "AI" }],
-        title: "AI chat for flag operations",
-        description: "Perform CRUD operations, modify flag definitions, and check rollout status through a natural language interface powered by the Harness Model Context Protocol (MCP) Server.",
-      },
-      {
-        tag: [{value: "Targeting"}, {value: "Better Together"}],
-        title: "Flag prerequisites",
-        description:
-          "Top level flag dependencies enforced (new) as well as within rules (existing).",
+        tag: [{ "value": "API" }],
+        title: "Programmatically manage experiments and metrics",
+        description: "Enable CRUD capabilities for experiments and metrics using APIs and MCP, allowing for automated configuration and external integration.",
       },
     ],
   },
   Next: {
-    description: "Q3 2026, Aug-Oct 2026",
+    description: "Q4 2026, Nov-Jan 2027",
     feature: [
-      {
-        tag: [{ "value": "Better Together" }],
-        title: "Pipeline-gated flag changes",
-        description: "Enforce strict release workflows by gating feature flag updates behind your pipelines, third-party integrations like ServiceNow, cross-system validations and more.",
-      },
       {
         tag: [{ "value": "Better Together" }],
         title: "Feature Flags as Code",
@@ -96,12 +78,25 @@ export const FmeData: Horizon = {
         tag: [{value: "Experimentation"}],
         title: "Additional data warehouse support",
         description:
-          "Extend Warehouse Native Experimentation to support Trino.",
+          "Extend Warehouse Native Experimentation to support Databricks.",
       },
       {
-        tag: [{ "value": "Better Together"}],
-        title: "Expanded guardrail metric insights",
-        description: "Understand the impact of feature releases on guardrail metrics with causal insights for percentage-based rollouts and correlational insights for all other releases.",
+        tag: [{value: "Experimentation"}],
+        title: "CUPED for Cloud and WHN Experimentation",
+        description:
+          "Introduce CUPED to leverage pre-experiment data and reduce variance across cloud and warehouse-native experiments.",
+      },
+      {
+        tag: [{value: "Targeting"}, {value: "Better Together"}],
+        title: "Flag prerequisites",
+        description:
+          "Top level flag dependencies enforced (new) as well as within rules (existing).",
+      },
+      {
+        tag: [{value: "Experimentation"}],
+        title: "Additional data warehouse support",
+        description:
+          "Extend Warehouse Native Experimentation to support Trino.",
       },
       {
         tag: [{value: "Better Together"}],
@@ -115,16 +110,6 @@ export const FmeData: Horizon = {
         description: "Unified control plane for billing and subscription management with streamlined FME settings.",
       },
       {
-        tag: [{ value: "Better Together" }],
-        title: "Project movement support",
-        description: "Allow FME projects to be moved from one Harness organization to another.",
-      },
-      {
-        tag: [{ value: "Audit Trail" }],
-        title: "Audit log unification with Harness Audit Trail",
-        description: "Deliver FME audit logs and admin audit log events in Harness Audit Trail to support a single source of truth.",
-      },
-      {
         tag: [{value: "Experimentation"}, {value: "Better Together"}],
         title: "Experiment pipeline support",
         description:
@@ -135,27 +120,26 @@ export const FmeData: Horizon = {
         title: "Expanded language support for SDKs",
         description: "Extend cross-platform coverage, including support for additional languages.",
       },
+      {
+        tag: [{ value: "Configuration Management" }],
+        title: "Pipeline steps for Config Management",
+        description: "Manage Config Management changes directly from Harness pipelines with dedicated pipeline steps.",
+      },
+      {
+        tag: [{ value: "SDK" }],
+        title: "Expanded thin client SDK support",
+        description: "Expand remote evaluation (secure mode) support to additional thin client SDKs, including React.",
+      },
     ],
   },
   Later: {
-    description: "Q4 2026+, November 2026 & beyond",
+    description: "Q1 2027+, Jan 2027 & beyond",
     feature: [
       {
         tag: [{value: "Experimentation"}],
         title: "Dimensional Analysis for WHN Experimentation",
         description:
           "Introduce dimensional analysis for Warehouse Native Experimentation (WHN) to uncover deeper trends and segment-level impact.",
-      },
-      {
-        tag: [{value: "Experimentation"}],
-        title: "CUPED for Cloud and WHN Experimentation",
-        description:
-          "Introduce CUPED to leverage pre-experiment data and reduce variance across cloud and warehouse-native experiments.",
-      },
-      {
-        tag: [{ "value": "API" }],
-        title: "Programmatically manage experiments and metrics",
-        description: "Enable CRUD capabilities for experiments and metrics using APIs and MCP, allowing for automated configuration and external integration.",
       },
       {
         tag: [{ "value": "AI" }],
@@ -167,11 +151,45 @@ export const FmeData: Horizon = {
         title: "Additional OpenFeature Provider support",
         description: "Expand multi-language support for vendor-agnostic feature management, including Ruby.",
       },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Project movement support",
+        description: "Allow FME projects to be moved from one Harness organization to another.",
+      },
+      {
+        tag: [{ value: "Audit Trail" }],
+        title: "Audit log unification with Harness Audit Trail",
+        description: "Deliver FME audit logs and admin audit log events in Harness Audit Trail to support a single source of truth.",
+      },
     ],
   },
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ "value": "AI" }],
+        title: "Feature Flag Cleanup Agent",
+        description: "Automate technical debt reduction with an agent that identifies and helps remove stale feature flags directly within the new UI experience.",
+        link: "https://developer.harness.io/3k-docs/platform/getting-started/agents/developer-productivity#feature-flag-cleanup-agent",
+      },
+      {
+        tag: [{ "value": "AI" }],
+        title: "AI chat for flag operations",
+        description: "Perform CRUD operations, modify flag definitions, and check rollout status through a natural language interface powered by the Harness Model Context Protocol (MCP) Server.",
+        link: "https://developer.harness.io/docs/platform/harness-ai/connect-with-ai/harness-mcp-server/resource-types/#feature-management--experimentation-fme",
+      },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Harness multi-environment support",
+        description: "Support for additional Harness environments, including EU and Single Tenancy.",
+        link: "https://developer.harness.io/docs/feature-management-experimentation/getting-started#allow-harness-fme-traffic-through-your-network",
+      },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Metric checks in automated release pipelines",
+        description: "Integrate built-in data checks in your pipelines to automatically validate release health based on performance metrics.",
+        link: "https://developer.harness.io/docs/feature-management-experimentation/pipelines#metric-check",
+      },
       {
         tag: [{ value: "Better Together" }],
         title: "Remote evaluation client-side SDKs",
@@ -305,7 +323,7 @@ export const FmeData: Horizon = {
         description: "First of new SDKs to be added after joining Harness.",
         link:"https://developer.harness.io/release-notes/feature-management-experimentation/#elixir-sdk",
       },
-      {        
+      {
         tag: [{value: "AI Agents"}],
         title: "AI results interpretation conversation",
         description:
