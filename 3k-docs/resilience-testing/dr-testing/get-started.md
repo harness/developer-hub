@@ -1,7 +1,7 @@
 ---
 title: Get Started with DR Testing
 sidebar_label: Get Started
-sidebar_position: 1
+sidebar_position: 10
 description: Learn how to create and run your first DR test in Harness Resilience Testing
 ---
 

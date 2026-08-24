@@ -105,7 +105,7 @@ The platform includes enterprise features like RBAC, SSO, comprehensive logging,
 - [Explore Chaos Faults](/docs/chaos-engineering/faults/chaos-faults): Browse 200+ ready-to-use fault scenarios
 - [Set Up Governance](/docs/resilience-testing/access-control/rbac): Configure RBAC and ChaosGuard for safe testing
 - [Get Started with Load Testing](./load-testing/get-started): Simulate traffic and test performance
-- [Get Started with DR Testing](#): Validate disaster recovery procedures
+- [Get Started with DR Testing](./dr-testing/get-started): Validate disaster recovery procedures
 
 <!-- ## Chaos Fault Library
 

@@ -1,7 +1,7 @@
 ---
 title: DR Testing Concepts
 sidebar_label: Concepts
-sidebar_position: 2
+sidebar_position: 20
 description: Core concepts and terminology for Harness DR Testing
 ---
 

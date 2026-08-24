@@ -1,7 +1,7 @@
 ---
 title: Load Test Templates
 sidebar_label: Load Test Templates
-sidebar_position: 3
+sidebar_position: 30
 description: Create reusable load test templates in the ChaosHub to standardize and quickly spin up load tests in Harness Resilience Testing
 keywords:
   - load test template
@@ -13,7 +13,7 @@ tags:
   - templates
 ---
 
-A **load test template** is a reusable, pre-configured load test that you store in a ChaosHub. Instead of rebuilding the same test each time, you define the execution environment, framework, and workload once, then spin up new load tests from the template. Templates keep load tests consistent across teams and cut the time it takes to start a new test.
+A **load test template** is a reusable, pre-configured load test that you store in a ChaosHub. Instead of rebuilding the same test each time, you define the execution environment, Load Test Engine, and workload once, then spin up new load tests from the template. Templates keep load tests consistent across teams and cut the time it takes to start a new test.
 
 :::info Feature flag
 Load Testing is currently behind a feature flag (`CHAOS_LOAD_TESTING_ENABLED`). Contact your Harness sales representative to enable it for your account.
@@ -23,7 +23,7 @@ Load Testing is currently behind a feature flag (`CHAOS_LOAD_TESTING_ENABLED`). 
 
 ## What you can do with load test templates
 
-- **Standardize tests across teams.** Capture an approved execution environment, framework, and workload once, and reuse it everywhere.
+- **Standardize tests across teams.** Capture an approved execution environment, Load Test Engine, and workload once, and reuse it everywhere.
 - **Start new tests faster.** Create a load test from a template instead of configuring one from scratch.
 - **Share across scopes.** Store templates at the account, organization, or project level so the right teams can reuse them.
 - **Track changes over time.** Templates are revisioned, so you can update a template and keep a history of its versions.
@@ -82,27 +82,40 @@ Under **Execution Environment**, select a **Target Type**:
 | **Kubernetes** | Runs the load test on a Kubernetes cluster as a master pod and optional worker pods. |
 | **Linux VM** | Runs the load test on a single Linux VM infrastructure. |
 
-Then select a **Load Test Type**:
+Then select a **Load Test Engine**:
 
-| Load test type | Description |
-|---|---|
-| **Locust** | Python-based load testing. Runs on Kubernetes or Linux VM. |
-| **K6** | JavaScript-based load testing. Runs on Kubernetes only. |
-| **JMeter** | Java-based load testing that runs existing `.jmx` plans. Runs on Kubernetes or Linux VM. |
+| Load Test Engine | Based on | Description |
+|---|---|---|
+| **Python** | Locust | Python-based load testing. Runs on Kubernetes or Linux VM. |
+| **JavaScript** | k6 | JavaScript-based load testing. Runs on Kubernetes only. |
+| **Java** | JMeter | Java-based load testing that runs existing `.jmx` plans. Runs on Kubernetes only. |
 
-:::info k6 runs on Kubernetes only
-k6 load tests run on **Kubernetes** infrastructure. To target a Linux VM, use **Locust**.
+:::info Only Python runs on a Linux VM
+JavaScript and Java load tests run on **Kubernetes** infrastructure. When the target type is **Linux VM**, both are disabled and marked **Coming Soon**, so use **Python** to target a Linux VM.
 :::
 
 Select **Next** to proceed to **Test Configuration**.
 
 ### Define the test workload
 
-On the **Test Configuration** step, define the workload the template runs. The controls match the [Load Test Studio](./create-load-test/locust) for the framework you selected, so you can define the test through the UI, upload a script, or use a custom image.
+On the **Test Configuration** step, define the workload the template runs. The controls match the Load Test Studio for the engine you selected, so you can upload a script, reference a custom image, or (where the studio supports it) configure the run through the UI.
 
-- Go to [Locust](./create-load-test/locust) to configure a Python-based workload.
-- Go to [k6](./create-load-test/k6) to configure a JavaScript-based workload with scenarios and thresholds.
-- Go to [JMeter](./create-load-test/jmeter) to configure a Java-based workload from an existing `.jmx` plan.
+#### Python (Locust)
+
+Locust models user behavior as Python classes and tasks. On **Test Configuration**, choose one of these modes:
+
+- **Upload Python script:** Provide an optional **Host URL** that Locust prepends to relative paths, upload your `.py` Locust script, then set **Users**, **Duration**, **Ramp Up Duration**, and **Worker Count** in Load Configuration.
+- **Using Custom Image:** Point at a container image that already contains Locust and your script, set the **Entrypoint** path to the Locust file inside the image, and optionally pass load args.
+
+Use Python when your team writes scenarios in Python, when you need conditional logic in the user journey, or when the template must run on a **Linux VM** as well as Kubernetes. Go to [Python](./create-load-test/locust) for the full field reference and sample flow.
+
+#### JavaScript (k6)
+
+Configure a JavaScript-based workload with scenarios and [thresholds](./create-load-test/k6#gate-a-release-with-passfail-thresholds) declared in the script. JavaScript runs on Kubernetes only. Go to [JavaScript](./create-load-test/k6) for script upload, load profile, and distributed execution.
+
+#### Java (JMeter)
+
+Configure a Java-based workload from an existing `.jmx` plan (or a `.zip` that bundles data files and JARs). Use [property overrides](./create-load-test/jmeter#override-jmeter-properties) so one plan serves multiple environments, and add [pass/fail thresholds](./create-load-test/jmeter#gate-a-release-with-passfail-thresholds) to gate releases. Java runs on Kubernetes only. Go to [Java](./create-load-test/jmeter) for upload modes, distributed workers, and Advanced Options.
 
 ### Edit as YAML
 
@@ -152,8 +165,8 @@ Go to [Analyze load test results](./analyze-results) to interpret the run.
 
 ## Next steps
 
-- Go to [Locust](./create-load-test/locust) to define a Python-based load test workload.
-- Go to [k6](./create-load-test/k6) to define a JavaScript-based load test workload with thresholds.
-- Go to [JMeter](./create-load-test/jmeter) to define a Java-based load test workload from an existing `.jmx` plan.
+- Go to [Python](./create-load-test/locust) to define a Python-based load test workload.
+- Go to [JavaScript](./create-load-test/k6) to define a JavaScript-based load test workload with thresholds.
+- Go to [Java](./create-load-test/jmeter) to define a Java-based load test workload from an existing `.jmx` plan.
 - Go to [ChaosHub](/docs/resilience-testing/chaos-testing/chaoshub) to manage the hub that stores your templates.
 - Go to [Templates](/docs/resilience-testing/chaos-testing/templates) to review fault, experiment, probe, and action templates.

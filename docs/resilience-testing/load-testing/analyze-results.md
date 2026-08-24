@@ -1,7 +1,7 @@
 ---
 title: Analyze Load Test Results
 sidebar_label: Test Results
-sidebar_position: 4
+sidebar_position: 70
 description: Understand and interpret load test execution results in Harness Resilience Testing
 keywords:
   - load test results
@@ -17,17 +17,23 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
 
 After you run a load test, Harness opens the **Run detail** page and streams results in real time. The same page shows the final results after the run finishes.
 
-The Locust and k6 results views share the same layout but differ in a few areas, such as the summary cards, the k6-only Thresholds and Checks tables, and the k6 Response Time Histogram. Select your framework below to see the walkthrough that matches your test.
+Every Load Test Engine uses the same Run detail layout: an **About This Test** panel, a row of summary cards, charts of users and throughput over time, the load test logs, and a per-endpoint statistics table. The engines differ in the detail. JavaScript (k6) reports **Failed Rate** with P50, P95, and P99 cards and adds a Response Time Histogram, while Java (JMeter) reports **Error Rate** and **Avg Response Time**. Select your engine below to see the walkthrough that matches your test.
 
 ---
 
 ## Access results
 
-1. Go to **Resilience Testing** > **Load Testing**.
-2. Click a test name to open its list of executions.
-3. Select a run (for example, **Run #2**) to open the Run detail page.
+Go to **Resilience Testing** > **Load Tests**. The page has three tabs.
 
-Each execution is numbered and keeps its own results, so you can compare runs over time.
+| Tab | What it lists |
+|---|---|
+| **Executions** | Every run across all load tests, newest first. Each row reports the run identifier, **Users**, **Duration**, **Avg Response Time**, **Success Rate**, **Status**, and who started it. Filter by **Status** to isolate failures. |
+| **Load Tests** | The tests themselves, with **Mode**, **Infrastructure**, recent executions, and when each was last modified. Filter by **Type** or **Tag(s)**. |
+| **Composite Load Tests** | Pipelines that pair a load test with a probe. Go to [Composite load tests](./composite-load-tests) to review them. |
+
+To open a single run, select it from **Executions**, or open a test from **Load Tests** and choose a run from its execution list. Each execution is numbered and keeps its own results, so you can compare runs over time.
+
+A run in the **Executions** list that reports **Not Available** for response time or success rate did not produce metrics, which usually means it failed before generating load. Open the run and read its logs rather than the summary columns.
 
 ---
 
@@ -35,11 +41,14 @@ Each execution is numbered and keeps its own results, so you can compare runs ov
 
 <DynamicMarkdownSelector
   options={{
-    "Locust": {
+    "Python": {
       path: "/resilience-testing/content/load-testing/results-locust.md"
     },
-    "k6": {
+    "JavaScript": {
       path: "/resilience-testing/content/load-testing/results-k6.md"
+    },
+    "Java": {
+      path: "/resilience-testing/content/load-testing/results-jmeter.md"
     },
   }}
   toc={toc}
@@ -52,7 +61,7 @@ Each execution is numbered and keeps its own results, so you can compare runs ov
 
 ## Interpret the results
 
-The following guidance applies to both frameworks. Where a metric name differs, the Locust name is given first.
+The following guidance applies to every engine. Where a metric name differs, the Python (Locust) name is given first.
 
 ### Healthy test indicators
 
@@ -76,7 +85,7 @@ A run shows **Failed** status when:
 - The test infrastructure lost connectivity during execution.
 - The load test process exited with an error.
 - The test was stopped before completion.
-- A k6 threshold was breached (for example, the 95th-percentile response time exceeded its limit).
+- A threshold was breached, such as the 95th-percentile response time exceeding its limit.
 
 :::info Status reflects execution health, not application health
 A high error rate does not by itself mark the run as **Failed**. A test that completes with a 100% error rate still shows as a completed run. Read the **Error Rate** or **Failed Rate** metric to assess how the application behaved, and use **Status** to confirm the test itself ran to completion.
@@ -87,5 +96,6 @@ A high error rate does not by itself mark the run as **Failed**. A test that com
 ## Next steps
 
 - Go to [Get started with load testing](./get-started) to create and run your first load test.
-- Go to [k6](./create-load-test/k6) to configure thresholds that gate a release on performance.
-- Go to [Key concepts](./get-started#key-concepts) to review virtual users, load profiles, and assertions.
+- Go to [JavaScript](./create-load-test/k6) to declare thresholds that gate a release on performance.
+- Go to [Composite load tests](./composite-load-tests) to pair a run with a probe that reports whether the service stayed healthy under load.
+- Go to [Key concepts](./get-started#key-concepts) to review virtual users, load profiles, and thresholds.

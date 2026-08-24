@@ -3626,6 +3626,7 @@ const sidebars: SidebarsConfig = {
           className: 'horizontal-bar sidebar-item-new',
         },
         "resilience-testing/load-testing/get-started",
+        "resilience-testing/load-testing/key-concepts",
         {
           type: "category",
           label: "Create a Load Test",
@@ -3639,6 +3640,25 @@ const sidebars: SidebarsConfig = {
             "resilience-testing/load-testing/create-load-test/k6",
             "resilience-testing/load-testing/create-load-test/jmeter",
           ],
+        },
+        "resilience-testing/load-testing/load-test-templates",
+        {
+          type: "category",
+          label: "Run in a Pipeline",
+          link: {
+            type: "doc",
+            id: "resilience-testing/load-testing/run-in-pipeline",
+          },
+          collapsed: true,
+          items: [
+            "resilience-testing/load-testing/run-in-pipeline",
+            "resilience-testing/load-testing/run-load-test-template-in-pipeline",
+          ],
+        },
+        {
+          type: 'doc',
+          id: 'resilience-testing/load-testing/composite-load-tests',
+          className: 'sidebar-item-new',
         },
         "resilience-testing/load-testing/analyze-results",
         {

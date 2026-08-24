@@ -1,7 +1,7 @@
 ---
-title: Run a Load Test in a Pipeline
-sidebar_label: Run in a Pipeline
-sidebar_position: 4
+title: Run a load test in a pipeline
+sidebar_label: Run a Load Test
+sidebar_position: 40
 description: Add a Load Test step to a Harness pipeline and pass runtime inputs so you can validate performance as part of your delivery process
 keywords:
   - load test pipeline
@@ -24,8 +24,12 @@ Load Testing is currently behind a feature flag (`CHAOS_LOAD_TESTING_ENABLED`). 
 ## Prerequisites
 
 - **Module access:** Access to the Harness Resilience Testing module.
-- **A load test:** An existing load test to reference in the step. Go to [Locust](./create-load-test/locust), [k6](./create-load-test/k6), or [JMeter](./create-load-test/jmeter) to create one.
+- **A load test:** An existing load test to reference in the step. Go to [Python](./create-load-test/locust), [JavaScript](./create-load-test/k6), or [Java](./create-load-test/jmeter) to create one.
 - **A pipeline:** A pipeline with a stage that supports the Load Test step, such as a Deploy or Custom stage.
+
+:::tip Measuring health under load instead
+This page adds a load test to a pipeline you already have. To run a load test alongside a probe that watches the service while the traffic is applied, create a composite load test instead, and Harness builds the pipeline for you. Go to [Composite load tests](./composite-load-tests) to compare the two.
+:::
 
 ---
 
@@ -50,7 +54,7 @@ You can add more than one Load Test step to a stage to run several tests in sequ
 ## Select the load test
 
 1. In **Load Test Reference**, select **Select Load Test**.
-2. In the **Select Load Test** modal, search for a load test and select its card. Each card shows the engine (Locust, k6, or JMeter), the last run status, and when it was last updated. The **Summary** panel shows the test's users and duration.
+2. In the **Select Load Test** modal, search for a load test and select its card. Each card shows the engine (Python, JavaScript, or Java), the last run status, and when it was last updated. The **Summary** panel shows the test's users and duration.
 3. Select **Add to Pipeline**.
 
 :::tip Create a load test inline
@@ -61,7 +65,7 @@ Select **+ New Load Test** in the modal to create a load test without leaving th
 
 ## Configure tool inputs
 
-After you select a load test, the **Tool Inputs** section shows the parameters the test exposes. The inputs depend on the referenced load test and its engine. For example, a Locust test on Kubernetes exposes:
+After you select a load test, the **Tool Inputs** section shows the parameters the test exposes. The inputs depend on the referenced load test and its engine. For example, a Python (Locust) test on Kubernetes exposes:
 
 | Input | Description |
 |---|---|
@@ -84,12 +88,6 @@ Use **Runtime input** to reuse the same load test across pipelines and supply di
 
 ---
 
-## Save the step as a template
-
-To reuse this step configuration across pipelines, select **Save as Template** in the **Configure Load Test** panel. Go to [Use HCE with Continuous Delivery](/docs/resilience-testing/chaos-testing/integrations/cicd/harness-cd) to review how step templates work in pipelines.
-
----
-
 ## Apply and run
 
 1. (Optional) Select the **Advanced** tab to configure a failure strategy and other settings.
@@ -102,6 +100,8 @@ Go to [Analyze load test results](./analyze-results) to interpret throughput, er
 
 ## Next steps
 
-- Go to [Load Test Templates](./load-test-templates) to create reusable load tests you can reference in a step.
+- Go to [Run a load test template in a pipeline](./run-load-test-template-in-pipeline) to add a reusable Load Test step template to a pipeline.
+- Go to [Load Test Templates](./load-test-templates) to create reusable load test definitions in a ChaosHub.
+- Go to [Composite load tests](./composite-load-tests) to run a load test and a probe together in a dedicated stage.
 - Go to [Use HCE with Continuous Delivery](/docs/resilience-testing/chaos-testing/integrations/cicd/harness-cd) to add chaos experiments to the same pipeline.
 - Go to [Analyze load test results](./analyze-results) to review a run.

@@ -8,7 +8,7 @@ The left panel, titled **About This Test**, shows the test metadata and the live
 |---|---|
 | **Test Name** | Name of the load test. |
 | **Load Test Infrastructure** | The infrastructure that ran the test, with its connection status. |
-| **Type** | Reads **Locust**. |
+| **Type** | Reads **Python**. |
 | **Users** | Peak concurrent virtual users configured. |
 | **Duration** | Total configured test duration. |
 | **Ramp Up Duration** | Time to ramp linearly from zero to peak users. |

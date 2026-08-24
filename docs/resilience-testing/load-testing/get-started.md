@@ -1,7 +1,7 @@
 ---
 title: Get Started with Load Testing
 sidebar_label: Get Started
-sidebar_position: 1
+sidebar_position: 10
 description: Learn how to create and run your first load test in Harness Resilience Testing
 ---
 
@@ -11,130 +11,35 @@ Load Testing simulates user traffic to validate your system's performance under 
 Load Testing is currently behind a feature flag (`CHAOS_LOAD_TESTING_ENABLED`). Contact your Harness sales representative to get it enabled for your account.
 :::
 
-## Key Concepts
+## Before you begin
 
-### Virtual Users
+- **Module access:** Access to the Harness Resilience Testing module.
+- **Infrastructure:** A Linux VM or Kubernetes chaos infrastructure. Go to [Infrastructure](../chaos-testing/infrastructure) to configure one.
+- **Environment:** An environment in your project for the infrastructure.
+- **Service:** At least one onboarded service on that infrastructure.
+- **Target access:** Application endpoints that the test infrastructure can reach.
 
-A **virtual user** (VU) simulates a real user interacting with your application. Each virtual user independently executes the scenario you define: sending HTTP requests, waiting for responses, and looping through the sequence for the duration of the test.
+---
 
-The **Number of Users** setting controls how many virtual users run concurrently at peak load. Higher concurrency means more simultaneous requests hitting your system.
+## Create your first load test
 
-### Load Profile
+1. Navigate to **Resilience Testing** > **Load Testing**.
+2. Click **+ New Load Test**, then complete the guided flow.
 
-The **load profile** describes how virtual users are added over the course of a test. Harness Load Testing uses a ramp-up then steady-state model:
-
-```
-Users
-  |         ___________________
-  |        /
-  |       /
-  |______/
-  |________________________________ Time
-     ^          ^
-  Ramp-Up    Steady State
-```
-
-**Ramp-Up Phase** - Virtual users are added linearly from 0 to the target number over the **Ramp-Up Duration**. This gradual increase avoids overwhelming the system at the start and lets you observe how it responds as load increases.
-
-**Steady-State Phase** - After ramp-up completes, the configured number of virtual users continues running for the remainder of the **Test Duration**. Steady-state duration = `Test Duration - Ramp-Up Duration`.
-
-**Example**: 600s total duration with 120s ramp-up gives 480s at peak load.
-
-### Load Test Frameworks
-
-Harness Load Testing supports more than one framework so you can match the tool to your goal:
-
-- **[Locust](./create-load-test/locust)** is a Python framework that models user behavior as Python classes. It runs on Linux VM and Kubernetes infrastructure and suits Python teams and a simple ramp-up model.
-- **[k6](./create-load-test/k6)** is a JavaScript framework with executors, preset load profiles, and built-in pass/fail thresholds. It runs on Kubernetes infrastructure and suits release gates and precise load shapes such as spike and soak tests.
-- **[JMeter](./create-load-test/jmeter)** is a Java tool that runs existing `.jmx` test plans. It runs on Linux VM and Kubernetes infrastructure and suits teams that want to reuse JMeter plans, override properties at run time, and distribute load across workers.
-
-You select the framework under **Load Test Type** when you create a test.
-
-### Thresholds (k6 and JMeter)
-
-A **threshold** is a pass/fail rule for a metric, such as "the 95th-percentile request duration must stay under 5000 ms." When a k6 or JMeter test breaches a threshold, the run is marked failed. This turns a load test into a gate you can enforce in continuous integration. Go to [k6](./create-load-test/k6#gate-a-release-with-passfail-thresholds) or [JMeter](./create-load-test/jmeter#gate-a-release-with-passfail-thresholds) to configure thresholds.
-
-### Scenarios and executors (k6)
-
-A k6 **scenario** is a named workload, and its **executor** controls how virtual users are scheduled over time (for example, `ramping-vus` ramps users up and down through stages). You can run multiple scenarios in parallel, such as a browse flow and a checkout flow, each with its own executor.
-
-### Scenario Definition
-
-A **scenario** defines the sequence of HTTP requests your virtual users execute. Each request includes:
-
-- **HTTP Method**: GET, POST, PUT, DELETE, PATCH, etc.
-- **Endpoint URL**: The full URL for UI-defined tests, or a path relative to the Host URL for script-based tests
-- **Request Name**: An optional label for identifying the request in results
-- **Query Parameters**: URL query string parameters as key-value pairs
-- **Headers**: HTTP request headers (e.g., `Authorization`, `Content-Type`)
-- **Assertions**: Conditions that must be true for the request to count as a success
-- **Extractions**: Values captured from responses and reused in later requests
-
-### Assertions
-
-Assertions define success criteria for each request. A failed assertion marks that request as an error in the test results.
-
-| Assertion Type | What it checks |
-|---|---|
-| **Text** | The response body contains (or does not contain) a specific string |
-| **Response Time** | The request completes within a specified time threshold (milliseconds) |
-
-### Extract from Response
-
-Response extraction captures a dynamic value from a response (such as a token returned after a login request) and makes it available as a variable in subsequent requests. This enables realistic multi-step flows like:
-
-1. POST `/auth/login` - extract `access_token` from response body
-2. GET `/api/user/profile` with `Authorization: Bearer {{access_token}}`
-
-### Host URL
-
-When uploading a Python script, the **Host URL** is the base URL of the application under test. Locust prepends this to all relative paths in your script. For example, with Host URL `https://api.example.com`, a request to `/users` becomes `https://api.example.com/users`.
-
-### Load Test Infrastructure
-
-Load tests run on infrastructure managed by the Harness chaos agent. Two **target types** are supported:
-
-| Target Type | How it works | Best for |
-|---|---|---|
-| **Linux VM** | The agent on a Linux host runs the Locust process locally and streams results back to Harness. | Simple setups, on-premises hosts, direct network access to internal services. |
-| **Kubernetes** | The agent orchestrates a master pod and optional worker pods inside a Kubernetes cluster. Requires **v1.85.3+**. Load testing is enabled by default - no additional configuration needed. | Scalable distributed testing, cloud-native environments, high-concurrency workloads. |
-
-When creating a load test, you select a target type first, and the **Load Test Infrastructure** dropdown filters to show only infrastructure matching that type. See [Infrastructure](../chaos-testing/infrastructure) for setup instructions.
-
-### Test Definition Modes
-
-The available test definition modes depend on the framework and target type you selected. The artifact you provide matches the framework: Locust uses a Python script (`.py`), k6 uses a JavaScript script (`.js`), and JMeter uses a test plan (`.jmx`, `.xml`, or `.zip`).
-
-| Mode | Locust | k6 | JMeter | Description |
-|---|---|---|---|---|
-| **Define test via UI** | ✅ | ✅ | - | Build HTTP scenarios visually without writing code. Harness generates the script at execution time. |
-| **Upload a script or plan** | ✅ (`.py`) | ✅ (`.js`) | ✅ (`.jmx`, `.xml`, `.zip`) | Upload a custom script or test plan for full control over user behavior. |
-| **Using Image** | ✅ | ✅ | ✅ | Use a prebuilt container image as the load test source. For Locust, this mode is available on Kubernetes only since the image runs as a pod in the cluster. |
-
-## Prerequisites
-
-- Access to the Harness Resilience Testing module
-- A [chaos infrastructure](../chaos-testing/infrastructure) configured in your project (Linux VM or Kubernetes)
-- An environment created in your project for the infrastructure
-- Target application endpoints accessible from the test infrastructure
-
-## Quick Start
-
-1. Navigate to **Resilience Testing** > **Load Testing**
-2. Click **+ New Load Test** and follow the guided creation flow
-
-:::tip Try Sample Test
-Click the **+ New Load Test** dropdown and select **Try Sample Test** to instantly explore the feature with a pre-configured test: sample endpoints, realistic load settings, and example configurations included.
+:::tip Start from a sample test
+Click the arrow beside **+ New Load Test** and select **Try Locust Sample Test** or **Try K6 Sample Test** to explore the feature with a pre-configured test, including sample endpoints and realistic load settings. There is no Java sample, so build a Java test from your own plan.
 :::
 
-For the complete step-by-step walkthrough, choose your framework:
-- [Locust](./create-load-test/locust): Python-based, runs on Linux VM or Kubernetes
-- [k6](./create-load-test/k6): JavaScript-based with thresholds, runs on Kubernetes
-- [JMeter](./create-load-test/jmeter): Java-based, runs existing `.jmx` plans on Linux VM or Kubernetes
+Use the guide for your Load Test Engine:
 
-## Next Steps
+- Go to [Python](./create-load-test/locust) to run Locust on a Linux VM or Kubernetes.
+- Go to [JavaScript](./create-load-test/k6) to run k6 with script-defined thresholds on Kubernetes.
+- Go to [Java](./create-load-test/jmeter) to run existing JMeter `.jmx` plans on Kubernetes.
 
-- Create a Load Test: [Locust](./create-load-test/locust) · [k6](./create-load-test/k6) · [JMeter](./create-load-test/jmeter)
-- [Analyze Results](./analyze-results): Understand and interpret load test execution results
-- [Infrastructure](../chaos-testing/infrastructure): Set up and manage infrastructure for chaos and load tests
-- [Chaos Testing](../chaos-testing/get-started): Combine load testing with chaos experiments for peak-load resilience validation
+---
+
+## Next steps
+
+- Go to [Load testing key concepts](./key-concepts) to understand virtual users, load profiles, engines, thresholds, and infrastructure.
+- Go to [Analyze results](./analyze-results) to interpret load test execution results.
+- Go to [Chaos Testing](../chaos-testing/get-started) to combine load tests with chaos experiments.

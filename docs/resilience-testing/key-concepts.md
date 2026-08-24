@@ -145,7 +145,7 @@ The load profile defines how virtual users are introduced over time:
 
 ### Scenario
 
-A scenario is the sequence of HTTP requests each virtual user executes. A scenario can be defined visually in the UI editor or through a custom [Locust](https://locust.io/) Python script.
+A scenario is the sequence of HTTP requests each virtual user executes. Depending on the Load Test Engine, you define it as a Python (Locust) script, a JavaScript (k6) script, or a Java (JMeter) plan.
 
 ### Assertions
 
@@ -160,7 +160,7 @@ Requests that fail assertions are counted as errors in test results.
 
 The infrastructure where load tests execute. Two target types are supported:
 
-- **Linux VM**: A Linux host with the Harness chaos agent and load testing enabled. The agent runs the Locust process locally and streams metrics back to Harness.
+- **Linux VM**: A Linux host with the Harness chaos agent and load testing enabled. The agent runs the Python (Locust) process locally and streams metrics back to Harness.
 - **Kubernetes**: A Kubernetes cluster with the Harness chaos agent (v1.85.3 or later). Load testing is enabled by default. The agent orchestrates a master pod and optional worker pods for scalable, distributed load generation.
 
 See [Infrastructure](./chaos-testing/infrastructure) for setup instructions.
@@ -176,22 +176,24 @@ Disaster Recovery Testing validates that backup systems, failover mechanisms, an
 
 ### Pipeline-Based DR Tests
 
-DR tests are built using Harness Pipeline Studio. Each DR test is a stage with four tabs:
+DR tests are built using Harness Pipeline Studio. Each DR test is a pipeline with a Disaster Recovery stage (`DRTest`) that has four tabs:
 
 - **Overview**: Stage name, objective, timeout, and stage variables
-- **Environment**: Target Harness environment, Chaos Infrastructure, and stage-level failure strategy
-- **Execution**: Step canvas where you compose the recovery workflow using DR-specific steps (Chaos Probe, Chaos Fault, Chaos Action) and standard Harness steps
-- **Advanced**: Delegate selector, conditional execution, looping strategy, and step-level failure strategy
+- **Environment**: Target Harness environment and stage-level failure strategy
+- **Execution**: Step canvas for the forward workflow, plus a Rollback path for compensating steps
+- **Advanced**: Delegate selector, conditional execution, looping strategy, and additional failure strategy actions
+
+Chaos Fault, Chaos Probe, and Chaos Action steps each select their own chaos infrastructure. The Environment tab does not set infrastructure for the whole stage.
 
 ### Failure Strategy
 
-Defines what happens when a step or stage encounters an error. You can handle specific failure types (Authentication Errors, Connectivity Errors, Timeout Errors, etc.) with actions like Rollback Pipeline, Retry Step, Abort, Manual Intervention, or Mark As Failure.
+Defines what happens when a step or stage encounters an error. You can handle specific failure types (Authentication Errors, Connectivity Errors, Timeout Errors, etc.) with actions like Rollback Pipeline, Retry Step, Abort, Manual Intervention, or Mark As Failure. Pair **Rollback Stage** with the Rollback path on the Execution tab when you want compensating steps to run.
 
 ### Conditional Execution
 
 Controls whether a stage runs based on pipeline state: on success (default), on failure, always, or via a custom JEXL expression. Useful for running rollback stages only when a failover stage fails.
 
-See [DR Testing Concepts](./dr-testing/concepts) for a full breakdown of all concepts.
+Go to [DR Testing Concepts](./dr-testing/concepts) for a full breakdown of all concepts.
 
 ## Harness Resilience Testing Concepts
 

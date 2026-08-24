@@ -1,7 +1,7 @@
 ---
 title: Pipeline Stage Reference
 sidebar_label: Pipeline Stage Reference
-sidebar_position: 3
+sidebar_position: 30
 description: Complete field reference for DR test pipeline stage configuration in Harness Resilience Testing
 ---
 
