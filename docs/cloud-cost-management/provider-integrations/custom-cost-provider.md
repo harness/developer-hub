@@ -46,6 +46,10 @@ You upload cost data in the [FOCUS](https://focus.finops.org/what-is-focus/) CSV
 | Granular RBAC | Coming soon |
 | Audit Trail | Coming soon |
 
+:::note Dashboard support means Unified explore fields
+Dashboard support for external cost data means ingested rows are queryable through the **Unified** data source in BI Dashboards Explore, not that an existing out-of-the-box dashboard automatically adds rows from a new source. Out-of-the-box dashboards built against cloud-provider fields don't reference a source you add later. To see external data in a dashboard, build or edit a widget, select the **Unified** tab, and choose fields from there. Go to [CACM Explore](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/ccm-explore) to see the full list of available Unified fields.
+:::
+
 ---
 
 ## Report Format
@@ -102,6 +106,12 @@ For the complete specification, go to [FOCUSv1 Specification](https://focus.fino
   question="My file is larger than 20 MB. What should I do?"
   mode="docs"
   fallback="Split the file into multiple CSV files under 20 MB each using a CSV splitting tool, then upload them separately."
+/>
+
+<FAQ
+  question="My external data source shows up in Perspectives, but rows don't appear in a Unified BI Dashboard widget. Why?"
+  mode="docs"
+  fallback="Perspectives and the Unified dashboard explore query ingested data differently. Confirm the widget itself was built or edited by selecting fields from the Unified explore tab rather than a cloud-provider-specific tab, since out-of-the-box dashboards don't automatically reference a source added after they were built. If a widget already scoped to Unified still doesn't show the row, check that every mandatory FOCUS field in your upload is valid, in particular ChargeCategory (must be one of Usage, Purchase, Tax, Credit, or Adjustment) and ChargePeriodStart/ChargePeriodEnd (must be ISO-conformant per the FOCUS spec)."
 />
 
 <FAQ
