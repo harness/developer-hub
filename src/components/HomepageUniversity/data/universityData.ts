@@ -108,7 +108,6 @@ export const university: CardItem[] = [
     description:
       "Protection ensures that your applications and APIs remain resilient, compliant, and secure in production.",
     link: "/university/api-application-protection",
-    numberOfCerts: 1,
     ILT_available: true,
   },
 
@@ -118,7 +117,6 @@ export const university: CardItem[] = [
     description:
       "By analyzing API traffic, scanning for risks, ensures that your application is secure and reliable.",
     link: "/university/api-application-testing",
-    numberOfCerts: 1,
     ILT_available: true,
   },
 

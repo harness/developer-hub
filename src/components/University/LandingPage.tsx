@@ -460,11 +460,6 @@ export default function University() {
                       src={`${baseUrl}img/cert-dev-asp-badge.svg`}
                       alt="Developer API Discovery Badge"
                     />
-                    <img
-                      src={`${baseUrl}img/cert-dev-tbh-badge.svg`}
-                      alt="Developer TBH Badge"
-                    />
-
                   </div>
 
                   {/* <h5>Coming Soon</h5> */}
