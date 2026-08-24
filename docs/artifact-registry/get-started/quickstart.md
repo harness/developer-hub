@@ -88,6 +88,11 @@ Select your artifact format below to get started:
       logo: "alpine-logo.svg",
       logoSize: 24
     },
+    Wolfi: {
+      path: "/artifact-registry/content/supported-formats/wolfi-quickstart.md",
+      logo: "wolfi-logo.svg",
+      logoSize: 24
+    },
     Cargo: {
       path: "/artifact-registry/content/supported-formats/cargo-quickstart.md",
       logo: "rust-logo.png",

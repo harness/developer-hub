@@ -66,6 +66,7 @@ The migration tool supports the following artifact types:
 | `CRAN` | R packages (CRAN format) |
 | `RUBY` | RubyGems packages |
 | `ALPINE` | Alpine Package Keeper (APK) |
+| `WOLFI` | Wolfi Linux packages (APK) |
 
 ### Configuration structure
 

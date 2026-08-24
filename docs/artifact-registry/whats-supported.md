@@ -58,6 +58,7 @@ Artifact Registry supports the following registry types:
 - **R (CRAN):** Private R packages with CRAN-compatible publish and install workflows, including optional CRAN upstream proxy caching.
 - **RubyGems:** Ruby packages with gem CLI and Bundler workflows.
 - **Alpine:** Alpine Linux packages with Alpine Package Keeper (APK) workflows.
+- **Wolfi:** Wolfi Linux packages with Alpine Package Keeper (APK) workflows.
 
 ---
 
