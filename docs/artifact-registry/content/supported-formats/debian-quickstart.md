@@ -24,20 +24,41 @@ Use a **Debian** registry to host, proxy, and distribute `.deb` packages compati
 
 1. Go to the Artifact Registry module in your Harness project.
 2. Select **New Artifact Registry**.
-3. In the Registry Type list, select **Debian Registry**.
+3. In the Registry Type list, select **Debian**.
 4. Provide a Registry Name.
     :::info Registry name requirements
     This registry name must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`, and **must be unique to your Harness Account**.
     :::
 5. Optionally, add a Description and Labels for better organization.
-6. Choose visibility between **Public** and **Private**.
-7. Select **Create Registry** to finalize.
+6. In the **Debian Config** section, set **Indexed Remote Architectures**. The default values are `amd64`, `i386`, and `arm64`. Select from these defaults or add any additional architectures that need to be indexed from remote repositories.
+    :::info Indexed Remote Architectures
+    **Indexed Remote Architectures** lists the architectures Harness indexes from remote repositories on this registry.
+
+    If you leave the field empty, Harness caches all available architectures that results in increased cold-start index generation time and costs.
+
+    If you select values (`amd64`, `i386`, `arm64`) or enter a custom architecture name, Harness indexes only those architectures.
+    :::
+7. Harness generates a `.gz` index by default. In **Optional Index Compression Formats**, you can also select **XZ (.xz extension)**, that increases the cold-start index generation time and cost.
+8. Choose visibility between **Public** and **Private**.
+9. Select **Create Registry** to finalize.
 </TabItem>
 </Tabs>
 
 :::info Private Debian registry
 This registry will serve as your private Debian registry within Harness.
 :::
+
+---
+
+### Edit Debian configuration
+
+**Debian Config** appears on the registry **Configuration** tab, after Artifact Registry Definition (name, description, and labels).
+
+1. Open the Debian artifact registry.
+2. Select the **Configuration** tab.
+3. In the **Debian Config**, update **Indexed Remote Architectures**.
+4. Optionally, specify the **Optional Index Compression Formats**.
+5. Click **Save**.
 
 ---
 
