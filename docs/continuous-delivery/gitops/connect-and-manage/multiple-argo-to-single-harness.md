@@ -79,6 +79,12 @@ The following steps show you how to install a GitOps Agent into an existing Argo
     cronjob.batch/gitops-agent-upgrader created
     ```
 
+    :::important Configure highAvailability flag
+
+    After installation, configure the `highAvailability` flag to match your Redis deployment using `helm upgrade`. If not set correctly, the agent shows **DEGRADED** status. Run `helm upgrade gitops-agent harness/gitops-agent -n harness-gitops --set highAvailability=<true|false>` to update the flag. Go to <a href="/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent#the-highavailability-flag" target="_blank" rel="noopener noreferrer">The highAvailability flag</a> for explanation and <a href="/docs/continuous-delivery/gitops/resources/troubleshooting#agent-shows-degraded-with-redis-cache-installed-health-check-failure" target="_blank" rel="noopener noreferrer">Troubleshooting</a> for solutions.
+
+    :::
+
 12. In the Harness GitOps Agent installer, select **Continue**.
    
    The Agent has registered with Harness.

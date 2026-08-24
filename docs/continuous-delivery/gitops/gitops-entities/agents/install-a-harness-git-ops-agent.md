@@ -832,6 +832,29 @@ In older agent versions, when agents run with multiple replicas, each replica is
 
 Consequently, if there is a HA agent running 5 pods, all of the pods would send the reconcile call (5 times in 1 cycle). This resulted in computing overhead.
 
+### The highAvailability flag
+
+The `highAvailability` flag controls how the agent performs health checks for Redis components:
+
+- **`highAvailability: true`**: Checks for High Availability (HA) Redis with HAProxy (`redis-ha-haproxy`)
+- **`highAvailability: false`**: Checks for standard Redis service (`argocd-redis`)
+
+**When to use:**
+
+| Scenario | highAvailability flag |
+|----------|----------------------|
+| External Redis | `false` |
+| BYOA with standard Redis | `false` |
+| BYOA with High Availability (HA) Redis | `true` |
+
+:::note
+
+If set incorrectly, the agent shows **DEGRADED** status even though it functions normally. Go to <a href="/docs/continuous-delivery/gitops/resources/troubleshooting#agent-shows-degraded-with-redis-cache-installed-health-check-failure" target="_blank" rel="noopener noreferrer">Troubleshooting</a> to fix this issue.
+
+:::
+
+---
+
 ## References
 
 * [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics)
