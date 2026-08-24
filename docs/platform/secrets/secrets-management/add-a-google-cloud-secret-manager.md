@@ -201,8 +201,10 @@ The **Add new Encrypted File** settings appear.
 ## Enable Cross-Project Access
 
   :::note
-  Cross-project access is supported in Harness Delegate version **26.01.88200** or later and is behind the feature flag `PL_GCPSM_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. Contact [Harness
-  Support](mailto:support@harness.io) to enable the feature.
+  Cross-project access is supported in Harness Delegate version **26.01.88200** or later.
+
+  The **Project** dropdown in the Harness secret creation and edit flow is behind the feature flag `PL_GCPSM_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. Contact [Harness
+  Support](mailto:support@harness.io) to enable the feature. The `<+secrets.getValue()>` expression format that includes a GCP project is not gated by this flag.
   :::
 
   You can use one Google Secret Manager connector to access secrets across multiple GCP projects, eliminating the need to create separate connectors for each project. This feature works with all authentication methods: service account credentials, Harness Delegate credentials, and OIDC.
@@ -268,6 +270,20 @@ The **Add new Encrypted File** settings appear.
   4. All secrets are managed through one connector instead of maintaining three separate connectors.
 
   This approach significantly reduces connector sprawl and simplifies secret management for organizations with many GCP projects.
+
+  ### Reference cross-project secrets in expressions
+
+  You can also target a specific GCP project directly in a `<+secrets.getValue()>` expression, without pre-creating the secret in Harness. Name the project between the connector identifier and the secret name, and always include the version:
+
+  ```
+  <+secrets.getValue("gcpsecretsmanager://exampleGCP/my-gcp-project/example/latest")>
+  ```
+
+  A cross-project expression such as this one requires Harness Delegate version **26.01.88200** or later, along with the IAM permissions listed above. Expressions that resolve against the connector default project do not name a project, and carry no delegate version requirement of their own.
+
+  No expression format is gated by the `PL_GCPSM_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS` feature flag. That flag controls only the **Project** dropdown in the secret creation and edit flow.
+
+  Go to [Reference existing secret manager secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets#option-gcp-secret-manager) to review all supported formats and connector scope prefixes.
 
 ## Reference JSON secrets
 

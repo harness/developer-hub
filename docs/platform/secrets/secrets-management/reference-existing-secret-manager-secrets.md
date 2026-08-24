@@ -183,35 +183,76 @@ With this type of reference, you don't need to pre-create secrets.
 
 The scheme `gcpsecretsmanager://` is needed to distinguish a GCP secret manager secret from other secret references. The identifier of the secret manager follows this.
 
-For example, if you have a GCP secret manager connector with the identifier `exampleGCP` in the Account scope and a secret with the name `example` present in it.
+#### Supported reference formats
 
-You can reference the secret example using the following expression:
+What you add after the connector identifier depends on which secret you want, and on whether that secret lives in the connector default project or in another GCP project.
 
-```
-<+secrets.getValue("account.gcpsecretsmanager://exampleGCP/example")>
-```
+| What you want to reference | Path after the connector identifier | Example |
+| --- | --- | --- |
+| The latest version of a secret in the connector default project | `secretName` | `gcpsecretsmanager://exampleGCP/example` |
+| A specific version of a secret in the connector default project | `secretName/version` | `gcpsecretsmanager://exampleGCP/example/7` |
+| A secret in a different GCP project that the connector can access | `gcpProject/secretName/version` | `gcpsecretsmanager://exampleGCP/my-gcp-project/example/latest` |
 
-You can also reference a specific version of the secret. For example, if you want to reference the version `7` of a secret, use the following expression:
+For `version`, enter a version number such as `1` or `7`, or enter `latest` to resolve the most recent version at runtime.
 
-```
-<+secrets.getValue("org.gcpsecretsmanager://exampleGCP/example")>
-```
-To reference a specific version of a secret, use the following expression:
+The following examples use a GCP secret manager connector with the identifier `exampleGCP` and a secret named `example`.
 
-```
-<+secrets.getValue("org.gcpsecretsmanager://exampleGCP/example/<version_number>")>
-```
-
-For a GCP secret manager connector at the Project scope, use the following expression:
+**Reference the latest version of a secret in the connector default project:**
 
 ```
 <+secrets.getValue("gcpsecretsmanager://exampleGCP/example")>
 ```
 
-To reference a specific version of a secret, use the following expression:
+**Reference a specific version of a secret in the connector default project:**
 
 ```
-<+secrets.getValue("gcpsecretsmanager://exampleGCP/example/<version_number>")>
+<+secrets.getValue("gcpsecretsmanager://exampleGCP/example/7")>
+```
+
+**Reference a secret in another GCP project:**
+
+```
+<+secrets.getValue("gcpsecretsmanager://exampleGCP/my-gcp-project/example/latest")>
+```
+
+:::warning
+When you name a GCP project, always include the version as well. Harness reads `gcpsecretsmanager://exampleGCP/my-gcp-project/example` as the secret `my-gcp-project` at version `example`, not as the secret `example` in the project `my-gcp-project`. Harness accepts the expression, and GCP fails later, when the secret is fetched.
+:::
+
+:::info note
+References to a secret in another GCP project require Harness Delegate version **26.01.88200** or later, and the connector service account needs Secret Manager permissions in that project. Go to [Enable cross-project access](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager#enable-cross-project-access) to review the required IAM permissions. References that use the connector default project have no delegate version requirement beyond the connector itself.
+
+No format is gated by a feature flag. The `PL_GCPSM_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS` flag controls only the **Project** dropdown in the secret creation and edit flow.
+:::
+
+#### Connector scope prefixes
+
+Prefix the scheme with the scope of the connector when the connector is not in the same project as the pipeline. The Harness scope prefix sits in front of the scheme, and does not change the path that follows the connector identifier. Project, org, and account scope connectors all support every format above, including references to another GCP project.
+
+For a connector at the Account scope, use the following expression:
+
+```
+<+secrets.getValue("account.gcpsecretsmanager://exampleGCP/example/7")>
+```
+
+For a connector at the Org scope, use the following expression:
+
+```
+<+secrets.getValue("org.gcpsecretsmanager://exampleGCP/example/7")>
+```
+
+For a connector at the Project scope, use no prefix:
+
+```
+<+secrets.getValue("gcpsecretsmanager://exampleGCP/example/7")>
+```
+
+Scope prefixes combine with a cross-project reference. For example, to reference the latest version of the secret `example` in the GCP project `my-gcp-project`, use one of the following expressions, depending on the scope of the connector:
+
+```
+<+secrets.getValue("gcpsecretsmanager://exampleGCP/my-gcp-project/example/latest")>
+<+secrets.getValue("org.gcpsecretsmanager://exampleGCP/my-gcp-project/example/latest")>
+<+secrets.getValue("account.gcpsecretsmanager://exampleGCP/my-gcp-project/example/latest")>
 ```
 
 :::info note
