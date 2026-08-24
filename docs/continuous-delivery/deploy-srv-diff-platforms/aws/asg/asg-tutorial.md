@@ -1499,11 +1499,27 @@ Harness stores configurations of the ASG you are deploying twice:
 </TabItem4>
 </Tabs4>
 
+#### Preserve unchanged ASG properties during redeployment
+
+:::note
+This feature is behind the feature flag `CDS_ASG_SKIP_UNCHANGED_PROPERTIES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Because the changes are on the delegate side, you also need to run a delegate version that includes this behavior.
+:::
+
+When you run the Rolling Deploy step against an ASG that already exists, Harness reconciles the lifecycle hooks, scaling policies, scheduled actions, load balancers, and target group associations defined in your service configuration files with what is currently attached to the ASG in AWS. By default, Harness clears these objects and recreates them on every deployment, even when the configuration did not change.
+
+Deleting and recreating a lifecycle hook is not safe for instances that are mid-transition. When AWS deletes a lifecycle hook, any instance sitting in the `Pending:Wait` or `Terminating:Wait` state is treated as though the hook was abandoned, so the instance proceeds immediately instead of completing its wait. If you rely on lifecycle hooks to drain long-running connections during a scale-in, a deployment can cut that draining short. An instance that launches or begins terminating in the brief window between the delete and the recreate can also skip the hook entirely, which can put an instance into service before it is ready or remove one before it de-registers cleanly.
+
+With `CDS_ASG_SKIP_UNCHANGED_PROPERTIES` enabled, Harness compares each object against your configuration files and updates only what changed. A property that matches is left untouched, and no object is deleted and recreated when its configuration is unchanged. This keeps in-flight instances and their lifecycle hooks intact across a redeployment.
+
+The reconciliation behaves as follows for each property type:
+
+Harness compares lifecycle hooks by name and updates them in place with the AWS `PutLifecycleHook` API. A hook that is new in your configuration is created, a hook whose settings differ is updated in place without a delete, and a hook that already matches is skipped. Scaling policies and scheduled actions follow the same model using the idempotent `PutScalingPolicy` and `PutScheduledUpdateGroupAction` APIs, which update an existing object in place rather than requiring a clear-and-reattach. Load balancers and target groups follow the same source-of-truth rule: Harness attaches any association in your configuration that is not already present and detaches any association that exists in AWS but is absent from your service configuration.
+
+An object that exists on the ASG in AWS but is absent from your service configuration files is treated as an orphan and removed, keeping your service definition as the source of truth. The one exception is lifecycle hooks: if a hook is attached to the ASG but not present in your service configuration, Harness defers its removal until no instances are waiting on it in `Pending:Wait` or `Terminating:Wait`. Removing a lifecycle hook while instances are mid-transition immediately abandons those instances, so Harness waits until the hook is safe to delete.
+
+When the feature flag is disabled, Harness keeps the original clear-and-recreate behavior for all of these properties.
 
 ### Steady State Step
-
-
-:::
 
 <div style={{ textAlign: "center" }}>
   <DocImage path={require('../static/asg-steady-state-step.png')} width="60%" height="60%" title="Click to view full size image" />
