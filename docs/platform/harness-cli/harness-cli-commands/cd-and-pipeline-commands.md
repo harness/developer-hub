@@ -369,6 +369,7 @@ harness delete service_override <override_id>
 
 ## Next steps
 
+- Go to [CLI for Continuous Delivery](/docs/continuous-delivery/cli-for-continuous-delivery) to manage services, environments, infrastructure definitions, and service overrides from within the CD module.
 - Go to [Artifact Registry](/docs/platform/harness-cli/harness-cli-commands/artifact-registry-commands) to push artifacts and run security scans.
 - Go to [Infrastructure as Code Management](/docs/platform/harness-cli/harness-cli-commands/iacm-commands) to manage Terraform and OpenTofu workspaces.
 - Go to [Code Repository](/docs/platform/harness-cli/harness-cli-commands/code-repository-commands) to manage repositories and pull requests.
