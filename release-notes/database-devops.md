@@ -24,6 +24,46 @@ These release notes describe recent changes to Harness Database DevOps.
 
 ## August 2026
 
+### Release 1.112.x
+The `1.112.x` release adds greater control over resource configuration for database schemas, allowing teams to define CPU and memory requirements directly as part of schema configuration.
+
+#### Key Highlights:
+* **Feature Enhancements**:
+  - Added CPU and memory inputs to the DB Schema configuration, giving teams greater control over resource allocation for database operations.
+
+* **Bug Fixes**:
+  - Fixed Git clone failures (HTTP 410 errors) occurring during Bitbucket HTTPS operations due to Atlassian's deprecation of app passwords for Bitbucket. `db-devops-service` now authenticates Git HTTPS operations using Bitbucket API tokens.
+  - Resolved an issue where the `parentUniqueId` claim was improperly processed during ACL evaluations, ensuring correct access control enforcement across DB DevOps resources.
+
+* **Customer Reported Bug Fixes**
+  - Fixed Liquibase pipeline failures on Oracle 19c databases configured with legacy 8-bit NLS character sets (such as `EE8MSWIN1250`), which previously failed with `Non supported character set (add orai18n.jar in your classpath)`. Added `orai18n.jar` to the Oracle plugin execution image and added fallback logic in `db-devops-service` to use the account's default execution image pin when an explicit Oracle image pin is not set.
+
+  :::important
+   Customers must ensure `ng-manager` is upgraded to `v1.161.6` / `v1.162.0` or later for the Oracle character set and runtime credentials fixes to take effect.
+  :::
+
+#### Image Upgrades
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.38.0-4.33            | 1.37.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.38.0-4.33-mongo      | 1.37.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.38.0-4.33-spanner    | 1.37.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.38.0-4.33-snowflake  | 1.37.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.38.0-4.33-percona    | 1.37.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.38.0-4.33-cloudsql   | 1.37.0-4.33-cloudsql         |
+| plugins/drone-liquibase-bigquery  | 1.38.0-4.33-bigquery   | 1.37.0-4.33-bigquery         |
+| plugins/drone-liquibase-db2       | 1.38.0-4.33-db2        | 1.37.0-4.33-db2              |
+| plugins/drone-liquibase-aws-rds   | 1.38.0-4.33-aws-rds    | 1.37.0-4.33-aws-rds          |
+| plugins/drone-liquibase-bigtable  | 1.38.0-4.33-bigtable   | 1.37.0-4.33-bigtable         |
+| plugins/drone-liquibase-mssql     | 1.38.0-4.33-mssql      | 1.37.0-4.33-mssql            |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.111.x
 
 The `1.111.x` release brings the latest Harness AI capabilities to Author DB Change, improving the experience and stability of AI-assisted database change authoring.
