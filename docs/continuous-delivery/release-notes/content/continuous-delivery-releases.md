@@ -1,5 +1,16 @@
 ## August 2026
 
+### Version 1.164.0
+
+#### New features and enhancements
+
+- Harness CD now supports **Helm v4** as a deployment engine. You select the Helm version on a service's manifest configuration. Version 4 introduces Server-Side Apply, kstatus-based wait strategies, and an improved plugin system. Harness automatically translates deprecated Helm v3 flags to their v4 equivalents (for example, `--atomic` becomes `--rollback-on-failure`), so existing service configurations work without manual updates. Go to [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts) to configure the Helm version. (**CDS-122167**)
+
+#### Fixed issues
+
+- Fixed an issue where GitHub App connectors minted a new installation token for every parallel `GitFetchFiles` delegate task, causing GitHub Enterprise Server (GHES) to return 403 errors when many stages ran in parallel and exhausted the secondary rate limit. (**CDS-129429**, **ZD-121175**)
+- Fixed an issue where Git webhook polling re-processed already-consumed webhook deliveries after a delegate restart, causing duplicate pipeline executions for the same commit. This fix requires the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_GIT_WEBHOOK_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-129546**, **ZD-120981**)
+
 ### Version 1.163.5
 
 #### Fixed issues

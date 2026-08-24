@@ -1,5 +1,19 @@
 ## August 2026
 
+### Pipeline service 1.203.0
+
+#### New features and enhancements
+
+- Harness pipelines now support the **Save Blank Fields as Empty String** setting, which preserves an empty string value in an input variable when you run a pipeline with an input set, instead of converting it to null. You enable the setting at the account level. Go to [Handle empty strings in input variables](/docs/platform/pipelines/input-data-preprocessing) to configure the behavior. (**PIPE-35584**)
+
+#### Fixed issues
+
+- Fixed an issue where a stage configured with a skip condition of `<+input>` in a V0 stage template was incorrectly skipped when the pipeline provided a default value of `true` via `templateInputs` and the pipeline was executed with an empty request body. (**PIPE-36066**, **ZD-120062**)
+- Fixed an issue where triggers remained in a soft-deleted state after a project was deleted and recreated with the same identifier, preventing new triggers from being created. Harness now periodically scans for and removes orphaned triggers, and exposes a lag monitor to track pipeline delete cleanup progress. (**PIPE-36271**, **ZD-120720**)
+- Fixed an issue where a step following a parallel step group was incorrectly initialized and marked as skipped before pipeline rollback was triggered when the stage used the **PipelineRollback** failure strategy. This fix requires the feature flag `PIPE_SKIP_NEXT_STEP_ON_PIPELINE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-36558**, **ZD-121728**)
+- Fixed an issue where adding the `[skip ci]` keyword to an existing pull request suppressed PR event executions but still triggered a pipeline execution on the subsequent merge (push) event. (**PIPE-36564**, **ZD-121760**)
+- Fixed an issue where remote Git-backed pipelines could be created with identifiers containing hyphens, which are invalid per the pipeline identifier format. The same identifier validation that applies to inline pipelines now applies to remote Git-backed pipelines. (**PIPE-36701**)
+
 ### Pipeline service 1.202.2
 
 #### Fixed issues
