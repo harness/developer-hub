@@ -181,8 +181,6 @@ databaseChangeLog:
 </TabItem>
 </Tabs>
 
----
-
 ## Next steps
 
 - Go to [Build a changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to create your first changelog for Harness Database DevOps.

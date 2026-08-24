@@ -357,8 +357,6 @@ deny[msg] {
   }
 ```
 
----
-
 ## Next steps
 
 - Go to [Approval gates](/docs/database-devops/use-database-devops/governance/using-approval-gates-with-harness-ui) to require human review before applying database changes.

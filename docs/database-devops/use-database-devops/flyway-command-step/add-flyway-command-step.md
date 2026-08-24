@@ -56,15 +56,12 @@ Harness provides the generated SQL in pipeline logs and artifacts, enabling team
 - Integrating with policy engines to block unsafe migrations
 
 ### Run Flyway command for undo-sql
-Generates the SQL required to reverse the most recently applied migration, without performing the rollback.
-Harness surfaces the output for review, governance checks, or integration into change-approval workflows.
+Generates the SQL required to reverse the most recently applied migration, without performing the rollback. Harness surfaces the output for review, governance checks, or integration into change-approval workflows.
 
 **Use cases:**
 - Auditing rollback impact
 - Preparing controlled rollback procedures
 - Ensuring reversibility of migrations in compliance-sensitive environments
-
----
 
 ## Next steps
 

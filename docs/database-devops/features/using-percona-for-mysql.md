@@ -97,8 +97,6 @@ To successfully execute schema changes using Percona Toolkit, the database user 
 
 Percona Toolkit significantly enhances the safety of MySQL schema changes, but it is not universally compatible with all DDL operations. A clear understanding of supported patterns, combined with proper permissions and validation, is essential to ensure predictable, zero-downtime deployments in Harness Database DevOps.
 
----
-
 ## Next steps
 
 - Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure your MySQL database connector in Harness.

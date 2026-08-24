@@ -51,6 +51,8 @@ If you are unfamiliar with generating or structuring a changelog file, you may w
 
 ## Pipeline implementation
 
+This pipeline will use the `MongoDB.py` script to generate a changelog file and commit it to Git for version control.
+
 ### Create a new pipeline
 
 1. Go to your Harness pipeline.
@@ -487,7 +489,7 @@ pipeline:
 </Tabs>
 This step will ensure that the generated changelog file is committed to your Git repository, allowing you to track changes and maintain version control over your database schema changes.
 
-## Best Practices
+## Best practices
 
 Some best practices to follow when generating and committing MongoDB changelogs:
 
@@ -498,6 +500,7 @@ Some best practices to follow when generating and committing MongoDB changelogs:
     By integrating this process into Harness pipelines, you ensure repeatable, auditable, and version-controlled database schema onboarding.
 
 ## Next steps
+
 - Go to [Build a Changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to learn how to generate changelogs for SQL databases.
 - Explore our [Database DevOps](/docs/database-devops) guide for a comprehensive overview of Harness Database DevOps features.
 

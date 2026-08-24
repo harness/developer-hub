@@ -68,8 +68,6 @@ Harness provides visibility into lock status and facilitates recovery workflows 
 - Resolving locks after failed deployments.
 - Ensuring database availability for subsequent operations.
 
----
-
 ## Next steps
 
 - Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build a pipeline that uses the Liquibase Command step.

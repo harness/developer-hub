@@ -26,8 +26,7 @@ Welcome to the Harness Database DevOps Product Documentation. This guide will as
 
 This page explains the deployment architecture of Harness Database DevOps, including how components communicate and how changes are executed against your database infrastructure.
 
-## Before you begin, review the following:
-
+## Before you begin:
 Familiarize yourself with these resources before proceeding.
 
 - [All about Database DevOps](/docs/database-devops/overview.md)
@@ -87,3 +86,7 @@ The following steps describe how Harness handles secrets during pipeline executi
 :::info
 Container registry credentials are stored as .dockercfg type secret in Kubernetes secret, allowing the Pod to pull images from the specified registry in the stepGroup.
 :::
+
+## Next steps
+
+You can now create a Harness Pipeline to execute a database change. For more information, Go to [Database DevOps](/docs/database-devops/overview.md) page.

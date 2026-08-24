@@ -303,8 +303,6 @@ The connection will fail if Workload Identity not enabled or missing KSA annotat
 ## Permission errors
 Either there is missing `roles/iam.workloadIdentityUser` or Incorrect database IAM roles
 
----
-
 ## BigQuery access denied error with OIDC
 
 This error indicates that the service account used for OIDC authentication does not have the required BigQuery IAM roles.

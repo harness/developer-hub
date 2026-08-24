@@ -64,8 +64,6 @@ In this case, running `changelog-sync` on TEST marks the DEV-only changesets as 
 ### Prevent failures from manually created objects
 If a database object was created manually outside of Liquibase, subsequent Liquibase updates may fail when attempting to recreate that object. By marking the corresponding changeset as executed using `changelog-sync`, you prevent update failures while maintaining changelog consistency.
 
----
-
 ## Next steps
 
 - Go to [Build a changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to structure your changelog files for use with changelog sync.

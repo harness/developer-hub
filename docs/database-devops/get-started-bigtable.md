@@ -682,8 +682,6 @@ databaseChangeLog:
             name: orders-audit-view
 ```
 
-
-
 ## Create a changelog file
 
 Create a YAML changelog file in your repository. A single changelog can contain multiple changesets targeting the same or different tables.

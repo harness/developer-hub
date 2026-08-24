@@ -78,3 +78,6 @@ In the below example we are querying from `DATABASECHANGELOG` table where descri
 
 ## References
 * [liquibase_execute_sql](https://docs.liquibase.com/commands/utility/execute-sql.html)
+
+## Next steps
+- Go to [Add a Liquibase command step](/docs/database-devops/use-database-devops/liquibase-command-step/add-liquibase-command-step) to learn how to add a Liquibase command step in your pipeline.

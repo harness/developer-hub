@@ -367,8 +367,6 @@ Whether MongoDB changes are defined using inline scripts or external script file
 
 As a result, MongoDB changes follow the same **governed Database DevOps lifecycle** as other database workloads in **Harness Database DevOps**, enabling teams to move fast without compromising control, compliance, or operational confidence.
 
----
-
 ## Next steps
 
 - Go to [Generate MongoDB Changelog](../get-started/mongodb-changelog-generation.md) to generate a changelog from an existing MongoDB database.

@@ -130,7 +130,11 @@ This structure allows rollbacks to specific versions based on real release point
 
 ## Related concepts
 
+Learn more about related concepts in Harness Database DevOps:
+  - [What is a Changeset?](/docs/database-devops/concepts/glossary/changeset): Understand the unit of change that tags mark in the DATABASECHANGELOG table.
+  - [Using rollback tags with apply schema step](/docs/database-devops/use-database-devops/using-rollback-tags): Step-by-step guide to configuring rollback targeting with tags.
+
+## Next steps
+
 - [Tag Database Changeset](/docs/database-devops/features/tag-database-changeset): Configure the apply step to record a tag anchor even on no-op deployments.
 - [Automatic and custom rollback](/docs/database-devops/concepts-and-features/automatic-and-custom-rollback): Set up rollback strategies in Harness Database DevOps pipelines.
-- [What is a Changeset?](/docs/database-devops/concepts/glossary/changeset): Understand the unit of change that tags mark in the DATABASECHANGELOG table.
-- [Using rollback tags with apply schema step](/docs/database-devops/use-database-devops/using-rollback-tags): Step-by-step guide to configuring rollback targeting with tags.

@@ -280,8 +280,6 @@ Deploying by environment branches in Harness Database DevOps provides alignment 
 
 Ensure you manage drift carefully, use [contexts](../concepts/glossary/context.md) to limit dev-only changes, and maintain strong PR discipline when promoting between branches.
 
----
-
 ## Next steps
 
 - Go to [Trunk-based development](/docs/database-devops/gitops/trunk-based-development) to compare the single-branch strategy and choose the right approach for your team.

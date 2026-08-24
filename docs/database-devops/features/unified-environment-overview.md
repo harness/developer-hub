@@ -36,14 +36,14 @@ This guide talks you through the UI of Harness Database DevOps.
 
 When you open the Harness Database DevOps module, you will encounter a single-pane interface that will display an overview of important activities relevant to using DB DevOps. The following sections describe what you can expect:
 
-  - **Left Navigation Menu**: A drop-down menu displaying multiple navigation options. 
+  - **Left Navigation Menu**: A dropdown menu displaying multiple navigation options. 
   - **DB Schemas**: Located at the top-left under the overview tab, this section shows the number of database schemas you have created. 
   - **DB Instances**: This appears directly beneath the **DB Schemas** tab and indicates the number of database instances you have created. 
   - **Most Recent 5 Deployments**: This section displays the five most recent deployments, including the name of the **schema**, the **instance** it ran on, and the **last deployed** date. 
   - **Last 30 Days Pipeline Executions**: This shows the number of pipeline executions in the last 30 days from the point of login, including both failed and successful executions. It will include both failed and successful executions. Users can toggle between a bar graph and a line graph for visualization. 
   - **Migration State**: This indicates the status of recent changesets. A key in the top right of this section helps identify the statuses displayed in the table.
 
-## The unified environment overview for database schemas
+## Unified environment overview for database schemas
 
  ![Unified View that highlights the Database Schemas Applied](./static/dbops-unified-view.png)
 
@@ -58,7 +58,7 @@ This overview provides insights into the database states in both production and 
   - **Last Schema Update**: The date of when the schema was last updated.
   - **Three Point Menu**: Selecting this at the end of a highlighted database schema provides options to edit the schema details or delete it. 
 
-## The overview of the Harness Database DevOps pipelines
+## Harness Database DevOps pipelines overview
 
   ![A screenshot of the Harness Database DevOps Pipeline UI](./static/db-devops-pipelines-page.png)
 
@@ -99,6 +99,21 @@ The Harness DB DevOps **Executions** UI provides a comprehensive view of the exe
  - **Service**: This lists the service associated with the pipeline, providing context on which application or service the changes were applied to.
  - **Environment**: The environment in which the pipeline was executed, such as development, staging, or production, helping users understand the context of the deployment.
  - **Execution start time:** The name of the person who last initiated the pipeline execution, along with the date and time it was executed. The time is presented in a user-friendly format, estimating hours, days, months, or years beneath the user's name, which aids in tracking when changes were made.
+
+## Access control for Harness Database DevOps
+
+Harness Database DevOps uses the standard Harness role based access control (RBAC) model. You can invite users at the account, organization, or project level and assign them roles that control what they can view or manage within Database DevOps.
+
+- **Account level**: Account Admin and Account Viewer roles grant access across all organizations and projects under the account. Use this level for platform administrators who need visibility into all deployments.
+- **Organization level**: Organization Admin and Organization Viewer roles grant access to all projects within an organization. Use this level for DBAs or team leads responsible for multiple projects.
+- **Project level**: Project Admin and Project Viewer roles grant access to resources scoped to a single project, including DB schemas, instances, pipelines, and executions. Use this level for individual contributors or reviewers working on a specific application.
+
+If a user attempts to access a project without the required role, Harness displays a permission error. The error identifies the missing permission (for example, `core_project_view`) and the project identifier, so an account or organization admin can assign the correct role.
+
+![Permission error for a user who is missing the core_project_view permission on a project](./static/dbops-rbac-permission-error.png)
+
+Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles and invite users.
+
 
 ## Next steps
 

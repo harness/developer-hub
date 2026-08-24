@@ -59,8 +59,6 @@ You can also see a snapshot of changes in YAML format by expanding YAML Differen
 
 ![Database Devops Audit Trails](./static/yaml-diff-audit-trail.png)
 
----
-
 ## Next steps
 
 - Go to [Governance overview](/docs/database-devops/use-database-devops/governance/using-approval-gates-with-harness-ui) to configure approval gates for database deployments.

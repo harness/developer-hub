@@ -77,11 +77,9 @@ Some Harness DB DevOps features are released behind feature flags to get feedbac
 
 You can opt-in to the early access features for Harness DB DevOps described in the following table. Contact [Harness Support](mailto:support@harness.io) to enable specific early access features in your Harness account. Include the feature flag or name with your request.
 
-| Flag | Description |
+| **Flag** | **Description** |
 | ---  | ----------- |
 | `CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE` | Enable to avoid any impact to your [Database DevOps environments](/docs/database-devops/use-database-devops/get-started/onboarding-guide). |
-
----
 
 ## Next steps
 

@@ -326,8 +326,6 @@ pipeline:
 </TabItem>
 </Tabs>
 
----
-
 ## Next steps
 
 - Go to [Get started with changelogs](/docs/database-devops/get-started/get-started-with-changelogs) to understand how Liquibase changesets are structured and executed in Harness Database DevOps.

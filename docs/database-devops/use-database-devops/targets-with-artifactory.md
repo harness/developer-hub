@@ -72,8 +72,6 @@ By correctly configuring the "Path to Archive File (Optional)" and "Path to Sche
 
 For any further questions or assistance regarding the Artifactory connector or the archive path configuration, contact your DevOps team or consult the relevant documentation.
 
----
-
 ## Next steps
 
 - Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure the Artifactory connector for your project.

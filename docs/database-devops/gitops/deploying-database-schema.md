@@ -59,8 +59,6 @@ To deploy database schema updates using Harness DB DevOps, follow these steps:
 
 Harness Database DevOps provides a robust framework for deploying database schema updates, enabling organizations to accelerate their innovation velocity while maintaining control and governance over their database changes. By integrating database changes into the CI/CD pipeline, teams can ensure that their deployments are efficient, reliable, and aligned with their application code, ultimately leading to faster delivery of features and improvements.
 
----
-
 ## Next steps
 
 - Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build your first database deployment pipeline.
