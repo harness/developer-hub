@@ -171,6 +171,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## August 2026
 
+### Version 26.08.89900 <!-- August 24, 2026 -->
+
+#### Fixed issues
+
+- Fixed a performance issue where listing Custom Deployment infrastructures took 2 to 5 minutes or more when an account had many REMOTE infrastructure entities. The delegate now fetches Git SCM branch metadata concurrently instead of sequentially. Enable the feature flag `CDS_OPTIMIZE_CUSTOM_DEPLOYMENT_LIST_WITH_BRANCH_METADATA` to activate this improvement. [CDS-127197]
+
 ### Version 26.08.89804 <!-- August 19, 2026 -->
 
 #### Fixed issues
