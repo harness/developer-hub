@@ -420,6 +420,49 @@ Because the key was encoded before variable resolution, the pipeline engine fail
 
 **Resolution**: This issue is resolved automatically in `db-devops-service` in version `1.111.0` and above. Ensure your environment is running `db-devops-service` 1.111.x and that `ng-manager` has been upgraded to `v1.160.0`.
 
+## AI impact analysis conditional approval
+
+The following issues apply to the Database Impact Analysis agent step and its conditional approval pattern.
+
+### Approval step runs when agent returned PASS
+
+**Cause:** The conditional execution expression does not exactly match the output variable path.
+
+**How to Solve:**
+- Verify that the step group identifier, agent step identifier, and variable name in the condition expression are correct and match what is configured in the pipeline.
+- Expression references are case-sensitive. For example, `Preview_SQL` and `preview_sql` are different identifiers.
+- Confirm the full path follows the pattern:
+  ```bash
+  <+execution.steps.<StepGroupId>.steps.<AgentStepId>.steps.agent.output.outputVariables.VALIDATION_STATUS>!="PASS"
+  ```
+
+### Agent step fails with missing SQL input or empty sqlCommands
+
+**Cause:** The expression referencing the Preview SQL step output is incorrect, or the Preview SQL step did not complete successfully.
+
+**How to Solve:**
+- Confirm that the Preview SQL step completed without errors before the agent step runs.
+- Verify the `sqlCommands` expression uses the correct step group identifier and step identifier from the Preview SQL step:
+  ```bash
+  <+execution.steps.<StepGroupId>.steps.<PreviewSQLStepId>.output.sqlCommands>
+  ```
+- Check that both the Preview SQL step and the agent step are inside the same step group.
+
+### Approval message shows blank SUMMARY or raw SQL
+
+**Cause:** The expression path for `SUMMARY` or `sqlCommands` in the approval message is incorrect or incomplete.
+
+**How to Solve:**
+- The `SUMMARY` variable requires the full stage path, including the stage identifier, step group identifier, and agent sub-step:
+  ```bash
+  <+pipeline.stages.<StageId>.spec.execution.steps.<StepGroupId>.steps.<AgentStepId>.steps.agent.output.outputVariables.SUMMARY>
+  ```
+- The raw SQL expression uses the shorter execution-scoped path:
+  ```bash
+  <+execution.steps.<StepGroupId>.steps.<PreviewSQLStepId>.output.sqlCommands>
+  ```
+- Go to [AI-powered SQL impact analysis with conditional approval](/docs/database-devops/use-database-devops/governance/ai-impact-analysis-pipeline) to review the full expression examples.
+
 ## Next steps
 
 - Go to [Set up JDBC connectors](/docs/database-devops/use-database-devops/set-up-connectors) to verify connector configuration for connection issues.

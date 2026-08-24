@@ -2,6 +2,7 @@
 title: Kerberos Authentication for MSSQL and Oracle
 sidebar_label: Kerberos Authentication
 description: Configure Kerberos authentication for Microsoft SQL Server and Oracle databases in Harness Database DevOps using JDBC and Delegate-based execution.
+sidebar_position: 10
 keywords:
   - kerberos authentication
   - mssql kerberos
