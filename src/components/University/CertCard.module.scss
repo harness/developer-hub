@@ -103,6 +103,28 @@
     }
   }
 
+  // Optional content-format pill (Instructor-Led Training, Tidbits,
+  // Video Course, Self-Paced Training) rendered under the module line.
+  // Neutral outlined chip so it reads as metadata, not a status badge. Uses
+  // the same gray scale and text color as the rest of the card.
+  .pill {
+    display: inline-block;
+    // Match the 1rem vertical rhythm the headings and paragraphs use.
+    margin: 0 0 16px;
+    font-weight: 500;
+    // Match the 12px small text of .moduleLine h6 and .productVersion.
+    font-size: 12px;
+    line-height: 13px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid var(--gray-200);
+    border-radius: 999px;
+    color: var(--text-color);
+    background-color: transparent;
+    white-space: nowrap;
+  }
+
   h4 {
     font-weight: 500;
     font-size: 24px;

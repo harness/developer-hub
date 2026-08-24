@@ -25,6 +25,12 @@ export enum cardType {
   SPT ="FREE"
 }
 
+export enum pillType {
+  ilt = "Instructor-Led Training",
+  tidbits = "Tidbits",
+  videoCourses = "Video Course",
+  selfPaced = "Self-Paced Training",
+}
 
 export type IltCardItem = {
   title: string;
@@ -36,6 +42,8 @@ export type IltCardItem = {
   thumb?: boolean;
   tileType: tileType;
   cardType: cardType;
+  /** Optional content-format pill rendered under the module line. */
+  pill?: pillType;
 };
 
 export default function IltOrSptCard({
@@ -46,7 +54,8 @@ export default function IltOrSptCard({
   version,
   link = "#",
   thumb = false,
-  cardType
+  cardType,
+  pill,
 }: IltCardItem) {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
@@ -66,6 +75,7 @@ export default function IltOrSptCard({
             {type ? type : module.toUpperCase()}
           </h6>
         </div>
+        {pill && <span className={styles.pill}>{pill}</span>}
         <h4>{title}</h4>
         <p>{description}</p>
         {version && (

@@ -1,4 +1,4 @@
-import { type, IltCardItem, tileType, cardType } from "../Card";
+import { type, IltCardItem, tileType, cardType, pillType } from "../Card";
 import { MODULES } from "../../../constants";
 
 export const spt: IltCardItem[] = [
@@ -12,6 +12,7 @@ export const spt: IltCardItem[] = [
     link: "https://university-registration.harness.io/self-paced-training-platform-fundamentals",
     tileType: tileType.preReq,
     cardType: cardType.SPT,
+    // pill: pillType.videoCourses,
   },
   {
     title: "Introduction to AI Agents",
