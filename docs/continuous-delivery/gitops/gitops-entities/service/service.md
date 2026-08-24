@@ -1,18 +1,16 @@
 ---
-title: GitOps Services
+title: GitOps services
 description: Learn how to create and configure GitOps services for use in PR pipelines and GitOps sync workflows.
 sidebar_position: 10
 ---
 
 import DocImage from '@site/src/components/DocImage';
 
-# GitOps Services
-
-This topic walks you through creating and configuring a Harness GitOps service, section by section, so you understand every field you see in the UI and why it matters.
-
-## What is a GitOps Service?
-
 A GitOps service in Harness is **not** the same as a [traditional CD service](/docs/continuous-delivery/x-platform-cd-features/services/services-overview). In traditional CD, a service defines the artifact and manifests that Harness deploys directly to your cluster. In GitOps, an ArgoCD agent handles the actual deployment by syncing your cluster to the desired state in Git.
+
+:::note Service unification with feature flag
+When the `CDS_GITOPS_MERGE_K8S_SERVICES` feature flag is enabled, the same service entity can be used across both CD and GitOps stages, eliminating the need for separate service definitions. For details on how this works, see the [Deployment Type section](#deployment-type) below. Contact <a href="mailto:support@harness.io" target="_blank" rel="noopener noreferrer">Harness Support</a> to enable this feature.
+:::
 
 A Harness GitOps service is a **tracking and templating entity**. It does three things:
 
@@ -20,7 +18,9 @@ A Harness GitOps service is a **tracking and templating entity**. It does three 
 - **Carries variables:** It defines variables (like `imageTag`) that get written into those Git config files when a PR pipeline runs.
 - **Maps to your applications:** Together with an environment and cluster, it resolves which ArgoCD applications are affected by a pipeline run.
 
-### How it fits into the deployment flow
+This topic walks you through creating and configuring a Harness GitOps service, section by section, so you understand every field you see in the UI and why it matters.
+
+## How a GitOps service fits into the deployment flow
 
 A GitOps service on its own does nothing. It comes to life when used in a [PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics) or GitOps sync pipeline.
 
@@ -73,8 +73,8 @@ The Service Definition panel contains everything that makes this service work wi
 
 Select **Kubernetes** as the deployment type.
 
-:::info Feature flag: `CDS_GITOPS_MERGE_K8S_SERVICES`
-When this feature flag is enabled, the same service can be used in both CD stages and GitOps stages. You are responsible for populating the relevant fields in the service definition for your use case (for example, a Release Repository for the Update Release Repo step, or an App Set Reference for Fetch Linked Apps). Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::note 
+When the `CDS_GITOPS_MERGE_K8S_SERVICES` feature flag is enabled, this feature flag allows the same service to be used across both CD and GitOps stages. Configure the service definition with the fields required for your specific use case (for example, Release Repository for the Update Release Repo step or App Set Reference for Fetch Linked Apps). Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
 <div style={{textAlign: 'center'}}>
@@ -143,7 +143,7 @@ To configure:
   <DocImage path={require('./static/gitops-service-2.png')} width="50%" height="50%" title="Click to view full size image" />
 </div>
 
-:::note Feature flag
+:::note 
 This feature is behind the feature flag `GITOPS_APPLICATIONSET_FIRST_CLASS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
@@ -468,8 +468,9 @@ If an application was created without service labels (for example, imported from
 
 The Service Dashboard gives you two levels of visibility: a **services list** showing all services in your project, and an **individual service detail** page showing deployment history and application status for a single service.
 
-:::note When do service instances appear?
-Service instances only appear on the dashboard after a PR pipeline has been executed with that specific service and environment. A newly created service with no pipeline runs shows zero instances.
+:::note
+ - When the `CDS_GITOPS_SERVICE_BASED_LICENSING` feature flag is enabled, service instances are tracked based on ArgoCD Application syncs in addition to pipeline executions. This means that GitOps services can display instances even if they are synced independently (outside of a Harness pipeline), and the service dashboard reflects App Sync activity. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+ - Service instances appear on the dashboard after a PR pipeline has been executed with that specific service and environment, or after an ArgoCD Application linked to the service has been synced. A newly created service with no pipeline runs and no application syncs shows zero instances.
 :::
 
 ### Services list
@@ -531,6 +532,14 @@ The Summary tab is divided into two parts:
 - Filter by **Timeframe**, **Applications**, and **Status**.
 
 Click any row to view the full execution or sync details.
+
+:::info App Sync-based instance tracking
+When the `CDS_GITOPS_SERVICE_BASED_LICENSING` feature flag is enabled and a deployment happens through an ArgoCD Application sync:
+- The dashboard displays the **Application name** instead of the pipeline name, even if the sync was triggered inside a pipeline.
+- The **Deployed time** field is updated to reflect the sync time whenever the application syncs.
+- Service instances are created and updated based on Application sync events, not just pipeline executions.
+- The **Application view** in deployment history provides full visibility into all sync events for linked applications.
+:::
 
 ## Using GitOps Services with PR Pipelines
 

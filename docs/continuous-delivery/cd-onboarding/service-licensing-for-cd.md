@@ -25,6 +25,7 @@ tags:
 
 import { FAQ } from '@site/src/components/AdaptiveAIContent';
 import DocVideo from '@site/src/components/DocVideo';
+import DocImage from '@site/src/components/DocImage';
 
 The Harness Continuous Delivery and GitOps (CD) module uses services as the core construct for defining and managing the software you deploy. Services represent the deployable units of your applications, whether they are containerized workloads, traditional virtual machines, serverless functions, or custom deployment targets.
 
@@ -193,7 +194,28 @@ To address this, Harness offers service-based licensing for GitOps behind the `C
 - **Application linked to a Harness Service:** Harness uses the linked Service for license calculation, consistent with how CD licensing works. Multiple Applications that share the same Service count as a single Service for licensing purposes.
 - **Independent Application (no service linkage):** Harness continues to use the existing Application-based model. Each independent Application counts separately toward license consumption.
 
-This ensures that customers who link their GitOps Applications to Harness Services are not penalized for deploying the same service across multiple environments or clusters.
+### Active service window for GitOps service-based licensing
+
+When service-based licensing is enabled, a service is considered active if any GitOps application linked to that service has been synced within the previous 30 days. This includes both pipeline-driven syncs and direct application syncs initiated from the GitOps Applications page.
+
+For example, suppose a service is linked to three GitOps applications across different environments. If any one of those applications is synced, either through a pipeline or directly, the service is considered active for the applicable 30-day period.
+
+Once a service is identified as active, Harness applies the standard 95th percentile calculation across all service instances.
+
+This approach ensures that GitOps activity is reflected in license calculations regardless of whether the sync is initiated through a pipeline or directly from the GitOps Applications page.
+
+### Subscription dashboard display
+
+When the `CDS_GITOPS_SERVICE_BASED_LICENSING` feature flag is enabled, the subscription dashboard displays GitOps license usage in separate tabs within the **Past 30 Days Usage Details** section:
+
+- **Services:** Displays GitOps applications that are linked to Harness services and are included in service-based licensing.
+- **GitOps Applications (not linked to service):** Displays independent GitOps applications that are not linked to a Harness service and are included in application-based licensing.
+
+<div align="center">
+  <DocImage path={require('./static/gitops-apps-not-linked-to-service.png')} alt="GitOps Applications (not linked to service) tab in subscription dashboard" width="80%" />
+</div>
+
+This separation provides visibility into how GitOps applications contribute to license consumption under the different licensing models.
 
 :::info Enable service-based licensing for GitOps
 To enable service-based licensing, contact [Harness Support](mailto:support@harness.io) and request the `CDS_GITOPS_SERVICE_BASED_LICENSING` feature flag. After activation, any GitOps Application linked to a Harness Service uses that Service for license calculation instead of counting the Application separately.
