@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-08-18T10:00:00
+date: 2026-08-21T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,9 +14,31 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: August 18, 2026
+#### Last updated: August 21, 2026
 
 ## August 2026
+
+### Jira Cloud integration for US and EU accounts
+----
+#### 2026-08-21
+
+Harness FME now provides Jira Cloud integrations for US and EU accounts through the [Atlassian Marketplace](https://marketplace.atlassian.com/vendors/1221408/harness-inc). These Forge-based integrations replace the **Split for Jira** integration and are now the primary way to connect Harness FME with Jira Cloud.
+
+![](./static/fme/jira-cloud.png)
+
+Use the Marketplace integration for Jira Cloud installations that corresponds to your Harness account region: [Harness FME - Standard](https://marketplace.atlassian.com/apps/1723796743/harness-fme-standard) or [Harness FME - Europe](https://marketplace.atlassian.com/apps/636403565/harness-fme-europe).
+
+With the Jira integration, teams can:
+
+- Associate Harness FME feature flags with Jira work items
+- Create feature flags from Jira work items
+- Link existing feature flags to Jira work items
+- View feature flag and Jira work item associations from either platform
+- Navigate between Jira and Harness FME
+
+#### Related documentation
+
+- [Jira Cloud](/docs/feature-management-experimentation/integrations/jira-cloud)
 
 ### FME Metric Check Step in Harness Pipelines
 ----

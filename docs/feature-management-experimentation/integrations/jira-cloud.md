@@ -4,93 +4,106 @@ sidebar_label: Jira Cloud
 description: "Connect feature flags created in Harness FME with Jira Cloud issues to track rollouts, link work items to flags, and navigate between Jira and Harness FME."
 ---
 
-Jira Software offers flexible issue and project tracking, and the Harness FME for Jira integration allows you to connect feature flags and Jira issues from either Jira or FME, and view details in both Jira and FME. With this bidirectional connection, you can track rollouts with an associated issue in Jira and issues tied to a feature flag in Harness FME. If you are tracking source code changes and deployments in Jira, you will be able to go from feature flag to issue to code change or deployment details in as few as three clicks.
+The Harness FME for Jira integration lets you associate feature flags with Jira work items and view those relationships in both Jira and Harness FME.
 
-:::info[Jira Cloud only]
+By linking feature flags to Jira issues, teams can track feature delivery work alongside development activities, navigate between Jira and Harness FME, and maintain visibility into which feature flags are associated with specific work items.
+
+## Setup
+
+:::warning[Jira Cloud only]
 This integration only works with Jira Cloud product offerings and does not work with Jira Server. 
 :::
 
-If you are having trouble completing the integration please contact us at [support@split.io](email:support@split.io).
+### In Harness FME
 
-## Setting up in Harness FME
-
-To set up in Harness FME:
+To set up the integration in Harness FME:
 
 1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
 1. Locate the Jira Cloud integration and click **Add**.
-1. Select the project and associated environments you want to connect to Jira Cloud. You can select multiple projects but only one environment per project.
+1. Select the project and associated environments you want to connect to Jira Cloud. You can select multiple projects but only one environment per project. 
+1. Click **Save**. 
+1. Select the Jira integration you just configured and navigate to the **Harness FME Token** section.
+1. Click **Copy** to copy the Harness FME token to the clipboard. You can now use this token to configure the Jira Cloud.
 
-1. Click **Save** to generate a token. The token that is generated is a Harness FME Admin API key.
+   <div style={{maxWidth:1000}}> ![](./static/jira-7.png) </div>
+   
+A Jira instance is associated with a single Harness account, and the integration can be configured for multiple Harness projects. 
 
-1. Click **copy** to copy the Harness FME token to the clipboard. You can now use this token to configure the Jira Cloud.
+### In Jira
 
-   ![](./static/jira-cloud-in-split.png)
+To set up the integration in Jira:
 
-   :::info
-   If your projects have set [project view permissions](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account#role-bindings-at-the-project-level), ensure that the projects you want to use with this integration grant access to the Admin API Key that you just generated in this section.
-   :::
+1. In the [Atlassian Marketplace](https://marketplace.atlassian.com/vendors/1221408/harness-inc), install the Harness FME integration for your Harness account region:
 
-## Setting up in Jira
+   * For US accounts, use [Harness FME - Standard](https://marketplace.atlassian.com/apps/1723796743/harness-fme-standard).
+   * For EU accounts, use [Harness FME - Europe](https://marketplace.atlassian.com/apps/636403565).
 
-To set up in Jira:
+1. Within **Apps** in Jira Cloud, open **Harness FME** and click **Configure integration**.
+1. Enter the token you copied from Harness FME and click **Save**.
+   
+   <div style={{maxWidth:800}}> ![](./static/jira-8.png) </div>
 
-1. In the [Atlassian Marketplace](https://marketplace.atlassian.com/apps/1224872/split-for-jira?hosting=cloud&tab=overview), install Split for Jira in your Jira Cloud instance.
+### Enable the feature flag panel on work items
 
-2. Within **Apps** in Jira Cloud, and after the Split for Jira app is installed, click **Configure integration** in the side menu under Harness FME.
+1. Create or open a work item in Jira. 
+1. Click the **App Actions** icon next to **+** under the issue title.
+1. Select **Harness FME Feature Flags**.
+   
+   <div style={{maxWidth:300}}> ![](./static/jira-1.png) </div>
 
-3. Enter the token you copied and click **Save**.
+   This adds a `Harness FME Feature Flags` section under **Linked work items**.
 
-   ![](./static/jira-cloud-configure-integration.png)
+1. In the **Harness FME Feature Flags** section, click the **...** menu and select **Show for all work items**.
+   
+   <div style={{maxWidth:600}}> ![](./static/jira-2.png) </div>
 
-With the app configured, you can connect Harness FME feature flags to Jira issues.
+   This ensures that the Harness FME Feature Flags panel is displayed across all Jira work items.
 
-## Connecting feature flags and issues
- 
-Once the integration is installed, you can do either of the following:
-  
-* **From Harness FME:** Navigate to the Integrations tab of the feature flag and click the **Connect Jira Issue** button. Enter the desired issue number.
+## Connect feature flags to work items
 
-* **From Jira:** In the right hand column of an issue, click **More fields** to expand the section and then **Releases +**. When you click the plus sign, you can either create a feature flag or connect to an existing flag.
+Once the integration is configured, you can connect feature flags to Jira work items from either Harness FME or Jira. 
 
-   <div style={{maxWidth:300}}> ![](./static/jira-cloud-feature-flag.png) </div>
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-  * Selecting Create feature flag takes you to your Harness account and the FME feature flag creation dialog opens, with the current Jira ticket entered. 
-  * Selecting Connect feature flag takes you to a new dialog box that allows you to choose a feature flag.
+<Tabs queryString="start">
+<TabItem value="harness" label="From Harness FME">
 
-    ![](./static/jira-cloud-connect-a-feature-flag.png)
+Navigate to a feature flag's **Integrations** tab and click **Connect Jira Issue**. Enter the desired issue number.
 
-:::tip
-You can connect multiple flags to an issue and multiple issues to a flag.
-:::
+</TabItem>
+<TabItem value="jira" label="From Jira">
 
-:::info[Note]
-You must select a Harness project that has been configured in the Jira integration setup. A Jira instance is 1:1 with a Harness account, and the integration can be configured for one or more projects.
-:::
+In a Jira work item, use the **Harness FME Feature Flags** panel to create a feature flag or connect an existing feature flag.
 
-## Viewing your connections
- 
-Once you’ve connected feature flags to issues, you can do either of the following:
- 
-* **In Harness FME:** You see all attached issues on the Integrations tab of each feature flag.
- 
-* **In Jira:** You see either the name of the flag or the number of flags to which that issue is connected. On the right hand side, it indicates if the feature flags are active in the primary environment, which is selected for each project when the integration is set up.
- 
-  If you have multiple flags, hovering over the status indicator shows the status of all flags. If you have only one flag, hovering over the status displays information about the rollout plan. 
+- **Create feature flag** takes you to Harness FME, where the feature flag creation dialog opens with the current Jira work item entered.
+- **Connect feature flag** opens a dialog where you can select an existing feature flag.
 
-  ![](./static/jira-cloud-multiple-flags.png)
+</TabItem>
+</Tabs>
 
-  ![](./static/jira-cloud-one-flag.png)
+You can associate multiple feature flags with a Jira issue and multiple Jira issues with a feature flag.
 
-  If you click on the flag name or the text telling you how many flags there are, a dialog box opens with a link to the flag, the primary environment, the status of each flag, and the last time the flag was saved.
- 
-  For Rollout details, if you only use the Default rule, it shows you the percentage that is allocated to the same treatment you chose for the Default treatment. Otherwise, it shows you the number of rules that you have on the flag. 
+## View your connections
 
-  ![](./static/jira-cloud-rollout-details.png)
+After you create or link a feature flag to a Jira work item, you can view the association from either platform.
 
-   :::info[Note]
-   Since you can navigate to the feature flag, we no longer send and store all of the changes in Jira.
-   :::
- 
-## Disconnecting an issue
- 
-You can disconnect an issue from a feature flag, on the Integrations tab of the flag.
+### In Harness FME
+
+Navigate to the feature flag's **Integrations** tab to view associated Jira work items. For each connected work item, you can view details such as the issue key, assignee, and issue status. 
+
+![](./static/jira-3.png)
+
+Click a work item to open it in Jira, or click **Disconnect** to remove the association.
+
+### In Jira
+
+Navigate to the work item's **Development** section and expand **Releases** to view associated Harness FME feature flags. 
+
+<div style={{maxWidth:500}}> ![](./static/jira-4.png) </div>
+
+Click a feature flag to open it in Harness FME and view its configuration, targeting rules, and rollout details.
+
+## Disconnect a work item
+
+To remove the association between a Jira work item and a feature flag, navigate to the feature flag's **Integrations** tab in Harness FME and click **Disconnect**.
