@@ -60,7 +60,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /3k-docs/ austin.lai@harness.io richard.black@harness.io ambuj.lal@harness.io rohan.gupta@harness.io prateek.mittal@harness.io smriti.satyanarayana@harness.io amrutha.bhat@harness.io
 /3k-docs/platform/ austin.lai@harness.io richard.black@harness.io vikram.sahu@harness.io rohan.gupta@harness.io prateek.mittal@harness.io ambuj.lal@harness.io smriti.satyanarayana@harness.io amrutha.bhat@harness.io
 /3k-docs/ai/ prateek.mittal@harness.io rohan.gupta@harness.io vikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io austin.lai@harness.io smriti.satyanarayana@harness.io amrutha.bhat@harness.io
-/3k-docs/ai-dlc-insights/ austin.lai@harness.io richard.black@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io trevor.stuart@harness.io
+/3k-docs/ai-dlc-insights/ austin.lai@harness.io richard.black@harness.io dhrubajyoti.chakraborty@harness.io
 
 # Harness 3.0 Resilience Testing and Chaos Docs
 /3k-docs/resilience-testing/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
@@ -212,24 +212,23 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /src/components/Docs/data/featureFlagsData.ts austin.lai@harness.io david.karow@harness.io
 
 # FME Docs
-/src/components/Roadmap/data/fmeData.ts austin.lai@harness.io richard.black@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io guido.pochettino@harness.io deepak.puthraya@harness.io udayakumar.dhansingh@harness.io
-/docs/feature-management-experimentation/ austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io david.karow@harness.io audrey.do@harness.io guido.pochettino@harness.io deepak.puthraya@harness.io udayakumar.dhansingh@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io mauro.sanz@harness.io steven.simpson@harness.io
-/docs/feature-management-experimentation/sdks-and-infrastructure/ austin.lai@harness.io richard.black@harness.io nicolas.zelaya@harness.io mauro.sanz@harness.io emmanuel.zamora@harness.io gaston.thea@harness.io emiliano.sanchez@harness.io nadia.mayor@harness.io bilal.al-shahwany@harness.io martin.cardozo@harness.io guido.pochettino@harness.io deepak.puthraya@harness.io udayakumar.dhansingh@harness.io
-/release-notes/feature-management-experimentation.md austin.lai@harness.io richard.black@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io trevor.stuart@harness.io steven.simpson@harness.io guido.pochettino@harness.io deepak.puthraya@harness.io udayakumar.dhansingh@harness.io
-/release-notes/static/fme/ austin.lai@harness.io richard.black@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io trevor.stuart@harness.io guido.pochettino@harness.io deepak.puthraya@harness.io udayakumar.dhansingh@harness.io
+/src/components/Roadmap/data/fmeData.ts austin.lai@harness.io richard.black@harness.io david.karow@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io guido.pochettino@harness.io deepak.puthraya@harness.io 
+/docs/feature-management-experimentation/ austin.lai@harness.io richard.black@harness.io david.karow@harness.io guido.pochettino@harness.io deepak.puthraya@harness.io  nicolas.zelaya@harness.io yunan.wu@harness.io mauro.sanz@harness.io steven.simpson@harness.io
+/docs/feature-management-experimentation/sdks-and-infrastructure/ austin.lai@harness.io richard.black@harness.io nicolas.zelaya@harness.io mauro.sanz@harness.io emmanuel.zamora@harness.io gaston.thea@harness.io emiliano.sanchez@harness.io nadia.mayor@harness.io bilal.al-shahwany@harness.io martin.cardozo@harness.io guido.pochettino@harness.io deepak.puthraya@harness.io 
+/release-notes/feature-management-experimentation.md austin.lai@harness.io richard.black@harness.io david.karow@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io steven.simpson@harness.io guido.pochettino@harness.io deepak.puthraya@harness.io 
 
 # AIDI Docs
-/docs/ai-dlc-insights/ austin.lai@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
-/src/components/Roadmap/data/aidiData.ts austin.lai@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io
-/release-notes/static/aidi/ austin.lai@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
-/src/components/Docs/data/aiDlcInsightsData.ts austin.lai@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io
+/docs/ai-dlc-insights/ austin.lai@harness.io dhrubajyoti.chakraborty@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
+/src/components/Roadmap/data/aidiData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io
+/release-notes/static/aidi/ austin.lai@harness.io dhrubajyoti.chakraborty@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
+/src/components/Docs/data/aiDlcInsightsData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io
 
 # SEI Docs
-/docs/software-engineering-insights/ austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
-/release-notes/ai-dlc-insights.md austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
-/release-notes/static/sei/ austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
-/src/components/Roadmap/data/seiData.ts austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io
-/src/components/Docs/data/softwareEngineeringInsightsData.ts austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io
+/docs/software-engineering-insights/ austin.lai@harness.io richard.black@harness.io dhrubajyoti.chakraborty@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
+/release-notes/ai-dlc-insights.md austin.lai@harness.io richard.black@harness.io dhrubajyoti.chakraborty@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
+/release-notes/static/sei/ austin.lai@harness.io richard.black@harness.io dhrubajyoti.chakraborty@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
+/src/components/Roadmap/data/seiData.ts austin.lai@harness.io richard.black@harness.io dhrubajyoti.chakraborty@harness.io
+/src/components/Docs/data/softwareEngineeringInsightsData.ts austin.lai@harness.io richard.black@harness.io dhrubajyoti.chakraborty@harness.io
 
 # DB DevOps Docs
 /docs/database-devops/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io sarthak.setia@harness.io anshul@harness.io
