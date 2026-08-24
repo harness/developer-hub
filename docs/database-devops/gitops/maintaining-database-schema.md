@@ -2,7 +2,7 @@
 title: Maintaining Versions of the Database Schema in a Git Repository
 sidebar_label: Maintaining Versions of the Database Schema in a Git Repository
 description: Learn how to maintain versions of your database schema in a Git repository using Harness DB DevOps, including best practices for version control and collaboration.
-sidebar_position: 21
+sidebar_position: 210
 keywords:
   - database schema deployment
   - deploy schema changes
@@ -44,11 +44,11 @@ Harness DB DevOps uses Liquibase-compatible `.yml` changelogs to define and trac
 
 ## 1. Initialize your changelog in Git
 
-### Option A: Generate from an existing database
+### Option A: generate from an existing database
 
 If you do not have your schema tracked in Git yet, use the Harness UI to generate an initial `.yml` changelog from your live database schema. Go to [Build a changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to use the generate changelog feature. Then commit the generated changelog to your Git repository.
 
-### Option B: Use existing files
+### Option B: use existing files
 
 If you already have your changelog files:
 - Organize them following your chosen Harness DB DevOps repository structure (for example, one root changelog.yml including multiple changeset files).
@@ -106,6 +106,8 @@ Keep contexts environment-specific for controlled rollouts, but avoid creating t
 :::
 
 ## Best practices
+
+Apply these practices when managing your database schema in Git.
 
 - **One logical change per changeset:** Keep each changeset focused on a single atomic change for easier rollbacks.
 - **Consistent naming conventions:** Use descriptive IDs and filenames (for example, `2025-08-12-add-users-table.yml`).

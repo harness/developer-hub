@@ -2,7 +2,7 @@
 title: Rollback DB Schema step
 sidebar_label: Rollback DB Schema
 description: Configure the Rollback DB Schema step in a Harness Database DevOps pipeline to revert Liquibase or Flyway migrations to a specific tag or by a changeset count.
-sidebar_position: 2
+sidebar_position: 20
 keywords:
   - rollback db schema
   - rollback schema step
@@ -25,6 +25,8 @@ import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 The **Rollback DB Schema** step reverts previously applied database changesets on a target DB instance as part of a Harness pipeline. It is typically added after an [Apply DB Schema step](/docs/database-devops/use-database-devops/step-guide/apply-dbschema-step) as part of a failure strategy or a dedicated rollback stage.
 
 ## Before you begin
+
+Ensure the following conditions are met before adding this step to your pipeline.
 
 - **Applied migrations:** Rollback requires changesets previously applied by an Apply DB Schema step. Nothing can be rolled back on a fresh instance with no applied changesets.
 - **Rollback scripts:** Liquibase rollback requires that each changeset defines a rollback statement. Go to [Automatic and Custom Rollback](/docs/database-devops/concepts-and-features/automatic-and-custom-rollback) to understand when rollback scripts are required.

@@ -4,6 +4,7 @@ title: What is a Changelog?
 description: Understand what a changelog is in Harness Database DevOps, how it works with Liquibase, and how to structure it effectively for CI/CD, version control, and rollback automation.
 slug: /database-devops/concepts/glossary/changelog
 sidebar_label: Changelog
+sidebar_position: 10
 keywords: 
   - changelog
   - liquibase
@@ -92,7 +93,7 @@ Harness uses changelogs to apply schema changes in a controlled, traceable, and 
 
 When running a harness apply step Harness will download your changelog, and run various commands to apply any pending changes to your database, and confirm which have already been applied. E.g. for a liquibase-based changelog we will execute the liquibase 'update' command using liquibase It checks each changeset to determine whether it has been applied by consulting the `DATABASECHANGELOG` table. If the changeset is new, it is executed. Otherwise, it is skipped unless attributes like `runAlways` or `runOnChange` are set. This mechanism ensures that schema changes are applied only once, preventing duplicate updates and maintaining a consistent database state across environments.
 
-## Structuring a changelog
+## Changelog structure
 
 Changelogs can include:
 

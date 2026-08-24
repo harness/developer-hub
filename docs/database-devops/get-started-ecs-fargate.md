@@ -4,7 +4,7 @@ description: Deploy Harness Database DevOps runner on AWS ECS Fargate and config
 keywords: [ecs fargate, harness db devops, aws ecs, runner, ecs task]
 tags: [aws, ecs, fargate, dbdevops]
 unlisted: true
-sidebar_position: 6
+sidebar_position: 60
 slug: /database-devops/get-started/get-started-ecs-fargate
 ---
 
@@ -24,7 +24,7 @@ This guide explains how to deploy the Harness Database DevOps runner on Amazon E
 
 ![Diagram illustrating the architecture of the ECS Fargate runner setup](./get-started/static/ecs-flow-diagram.png)
 
-## Setup AWS infrastructure
+## Set up AWS infrastructure
 
 The runner requires the following AWS resources. You can create them manually or use the automated script provided.
 
@@ -50,7 +50,7 @@ Create one security group for both runner and build tasks:
 
 Create two IAM roles with trust policy for `ecs-tasks.amazonaws.com`.
 
-#### Task Execution Role
+#### Task execution role
 
 Used by ECS to start tasks. Attach the AWS managed policy `AmazonECSTaskExecutionRolePolicy`, plus this inline policy:
 
@@ -81,7 +81,7 @@ Used by ECS to start tasks. Attach the AWS managed policy `AmazonECSTaskExecutio
 
 </details>
 
-#### Task Role
+#### Task role
 
 Used by the runner to manage build tasks. Create this inline policy:
 
@@ -177,6 +177,8 @@ Contact Harness Support to obtain the Database DevOps runner Docker image. You w
 
 ### Create the runner task definition
 
+Complete the following steps to define the ECS task that runs the Harness Database DevOps runner:
+
 1. In Harness, go to **Account Settings** > **Account Resources** > **Delegates**.
 2. Select **New Delegate** > **Docker**.
 3. Copy the following values displayed in the setup wizard:
@@ -214,6 +216,8 @@ Contact Harness Support to obtain the Database DevOps runner Docker image. You w
 
 ### Deploy as an ECS service
 
+Deploy the runner as a long-running ECS service to ensure it remains available for pipeline execution:
+
 1. In the ECS Console, go to your ECS cluster.
 2. Select **Create Service**.
 3. Configure the service:
@@ -233,6 +237,8 @@ Contact Harness Support to obtain the Database DevOps runner Docker image. You w
 8. Wait for the task to reach **RUNNING** status (check the **Tasks** tab in the service).
 
 ### Verify runner connectivity
+
+Confirm that the runner has successfully registered with Harness before proceeding:
 
 1. In Harness, go to **Delegates** under **Project Setup** (or **Account Settings** > **Account Resources** > **Delegates**).
 2. Verify the ECS runner appears with status **Connected**.
@@ -281,6 +287,8 @@ Build tasks automatically inherit the runner's infrastructure settings. No envir
 
 ## Configure a Database DevOps pipeline
 
+After the runner is connected, configure your pipeline to use the ECS infrastructure:
+
 1. In Harness, create a new Database DevOps pipeline.
 2. In the pipeline **Infrastructure** settings, select the AWS connector you created earlier.
 3. The runner will execute pipeline steps in ECS tasks.
@@ -294,10 +302,15 @@ Build tasks automatically inherit the runner's infrastructure settings. No envir
 
 ## Best practices
 
+Apply the following guidelines to keep your ECS Fargate runner stable and maintainable:
+
 - Use public subnets with Internet Gateway (Option A) unless you have specific compliance requirements.
 - Design pipelines with modularity to avoid exceeding the 10-container limit per task.
 - Use delegate tags to target specific runners for different environments.
 - Monitor CloudWatch logs to identify early signs of issues.
 - Manually update the runner image every 3-6 months (auto-update is not supported for ECS delegates).
 
-If you encounter any issues, refer to the [ECS Troubleshooting guide](/docs/database-devops/troubleshooting/ecs-troubleshooting) for common problems and solutions.
+## Next steps
+
+- Go to [ECS Troubleshooting guide](/docs/database-devops/troubleshooting/ecs-troubleshooting) to resolve common ECS Fargate runner issues.
+- Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build your first database deployment pipeline on ECS.

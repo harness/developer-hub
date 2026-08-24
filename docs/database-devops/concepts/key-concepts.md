@@ -3,7 +3,7 @@ title: Database DevOps Key Concepts
 sidebar_label: DB DevOps Key Concepts
 description: Basic terminology and concepts related to Harness Database DevOps
 slug: /database-devops/concepts-and-features/key-concepts/
-sidebar_position: 1
+sidebar_position: 10
 keywords:
   - database devops
   - db devops
@@ -164,11 +164,11 @@ UPDATE Employees SET Salary = 60000 WHERE ID = 1;
 DELETE FROM Employees WHERE ID = 1;
 ```
 
-## SQL (Structured Query Language)
+## SQL (structured query language)
 
 SQL (Structured Query Language) databases are relational databases that use a structured query language to define and manipulate data. They are designed to store data in tables with fixed schemas, where each table consists of rows and columns. The relationships between tables are defined through foreign keys. Liquibase can define changes via SQL scripts, or via yaml changesets that are compiled at runtime into SQL.
 
-## NoSQL (Not Only SQL)
+## NoSQL (not only SQL)
 
 NoSQL (Not Only SQL) databases, on the other hand, are non-relational databases designed to store and retrieve data in ways that are different from traditional relational databases. They can store unstructured, semi-structured, or structured data without requiring a predefined schema. An example of this is MongoDB.
 
@@ -188,7 +188,7 @@ A rollback in the context of deployment refers to the process of reverting an ap
 
 An open source database change control CLI tool that is leveraged used by Harness DB DevOps.
 
-## Understanding changelog and changesets
+## Changelog and changesets
 
 ### Changelog
 A Changelog is a file that defines all the changes made to your database. This helps audit your database and execute any changes that not applied.
@@ -213,7 +213,7 @@ Here are the key concepts:
 ![changelog-and-changeset](./static/changelog-and-changeset.png)
 
 
-### File Format
+### File format
 
 The format of your changeset depends on the file type of your changelog, which can be SQL, XML, YAML, or JSON
 

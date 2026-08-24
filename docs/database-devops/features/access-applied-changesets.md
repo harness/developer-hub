@@ -2,7 +2,7 @@
 title: Accessing Applied ChangeSets in Database DevOps Pipelines
 description: Learn how to retrieve applied change sets from a DBSchemaApply step using pipeline expressions.
 sidebar_label: Access ChangeSets via Expressions
-sidebar_position: 6
+sidebar_position: 60
 keywords: [database devops, changelog, liquibase, db schema, db instance, db migration, pipeline expressions]
 tags: [liquibase-integration, pipeline-expressions, db-schema-apply, database-changesets, harness-db-devops]
 slug: /database-devops/concepts-and-features/access-applied-changesets
@@ -12,7 +12,7 @@ Harness Database DevOps enables users to retrieve the list of change sets applie
 
 This guide outlines how to reference the applied change sets using built-in Harness pipeline expressions.
 
-## Use Case
+## Use case
 
 In many organizations, when it comes to database use cases, teams want to:
 
@@ -22,7 +22,7 @@ In many organizations, when it comes to database use cases, teams want to:
 
 Harness supports this via the [`execution` pipeline context](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#hyphens-and-spaces-require-escaping), which can also be auto-completed in the pipeline studio expression input.
 
-## Expression Format
+## Expression format
 
 You can access the list of applied change sets using the following syntax:
 
@@ -34,7 +34,7 @@ This expression retrieves the applied change sets from a specific DBSchemaApply 
 - `<stepGroupName>`: Name of the step group containing the database schema apply step.
 - `<stepName>`: Name of the `DBSchemaApply` step.
 
-### Example Usage
+### Example usage
 
 If the step group is named `test1` and the "DBSchemaApply" step is named `DBSchemaApply_1`, then the expression would be:
 
@@ -59,11 +59,11 @@ echo <+execution.steps.test1.steps.DBSchemaApply_1.output.ChangeSets>
 ```
 8. Save and run your pipeline. 
 
-## How It Works
+## How it works
 
-Harness captures the change sets applied by the "Apply Schema" step and exposes them under that step’s output context. This allows downstream steps in the same stage or pipeline to access this data for validation, notification, or reporting—similar to how pre-start tags or runtime variables work in other Harness modules.
+Harness captures the change sets applied by the "Apply Schema" step and exposes them under that step’s output context. This allows downstream steps in the same stage or pipeline to access this data for validation, notification, or reporting, similar to how pre-start tags or runtime variables work in other Harness modules.
 
-## Practical Applications
+## Practical applications
 
 You can use this expression to:
 
@@ -71,7 +71,7 @@ You can use this expression to:
 - Store the applied change sets in an external audit system via script steps.
 - Gate promotion pipelines by validating that expected changes were deployed.
 
-## Example: Notification Step
+## Example: notification step
 
 Here’s how you might use this in a custom shell script step to echo the applied changes:
 
@@ -79,3 +79,8 @@ Here’s how you might use this in a custom shell script step to echo the applie
 echo "The following change sets were applied:"
 echo <+execution.steps.test1.steps.DBSchemaApply_1.output.ChangeSets>
 ```
+
+## Next steps
+
+- Go to [Apply a DB schema step](/docs/database-devops/use-database-devops/step-guide/apply-dbschema-step) to configure the DBSchemaApply step that exposes this output.
+- Go to [Harness variables and expressions](/docs/platform/variables-and-expressions/harness-variables) to explore additional pipeline expression options.

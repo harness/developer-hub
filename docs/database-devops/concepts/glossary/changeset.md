@@ -14,6 +14,7 @@ keywords:
   - changelog
   - runAlways
   - runInTransaction
+sidebar_position: 20
 tags:
   - liquibase-integration
   - changeset-basics

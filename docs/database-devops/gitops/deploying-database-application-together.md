@@ -1,6 +1,7 @@
 ---
 title: Orchestrating Application and Database Changes
 description: Learn how to create pipelines that coordinate database and application changes, ensuring safe and reliable deployments.
+sidebar_position: 30
 slug: /database-devops/use-database-devops/deploying-database-application-together
 tags:
   - harness database devops
@@ -23,14 +24,16 @@ Modern applications are tightly coupled with the databases they rely on. Deployi
 
 By combining Harness CD for application delivery and Harness Database DevOps for schema management, you can **orchestrate database and application changes** in a single pipeline. In this guide, we will walk through the process of creating a pipeline that coordinates both application and database changes.
 
-## Why Coordinate App and DB Deployments?
+## Why coordinate app and DB deployments?
 
-- **Eliminate drift**: Prevent mismatches between application code and database schema.  
-- **Zero downtime**: Support phased rollouts with pre-validated schema updates.  
-- **Rollback safety**: Roll back both schema and app changes if deployment fails.  
-- **Single source of truth**: Manage all change logic in one pipeline.  
+Coordinating application and database changes in a single pipeline eliminates the most common deployment failure modes.
 
-## Pipeline Design Principles
+- **Eliminate drift**: Prevent mismatches between application code and database schema.
+- **Zero downtime**: Support phased rollouts with pre-validated schema updates.
+- **Rollback safety**: Roll back both schema and app changes if deployment fails.
+- **Single source of truth**: Manage all change logic in one pipeline.
+
+## Pipeline design principles
 
 When creating a pipeline that coordinates both application and database changes, consider the following steps:
 
@@ -39,7 +42,7 @@ When creating a pipeline that coordinates both application and database changes,
 3. **Deploy the Application** – Roll out changes to Kubernetes or another runtime environment.  
 4. **Rollback Strategy** – Define how to roll back schema or application if issues occur.  
 
-### Example Workflow
+### Example workflow
 
 <Tabs>
   <TabItem value="Visual" label="Visual" default>    
@@ -138,20 +141,24 @@ When creating a pipeline that coordinates both application and database changes,
   </TabItem>
 </Tabs>
 
-## Key Highlights
+## Key highlights
 
-- **Parallel Execution**: Application deployment and schema migrations can run in parallel to reduce deployment time.  
-- **Schema Failure Strategy**: Use failure strategies such as marking failed changesets for rollback continuity.  
-- **Rollback Support**: Schema rollback ensures recovery when deployments fail or validation errors are detected.  
-- **Kubernetes Native**: Direct cluster access simplifies application rollouts and coordination. 
+These are the main capabilities available when orchestrating database and application deployments together.
 
-## Best Practices
+- **Parallel Execution**: Application deployment and schema migrations can run in parallel to reduce deployment time.
+- **Schema Failure Strategy**: Use failure strategies such as marking failed changesets for rollback continuity.
+- **Rollback Support**: Schema rollback ensures recovery when deployments fail or validation errors are detected.
+- **Kubernetes Native**: Direct cluster access simplifies application rollouts and coordination.
 
-1. **Backward-Compatible Schema Changes** - Always design schema updates that can work with older application versions.  
-2. **Feature Flags** - Gate new features until the schema change is fully deployed and validated.  
-3. **Version Alignment** - Tag schema migrations (e.g., `v1.0.0`, `v1.0.1`) to match application releases.  
-4. **Progressive Rollouts** - Combine with deployment strategies like blue/green or canary rollouts.  
-5. **Automated Rollbacks** - Test rollback flows regularly to ensure recovery is reliable.  
+## Best practices
+
+Apply these practices to ensure reliable, coordinated deployments.
+
+1. **Backward-Compatible Schema Changes**: Always design schema updates that can work with older application versions.
+2. **Feature Flags**: Gate new features until the schema change is fully deployed and validated.
+3. **Version Alignment**: Tag schema migrations (for example, `v1.0.0`, `v1.0.1`) to match application releases.
+4. **Progressive Rollouts**: Combine with deployment strategies like blue/green or canary rollouts.
+5. **Automated Rollbacks**: Test rollback flows regularly to ensure recovery is reliable.
 
 ## Conclusion
 

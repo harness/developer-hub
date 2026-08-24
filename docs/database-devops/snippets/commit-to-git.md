@@ -1,4 +1,4 @@
-#### Commit to Git Repository
+#### Commit to Git repository
 You can commit the generated changelog file to your git repository using the `Run Command` step in the pipeline. This allows you to version control your changelog file and keep track of changes over time. Otherwise, once the pipeline is executed, pods will be deleted and the changelog file will be lost.
 
 1. In the Pipeline, under the `Step Group` section, add a new step `Run Command` as the step type.

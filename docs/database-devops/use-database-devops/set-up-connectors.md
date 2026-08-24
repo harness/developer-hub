@@ -2,7 +2,7 @@
 title: Setting Up JDBC Connectors
 sidebar_label: Setting Up JDBC Connectors
 description: Learn how to set up and configure connectors in Harness DB DevOps to securely link databases, artifact registries, and secret managers.
-sidebar_position: 4
+sidebar_position: 40
 keywords:
   - harness connectors
   - database connectors
@@ -24,7 +24,7 @@ tags:
 
 This topic describes how to set up JDBC Connectors within Harness DB DevOps. 
 
-## Setting up connectors for databases
+## Set up JDBC connectors
 
 ### JDBC connectors
 
@@ -69,7 +69,7 @@ The JDBC connector is used for connecting to your database instance.
 
 ---
 
-## Setting up MongoDB connectors
+## Set up MongoDB connectors
 
 MongoDB connections in Harness DB DevOps support both self-hosted and cloud-based MongoDB instances.
 
@@ -90,7 +90,9 @@ Configure the following before connecting:
    - Ensure the delegate has network connectivity to the MongoDB cluster
    - For MongoDB Atlas, whitelist the delegate's IP address
 
-### MongoDB URL Requirements
+### MongoDB URL requirements
+
+The following requirements apply when constructing your MongoDB connection string:
 
 - The connection string **must** include `+srv` for cloud instances
 - The target `database` must be specified in the URL path
@@ -98,7 +100,7 @@ Configure the following before connecting:
 
 ---
 
-## Setting up Google Spanner connectors
+## Set up Google Spanner connectors
 
 Google Spanner uses a unique JDBC URL format and does not require a traditional password for authentication. Instead, authentication is handled via Google Service Account (GSA) credentials or Keyless authentication.
 
@@ -130,11 +132,13 @@ Use the standard Cloud Spanner GQL.
 :::
 
 ---
-## Setting up AlloyDB connectors
+## Set up AlloyDB connectors
 
 AlloyDB connections in Harness DB DevOps require a **Host**, **Port**, and **Database**. The username and password are also required for authentication.
 
 ### Prerequisites for AlloyDB
+
+Configure the following before connecting to AlloyDB:
 
 1. **Connection format:** Use `jdbc:postgresql://{HOST}:{PORT}/{DBNAME}` for AlloyDB instances.
 2. **Authentication:** Database user credentials (username and password).
@@ -143,7 +147,7 @@ AlloyDB connections in Harness DB DevOps require a **Host**, **Port**, and **Dat
 
 ---
 
-## Setting up Snowflake connectors {#setting-up-snowflake}
+## Set up Snowflake connectors {#setting-up-snowflake}
 Snowflake connections in Harness DB DevOps require a specific JDBC URL format that includes the account identifier, warehouse, database, schema, and role. If the role is not specified, the default role for the user will be used. In addition, PKI authentication is required to authenticate to Snowflake.
 
 ### Prerequisites for Snowflake
@@ -164,11 +168,13 @@ Username and Password authentication method for the snowflake is deprecated, and
 
 ---
 
-## Setting up Amazon DocumentDB connectors
+## Set up Amazon DocumentDB connectors
 
 Amazon DocumentDB is supported via the **MongoDB Native Executor**. DocumentDB clusters run in private VPC subnets and require an SSH tunnel through an EC2 instance for external access.
 
 ### Prerequisites for DocumentDB
+
+Before connecting to DocumentDB, ensure you have the following:
 
 - **DocumentDB cluster**: Running cluster in AWS VPC
 - **EC2 instance**: Instance in the same VPC as your DocumentDB cluster with SSH access enabled (port 22)
@@ -194,7 +200,7 @@ Add the Amazon RDS CA certificate to your trust store to enable SSL connections 
 
 ---
 
-## Setting up BigQuery connectors {#setting-up-bigquery}
+## Set up BigQuery connectors {#setting-up-bigquery}
 
 BigQuery connections in Harness DB DevOps support OIDC authentication using Workload Identity Federation for keyless authentication.
 
@@ -244,7 +250,7 @@ Go to [Configure OIDC authentication for GCP databases](/docs/database-devops/fe
 
 ---
 
-## Setting up IBM DB2 connectors
+## Set up IBM DB2 connectors
 
 IBM DB2 is a family of data management products that includes three variants, each running on different platforms and requiring different JDBC drivers and connection formats.
 
@@ -257,7 +263,7 @@ Harness DB DevOps supports:
 Go to [Set up IBM DB2](/docs/database-devops/use-database-devops/set-up-db2-connector) for detailed prerequisites, license requirements, and configuration instructions for each DB2 variant.
 :::
 
-### DB2 JDBC URL Quick Reference
+### DB2 JDBC URL quick reference
 
 | Variant | JDBC URL Format |
 |---------|----------------|
@@ -273,7 +279,7 @@ DB2 z/OS requires a customer-provided IBM DB2 Connect license JAR (`db2jcc_licen
 
 ---
 
-## Connector FAQs
+## Connector FAQ
 
 The following FAQs cover common connector configuration questions.
 
@@ -286,7 +292,7 @@ Sometimes, users want to login to their database using the `sys as sysdba` usern
 
 Go to [Oracle's documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/jjdbc/data-sources-and-URLs.html#GUID-44572C63-10D2-478A-BB2E-ACF6674C59CC) for information about logging on as `sys`.
 
-### Where can I find IBM DB2 setup instructions?
+### IBM DB2 setup instructions
 
 Go to [Set up IBM DB2](/docs/database-devops/use-database-devops/set-up-db2-connector) for detailed instructions on configuring DB2 LUW, DB2 for i, and DB2 z/OS connectors, including license provisioning for z/OS.
 

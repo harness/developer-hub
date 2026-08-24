@@ -1,7 +1,7 @@
 ---
 title: Working with Changelog Directory Structure
 description: Learn how to organize Liquibase changelogs in Harness DB DevOps for scalable, auditable, and rollback-friendly database deployments.
-sidebar_position: 2
+sidebar_position: 20
 slug: /database-devops/concepts-and-features/understanding-changelog-directories/changelog-directories-structure
 keywords:
   - database changelog management
@@ -28,13 +28,15 @@ tags:
 
 This guide explains how to effectively manage changelog file directories. A well-organized changelog file directory structure is crucial for maintaining database changes across multiple instances and environments.
 
-## Using includeAll for efficient change management
+## includeAll for change management
 
 Organizing your changelog files properly is important as your database projects grow. A clear and consistent folder structure makes it easier to track changes, review updates, and handle different environments like development, testing, and production.
 
 The `includeAll` tag helps manage changelog files more easily. When specified in your master changelog file, it automatically includes all changelog files from a specified directory in alphabetical order.
 
 ### Advantages
+
+The `includeAll` tag provides the following benefits.
 
 - **Automatic file discovery:** No need to manually list each changelog file in your master changelog.
 - **Simplified maintenance:** Add new changelog files to the directory without modifying the master changelog.
@@ -233,7 +235,7 @@ databaseChangeLog:
 - Harder to maintain in the long term
 - Challenging to roll back specific changes
 
-## Managing multiple instances
+## Multiple instance management
 
 There are two primary approaches to managing multiple database instances:
 
@@ -241,7 +243,7 @@ There are two primary approaches to managing multiple database instances:
 
 Use different branches for [different environments](/docs/database-devops/gitops/environment-by-branch) to isolate changes per deployment target.
 
-```
+```text
 main branch     → Development
 qa branch       → QA
 prod1 branch    → Production Instance 1

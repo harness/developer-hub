@@ -2,7 +2,7 @@
 title: Reserved Keywords in DB Schemas
 description: Understand why overview is a reserved identifier and should not be used when creating DB Schemas in Harness.
 sidebar_label: Reserved DB Schema Identifier
-sidebar_position: 8
+sidebar_position: 10
 keywords: [database devops, db schema, identifier, reserved keyword, overview, API restrictions]
 tags:
   - database-devops
@@ -19,7 +19,7 @@ When defining a **DB Schema** in Harness Database DevOps, each schema must have 
 
 As part of platform-level constraints, the identifier `overview` is **reserved** and **must not be used** when creating or referencing a DB Schema.
 
-## Why This Matters
+## Why this matters
 
 Harness exposes internal REST endpoints to retrieve metadata and usage information for Database DevOps entities. One such endpoint is:
 
@@ -32,7 +32,7 @@ If a DB Schema is created using the identifier `overview`, it will result in a d
 
 To safeguard against this, the platform enforces validation to prevent the use of `overview` as a DB Schema identifier.
 
-## What Is Considered a DB Schema Identifier?
+## What is considered a DB Schema identifier?
 
 A DB Schema identifier is a logical and system-resolvable key used internally to reference a specific database changelog configuration. It is **not the same** as a Liquibase `changeset` ID.
 
@@ -44,25 +44,28 @@ dbSchema:
   name: User Service Schema
 ```
 
-## What Happens If You Use "overview"?
+## What happens if you use "overview"?
 
 Attempting to use `overview` as the identifier for a DB Schema will result in a validation error at the API or UI level. This is an intentional safeguard to avoid platform-level routing conflicts.
 
-### Invalid DB Schema Identifier
+### Invalid DB Schema identifier
 ```yaml
 dbSchema:
   identifier: overview     # Invalid: Conflicts with internal API endpoint
   name: Main Schema
 ```
 
-### Valid DB Schema Identifier
+### Valid DB Schema identifier
 ```yaml
 dbSchema:
   identifier: orders-schema
   name: Orders Service Schema
 ```
 
-## Best Practices
+## Best practices
+
+When creating DB Schemas, consider the following best practices:
+
 - Use descriptive and unique identifiers for all DB Schemas.
 - Avoid reserved or commonly used route terms such as `overview`, `default`, `admin`, etc.
 - Stick to lowercase letters, numbers, and hyphens (-) to ensure compatibility and clarity.
@@ -70,3 +73,7 @@ dbSchema:
 :::info Note
 This restriction only applies to the identifier of the schema. You are still allowed to use the word "overview" in the **name**, **description**, or **comments** of the schema configuration.
 :::
+
+## Next steps
+- Go to [Database DevOps onboarding guide](/docs/database-devops/use-database-devops/get-started/onboarding-guide#2-configure-your-database-schema) to understand how to define and manage your database changelog configurations.
+- Explore our [Database DevOps](/docs/database-devops) guide for a comprehensive overview of Harness Database DevOps features.

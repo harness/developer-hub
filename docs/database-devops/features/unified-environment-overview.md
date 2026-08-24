@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 30
 title:  User Interface of Harness Database DevOps
 sidebar_label:  User Interface of Harness Database DevOps
 description: Learn how to navigate the Harness Database DevOps user interface, including schema views, pipeline executions, and deployment monitoring.
@@ -72,7 +72,7 @@ for understanding the status of the pipelines in your environments. The followin
  hours, days, months or years beneath the user's name. 
  - **Last modified**: The date of when the pipeline was last modified. 
 
-## Viewing changesets in the Harness Database DevOps UI
+## Changeset view in the Harness Database DevOps UI
 
 ![A screenshot of the Harness Database DevOps ChangeSets UI](./static/dbops-changeset-view.png)
 Clicking on a ChangeSet opens the detail pane on the right-hand side of the UI. This panel provides two tabs:

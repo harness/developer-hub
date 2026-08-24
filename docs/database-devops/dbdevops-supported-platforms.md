@@ -2,7 +2,7 @@
 title: What is Supported by Harness DB DevOps
 description: Explore supported database platforms, source control providers, and feature flags available in Harness DB DevOps.
 sidebar_label: What is supported
-sidebar_position: 2
+sidebar_position: 20
 keywords:
   - supported databases
   - dbops compatibility
@@ -57,7 +57,7 @@ It is worth noting that **MongoDB** is a NoSQL database which brings some limita
  - You cannot enforce policy against SQL initially. 
 
 :::info Note
-You can learn more about setting up connectors for these databases in [Setting Up Connectors](/docs/database-devops/use-database-devops/set-up-connectors.md).
+Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure connectors for these databases.
 :::
 
 Additionally, for sources to read the change log from, Harness Database DevOps supports:
@@ -80,3 +80,10 @@ You can opt-in to the early access features for Harness DB DevOps described in t
 | Flag | Description |
 | ---  | ----------- |
 | `CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE` | Enable to avoid any impact to your [Database DevOps environments](/docs/database-devops/use-database-devops/get-started/onboarding-guide). |
+
+---
+
+## Next steps
+
+- Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure database connectors for the supported platforms above.
+- Go to [Onboarding guide](/docs/database-devops/use-database-devops/get-started/onboarding-guide) to create your first Database DevOps pipeline.

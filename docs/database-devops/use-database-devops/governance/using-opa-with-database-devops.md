@@ -2,7 +2,7 @@
 title: Using Rego for Database DevOps Steps
 description: Learn how to use Rego policies with Harness DB DevOps steps to enforce guardrails, governance, and security across database deployment workflows.
 sidebar_label: Using Rego with DB DevOps
-sidebar_position: 1
+sidebar_position: 10
 keywords:
   - rego policies
   - harness dbops
@@ -25,13 +25,14 @@ tags:
 
 This guide explains how to use **Harness Policy Agent** to enforce policies on **DataBase Devops** steps. Rego is a declarative policy language used by Open Policy Agent (OPA) for policy-based control.
 
-## Pre-requisites
-- Basic knowledge of Rego
+## Before you begin
 
-## Writing a Rego Policy for Database Devops Steps
+- **Rego knowledge:** Basic understanding of the Rego policy language and OPA is recommended.
+
+## Write a Rego policy for Database DevOps steps
 A Rego policy can validate that changesets conform to specific rules, such as enforcing naming conventions or restricting certain SQL operations.
 
-### Example Policy - Restricting  `DROP TABLE`
+### Example policy: restrict DROP TABLE
 Go to DB Governance section and create a new policy
 
 ```rego
@@ -65,7 +66,7 @@ deny[msg] {
 ![Rego Policy Flow](static/db-governance-policy-create.png)
 
 
-### Sample Payload:
+### Sample payload
 
 You can test the policy on sample payloads
 
@@ -91,24 +92,24 @@ You can test the policy on sample payloads
 }
 ```
 
-### Create a custom policy set and attach above policy
+### Create a custom policy set and attach the policy
 
 ![Rego Policy Flow](static/db-governance-custom-policy-set.png))
 
-### Attach the policy set in Database Devops step configuration
+### Attach the policy set in Database DevOps step configuration
 
 ![Add evaluation](static/db-governance-add-evaluation.png)
 
-## Validating Liquibase Steps with OPA
+## Validate Liquibase steps with OPA
 Run the OPA policy check against the changeset during pipeline run:
 
 If a violation occurs, OPA will output a message indicating the problem (e.g., "Dropping tables is not allowed: users") and result in error / warning as per configuration.
 
 ![failed pipeline](static/database-devops-failed-policy.png)
 
-## OPA Policies Examples
+## OPA policy examples
 
-### Table Name Limit
+### Table name limit
 The function checks if any of the SQL statements in the input create a table with a name longer than 10 characters. If a match is found, it means that the table name violates the rule and the function returns a message indicating the violation.
 
 ```rego
@@ -134,7 +135,7 @@ deny[msg] {
 }
 ```
 
-### Schema Name Limit
+### Schema name limit
 
 The existing code already has a schema name length check in the "Prevent Data Drop" section, but it could be formalized as a separate policy:
 
@@ -157,7 +158,7 @@ deny[msg] {
 }
 ```
 
-### Prevent Direct System Table Access
+### Prevent direct system table access
 This policy checks if any SQL statement attempts to access system tables (e.g., those starting with "sys." in SQL Server). If such access is detected, it returns a violation message.
 
 ```rego
@@ -179,7 +180,7 @@ deny[msg] {
 }
 ```
 
-### Prevent Large Transactions
+### Prevent large transactions
 
 ```rego
 package db_sql
@@ -191,7 +192,7 @@ deny[msg] {
 }
 ```
 
-### DB Policy Populator
+### DB policy populator
 The types represent the different types of databases (e.g., sybase, oracle, mssql). The regular expressions represent the SQL statements that are not allowed in each type of database. if a match is found, it means that the SQL statement violates a policy and the function returns a message indicating the violation.
 
 ```rego
@@ -355,3 +356,10 @@ deny[msg] {
     msg := concat("",["Policy violation:\n The following sql statement:\n",input.sql_statements[l].sql,"\n\n Matches the following regex: \n",rule.regex[k]])
   }
 ```
+
+---
+
+## Next steps
+
+- Go to [Approval gates](/docs/database-devops/use-database-devops/governance/using-approval-gates-with-harness-ui) to require human review before applying database changes.
+- Go to [Audit trails](/docs/database-devops/use-database-devops/governance/audit-trails) to track all Database DevOps events for compliance.

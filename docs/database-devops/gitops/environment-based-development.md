@@ -3,7 +3,7 @@ title: Environment by Branch in Harness Database DevOps
 sidebar_label: Environment by Branch
 description: Using branch-based environments in Harness Database DevOps
 slug: /database-devops/gitops/environment-by-branch
-sidebar_position: 11
+sidebar_position: 110
 tags:
   - database devops
   - gitops
@@ -52,29 +52,35 @@ While beneficial, this approach introduces some complexity:
 - **Unintentional promotion of dev-only changes**: If you are managing dev/staging-only changes (like test tables or mock data), they may unintentionally get merged into higher environments.
 
 ::: note
-**Recommendation**: Use the `context` field on the database instance to restrict execution, even when the change exists in the branch. You can adopt this model if your **application deployment already follows a branch-per-environment** structure—ensuring consistency across the stack.
+**Recommendation**: Use the `context` field on the database instance to restrict execution, even when the change exists in the branch. You can adopt this model if your **application deployment already follows a branch-per-environment** structure, ensuring consistency across the stack.
 :::
 
 ## How to configure
 
 Follow these steps to configure environment-based deployments in Harness Database DevOps:
 
-### 1. Set Up Your Git Branches
+### 1. Set up your Git branches
 Create separate branches in your Git repo for each environment: `development`, `staging`, `production`, etc.
 
-### 2. Define Schema Configuration per Branch
+### 2. Define schema configuration per branch
 
-- Go to **Database DevOps** and Click on **Add DB Schema**.
+Create a DB Schema definition for each environment branch.
+
+- Go to **Database DevOps** and click **Add DB Schema**.
 ![Create a New Schema](../get-started/static/dbops-schema-create.png)
 
-### 3. Create a Database Instance
+### 3. Create a database instance
 
-1. Select the **Database Schema** and click on **Add DB Instances** in Harness.
+Create a separate database instance for each target environment.
+
+1. Select the **Database Schema** and click **Add DB Instances** in Harness.
 2. Create a new instance for each environment.
 3. Attach the appropriate JDBC connector and context labels.
 ![Create a New Database Instance](./static/dbops-multienv-instance.png)
 
-### 4. Configure a Git Trigger
+### 4. Configure a Git trigger
+
+Set up a trigger for each branch so Harness deploys automatically when changes are merged.
 
 1. Navigate to **Pipeline Studio > Triggers**.
 ![Pipeline Triggers](./static/dbops-pipeline-trigger.png)
@@ -98,7 +104,9 @@ Create separate branches in your Git repo for each environment: `development`, `
 Go to [How to configure Git triggers in Harness](/docs/platform/triggers/tutorial-cd-trigger) to set up branch-based triggers for each environment.
 :::
 
-### 5. Design Your Pipeline
+### 5. Design your pipeline
+
+Build a pipeline that applies the correct schema for each environment branch.
 
 1. In **Pipelines**, create a pipeline that includes a `DBSchemaApply` step.
 2. Set up the pipeline to:
@@ -259,7 +267,9 @@ pipeline:
 </TabItem>
 </Tabs>
 
-### 6. Manage Promotion Between Environments
+### 6. Manage promotion between environments
+
+Promote changes between environments using Git pull requests.
 
 1. Use Git pull requests to promote changes between branches, for example `dev` to `staging` or `staging` to `prod`.
 2. Harness will auto-detect the merged changes via the trigger and deploy accordingly.

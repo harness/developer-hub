@@ -26,7 +26,7 @@ With Audit Trail in Harness, you can view and track changes to your Harness reso
 
 The audit data retention period is 2 years. Harness reserves the right to delete audit data after 2 years. You can request a longer retention period by contacting Harness. For example, if you require audit data for legal discoveries, etc., contact Harness and we can help.
 
-## Database Devops Events in Audit Trail
+## Database DevOps events in audit trail
 
 To access the Audit Trail, in your Harness project, navigate to **Account Settings > Audit Trail**. Follow the steps mentioned in [platform docs](https://developer.harness.io/docs/platform/governance/audit-trail/#step-view-an-audit-trail) for more details.
 
@@ -58,3 +58,10 @@ To see more information about a particular event, select the messaging icon next
 You can also see a snapshot of changes in YAML format by expanding YAML Difference.
 
 ![Database Devops Audit Trails](./static/yaml-diff-audit-trail.png)
+
+---
+
+## Next steps
+
+- Go to [Governance overview](/docs/database-devops/use-database-devops/governance/using-approval-gates-with-harness-ui) to configure approval gates for database deployments.
+- Go to [OPA policies](/docs/database-devops/use-database-devops/governance/using-opa-with-database-devops) to enforce governance rules on your database changesets.

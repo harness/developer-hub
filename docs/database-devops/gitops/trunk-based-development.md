@@ -3,7 +3,7 @@ title: Trunk-Based Development in Harness Database DevOps
 sidebar_label: Trunk-Based Development 
 description: Implement trunk-based development in Harness DB DevOps using a single Git branch, contexts, and pipelines for controlled, environment-aware delivery.
 slug: /database-devops/gitops/trunk-based-development
-sidebar_position: 12
+sidebar_position: 120
 keywords:
     - trunk-based development
     - harness db devops
@@ -38,20 +38,20 @@ Trunk-based development in Harness Database DevOps revolves around a single Git 
 
 ## Steps to implement trunk-based development in Harness
 
-Harness supports Liquibase-style contexts to manage changes across environments from a single changelog file. In most cases, context-based filtering is applied at the **database instance level**—each instance (e.g., Dev, QA, Prod) is configured with a context label like `dev`, `qa`, or `prod`. When the pipeline executes a `DBSchemaApply` step, Harness applies only the changesets matching the context tied to that specific DB instance.
+Harness supports Liquibase-style contexts to manage changes across environments from a single changelog file. In most cases, context-based filtering is applied at the **database instance level**, with each instance (for example, Dev, QA, Prod) configured with a context label like `dev`, `qa`, or `prod`. When the pipeline executes a `DBSchemaApply` step, Harness applies only the changesets matching the context tied to that specific DB instance.
 
 This allows you to reuse the same changelog file, while ensuring each environment receives only the changes intended for it. Combined with a multi-stage pipeline structure, this forms a **hybrid deployment strategy**: context-based filtering with explicit promotion control.
 
-### 1. Set Up Your Git Repository  
+### 1. Set up your Git repository
 1. Commit your Liquibase changelogs or SQL scripts to a centralized Git repo.
 2. Use clear naming conventions like `changelogs/<YYYY-MM-DD>_<feature>.sql`.  
 
-### 2. Create a Database Schema in Harness
+### 2. Create a database schema in Harness
 1. Navigate to **Database Management > Schemas**
 2. Click **New Schema**, connect to your Git repo, and configure your database instance(s).
 3. Ensure your changelogs are structured to include environment-specific contexts (e.g., `context: dev, qa, prod`).
 
-### 3. Connect with Database Instance
+### 3. Connect with database instance
 
 Before deploying your database schema, connect a database instance to deploy it to:
 
@@ -65,7 +65,7 @@ Before deploying your database schema, connect a database instance to deploy it 
 3. Add the Contexts (e.g., `dev`, `qa`, `prod`) to the database instance.
 4. Click `Add Database Instance`.
    
-### 4. Create Your Pipeline
+### 4. Create your pipeline
 1. Go to **Pipelines** and select **New Pipeline**
 2. Add a `DBSchemaApply` step for each environment (e.g. `Dev`, `QA`, `Prod`)
 3. In each step
@@ -186,13 +186,13 @@ pipeline:
 ```
 </TabItem>
 </Tabs>
-### 5. Configure Triggers
+### 5. Configure triggers
    - Go to your pipeline settings
    - Add a **Git trigger** that listens to the `main` branch
    - Select “On Push” or “On Pull Request” depending on your workflow
    Go to [How to configure Git triggers in Harness](/docs/platform/triggers/tutorial-cd-trigger) to set up branch-based triggers.
 
-### 6. Set Up Approvals & Rollbacks
+### 6. Set up approvals and rollbacks
    - Insert **Approval steps** after lower environments (e.g. promote to QA only after Dev is verified)
    - Add **rollback steps** using `DBRollback` or manual SQL if needed
 
@@ -209,7 +209,7 @@ Every time you commit to `main`, Harness will:
 
 Trunk-based development in Harness Database DevOps empowers teams to manage schema changes with agility, consistency, and confidence. By centralizing changes in a single branch and orchestrating environment-specific deployments through pipelines and contexts, this approach simplifies delivery workflows while improving traceability and compliance.
 
-Harness provides out-of-the-box support for Liquibase contexts, multi-environment pipeline steps, approval strategies, and Git-based automation—making it easy to scale database delivery alongside application deployments. Whether you are just getting started or modernizing legacy workflows, trunk-based development offers a streamlined, GitOps-friendly path to continuous database evolution.
+Harness provides out-of-the-box support for Liquibase contexts, multi-environment pipeline steps, approval strategies, and Git-based automation, making it easy to scale database delivery alongside application deployments. Whether you are just getting started or modernizing legacy workflows, trunk-based development offers a streamlined, GitOps-friendly path to continuous database evolution.
 
 
 ## FAQs
@@ -218,7 +218,7 @@ Harness provides out-of-the-box support for Liquibase contexts, multi-environmen
 
 Yes. While trunk-based development centralizes changes in a single branch (`main`), Harness supports both trunk-based and environment-by-branch workflows. You can start transitioning incrementally by adopting context-based changelogs and defining pipelines that selectively apply changes by environment.
 
-### 2. What if I have multiple environments—how do I control where changes get applied?
+### 2. What if I have multiple environments? How do I control where changes get applied?
 
 Harness lets you define one pipeline with multiple stages, each targeting a specific environment. You can:
 

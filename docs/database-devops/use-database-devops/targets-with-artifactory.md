@@ -21,15 +21,17 @@ tags:
   - archive-path
 ---
 
-This document outlines the process for utilizing the Artifactory connector to download a zip file containing change logs and how to specify the optional archive path field to point to the root change log inside that zip file.[2] This integration allows for a seamless transition from using a Git repository to an Artifactory instance for managing database change logs.
+This document outlines the process for utilizing the Artifactory connector to download a zip file containing change logs and how to specify the optional archive path field to point to the root change log inside that zip file. This integration allows for a seamless transition from using a Git repository to an Artifactory instance for managing database change logs.
 
-### Key Benefits:
+### Key benefits
+
+Using the Artifactory connector provides the following advantages.
 
  - Centralized storage of build artifacts.
  - Version control and traceability of change logs.
  - Reduced dependency on Git repositories for change log management.
 
-### Using the Artifactory Connector
+### Use the Artifactory connector
 
 To use the Artifactory connector effectively:
 
@@ -42,16 +44,18 @@ To use the Artifactory connector effectively:
    3. Locate the changelog file using the provided schema file path
    4. Execute the changes described in the changelog
 
-### Steps to Specify the Archive Path:
+### Specify the archive path
+
+Follow these steps to configure the archive path in your pipeline.
 
 1. **Locate the Archive Path Field**: In your pipeline configuration, find the field labeled "Archive Path" or "Optional Archive Path."
 2. **Enter the Path**: Input the path to the root change log within the downloaded zip file. This path should be relative to the root of the zip file. For example, if your zip file structure is as follows:
 
-   ```
+   ```text
    my-changelog.zip
    ├── changelog/
    │   ├── v1.0/
-   │   │   └── changelog.sql[24]
+   │   │   └── changelog.sql
    │   └── v1.1/
    │       └── changelog.sql
    ```
@@ -66,4 +70,11 @@ By utilizing the Artifactory connector and specifying the optional archive path 
 
 By correctly configuring the "Path to Archive File (Optional)" and "Path to Schema File" fields, you can efficiently manage your database change logs stored in Artifactory. This approach provides version control, traceability, and centralized storage for your database schema changes.
 
-For any further questions or assistance regarding the Artifactory connector or the archive path configuration, please reach out to your DevOps team or consult the relevant documentation.
+For any further questions or assistance regarding the Artifactory connector or the archive path configuration, contact your DevOps team or consult the relevant documentation.
+
+---
+
+## Next steps
+
+- Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure the Artifactory connector for your project.
+- Go to [Build a changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to structure your changelog files for use with the Artifactory connector.

@@ -28,8 +28,8 @@ import CommitToGit from "./../snippets/commit-to-git.md";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Database DevOps enables teams to integrate database schema changes into Git-driven workflows.
 When onboarding an existing **MongoDB** database, you can use the `MongoDB.py` Python script to extract the current schema and generate a **Liquibase-compatible changelog**.
+
 This changelog can then be versioned in Git and used in subsequent deployments, ensuring auditability and consistency across environments.
 
 By automating this process in a Harness pipeline, you can:
@@ -41,7 +41,7 @@ By automating this process in a Harness pipeline, you can:
 For the SQL version of changelog generation, refer to our [Get Started with Changelogs](https://developer.harness.io/docs/database-devops/get-started/get-started-with-changelogs) guide which includes examples for SQL changelogs.
 :::
 
-## Prerequisites
+## Before you begin
 
 If you are unfamiliar with generating or structuring a changelog file, you may want to explore our general [build a changelog](https://developer.harness.io/docs/database-devops/use-database-devops/get-started/build-a-changelog) guide first, it covers generating SQL changelog, schema migration fundamentals, best practices, and format patterns. Before implementing the pipeline, ensure the following:
 
@@ -49,9 +49,9 @@ If you are unfamiliar with generating or structuring a changelog file, you may w
 - The Git connector used in the pipeline has **commit** permissions  
 - MongoDB credentials have **read-only** access for schema extraction
 
-## Pipeline Implementation
+## Pipeline implementation
 
-### Create a New Pipeline
+### Create a new pipeline
 
 1. Go to your Harness pipeline.
 2. Click on "**Create a Pipeline**"
@@ -223,7 +223,7 @@ In the above script:
 
 <CommitToGit />
 
-#### Final Result:
+#### Final result:
 <Tabs>
 <TabItem value="Visual Overview" alt="Visual Overview">
 
@@ -488,11 +488,18 @@ pipeline:
 This step will ensure that the generated changelog file is committed to your Git repository, allowing you to track changes and maintain version control over your database schema changes.
 
 ## Best Practices
-- Store changelogs in a dedicated folder (e.g., `/db/changelog/`)
-- Validate changelog generation in a staging pipeline before committing to production branches
-- Parameterize connection details using Harness pipeline variables
-- Always use a read-only MongoDB user for schema extraction
-By integrating this process into Harness pipelines, you ensure repeatable, auditable, and version-controlled database schema onboarding.
+
+Some best practices to follow when generating and committing MongoDB changelogs:
+
+    - Store changelogs in a dedicated folder (e.g., `/db/changelog/`)
+    - Validate changelog generation in a staging pipeline before committing to production branches
+    - Parameterize connection details using Harness pipeline variables
+    - Always use a read-only MongoDB user for schema extraction
+    By integrating this process into Harness pipelines, you ensure repeatable, auditable, and version-controlled database schema onboarding.
+
+## Next steps
+- Go to [Build a Changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to learn how to generate changelogs for SQL databases.
+- Explore our [Database DevOps](/docs/database-devops) guide for a comprehensive overview of Harness Database DevOps features.
 
 ## FAQs
 

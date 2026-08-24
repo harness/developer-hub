@@ -2,6 +2,7 @@
 title: "Enable Percona Toolkit for MySQL in Harness DB DevOps"
 description: "Learn how to safely execute MySQL schema changes using Percona Toolkit with Liquibase in Harness Database DevOps to achieve near-zero downtime deployments."
 sidebar_label: "Percona Toolkit (MySQL)"
+sidebar_position: 70
 keywords:
   - percona toolkit mysql liquibase
   - pt-online-schema-change harness
@@ -22,7 +23,7 @@ tags:
 ---
 Harness Database DevOps provides optional integration with Percona Toolkit for MySQL when using Liquibase-based schema management. This feature enables teams to apply database modifications with minimal locking and reduced risk to production workloads. Enabling Percona Toolkit introduces a safety-first execution model designed for high-scale and production-critical environments.
 
-## Why Use Percona Toolkit for MySQL?
+## Why use Percona Toolkit for MySQL?
 Standard MySQL schema changes (e.g., ALTER TABLE) can result in:
 - Long-running table locks
 - Application downtime or degraded performance
@@ -34,7 +35,7 @@ Percona Toolkit mitigates these risks by executing schema changes using pt-onlin
 - Uses triggers to keep data synchronized
 - Performs an atomic table swap with minimal lock time
 
-## Enabling Percona Toolkit in Harness DB DevOps
+## Enable Percona Toolkit in Harness DB DevOps
 During Database Schema creation, you can enable Percona Toolkit using the provided checkbox:
 1. Navigate to the Database Schema creation page in Harness DB DevOps.
 2. Fill in the required details for your MySQL database connection and Select Liquibase as your schema configuration.
@@ -95,3 +96,10 @@ To successfully execute schema changes using Percona Toolkit, the database user 
 - `INSERT` and `UPDATE` on the target table (for triggers)
 
 Percona Toolkit significantly enhances the safety of MySQL schema changes, but it is not universally compatible with all DDL operations. A clear understanding of supported patterns, combined with proper permissions and validation, is essential to ensure predictable, zero-downtime deployments in Harness Database DevOps.
+
+---
+
+## Next steps
+
+- Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure your MySQL database connector in Harness.
+- Go to [Build a changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to create your first changelog for MySQL schema changes.

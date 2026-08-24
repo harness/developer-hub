@@ -2,7 +2,7 @@
 title: Add the Liquibase command step
 sidebar_label: Add the Liquibase command step
 description: Learn how to add and configure the native Liquibase command step in Harness DB DevOps pipelines for advanced database control and flexibility.
-sidebar_position: 1
+sidebar_position: 10
 keywords:
   - liquibase command step
   - harness dbops
@@ -67,3 +67,10 @@ Harness provides visibility into lock status and facilitates recovery workflows 
 **Use cases:**
 - Resolving locks after failed deployments.
 - Ensuring database availability for subsequent operations.
+
+---
+
+## Next steps
+
+- Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build a pipeline that uses the Liquibase Command step.
+- Go to [Rollback for database schemas](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure rollback strategies for Liquibase migrations.

@@ -2,7 +2,7 @@
 title: Building Changelog File
 description: Learn how to build a changelog file for your database using Harness DBOps.
 sidebar_label: Building Changelog
-sidebar_position: 4
+sidebar_position: 40
 slug: /database-devops/use-database-devops/get-started/build-a-changelog
 keywords:
   - changelog
@@ -39,7 +39,7 @@ Harness DBOps offers multiple methods to generate changelogs for your database. 
 - [Pointing to SQL Files](#steps-to-create-a-changelog-with-sql-files)
 - [Mongodb Changelog Generation](https://developer.harness.io/docs/database-devops/mongodb-changelog-generation)
 
-## Setup Changelog
+## Create a changelog
 
 <Tabs>
 <TabItem value="Using existing SQL files">
@@ -47,7 +47,9 @@ Harness DBOps offers multiple methods to generate changelogs for your database. 
 You can create a changelog by pointing to SQL files in your git repository. This method is useful if you have existing SQL scripts that you want to use as changelogs.
 This approach allows you to leverage your existing SQL files without needing to convert them into a specific changelog format.
 
-### Steps to Create a Changelog with SQL Files
+### Steps to create a changelog with SQL files
+
+Follow these steps to create a changelog by pointing to existing SQL files:
 
 1. Place your SQL files it in a subfolder named `sql` in git repository.
 2. Ensure that the SQL files are named in a way that reflects their order of execution. 
@@ -64,7 +66,7 @@ databaseChangeLog:
       relativeToChangelogFile: true
 ```
 
-#### Advanced Usage Options
+#### Advanced usage options
 If you need an order other than alphabetical, or want to leverage advanced features of changes, or a mixture of YAML/SQL based changes, you can use the sqlFile change type in a YAML changeset:
 
 ```yaml
@@ -104,9 +106,11 @@ databaseChangeLog:
 
 
 <TabItem value="Generate Changelog SQL Command">
-You can create a changelog by using the `generate-changelog` command. This method is useful if you want to generate a changelog based on the current state of your database. This approach allows you to create a changelog file that reflects the current state of your database schema. For MongoDB, the command is not supported, to generate the changelog for MongoDB, refer to [this documentation](https://developer.harness.io/docs/database-devops/mongodb-changelog-generation).
+You can create a changelog by using the `generate-changelog` command. This method is useful if you want to generate a changelog based on the current state of your database. This approach allows you to create a changelog file that reflects the current state of your database schema. For MongoDB, the generate-changelog command is not supported. Go to [MongoDB changelog generation](https://developer.harness.io/docs/database-devops/mongodb-changelog-generation) to generate a MongoDB changelog.
 
-### Steps to Create a Changelog with the `generate-changelog` Command
+### Steps to create a changelog with the generate-changelog command
+
+Follow these steps to generate a changelog from the current state of your database:
 
 1. Under `DBOps` in the Harness UI, navigate to `DB Schema`.
 2. Click on the `Add DB Schema` button.
@@ -254,3 +258,8 @@ databaseChangeLog:
 The change management system only executes new changesets or those with modified checksums and records successful executions in the tracking table. If a changeset fails, it will not be recorded in the tracking table, and you can re-run it later. This allows for easy rollback and re-application of changesets as needed.
 
 The database tracking table is used by default, and can be overridden by setting the `database-changelog-table-name` global parameter.
+
+## Next steps
+
+- Go to [Apply a DB schema step](/docs/database-devops/use-database-devops/step-guide/apply-dbschema-step) to deploy your changelog in a pipeline.
+- Go to [Rollback for database schemas](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure automated rollback for failed deployments.

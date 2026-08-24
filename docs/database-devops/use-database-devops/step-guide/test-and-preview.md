@@ -2,7 +2,7 @@
 title: DB Test and Preview step
 sidebar_label: DB Test and Preview
 description: Configure the DB Test and Preview step in a Harness Database DevOps pipeline to validate a generated changeset before committing it, as part of the Author DB Change workflow.
-sidebar_position: 3
+sidebar_position: 30
 keywords:
   - db test and preview
   - test and preview step
@@ -59,8 +59,8 @@ The DB Test and Preview step is added to a **Custom Stage** pipeline that serves
 
 A typical LLM authoring pipeline uses two steps:
 
-1. **DB Test and Preview** — validates the generated changeset against the target DB Instance and writes the changeset files to the `dbops/DBTestAndPreview_1` directory in the runner workspace.
-2. **Run step** — checks out the generated files, pushes them to a new branch in your Git repository, and opens a Pull Request for human review and CI validation.
+1. **DB Test and Preview**: validates the generated changeset against the target DB Instance and writes the changeset files to the `dbops/DBTestAndPreview_1` directory in the runner workspace.
+2. **Run step**: checks out the generated files, pushes them to a new branch in your Git repository, and opens a Pull Request for human review and CI validation.
 
 Go to [Configure Author DB Change](/docs/database-devops/use-database-devops/configure-llm-for-database-devops) for the full pipeline setup, including the Run step script for GitHub, Bitbucket, and Harness Code.
 

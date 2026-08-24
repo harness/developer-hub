@@ -19,6 +19,7 @@ tags:
   - harness-db-devops
   - environment-specific-deployments
   - changeset-filtering
+sidebar_position: 30
 ---
 
 import Head from '@docusaurus/Head';
@@ -136,6 +137,8 @@ context:"v1.0 or !qa"       # Runs if v1.0 OR NOT qa
 This logical control helps you fine-tune exactly which [changesets](./changeset.md) run during a migration operation.
 
 ### How contexts work in Harness Database DevOps
+
+The following table describes how Harness Database DevOps evaluates changesets based on your context configuration.
 
 | Behavior                        | What It Means                                                                                 |
 | ------------------------------- | --------------------------------------------------------------------------------------------- |

@@ -3,7 +3,7 @@ title: Configure AWS IAM Authentication for Aurora and RDS
 sidebar_label: AWS IAM Authentication
 description: Configure IAM-based authentication for AWS Aurora and RDS databases in Harness Database DevOps to eliminate static passwords and enable secure, token-based database access.
 unlisted: true
-sidebar_position: 8
+sidebar_position: 80
 keywords:
   - aws iam authentication
   - aurora iam auth
@@ -78,6 +78,8 @@ IAM authentication replaces static passwords with temporary authentication token
 
 ### Authentication flow
 
+The following steps describe how IAM authentication works during a database connection:
+
 1. **Token request:** The Harness Delegate requests an authentication token from AWS STS (Security Token Service) using its IAM role.
 2. **Token generation:** AWS generates a cryptographically signed token that is valid for 15 minutes. The token includes the database username, cluster identifier, region, and port.
 3. **Connection attempt:** The delegate connects to the database using the database username and the token as the password.
@@ -127,7 +129,7 @@ Create an IAM policy that grants the `rds-db:connect` action at the cluster leve
 ```
 
 **Resource ARN format:**
-```
+```text
 arn:aws:rds-db:REGION:ACCOUNT_ID:dbuser:cluster-CLUSTER_RESOURCE_ID/DATABASE_USERNAME
 ```
 
@@ -145,6 +147,8 @@ aws rds describe-db-clusters \
 ```
 
 ### Attach policy to ECS task role
+
+Attach the IAM policy to the task role that will be used for database authentication:
 
 1. In the AWS IAM console, locate the **ECS task role** that will be specified in the `HARNESS_ECS_BUILD_TASK_ROLE_ARN` environment variable.
 2. Create a new inline policy or managed policy using the IAM policy JSON above.
@@ -175,7 +179,7 @@ This step must be performed by a database administrator using the master user cr
 
 Create a database user and grant the `rds_iam` role to enable IAM authentication for that user.
 
-### Using direct SQL commands
+### Use direct SQL commands
 
 Connect to your database using the master user credentials and run:
 
@@ -281,6 +285,8 @@ Replace `REGION`, `ACCOUNT_ID`, and `YOUR_SECRET_NAME` with your actual values.
 
 ### How certificate mounting works
 
+The following environment variables control how the certificate is pulled and mounted:
+
 - **`secrets` block:** Pulls the secret value from AWS Secrets Manager at container startup and exposes it as `HARNESS_CERT_0` inside the container.
 - **`HARNESS_SECRET_FILE_MAPPINGS`:** Maps a Secrets Manager secret (identified by the `HARNESS_CERT_0` name from the `secrets` block) to a file path inside the container. The value format is `SECRET_NAME:FILE_PATH`.
 - **`HARNESS_CI_MOUNT_VOLUMES`:** Propagates the mounted certificate file into spawned build task containers during pipeline execution. The value format is `HOST_PATH:CONTAINER_PATH`. Use the same path on both sides to mount the file at the same location in the build container.
@@ -298,27 +304,31 @@ Configure your Harness JDBC connector to use IAM authentication with the AWS JDB
 The connection URL must use the `aws-wrapper` prefix and include IAM plugin parameters:
 
 **Aurora cluster endpoint:**
-```
+```text
 jdbc:aws-wrapper:postgresql://my-cluster.cluster-abc123.us-east-1.rds.amazonaws.com:5432/postgres?wrapperPlugins=iam&ssl=true&sslmode=require
 ```
 
 **Aurora instance endpoint:**
-```
+```text
 jdbc:aws-wrapper:postgresql://my-cluster-instance-1.abc123.us-east-1.rds.amazonaws.com:5432/postgres?wrapperPlugins=iam&ssl=true&sslmode=require
 ```
 
 **RDS instance endpoint:**
-```
+```text
 jdbc:aws-wrapper:postgresql://my-rds-instance.abc123.us-east-1.rds.amazonaws.com:5432/postgres?wrapperPlugins=iam&ssl=true&sslmode=require
 ```
 
 ### Required URL components
+
+The IAM-enabled connection URL must include the following components:
 
 - **Prefix:** `jdbc:aws-wrapper:postgresql://` (replaces standard `jdbc:postgresql://`)
 - **Parameter:** `wrapperPlugins=iam` (enables IAM authentication plugin)
 - **SSL parameters:** `ssl=true&sslmode=require` (IAM authentication requires SSL)
 
 ### Configure connector in Harness UI
+
+Complete the following steps to configure the JDBC connector:
 
 1. Go to **Database DevOps** > **Connectors** > **New Connector** > **Database**.
 2. Select **JDBC** as the connector type.

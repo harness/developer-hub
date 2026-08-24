@@ -2,7 +2,7 @@
 title: Automated Rollback for Database Schemas
 sidebar_label: Rollback for Database Schemas
 description: Learn how Harness DBOps enables automated rollback for database schemas ensuring safe, reliable, and reversible schema changes with no manual effort.
-sidebar_position: 4
+sidebar_position: 40
 keywords:
   - rollback database
   - liquibase rollback
@@ -25,7 +25,7 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness offers multiple mechanisms for rolling back schema changes—ensuring data integrity and operational resilience. This guide explains how to configure automated rollbacks, including rollback by tag and rollback by count, within your CI/CD pipelines.
+Harness offers multiple mechanisms for rolling back schema changes, ensuring data integrity and operational resilience. This guide explains how to configure automated rollbacks, including rollback by tag and rollback by count, within your CI/CD pipelines.
 
 ## Roll back a database schema
 
@@ -87,7 +87,7 @@ To rollback a database schema to a specific target version in Harness Database D
 
 The **Apply Schema** step in our deployment pipeline applies database changeSets and provides an expression pointing to the tag marking the database state before deployment.
 
-### How It Works
+### How it works
 - If a Liquibase tag exists on the last changeSet, it is captured and exposed in the rollback expression.
 - If no tag exists, the Apply Schema step creates one before applying new changes.
 - Use this exposed tag as expression to rollback to the previous state.
@@ -110,11 +110,11 @@ Rollback is the process of undoing changes that were made to the database if an 
 
 This reduces the risk of downtime or data corruption and allows teams to quickly address issues without having to manually intervene.
 
-## Automated Rollback for Database Schema Changes
+## Automated rollback for database schema changes
 
 When managing database schema changes, the risk of something going wrong is always present. With Harness DB DevOps, you can help mitigate this risk by providing an automated rollback feature. This feature ensures that if a schema change fails, the database can be quickly and automatically restored to its previous state, maintaining stability and data integrity.
 
-### What is Automated Rollback?
+### What is automated rollback?
 
 Automated rollback is a feature that automatically reverses database changes if an error occurs during a deployment. This prevents partial or inconsistent updates that could disrupt your application or lead to data corruption.
 
@@ -172,7 +172,7 @@ Tags can be created manually or automatically as part of the `Apply Schema` step
 ### Is this compatible with Liquibase?
 Absolutely. Harness Database DevOps uses Liquibase under the hood and supports native Liquibase rollback workflows and tagging.
 
-### Is Rollback compatible with Flyway?
+### Is rollback compatible with Flyway?
 Yes. Harness Database DevOps also supports Flyway, and you can configure rollbacks to target specific Flyway versions as needed.
 
 ### How do I verify a rollback was successful?

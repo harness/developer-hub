@@ -2,7 +2,7 @@
 title: Add the Flyway Command step
 sidebar_label: Add the Flyway Command step
 description: Learn how to add and configure the native Flyway command step in Harness DB DevOps pipelines for advanced database control and flexibility.
-sidebar_position: 1
+sidebar_position: 10
 keywords:
   - flyway command step
   - harness dbops
@@ -44,10 +44,10 @@ To create a pipeline in Database DevOps, you can refer to the Harness documentat
 :::
 
 ## Supported Flyway Commands in Harness Database DevOps
-Within the Flyway Command step, you can select and run any of the following Flyway operations. Harness handles the execution lifecycle, governance, logging, and enforcement—eliminating the operational overhead typically associated with manual Flyway CLI invocations.
+Within the Flyway Command step, you can select and run any of the following Flyway operations. Harness handles the execution lifecycle, governance, logging, and enforcement, eliminating the operational overhead typically associated with manual Flyway CLI invocations.
 
 ### Run Flyway command for migrate-sql
-Generates the SQL that Flyway would apply during a migration—without executing it.
+Generates the SQL that Flyway would apply during a migration, without executing it.
 Harness provides the generated SQL in pipeline logs and artifacts, enabling teams to perform governance checks, peer reviews, or automated policy evaluations before any change touches the database.
 
 **Use cases:**
@@ -63,3 +63,10 @@ Harness surfaces the output for review, governance checks, or integration into c
 - Auditing rollback impact
 - Preparing controlled rollback procedures
 - Ensuring reversibility of migrations in compliance-sensitive environments
+
+---
+
+## Next steps
+
+- Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build a pipeline that includes the Flyway Command step.
+- Go to [Rollback for database schemas](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure rollback strategies for Flyway migrations.

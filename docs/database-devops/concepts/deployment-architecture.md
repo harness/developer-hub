@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 20
 title: Deployment Architecture
 description: Understand the deployment architecture of Harness Database DevOps, including components, data flow, and integration points.
 slug: /database-devops/concepts-and-features/deployment-architecture
@@ -28,9 +28,11 @@ This page explains the deployment architecture of Harness Database DevOps, inclu
 
 ## Before you begin, review the following:
 
+Familiarize yourself with these resources before proceeding.
+
 - [All about Database DevOps](/docs/database-devops/overview.md)
 
-## Harness DB DevOps Architecture
+## Harness DB DevOps architecture
 
 :::info
 Before you can access Harness Database DevOps, you must have Harness enable the following feature flag, `DBOPS_ENABLED`. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
@@ -40,7 +42,7 @@ Before you can access Harness Database DevOps, you must have Harness enable the 
 
 The Harness delegate is crucial to [Harness Database DevOps](/docs/database-devops/overview.md) because it gives us access to your infrastructure on which we execute jobs that require database network connectivity. The Harness Delegate acts as an agent that facilitates the connection between the [Harness CI/CD](../../continuous-integration/get-started/overview.md) pipeline and the database. It enables the execution of database changes in a secure and efficient manner. The Delegate can be configured to connect to various database instances, ensuring that the right credentials and access parameters are used for each environment.
 
-## Communication Protocol between Services and Customer Infra
+## Communication protocol between services and customer infra
 
 ![Harness DB DevOps architecture diagram](./static/dbdevops-architecture.png)
 
@@ -56,7 +58,7 @@ Key Notes
     - This can be avoided by changing the account-level setting:
     **Account Settings** → **Default Settings** → **Continuous Integration** → **Upload Logs via Harness**. When enabled, logs are shipped directly to Harness SaaS, removing the dependency on googleapis.com.
 
-### Network Communication
+### Network communication
 
 | **Initiator**          | **Protocol/Port**                                              | **Destination**                | **Harness URL / Endpoint**                     |
 | ---------------------- | -------------------------------------------------------------- | ------------------------------ | ---------------------------------------------- |
@@ -74,7 +76,9 @@ Key Notes
 | Delegate               | HTTPS :443                                                     | Git / Artifact Repositories    | External URLs                                  |
 | Delegate / Lite Engine | HTTPS :443                                                     | `googleapis.com` (Log Uploads) | External (unless disabled via account setting) |
 
-## Understanding How Secret's Info is Sent to Build Pods
+## How secrets are sent to build pods
+
+The following steps describe how Harness handles secrets during pipeline execution.
 
 1. All secret requests are first sent as expressions from Harness to Delegates, where they are decrypted inside the Pod init request.
 2. Decrypted secrets are added as Kubernetes Secrets in the same namespace where build pods are deployed.

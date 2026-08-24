@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 60
 title: Substituting Properties in Changelogs
 description: Learn how to substitute properties in Liquibase changelogs using built-in and custom configurations in Harness DB DevOps.
 keywords: [liquibase, changelog properties, property substitution, harness dbdevops, liquibase changelog, database configuration, db migration]
@@ -135,7 +135,7 @@ databaseChangeLog:
                   type: varchar(255)
 ```
 
-## Using property substitution in your changelog
+## Property substitution in changelogs
 You can set property values from the instance, while creating & updating the instance.
 Here is the process:
 
@@ -242,9 +242,9 @@ databaseChangeLog:
 ```
 </details>
 
-## Property Substitution Behavior
+## Property substitution behavior
 
-### Missing Properties
+### Unresolved properties
 If the content of `${property-name}` does not match a property, it is left as-is, and it is not removed. Once a property has been set, it cannot be changed. Only the first definition is used, others will fail with checksum error.
 
 Let us look at the below changeset:
@@ -270,7 +270,7 @@ if `${column.updatedBy}` is missing in substitute properties, the token will not
 ALTER TABLE person ADD [${column.createdBy}] varchar(10);
 ```
 
-### Escaping Property Substitution
+### Escape property substitution
 If you do not want a `${property-name}` placeholder to be replaced, add a colon **:** right after the `${`.
 
 For example, `${:property-name}` will always stay as `${property-name}`, even if property-name is defined. It is often useful when you want to show an example without real substitution:

@@ -23,13 +23,11 @@ tags:
   - rollback-strategy
 ---
 
-# Deploying Database Schema Updates on Harness Database DevOps
-
 ## Overview
 
 Harness Database DevOps (DB DevOps) is designed to streamline the integration of database changes into your CI/CD pipeline, allowing you to manage database schema updates with the same agility as application code. This document outlines the process for deploying database schema updates, focusing on accelerating innovation velocity, orchestrating traditional deployments, and the steps involved in deploying database schema updates.
 
-## Accelerate Innovation Velocity
+## Accelerate innovation velocity
 
 Harness DB DevOps enables organizations to accelerate their innovation velocity by automating the deployment of database changes. By integrating database changes into the CI/CD pipeline, teams can:
 
@@ -37,7 +35,7 @@ Harness DB DevOps enables organizations to accelerate their innovation velocity 
    - **Visibility and Control**: The platform provides visibility into the state of database changes across environments, ensuring that teams can track what has been deployed and where. This transparency helps in identifying potential issues early in the deployment process.
    - **Governance and Compliance**: Automated policies can be defined to ensure compliance with organizational standards, such as preventing destructive changes (e.g., dropping tables in production). This governance helps maintain stability while enabling rapid innovation.
 
-## Orchestration of Traditional Deployments
+## Orchestration of traditional deployments
 
 For companies using both Harness DB DevOps and Harness CD, both deployment types can be orchestrated in a unified pipeline that integrates both application and database changes. Key features include:
 
@@ -45,7 +43,7 @@ For companies using both Harness DB DevOps and Harness CD, both deployment types
    - **Rollback Capabilities**: In the event of a failure, the system supports smart rollbacks, allowing you to revert both application and database changes together. This minimizes downtime and ensures that the system can recover quickly from issues.
    - **Integration with Existing Tools**: For organizations using other deployment tools, DB DevOps can be triggered externally, allowing for a seamless integration into existing workflows.
 
-## Deploying Database Schema Updates
+## Deploy database schema updates
 
 To deploy database schema updates using Harness DB DevOps, follow these steps:
 
@@ -60,3 +58,10 @@ To deploy database schema updates using Harness DB DevOps, follow these steps:
 ## Conclusion
 
 Harness Database DevOps provides a robust framework for deploying database schema updates, enabling organizations to accelerate their innovation velocity while maintaining control and governance over their database changes. By integrating database changes into the CI/CD pipeline, teams can ensure that their deployments are efficient, reliable, and aligned with their application code, ultimately leading to faster delivery of features and improvements.
+
+---
+
+## Next steps
+
+- Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build your first database deployment pipeline.
+- Go to [Rollback for database schemas](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure rollback strategies for your deployments.

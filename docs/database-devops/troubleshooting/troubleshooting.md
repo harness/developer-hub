@@ -2,7 +2,7 @@
 title: Troubleshooting Guide
 description: Solutions to common pain points while using Harness Database DevOps. From connection issues to rollback errors, find answers to frequently encountered problems in DB DevOps pipelines.
 sidebar_label: Troubleshooting guide
-sidebar_position: 1
+sidebar_position: 10
 keywords:
   - troubleshooting
   - database devops
@@ -35,7 +35,7 @@ import TabItem from '@theme/TabItem';
 
 This guide outlines common issues encountered while using Harness Database DevOps and their corresponding solutions.
 
-## 1. searchPath Parameter Issue
+## searchPath parameter issue
  
 When working with a changelog file that includes other changelog files, Liquibase might throw an error due to improper handling of file paths. This can occur when the "file" path is not set correctly: 
 
@@ -73,7 +73,7 @@ This way, Liquibase can correctly resolve the paths to the included changelogs, 
 Liquibase uses the full path to the changelog file as part of the identifier of unique change ids. If your changelog has already been applied to an existing database, and your changelog path needs to change, you can add a change of type ''- logicalFilePath: example-changelog.yaml' to specify the path to the changelog that should be used for uniquely identifying change IDs.
 :::
 
-## 2. changelog.yaml does not exist
+## changelog.yaml does not exist
 
 Liquibase throws this error when it cannot find the changelog file. This can occur when the path is incorrect or the file is missing.
 
@@ -86,7 +86,7 @@ Liquibase throws this error when it cannot find the changelog file. This can occ
 - Ensure the filename and path in your configuration exactly match the file in your repository or working directory.
 - Cross-check for typos or incorrect directory structures.
 
-## 3. Could not find databaseChangeLog node
+## Could not find databaseChangeLog node
 
 This error comes up when Harness DB DevOps cannot find the `databaseChangeLog` node in the changelog file. This can occur if the file is not formatted correctly or is missing the required node. This issue typically surfaces when the changelog file contains unexpected content. 
 
@@ -120,7 +120,7 @@ if [ ! -d "db" ]; then
 fi
 ```
 
-## 4.  ImagePullError of alpine/curl:latest
+## ImagePullError of alpine/curl:latest
 
 This error is generally limited to Custom Script steps. 
 
@@ -134,9 +134,9 @@ However, you may also encounter the `ImagePullError` in other steps if your conf
 
 **How to Solve**:
 
-Ensure you are using the correct container registry for your environment. Follow the official [Harness documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) to configure this custom image Registry. Make sure that in the new registry Connector, the `alpine/curl:latest` image is available.
+Ensure you are using the correct container registry for your environment. Go to [Docker Registry connector settings](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) to configure this custom image Registry. Make sure that in the new registry Connector, the `alpine/curl:latest` image is available.
 
-## 5. Authentication Error: could not read Username
+## Authentication error: could not read username
 
 While adding a remote repository and pushing changes in a pipeline or shell environment, you may encounter an authentication error. This typically occurs when the credentials for the remote repository are not set up in a specified manner.
 
@@ -162,16 +162,16 @@ git push -u origin main
 - Make sure the secret is securely stored in Harness under **Project Settings → Secrets**.
 :::
 
-## 6. If I execute a dropTable or dropColumn and a rollback is triggered, will the data also be recovered? Or is only the schema structure restored?
-When a dropTable or dropColumn operation is executed and subsequently rolled back, only the schema structure can potentially be recreated—the original data will not be restored. While it is technically possible to instruct the rollback to recreate the table or column definition, the associated data is permanently lost unless a backup was taken beforehand.
+## Rollback behavior for dropTable and dropColumn changesets
+When a dropTable or dropColumn operation is executed and subsequently rolled back, only the schema structure can potentially be recreated, and the original data will not be restored. While it is technically possible to instruct the rollback to recreate the table or column definition, the associated data is permanently lost unless a backup was taken beforehand.
 
-In scenarios involving destructive operations like DROP, the rollback cannot magically recover deleted data. The only viable recovery strategy would be to restore from a database backup taken prior to the drop operation—which still results in some level of data loss and operational risk.
+In scenarios involving destructive operations like DROP, the rollback cannot magically recover deleted data. The only viable recovery strategy would be to restore from a database backup taken prior to the drop operation, which still results in some level of data loss and operational risk.
 
 :::note warning
 Dropping tables or columns in production environments should be treated with extreme caution. It is highly recommended to adopt a backup-first approach and validate rollback strategies before applying such changes.
 :::
 
-## 7.  I encountered an error during rollback. What does it mean and how can I fix it?
+## Rollback error messages
 
 This error occurs in PostgreSQL when replication is enabled, and the databasechangelog table (created by Liquibase) has no primary key or replica identity. PostgreSQL requires a replica identity to process DELETE operations during rollback.
 
@@ -194,25 +194,25 @@ Apply the workaround only if your environment uses logical replication and encou
 
 We plan to update Harness DB DevOps to include a primary key on the databasechangelog table upon creation to ensure better compatibility with replication-enabled PostgreSQL environments. Until then, applying the above workaround will unblock affected users.
 
-## 8. Why do I see the error: "The DB Instance connector cannot be an expression"?
-This is expected behavior in Database DevOps Module. Unlike other CD modules in Harness where connectors can be passed as expressions, `DB Instances` require fixed connectors.
-This is by design—features like drift detection depend on resolving the database schema, instance, and connector outside of pipeline execution. To support such functionality, the connector must be fully defined and cannot be referenced as a runtime or expression value.
+## DB Instance connector cannot be an expression error
+
+This is by design - features like drift detection depend on resolving the database schema, instance, and connector outside of pipeline execution. To support such functionality, the connector must be fully defined and cannot be referenced as a runtime or expression value.
 
 :::note
 Use a fixed connector when defining your DB Instance in order to enable full DB DevOps capabilities.
 :::
 
-## 9. From which release version is extra memory required
+## Extra memory release version requirement
 
 In latest versions, memory is allocated based on your changelog complexity. If your changesets are large in number or size, increase the memory allocation from the default 200 MB to 500 MB to avoid unexpected OOM (Out of Memory) events during changelog parsing and SQL generation.
 
-You can update the memory allocation in step configuration, learn more about it [Override resource limits](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#override-resource-limits) 
+Go to [Override resource limits](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#override-resource-limits) to update memory allocation in step configuration.
 
 :::info note
 If you are upgrading from any version prior to 1.9.0, ensure your deployment configuration reflects the updated 500 MB memory requirement.
 :::
 
-## 10. Why am I seeing a lock even though the database team confirmed no database-level locks?
+## Unexpected resource lock with no database-level locks
 In many scenarios, the “lock” you encounter is not a database engine–level lock but a Liquibase changelog lock. Liquibase uses an internal DATABASECHANGELOGLOCK table to coordinate concurrent change executions. If a pipeline fails, times out, or terminates unexpectedly, the lock may remain active even when the underlying database shows no locks.
 
 This residual lock prevents subsequent runs from proceeding until the lock is manually released.
@@ -228,7 +228,7 @@ release-locks
 
 This clears any stale Liquibase-level locks and restores normal pipeline execution.
 
-## 11. Why is kinit failing with “Client not found in Kerberos database”?
+## kinit fails with client not found in Kerberos database
 The principal does not exist in the realm, or the realm name is incorrect (case sensitive).
 
 **How to Solve**:
@@ -237,7 +237,7 @@ The principal does not exist in the realm, or the realm name is incorrect (case 
 - Ensure the realm is uppercase (e.g., DBDEMO.ORG)
 - Regenerate the keytab if necessary
 
-## 12. Why is the connection failing even though kinit works?
+## Connection fails despite kinit succeeding
 `kinit` only proves that the principal is valid. The database connection requires a properly registered SPN.
 
 **How to Solve**:
@@ -247,26 +247,26 @@ The principal does not exist in the realm, or the realm name is incorrect (case 
 - Ensure the hostname in the JDBC URL matches the SPN
 - Avoid using IP addresses in JDBC URLs
 
-## 13. Why do I see “Clock skew too great” errors?
+## Clock skew too great errors
 This error occurs when there is a significant time difference between the client machine (where kinit is run) and the KDC/AD server. Kerberos requires synchronized time for ticket validation.
 
-## 14. Why does the Delegate fail to resolve the KDC server?
+## Delegate fails to resolve the KDC server
 This can occur if the Delegate's DNS configuration cannot resolve the KDC hostname specified in krb5.conf.
 
 **How to Solve**:
 - Validate resolution using: `nslookup dc1.dbdemo.org`
 - Ensure the Delegate has proper DNS settings to resolve the KDC hostname.
 
-## 15. Why am I getting “No Kerberos credentials available” when running the pipeline?
+## No Kerberos credentials available error
 This error indicates that the Kerberos credentials obtained via `kinit` are not accessible to the pipeline execution environment. The TGT was not generated, expired, or is not accessible to the JVM process.
 
 **How to Solve**:
 Ensure the keytab is mounted at the correct path and the path is correctly referenced in the Delegate YAML configuration. Then restart the Delegate to pick up the new credentials. Also, confirm that the environment variables for Kerberos are set correctly in the Delegate configuration.
 
-## 16. Why does Oracle Kerberos authentication fail but MSSQL works?
+## Oracle Kerberos authentication fails while MSSQL works
 Oracle has additional **server-side requirements** for Kerberos authentication, such as correct `sqlnet.ora` configuration and correct keytab usage. Whereas, MSSQL is often more straightforward to set up for Kerberos.
 
-## 17. Why does the connection work locally but fail in Harness?
+## Connection works locally but fails in Harness
 This is often due to differences in the environment where `kinit` is executed and where the pipeline runs. The local environment may have access to Kerberos credentials, while the pipeline environment does not.
 
 **How to Solve**:
@@ -275,37 +275,37 @@ This is often due to differences in the environment where `kinit` is executed an
 - Validate environment variables in Delegate YAML
 - Ensure network policies allow traffic to KDC and database
 
-## 18. Why am I getting “ORA-12514: TNS:listener does not currently know of service requested in connect descriptor” when using Kerberos with Oracle?
+## ORA-12514 TNS listener error with Oracle Kerberos
 This error indicates that the Oracle listener does not recognize the service name specified in the JDBC URL.
 
 **How to Solve**:
 Either incorrect service name is specified in the JDBC URL or the Oracle listener is configured to listen on the correct port. Verify the service name in the JDBC URL matches the one registered with the Oracle listener. Also, ensure the listener is running and configured to accept connections for that service.
 
-## 19. What encryption type does Oracle require when using addent to generate a Kerberos keytab entry?
+## Oracle encryption type for Kerberos keytab entry
 Oracle requires `aes256-cts-hmac-sha1-96` and `aes128-cts-hmac-sha1-96` as the encryption type for modern oracle versions. Older version of Oracle also support `rc4-hmac` encryption type, but Oracle has deprecated this encryption type in modern versions due to RC4's known cryptographic weaknesses. 
 
-## 20. Why is my Spanner connection failing or not establishing?
+## Spanner connection fails or does not establish
 - Ensure Workload Identity is enabled on your GKE cluster. 
 - Verify the Kubernetes Service Account (KSA) is correctly annotated with the GCP Service Account
 - Confirm the required IAM roles are assigned to the GCP Service Account (GSA)
 
-## 21. Why am I getting permission or access denied errors?
+## Permission or access denied errors
 Check that the roles/iam.workloadIdentityUser binding is correctly configured and then validate that the GSA has the required database IAM roles (e.g., `roles/spanner.databaseUser`, `roles/spanner.databaseAdmin`)
 
-## 22. Why are my pipeline executions intermittent or unreliable?
+## Intermittent or unreliable pipeline executions
 - Scale up the Harness Delegate replicas to handle load
 - Increase CPU and memory resources allocated to the delegate
 - Ensure the delegate remains consistently connected and healthy
 
-## 23. Why is my connection failing?
+## Connection failure
 The connection will fail if Workload Identity not enabled or missing KSA annotation/IAM roles on GSA.
 
-## 24. Why am I getting permission errors?
+## Permission errors
 Either there is missing `roles/iam.workloadIdentityUser` or Incorrect database IAM roles
 
 ---
 
-## 25. Why is my BigQuery connection failing with "Access denied: BigQuery BigQuery: Permission denied" when using OIDC?
+## BigQuery access denied error with OIDC
 
 This error indicates that the service account used for OIDC authentication does not have the required BigQuery IAM roles.
 
@@ -322,7 +322,7 @@ gcloud projects get-iam-policy PROJECT_ID \
   --filter="bindings.members:serviceAccount:SA_EMAIL"
 ```
 
-## 26. Why is my BigQuery OIDC token exchange failing?
+## BigQuery OIDC token exchange failure
 
 The OIDC token exchange follows a two-step process. Failures can occur at either step.
 
@@ -344,7 +344,7 @@ The OIDC token exchange follows a two-step process. Failures can occur at either
     --member="serviceAccount:SA_EMAIL"
   ```
 
-## 27. Why is my BigQuery connection failing with "Dataset not found" when using OIDC?
+## BigQuery dataset not found error with OIDC
 
 This error occurs when the BigQuery dataset specified in the JDBC URL does not exist or the service account does not have access to it.
 
@@ -363,13 +363,13 @@ This error occurs when the BigQuery dataset specified in the JDBC URL does not e
     PROJECT_ID:DATASET_NAME
   ```
 
-## 28. Why does my BigQuery pipeline fail with "Invalid JDBC URL" error?
+## BigQuery pipeline fails with invalid JDBC URL
 
 This error occurs when the BigQuery JDBC URL format is incorrect or contains invalid parameters for OIDC authentication.
 
 **How to Solve**:
 - Ensure your JDBC URL follows the correct format:
-  ```
+  ```bash
   jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=PROJECT_ID;DefaultDataset=DATASET;Location=REGION;
   ```
 - Do not include `OAuthType` or `OAuthAccessToken` parameters when using OIDC authentication. The access token is injected automatically by Harness.
@@ -379,7 +379,7 @@ This error occurs when the BigQuery JDBC URL format is incorrect or contains inv
   - `Location`: Dataset region
 - Check for syntax errors (missing semicolons, incorrect parameter names).
 
-## 29. Why does BigQuery connection test succeed but pipeline execution fails?
+## BigQuery connection test succeeds but pipeline execution fails
 
 Connection tests and pipeline executions generate OIDC tokens with different custom attributes. This can cause authentication to work in one context but fail in the other.
 
@@ -387,12 +387,12 @@ Connection tests and pipeline executions generate OIDC tokens with different cus
 - Ensure your Workload Identity Pool attribute conditions accept both connector validation and pipeline execution contexts.
 - The pool conditions should filter by `account_id` only, not by pipeline-specific attributes like `org_id`, `project_id`, or `pipeline_id`.
 - Update the attribute condition in the service account's IAM policy:
-  ```
+  ```text
   attribute.account_id = "YOUR_HARNESS_ACCOUNT_ID"
   ```
 - Avoid overly restrictive conditions that might block pipeline execution tokens.
 
-## 30. Why am I getting "BigQuery API has not been enabled" error?
+## BigQuery API not enabled error
 
 This error occurs when the BigQuery API is not enabled in your GCP project.
 
@@ -409,3 +409,20 @@ Verify the APIs are enabled:
 ```bash
 gcloud services list --enabled --project=YOUR_PROJECT_ID | grep -E 'bigquery|iamcredentials|sts'
 ```
+
+## DB DevOps pipelines falsely queued on resource constraint locks
+
+When executing DB DevOps pipelines that utilize dynamic resource constraint locks (e.g., schema or instance-level locks), the pipeline fails or remains indefinitely queued with the following message:
+
+**Error Message:** `Current execution is queued as another execution is running with given resource key.`
+
+This occurs even when no other active pipeline runs are targetting or executing against the specified database instance or schema.
+
+Because the key was encoded before variable resolution, the pipeline engine failed to resolve dynamic Harness expressions, such as `<+stage.variables.schema>` or target instance identifiers at runtime. Consequently, the literal expression string was evaluated as a fixed static lock key across all pipeline executions, causing unrelated pipeline runs to block one another under a single shared lock key.
+
+**Resolution**: This issue is resolved automatically in `db-devops-service` in version `1.111.0` and above. Ensure your environment is running `db-devops-service` 1.111.x and that `ng-manager` has been upgraded to `v1.160.0`.
+
+## Next steps
+
+- Go to [Set up JDBC connectors](/docs/database-devops/use-database-devops/set-up-connectors) to verify connector configuration for connection issues.
+- Go to [Rollback for database schemas](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure rollback strategies for failed deployments.

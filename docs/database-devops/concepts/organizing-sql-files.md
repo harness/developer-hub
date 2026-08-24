@@ -29,7 +29,7 @@ tags:
   - Schema Management
   - DevOps Best Practices
 sidebar_label: Working with SQL Files
-sidebar_position: 3
+sidebar_position: 30
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -99,7 +99,7 @@ In the above example SQL Schema, the comments:
 2. `--changeset --changeset john-doe:1` - Defines a changeset with the **specified author** (john-doe) and **ID**(1) which is unique within the changelog file. This comment is similar to YAML changesets.
 :::
 
-### Spacing
+### SQL format rules
 
 Do not include a space before `--liquibase formatted sql`. Formatting variations may cause the Liquibase parser to return an error. When specifying changeset attributes in a formatted SQL changelog, any attribute value that contains spaces must be quoted. For example:
 ```sql

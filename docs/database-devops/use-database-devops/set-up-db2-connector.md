@@ -2,7 +2,7 @@
 title: Set Up IBM DB2 connector
 sidebar_label: IBM DB2
 description: Configure JDBC connectors for IBM DB2 LUW, DB2 for i, and DB2 z/OS in Harness DB DevOps.
-sidebar_position: 5
+sidebar_position: 50
 keywords:
   - ibm db2
   - db2 luw
@@ -26,7 +26,7 @@ IBM DB2 is a family of data management products that includes three variants, ea
 
 Harness DB DevOps supports all three IBM DB2 variants with Liquibase Community for database change management.
 
-## DB2 Variants Supported
+## DB2 variants supported
 
 Harness DB DevOps supports the following IBM DB2 variants:
 
@@ -38,6 +38,8 @@ Harness DB DevOps supports the following IBM DB2 variants:
 
 ### 1. DB2 LUW
 
+Ensure the following prerequisites are met for DB2 LUW connections.
+
 - **JDBC Driver**: IBM JCC driver (`jcc.jar`) is included in Harness DB DevOps
 - **Authentication**: Username and password
 - **Database Permissions**: The database user must have schema modification permissions including `CREATE`, `ALTER`, `DROP` for tables and indexes, and `SELECT`, `INSERT`, `UPDATE`, `DELETE` on the target schema. For Liquibase change tracking, the user must be able to create and modify the `DATABASECHANGELOG` and `DATABASECHANGELOGLOCK` tables.
@@ -46,6 +48,8 @@ Harness DB DevOps supports the following IBM DB2 variants:
 
 ### 2. DB2 for i (iSeries/AS/400)
 
+Ensure the following prerequisites are met for DB2 for i connections.
+
 - **JDBC Driver**: IBM Toolbox for Java (JT400) is included in Harness DB DevOps
 - **Authentication**: Username and password
 - **Database Permissions**: The database user must have authority to create, alter, and drop objects in the target library. For Liquibase change tracking, the user must be able to create and modify the `DATABASECHANGELOG` and `DATABASECHANGELOGLOCK` tables within the library.
@@ -53,6 +57,8 @@ Harness DB DevOps supports the following IBM DB2 variants:
 - **Library**: IBM i uses libraries instead of databases. Specify the library name in the connection URL.
 
 ### 3. DB2 z/OS
+
+Ensure the following prerequisites are met for DB2 z/OS connections.
 
 - **JDBC Driver**: IBM JCC driver (`jcc.jar`) is included in Harness DB DevOps
 - **License Requirement**: Customer must provide IBM DB2 Connect license JAR (`db2jcc_license_cisuz.jar`)
@@ -69,14 +75,14 @@ The `translate binary=true` and `date format=iso` parameters are required for Li
 
 
 :::warning DB2 z/OS license requirement
-DB2 z/OS requires a customer-provided IBM DB2 Connect license JAR (`db2jcc_license_cisuz.jar`). Contact your IBM representative to obtain this license file. Without this license, connections to DB2 z/OS will fail. Go to [Providing the DB2 z/OS License JAR](#providing-the-db2-zos-license-jar) for setup instructions.
+DB2 z/OS requires a customer-provided IBM DB2 Connect license JAR (`db2jcc_license_cisuz.jar`). Contact your IBM representative to obtain this license file. Without this license, connections to DB2 z/OS will fail. Go to [Provide the DB2 z/OS license JAR](#provide-the-db2-zos-license-jar) for setup instructions.
 :::
 
 :::info note
 **DB2 for i library vs. database:** IBM i uses libraries as the schema container, not traditional databases. Specify the library name in the JDBC URL path. For example, `jdbc:as400://myhost/MYLIB` connects to library `MYLIB`.
 :::
 
-## Providing the DB2 z/OS License JAR
+## Provide the DB2 z/OS license JAR
 
 DB2 z/OS connections require the IBM DB2 Connect license JAR (`db2jcc_license_cisuz.jar`). This license is not included with Harness DB DevOps and must be obtained from IBM and provided to Harness.
 

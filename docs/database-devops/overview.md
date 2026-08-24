@@ -2,7 +2,7 @@
 title: Harness Database DevOps (DB DevOps) Overview
 sidebar_label: Overview
 description: Get an overview of Harness Database DevOps—its features, benefits, and how it enables safe, scalable database delivery in CI/CD pipelines.
-sidebar_position: 1
+sidebar_position: 10
 keywords:
   - database devops
   - dbops overview

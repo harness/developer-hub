@@ -1,7 +1,7 @@
 ---
 title: Get Started with Changelogs
 description: Learn how to define changelogs for SQL and MongoDB in Harness Database DevOps.
-sidebar_position: 3
+sidebar_position: 30
 sidebar_label: Get Started with Changelogs
 hide_table_of_contents: true
 redirect_from:
@@ -10,11 +10,9 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Get Started with Changelogs
-
 Harness Database DevOps supports changelogs in various formats to manage schema changes across environments. Below are examples of SQL and MongoDB changelogs to help you get started quickly.
 
-## Example Changelogs
+## Example changelogs
 
 <Tabs>
 <TabItem value="sql" label="SQL Changelog" default>
@@ -182,3 +180,10 @@ databaseChangeLog:
 ```
 </TabItem>
 </Tabs>
+
+---
+
+## Next steps
+
+- Go to [Build a changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to create your first changelog for Harness Database DevOps.
+- Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to connect your database to Harness.

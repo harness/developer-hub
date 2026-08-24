@@ -1,7 +1,7 @@
 ---
 title: Preview SQL with Manual Approval
 description: Learn how to preview SQL changes in Harness DB DevOps pipelines and enforce manual approval before applying schema changes.
-sidebar_position: 11
+sidebar_position: 110
 keywords:
   - preview sql
   - harness dbops
@@ -116,7 +116,7 @@ pipeline:
 </TabItem>
 </Tabs>
 
-## Setting Up the Workflow
+## Set up the workflow
 
 In your pipeline’s **Execution** tab, add the following steps:
 
@@ -126,7 +126,7 @@ In your pipeline’s **Execution** tab, add the following steps:
 | **Approval**    | Adds a manual approval gate where users must review and confirm SQL changes. |
 | **DB Schema Apply** | Applies the approved SQL changes to the target database instance.         |
 
-## SQL Preview
+## SQL preview
 
 The **Preview SQL** step shows a generated SQL script based on the detected changes.  
 This allows DBAs and developers to:
@@ -147,7 +147,7 @@ CREATE TABLE products
 );
 ```
 
-## Referencing SQL Output in Approval Messages
+## Reference SQL output in approval messages
 
 To display the generated SQL in your approval message, use the Preview SQL step's output variable:
 
@@ -162,15 +162,20 @@ For example, if your step group identifier is `Preview_SQL` and the Preview SQL 
 ```
 ![sql-approval-message](./static/sql-approval-message.png)
 
-## Manual Approval Step
+## Manual approval step
 The Approval step acts as a gate in the pipeline. When the pipeline reaches this stage:
 - A notification is sent to the designated approvers.
 - Approvers can review the Preview SQL output before continuing.
 - The pipeline proceeds to the DB Schema Apply step only after approval.
 This ensures that no schema changes are deployed without human validation.
 
-## Applying Schema Changes
+## Apply schema changes
 After approval, the pipeline executes the `Apply Schema` step. This deploys the reviewed SQL script to the configured database instance. For example:
 - **Preview SQL:** shows the generated ALTER TABLE statement.
 - **Approval:** DBA confirms the change is safe.
 - **DB Schema Apply:** Executes the approved change on the target database.
+
+## Next steps
+
+- Go to [Apply a DB schema step](/docs/database-devops/use-database-devops/step-guide/apply-dbschema-step) to deploy schema changes in your pipeline.
+- Go to [Rollback for database schemas](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure automated rollback for failed deployments.

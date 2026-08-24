@@ -2,7 +2,7 @@
 title: Database DevOps Onboarding Guide
 description: A self-service onboarding guide for Harness DB DevOps.
 slug: /database-devops/use-database-devops/get-started/onboarding-guide/
-sidebar_position: 1
+sidebar_position: 10
 sidebar_label: Get Started
 keywords:
   - database devops
@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 
 This onboarding guide accelerates your adoption journey by walking you through the essential setup steps from defining your database schemas to deploying versioned changes consistently across environments. Whether you use Liquibase or Flyway configurations, Harness orchestrates the full migration lifecycle within your Kubernetes infrastructure, ensuring predictable, auditable, and scalable database operations.
 
-## Prerequisites
+## Before you begin
 
 Before beginning the walkthroughs in this guide, ensure you have:
 | Item | Details / Link |
@@ -41,14 +41,14 @@ Before beginning the walkthroughs in this guide, ensure you have:
 | Kubernetes cluster | Kubernetes Cluster ≥ v1.18, Harness Delegate installed ([Delegate setup guide](/docs/platform/delegates/install-delegates/overview)) |
 | Database credentials | JDBC‑compatible database; user with DDL/DML privileges. (Go to “[JDBC connection strings](/docs/database-devops/use-database-devops/set-up-connectors) to review connection string formats”) |
 
-## Setting up Database DevOps with Liquibase and Flyway
+## Set up Database DevOps with Liquibase and Flyway
 Harness supports both Liquibase Compatible and Flyway Compatible configurations, but the setup varies based on your preferred workflow. Before configuring your DB Schema, ensure your repository follows the correct structure and that your migration files adhere to the chosen framework’s conventions.
 
 :::info note
 If you already use Liquibase or Flyway, you can skip to the section [Configuring Your DB Schema](#2-configure-your-database-schema).
 :::
 
-### 1. Prepare Your Migration Framework (Flyway or Liquibase)
+### 1. Prepare your migration framework (Flyway or Liquibase)
 <Tabs>
 <TabItem value="Liquibase Compatible" label="Liquibase Compatible">
 If you are new to Liquibase, there are two main ways to create your initial changelog:
@@ -89,7 +89,7 @@ This structure enables Flyway and Harness to consistently detect, version, and a
 </TabItem>
 </Tabs>
 
-### 2. Configure your Database Schema
+### 2. Configure your database schema
 
 The database schema defines a set of SQL changes that can be deployed to one or more database instances. Here is how we will configure it:
 
@@ -107,14 +107,14 @@ The database schema defines a set of SQL changes that can be deployed to one or 
 :::tip
 The primary database instance where the Liquibase changelog will be initially applied. (Once the Instance is created, you can add the primary instance by going to the DB Schema settings.)
 
-(In case of using [Author DB Change](https://developer.harness.io/docs/database-devops/use-database-devops/configure-llm-for-database-devops/), this field is mandatory to set up the schema correctly.)
+If you use [Author DB Change](/docs/database-devops/use-database-devops/configure-llm-for-database-devops), this field is mandatory to set up the schema correctly.
 :::
 
 :::info
 Go to [Harness Git connector settings](../../platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference.md) to review connector options.
 :::
 
-### 3. Connect with Database Instance 
+### 3. Connect with database instance 
 
 Before we can deploy our Database Schema, we need to connect a database instance to which we can deploy it. Here is how:
 
@@ -130,14 +130,14 @@ Before we can deploy our Database Schema, we need to connect a database instance
    - **Delegate** - The Harness Delegate that will run the database operations.
 4. Click `Add Database Instance`.
 
-### 4. Configure your Deployment Pipeline
+### 4. Configure your deployment pipeline
 
 A deployment pipeline deploys your database changes when it runs. In addition to deploying your database, it can also deploy application changes, and have other logic such as requiring a manual approval. Here are some steps on how to create a simple pipeline that deploys a schema change to a database instance anytime it changes in git:
 
 1. Under Pipelines, Click Create a Pipeline.
 2. Click **Add Stage** and Choose **Custom stage**.
 3. Choose **Add step group** and Turn on **Enable Containerized Stage**.
-4. Choose the Kubernetes cluster you would like to run on.
+4. Choose the Kubernetes cluster you'd like to run on.
 5. Click **Add Step** and Choose the **Apply Schema** step under DB DevOps.
 6. For the step name, enter "Deploy Database Schema".
    ![dbops-step-apply-schema](./static/dbops-step-apply-schema.png)

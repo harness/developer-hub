@@ -2,7 +2,7 @@
 title: Working with Flyway Migration Files
 description: Learn how to build a migration file for your database using Harness DBOps.
 sidebar_label: Working with Flyway Migration Files
-sidebar_position: 4
+sidebar_position: 40
 slug: /database-devops/concepts/flyway-migrations-file-structure
 keywords:
   - migration
@@ -29,7 +29,7 @@ tags:
 
 Flyway provides a versioned, convention-driven approach to managing database schema changes. When paired with Harness Database DevOps, Flyway migrations become fully automated, GitOps-driven, and Kubernetes-native. This guide walks you through how to structure your migration files, configure the flyway.toml manifest, and prepare your repository for seamless deployments.
 
-## Flyway Migration File Structure
+## Flyway migration file structure
 
 A typical Flyway-compatible repository looks like this:
 ```tree
@@ -48,10 +48,10 @@ Recommended naming conventions:
 2. `flyway.toml` placed at the top level.
 3. Semantic versioning (V1, V2, V3…) to maintain predictable ordering.
 
-## Creating Versioned Migration Files
+## Create versioned migration files
 Flyway processes migrations based on its naming convention:
 
-### 1. Versioned Migrations
+### 1. Versioned migrations
 Executed once and never modified.
 ```sql
 V<version>__<description>.sql
@@ -73,7 +73,7 @@ CREATE TABLE users (
 );
 ```
 
-### 2. Undo Migrations
+### 2. Undo migrations
 Flyway supports a special class of migrations known as Undo Migrations, which use the `U<version>__<description>.sql` naming pattern.
 
 ```sql
@@ -81,14 +81,14 @@ U001__revert_init.sql
 U002__remove_users_table.sql
 ```
 Undo migrations allow you to reverse the effects of a corresponding versioned migration. For example:
-|Forward Migration|	Undo Migration|	Purpose|
+|**Forward Migration**|**Undo Migration**|**Purpose**|
 | --- | --- | --- |
-| V1__init.sql | U1__revert_init.sql | Rolls back schema objects created in V1 |
-| V2__create_users.sql | U2__drop_users.sql | Removes objects introduced in V2 |
+| `V1__init.sql` | `U1__revert_init.sql` | Rolls back schema objects created in V1 |
+| `V2__create_users.sql` | `U2__drop_users.sql` | Removes objects introduced in V2 |
 
 Undo migrations are executed when you run the 'DB Schema Rollback' step in your pipeline. This allows for more controlled rollback than relying solely on backups or manual scripts.
 
-### 3. Creating the flyway.toml Configuration File (Optional)
+### 3. Create the flyway.toml configuration file (optional)
 The `flyway.toml` file defines how Flyway connects to your database and manages migrations. 
 
 A basic configuration looks like this:
@@ -109,9 +109,6 @@ cleanDisabled = true
 ```
 
 You can also define dynamic configurations using profiles. For example:
-:::important note
-These environments are not used directly by Harness (Harness uses its own JDBC connectors). The `flyway.toml` is primarily for local testing or CI pipelines that run Flyway commands outside of Harness.
-:::
 
 ```toml
 [environments.dev]
@@ -124,8 +121,19 @@ url = "jdbc:postgresql://qa-db:5432/app"
 user = "qa_user"
 password = "securepass"
 ```
-## Best Practices for Building Flyway Migrations
-1. Maintain Immutable Versioned Migrations Never modify an existing V1__*.sql file. If you need to correct a change: Create a new version file, e.g., `V4__fix_users_column.sql`.
-2. Keep Migrations Small and Incremental. Smaller files ensure better readability and reduce risk during execution.
-3. Enable naming validation in flyway.toml to enforce team-wide consistency: `validateMigrationNaming = true`
-4. Use a Single Source of Truth. All schema changes must originate in Git, not from manual DB edits. Harness will ensure schema consistency across environments.
+
+:::important note
+These environments are not used directly by Harness (Harness uses its own JDBC connectors). The `flyway.toml` is primarily for local testing or CI pipelines that run Flyway commands outside of Harness.
+:::
+
+## Best practices to create migrations files
+
+Some best practices to follow when creating Flyway migrations:
+
+  1. Maintain Immutable Versioned Migrations Never modify an existing V1__*.sql file. If you need to correct a change: Create a new version file, e.g., `V4__fix_users_column.sql`.
+  2. Keep Migrations Small and Incremental. Smaller files ensure better readability and reduce risk during execution.
+  3. Enable naming validation in flyway.toml to enforce team-wide consistency: `validateMigrationNaming = true`
+  4. Use a Single Source of Truth. All schema changes must originate in Git, not from manual DB edits. Harness will ensure schema consistency across environments.
+
+## Next steps
+- Go to [Build a Changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to learn how to generate changelogs for SQL databases.
