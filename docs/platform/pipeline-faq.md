@@ -416,9 +416,7 @@ To trigger an Azure pipeline from a Harness pipeline, you can use a Shell Script
 
 In general, you need delete permissions to remove a pipeline, even if you created the pipeline originally. Your permissions my have changed.
 
-If an error occurs where you aren't able to delete a pipeline that you created, you can forcefully delete Harness resources. To do this, go to **Account resources** and select **Default Settings**. Under General, select **Enable Force Delete of Harness Resources**.
-
-Once force deletion of Harness resources is enabled in your account, and you can delete the pipeline from the Harness UI. Consider disabling this setting after you have deleted the pipeline so that it doesn't remain enabled indefinitely.
+If an error occurs where you cannot delete a pipeline you created, go to [Troubleshoot pipeline executions](/docs/platform/pipelines/troubleshoot-pipeline-executions) for steps to enable Force Delete of Harness Resources.
 
 ### Can I restore deleted pipelines?
 
@@ -459,7 +457,7 @@ This can be useful, for example, when configuring [conditional executions](https
 
 ### Why does the Overview page show an active deployment while the pipeline history indicates it finished successfully?
 
-You might need to enable the feature flag `DEBEZIUM_ENABLED` for your account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+For more information, refer to [Troubleshoot pipeline executions](/docs/platform/pipelines/troubleshoot-pipeline-executions) for steps to resolve this status mismatch.
 
 ### How long are Harness deployment logs visible in the UI?
 
@@ -491,7 +489,7 @@ Status checks typically occur every 30 minutes.
 
 ### VAULT operation error: Decryption failed after 3 retries for secret
 
-Such errors in pipeline execution can arise from issues with the network's or the delegate's connection to the Vault where the secret exists. First, verify that the delegates are operational and that the connectors used in the pipelines are connected properly. If either the delegate or connector connectivity test fails, log in to the delegate and attempt to reach the connector URL from there manually.
+For more information, refer to [Troubleshoot pipeline executions](/docs/platform/pipelines/troubleshoot-pipeline-executions) for steps to diagnose and resolve Vault decryption failures.
 
 ### Can Harness execute TSQL scripts in Azure?
 
@@ -613,7 +611,7 @@ You can configure [delegate selectors](https://developer.harness.io/docs/platfor
 
 Harness maintains a local cache of all connected delegates to execute tasks and optimize performance. The cache is refreshed every 3 minutes, which means that it may take up to 3 minutes for a new delegate to be eligible to execute a task once it's connected. This has been in production for a few years and has proven to be effective.
 
-To ensure a smooth transition between bringing up a new delegate and terminating an old pod, Harness recommends having a grace period. Harness uses the `minReadySeconds` field in our YAML configuration to ensure that old pods die after 2 minutes of a new pod being in the ready state. If your delegate YAML file doesn't have this field, you can download a new YAML and add it to prevent older pods from being killed before the new pod receives traffic.
+For more information, refer to [Troubleshoot pipeline executions](/docs/platform/pipelines/troubleshoot-pipeline-executions) for steps to resolve delegate resume failures, including the `minReadySeconds` grace period configuration.
 
 ### How can I assign the same delegate replica to all steps in my pipeline?
 
