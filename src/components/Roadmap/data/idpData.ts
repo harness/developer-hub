@@ -33,27 +33,167 @@ export const idpModuleTheme: ModuleTheme = {
 
 export const IdpData: Horizon = {
   Now: {
-    description: "Q2 2026",
+    description: "Q3, Aug - Oct 2026",
     feature: [
       {
-        tag: [{ value: "Catalog" }, { value: "AI & Automation" }],
-        title: "Enhanced Entity Overview and pages",
-        description: "An updated overview and individual pages for different entity types that is focused on bubbling up most important functional data",
+        tag: [{ value: "Catalog" }, { value: "AI" }],
+        title: "AI-Powered Entity Reconciliation",
+        description: "AI-enabled recommendations to reconcile and link components across systems",
+      },
+      {
+        tag: [{ value: "Catalog" }, { value: "Developer Experience" }],
+        title: "TechDocs Customization",
+        description: "Customisation of CSS, themes, TOC compression, link formatting",
       },
       {
         tag: [{ value: "Scorecards" }],
-        title: "Scorecard Alerts",
-        description: "Notify developers via Slack and email when scorecard checks pass or fail",
+        title: "OOTB Data Points for integrations",
+        description: "Out-of-the-box data points to easily build scorecards and checks on integration data",
       },
+      {
+        tag: [{ value: "Scorecards" }],
+        title: "Increased API & Terraform Provider Coverage",
+        description: "Increase API and Terraform provider coverage for scorecards and integration",
+      },
+      {
+        tag: [{ value: "Environment Management" }],
+        title: "Custom Messaging to End Users",
+        description: "Allow teams to customize messaging shown to end users in environments and blueprints",
+      },
+      {
+        tag: [{ value: "Environment Management" }],
+        title: "Provision Infrastructure via Terraform Enterprise",
+        description: "Provision infrastructure via Terraform Enterprise",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Harness Integrations Expansion",
+        description: "Expand Harness integrations across CI and IaCM",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "AWS & Azure Integrations",
+        description: "Add AWS and Azure integrations to expand infrastructure visibility and management",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Jenkins Integrations",
+        description: "Integrate Jenkins to bring Jenkins build data into the IDP",
+      },
+      {
+        tag: [{ value: "Integrations" }, { value: "AI" }, { value: "Catalog" }],
+        title: "Expanded AI Asset Auto-Discovery",
+        description: "Discover and catalog AI assets across a broader set of platforms and systems",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Enhanced Github and Kubernetes integrations",
+        description: "Support for Github multi-org and mono repo scenarios; Kubernetes SDA auto-upgrade",
+      },
+      {
+        tag: [{ value: "Plugins/Integrations" }, { value: "Workflows" }],
+        title: "OOTB Workflows for Integrations",
+        description: "Out-of-the-box action library available across integrations to power workflows and automation",
+      },
+    ],
+  },
+  Next: {
+    description: "Q4, Nov - Jan 2027",
+    feature: [
       {
         tag: [{ value: "Workflows" }, { value: "Developer Experience" }],
         title: "Visual Workflow Creation",
         description: "UI-first workflow authoring with visual composition, no YAML required",
       },
       {
-        tag: [{ value: "Workflows" }, { value: "AI & Automation" }],
-        title: "Workflow Authoring Agent",
-        description: "AI-powered agent that drafts and refines workflow templates from natural language intent",
+        tag: [{ value: "Catalog" }, { value: "Developer Experience" }],
+        title: "Enhanced Layouting",
+        description: "Cards-builder experience for composing entity layouts with greater flexibility",
+      },
+      {
+        tag: [{ value: "Integrations" }, { value: "Catalog" }],
+        title: "Bitbucket Server Integration",
+        description: "Add Bitbucket Server integration",
+      },
+      {
+        tag: [{ value: "Integrations" }, { value: "Security" }],
+        title: "Security Integrations",
+        description: "Integrate with Semgrep and Wiz",
+      },
+      {
+        tag: [{ value: "Integrations" }, { value: "Observability" }],
+        title: "Grafana integration",
+        description: "Support integration to bring observability data",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Identity Integrations",
+        description: "Integrate with Okta and Workday",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Hosted Delegates",
+        description: "Support hosted delegates for IDP integrations",
+      },
+      {
+        tag: [{ value: "Scorecards" }],
+        title: "Scorecard Alerts",
+        description: "Notify developers via Slack and email when scorecard checks pass or fail",
+      },
+    ],
+  },
+  Later: {
+    description: "In the future",
+    feature: [
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Harness Integrations Expansion",
+        description: "Expand Harness integrations across AIDI and CCM",
+      },
+      {
+        tag: [{ value: "Catalog" }, { value: "AI" }],
+        title: "AI-Powered Ownership Recommendations",
+        description: "AI-enabled recommendations to close gaps in ownership",
+      },
+      {
+        tag: [{ value: "Environment Management" }],
+        title: "Environment Management as a Pipeline Step",
+        description: "Use Environment Management as a pipeline step to enable promotion flows with environment creation and teardown",
+      },
+      {
+        tag: [{ value: "Workflows" }, { value: "AI" }],
+        title: "AI-Guided Workflows",
+        description: "Help developers choose workflow parameters based on intent",
+      },
+      {
+        tag: [{ value: "Environment Management" }],
+        title: "Selective TTL",
+        description: "Support component-level TTL for environments instead of complete pause",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Custom Apps",
+        description: "Enable teams to build custom internal applications that can be plugged into the IDP",
+      },
+      {
+        tag: [{ value: "Environment Management" }],
+        title: "Input Validation and Constraints",
+        description: "Add input validation and constraint capabilities to Environment Management",
+      },
+    ],
+  },
+  Released: {
+    description: "Has been released recently",
+    feature: [
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Teams Hierarchies",
+        description: "Onboard teams and organisational hierarchies in IDP for visibility and aggregation",
+      },
+      {
+        tag: [{ value: "Catalog" }, { value: "AI" }],
+        title: "Enhanced Entity Overview and pages",
+        description: "An updated overview and individual pages for different entity types that is focused on bubbling up most important functional data",
       },
       {
         tag: [{ value: "Workflows" }, { value: "Catalog" }],
@@ -63,17 +203,12 @@ export const IdpData: Horizon = {
       {
         tag: [{ value: "Environment Management" }],
         title: "Cost of Environments",
-        description: "Surface cost attribution alongside managed environments",
+        description: "Surface infrastructure cost attribution for environments",
       },
       {
         tag: [{ value: "Plugins/Integrations" }],
-        title: "Custom Integrations",
-        description: "First-class API + webhook framework for building custom catalog integrations",
-      },
-      {
-        tag: [{ value: "Plugins/Integrations" }, { value: "Workflows" }],
-        title: "OOTB Actions for Integrations",
-        description: "Out-of-the-box action library available across integrations to power workflows and automation",
+        title: "Custom Integrations, Metrics",
+        description: "First-class API + webhook framework for building custom catalog integrations and time series metrics",
       },
       {
         tag: [{ value: "Scorecards" }],
@@ -81,75 +216,10 @@ export const IdpData: Horizon = {
         description: "Define custom maturity tiers for scorecards beyond default thresholds",
       },
       {
-        tag: [{ value: "Catalog" }, { value: "Developer Experience" }],
-        title: "Enhanced Layouting",
-        description: "Cards-builder experience for composing entity layouts with greater flexibility",
-      },
-      {
-        tag: [{ value: "Workflows" }],
-        title: "Lightweight Workflow Actions",
-        description: "API/MCP-driven workflow actions that don't require pipelines",
-      },
-      {
-        tag: [{ value: "Catalog" }, { value: "Developer Experience" }],
-        title: "AI Search through MCP",
-        description: "Ability to search through Confluence and other docs through MCP",
-      },
-      {
         tag: [{ value: "Workflows" }, { value: "Developer Experience" }],
         title: "Workflow Library",
         description: "Browse and use out of the box workflow templates supporting use cases across Developer onboarding, Infrastructure provisioning, Day-two operations, etc.",
       },
-    ],
-  },
-  Next: {
-    description: "Q3 2026",
-    feature: [
-      {
-        tag: [{ value: "Scorecards" }, { value: "Developer Experience" }],
-        title: "Scorecards UX Redesign",
-        description: "Refresh the scorecards experience for clarity, drill-downs, and improved data visualization",
-      },
-      {
-        tag: [{ value: "Scorecards" }, { value: "Integrations" }],
-        title: "OOTB Scorecards & Checks for Integrations",
-        description: "Out-of-the-box scorecards and checks bundled with each integration",
-      },
-      {
-        tag: [{ value: "Workflows" }, { value: "Environment Management" }],
-        title: "Shareable Input Sets",
-        description: "Reusable input sets across workflows and environment management, mirroring the pipelines pattern",
-      },
-      {
-        tag: [{ value: "Environment Management" }],
-        title: "TFE/TFC support in Environment Management",
-        description: "Set up environment footprints directly through Terraform pipelines without IACM",
-      },
-    ],
-  },
-  Later: {
-    description: "Q4 2026",
-    feature: [
-      {
-        tag: [{ value: "Catalog" }, { value: "Environment Management" }],
-        title: "Infrastructure Resources in Catalog",
-        description: "Surface environment infrastructure resources in the catalog and map infra entities to resources",
-      },
-      {
-        tag: [{ value: "Catalog" }, { value: "Integrations" }],
-        title: "Next-Wave Integrations",
-        description: "Continued expansion of the integrations ecosystem, including Harness AI SRE, Jira enhancements, Wiz, GitLab enhancements, AWS Infrastructure, and Kubernetes Phase 2",
-      },
-      {
-        tag: [{ value: "Workflows" }, { value: "Developer Experience" }],
-        title: "Picker Templates",
-        description: "Reusable picker patterns that can be shared across multiple workflows",
-      },
-    ],
-  },
-  Released: {
-    description: "Q1 2026",
-    feature: [
       {
         tag: [{ value: "Catalog" }],
         title: "Custom Entity Kinds",
