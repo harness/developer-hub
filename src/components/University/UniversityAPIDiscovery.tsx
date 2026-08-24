@@ -7,8 +7,8 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 // import AdminCertificationExamDetails from "./data/asp-certification-admin-exam-details.md";
 // import AdminCertificationReviewDetails from "./data/asp-certification-admin-review-guide.md";
-import DeveloperCertificationExamDetails from "./data/tbh-certification-developer-exam-details.md";
-import DeveloperCertificationReviewGuide from "./data/tbh-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/apidis-certification-dev-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/apidis-certification-dev-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/asp-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/asp-certification-architect-exam-details.md";
 import IltCard from "./Card";
@@ -291,7 +291,7 @@ export default function CertificationsTBH() {
                     <DeveloperCertificationReviewGuide />
 
                     <div className={styles.btnContainer}>
-                      <Link href="https://university-registration.harness.io/certification-exam-traceable-by-harness-developer-certification">
+                      <Link href="https://university-registration.harness.io/certification-exam-harness-certified-api-application-discovery-developer-certification">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>

@@ -457,6 +457,10 @@ export default function University() {
                       alt="Developer AI DLC Insights Badge"
                     />
                     <img
+                      src={`${baseUrl}img/cert-dev-asp-badge.svg`}
+                      alt="Developer API Discovery Badge"
+                    />
+                    <img
                       src={`${baseUrl}img/cert-dev-tbh-badge.svg`}
                       alt="Developer TBH Badge"
                     />
