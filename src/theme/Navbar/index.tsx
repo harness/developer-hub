@@ -151,11 +151,11 @@ export default function NavbarWrapper(props: Props): ReactNode {
     { to: `/university`, label: "Harness University", icon: "/img/home/university.svg" },
     { to: `${docsBase}/harness-solutions-factory`, label: "Harness Solutions Factory", icon: "/img/home/harness.svg" },
     { to: `/glossary`, label: "Harness Glossary", icon: "/img/icon_release_notes.svg" },
-    { to: `${docsBase}/self-managed-enterprise-edition`, label: "Self-Managed Enterprise Edition" },
-    { to: `${docsBase}/open-source`, label: "Open Source" },
-    { to: `${docsBase}/faqs`, label: "FAQs" },
-    { to: `${docsBase}/troubleshooting`, label: "Troubleshooting" },
-    { to: `${docsBase}/harness-cloud-operations`, label: "Harness Cloud Operations" },
+    { to: `/docs/self-managed-enterprise-edition`, label: "Self-Managed Enterprise Edition" },
+    { to: `/docs/open-source`, label: "Open Source" },
+    { to: `/docs/faqs`, label: "FAQs" },
+    { to: `/docs/troubleshooting`, label: "Troubleshooting" },
+    { to: `/docs/harness-cloud-operations`, label: "Harness Cloud Operations" },
   ];
 
   const secondaryNavItems = [
