@@ -5,6 +5,70 @@ import { MODULES } from "@site/src/constants";
 
 /* Define the cards - start */
 
+  // 3k-docs cards — links to new v1 pages
+  export const docsCards3k: CardSections = [
+    {
+      name: "Get started with Harness Deployments & GitOps",
+      description: "",
+      list: [
+        {
+          title: "Overview",
+          module: MODULES.cd,
+          description:
+            "Understand how Harness Deployments works — services, environments, pipelines, and the Delegate.",
+          link: "/3k-docs/continuous-delivery/overview",
+        },
+        {
+          title: "Getting Started",
+          module: MODULES.cd,
+          description:
+            "Run your first deployment end to end in Harness.",
+          link: "/3k-docs/continuous-delivery/getting-started",
+        },
+        {
+          title: "Supported integrations",
+          module: MODULES.cd,
+          description:
+            "See all supported platforms, artifact sources, and cloud providers.",
+          link: "/3k-docs/continuous-delivery/cd-integrations",
+        },
+      ],
+    },
+    {
+      name: "Use Deployments",
+      description: "",
+      list: [
+        {
+          title: "Kubernetes deployments",
+          module: MODULES.cd,
+          description:
+            "Deploy to Kubernetes using rolling, canary, and blue-green strategies.",
+          link: "/3k-docs/continuous-delivery/v1-deployments/kubernetes/overview",
+        },
+        {
+          title: "Helm deployments",
+          module: MODULES.cd,
+          description:
+            "Deploy Helm charts using basic, canary, and blue-green strategies.",
+          link: "/3k-docs/continuous-delivery/v1-deployments/helm/overview",
+        },
+      ],
+    },
+    {
+      name: "YAML Reference",
+      description: "",
+      list: [
+        {
+          title: "Step library YAML reference",
+          module: MODULES.cd,
+          description:
+            "YAML examples for every Kubernetes and Helm step in one place.",
+          link: "/3k-docs/continuous-delivery/v1-deployments/step-library-yaml-reference",
+        },
+      ],
+    },
+  ];
+
   // Docs
   export const docsCards: CardSections = [
     {

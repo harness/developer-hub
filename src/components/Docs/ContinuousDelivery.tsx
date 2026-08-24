@@ -8,7 +8,7 @@ import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
-import { docsCards } from './data/continuousDeliveryData';
+import { docsCards, docsCards3k } from './data/continuousDeliveryData';
 import ContinuousDeliveryOnboardingIllustration from './illustrations/ContinuousDeliveryOnboardingIllustration';
 export default function CD() {
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
@@ -21,7 +21,7 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_cd.svg`} />
-            <h1>Continuous Delivery & GitOps</h1>
+            <h1>{is3kDocs ? 'Harness Deployments & GitOps' : 'Continuous Delivery & GitOps'}</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/docs/category/knowledge-base-article">
@@ -55,12 +55,9 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Continuous Delivery (CD) and GitOps enables deployment of
-              application and infrastructure changes in a safe and sustainable
-              way. Your CD pipelines and GitOps workflows can automate all of
-              the steps necessary to get your changes into production. Make your
-              software releases more efficient and reliable with Harness CD and
-              GitOps.
+              {is3kDocs
+                ? "Harness Deployments and GitOps enables deployment of application and infrastructure changes in a safe and sustainable way. Your deployment pipelines and GitOps workflows can automate all of the steps necessary to get your changes into production. Make your software releases more efficient and reliable with Harness Deployments and GitOps."
+                : "Harness Continuous Delivery (CD) and GitOps enables deployment of application and infrastructure changes in a safe and sustainable way. Your CD pipelines and GitOps workflows can automate all of the steps necessary to get your changes into production. Make your software releases more efficient and reliable with Harness CD and GitOps."}
             </p>
             <div className={styles.illustrationContainer}>
               {is3kDocs ? (
@@ -79,7 +76,7 @@ export default function CD() {
           </div>
         </div>
       </div>
-      <TutorialCards data={docsCards} sectionClass={styles.subSection} />
+      <TutorialCards data={is3kDocs ? docsCards3k : docsCards} sectionClass={styles.subSection} />
     </div>
   );
 }
