@@ -4080,6 +4080,26 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'Services',
+          className: 'sidebar-item-new',
+          link: {
+            type: 'doc',
+            id: 'resilience-testing/chaos-testing/services',
+          },
+          collapsed: true,
+          items: [
+            {
+              type: 'doc',
+              id: 'resilience-testing/chaos-testing/services',
+              label: 'Overview',
+            },
+            'resilience-testing/chaos-testing/service-discovery',
+            'resilience-testing/chaos-testing/manual-service-onboarding',
+            'resilience-testing/chaos-testing/custom-service-agent',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Risks',
           className: 'sidebar-item-new',
           link: {
@@ -4102,7 +4122,6 @@ const sidebars: SidebarsConfig = {
           className: 'sidebar-item-new',
         },
         "resilience-testing/chaos-testing/application-maps",
-        "resilience-testing/chaos-testing/service-discovery",
         "resilience-testing/chaos-testing/image-registry",
         {
           type: 'doc',

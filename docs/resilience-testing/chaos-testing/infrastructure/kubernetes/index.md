@@ -37,7 +37,7 @@ This page explains what DDCR is, how an experiment executes, the two install app
 
 ---
 
-## What you will learn
+## What you will learn from this topic
 
 - What DDCR is and how it relates to the Harness Delegate.
 - How an experiment executes against a target cluster.
@@ -55,10 +55,10 @@ DDCR (Delegate-Driven Chaos Runner, also called Delegate-Driven Chaos Infrastruc
 ### What DDCR provides
 
 - **No separate operator.** Reuses the Delegate already deployed for other Harness modules.
-- **Automated service discovery.** A transient [discovery agent](/docs/chaos-engineering/guides/service-discovery) maps Kubernetes workloads and the network traffic between them.
-- **Application maps.** Auto-create or [guide](/docs/chaos-engineering/guides/application-maps#create-an-application-map) the creation of [application maps](/docs/chaos-engineering/guides/application-maps) so chaos targets a logical app, not raw workloads.
-- **Auto-created experiments.** Generate a recommended experiment set per application map.
-- **Application-level resilience score** in addition to the per-experiment score.
+- **Automated service discovery.** A transient [discovery agent](/docs/resilience-testing/chaos-testing/service-discovery) maps Kubernetes workloads and the network traffic between them.
+- **Service onboarding.** Turn discovered workloads into [services](/docs/resilience-testing/chaos-testing/services) with health probes attached, so chaos targets a known service rather than a raw workload.
+- **Application maps.** Group onboarded services into [application maps](/docs/resilience-testing/chaos-testing/application-maps) so chaos targets a logical app.
+- **Service-level resilience score** in addition to the per-experiment score.
 - **CI/CD adaptability.** Runs out of the same Delegate your pipelines already use.
 
 ### How an experiment executes

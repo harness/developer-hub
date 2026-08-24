@@ -68,7 +68,7 @@ After applying the allowlist synchronizer, you need to enable GKE Autopilot comp
 :::note Alternative Setup Options
 You can also configure the **"Use static name for configmap and secret"** option for GKE Autopilot compatibility during:
 
-- [1-click chaos setup](./get-started#automated-onboarding)
+- [Service onboarding](./service-discovery), when you onboard a new infrastructure
 - New discovery agent creation
 - For existing discovery agents
 :::

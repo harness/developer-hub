@@ -48,13 +48,13 @@ The Visual form has a **YAML** toggle. Switching to YAML shows the `infrastructu
 To create a Kubernetes infrastructure through Terraform instead, use the [`harness_chaos_infrastructure_v2` resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/chaos_infrastructure_v2) in the [Harness Terraform provider](/docs/platform/automation/terraform/harness-terraform-provider-overview).
 :::
 
-## Create chaos experiments on the new infrastructure
+## Onboard services on the new infrastructure
 
-After you save the infrastructure, the **Create Chaos Experiments on your Infrastructure** wizard opens with Step 1 (Select Infrastructure) already complete.
+After you save the infrastructure, the **Onboard a new resilience testing infrastructure** wizard opens with Step 1 (Select infrastructure) already complete.
 
-1. In Step 2, pick the creation mode:
-   - **Beginner:** Harness creates a small set of Application Maps and recommended chaos experiments for you. You can edit them later.
-   - **Expert:** multi-step guided creation. Pick fault types per workload.
-2. Click **Go!** to continue with the defaults. To override defaults for the [chaos runner and Discovery Agent](/docs/platform/service-discovery/customize-agent), click **Configure Advanced Settings (Optional)** first.
+1. In Step 2, select the **Service onboarding** card. Harness discovers the services running in the infrastructure, associates probes with them, and onboards them for testing.
+2. Select **Go!** to run onboarding with the default settings. To override the defaults for the [chaos runner and Discovery Agent](/docs/platform/service-discovery/customize-agent), select **Configure Advanced Settings** first and complete the optional Step 3.
+
+Go to [Automated service onboarding](/docs/resilience-testing/chaos-testing/service-discovery) for a walkthrough of the discovery, scanning, onboarding, and report stages.
 
 The infrastructure status flips to **Active** when the Delegate registers the chaos runner and the discovery agent finishes its first sweep.

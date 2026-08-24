@@ -197,6 +197,18 @@ See [DR Testing Concepts](./dr-testing/concepts) for a full breakdown of all con
 
 These concepts apply across all resilience testing activities in the Harness platform.
 
+### Services
+
+A service is an onboarded target, and it is the unit Harness Resilience Testing tests, scores, and reports on. Continuous discovery invents workloads in a Kubernetes cluster. Resilience Testing onboarding turns selected workloads into services, runs a risk scan as part of that flow, and (for bulk onboarding) attaches default health probes. Use the [Custom Service Agent](./chaos-testing/custom-service-agent) for Linux VMs, Windows VMs, AWS resources, and other targets you define by hand. Those custom services require an explicit infrastructure assignment.
+
+The service is what ties the module together, because every other concept attaches to it:
+
+- Chaos experiments, load tests, and DR tests all target a service, and its details page reports all three side by side
+- Probes attach to a service and take their inputs from the target behind it
+- Risks are detected against a service, and risk scores are calculated per service
+
+Go to [Services](./chaos-testing/services) to understand what onboarding creates. Go to [Automated service onboarding](./chaos-testing/service-discovery) for the three-stage wizard.
+
 ### Environments
 
 Logical groupings of your infrastructure where tests are executed:

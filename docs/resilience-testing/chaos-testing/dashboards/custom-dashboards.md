@@ -6,7 +6,7 @@ description: Use out-of-the-box dashboards and build your own custom dashboards 
 keywords:
   - resilience testing dashboards
   - custom dashboard
-  - risk insights
+  - insights
   - chaos dashboard
 tags:
   - resilience-testing
@@ -26,12 +26,12 @@ redirect_from:
 
 import DocImage from '@site/src/components/DocImage';
 
-The Resilience Testing (RT) module provides dashboards that visualize key metrics from your chaos testing operations. You access them under the **Dashboards** section of the **Risk Insights** left navigation.
+The Resilience Testing (RT) module provides dashboards that visualize key metrics from your chaos testing operations. You access them under the **Dashboards** section of the **Insights** left navigation.
 
 The module ships with out-of-the-box (OOTB) dashboards for a high-level view of chaos testing across an account, and you can also build your own custom dashboards from Harness Unified Data Platform (UDP) queries.
 
-<DocImage path={require('./static/custom-dashboards/risk-insights-dashboards-nav.png')} alt="The Dashboards item under the Risk Insights section of the Resilience Testing left navigation" title="Click to view full size" />
-<p align="center"><em>The Dashboards item under Risk Insights in the Resilience Testing module.</em></p>
+<DocImage path={require('./static/custom-dashboards/risk-insights-dashboards-nav.png')} alt="The Dashboards item under the Insights section of the Resilience Testing left navigation" title="Click to view full size" />
+<p align="center"><em>The Dashboards item under Insights in the Resilience Testing module.</em></p>
 
 Selecting **Dashboards** opens the dashboards landing page.
 
@@ -152,9 +152,9 @@ The `Chaos` tag and a category tag are mandatory. Without them, the RT module ca
 
 <DocImage path={require('./static/custom-dashboards/back-to-rt.png')} alt="The left navigation bar option to return to the Resilience Testing module" title="Click to view full size" />
 
-15. In the RT module, go back to the **Dashboards** page under **Risk Insights**.
+15. In the RT module, go back to the **Dashboards** page under **Insights**.
 
-<DocImage path={require('./static/custom-dashboards/dashboards-page.png')} alt="The Dashboards page under Risk Insights in the RT module" title="Click to view full size" />
+<DocImage path={require('./static/custom-dashboards/dashboards-page.png')} alt="The Dashboards page under Insights in the RT module" title="Click to view full size" />
 
 Your custom dashboard now appears in the **Dashboards** section, filtered under the category you tagged it with, and you can open it to see the widgets you created.
 

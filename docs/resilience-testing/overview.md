@@ -60,6 +60,8 @@ True resilience requires all three approaches working in concert. Here's how the
 
 **In your pipeline**: Integrate all three into your deployment process for continuous resilience validation alongside functional and security testing.
 
+**Across all three:** Onboarded services give the three pillars a common subject. Continuous discovery invents workloads in the cluster. Resilience Testing onboarding turns the ones you select into services. For targets outside Kubernetes discovery, such as Linux VMs, use the [Custom Service Agent](./chaos-testing/custom-service-agent). Each service then collects chaos, load, and DR results in one place. Go to [Services](./chaos-testing/services) for the model, and go to [Automated service onboarding](./chaos-testing/service-discovery) for the bulk wizard.
+
 ## Use Cases
 
 **Continuous resilience validation**: Integrate resilience tests into your deployment pipelines to validate system reliability alongside functional and performance testing. Catch resilience issues before they reach production.
@@ -73,6 +75,8 @@ True resilience requires all three approaches working in concert. Here's how the
 ## Platform Capabilities
 
 **200+ Built-in Faults**: Ready-to-use chaos faults covering Kubernetes, cloud platforms, Linux, Windows, and application runtimes.
+
+**Service-Based Testing**: Discover workloads with a Kubernetes discovery agent, or define custom targets with the Custom Service Agent, then onboard them as services so experiments, risks, and scores attach to a named part of your system. Bulk discovery onboarding attaches default health probes and includes a risk scanning stage.
 
 **Load Testing**: Simulate realistic user traffic patterns to validate system performance, identify bottlenecks, and test auto-scaling under expected and peak demand.
 
