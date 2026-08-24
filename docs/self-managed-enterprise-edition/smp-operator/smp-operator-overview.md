@@ -17,6 +17,8 @@ tags:
   - smp-operator
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 The Harness SMP Operator is a tool that bootstraps the Harness Platform in your Kubernetes cluster. It handles namespace creation, registry credentials, Helm chart deployment, and ingress integration, providing a streamlined installation experience for both online and air-gapped environments.
 
 ---
@@ -40,6 +42,14 @@ Before you install the Harness Platform with the SMP Operator, ensure you have t
 - **Storage classes**: Storage classes configured for EKS, AKS, or GKE. For more information, see <a href="/docs/self-managed-enterprise-edition/smp-operator/prerequisites/storage-classes" target="_blank">Storage classes</a>.
 - **DNS and TLS certificates**: DNS resolution and certificate management for your installation. For more information, see <a href="/docs/self-managed-enterprise-edition/smp-operator/prerequisites/dns-and-tls-certificates" target="_blank">DNS and TLS certificates</a>.
 - **Registry access**: Online or air-gapped registry configuration for pulling platform images. For more information, see <a href="/docs/self-managed-enterprise-edition/smp-operator/prerequisites/registry-setup" target="_blank">Registry setup</a>.
+
+---
+
+## Interactive walkthrough
+
+Watch this video to learn how to use the Harness SMP Operator to bootstrap the Harness Platform in your Kubernetes cluster.
+
+<DocVideo src="https://www.youtube.com/watch?v=_uxMA-B749k" title="Bootstrap the Harness Platform with the Harness SMP Operator" />
 
 ---
 
