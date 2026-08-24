@@ -22,11 +22,16 @@ This feature is currently in beta. It is behind the feature flag `PIPE_ENABLE_DE
 
 ---
 
-## What you will learn in this topic
-- **When to use DAG pipelines:** Recognize the workflows where stage dependencies beat sequential or parallel execution.
-- **How DAG pipelines work:** Understand how the `dependsOn` field controls execution instead of stage order.
-- **How to enable DAG:** Create a new DAG pipeline or convert an existing pipeline to the DAG format.
-- **How to define dependencies:** Add, remove, and visualize dependencies between stages.
+## What you will learn from this topic
+
+- How to recognize [DAG pipeline use cases](#dag-pipeline-use-cases) where stage dependencies optimize workflows
+- How [DAG pipeline execution](#dag-pipeline-execution) differs from traditional sequential or parallel pipelines
+- How to [enable DAG for a pipeline](#enable-dag-for-a-pipeline) by creating new or converting existing pipelines
+- How to [configure stage dependencies](#configure-stage-dependencies) using visual editor or YAML
+- How [visual graph behavior](#visual-graph-behavior) helps you understand dependency relationships
+- How [execution behavior](#execution-behavior) affects pipeline performance and completion
+- How to use [templates and DAG pipelines](#templates-and-dag-pipelines) together
+- How to combine [conditional execution](#conditional-execution) with DAG dependencies
 
 ---
 
@@ -40,12 +45,12 @@ This feature is currently in beta. It is behind the feature flag `PIPE_ENABLE_DE
 
     :::
 
-- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). To get these, an administrator must assign you a role that includes them. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to understand roles and permissions, and go to [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to create or edit a role.
-- **Familiarity with Harness pipelines:** You should know how to create and run a pipeline. If you are new to pipelines, go to [Harness Pipelines](/docs/category/pipelines) to learn the basics.
+- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for <a href="/docs/platform/role-based-access-control/permissions-reference#pipelines" target="_blank" rel="noopener noreferrer">Pipelines</a>. To get these, an administrator must assign you a role that includes them. For more information, refer to <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank" rel="noopener noreferrer">RBAC in Harness</a>.
+- **Familiarity with Harness pipelines:** You should know how to create and run a pipeline. If you are new to pipelines, go to <a href="/docs/category/pipelines" target="_blank" rel="noopener noreferrer">Harness Pipelines</a> to learn the basics.
 
 ---
 
-## When to use DAG pipelines
+## DAG pipeline use cases
 
 DAG pipelines are ideal for workflows where different stages have specific dependencies that do not fit into a simple sequential or parallel pattern.
 
@@ -59,7 +64,7 @@ Other scenarios where DAG pipelines excel include:
 
 ---
 
-## How DAG pipelines work
+## DAG pipeline execution
 
 In DAG pipelines, stage execution is controlled by the `dependsOn` field rather than stage order. Each stage declares which other stages must complete successfully before it can start. A stage with no dependencies (empty `dependsOn` array) starts immediately when the pipeline begins.
 
@@ -85,7 +90,7 @@ You can create a DAG pipeline from scratch, or migrate one of your existing pipe
 4. Select **Start**.
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/create-dag-pipeline-dialog.png')} width="60%" height="60%" title="Create DAG pipeline dialog" />
+  <DocImage path={require('./static/create-dag-pipeline-dialog.png')} width="60%" height="60%" alt="Create DAG pipeline dialog" />
 </div>
 
 The pipeline editor opens in DAG mode. Unlike traditional pipelines, DAG pipelines do not show start or end nodes in the visual graph.
@@ -93,7 +98,7 @@ The pipeline editor opens in DAG mode. Unlike traditional pipelines, DAG pipelin
 For comparison, a traditional pipeline shows the start and end nodes that DAG pipelines omit:
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/traditional-pipeline-with-start-end.png')} width="60%" height="60%" title="Traditional pipeline with start and end nodes" />
+  <DocImage path={require('./static/traditional-pipeline-with-start-end.png')} width="60%" height="60%" alt="Traditional pipeline with start and end nodes" />
 </div>
 
 ### Convert an existing pipeline to DAG
@@ -106,7 +111,7 @@ Converting an existing pipeline to DAG creates a clone of the original pipeline 
 4. Select **Clone**.
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/clone-convert-to-dag-menu.png')} width="60%" height="60%" title="Clone and convert to DAG pipeline menu option" />
+  <DocImage path={require('./static/clone-convert-to-dag-menu.png')} width="60%" height="60%" alt="Clone and convert to DAG pipeline menu option" />
 </div>
 
 Harness creates a new pipeline with DAG enabled. Your original pipeline remains unchanged. The new DAG pipeline removes all `parallel` keywords and sets up initial dependencies based on the original stage order (sequential stages get converted to direct dependencies, parallel stages get empty dependencies to start simultaneously).
@@ -136,7 +141,7 @@ When you select a stage in the pipeline visual editor, you will see three action
 - **Cross (X) button**: Removes dependencies from the selected stage
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/dag-stage-action-buttons.png')} width="60%" height="60%" title="DAG stage with three action buttons" />
+  <DocImage path={require('./static/dag-stage-action-buttons.png')} width="60%" height="60%" alt="DAG stage with three action buttons" />
 </div>
 
 #### Add a dependency to an existing stage
@@ -146,7 +151,7 @@ When you select a stage in the pipeline visual editor, you will see three action
 3. From the dropdown list, select which stage(s) must complete before this stage can run.
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/dag-add-dependency-dropdown.png')} width="60%" height="60%" title="Add dependency dropdown" />
+  <DocImage path={require('./static/dag-add-dependency-dropdown.png')} width="60%" height="60%" alt="Add dependency dropdown" />
 </div>
 
 The dropdown shows only stages that will not create a circular dependency. Harness automatically excludes:
@@ -175,7 +180,7 @@ If you instead hover below an existing stage and select the **plus (+)** button 
 3. From the list of current dependencies, select **Remove** next to the dependencies you want to remove.
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/dag-remove-dependencies-dialog.png')} width="60%" height="60%" title="Remove dependencies dialog" />
+  <DocImage path={require('./static/dag-remove-dependencies-dialog.png')} width="60%" height="60%" alt="Remove dependencies dialog" />
 </div>
 
 The visual graph updates to reflect the removed dependencies. If you remove all dependencies from a stage, it will start executing immediately when the pipeline begins.
@@ -515,7 +520,7 @@ pipeline:
 The DAG pipeline visual graph shows all stages and their dependency relationships:
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/dag-pipeline-example-visual.png')} width="70%" height="70%" title="Multi-path DAG pipeline visual graph" />
+  <DocImage path={require('./static/dag-pipeline-example-visual.png')} width="70%" height="70%" alt="Multi-path DAG pipeline visual graph" />
 </div>
 
 **Execution flow:**
@@ -533,7 +538,7 @@ The DAG pipeline visual graph shows all stages and their dependency relationship
 After all stages complete, you can see the full execution results showing the complex dependency relationships and multiple endpoints:
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/dag-pipeline-execution-complete.png')} width="70%" height="70%" title="Completed DAG pipeline execution with multiple endpoints" />
+  <DocImage path={require('./static/dag-pipeline-execution-complete.png')} width="70%" height="70%" alt="Completed DAG pipeline execution with multiple endpoints" />
 </div>
 
 **Why this cannot be expressed in traditional pipelines:**
@@ -568,7 +573,7 @@ When you select a stage in the visual editor, Harness highlights the entire depe
 Stages outside this dependency path are dimmed, making it easier to trace how the selected stage fits into the overall workflow.
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/dag-dependency-path-highlighted.png')} width="60%" height="60%" title="DAG pipeline with highlighted dependency path" />
+  <DocImage path={require('./static/dag-dependency-path-highlighted.png')} width="60%" height="60%" alt="DAG pipeline with highlighted dependency path" />
 </div>
 
 ### Automatic graph layout
@@ -629,7 +634,7 @@ You can create pipeline templates with DAG enabled. The template defines the sta
 When creating a new pipeline template, enable the **Allow user to edit stage dependencies?** toggle in the template creation dialog:
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/dag-template-creation-dialog.png')} width="60%" height="60%" title="Create DAG pipeline template dialog" />
+  <DocImage path={require('./static/dag-template-creation-dialog.png')} width="60%" height="60%" alt="Create DAG pipeline template dialog" />
 </div>
 
 To convert an existing pipeline template to DAG:
@@ -639,7 +644,7 @@ To convert an existing pipeline template to DAG:
 4. Select **Clone**.
 
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/dag-template-clone-convert.png')} width="60%" height="60%" title="Clone as DAG template menu option" />
+  <DocImage path={require('./static/dag-template-clone-convert.png')} width="60%" height="60%" alt="Clone as DAG template menu option" />
 </div>
 
 The new template has DAG enabled, and any pipelines created from it will be DAG pipelines.
@@ -684,3 +689,11 @@ Be aware of these current limitations when using DAG pipelines:
 - **One-way conversion**: You cannot convert a DAG pipeline back to a traditional pipeline. Plan your migration carefully and test DAG behavior before fully committing.
 - **No step-level dependencies**: DAG dependencies apply to stages only, not to individual steps within a stage. Steps within a stage always execute in the order defined in the stage configuration.
 - **Git YAML editing**: Manually editing a DAG pipeline's YAML in Git to remove `dependsOn` fields will not convert it back to a traditional pipeline. The DAG metadata is stored separately in Harness and must be changed through the UI.
+
+---
+
+## Next steps
+
+- <a href="/docs/platform/pipelines/pipeline-chaining" target="_blank" rel="noopener noreferrer">Pipeline chaining in Harness</a>: Chain pipelines together to create complex multi-pipeline workflows.
+- <a href="/docs/platform/pipelines/barriers" target="_blank" rel="noopener noreferrer">Barriers</a>: Synchronize parallel stages using barriers for coordination points.
+- <a href="/docs/platform/templates/template" target="_blank" rel="noopener noreferrer">Templates</a>: Create reusable pipeline templates from your DAG pipelines.
