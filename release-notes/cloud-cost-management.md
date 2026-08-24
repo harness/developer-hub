@@ -27,6 +27,23 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 --- 
 
+## August 2026 - Version 1.101.0
+#### Deployment Date: August 25, 2026 (Prod-1)
+
+### Fixed Issues
+
+- **ECS applied recommendations now load correctly:** We have fixed an issue where the applied cost histogram for ECS recommendations failed to load, which could block automatic detection of applied recommendations and manual applied evaluation. ECS recommendation pages now load their histogram data correctly. [CCM-35156]
+- **Cost category anomaly duration now reflects the actual anomalous period:** We have fixed an issue where a cost category anomaly could show more days than the period during which spend was actually anomalous. Nearby duplicate cost category anomalies are now cleaned up the same way as resource anomalies. [CCM-35145]
+- **Asset Governance enforcements run reliably:** We have fixed an issue where creating or updating a governance enforcement could fail when scheduled jobs backed up. Enforcement schedules are now created and updated reliably. [CCM-35124]
+- **Budget update API rejects unsupported changes to start time and period:** We have fixed an issue where the budget update API reported success while silently ignoring changes to the budget start time or period. The API now returns an error when you attempt to change these fields after a budget is created. [CCM-35110]
+- **Anomalies load reliably for users with restricted perspective access:** We have fixed an issue where the Anomalies tab could intermittently fail to load, or omit anomalies, for users whose access was limited to specific perspectives. Access control is now applied within the anomaly query, which prevents database connection exhaustion and the earlier 1,000-record limit. [CCM-35082]
+- **ECS Fargate recommendations use actual cost for ARM workloads:** We have fixed an issue where ECS Fargate recommendations for ARM (Graviton) tasks fell back to billing data because ARM usage types were not matched, even when actual cost was available. Fargate cost matching now includes ARM usage types, so these recommendations use the correct cost. [CCM-35054]
+- **Jira ticket status now updates on recommendations:** We have fixed an issue where the Jira ticket status shown on a recommendation did not update after the status changed in Jira. Recommendation Jira statuses now sync correctly. [CCM-34979]
+- **Cost Explorer anomaly totals match the Anomalies page:** We have fixed an issue where the anomalies total in a Cost Explorer perspective could include unit-cost and cost-category values, producing figures that did not match the Anomalies page. Perspective anomaly totals now align with the Anomalies page unless the perspective targets a cost category. [CCM-34927]
+- **Anomaly details show the correct resource type:** We have fixed an issue where an anomaly could be shown as a cluster anomaly with empty cluster, namespace, and workload details. Anomaly details now infer the resource type from the populated fields, so non-cluster anomalies display their correct details. [CCM-34926]
+
+---
+
 ## August 2026 - Version 1.100.0
 #### Deployment Date: August 18, 2026 (Prod-1)
 
