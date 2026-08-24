@@ -17,6 +17,10 @@ The primary goal of this tutorial is to help you understand the following concep
 
 ✔ [**Live User Validation using API Requests**](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#live-user-validation-using-api-requests)
 
+:::info
+This tutorial uses `SelectFieldFromApi` and `ValidateAndFetch`. The same workflow can be built with the [`CustomField` component](/docs/internal-developer-portal/flows/create-workflow/custom-field) using `fieldType: dropdown` and `fieldType: button`.
+:::
+
 These features allow users to dynamically filter results based on previous inputs and make customizable API requests with real-time validation. 
 
 ## Pull request creator workflow

@@ -8,6 +8,10 @@ sidebar_label: Understand Dynamic Workflow Picker
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::info
+`SelectFieldFromApi` and `ValidateAndFetch` documented on this page remain supported. For new workflows, the [`CustomField` component](/docs/internal-developer-portal/flows/create-workflow/custom-field) provides the same API-backed dropdown and button behavior from a single field extension, with regex and API validation and the same form context semantics.
+:::
+
 It is quite common to create a UI field in [IDP Workflow](/docs/internal-developer-portal/flows/service-onboarding-pipelines#specparameters---formstep--formstep) forms which shows a static list options to the user. For example -
 
 ```yaml

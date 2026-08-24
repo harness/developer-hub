@@ -1,7 +1,7 @@
 ---
 title: Configuring Workflow Outputs
 description: Learn more about defining and generating outputs for your Workflows.
-sidebar_position: 4
+sidebar_position: 5
 sidebar_label: Configure Outputs
 redirect_from:
   - /docs/internal-developer-portal/flows/outputs

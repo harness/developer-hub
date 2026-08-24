@@ -114,6 +114,10 @@ Here are the different ways to design form inputs in IDP workflows:
     - `Dynamic API Picker` – Fetch options dynamically via an API request
     - `Autocomplete Fields` – Suggestions based on previous inputs or external data fetched using Dynamic API Picker. 
 
+4. **[CustomField Component](/docs/internal-developer-portal/flows/create-workflow/custom-field)**
+
+    - `CustomField` – A single schema-driven field for text, dropdown, button, and JSON inputs, with optional API integration, validation, and form context wiring. Recommended for new workflows.
+
 ## Workflows playground
 :::caution
 The Workflows Playground **does not render accurate previews** for **advanced user inputs** and **complex use cases** such as conditional fields or complex input formats. It is recommended to use the editor only for **lightweight input previews**. For accurate validation of **advanced inputs**, test the Workflow Form Inputs in an **actual Workflow execution**.
@@ -517,6 +521,10 @@ parameters:
 | **Multi-Select Boolean**   | Selecting multiple options | Enable multiple monitoring features |
 
 ## Workflow UI pickers
+
+:::tip
+For new workflows, consider the [`CustomField` component](/docs/internal-developer-portal/flows/create-workflow/custom-field) instead. It covers text, dropdown, button, and JSON inputs from a single field extension, and it is validated against a type-safe schema. The pickers documented below remain fully supported.
+:::
 
 User input is a crucial aspect of Workflows. However, built-in components and fields may not always meet specific requirements, and at times, you may want to enhance the form with more intuitive and tailored inputs.  
 

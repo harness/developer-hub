@@ -1,7 +1,7 @@
 ---
 title: Configuring Workflow Actions
 description: Learn how to configure actions for your Workflow's backend. 
-sidebar_position: 3
+sidebar_position: 4
 sidebar_label: Configure Actions
 redirect_from: 
   - /docs/internal-developer-portal/flows/custom-actions
