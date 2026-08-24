@@ -5,7 +5,7 @@ export const sscaModuleTheme = { ...DEFAULT_MODULE_THEME, moduleKey: "ssca", mod
 
 export const SscaData: Horizon = {
   Now: {
-    description: "Q2 2026, May 2026 - July 2026",
+    description: "Q3 2026, Aug 2026 - Oct 2026",
     feature: [
       {
         tag: [{ value: "Risk & Compliance" }, { value: "AppSec" }],
@@ -13,55 +13,55 @@ export const SscaData: Horizon = {
         description: "Manage exemptions for OSS Dependencies across Artifacts & Repos with full auditability and lifecycle tracking.",
       },
       {
-        tag: [{ value: "Governance" }, { value: "Attestation" }],
-        title: "Evidence Vault - Phase 2",
-        description: "Extend to CD events with deployment attestations and environment snapshots, plus attestation search and policy enforcement to streamline audit readiness and compliance reporting.",
-      },
-      {
-        tag: [{ value: "Integration" }, { value: "Artifact Security" }],
-        title: "Cosign AWS Support",
-        description: "Leverage keys from AWS KMS to sign and verify artifacts.",
-      },
-      {
         tag: [{ value: "Risk & Compliance" }],
         title: "OSS Risk Scoring",
         description: "Introduce contextual risk scoring for open source dependencies based on risks such as EOL, malicious packages, and known vulnerabilities.",
       },
       {
-        tag: [{ value: "Run time Security" }],
-        title: "Run Time Security for CI/CD Pipelines",
-        description: "Protect your Harness CI/CD pipelines from supply chain attacks by detecting anomalies and unauthorized activity through real-time system and network event monitoring.",
+        tag: [{ value: "Integration" }, { value: "Repo Security" }],
+        title: "SCS plugins for Jenkins",
+        description: "Enable SCS capabilities in Jenkins pipelines with native plugin support for SBOM generation, SLSA provenance, artifact signing and verification, and policy enforcement.",
       },
       {
-        tag: [{ value: "Analytics" }],
-        title: "SCS Usage Analytics",
-        description: "A centralized analytics dashboard showing SCS usage trends, adoption, and engagement across all SCS steps.",
+        tag: [{ value: "Integration" }, { value: "Artifact Security" }],
+        title: "Cosign AWS KMS support",
+        description: "Leverage keys from AWS KMS to sign and verify artifacts.",
       },
       {
-        tag: [{ value: "AI" }, { value: "AppSec" }],
-        title: "Remediation Agent",
-        description: "Deliver intelligent insights and automate key SCS actions to proactively secure your software supply chain with AI-driven agent.",
+        tag: [{ value: "Integration" }, { value: "Artifact Security" }],
+        title: "Google Cloud KMS support",
+        description: "Leverage keys from Google Cloud KMS to sign and verify artifacts.",
+      },
+      {
+        tag: [{ value: "AIBOM" }, { value: "Risk & Compliance" }],
+        title: "AIBOM Risk",
+        description: "Assess risk across AI models, datasets, agents, and related components discovered in AIBOMs so you can govern AI usage in the supply chain.",
+      },
+      {
+        tag: [ { value: "Integration" }],
+        title: "SCS Auto PR (GitLab, Bitbucket)",
+        description: "Automatically generate pull requests in GitLab and Bitbucket to update outdated OSS dependencies.",
       },
       {
         tag: [{ value: "Risk & Compliance" }],
         title: "License Attribution",
         description: "Comprehensive license attribution reporting for open source dependencies across your artifacts and repositories.",
       },
+      // {
+      //   tag: [{ value: "Governance" }, { value: "Attestation" }],
+      //   title: "Evidence Vault - Phase 2",
+      //   description: "Extend to CD events with deployment attestations and environment snapshots, plus attestation search and policy enforcement to streamline audit readiness and compliance reporting.",
+      // },
       {
-        tag: [{ value: "Integration" }, { value: "Repo Security" }],
-        title: "SCS Plugins for GitLab",
-        description: "Enable SCS capabilities for GitLab repositories with native plugin support for SBOM generation, SAST, SCA, and secrets scanning.",
+        tag: [{ value: "AI" }, { value: "AppSec" }],
+        title: "SCA Remediation Agent",
+        description: "Deliver intelligent insights and automate remediations for SCA findings so you can fix vulnerable open source dependencies faster.",
       },
     ],
   },
   Next: {
-    description: "Q3 2026, August 2026 - October 2026",
+    description: "Q4 2026, Nov 2026 - Jan 2027",
     feature: [
-      {
-        tag: [{ value: "AIBOM" }],
-        title: "AIBOM",
-        description: "Gain visibility into all AI models, datasets and prompts used across your systems, enabling governance, risk assessment, and secure AI adoption.",
-      },
       {
         tag: [{ value: "Risk & Compliance" }],
         title: "Global Artifact & Repository visibility",
@@ -77,10 +77,15 @@ export const SscaData: Horizon = {
         title: "Repo Security Posture Management for Harness Code",
         description: "Identify repository misconfigurations based on CIS v1.0 and OWASP Top 10 CI/CD Risks, with built-in SBOM generation, SAST, SCA, and secrets scanning.",
       },
+      {
+        tag: [{ value: "Risk & Compliance" }, { value: "SBOM" }],
+        title: "VEX support",
+        description: "Generate and consume Vulnerability Exploitability eXchange (VEX) documents so you can record whether a vulnerability is exploitable in your artifacts and reduce false positive risks.",
+      },
     ],
   },
   Later: {
-    description: "Q4 2026+, November 2026 & beyond",
+    description: "Q1 2027+, Feb 2027 & beyond",
     feature: [
       {
         tag: [{ value: "Governance" }, { value: "Risk & Compliance" }],
@@ -102,16 +107,46 @@ export const SscaData: Horizon = {
         title: "CICD Static Rules",
         description: "Enhance the rule list to detect CICD misconfigs.",
       },
+      {
+        tag: [{ value: "Run time Security" }],
+        title: "Run Time Security for CI/CD Pipelines",
+        description: "Protect your Harness CI/CD pipelines from supply chain attacks by detecting anomalies and unauthorized activity through real-time system and network event monitoring.",
+      },
     ],
   },
   Released: {
     description: "What has been released",
     feature: [
       {
-        tag: [{ value: "Governance" }, { value: "Attestation" }],
-        title: "Evidence Vault - Phase 1 (Beta)",
-        description: "Native CI integration to automatically capture Source and Build attestations, link artifacts to source code, support custom attestations, and enable attestation downloads.",
+        tag: [{ value: "Analytics" }],
+        title: "SCS Usage Analytics",
+        description: "A centralized analytics dashboard showing SCS usage trends, adoption, and engagement across all SCS steps.",
       },
+      {
+        tag: [{ value: "AIBOM" }],
+        title: "AIBOM",
+        description: "Gain visibility into all AI models, datasets and prompts used across your systems, enabling governance, risk assessment, and secure AI adoption.",
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "Repo Security" }],
+        title: "SCS Plugins for GitLab",
+        description: "Enable SCS capabilities for GitLab repositories with native plugin support for SBOM generation, SAST, SCA, and secrets scanning.",
+      },
+      {
+        tag: [{ value: "AI" }, { value: "AppSec" }],
+        title: "Zero day Agent",
+        description: "Use an AI-driven agent to identify impacted artifacts and repositories and accelerate response when a zero-day vulnerability is disclosed.",
+      },
+      {
+        tag: [{ value: "Risk & Compliance" }, { value: "Governance" }],
+        title: "Package Age policy",
+        description: "Enforce a configurable cooldown period on newly published open source packages so SBOM policy enforcement can block or warn on packages that are too new to trust.",
+      },
+      // {
+      //   tag: [{ value: "Governance" }, { value: "Attestation" }],
+      //   title: "Evidence Vault - Phase 1 (Beta)",
+      //   description: "Native CI integration to automatically capture Source and Build attestations, link artifacts to source code, support custom attestations, and enable attestation downloads.",
+      // },
       {
         tag: [{ value: "Dependency Management" }],
         title: "Automate OSS Dependency Updates with Harness AI",
