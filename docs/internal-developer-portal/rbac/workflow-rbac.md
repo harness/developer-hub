@@ -49,7 +49,7 @@ You can access **Administrative Settings** from your Harness UI directly using t
 <DocVideo src="https://app.tango.us/app/embed/1dcbc9e9-70f4-49e7-bbec-6a2c94c97ae7" title="Create the IDP Catalog Create Role" />
 
 
-### Configure RBAC for Project-Level workflow execution
+### Configure RBAC for project-level workflow execution
 
 This example walks through configuring RBAC to allow users to execute Workflows at a specific project level.
 

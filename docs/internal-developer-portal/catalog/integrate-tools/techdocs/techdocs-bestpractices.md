@@ -15,7 +15,7 @@ TechDocs leverages **MkDocs** to convert Markdown files into static documentatio
 
 ## Documentation site structure
 
-### Single-Page documentation
+### Single-page documentation
 
 Single-page documentation is ideal for quick-start guides, FAQs, or standalone documentation that does not require complex navigation.
 
@@ -35,11 +35,11 @@ TechDocs will automatically render the content without additional configuration.
 
 ---
 
-### Multi-Page documentation
+### Multi-page documentation
 
 For comprehensive documentation requiring hierarchical navigation and better content organization, use multi-page sites.
 
-#### Option 1: Auto-Generated navigation
+#### Option 1: Auto-generated navigation
 
 MkDocs automatically generates navigation based on your folder and file structure, no configuration required.
 
@@ -165,7 +165,7 @@ graph TD;
     C -->|Data| B;
 ```
 
-#### Supported Diagram Types:
+#### Supported diagram types:
 - Flowcharts
 - Sequence Diagrams
 - Gantt Charts
@@ -186,11 +186,11 @@ For more information refer [here](/docs/internal-developer-portal/catalog/integr
 
 ---
 
-### PlantUML for Advanced Diagrams
+### PlantUML for advanced diagrams
 
 PlantUML is ideal for more detailed and customizable diagrams, such as class diagrams, activity diagrams, and deployment diagrams.
 
-#### Example Usage:
+#### Example usage:
 - In your Markdown file:
 
 ```sh
@@ -251,11 +251,11 @@ For more information refer [here](/docs/internal-developer-portal/catalog/integr
 
 ---
 
-## Embed Videos in TechDocs
+## Embed videos in TechDocs
 
 Embedding videos enriches documentation, especially for tutorials or product demonstrations.
 
-### Embed Videos Using iframe
+### Embed videos using iframe
 
 To embed videos hosted on platforms like YouTube or Vimeo, use the following syntax:
 
@@ -273,7 +273,7 @@ To embed videos hosted on platforms like YouTube or Vimeo, use the following syn
 - Replace `VIDEO_ID` with the unique ID of the video from the platform (e.g., dQw4w9WgXcQ for YouTube).
 - Adjust width and height for desired sizing.
 
-#### Allowed Domains:
+#### Allowed domains:
 To maintain security and compatibility, only embed videos from the following domains are allowed:
 
 - youtube.com
@@ -290,7 +290,7 @@ To maintain security and compatibility, only embed videos from the following dom
 **Note:**
 > Iframe-based videos cannot be rendered locally when using tools like techdocs-cli to preview documentation. They will render correctly only when the TechDocs site is hosted and accessed through the Internal Developer Portal (IDP).
 
-### Embed Self-Hosted Videos
+### Embed self-hosted videos
 For videos hosted in your repository or accessible via a direct URL, use the Markdown `<video>` tag:
 
 ```markdown

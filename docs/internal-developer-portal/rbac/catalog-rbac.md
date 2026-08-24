@@ -46,7 +46,7 @@ Go to [Team access control](/docs/internal-developer-portal/catalog/teams/team-a
 
 ## Catalog RBAC example
 
-### Configure RBAC for Account-Level catalog entity creation
+### Configure RBAC for Account-level catalog entity creation
 
 This example shows how to configure RBAC to allow full control over Catalog entity creation and modification at the **Account scope** (including all child resources).
 

@@ -250,7 +250,7 @@ spec:
 - GitHub Connector with read access for secret scanning alerts
 - Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository
 
-#### 11. Open pull requests by Account
+#### 11. Open pull requests by account
 
 **Objective:** Calculates the total number of open pull requests raised by the given account.
 

@@ -160,7 +160,7 @@ Harness IDP leverages the robust [Harness Platform authentication and authorizat
 
 Unlike Backstage, which operates within your infrastructure, Harness IDP is delivered as a hybrid SaaS offering. To securely connect Harness IDP and its plugins to your internal systems (e.g., source code repositories, infrastructure, services), deploy a [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview/). The delegate acts as a secure proxy, ensuring seamless and controlled access to internal resources without exposing them directly to the cloud.
 
-#### **Step 3: Role-Based access control (RBAC)**
+#### **Step 3: Role-based access control (RBAC)**
 
 Harness IDP provides a powerful, integrated RBAC system. If you have been using Backstage’s permissions framework, you can transition to [Harness RBAC](/docs/internal-developer-portal/rbac/scopes) to manage access policies at scale. Harness RBAC simplifies the assignment of roles and permissions, supporting granular access control across users, teams, and resources.
 

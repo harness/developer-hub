@@ -1,7 +1,7 @@
 ---
 title: Get Started with RBAC
 sidebar_position: 1
-sidebar_label: Get Started with RBAC
+sidebar_label: Get started with RBAC
 redirect_from:
   - /docs/internal-developer-portal/get-started/rbac
 ---
@@ -65,7 +65,7 @@ IDP 2.0 resources can be created at any scope, **Account**, **Organization**, or
 | **Plugins**    | View, Create/Edit, Toggle, Delete  | ✅                 | ❌             | ❌                 | Only supported at the Account scope.                                                  |
 | **Teams**      | View, Create/Edit, Delete          | ✅                 | ✅             | ✅                 | A permission on a Team also applies to the catalog entities that Team owns.           |
 
-## Configure RBAC for Account-Level catalog entity creation
+## Configure RBAC for account-level catalog entity creation
 
 This example shows how to configure RBAC to allow full control over Catalog entity creation and modification at the **Account scope** (including all child resources).
 
@@ -82,7 +82,7 @@ You can access **Administrative Settings** from your Harness UI directly using t
 <DocVideo src="https://app.tango.us/app/embed/1dcbc9e9-70f4-49e7-bbec-6a2c94c97ae7" title="Access Admin Settings" />
 ---
 
-#### Step 1: Create the IDP catalog creator role
+#### Step 1: Create the IDP Catalog Create role
 <Tabs>
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/d3160dfc-3011-462f-a877-da804d730609" title="Create the IDP Catalog Create Role" />
@@ -124,7 +124,7 @@ You can access **Administrative Settings** from your Harness UI directly using t
 
 ---
 
-#### *(Optional)* Step 3: Create the "catalog create users" user group
+#### *(Optional)* Step 3: Create the "Catalog Create Users" user group
 
 <Tabs>
 <TabItem value="Interactive guide">

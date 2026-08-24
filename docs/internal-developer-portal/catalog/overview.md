@@ -62,7 +62,7 @@ Create new entities and Workflows by **importing their YAML definitions** stored
 
 [Learn more about importing from Git →](/docs/internal-developer-portal/catalog/create-entity/import-from-git)
 
-### 3. Auto-Discovery
+### 3. Auto-discovery
 
 Use the **Harness IDP Catalog Auto-Discovery** integration to sync **Harness CD** services into the **IDP Catalog**. This integration populates your Catalog with CD services so you can sync, view, and manage them directly in Catalog. Services are created as **IDP service entities** and kept in **real-time, uni-directional sync** with their corresponding CD services.
 

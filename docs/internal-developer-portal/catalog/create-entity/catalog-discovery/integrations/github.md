@@ -489,7 +489,7 @@ To authorize, navigate to your token on the GitHub tokens page, click **Configur
 
 ![Configure SSO dialog showing organizations available to authorize](../static/repo-perm2.png)
 
-### Fine-Grained personal access token
+### Fine-grained personal access token
 
 * **Repository access** must be set to **All repositories** so that IDP can discover all repositories in the organization. 
 

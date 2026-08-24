@@ -517,7 +517,7 @@ In an environment blueprint, all the entities, workspace templates, pipelines, e
 
 Harness IDP provides granular Role-Based Access Control (RBAC) for environment management, allowing you to control who can view, create, edit, or delete environment blueprints and environments. The RBAC model follows the Harness platform hierarchy with different scopes for blueprints and environments.
 
-##### Permissions Hierarchy
+##### Permissions hierarchy
 
 The environment management RBAC is structured across two main resource types:
 
@@ -528,7 +528,7 @@ The environment management RBAC is structured across two main resource types:
 
 For a complete overview of all IDP resources and their permissions across different scopes, refer to the [Permissions & Resources table](/docs/internal-developer-portal/rbac/scopes#permissions--resources-idp-20) in the IDP RBAC documentation.
 
-##### Configuring RBAC for Environment Management
+##### Configuring RBAC for environment management
 
 To configure access control for environment management:
 

@@ -1,8 +1,8 @@
 ---
-title: Create Entities Manually
+title: Create entities manually
 description: Learn how to create catalog entities manually using the Harness IDP UI or YAML editor.
 sidebar_position: 1
-sidebar_label: Create Entities Manually
+sidebar_label: Create entities manually
 ---
 
 import DocImage from '@site/src/components/DocImage';
@@ -26,7 +26,7 @@ Before creating entities manually, ensure:
 
 ---
 
-## Method 1: Visual view (UI-Based creation)
+## Method 1: Visual view (UI-based creation)
 
 The Visual View provides an intuitive interface for creating entities without writing YAML.
 

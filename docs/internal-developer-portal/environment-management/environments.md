@@ -291,7 +291,7 @@ Go to your environment, and from the kebab menu (**:**) at the top right, click 
 
 ---
 
-## Cross-Environment output references
+## Cross-environment output references
 
 An environment can consume output values from another environment in the same project. This lets you build layered environments where one environment provides shared infrastructure and other environments depend on it.
 

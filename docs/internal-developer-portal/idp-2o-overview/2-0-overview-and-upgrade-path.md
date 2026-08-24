@@ -80,7 +80,7 @@ IDP 2.0 introduces native Git support for all catalog entities, enabling real-ti
 
 This eliminates previous rate-limit issues and improves developer productivity. Learn more about the [Harness Git Experience](/docs/platform/git-experience/git-experience-overview/).
 
-### UI-Driven catalog entity creation
+### UI-driven catalog entity creation
 
 Users can now create and manage entities directly from the UI, no YAML expertise required:
 
@@ -318,7 +318,7 @@ spec:
 
 <!-- (TODO: Provide Layout YAML for customers who might have removed it) -->
 
-### Register/Catalog-Import → redirects to UI flow
+### Register/Catalog-import → redirects to UI flow
 
 The Catalog Import page at `/catalog-import` is deprecated as entities must now be created using the new data model. Users will be guided through an intuitive "Create Entity" workflow in the UI, eliminating the need to write raw YAML before registering entities.
 

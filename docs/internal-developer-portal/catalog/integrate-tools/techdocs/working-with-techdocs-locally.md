@@ -1,8 +1,8 @@
 ---
-title: Configure TechDocs Locally
+title: Configure TechDocs locally
 description: Learn how to preview and test your TechDocs documentation locally before publishing.
 sidebar_position: 3
-sidebar_label: Configure TechDocs Locally
+sidebar_label: Configure TechDocs locally
 redirect_from: 
     - /docs/internal-developer-portal/catalog/integrate-tools/techdocs/working-with-techdocs-locally
 ---

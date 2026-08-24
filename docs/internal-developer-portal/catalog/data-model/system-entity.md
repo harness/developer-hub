@@ -22,7 +22,7 @@ tags:
   - Developer Experience
 ---
 
-# System Entity
+# System entity
 
 A **System** in Harness Internal Developer Portal (IDP) is a high-level catalog entity used to logically group related software components, APIs, and infrastructure resources. It represents a functional or domain-specific boundary such as a module, platform area, or business unit, and enables teams to organize and manage complex software ecosystems more effectively.
 

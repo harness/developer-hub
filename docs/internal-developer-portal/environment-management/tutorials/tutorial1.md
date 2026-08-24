@@ -80,7 +80,7 @@ Before proceeding with the tutorial steps, ensure you have completed the [prereq
 
 ---
 
-## Step-by-Step walkthrough
+## Step-by-step walkthrough
 
 :::info
 Update variables (marked as `<your-*>`) in code snippets with relevant reference to your set up

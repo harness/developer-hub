@@ -1,5 +1,5 @@
 ---
-title: Setup GitHub Repository Onboarding with Harness IDP 
+title: Setup GitHub repository onboarding with Harness IDP 
 description: Create an end-to-end GitHub repository onboarding setup using Harness IDP workflows and pipelines.
 sidebar_position: 3
 ---
