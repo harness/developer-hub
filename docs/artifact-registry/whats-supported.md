@@ -57,10 +57,7 @@ Artifact Registry supports the following registry types:
 - **Terraform:** Infrastructure as Code modules and providers for cloud provisioning.
 - **R (CRAN):** Private R packages with CRAN-compatible publish and install workflows, including optional CRAN upstream proxy caching.
 - **RubyGems:** Ruby packages with gem CLI and Bundler workflows.
-
-### Coming soon
-
-- **Alpine:** Alpine Linux packages.
+- **Alpine:** Alpine Linux packages with Alpine Package Keeper (APK) workflows.
 
 ---
 

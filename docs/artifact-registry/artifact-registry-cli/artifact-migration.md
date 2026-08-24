@@ -65,6 +65,7 @@ The migration tool supports the following artifact types:
 | `TERRAFORM` | Terraform modules and providers |
 | `CRAN` | R packages (CRAN format) |
 | `RUBY` | RubyGems packages |
+| `ALPINE` | Alpine Package Keeper (APK) |
 
 ### Configuration structure
 

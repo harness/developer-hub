@@ -83,6 +83,11 @@ Select your artifact format below to get started:
       logo: "debian-logo.svg",
       logoSize: 24
     },
+    Alpine: {
+      path: "/artifact-registry/content/supported-formats/alpine-quickstart.md",
+      logo: "alpine-logo.svg",
+      logoSize: 24
+    },
     Cargo: {
       path: "/artifact-registry/content/supported-formats/cargo-quickstart.md",
       logo: "rust-logo.png",
