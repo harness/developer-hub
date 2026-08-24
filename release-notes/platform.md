@@ -232,6 +232,11 @@ The following deprecated API endpoints are longer supported:
 
 ## August 2026
 
+### Version 1.162.x <!--August 21, 2026-->
+
+#### Fixed issues
+- Updated the Harness CLI onboarding documentation and the **Get Started** wizard, which referenced commands and features that no longer work. The wizard and docs now use the currently supported CLI syntax, and broken links and unsupported commands have been removed. [PL-67535]
+
 ### Version 1.161.x <!--August 05, 2026-->
 
 #### New features and enhancements
