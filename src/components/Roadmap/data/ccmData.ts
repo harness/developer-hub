@@ -14,6 +14,97 @@ export const CcmData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      // Q3 CY'26 - added from planning sheet
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "AI-assisted Report creation",
+        description: "AI-powered creation of Perspectives/Views including discovery of relevant cost categories, labels, tags, and rule creation.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "AI-assisted Unit Costs creation",
+        description: "AI-powered creation of unit cost definitions including discovery of relevant unit metrics.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "AI-assisted Cost Insights",
+        description: "AI-powered cost insights and analysis on cloud spend, top spenders, trends, etc across cloud and AI spend.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "AI-assisted Commitment analysis",
+        description: "AI-powered analysis on commitment portfolio, savings, coverage, utilization and optimization opportunities.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "AI-assisted Cost Categories creation",
+        description: "AI-powered creation of Cost Categories including discovery of relevant labels and tags, and rule creation.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "AI Cost Management"}],
+        title: "AI Traces for Cost Management",
+        description: "Granular AI Traces for cost management at the agent, service, session, model, run and request level.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "AI Cost Management"}],
+        title: "Additional AI Cost Connectors for Cursor, GitHub Co-pilot, Claude Desktop",
+        description: "Additional AI Cost connectors for cost management of Cursor, GitHub Co-pilot, Claude Desktop.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Anomaly FinOps AI Assistant",
+        description: "AI-powered insights to help FinOps teams analyze anomalies and notify the right stakeholders.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Whitelisting of RI, SP, Services for anomalies",
+        description: "Whitelisting of Reserved Instances, Savings Plans, and Services to exclude them while generating anomalies.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Capture Recommendations Savings in Jira and Snow",
+        description: "Capture recommendations savings in Jira and ServiceNow for tracking and reporting.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Commitment Orchestrator for RDS GA",
+        description: "General Availability of Commitment Orchestrator for Amazon RDS, enabling better cost-efficiency through commitment management for database services.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "AWS Savings Plan Database Discovery/Support",
+        description: "Discovery and support for AWS Savings Plans for RDS and ElastiCache databases.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "CACM Overview Page Revamp",
+        description: "Revamp of the CACM Overview page.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "Unit Cost Economics",
+        description: "Unit Cost Economics to track cost per outcome and other complex unit cost definitions, including ingestion of custom unit metrics.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "Data Ingestion Status Update",
+        description: "Introduces a centralized Data Jobs Status section and real-time notifications for active data jobs, third-party outages, and widget-specific alerts across ingestion, Cost Category backfills, PDT updates, and external issues impacting Harness CACM.",
+        backgroundColor: "var(--green-100)",
+      },
       {
         tag: [{value: "AI Cost Management"}],
         title: "AI Cost Management",
@@ -58,7 +149,7 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--green-100)",
       },
       {
-        tag: [{value: "Anomalies"}],
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Anomaly Detection v2 (GA)",
         description:
           "[Released: January 2026] Enhanced anomaly detection capabilities with drill-down analysis. Includes support for cost category anomalies, customizable workflows, and preferences for setting percentage deviations and minimum cost thresholds.",
@@ -89,7 +180,7 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--green-100)",
       },
       {
-        tag: [{value: "Visibility"}],
+        tag: [{value: "Cost Visibility"}],
         title: "Cost Category Enhancements",
         description:
           "[Released: December 2025] Performance improvements - 2x Query speeds, Support to leverage cost categories across all CACM features: Recommendations, Asset Governance, Budgets",
@@ -111,7 +202,7 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--green-100)",
       },
       {
-        tag: [{value: " Asset Governance" }],
+        tag: [{value: "Asset Governance" }],
         title: "FInOps AI assistant (Beta)",
         description:
           "[Released: December 2025] The FinOps AI Assistant leverages generative AI to automate the creation and enforcement of cloud governance policies, enabling faster cloud optimization. ",
@@ -142,7 +233,7 @@ export const CcmData: Horizon = {
         link: "https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget#budgets-overview-page"
       },
       {
-        tag: [{value: "Perspectives" }],
+        tag: [{value: "Cost Visibility" }],
         title: "Dynamic Cost Categories Toggle in Perspectives",
         description:
           "[Released: September 2025] Dynamic Cost Categories Toggle in Perspectives",
@@ -174,7 +265,7 @@ export const CcmData: Horizon = {
         link:"https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/recommendations#rules-generating-recommendations"
       },
       {
-        tag: [{value: "Perspectives"}],
+        tag: [{value: "Cost Visibility"}],
         title: "Dynamic Perspective Reports",
         description:
           "[Released: August 2025]Create reports from your perspectives to bookmark specific filter and grouping configurations. No need to rebuild the same view repeatedly — just save it once and access it anytime.",
@@ -209,40 +300,76 @@ export const CcmData: Horizon = {
         title: "RDS (Beta)",
         description: " Beta release of Commitment Orchestrator for Amazon RDS, enabling better cost-efficiency through commitment management for database services.",
         backgroundColor: "var(--green-100)",
-      }
+      },
     ],
   },
  Now:{
-  description: "Q2 CY'26, May 2026 - July 2026",
+  description: "Q3 CY'26, Aug 2026 - Oct 2026",
     feature: [
       {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Set Advance Email Alerts for Expiring RIs and SPs",
+        description: "Sends proactive email alerts when Reserved Instances (RIs) and Savings Plans (SPs) are nearing expiration, so customers can renew or adjust before losing coverage and incurring unexpected on-demand charges.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Azure & AWS Spot Support in AutoStopping",
+        description: "Adds support for Azure and AWS Spot instances in AutoStopping to optimize cost savings.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "K8S Data Ingestion (SCAD)",
+        description: "Improves Kubernetes cost data ingestion accuracy and granularity, addressing lost events, node-status discrepancies, and cost visibility for delegate-less K8s clusters.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Unified infrastructure-as-code shift-left cost governance",
-        description: "Cloud and infrastructure cost automation in one connected workflow, running cost controls in the same pipeline as your code and auto-applying right-sizing recommendations at the source.",
+        title: "Data Scope Support Extended to Recommendations, Anomalies & Governance",
+        description: "Extends enterprise Data Scope access controls to Recommendations, Anomalies, and Governance, so restricted users only see recommendations/anomalies within their permitted scope.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Cluster & Commitment Integration Enhancements",
+        description: "Improves how Cluster Orchestrator savings and Commitment Orchestrator coverage work together, giving a more complete view of cluster cost savings.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "Unit Cost Economics Support in Custom Dashboards",
+        description: "Unit cost economics and ingested unit metrics for cost per outcome within Custom Dashboards.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Enhanced AutoStopping Terraform Support",
+        description: "Enhances Terraform support for configuring AutoStopping via Infrastructure as Code with drift detection.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Azure VM Support for Commitment Orchestration",
+        description: "Granular visibility and orchestration of Azure VM committments.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Enhanced Recommendations Experience",
+        description: "Enhanced experience reporting and usability for optimization Recommendations.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "Shift-left actioning of Recommendations with IaCM Integration",
+        description: "Integration of Infrastructure-as-Code Management (IaCM) to surface resource level recommendations in workspaces and auto apply recommendations at source without drift.",
         backgroundColor: "var(--yellow-50)",
       },
       {
         tag: [{value: "AI Cost Management"}],
-        title: "AI Cost Optimization & Governance",
-        description: "Actively optimize AI spend with intelligent model routing, context window optimization, and AI spend commitments, backed by user-level budgets, approval workflows, and spend limits per provider, product, and model.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "AI in CACM"}],
-        title: "Chat-first AI FinOps across Visibility, Optimization, and Governance",
-        description: "A single conversational interface for FinOps that lets you get cloud and AI cost insights in natural language, discover and act on optimization opportunities with reports and alerts, and govern spend by setting budgets, catching anomalies, and enforcing policies.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Anomaly FinOps AI Assistant ",
-        description: "AI-powered insights to help FinOps teams analyze anomalies and notify the right stakeholders.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Variance breakdown by service, team, and cost category",
-        description: "Variance breakdown by service, team, and cost category with clear linkage from alert to investigation view.",
+        title: "User AI Cost Governance",
+        description: "Active governance and enforcement of user-level AI spend with enforcement at the user, provider and model level.",
         backgroundColor: "var(--yellow-50)",
       },
       {
@@ -253,186 +380,94 @@ export const CcmData: Horizon = {
       },
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "IaCM<>CACM integration for automated application of recommendations",
-        description: "Integration with IaCM for automated application of recommendations at source ",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Whitelisting of RI, SP, Services for anomalies",
-        description: "Whitelisting of Reserved Instances, Savings Plans, and Services to exclude them while generating anomalies.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Additional tuning options for recommendations",
-        description: "Additional tuning options for pass-through and governance recommendations.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Global cost preferences for all recommendation types",
-        description: "Global cost preferences needed for all recommendation types (particularly Net Amortized, and list cost) for Azure and GCP.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "First class integration with JIRA and ServiceNow",
+        title: "Anomaly detection integration with JIRA and ServiceNow",
         description: "First class integration with JIRA and ServiceNow to raise tickets and delegate actioning of detected anomalies.",
         backgroundColor: "var(--yellow-50)",
       },
       {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Capture Recommendations Savings in Jira and Snow",
-        description: "Capture recommendations savings in Jira and ServiceNow for tracking and reporting.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "Smart Advisor for Kubernetes Cluster",
-        description: "Smart Advisor helps you uncover cost-saving opportunities by identifying underused cloud resources and recommending the ideal Autostopping configurations.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "Azure & AWS Spot support in Autostopping",
-        description: "Support for Azure and AWS Spot instances in AutoStopping to optimize cost savings.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Cluster Orchestrator"}],
-        title: "Cluster Orchestrator for AKS",
-        description: "Cluster Orchestrator support for Azure Kubernetes Service (AKS) including Discovery, Scale up and down, Spot Handling (Interruption, Fallback, Reverse Fallback, Schedule window), Karpenter with Azure Latest version, Nodepool and Nodeclass, Setup.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Cluster Orchestrator"}],
-        title: "Cluster Orch EKS GA",
-        description: "General Availability of Cluster Orchestrator for Amazon EKS.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Cluster Orchestrator"}],
-        title: "Observability in Cluster Orchestrator",
-        description: "Enhanced observability and monitoring capabilities for Cluster Orchestrator.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Cost visibility"}],
-        title: "K8S Data Ingestion for AWS (SCAD)",
-        description: "Addresses data correctness issues in the K8S Data Ingestion process, including lost events, node status discrepancies, and customer concerns about delegate-less K8S cluster costs.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Cost visibility"}],
-        title: "CACM Overview Page Revamp",
-        description: "Revamp of the CACM Overview page.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
         tag: [{value: "Commitment Orchestrator"}],
-        title: "Commitment Orchestrator for RDS GA ",
-        description: "General Availability of Commitment Orchestrator for Amazon RDS, enabling better cost-efficiency through commitment management for database services.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Commitment Orchestrator"}],
-        title: "Set Email Alerts For Expiring RIs and SPs",
-        description: "Set email alerts for expiring RIs and SPs to help users proactively manage their commitments and avoid unexpected charges.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Commitment Orchestrator"}],
-        title: "AWS Savings Plan Database Discovery/Support",
-        description: "Discovery and support for AWS Savings Plans for RDS and ElastiCache databases.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Commitment Orchestrator"}],
-        title: "Commitment V2 GA",
-        description: "General Availability of Commitment Orchestrator v2.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Commitment Orchestrator"}],
-        title: "ElastiCache Commitment Support",
-        description: "Commitment Orchestrator will be able to purchase RI's for your Elasticache usage",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Commitment Orchestrator"}],
-        title: "Support RIs for OpenSearch",
+        title: "Support RIs for OpenSearch with Commitment Orchestrator",
         description: "Support RIs for OpenSearch in Commitment Orchestrator.",
         backgroundColor: "var(--yellow-50)",
       },
       {
-        tag: [{value: "Cost Categories"}],
-        title: "AI in Cost Categories",
-        description: "AI-powered insights to help users analyze their commitments and notify the right stakeholders.",
+        tag: [{value: "AI Cost Management"}],
+        title: "AI Spend Explorer by Users",
+        description: "Breaks down AI spend by individual user, so teams can see who is driving AI cost.",
         backgroundColor: "var(--yellow-50)",
       },
       {
-        tag: [{value: "Cost visibility"}],
-        title: "Unit Cost Final Finishes",
-        description: "Final finishes for Unit Cost.",
+        tag: [{value: "AI Cost Management"}],
+        title: "AI Spend Explorer by Agents",
+        description: "Breaks down AI spend by agent/model, so teams can see which AI agents are driving cost.",
         backgroundColor: "var(--yellow-50)",
       },
       {
-        tag: [{value: "Cost visibility"}],
-        title: "Data Ingestion Status Update",
-        description: "Introduces a centralized Data Jobs Status section and real-time notifications for active data jobs, third-party outages, and widget-specific alerts across ingestion, Cost Category backfills, PDT updates, and external issues impacting Harness CACM.",
+        tag: [{value: "AI Cost Management"}],
+        title: "AI Spend Capitalization Insights",
+        description: "Surfaces which AI spend can be capitalized vs expensed, helping finance teams with accounting treatment of AI costs.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "AI Cost Management"}],
+        title: "Engineering ROI Intelligence",
+        description: "Connects engineering spend (including AI) to output and business impact, giving a view into engineering return on investment.",
         backgroundColor: "var(--yellow-50)",
       },
     ],
  },
 Later:{
-    description: "Q3 2026 and beyond",
+    description: "Q4 CY'26 and beyond",
     feature: [
       {
-        tag: [{value: "AutoStopping"}],
-        title: "Autostopping Global Schedules",
-        description:
-          "Global schedules for Autostopping allowing users to define usage windows for shared resources.",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "GCP Passthrough recommendations Support with Google Cloud Recommender",
-        description:
-          "Support for GCP Passthrough recommendations with Google Cloud Recommender to increase the scope of recommendations across all major GCP resource types.",
-      },
-      {
-        tag: [{value: "Innovation"}],
-        title: " FinOps Workflows ",
-        description:
-          "Automated workflows to simplify and scale the adoption of FinOps practices and CACM features across organizations.",
-      },
-       {
-        tag: [{value: "Cluster Orchestrator"}],
-        title: " Cluster Orchestrator for EKS (GA) ",
-        description:
-          "Workload-driven intelligent K8s node auto scaling with distributed spot orchestration and advanced bin packing",
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "ElastiCache Commitment Support",
+        description: "Commitment Orchestrator can discover and purchase Reserved Instances for ElastiCache usage.",
       },
       {
         tag: [{value: "Cluster Orchestrator"}],
         title: "Cluster Orchestrator for AKS",
-        description:
-          "Automates AKS cluster provisioning, scaling, and node pool management with policy-driven orchestration",
+        description: "Cluster Orchestrator support for Azure Kubernetes Service (AKS), including discovery, scale up/down, Spot handling (interruption, fallback, reverse fallback, schedule windows), Karpenter (latest Azure version), Nodepool/Nodeclass setup, and policy-driven automated provisioning and node pool management.",
       },
       {
         tag: [{value: "Commitment Orchestrator"}],
-        title: "Commitment Orchestrator for Azure",
-        description:
-          "Exentding capabilities of Commitment Orchestrator for Azure.",
+        title: "Reject Lifecycle for Commitment Orchestrator Recommendation",
+        description: "Lets customers reject/dismiss Commitment Orchestrator recommendations they do not want to act on.",
+      },
+      {
+        tag: [{value: "AI Cost Management"}],
+        title: "AI Cost Optimization Recommendations",
+        description: "Optimization recommendations for AI spend with model routing, context window optimization, prompt caching, etc.",
+      },
+      {
+        tag: [{value: "AI Cost Management"}],
+        title: "Production Agent AI Cost Governance",
+        description: "Active governance and enforcement of production agent AI spend with enforcement at the agent, provider and model level.",
+      },
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Smart Advisor for Kubernetes Cluster",
+        description: "Smart Advisor helps you uncover cost-saving opportunities by identifying underused cloud resources and recommending the ideal Autostopping configurations.",
+      },
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Autostopping Global Schedules",
+        description: "Global schedules for Autostopping allowing users to define usage windows for shared resources.",
       },
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Intelligence for thresholds - account and CC level",
+        title: "GCP Passthrough recommendations Support with Google Cloud Recommender",
+        description: "Support for GCP Passthrough recommendations with Google Cloud Recommender to increase the scope of recommendations across all major GCP resource types.",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Dynamic Anomaly Detection thresholds",
         description: "Intelligent threshold setting for anomalies at account and cost category level.",
       },
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Recommendations OPA Policy - CD integration",
-        description: "Recommendations OPA Policy with CD integration ",
+        description: "Recommendations OPA Policy with CD integration.",
       },
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
@@ -440,24 +475,14 @@ Later:{
         description: "Show impact of applied recommendations using perspectives and reports.",
       },
       {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Split anomalies into active/ongoing and one-time",
-        description: "Split anomalies into 'active/ongoing' (spike still in effect) and 'one-time' (spike happened and spend came back down).",
+        tag: [{value: "AI Cost Management"}],
+        title: "AI Cost & Performance Benchmarking",
+        description: "Benchmarks AI cost and performance across models/providers to help teams choose the most cost-effective option for their workload.",
       },
       {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Include utilization metrics for all recommendations",
-        description: "Include utilization metrics for all recommendations and additional metadata for pass-through recommendations.",
-      },
-      {
-        tag: [{value: "Cluster Orchestrator"}],
-        title: "Cluster Orchestrator Terraform Module",
-        description: "Terraform module support for Cluster Orchestrator deployment and configuration.",
-      },
-      {
-        tag: [{value: "Commitment Orchestrator"}],
-        title: "Azure support in Commitment Orchestrator",
-        description: "Azure support in Commitment Orchestrator including Utilization, Savings, Coverage, and Permissions visibility.",
+        tag: [{value: "AI Cost Management"}],
+        title: "Context-Aware Engineering Governance",
+        description: "Applies governance policies to engineering/AI usage based on context (e.g. project, team, environment) rather than static rules.",
       },
     ],
   }
