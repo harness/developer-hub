@@ -13,132 +13,94 @@ export const cdModuleTheme: ModuleTheme = {
 
 export const CdData: Horizon = {
   "Now": {
-    description: "Q2 2026, May 2026 - Jul 2026",
+    description: "Q3 2026, Aug 2026 - Oct 2026",
     feature: [
+      // CD — Deployment
       {
         tag: [{ value: "Deployment" }],
-        title: "Native Progressive Rollout Strategy with Percentage-Based Deployment Control",
-        description: "Users can deploy new application versions incrementally using percentage-based phasing (e.g., 10% → 25% → 50% → 100%) with manual or automated verification gates between phases, progressively replacing existing pods without doubling infrastructure resources.",
-      },
-      {
-        tag: [{ value: "Deployment" }],
-        title: "Cloud Delegate Based Salesforce Deployments",
-        description: "Users can deploy Salesforce releases using cloud delegates, eliminating the need for self-hosted delegate infrastructure while maintaining full deployment capabilities.",
+        title: "Native AI Agent Deployment",
+        description: "Deploy AI agents natively to Google Agent Runtime and AWS Agent Core, with Evals available as a built-in pipeline step. Includes automatic Gateway provisioning for AWS Agent Core deployments and Agent Identity support for both Google and AWS agent platforms.",
       },
       {
         tag: [{ value: "Deployment" }],
-        title: "Salesforce AI Agent",
-        description: "Users can leverage an AI agent integrated with the MCP Server to automatically generate deployment drafts by selecting relevant commits or permission set sections based on natural language prompts.",
+        title: "Pod Status and Logs in Pipeline Execution",
+        description: "Users can see every Kubernetes pod created, updated, or deleted by a deployment, with its status and logs, in the pipeline execution view — during the rollout and after it completes.",
       },
       {
         tag: [{ value: "Deployment" }],
-        title: "Preconfigured Package.xmls for Salesforce Deployments",
-        description: "Users can use out-of-the-box package.xml templates for common Salesforce deployment scenarios, eliminating the need to manually configure package files for each deployment type.",
+        title: "Salesforce Org Maps",
+        description: "Users can visualize relationships between Salesforce orgs, compare configuration diffs between connected orgs, select specific diffs to publish to a branch, and deploy the branch to target orgs for streamlined multi-org management.",
       },
+      // Continuous Verification
       {
-        tag: [{ value: "Deployment" }],
-        title: "Service Configuration Drift Detection and Reconciliation",
-        description: "Users can detect and reconcile configuration drift between deployed services and their desired state, maintaining deployment consistency and preventing configuration mismatches across environments.",
-      },
-
-      {
-        tag: [{ value: "GitOps" }],
-        title: "GitOps Integration with Argo Projects",
-        description: "Full CRUD and import support for ArgoCD App Projects in Harness, including UI for managing project settings such as repository access, cluster access, sync windows, and orphaned resources.",
-      },
-      {
-        tag: [{ value: "GitOps" }],
-        title: "Allow Harness Secrets in GitOps Applications",
-        description: "Users can securely reference and use Harness secrets within GitOps application manifests and configurations, integrating with Harness secret management.",
-      },
-      {
-        tag: [{ value: "GitOps" }],
-        title: "AI Supported Remediation",
-        description: "Users can leverage AI-powered recommendations to remediate GitOps deployment issues and failures with intelligent suggestions.",
-      },
-
-      {
-        tag: [{ value: "CV" }],
-        title: "Git Experience Support for Monitored Services",
-        description: "Users can manage Monitored Services through Git, enabling Git-based change management, version control, and approval workflows for CV configurations.",
-      },
-      {
-        tag: [{ value: "CV" }],
-        title: "AI Verify Feature Parity",
-        description: "AI Verify reaches full feature parity with traditional verification, bringing AI-powered deployment verification to all supported health sources and deployment types.",
-      },
-      {
-        tag: [{ value: "CV" }],
-        title: "Change Advisor in Harness: MVP",
+        tag: [{ value: "Continuous Verification" }],
+        title: "Change Advisor in Harness",
         description: "AI-powered risk assessment for changes that automatically generates risk scores, enables low-risk changes to proceed automatically, and flags high-risk changes for additional scrutiny to reduce downtime and increase release velocity.",
       },
-
+      // GitOps
+      {
+        tag: [{ value: "GitOps" }],
+        title: "Visualization of GitOps Promotion Flows",
+        description: "Users can view deployment status of GitOps applications across multiple environments, directly within Harness CD and GitOps, through Release Orchestration, providing enhanced visibility into promotion workflows and deployment steps.",
+      },
+      {
+        tag: [{ value: "GitOps" }],
+        title: "GitOps Promotion Steps",
+        description: "Users can implement GitOps promotion workflows using pre-built promotion steps, reducing configuration effort and standardizing progressive delivery patterns across environments.",
+      },
+      {
+        tag: [{ value: "GitOps" }],
+        title: "Migration of GitOps Applications Between Agents",
+        description: "Users can rebalance and migrate GitOps applications from one agent to another, enabling better load distribution and agent maintenance without disrupting deployments.",
+      },
+      // Pipeline
       {
         tag: [{ value: "Pipeline" }],
-        title: "Pipeline Recovery Time (MTTR) Analytics",
-        description: "Users can track and analyze mean time to recovery (MTTR) metrics for pipeline failures, enabling data-driven improvements to deployment reliability.",
+        title: "Conditional and Dependent Inputs in Runtime Forms",
+        description: "Users can configure runtime input forms where fields are dynamically disabled or hidden based on variable selection, creating intelligent forms that adapt to user choices and reduce input errors.",
       },
       {
         tag: [{ value: "Pipeline" }],
-        title: "Next-Generation Workflow Engine",
-        description: "Complete implementation, deployment, and validation of the next-generation pipeline execution engine with improved performance, scalability, and advanced orchestration capabilities for complex deployment workflows.",
+        title: "Nested Template Composition",
+        description: "Users can insert stage templates within pipeline templates that themselves support step insertion, enabling modular pipeline architectures with Pipeline Template → Stage Template → Insert Steps composition.",
       },
-      {
-        tag: [{ value: "Pipeline" }],
-        title: "Breakpoint Support in Pipelines",
-        description: "Users can set breakpoints in pipeline execution to pause, inspect state, and debug complex deployment workflows interactively.",
-      },
-
+      // OPA
       {
         tag: [{ value: "OPA" }],
-        title: "OPA Data on Dashboard",
-        description: "Users can view comprehensive OPA policy analytics on a dedicated dashboard, including policy violations and warnings over time, user triggers, policy names and severity, associated pipelines, and filtering capabilities.",
+        title: "OPA Version Upgrade to Support Rego v1",
+        description: "Users can leverage OPA Rego v1 language features and improvements, including enhanced performance, improved syntax, and better policy authoring capabilities.",
       },
-      {
-        tag: [{ value: "OPA" }],
-        title: "OPA GitX Consistency for Git-Backed Entities",
-        description: "Users can ensure OPA policies are enforced on Git-backed entities even when changes are made directly to Git branches, preventing policy bypass scenarios.",
-      },
-      {
-        tag: [{ value: "OPA" }],
-        title: "OPA UI/UX Revamp and Design 3.0 Support",
-        description: "Users can experience a completely redesigned OPA UI with modern Design 3.0 patterns, improved usability, and streamlined policy management workflows.",
-      },
-      {
-        tag: [{ value: "OPA" }],
-        title: "Rego Editor Validation and Testing",
-        description: "Users can validate and test Rego policies directly within the Policy testing screen with syntax highlighting, indentation error detection, and inline validation without external tools.",
-      },
-
+      // Release Orchestration
       {
         tag: [{ value: "Release Orchestration" }],
-        title: "Queue Activity Support",
-        description: "Users can consolidate execution of pipelines, finalize outputs, and execute processes based on approved queued outputs for better control over release workflows.",
+        title: "Orchestration Queue Rollout",
+        description: "Users can manage release execution queues with prioritization, throttling, and coordination across multiple concurrent releases for better resource management.",
       },
       {
         tag: [{ value: "Release Orchestration" }],
-        title: "Looping of Targets in Process Execution",
-        description: "Users can iterate over collections of entities during process execution, enabling dynamic deployment workflows across multiple targets.",
+        title: "Fine-Grained Role-Based Permissions",
+        description: "Users can configure granular role-based access controls for Release Orchestration entities, enabling precise permission management at entity level for improved security and governance.",
       },
       {
         tag: [{ value: "Release Orchestration" }],
-        title: "Individual Process Execution",
-        description: "Users can execute individual processes independently, providing flexibility to run specific release steps without triggering the entire release workflow.",
+        title: "OPA Policy Support for Release Orchestration",
+        description: "Users can enforce OPA policies on Release Orchestration workflows, changesets, and processes, ensuring governance and compliance throughout the release lifecycle.",
       },
       {
         tag: [{ value: "Release Orchestration" }],
-        title: "Scheduling of Individual Phases in Release Process",
-        description: "Users can schedule individual phases within release processes, enabling time-based orchestration and phased rollouts across different environments.",
+        title: "Dependency Management in Changesets",
+        description: "Users can define and manage dependencies between changesets, ensuring correct execution order and preventing conflicts in release workflows.",
       },
       {
         tag: [{ value: "Release Orchestration" }],
-        title: "ValueStream in Release",
-        description: "Users can track and visualize a complete value stream within a release, including collection of code commits, artifacts, and associated Jira tickets for full traceability.",
+        title: "Artifact Tracking and Changesets",
+        description: "Users can automatically track container images produced by build pipelines and compute changesets between versions — including commit diffs and linked Jira or ServiceNow tickets — giving full traceability into what changed across each release.",
+        link: "/docs/release-orchestration/artifacts/artifact-tracker-getting-started/",
       },
     ],
   },
   "Next": {
-    description: "Q3 2026, Aug 2026 - Oct 2026",
+    description: "Q4 2026, Nov 2026 - Jan 2027",
     feature: [
       {
         tag: [{ value: "GitOps" }],
@@ -203,7 +165,7 @@ export const CdData: Horizon = {
     ],
   },
   "Later": {
-    description: "Q4 2026 and beyond",
+    description: "Q1 2027 and beyond",
     feature: [
       {
         tag: [{ value: "Deployment" }],
@@ -221,143 +183,85 @@ export const CdData: Horizon = {
         description: "Next-generation AI capabilities for continuous verification including predictive anomaly detection and automated root cause analysis.",
       },
       {
-        tag: [{ value: "Platform" }],
+        tag: [{ value: "Release Orchestration" }],
         title: "Multi-Cloud Orchestration Enhancements",
         description: "Enhanced capabilities for orchestrating deployments across multiple cloud providers with unified policies and governance.",
       },
     ],
   },
   "Released": {
-    description: "What has been released",
+    description: "Q2 2026 and earlier",
     feature: [
+      // Q2 2026 Released Features
       {
         tag: [{ value: "Deployment" }],
-        title: "Azure Container Apps (ACA) Support",
-        description: "Users can deploy to Azure Container Apps (ACA) using Harness, with support for Blue-Green deployment strategy and ACR as the artifact repository.",
-        link: "https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-container-apps/overview",
+        title: "Native Progressive Rollout Strategy with Percentage-Based Deployment Control",
+        description: "Users can deploy new application versions incrementally using percentage-based phasing (e.g., 10% → 25% → 50% → 100%) with manual or automated verification gates between phases, progressively replacing existing pods without doubling infrastructure resources.",
+        link: "/docs/continuous-delivery/manage-deployments/deployment-concepts",
       },
       {
         tag: [{ value: "Deployment" }],
-        title: "Native Artifact Registry Support for All CD Steps",
-        description: "Native integration of Harness Artifact Registry across all deployment types (Kubernetes, Helm, ECS, Azure WebApps, SSH/WinRM, Serverless, etc.), eliminating the need for external connectors and providing seamless authentication using Harness platform RBAC.",
-        link: "https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#harness-artifact-registry",
+        title: "Cloud Delegate Based Salesforce Deployments",
+        description: "Users can deploy Salesforce releases using cloud delegates, eliminating the need for self-hosted delegate infrastructure while maintaining full deployment capabilities.",
       },
       {
         tag: [{ value: "Deployment" }],
-        title: "Azure Steady State",
-        description: "Health check status polling for Azure Web Apps. Monitors instance health during deployment for reliable steady state verification.",
-        link: "https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial/#health-check-polling-for-steady-state-verification",
+        title: "Preconfigured Package.xmls for Salesforce Deployments",
+        description: "Users can use out-of-the-box package.xml templates for common Salesforce deployment scenarios, eliminating the need to manually configure package files for each deployment type.",
       },
       {
         tag: [{ value: "Deployment" }],
-        title: "Containerised Step Group Support with VM Pools",
-        description: "Users can deploy Containerised Step Groups using VM Pools.",
-        link: "https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/",
+        title: "Native Agent Deployment Support",
+        description: "Users can deploy AI agents natively within Harness CD pipelines, enabling intelligent automation and decision-making throughout the deployment lifecycle.",
       },
-
+      {
+        tag: [{ value: "Continuous Verification" }],
+        title: "Git Experience Support for Monitored Services",
+        description: "Users can manage Monitored Services through Git, enabling Git-based change management, version control, and approval workflows for CV configurations.",
+        link: "/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart",
+      },
+      {
+        tag: [{ value: "Continuous Verification" }],
+        title: "AI Verify V2",
+        description: "AI Verify reaches full feature parity with traditional verification, bringing AI-powered deployment verification to all supported health sources and deployment types.",
+        link: "/docs/continuous-delivery/verify/configure-cv/configure-verify-step-with-ai/ai-verify",
+      },
       {
         tag: [{ value: "GitOps" }],
-        title: "Integration with Argo Projects",
+        title: "GitOps Integration with Argo Projects",
         description: "Full CRUD and import support for ArgoCD App Projects in Harness, including UI for managing project settings such as repository access, cluster access, sync windows, and orphaned resources.",
-        link: "https://developer.harness.io/docs/continuous-delivery/gitops/applicationsets/appset-basics",
+        link: "/docs/continuous-delivery/gitops/gitops-entities/projects/manage-projects",
       },
       {
         tag: [{ value: "GitOps" }],
-        title: "Rollback Support for GitOps Applications",
-        description: "Users can trigger rollbacks to a previous version of a deployed GitOps application directly from the Harness UI, and as a dedicated GitOps Rollback step in pipelines.",
-        link: "https://developer.harness.io/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics/#failure-strategy-and-rollback",
+        title: "Allow Harness Secrets in GitOps Applications",
+        description: "Users can securely reference and use Harness secrets within GitOps application manifests and configurations, integrating with Harness secret management.",
+        link: "/docs/continuous-delivery/gitops/security/secret-injection-harness-plugin",
       },
       {
         tag: [{ value: "GitOps" }],
-        title: "AI-Powered GitOps Management",
-        description: "Users can leverage AI to query and manage GitOps applications, AppSets, and clusters, including sync status checks, triggering operations, and generating pipeline snippets.",
-        link: "https://developer.harness.io/docs/continuous-delivery/gitops/gitops-basics/harness-git-ops-basics",
-      },
-      {
-        tag: [{ value: "GitOps" }],
-        title: "Centralized Notifications for GitOps",
-        description: "Users can receive centralized notifications for GitOps application events such as sync start, completion, success, failure, and AppSet create, sync, and error events.",
-        link: "https://developer.harness.io/docs/continuous-delivery/gitops/gitops-basics/harness-git-ops-basics",
-      },
-      {
-        tag: [{ value: "GitOps" }],
-        title: "OPA Support",
-        description: "Users can enforce Open Policy Agent policies in GitOps workflows.",
-        link: "https://developer.harness.io/docs/continuous-delivery/gitops/application/opa-policy-support/#policy-input-schema",
-      },
-      {
-        tag: [{ value: "GitOps" }],
-        title: "Project Variables Support",
-        description: "Users can define and use project-level variables in GitOps applications.",
-        link: "https://developer.harness.io/docs/continuous-delivery/gitops/application/manage-gitops-applications/#use-expressions",
-      },
-      {
-        tag: [{ value: "Continuous Verification" }],
-        title: "AI Verify with Configuration Agent",
-        description: "AI-powered verification with automated health source setup. The configuration agent communicates with MCP servers to populate queries and create Monitored Service templates, reducing configuration toil and increasing CV adoption.",
-        link: "https://developer.harness.io/docs/continuous-delivery/verify/configure-cv/configure-verify-step-with-ai/overview",
-      },
-      {
-        tag: [{ value: "Continuous Verification" }],
-        title: "Notification Events for Verification Step Sub-tasks",
-        description: "Enhanced notification events that capture details of verification tasks, data collection tasks, and their durations for better monitoring and observability.",
-        link: "https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
-      },
-
-      {
-        tag: [{ value: "Pipeline" }],
-        title: "Pipeline Execution from Git Tags",
-        description: "Users can trigger pipeline executions using Git tags through Git Experience, with support in both the UI and API.",
-        link: "https://developer.harness.io/docs/platform/triggers/trigger-pipeline-on-tag-event/",
-      },
-      {
-        tag: [{ value: "Pipeline" }],
-        title: "Dry-Run Validation for Pipeline Changes",
-        description: "Users can validate pipeline YAML changes made in GitHub or VS Code using a Language Service add-on, enabling earlier detection of errors without running the pipeline.",
-        link: "https://developer.harness.io/docs/platform/git-experience/validate-pipeline-changes-with-dry-run/",
-      },
-      {
-        tag: [{ value: "Pipeline" }],
-        title: "DAG Support",
-        description: "Users can define steps and their dependencies as a Directed Acyclic Graph (DAG), enabling flexible, non-linear, and parallel pipeline execution.",
-        link: "https://developer.harness.io/docs/platform/pipelines/dag-pipelines",
-      },
-      {
-        tag: [{ value: "Pipeline" }],
-        title: "Large-scale Pipelines",
-        description: "Users can create and manage large-scale pipelines with improved performance and scalability.",
-        link: "https://developer.harness.io/docs/platform/pipelines/pipeline-chaining",
-      },
-      {
-        tag: [{ value: "Pipeline" }],
-        title: "Improved Error Logging",
-        description: "Users can access enhanced error logging for better troubleshooting and debugging of pipeline issues.",
-        link: "https://developer.harness.io/docs/platform/pipelines/executions-and-logs/viewing-logs",
-      },
-      {
-        tag: [{ value: "Pipeline" }],
-        title: "Dynamic Tags for Execution",
-        description: "Users can dynamically assign tags during pipeline execution for better organization and tracking.",
-        link: "https://developer.harness.io/docs/platform/pipelines/add-a-stage/#option-tags",
-      },
-
-      {
-        tag: [{ value: "OPA" }],
-        title: "Support for Delete Events",
-        description: "Users can enforce OPA policies for delete events.",
-        link: "https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview",
+        title: "AI Supported Remediation",
+        description: "Users can leverage AI-powered recommendations to remediate GitOps deployment issues and failures with intelligent suggestions.",
       },
       {
         tag: [{ value: "OPA" }],
-        title: "OPA Execution on Customer Infra",
-        description: "Users can execute OPA policies on their own infrastructure for enhanced security and control.",
-        link: "https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview",
+        title: "OPA Data on Dashboard",
+        description: "Users can view comprehensive OPA policy analytics on a dedicated dashboard, including policy violations and warnings over time, user triggers, policy names and severity, associated pipelines, and filtering capabilities.",
       },
       {
         tag: [{ value: "OPA" }],
-        title: "Project Movement Across Orgs",
-        description: "Users can move projects across organizations with OPA policies intact.",
-        link: "https://developer.harness.io/docs/platform/organizations-and-projects/projects",
+        title: "OPA GitX Consistency for Git-Backed Entities",
+        description: "Users can ensure OPA policies are enforced on Git-backed entities even when changes are made directly to Git branches, preventing policy bypass scenarios.",
+      },
+      {
+        tag: [{ value: "OPA" }],
+        title: "Rego Editor Validation and Testing",
+        description: "Users can validate and test Rego policies directly within the Policy testing screen with syntax highlighting, indentation error detection, and inline validation without external tools.",
+      },
+      {
+        tag: [{ value: "Release Orchestration" }],
+        title: "Queue Activity Support",
+        description: "Users can consolidate execution of pipelines, finalize outputs, and execute processes based on approved queued outputs for better control over release workflows.",
       },
 
     ]
