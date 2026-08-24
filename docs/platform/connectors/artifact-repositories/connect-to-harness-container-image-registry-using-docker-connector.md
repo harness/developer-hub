@@ -25,11 +25,19 @@ To configure any of these options, you need [permissions](../../role-based-acces
 
 To prevent rate limiting or throttling issues when pulling images, configure the built-in Harness Image Docker connector to use credentials (instead of anonymous access) and pull images from GAR or ECR (instead of Docker Hub). For instructions, go to [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
 
+If you use anonymous access on Harness Cloud build infrastructure, use GAR to avoid ECR Public's anonymous pull limit. Public ECR enforces this limit per source IP, and Harness Cloud runners run on GCP, so anonymous ECR pulls see the same limit as any other anonymous caller. This limit doesn't apply to credentialed ECR access. Go to [Pull images anonymously from GAR or ECR](#pull-images-anonymously-from-gar-or-ecr) for details.
+
 :::
 
 ## Pull images anonymously from GAR or ECR
 
 By default, Harness pulls Harness images from GAR with anonymous access. You can also pull Harness images with anonymous access from GAR or ECR. This option changes the behavior for your entire account by editing the configuration of the built-in **Harness Docker Connector**. This is useful if you experience rate limiting issues when pulling from Docker Hub.
+
+:::warning ECR does not avoid rate limiting on Harness Cloud
+
+If you use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), switching anonymous access to ECR does not resolve rate limiting. Public ECR enforces its own fixed anonymous pull limit per source IP, and Harness Cloud runners run on GCP, so they receive no AWS-side preferential treatment and hit the same limit as any other anonymous caller. GAR is the only anonymous option that avoids this limit on Harness Cloud.
+
+:::
 
 If you don't want to change the behavior for your entire account, follow the steps in [Use credentials to pull Harness images for specific stages](#use-credentials-to-pull-harness-images-for-specific-stages) to modify the behavior for specific stages only.
 
@@ -57,7 +65,7 @@ If you don't want to change the behavior for your entire account, follow the ste
 8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
 :::info note
-Harness now supports anonymous access to all public Docker registries, including Amazon ECR and Artifactory Public. Users can now pull images without requiring authentication.
+Harness now supports anonymous access to all public Docker registries, including Amazon ECR and Artifactory Public. Users can now pull images without requiring authentication. If you use Harness Cloud build infrastructure, go to [Pull images anonymously from GAR or ECR](#pull-images-anonymously-from-gar-or-ecr) to understand rate limiting behavior before choosing a registry.
 :::
 
 ## Configure Harness to always use credentials to pull Harness images

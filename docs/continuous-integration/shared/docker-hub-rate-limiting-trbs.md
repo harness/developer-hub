@@ -11,3 +11,9 @@ For instructions on each of these options, go to [Connect to the Harness contain
 Only the images listed in the [Harness CI images list](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md#harness-ci-images-list) are supported across Docker Hub, GAR, ECR, and EU-GAR. If an image you need is unavailable on your expected registry, contact [Harness Support](https://support.harness.io/).
 
 :::
+
+:::warning public ECR does not avoid rate limiting on Harness Cloud
+
+Public ECR anonymous access is not a rate-limit-free alternative to Docker Hub if you use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). AWS ECR Public enforces a fixed anonymous pull limit per source IP, and Harness Cloud runners run on GCP, so they get no AWS-side preferential treatment and hit the same limit as any other anonymous caller. GAR is the only anonymous option that avoids this cap on Harness Cloud.
+
+:::
