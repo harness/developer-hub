@@ -1,7 +1,7 @@
 ---
-title: CI/CD security posture management
+title: CI/CD security posture management with Harness SCS
 description: Risk and compliance posture of your CI/CD
-sidebar_position: 2
+sidebar_position: 30
 redirect_from:
 
 - /docs/software-supply-chain-assurance/cicd-security-posture-management-cicdspm
@@ -12,8 +12,6 @@ tags:
   - ci-cd-spm
   - vulnerability-management
 ---
-
-# CI/CD Security Posture Management with Harness SCS
 
 Understanding the risk posture of your CI/CD pipelines is essential for maintaining a secure software delivery process and protecting the overall supply chain. Harness SCS's CI/CD SPM offers a comprehensive view of the potential risks associated with your pipelines. It identifies risk and compliance issues stemming from pipeline configurations, using industry-standard benchmarks like the [OWASP Top 10 CI/CD Security Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/) and Harness Supply Chain standards.
 
@@ -29,7 +27,7 @@ Navigate to the **CI/CD** section in Harness SCS to view a complete list of onbo
 
 By selecting a pipeline from the **CI/CD** page, you can view all the details organized into different tabs.
 
-## Overview Tab
+## Overview tab
 
 The overview page provides a comprehensive summary of a specific pipeline’s risk posture. This page compiles all the crucial details in one place, offering a clear and concise view.
 
@@ -37,9 +35,9 @@ The overview page provides a comprehensive summary of a specific pipeline’s ri
 Scans will not run if **Git Experience** is enforced and the **Default Store Type for Entities** is set to remote in the account settings. Make sure these settings are configured correctly to enable scan execution
 :::
 
-### What is an Evaluation?
+### What is an evaluation?
 
-Before diving into the details, it's essential to understand what an "evaluation" means in this context. An evaluation refers to applying specific compliance rules to the repository and obtaining the results of these checks. Each evaluation assesses the repository against these predefined rules and provides a pass or fail status.
+Before diving into the details, it is essential to understand what an "evaluation" means in this context. An evaluation refers to applying specific compliance rules to the repository and obtaining the results of these checks. Each evaluation assesses the repository against these predefined rules and provides a pass or fail status.
 
 
 The page offers detailed information about:
@@ -51,7 +49,7 @@ The page offers detailed information about:
 
 <DocImage path={require('./static/cicdspm-overview-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
-## Risk and Compliance Tab
+## Risk and compliance tab
 
 In this tab, you will find a list of rules applied to the pipeline, each accompanied by its name and the compliance standard to which it belongs. The latest status indicates whether the rule has passed or failed in the most recent evaluation, along with the date and time of the last evaluation. The evaluation history column shows the rule's status (passed or failed) over the last 7 evaluations, providing a clear view of its compliance trend.
 
@@ -64,7 +62,7 @@ By clicking on a specific evaluation status, you can access detailed information
 
 <DocImage path={require('./static/cicd-sidetab.png')} width="100%" height="100%" title="Click to view full size image" />
 
-## Plugins Tab​
+## Plugins tab​
 
 The Plugins tab provides a list of all plugins used in the pipeline. The tab name may vary based on the integration type. For instance, with GitHub, it will be labeled Actions.
 

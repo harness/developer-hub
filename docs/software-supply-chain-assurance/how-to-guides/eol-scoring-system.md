@@ -2,7 +2,7 @@
 title: EOL Scoring System
 description: Learn about the categories used to calculate the EOL score
 sidebar_label: EOL Scoring System
-sidebar_position: 112
+sidebar_position: 30
 
 tags:
   - harness-scs 
@@ -19,7 +19,7 @@ tags:
 
 
 
-### EOL Proximity Scoring System
+### EOL proximity scoring system
 
 | **Risk Level**     | **Score Range** | **Description** |
 |--------------------|-----------------|-----------------|
@@ -29,7 +29,7 @@ tags:
 
 
 
-## Categories that Influence the EOL Score
+## Categories that influence the EOL score
 
 The EOL scoring framework evaluates multiple risk categories and assigns a EOL score.
 

@@ -1,7 +1,7 @@
 ---
 title: Direct/Indirect Dependency
 description: Filter dependencies via direct and indirect dependencies.
-sidebar_position: 23
+sidebar_position: 90
 
 tags:
   - harness-scs
@@ -16,7 +16,7 @@ A single dependency can bring in several others. As a result, understanding thes
 
 ***
 
-## What will you learn in this topic?
+## What you will learn from this topic
 
 By the end of this topic, you will be able to understand:
 
@@ -36,7 +36,7 @@ Make a note of the following before you proceed:
 
 ***
 
-## Filtering Direct/Indirect Dependencies
+## Filter direct and indirect dependencies
 
 You can filter direct and indirect dependencies via dependency type. To do this, complete the following steps:
 
@@ -62,7 +62,7 @@ This feature will be available for SMP starting with the June release.
 
 ***
 
-## Viewing the Dependency Table
+## View the dependency table
 
 The dependency table shows direct and indirect dependencies for a particular dependency. Complete the following steps to view the dependency table:
 

@@ -1,7 +1,7 @@
 ---
 title: Generate SLSA with Harness GitHub Actions
 description: Use Harness GitHub Actions to Generate SLSA Provenance
-sidebar_position: 11
+sidebar_position: 10
 redirect_from: 
 - /docs/software-supply-chain-assurance/slsa/generate-slsa-with-github-actions
 
@@ -31,7 +31,7 @@ import GHActionReq from '/docs/software-supply-chain-assurance/shared/requiremen
 
 <GHActionReq />
 
-### Usage Example
+### Usage example
 
 ```yaml
 - name: SLSA Provenance Generation
@@ -60,7 +60,7 @@ Make sure to include the required configurations from the [Requirements](#requir
 
 ### Sample workflow
 
-Here's a sample workflow using the `harness/github-actions/slsa-generation`
+Here is a sample workflow using the `harness/github-actions/slsa-generation`
 
 ```yaml
 name: Workflow for SLSA Generation Action
@@ -159,4 +159,4 @@ jobs:
 
 ```
 
-To verify the generated SLSA Provenance, refer to [Verify SLSA Provenance with GitHub Actions](/docs/software-supply-chain-assurance/artifact-security/slsa/slsa-github-actions/verify-slsa-with-github-actions) documentation.
+Go to [Verify SLSA Provenance with GitHub Actions](/docs/software-supply-chain-assurance/artifact-security/slsa/slsa-github-actions/verify-slsa-with-github-actions) to verify the generated SLSA Provenance.

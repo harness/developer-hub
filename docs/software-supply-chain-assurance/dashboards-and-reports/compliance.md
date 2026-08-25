@@ -2,7 +2,7 @@
 title: Compliance Reports
 sidebar_label: Compliance Reports
 description: View Compliance Reports across the Repos using Harness Dashboards
-sidebar_position: 3
+sidebar_position: 20
 redirect_from:
 - /docs/software-supply-chain-assurance/open-source-management/dependencies/compliance
 
@@ -21,7 +21,7 @@ The Compliance Report provides detailed insights into your organization's compli
 You can generate the compliance report for a [single repository](/docs/software-supply-chain-assurance/dashboards-and-reports/compliance#compliance-report-repo), or [summary report for all repositories](/docs/software-supply-chain-assurance/dashboards-and-reports/compliance#compliance-report-summary) within a project or organization of your choice
 
 
-### Compliance Report (Repo)
+### Compliance report (repo)
 
 
 This dashboard provides a centralized view of repository-level compliance evaluations against widely accepted security benchmarks such as Top 10 OWASP CI/CD and CIS Benchmarks.
@@ -41,7 +41,7 @@ This dashboard provides a centralized view of repository-level compliance evalua
 
 <DocImage path={require('./static/repo-url.png')} width="80%" height="80%" title="Click to view full size image" />
 
-### Detailed Repo Summary
+### Detailed repo summary
 
 
 **Rule ID**: Unique identifier of the compliance rule.
@@ -59,20 +59,20 @@ This dashboard provides a centralized view of repository-level compliance evalua
 <DocImage path={require('./static/repo-summary.png')} width="80%" height="100%" title="Click to view full size image" />
 
 
-### Failed Issues Trend by Severity
+### Failed issues trend by severity
 
 Tracks the daily count of failed compliance checks by severity, helps you to quickly spot spikes, regressions, and assess repository risk posture over time.
 
 <DocImage path={require('./static/repo-severity.png')} width="80%" height="100%" title="Click to view full size image" />
 
-### Rules Evaluation Trend
+### Rules evaluation trend
 
 Tracks the total number of passed vs failed rule evaluations over time, helps you to visualize changes in compliance posture across scans.
 
 <DocImage path={require('./static/repo-trend.png')} width="80%" height="100%" title="Click to view full size image" />
 
 
-### Compliance Report (Summary)
+### Compliance report (summary)
 
 The Compliance Report (Summary) aggregates compliance status across multiple repositories.
 
@@ -97,7 +97,7 @@ The Compliance Report (Summary) aggregates compliance status across multiple rep
 <DocImage path={require('./static/compliance-report-summary.png')} width="80%" height="100%" title="Click to view full size image" />
 
 
-### Detailed Rule Analysis
+### Detailed rule analysis
 
 
 
@@ -118,7 +118,7 @@ The Compliance Report (Summary) aggregates compliance status across multiple rep
 <DocImage path={require('./static/compliance-rule-analysis.png')} width="80%" height="100%" title="Click to view full size image" />
 
 
-### Rules Summary
+### Rules summary
 
 Provides a breakdown of all evaluated compliance rules, showing the number of repositories that passed or failed each rule which helps to pinpoint compliance gaps across standards like CIS and OWASP.
 

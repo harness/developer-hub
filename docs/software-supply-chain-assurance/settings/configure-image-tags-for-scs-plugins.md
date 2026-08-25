@@ -1,7 +1,7 @@
 ---
 title: Configure Harness SCS Plugins
 description: Configure how SCS pipelines pull plugin images, including using a private registry instead of the default public source.
-sidebar_position: 91
+sidebar_position: 30
 
 tags:
   - harness-scs 
@@ -17,8 +17,8 @@ When a Harness SCS pipeline starts, an **Initialize** step runs automatically be
 
 By default, when SCS pipeline runs, the Harness Delegate uses a Docker connector to make an anonymous outbound connection to pull the Harness SCS images from the public container registry where they are stored.
 
-### Configure Image Pulls from a Private Registry
-Harness SCS images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can pull Harness SCS images from your own private registry.
+### Configure image pulls from a private registry
+Harness SCS images are stored in a public container registry. If you do not want to pull the images directly from the public registry, you can pull Harness SCS images from your own private registry.
 
 
 Below are the supported plugin images and their tags:
@@ -40,9 +40,9 @@ Below are the supported plugin images and their tags:
 
 ### Curl command to update the plugin versions of SCS steps
 
-Please use the curl command below to update the plugin version. Make sure to provide the account ID, `x-api-key`, and infrastructure type (based on whether it’s K8s or VM).
+Use the curl command below to update the plugin version. Make sure to provide the account ID, `x-api-key`, and infrastructure type (based on whether it’s K8s or VM).
 
-```
+```shell
 
 curl --location 'https://app.harness.io/gateway/ci/execution-config/update-config?accountIdentifier=<accountId>&infra=K8' \
 --header 'X-API-KEY: <x-api-key>' \
@@ -88,10 +88,10 @@ curl --location 'https://app.harness.io/gateway/ci/execution-config/update-confi
 ### Curl command to revert the plugin versions of SCS steps
 
 
-Please use the curl command below to revert the plugin version. Make sure to provide the account ID, `x-api-key`, and infrastructure type (based on whether it’s K8s or VM).
+Use the curl command below to revert the plugin version. Make sure to provide the account ID, `x-api-key`, and infrastructure type (based on whether it’s K8s or VM).
 
 
-```
+```shell
 curl --location 'https://app.harness.io/gateway/ci/execution-config/reset-config?accountIdentifier=accountId&infra=K8' \
 --header 'X-API-KEY: pat' \
 --header 'Content-Type: application/json' \
@@ -123,3 +123,8 @@ curl --location 'https://app.harness.io/gateway/ci/execution-config/reset-config
 ]'
 
 ```
+
+## Next steps
+
+* [Default settings](/docs/software-supply-chain-assurance/settings/default-settings): Configure account, organization, and project level SCS settings.
+* [Manage SCS access control with RBAC](/docs/software-supply-chain-assurance/settings/rbac): Configure roles and permissions for SCS resources.

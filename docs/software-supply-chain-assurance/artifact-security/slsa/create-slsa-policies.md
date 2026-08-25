@@ -20,13 +20,13 @@ This document provides a step-by-step guide on how to create SLSA Policies. For 
 As you learn to create SLSA policies, ensure you thoroughly review
 
 
-* [Harness Policy as Code - Overview](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/)
-* [Harness Policy as Code - Quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart/)
+* [Harness Policy as Code - Overview](/docs/platform/governance/policy-as-code/harness-governance-overview/)
+* [Harness Policy as Code - Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart/)
 
-The Harness Policy Library provides sample policies that simplify the process of creating and enforcing them against SLSA. Here's a guide on how to utilize these samples for policy creation.
+The Harness Policy Library provides sample policies that simplify the process of creating and enforcing them against SLSA. Here is a guide on how to utilize these samples for policy creation.
 
 :::info
-Policies can be created at the account, organization, and project levels, this guide will focus on creating a policy at the account level. For instructions on crafting policies for the organization and project levels, please refer to the linked [overview guide](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/), which outlines a similar process.
+Policies can be created at the account, organization, and project levels, this guide will focus on creating a policy at the account level. For instructions on crafting policies for the organization and project levels, go to the linked [overview guide](/docs/platform/governance/policy-as-code/harness-governance-overview/) to follow a similar process.
 
 
 :::
@@ -34,7 +34,7 @@ Policies can be created at the account, organization, and project levels, this g
 
 ## Create SLSA policies
 
-You must create a set of OPA policies that you want Harness SCS to use for SLSA Provenance verification. You can create a dedicated SLSA Provenance verification policy set or use existing policy sets that you've already created. For more information about creating policies in Harness, go to the [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview).
+You must create a set of OPA policies that you want Harness SCS to use for SLSA Provenance verification. You can create a dedicated SLSA Provenance verification policy set or use existing policy sets that you have already created. Go to the [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview) to create policies in Harness.
 
 :::info
 
@@ -48,10 +48,10 @@ OPA policies used for SLSA Provenance verification are different from [SBOM poli
 
 ### SLSA policy example
 
-Here's an example of an OPA policy that could be used to verify an [SLSA Provenance generated in Harness](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa). If you are verifying provenance from a third-party build system provider, make sure your OPA policies reflect the provenance structure used by that build system provider. Different providers might use different SLSA Provenance structures.
+Here is an example of an OPA policy that could be used to verify an [SLSA Provenance generated in Harness](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa). If you are verifying provenance from a third-party build system provider, make sure your OPA policies reflect the provenance structure used by that build system provider. Different providers might use different SLSA Provenance structures.
 
 
-#### Validate Repo and Branch:
+#### Validate repo and branch:
 
 ```
 package slsa
@@ -69,7 +69,7 @@ deny[msg]{
 }
 ```
 
-#### Validate Trigger type:
+#### Validate trigger type:
 
 ```
 
@@ -83,7 +83,7 @@ deny[msg] {
 
 ```
 
-#### Validate Pipeline Identifier:
+#### Validate pipeline identifier:
 
 ```
 

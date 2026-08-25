@@ -1,6 +1,6 @@
 {
     "label":"SLSA using GitLab CI/CD",
-    "position": 58,
+    "position": 60,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",

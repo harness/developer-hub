@@ -1,12 +1,15 @@
 ---
 title: SCS FAQs
 description: Frequently asked questions about SCS
-sidebar_position: 56
+sidebar_position: 10
 sidebar_label: FAQs
+tags:
+  - faq
+  - supply chain security
 ---
 
 
-## General Questions
+## General questions
 
 ### 1. In which Harness stages can I use SCS steps?
 
@@ -119,7 +122,7 @@ If the **ssca-manager** service is not configured with valid S3 credentials, the
 
 :::
 
-### 5. Installed SMP via Harness Helm charts, How do I add other modules?
+### 5. Installed SMP via Harness Helm charts, how do I add other modules?
 
 - The Harness Helm chart installs only the core platform components. To add other modules (like SCS, STO, etc.), you need to edit the `override.yaml` file and enable them explicitly.
 

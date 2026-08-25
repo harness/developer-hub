@@ -1,7 +1,7 @@
 ---
 title: Verify SLSA with Harness GitHub Actions
 description: Use Harness GitHub Actions to Verify SLSA Provenance
-sidebar_position: 21
+sidebar_position: 20
 redirect_from: 
 
 - /docs/software-supply-chain-assurance/slsa/verify-slsa-with-github-actions
@@ -34,7 +34,7 @@ import GHActionReq from '/docs/software-supply-chain-assurance/shared/requiremen
 
 <GHActionReq />
 
-### Usage Example
+### Usage example
 
 ```yaml
 - name: SLSA Verification
@@ -63,7 +63,7 @@ Make sure to include the required configurations from the [Requirements](#requir
 
 ### Sample workflow
 
-Here's a sample workflow using the `harness/github-actions/slsa-verification`
+Here is a sample workflow using the `harness/github-actions/slsa-verification`
 
 ```yaml
 

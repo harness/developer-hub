@@ -1,7 +1,7 @@
 ---
 title: Manage SBOM Policies
 description: Configure and enforce SBOM policies in Harness SCS using OPA templates for allow list, deny list, and package age rules, apply them in the SBOM Policy Enforcement step during pipeline execution, and review policy violations and skipped dependency counts.
-sidebar_position: 22
+sidebar_position: 80
 sidebar_label: Manage SBOM Policies
 
 tags:
@@ -17,7 +17,7 @@ Supply Chain Security (SCS) depends on the use of trusted software components th
 
 SBOM Policies help address this challenge by allowing you to define and enforce rules that evaluate software components during SBOM policy enforcement. SCS provides out-of-the-box policy templates that you can use to enforce your organization's security and compliance requirements. You can also customize these policies to align with your organization's governance standards and software supply chain security objectives.
 
-## What will you learn from this topic
+## What you will learn from this topic
 
 By the end of this topic, you will be able to:
 
@@ -31,9 +31,9 @@ By the end of this topic, you will be able to:
 
 Make a note of the following before you proceed with managing SBOM policies in SCS:
 
-* Make sure you have a clear understanding of SBOM generation through pipeline execution for artifacts and repositories. For more information, go to [Generate SBOM for Artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts) and [Generate SBOM for Repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories), respectively.
-* Make sure you have a clear understanding of SBOM policy enforcement. For more information, go to [Enforce SBOM Policies](https://developer.harness.io/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies).
-* Make sure you have a clear understanding of creating SBOM policies and writing policy definitions. For more information, go to [Create SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies) and [Write Policy Definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies), respectively.
+* Make sure you have a clear understanding of SBOM generation through pipeline execution for artifacts and repositories. Go to [Generate SBOM for Artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts) and [Generate SBOM for Repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) to generate SBOMs.
+* Make sure you have a clear understanding of SBOM policy enforcement. Go to [Enforce SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies) to enforce policies in a pipeline.
+* Make sure you have a clear understanding of creating SBOM policies and writing policy definitions. Go to [Create SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies) and [Write Policy Definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies), to create policies and write policy definitions respectively.
 
 ## Understand SBOM policies
 
@@ -41,7 +41,7 @@ SBOM Policies enable you to define rules that evaluate the software components i
 
 SCS provides out-of-the-box policy templates that you can use to quickly implement common software supply chain security requirements. You can also create custom policies or modify existing policy definitions to meet your organization's governance and compliance requirements. Policies can then be grouped into policy sets and enforced during pipeline execution through the **SBOM Policy Enforcement** step.
 
-### Types of SBOM Policies
+### Types of SBOM policies
 
 SCS supports the following policy types:
 
@@ -59,7 +59,7 @@ SBOM policies provide a flexible framework for enforcing security, compliance, a
 
 | **Why use SBOM Policies?** | **When should you use SBOM Policies?** | **How can you leverage SBOM Policies?** |
 | --- | --- | --- |
-| 1. Enforce consistent security, compliance, and governance requirements for the software components in your SBOM.<br /> 2. Automate policy evaluation during CI/CD workflows to reduce manual dependency reviews.<br /> 3. Standardize dependency governance across repositories and artifacts. | 1. When you need to validate software components against your organization's security or compliance standards before they are used in repositories or artifacts.<br /> 2. When you want to automatically identify or block dependencies that do not satisfy your organization's policy requirements.<br /> 3. When multiple teams or projects need to enforce the same dependency validation rules. | 1. Create SBOM policies using the available policy templates or customize policy definitions to enforce your organization's dependency governance requirements.<br /> 2. Add policies to an [SBOM Policy Set](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#creating-an-sbom-policy-set) and use them in the **SBOM Policy Enforcement** step to evaluate dependencies during pipeline execution.<br /> 3. Reuse policy sets across pipelines to consistently enforce software supply chain security requirements throughout your organization. |
+| 1. Enforce consistent security, compliance, and governance requirements for the software components in your SBOM.<br /> 2. Automate policy evaluation during CI/CD workflows to reduce manual dependency reviews.<br /> 3. Standardize dependency governance across repositories and artifacts. | 1. When you need to validate software components against your organization's security or compliance standards before they are used in repositories or artifacts.<br /> 2. When you want to automatically identify or block dependencies that do not satisfy your organization's policy requirements.<br /> 3. When multiple teams or projects need to enforce the same dependency validation rules. | 1. Create SBOM policies using the available policy templates or customize policy definitions to enforce your organization's dependency governance requirements.<br /> 2. Add policies to an [SBOM Policy Set](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#create-an-sbom-policy-set) and use them in the **SBOM Policy Enforcement** step to evaluate dependencies during pipeline execution.<br /> 3. Reuse policy sets across pipelines to consistently enforce software supply chain security requirements throughout your organization. |
 
 ## Configure SBOM policies
 
@@ -71,11 +71,11 @@ To configure an SBOM policy, complete the following steps:
 
 2. Select **Policies** from the options in the top right corner to open the **Policies** page.
 
-3. Create the **SBOM package age deny list** policy. For step-by-step instructions, go to [Create SBOM Policies](https://developer.harness.io/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#creating-an-sbom-policy).
+3. Create the **SBOM package age deny list** policy. Go to [Create SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#create-an-sbom-policy) to follow the step-by-step instructions.
 
 4. Search for and use the preferred policy template from the available sample policies as instructed in the previous step.
 
-5. Locate the **allow list** or **deny list** rules that you want to configure in the policy definition. For more information on writing policy definitions, go to [Write Policy Definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies)<br /> For the **SBOM Package Age – Deny** policy, locate the following configuration:
+5. Locate the **allow list** or **deny list** rules that you want to configure in the policy definition. Go to [Write Policy Definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies) to understand policy definition syntax. <br /> For the **SBOM Package Age – Deny** policy, locate the following configuration:
 
     ```yaml
     cooldown_days := 2
@@ -85,11 +85,11 @@ To configure an SBOM policy, complete the following steps:
 
 7. Save the policy as instructed in **Step 3**.
 
-8. Add the policy to a policy set to use it in the **SBOM Policy Enforcement** step. For instructions on creating a policy set and adding policies to it, go to [Creating an SBOM Policy Set](https://developer.harness.io/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#creating-an-sbom-policy-set).
+8. Add the policy to a policy set to use it in the **SBOM Policy Enforcement** step. Go to [Creating an SBOM Policy Set](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#create-an-sbom-policy-set) to create a policy set and add policies to it.
 
 ## Use the policy in SBOM Policy Enforcement step
 
-After creating and configuring an SBOM policy and adding it to a policy set, you can use the policy in the **SBOM Policy Enforcement** step. During pipeline execution, the step evaluates the generated SBOM against the configured policy and applies the configured enforcement action when policy violations are detected. If one or more dependencies do not satisfy the configured policy requirements, the step fails according to the configured enforcement action, which can cause the pipeline to fail. This enables you to enforce your organization's security, compliance, and governance requirements as part of your software supply chain security workflow. For instructions on configuring the **SBOM Policy Enforcement** step and using policy sets, go to [Enforce SBOM Policies](https://developer.harness.io/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies).
+After creating and configuring an SBOM policy and adding it to a policy set, you can use the policy in the **SBOM Policy Enforcement** step. During pipeline execution, the step evaluates the generated SBOM against the configured policy and applies the configured enforcement action when policy violations are detected. If one or more dependencies do not satisfy the configured policy requirements, the step fails according to the configured enforcement action, which can cause the pipeline to fail. This enables you to enforce your organization's security, compliance, and governance requirements as part of your software supply chain security workflow. Go to [Enforce SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies) to configure the **SBOM Policy Enforcement** step and use policy sets.
 
 :::note
 

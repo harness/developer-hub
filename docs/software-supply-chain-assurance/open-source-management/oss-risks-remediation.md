@@ -1,7 +1,7 @@
 ---
 title: OSS Risks Remediation
 description: Remediate security risks in your open source components effectively.
-sidebar_position: 24
+sidebar_position: 100
 
 tags:
   - harness-scs
@@ -15,7 +15,7 @@ SCS enables you to generate SBOM via code repositories through Repository Securi
 
 Remediate risks and vulnerabilities for a direct dependency by using one of the following methods:
 
-* [Manual Pull Request](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation#raising-a-manual-pull-request) - Select an updated version of the dependency and manually raise a pull request to apply the update.
+* [Manual Pull Request](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation#raise-a-manual-pull-request) - Select an updated version of the dependency and manually raise a pull request to apply the update.
 * [Auto Pull Request](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation#auto-pull-request-remediation) - Configure Auto PR remediation to automatically generate pull requests that update multiple dependencies across your onboarded repositories.
 
 :::note
@@ -30,7 +30,7 @@ Remediate risks and vulnerabilities for a direct dependency by using one of the 
 
 ***
 
-## What will you learn in this topic?
+## What you will learn from this topic
 
 By the end of this topic, you will be able to understand:
 
@@ -54,38 +54,38 @@ Make a note of the following before you proceed with the remediation:
 
 ## Create/Select the GitHub connector for pull requests
 
-Harness connectors allow you to link your Harness account to your GitHub account. SCS lets you create your own connector or select an already existing one. Make sure you complete this step before remediating OSS risks using manual or automated pull requests. To learn more about connectors, refer to the [Connect to a Git Repository documentation](/docs/platform/connectors/code-repositories/connect-to-code-repo/).
+Harness connectors allow you to link your Harness account to your GitHub account. SCS lets you create your own connector or select an already existing one. Make sure you complete this step before remediating OSS risks using manual or automated pull requests. Go to [Connect to a Git Repository documentation](/docs/platform/connectors/code-repositories/connect-to-code-repo/) to understand how connectors work.
 
 To create or select a GitHub connector for pull requests:
 
 1. Navigate to the **Configurations** page under the **Manage** section from the sidebar navigation of your SCS account. The **General** tab opens by default.
 2. Click `Select Connector` beside the `Github Connector for Pull Request` to open the `Create or Select an Existing Connector` dialog.
 3. Select your required connector from the list of existing connectors. You can search for your created connector or filter connectors by **Project**, **Organization**, and **Account**.
-4. Alternatively, click `+ New Connector` to create a new connector for raising pull requests in your onboarded repositories. For more information, see [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/).
+4. Alternatively, click `+ New Connector` to create a new connector for raising pull requests in your onboarded repositories. Go to [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/) to review the available settings.
 5. Click `Apply Selected`. Once selected, you can view the **Configuration Saved Successfully** toaster message at the top, indicating that the connector has been selected or created successfully.
 
 <DocImage path={require('./static/autopr-connector.png')} width="80%" height="80%" title="Click to view full size image" />
 
 :::note
 
-To automatically create pull requests using Auto PR remediation, the GitHub personal access token (PAT) must have sufficient repository permissions, including write access to the repository (such as the repo scope for classic tokens or equivalent permissions for fine-grained tokens). For more information, see [Managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+To automatically create pull requests using Auto PR remediation, the GitHub personal access token (PAT) must have sufficient repository permissions, including write access to the repository (such as the repo scope for classic tokens or equivalent permissions for fine-grained tokens). Go to [Managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) in the GitHub documentation to configure token scopes.
 
 :::
 
 Once a connector is selected/created, you can proceed with OSS risks remediation through:
-* [Manual Pull Request](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation#raising-a-manual-pull-request)
+* [Manual Pull Request](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation#raise-a-manual-pull-request)
 * [Auto Pull Request](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation#auto-pull-request-remediation)
 
 ***
 
-## Raising a Manual Pull Request
+## Raise a manual pull request
 
 To remediate a direct dependency exposed to any OSS risks, complete the following steps:
 
-1. [Select the recommended/updated dependency version](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation#step-1---select-the-recommendedupdated-version-of-the-dependency)
-2. [Raise a manual Pull Request to update the dependency version](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation#step-2---raise-a-pull-request-manually)
+1. [Select the recommended/updated dependency version](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation#step-1-select-the-recommendedupdated-version-of-the-dependency)
+2. [Raise a manual Pull Request to update the dependency version](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation#step-2-raise-a-pull-request-manually)
 
-### Step 1 - Select the recommended/updated version of the dependency
+### Step 1: Select the recommended/updated version of the dependency
 
 Updating a dependency to a recommended or an updated version helps address known risks and vulnerabilities, improving your application’s security and reducing potential exposure. When you select a recommended or updated version from the dependency side panel, the change is applied directly through a Pull Request, making it easier to keep your dependencies secure.
 
@@ -145,7 +145,7 @@ Selecting a target version automatically displays a visualization of existing vu
 
 <DocImage path={require('./static/downstream-dependencies-affected.png')} width="80%" height="80%" title="Click to view full size image" />
 
-### Step 2 - Raise a Pull Request Manually
+### Step 2: Raise a pull request manually
 
 Selecting a target version shows you the preview changes in the auto-detected manifest file for the dependency version change. To make that change in your repository, you need to raise a pull request.
 
@@ -163,7 +163,7 @@ Below is a pull request summary created through manual PR remediartion, highligh
 
 ***
 
-## Auto Pull Request Remediation
+## Auto pull request remediation
 
 Setting up Auto PR configuration lets you control when automated pull requests are created to update open-source dependencies across all onboarded repositories.
 
@@ -188,9 +188,9 @@ To set up the Auto PR configuration:
     * Enable the toggle beside `Do not create PRs if transitive dependencies impact other components` to prevent the raising of pull requests if the dependency updates impact transitive dependencies, which in turn impact other dependencies. This is enabled by default with the Strict preset.
   * **Versioning Rules**
     * The following are the types of version updates to allow under versioning rules:
-      * **Patch Updates** — Select the checkbox beside `Patch Updates` to allow patch updates. This is enabled by default with the Strict preset.
-      * **Minor Updates** — Select the checkbox beside `Minor Updates` to allow patch updates. This is enabled by default with the Strict preset.
-      * **Major Updates** — Select the checkbox beside `Major Updates` to allow patch updates.
+      * **Patch Updates:** Select the checkbox beside `Patch Updates` to allow patch updates. This is enabled by default with the Strict preset.
+      * **Minor Updates:** Select the checkbox beside `Minor Updates` to allow patch updates. This is enabled by default with the Strict preset.
+      * **Major Updates:** Select the checkbox beside `Major Updates` to allow patch updates.
     * Enable the toggle beside `Allow pre-release versions` to allow pre-release versions.
   * **Compliance and Maintenance**
     * Enable the toggle beside `Do not create PRs if license changes` to prevent the creation of pull requests in the event of a change in the license during any dependency update. This is enabled by default with the Strict preset.

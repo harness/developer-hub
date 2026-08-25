@@ -1,7 +1,7 @@
 ---
 title: Write policy definitions
 description: Learn how to write policy definitions for SBOM policy files.
-sidebar_position: 22
+sidebar_position: 10
 redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/define-ssca-policies
   - /docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies
@@ -27,7 +27,7 @@ You can define OPA policy sets at project, org, and account levels. A typical SB
 
 * `deny_list`: Rules for denying the use of components based on specified criteria.
 * `allow_list`: Rules for allowed licenses, suppliers, and PURLs.
-* `Enforcement Logic`: Don't edit this part. It provides policy examples and logic that ensures your policies are consistently enforced.
+* `Enforcement Logic`: Do not edit this part. It provides policy examples and logic that ensures your policies are consistently enforced.
 
 :::warning
 
@@ -53,7 +53,7 @@ Harness has the following samples in the Policy Library to help you create rules
 
 Here is an example of a sample policy:
 
-```
+```go
 package sbom
 
 import future.keywords.if
@@ -104,12 +104,12 @@ does_match_license(license, rules) if {
 
 ```
 
-## Supported Operators
+## Supported operators
 
 In this section you can find the operators supported by SBOM OPA policies
 
-### String Operators
-```
+### String operators
+```go
 - ==: Equal to
 - !=: Not equal to
 - ~: Pattern match
@@ -124,8 +124,8 @@ Examples:
 
 ```
 
-### Version Operators
-```
+### Version operators
+```go
 - ==: Equal to
 - !=: Not equal to
 - >: Greater than
@@ -164,14 +164,14 @@ Examples:
 
 ```
 
-## Sample Rules
+## Sample rules
 In this section, you can find examples of various rules that you can create for SBOM policy enforcement
 
 ### Sample deny list rules
 
 **Block 'curl' below a Certain Version**
 
-```
+```go
 Rule: "name": {"value": "curl", "operator": "=="}, "version": {"value": "3.0.0", "operator": "<="}
 ```
 
@@ -179,7 +179,7 @@ This rule blocks the usage of 'curl' if the version is 3.0.0 or lower.
 
 **Block Versions of 'log4j' using Regex**
 
-```
+```go
 Rule: "name": {"value": ".*log4j.*", "operator": "~"}, "version": {"value": "3.0.0", "operator": "<"}
 ```
 
@@ -187,7 +187,7 @@ Targets any component matching the regex '.log4j.' that is below version 3.0.0.
 
 **Block 'busybot' Between Version 3.0.0 and 5.0.0**
 
-```
+```go
 Rule: "name": {"value": "busybot", "operator": "=="}, "version": {"value": "3.0.0,5.0.0", "operator": "><"}
 ```
 
@@ -195,7 +195,7 @@ Prohibits the usage of 'busybot' for versions strictly between 3.0.0 and 5.0.0.
 
 **Block 'curl' at or Above a Certain Version**
 
-```
+```go
 Rule: "name": {"value": "curl", "operator": "=="}, "version": {"value": "3.0.0", "operator": ">="}
 ```
 
@@ -203,7 +203,7 @@ Blocks 'curl' if its version is 3.0.0 or higher.
 
 **Block 'curl' Above a Certain Version**
 
-```
+```go
 Rule: "name": {"value": "curl", "operator": "=="}, "version": {"value": "3.0.0", "operator": ">"}
 ```
 
@@ -211,7 +211,7 @@ Blocks 'curl' if its version is greater than 3.0.0.
 
 **Block 'curl' Except a Specific Version**
 
-```
+```go
 Rule: "name": {"value": "curl", "operator": "=="}, "version": {"value": "3.0.0", "operator": "!"}
 ```
 
@@ -219,7 +219,7 @@ Blocks all versions of 'curl' except for 3.0.0.
 
 **Block Specific 'log4j' Version**
 
-```
+```go
 Rule: "name": {"value": ".*log4j.*", "operator": "~"}, "version": {"value": "3.0.0", "operator": "=="}
 ```
 
@@ -227,7 +227,7 @@ Blocks the specific version 3.0.0 of any component matching '.log4j.'.
 
 **Block Components with Regex Pattern in Name**
 
-```
+```go
 Rule: {"name": {"value": "c.*", "operator": "~"}}
 ```
 
@@ -235,7 +235,7 @@ Blocks any component whose name starts with 'c'.
 
 **Block Components with a Specific License**
 
-```
+```go
 Rule: {"license": {"value": "BSD-3-Clause", "operator": "=="}}
 ```
 
@@ -243,7 +243,7 @@ Blocks components with the 'BSD-3-Clause' license.
 
 **Block Components Within a Version Range**
 
-```
+```go
 Rule: {"version": {"value": "1.3.0,2.12.0", "operator": ">=<"}}
 ```
 
@@ -251,7 +251,7 @@ Targets components whose versions are greater than or equal to 1.3.0 and less th
 
 **Block Components from a Specific Supplier**
 
-```
+```go
 Rule: {"supplier": {"value": "Organization: Red Hat, Inc.", "operator": "=="}}
 ```
 
@@ -263,7 +263,7 @@ Allow list rules are grouped under licenses, suppliers or purls
 
 **Allow a list of licenses based on various criteria**
 
-```
+```go
 Rule: "licenses": [   {"license": {       "value": "MIT",       "operator": "==",     }},     {"license": {       "value": ".*Apache.*",       "operator": "~",     }},     {"license": {       "value": ".*eclipse.*",       "operator": "~",     }},   ],
 ```
 
@@ -271,7 +271,7 @@ This group of rules permits components based on their license types. The first r
 
 **Allow a list of suppliers**
 
-```
+```go
 Rule: "suppliers": [{"supplier": {    "value": ".*Red Hat.*",     "operator": "~",   },  { "value": ".*Apache.*",     "operator": "~",   }}],
 ```
 

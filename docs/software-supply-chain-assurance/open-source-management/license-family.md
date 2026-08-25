@@ -1,7 +1,7 @@
 ---
 title: License Family
 description: Categorize individual licenses into standard families to quickly understand their impact and risk.
-sidebar_position: 26
+sidebar_position: 120
 
 tags:
   - harness-scs
@@ -33,7 +33,7 @@ By the end of this topic, you will be able to understand:
 
 ***
 
-## Understand License Families
+## Understand license families
 
 License families group individual open source licenses based on their obligations and usage restrictions. Instead of interpreting each license separately, this classification helps you quickly understand how a license might impact your application.
 
@@ -50,11 +50,11 @@ For classifying licenses based on their impact and risk, SCS supports the follow
 
 Make a note of the following before you proceed with license family configuration:
 
-* Generate SBOMs for your artifacts or repositories. For more information, see [Generate SBOM for Artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts/) and [Generate SBOM for Repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories/).
+* Generate SBOMs for your artifacts or repositories. Go to [Generate SBOM for Artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts/) and [Generate SBOM for Repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories/) to generate SBOMs.
 
 ***
 
-## Configure the License Families
+## Configure the license families
 
 Configuring license families allows you to control how licenses are grouped and interpreted in your SBOM. To configure the license families, complete the following steps:
 
@@ -70,7 +70,7 @@ Configuring license families allows you to control how licenses are grouped and 
 
 ***
 
-## View the License Family
+## View the license family
 
 Viewing license families in the SBOM dependency table lets you quickly identify licensing risk using color-coded indicators for each dependency. To view the license family within the SBOM table, complete the following steps:
 
@@ -83,7 +83,7 @@ Viewing license families in the SBOM dependency table lets you quickly identify 
 
 ***
 
-## Enforce License Compliance Using OPA Policies
+## Enforce license compliance using OPA policies
 
 License family classification gives you visibility into the licensing risk of your dependencies. However, organizations often need to go beyond visibility and enforce policies that restrict the use of certain license types to meet compliance and legal requirements.
 
@@ -100,7 +100,7 @@ The following examples show how you can use OPA policies to evaluate license fam
 <div>  
 The following policy example shows how to deny licenses from the **Copyleft** license family and allow licenses only from the **Permissive** license family:
 
-```
+```go
 package sbom
 
 import future.keywords.if
@@ -451,7 +451,7 @@ fill_default_deny_rules(obj) := list if {
 <div>
 The following policy example shows how to deny licenses from the **Copyleft** license family:
 
-```
+```go
 package harness.sbom.deny_list
 
 # Deny GPL licenses (all variants)

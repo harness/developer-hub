@@ -1,6 +1,6 @@
 {
     "label":"SLSA using GitHub Actions",
-    "position": 48,
+    "position": 50,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",

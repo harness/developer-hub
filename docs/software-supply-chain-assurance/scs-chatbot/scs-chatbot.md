@@ -2,7 +2,7 @@
 title: AppSec Chatbot
 description: Learn about the AppSec SCS Chatbot
 sidebar_label: SCS Chatbot
-sidebar_position: 116
+sidebar_position: 10
 redirect_from:
   - /docs/software-supply-chain-assurance/appsec-agent/scs-appsec-agent
 
@@ -23,14 +23,14 @@ The AppSec chatbot retrieves the relevant information from SCS and responds in a
 
 - The AppSec Chatbot in SCS is currently scoped to project level. Cross-project queries are currently not supported. Queries related to artifacts, code repositories, chain of custody, compliance results, SBOM, SLSA, and OPA policies are supported.
 
-- If a question is not related to Harness, you'll see the message: The query is not related to Harness, as it is outside the scope of Harness functionalities.
+- If a question is not related to Harness, you will see the message: The query is not related to Harness, as it is outside the scope of Harness functionalities.
 
 :::info prerequisites & support
 - Make sure you enable the Harness AI at the account level settings.
 - Currently, the AppSec Chatbot is not supported on SMP.
 :::
 
-## Sample Questions
+## Sample questions
 
 The following are some examples of the types of questions you can ask the AppSec Chatbot along with sample responses:
 
@@ -50,7 +50,7 @@ The following are some examples of the types of questions you can ask the AppSec
 <DocImage path={require('./static/npm-package.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
-## Feedback Mechanism
+## Feedback mechanism
 
 Each response supports feedback so you can help improve the model:
 

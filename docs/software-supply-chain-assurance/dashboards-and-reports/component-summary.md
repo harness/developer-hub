@@ -2,7 +2,7 @@
 title: Component Summary
 sidebar_label: Component Summary
 description: View component summary dashboard across Artifacts and Code Repositories
-sidebar_position: 5
+sidebar_position: 40
 
 tags:
   - harness-scs 
@@ -47,7 +47,7 @@ You can apply filters to drill down and navigate across the following key dimens
 
 Click the ellipsis icon, in the top-right corner of the dashboard to download the component summary report (PDF or CSV), or set up automated delivery (daily, weekly, or monthly).
 
-### Component Summary
+### Component summary
 
 **Component:** Displays the name of the component identified within the artifact during SBOM Orchestration step.
 

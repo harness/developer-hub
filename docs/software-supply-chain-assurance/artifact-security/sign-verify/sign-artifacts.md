@@ -2,7 +2,7 @@
 title: Sign Artifacts with Harness SCS
 sidebar_label: Sign the Artifact
 description: Sign your artifacts using Harness SCS
-sidebar_position: 7
+sidebar_position: 10
 
 redirect_from:
 
@@ -53,7 +53,7 @@ Artifact Signing step supports both [**container**](/docs/software-supply-chain-
 
 <DocImage path={require('./static/signing-artifact.png')} width="100%" height="100%" />
 
-### Container Images
+### Container images
 
 You can search for **Artifact Signing** and add it to either the **Build** , **Deploy**, or **Security** stage of a Harness pipeline
 
@@ -141,9 +141,9 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 </Tabs>
 
 
-### Non-Container Images
+### Non-Container images
 
-Artifacts aren't limited to container images. With the Artifact Signing step, you can also sign non-container images to ensure the integrity and authenticity. Each artifact is uniquely identified by its digest (SHA), which is later used during the verification step.
+Artifacts are not limited to container images. With the Artifact Signing step, you can also sign non-container images to ensure the integrity and authenticity. Each artifact is uniquely identified by its digest (SHA), which is later used during the verification step.
 
 The following non-container artifact types are supported:
 
@@ -173,7 +173,7 @@ Follow the instructions below to configure the Artifact Signing step for non-con
 
 <DocImage path={require('./static/non-container-verify.png')} width="100%" height="100%" />
 
-### Sign the Artifacts
+### Sign the artifacts
 
 You can sign artifacts using Cosign with the following signing methods:
 
@@ -193,7 +193,7 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 This option is available only for signing container images.
 :::
 
-## View Signed Artifacts
+## View signed artifacts
 
 You can easily access the signed artifact details from the Artifacts Overview tab. This section shows the signature and who signed the artifact. Additionally, you can also find the artifact signing as an event in the Chain of Custody, where a new entry is logged every time you sign an artifact. This entry includes a link to the execution results and rekor log entry, allowing you to track the signing activity and cross-check the details.
 
@@ -212,7 +212,7 @@ Rekor logs are disabled by default. To enable them, click on **Project Settings*
 You are allowed to re-sign the same image multiple times, with each new signing overwriting the previous one. The Artifacts Overview tab will always display the most up-to-date signing details, reflecting the latest signature information for the artifact.
 :::
 
-## Example Pipeline For Artifact Signing
+## Example pipeline For Artifact Signing
 
 This example demonstrates how to implement artifact signing in the Build stage of the pipeline.
 
@@ -234,7 +234,7 @@ To replicate the Artifact Signing step you can use the below sample pipeline YAM
 
 <summary> Sample Pipeline YAML </summary>
 
-```
+```yaml
 pipeline:
   name: Artifact Signing
   identifier: ArtifactSigning
@@ -311,4 +311,4 @@ pipeline:
 
 ## Verify Artifact Signing
 
-You can verify the signed artifacts using the Artifact verification step. Refer to [configure your pipeline to verify the artifact Signing](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts)
+You can verify the signed artifacts using the Artifact verification step. Go to [configure your pipeline to verify the artifact Signing](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts) to configure your pipeline for verification.

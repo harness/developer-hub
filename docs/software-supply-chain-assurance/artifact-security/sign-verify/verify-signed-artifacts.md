@@ -3,7 +3,7 @@ title: Verify the Signed Artifacts
 sidebar_label: Verify the Artifact
 description: Verify the artifacts that are signed using the Artifact Signing step
 
-sidebar_position: 8
+sidebar_position: 20
 
 redirect_from:
 
@@ -41,13 +41,13 @@ The artifact verification step ensures the authenticity of the signed artifact b
 
 The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key. In the artifact signing step, if you have chosen not to push the `.sig` file to the registry, then for the artifact verification `.sig` file will instead be pulled from the Harness database. This process ensures that the artifact was signed by a trusted entity, thereby confirming its integrity and authenticity.
 
-When adding this step to a deploy stage, ensure it's placed within a [container step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) and you enable the `container based execution`.
+When adding this step to a deploy stage, ensure it is placed within a [container step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) and you enable the `container based execution`.
 
 Artifact Verification step supports both [container](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#container-images) and [non-container images](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#non-container-images).
 
 <DocImage path={require('./static/verify-artifact.png')} width="100%" height="100%" />
 
-### Container Images
+### Container images
 
 You can search for **Artifact Verification** and add it to either the **Build** , **Deploy** or **Security** stage of a Harness pipeline
 
@@ -121,9 +121,9 @@ Follow the instructions below to configure the Artifact Verification step.
 </Tabs>
 
 
-### Non-Container Images
+### Non-Container images
 
-Artifacts aren't limited to container images. Signed non-container artifacts can also be verified where the unique identifier (digest SHA) generated during the signing step is used to locate and verify the artifact during the verification process.
+Artifacts are not limited to container images. Signed non-container artifacts can also be verified where the unique identifier (digest SHA) generated during the signing step is used to locate and verify the artifact during the verification process.
 
 To configure Artifact Verification for non-container images, provide the following details:
 
@@ -137,7 +137,7 @@ Non-container images can be verified using **Cosign** or **Cosign with Secret Ma
 
 <DocImage path={require('./static/non-container-signing.png')} width="100%" height="100%" />
 
-### Verify the Artifacts
+### Verify the artifacts
 
 You can perform artifact verification using Cosign with the following verification methods:
 
@@ -152,7 +152,7 @@ import CosignVerificationOptions from '/docs/software-supply-chain-assurance/sha
 <CosignVerificationOptions />
 
 
-## View Verified Artifacts
+## View verified artifacts
 
 Once the artifact is signed and verified, you will be able to see the Artifact Integrity Verification status from the Artifacts Overview tab.
 
@@ -171,7 +171,7 @@ Rekor logs are disabled by default. To enable them, click on **Project Settings*
 
 
 
-## Example Pipeline For Artifact Verification
+## Example pipeline for Artifact Verification
 
 This example demonstrates how to implement artifact Verification in the Build stage of the pipeline.
 

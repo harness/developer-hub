@@ -2,7 +2,7 @@
 title: License Reports
 sidebar_label: License Reports
 description: View License Reports across the projects using Harness Dashboards
-sidebar_position: 2
+sidebar_position: 10
 redirect_from:
 
 - /docs/software-supply-chain-assurance/reports/view-license-reports
@@ -28,7 +28,7 @@ Software licenses generally fall into different categories or families, each wit
 * **Unknown Licenses:** No clear license or ambiguous terms. Default copyright laws apply.
 
 
-## View License reports for Artifacts and Code Repositories
+## View license reports for artifacts and code repositories
 
 With Harness License Reports Dashboards, you can easily access detailed information about the licenses and license families associated with your artifacts or code repositories and all the relevant data in one place, which eliminates the need to manually check each component’s license individually across all the projects.
 

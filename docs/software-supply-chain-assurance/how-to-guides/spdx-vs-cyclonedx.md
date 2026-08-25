@@ -3,7 +3,7 @@ title: SPDX vs CycloneDX
 description: Comparison between SPDX and CycloneDX
 sidebar_level: SPDX vs CycloneDX
 
-sidebar_position: 113
+sidebar_position: 40
 
 tags:
   - SBOM
@@ -29,7 +29,7 @@ Each SBOM format has specific strengths and use cases:
 
 **Sample SPDX Format:**
 
-```
+```json
 {
   "SPDXID": "SPDXRef-Package-A",
   "name": "example-lib",
@@ -47,7 +47,7 @@ Each SBOM format has specific strengths and use cases:
 
 **Sample CycloneDX Format:**
 
-```
+```json
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
@@ -71,7 +71,7 @@ Each SBOM format has specific strengths and use cases:
 
 
 
-# SBOM Formats Comparison: SPDX vs CycloneDX
+## SBOM formats comparison: SPDX vs CycloneDX
 
 | Factor | SPDX | CycloneDX |
 |--------|------|-----------|

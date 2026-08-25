@@ -1,7 +1,7 @@
 ---
 title: Artifact Overview
 description: Track the deployment of your open-source components
-sidebar_position: 1
+sidebar_position: 10
 
 redirect_from:
 
@@ -67,7 +67,7 @@ When you select an artifact, you can view the list of all its digests. For each 
 You can search for a specific digest or apply filters based on dependencies, licenses, policy violations, and environment types to quickly find the required data.
 
 
-## Artifact Overview
+## Artifact overview
 
 
 <DocImage path={require('./static/scs-fullview.png')} width="100%" height="100%" title="Click to view full size image" />
@@ -83,7 +83,8 @@ When you select an artifact’s digest, you can view a complete overview. This t
 * **SLSA:** Shows the status of SLSA verification (passed/failed). You can also download the SLSA provenance from here.
 * **Artifact Signing and Verification:** Displays the artifact signing details and verification results, along with a link to view the logs.
 
-### Chain of Custody
+### Chain of custody
+
 The Chain of Custody provides a comprehensive and immutable record of an artifact's lifecycle throughout the software supply chain. It captures every significant event during the artifact's journey, allowing detailed traceability. These logs include events from stages such as **Build** (Harness CI), **Deploy**, and **Security** (actions from the Harness **STO** and **SCS** modules).
 
 Each entry in the Chain of Custody contains relevant details about the artifact's progress, such as the status of the event, any associated downloadable artifacts, or a link to the pipeline execution results for further details. The information recorded varies depending on the specific event and includes:
@@ -95,7 +96,7 @@ Each entry in the Chain of Custody contains relevant details about the artifact'
 
 <DocImage path={require('./static/scs-chainofcustody.png')} width="100%" height="100%" title="Click to view full size image" />
 
-## SBOM Tab
+## SBOM tab
 
 The SBOM tab presents details of all the dependencies within the artifact, including dependencies from various levels, such as the application level, distribution level, and OS level. With a count of total dependencies at the top, the tab provides the following details:
 
@@ -109,14 +110,14 @@ The SBOM tab presents details of all the dependencies within the artifact, inclu
 * **Vulnerabilities:** Provides a summary of vulnerabilities, categorized by severity: critical, high, medium, and low.
 :::note
 
-The component-level vulnerabilities are mapped from the STO scan. If the user doesn't have an STO license, the vulnerabilities will still get populated from the internal database.
+The component-level vulnerabilities are mapped from the STO scan. If the user does not have an STO license, the vulnerabilities will still get populated from the internal database.
 
 :::
 
 <DocImage path={require('./static/component-sbom-for-artifacts.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
-For more information about the levels of image dependencies, refer to the [How to detect base images in SBOM](/docs/software-supply-chain-assurance/how-to-guides/label-components-from-image) documentation.
+For more information about the levels of image dependencies, go to [How to detect base images in SBOM](/docs/software-supply-chain-assurance/how-to-guides/label-components-from-image).
 
 
 #### Search and filter options
@@ -124,7 +125,7 @@ For more information about the levels of image dependencies, refer to the [How t
 You can search for a package manager and supplier or apply filters based on dependencies, licenses, and image layers to quickly find the required data.
 
 
-## Deployments Tab
+## Deployments tab
 
 The Deployments tab enables you to track the active deployments of your artifact. With a count of active deployments, this tab provides the following details:
 
@@ -151,7 +152,7 @@ Harness SCS provides support for tracking artifact deployments to Kubernetes, Na
 
 :::
 
-## Vulnerabilities Tab
+## Vulnerabilities tab
 
 The Vulnerabilities tab presents the scan results performed on the artifact, consolidating findings from various scanning tools. This view categorizes all identified vulnerabilities by severity and allows filtering based on scanners and other details. The security scanning is facilitated by the Harness STO (Security Testing Orchestration) module.
 
@@ -163,4 +164,4 @@ To ensure vulnerability results appear on the Artifacts page, run STO scans on i
 
 <DocImage path={require('./static/artifacts-vulnerabilities.png')} width="100%" height="100%" title="Click to view full size image" />
 
-Refer to [view security test results](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) in Harness STO documentation for more detailed information about the view and navigation.
+Go to [view security test results](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) in Harness STO documentation for more detailed information about the view and navigation.

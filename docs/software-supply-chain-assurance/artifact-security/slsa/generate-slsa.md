@@ -1,7 +1,7 @@
 ---
 title: Generate SLSA
 description: Generate SLSA Provenance with Harness SCS
-sidebar_position: 10
+sidebar_position: 20
 redirect_from:
   - /tutorials/secure-supply-chain/generate-slsa
   - /docs/software-supply-chain-assurance/slsa/generate-slsa
@@ -21,14 +21,14 @@ import TabItem from '@theme/TabItem';
 
 import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/generate-cosign-key-pair.md';
 
-Harness SCS when used along with Harness CI Hosted Builds([Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/)), ensures that the resulting artifacts have **SLSA Level 3** provenance that every consumer (including the following deployment stage) can verify for artifact integrity prior to making use of this artifact. Build hardening for Level 3 compliance is achieved through: 
+Harness SCS when used along with Harness CI Hosted Builds([Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/)), ensures that the resulting artifacts have **SLSA Level 3** provenance that every consumer (including the following deployment stage) can verify for artifact integrity prior to making use of this artifact. Build hardening for Level 3 compliance is achieved through: 
 
 1. Built-in infrastructure isolation for every build where new infrastructure is created for every run and deleted after the run completes. 
 2. OPA policy enforcement on CI stage templates with non-privileged, hosted containerized steps that do not use volume mounts. This disallows the build steps to access the provenance key information in compliance with SLSA specifications. 
 
 End result is that hackers cannot do tampering during the build process. This capability when coupled with open source governance through [SBOM lifecycle management](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) provides the most advanced shift-left supply chain security solution in the market today.
 
-In Harness SCS, you can use the **SLSA Generation** step to configure your pipeline to generate SLSA Provenance and optionally attest and sign the attestation. The generated provenance is saved in Harness and can be easily accessed from the [Artifact section](/docs/software-supply-chain-assurance/artifact-security/overview) in SCS. If the provenance is attested and signed with keys, the resulting attestation file (`.att`) is pushed to the container registry. Here's an overview of the workflow:
+In Harness SCS, you can use the **SLSA Generation** step to configure your pipeline to generate SLSA Provenance and optionally attest and sign the attestation. The generated provenance is saved in Harness and can be easily accessed from the [Artifact section](/docs/software-supply-chain-assurance/artifact-security/overview) in SCS. If the provenance is attested and signed with keys, the resulting attestation file (`.att`) is pushed to the container registry. Here is an overview of the workflow:
 
 <DocImage path={require('./static/slsa-gen-overview.png')} width="90%" height="90%" />
 <!-- <DocVideo src="https://youtu.be/shU2tbSoC1k?si=ZHftRb_gpnCHEtUi" /> -->
@@ -42,7 +42,7 @@ The **SLSA Generation** step enables you to generate SLSA Provenance and optiona
 
 <DocImage path={require('./static/slsa-step.png')} width="100%" height="100%" />
 
-### Container Images
+### Container images
 
 Follow the instructions below to configure the **SLSA Generation** step for container images.
 
@@ -87,7 +87,7 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 * **Image:** Enter the name of your image with tag or digest, example `my-docker-repo/my-artifact` or `my-docker-repo/my-artifact@sha256:<digest>`.
 
-* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
+* **Artifact Digest:** Specify the digest of your artifact. After building your image using a [Build and Push](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) step or a [Run](/docs/continuous-integration/use-ci/run-step-settings) step, save the digest in a variable, then reference it here using a Harness expression.
 
 * **Region:** The geographical location of your ECR repository, example `us-east-1`
 
@@ -101,7 +101,7 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 * **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
 
-* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
+* **Artifact Digest:** Specify the digest of your artifact. After building your image using a [Build and Push](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) step or a [Run](/docs/continuous-integration/use-ci/run-step-settings) step, save the digest in a variable, then reference it here using a Harness expression.
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription.
 
@@ -115,7 +115,7 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 * **Image:** Enter the name of your image with tag or digest, example `repository-name/image` or `repository-name/image@sha256:<digest>`.
 
-* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
+* **Artifact Digest:** Specify the digest of your artifact. After building your image using a [Build and Push](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) step or a [Run](/docs/continuous-integration/use-ci/run-step-settings) step, save the digest in a variable, then reference it here using a Harness expression.
 
 * **Host:** Enter your GAR Host name. The Host name is regional-based. For example, `us-east1-docker.pkg.dev`.
 
@@ -126,7 +126,7 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 </Tabs>
 
-### Non-Container Artifacts
+### Non-container artifacts
 
 SLSA generation is not limited to container images. You can also generate SLSA provenance for non-container artifacts. Non-container artifacts are files or packages that are not packaged as container images, such as binaries, manifests, or archives. Each artifact is uniquely identified by its digest (SHA), which is used during verification. For non-container artifacts, ensure your pipeline includes a step (e.g., a <a href="/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step" target="_blank">Run step</a>) that generates the artifact and its digest before the SLSA Generation step.
 
@@ -145,7 +145,7 @@ Artifacts not listed above are treated as unknown types.
 
 To generate SLSA Provenance for Non-Container Artifacts:
 
-1. Enter a **Name** for the step under `Name`. Harness automatically generates a step ID from the name. Once the pipeline is created, you can't change the ID.
+1. Enter a **Name** for the step under `Name`. Harness automatically generates a step ID from the name. Once the pipeline is created, you cannot change the ID.
 2. Select **Harness Local Stage** as the **Source**.
 3. Provide the exact path to the artifact within the workspace under `Workspace Artifact Path`. Ensure that you run a custom step to pull the artifact into the workspace directory. The default workspace path is `/harness`.
 4. Click the radio buttons under `Target Detection` to set the artifact name and version. The available options are **Auto** and **Manual**.
@@ -159,7 +159,7 @@ With this configuration, the step generates the SLSA Provenance and stores it in
 
 ### Attest SLSA Provenance
 
-Attestation is the process of cryptographically signing the generated provenance to ensure its authenticity and integrity. In SLSA generation, attestation ensures that the provenance has not been tampered with and can be trusted by downstream systems. To understand the attestation process, see [attestation and verification concepts](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification).
+Attestation is the process of cryptographically signing the generated provenance to ensure its authenticity and integrity. In SLSA generation, attestation ensures that the provenance has not been tampered with and can be trusted by downstream systems. Go to [attestation and verification concepts](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) to understand the attestation process.
 
 You can perform attestation using Cosign with the following signing methods:
 
@@ -175,10 +175,9 @@ import CosignAttestationSlsaOptions from '/docs/software-supply-chain-assurance/
 
 
 
-Here’s an example of what the signed attestation would look like
+The following example shows what the signed attestation looks like:
 
-```
-
+```json
 {
   "payloadType": "application/vnd.in-toto+json",
   "payload": "CJTUERYUmVmLVBhY2thZ2UtZGViLXpsaWIxZy1mOTFhODZjZjhhYjJhZTY3XCIsXCJyZWxhdGlvbnNoaXBUeXBlXCI6XCJDT05UQUlOU1wifSx7XCJzcGR4RWxlbWVudE",
@@ -193,7 +192,7 @@ Here’s an example of what the signed attestation would look like
 ```
 
 Additionally, you can perform Base64 decoding on the payload data to view your SLSA Provenance.
-For verifying the SLSA attestation, please refer to [Verify SLSA](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa) documentation.
+Go to [Verify SLSA](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa) to verify the SLSA attestation.
 <!-- 
 ## SLSA Generation step configuration with Build and Push step
 When using the Harness CI **Build and Push** step for the image-building process, you can configure the **SLSA Generation** step to generate and attest to the Provenance. Follow the [SLSA Generation step configuration](#slsa-generation-step-configuration), for the **Artifact Digest** field, you can use [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/) to dynamically populate the digest of the image built during the **Build and Push** step.  
@@ -228,6 +227,8 @@ Follow the instructions below to set up this pipeline workflow.
 
 ### Build and Push with Run step
 
+Configure a Run step that uses Kaniko to build the image and expose its name as an output variable:
+
 1. **Add a Run Step**: Search for and add a **Run** step to the **Build** stage of your pipeline.
 2. **Container Registry**: Configure your container registry using Harness Connectors.
 3. **Image**: Use a Kaniko image for building and pushing the container image. Example: `gcr.io/kaniko-project/executor:debug`.
@@ -236,7 +237,7 @@ Follow the instructions below to set up this pipeline workflow.
   <details>
   <summary>Command to Build and Push the Image</summary>
 
-  ```
+  ```bash
   #!/bin/sh
 
   # Set variables
@@ -294,7 +295,7 @@ This step builds the image, pushes it to the configured container registry, and 
   <details>
   <summary>Command to fetch the digest</summary>
 
-  ```
+  ```bash
   #!/bin/sh
 
   IMAGE="<+pipeline.stages.<YOUR_STAGE_NAME>.spec.execution.steps.<YOUR_STEP_NAME>.output.outputVariables.image>"
@@ -351,7 +352,7 @@ The signed attestation is stored, as a `.att` file, in the artifact repository a
 
 ## Provenance example
 
-Here's an example of an SLSA Provenance generated by Harness SCS. The information in your SLSA Provenance might vary depending on your build and changes to the provenance structure applied in SCS updates. Identifiers, repo names, and other details in this example are anonymized or truncated.
+Here is an example of an SLSA Provenance generated by Harness SCS. The information in your SLSA Provenance might vary depending on your build and changes to the provenance structure applied in SCS updates. Identifiers, repo names, and other details in this example are anonymized or truncated.
 
 ```json
 {
@@ -402,3 +403,8 @@ Here's an example of an SLSA Provenance generated by Harness SCS. The informatio
 ## Verify SLSA Provenance
 
 After generating SLSA Provenance, you can [configure your pipeline to verify SLSA Provenance](./verify-slsa.md).
+
+## Next steps
+
+* [Verify SLSA](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa): Verify the SLSA attestation and enforce provenance checks in your pipeline.
+* [Create SLSA policies](/docs/software-supply-chain-assurance/artifact-security/slsa/create-slsa-policies): Define the policies that SLSA verification evaluates against.

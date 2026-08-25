@@ -2,7 +2,7 @@
 title: Harness SCS key concepts
 sidebar_label: Key concepts
 description: Basic terminology and concepts related to SCS
-sidebar_position: 2
+sidebar_position: 20
 
 tags:
   - harness-scs 
@@ -78,14 +78,14 @@ You can use remediation flows in the SCS module to respond quickly and effective
 
 ## SLSA compliance
 
-With the Harness SCS module, you can achieve SLSA Build [Level 1](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-1), [Level 2](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-2), [Level 3](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-3). Refer to [SLSA Overview](/docs/software-supply-chain-assurance/artifact-security/slsa/overview)
+With the Harness SCS module, you can achieve SLSA Build [Level 1](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-1), [Level 2](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-2), [Level 3](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-3). Go to [SLSA Overview](/docs/software-supply-chain-assurance/artifact-security/slsa/overview) to understand how each level is assessed.
 
 SLSA Provenance attestations are stored as `.att` files in the artifact repository along with the image. You can also find the SLSA Provenance on the **Supply Chain** tab in **Execution details** page of a pipeline.
 
 * [SLSA Generation and Attestation](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa)
 * [SLSA Verification](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa)
 
-## Attestation and Verification
+## Attestation and verification
 
 The attestation process in Harness SCS follows the [In-toto attestation framework](https://github.com/in-toto/attestation) and supports two types:
 * [Keyless](/docs/software-supply-chain-assurance/get-started/key-concepts#keyless)
@@ -105,7 +105,7 @@ This process involves a container image, an SBOM or SLSA provenance, a private k
 
 Here’s an example of what the signed attestation would look like
 
-```
+```json
 {
   "payloadType": "application/vnd.in-toto+json",
   "payload": "CJTUERYUmVmLVBhY2thZ2UtZGViLXpsaWIxZy1mOTFhODZjZjhhYjJhZTY3XCIsXCJyZWxhdGlvbnNoaXBUeXBlXCI6XCJDT05UQUlOU1wifSx7XCJzcGR4RWxlbWVudE",
@@ -124,7 +124,7 @@ You can perform Base64 decoding on the payload data to view your SBOM or SLSA Pr
 For verification, the signed attestation is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the attestation was signed using the private key.
 
 
-## Artifact Signing and Verification
+## Artifact signing and verification
 
 The artifact signing process in Harness SCS uses Cosign and leverages [OCI-compliant](https://github.com/opencontainers) registries to sign artifacts and associate their signatures with the artifact digest in the container registry. It supports the following signing methods:
 * [Keyless](/docs/software-supply-chain-assurance/get-started/key-concepts#keyless-1)
@@ -142,7 +142,9 @@ The key-based artifact signing process involves a container image or digest, or 
 
 For verification, the signed artifact is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the artifact was signed using the private key.
 
-## Attestation vs Signing
+## Attestation vs signing
+
+Attestation and signing both produce cryptographic evidence about an artifact, but they answer different questions:
 
 - Attestation provides cryptographic proof of an artifact’s origin based on how and where it was created. It captures metadata about the build environment and verifies the artifact’s integrity before it is signed. Attestation serves as a trusted statement regarding the artifact’s provenance and the conditions under which it was produced.
 
@@ -157,7 +159,7 @@ Rekor log provides a public, immutable, and verifiable transparency log for soft
 
 ## Harness Platform components
 
-The Harness SCS module integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
+The Harness SCS module integrates with other Harness modules and uses components that are common to the Harness Platform. Go to [Harness key concepts](/docs/platform/get-started/key-concepts) to review Harness Platform terminology.
 
 ### Pipelines
 
@@ -165,7 +167,7 @@ You add SCS steps to your CI (build), CD (deploy) and STO (security) stages in y
 
 A pipeline is an end-to-end workflow that, for example, pulls code from a codebase, builds an artifact, runs tests or other actions on the artifact or code, and then uploads or deploys the artifact to storage or a container registry.
 
-To learn more about CI and CD pipelines go to:
+Go to the following topics to understand CI and CD pipelines:
 
 * [CI key concepts](../../continuous-integration/get-started/key-concepts.md)
 * [CD key concepts](../../continuous-delivery/overview.md#key-concepts)
@@ -187,8 +189,15 @@ The Harness Delegate is a software service you install in an environment, such a
 
 The delegate uses the credentials set up in the connectors used by the pipeline to perform deployment tasks. Additionally, the delegate needs permissions in the target environment to execute build tasks. These permissions are granted in the delegate config file or the environment account you use when installing the delegate.
 
-For more information, go to the Harness Platform documentation on [delegates](/docs/category/delegates).
+Go to [Delegates](/docs/category/delegates) to review installation and permission requirements.
 
 ### Variables and expressions
 
-You can add and reference [built-in and custom variables and expressions](/docs/category/variables--expressions) in pipelines and stages. They're available across the pipeline. You can propagate and override their values in later stages.
+You can add and reference [built-in and custom variables and expressions](/docs/category/variables--expressions) in pipelines and stages. They are available across the pipeline. You can propagate and override their values in later stages.
+
+## Next steps
+
+With these concepts in place, start applying them in a pipeline:
+
+* [Get started with SCS](/docs/software-supply-chain-assurance/get-started): Set up your first SCS pipeline and generate an SBOM.
+* [SBOM Orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories): Generate and attest an SBOM for a code repository.

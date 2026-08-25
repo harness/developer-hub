@@ -5,7 +5,7 @@ sidebar_level: How to detect base images in SBOM
 redirect_from:
   - /docs/software-supply-chain-assurance/label-components-from-image
 
-sidebar_position: 111
+sidebar_position: 20
 
 tags:
   - harness-scs 
@@ -36,16 +36,16 @@ The SBOM orchestration process now automatically recognizes and assigns "app" an
 
 
 
-## Base Image Identification
+## Base image identification
 
-To enable the SBOM Orchestration step to accurately identify the Base image of your container, it's crucial to have the following things:
+To enable the SBOM Orchestration step to accurately identify the Base image of your container, it is crucial to have the following things:
 
 
 
 
 1. The Dockerfile for your application should include the [labels](https://github.com/opencontainers/image-spec/blob/main/annotations.md) specifying the digest and name of your base image. For instance:
 
-    ```
+    ```go
     LABEL org.opencontainers.image.base.digest="sha256:ccb33c3ac5b02588fc1d9e4fc09b952e433d0c54d8618d0ee1afadf1f3cf2455"
 
     LABEL org.opencontainers.image.base.name="debian:bookworm-slim"
@@ -61,7 +61,7 @@ If you are not familiar with the details of your container's base image, or you 
 
 ## Use Harness CI to build and push the image with labels in the Dockerfile
 
-To incorporate base image labels into your Dockerfile and push the updated image, you'll employ a shell script within a Docker-in-Docker (DIND) workflow. Ensure you initiate a background step utilizing the image `docker:24.0.7-dind-alpine3.18`.
+To incorporate base image labels into your Dockerfile and push the updated image, you will employ a shell script within a Docker-in-Docker (DIND) workflow. Ensure you initiate a background step utilizing the image `docker:24.0.7-dind-alpine3.18`.
 
 
 <DocImage path={require('./static/label-components-background-step.png')} width="50%" height="50%" />
@@ -72,7 +72,7 @@ Subsequently, add the script below into a **Run** step:
 
 
 
-```
+```go
 set -eu
 apk add --no-cache jq
 

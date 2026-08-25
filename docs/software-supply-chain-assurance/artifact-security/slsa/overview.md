@@ -1,7 +1,7 @@
 ---
 title: Overview
 description: Use Harness SCS to comply with SLSA Levels
-sidebar_position: 5
+sidebar_position: 10
 redirect_from:
   - /tutorials/secure-supply-chain/generate-slsa
   - /docs/software-supply-chain-assurance/slsa/overview
@@ -28,7 +28,7 @@ With Harness SCS, organizations can achieve **SLSA Level 1, Level 2 and Level 3*
     * Following the [in-toto attestation](https://in-toto.io/) framework with [cosign](https://docs.sigstore.dev/cosign/verifying/attestation/), Harness digitally signs the generated provenance, ensuring its authenticity and integrity.
     * Downstream systems can verify provenance attestation, validate authenticity, and secure the supply chain against unauthorized changes.
 * **Hosted Build Platform**: Organizations can connect their hosted infrastructure with Harness to execute builds.
-* **Hardened Builds**: Your infrastructure for running the builds should be hardened, or you can use the [Harness cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/) environment. 
+* **Hardened Builds**: Your infrastructure for running the builds should be hardened, or you can use the [Harness cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/) environment. 
 
 
 With these, compliance with SLSA is achieved in two phases. First, in your pipeline's build stage, you must configure it to generate and attest the provenance while using a hosted infrastructure to run your builds. This first phase ensures the creation and secure signing of the provenance. The next phase involves verifying the attested provenance and enforcing integrity checks through policy enforcement. This verification and policy enforcement can occur during the build or deployment stages. 
@@ -37,14 +37,14 @@ Here’s how it looks overall:
 
 <DocImage path={require('./static/slsa-overview.png')} width="95%" height="95%" />
 
-**SLSA Generation and Attestation**: When you configure your code to build and set up to push the image to a container registry, ensure you also configure the generation of SLSA provenance in the build stage. This stage will generate and attest the provenance with a private key and password, subsequently pushing the attested provenance to the container registry. For a detailed guide on implementing this process, please refer to the [Generate SLSA Provenance](https://developer.harness.io/docs/software-supply-chain-assurance/slsa/generate-slsa) documentation.
+**SLSA Generation and Attestation**: When you configure your code to build and set up to push the image to a container registry, ensure you also configure the generation of SLSA provenance in the build stage. This stage will generate and attest the provenance with a private key and password, subsequently pushing the attested provenance to the container registry. Go to [Generate SLSA Provenance](/docs/software-supply-chain-assurance/slsa/generate-slsa) to configure provenance generation.
 
-**SLSA Verification**: The SLSA verification step within the SCS module verifies the authenticity of provenance using a public key. After verification, you can enforce policy sets on the verified provenance. For more details on the implementation, refer to the [Verify SLSA Provenance](https://developer.harness.io/docs/software-supply-chain-assurance/slsa/verify-slsa) documentation.
+**SLSA Verification**: The SLSA verification step within the SCS module verifies the authenticity of provenance using a public key. After verification, you can enforce policy sets on the verified provenance. Go to [Verify SLSA Provenance](/docs/software-supply-chain-assurance/slsa/verify-slsa) to review the implementation.
 
 ## How to comply with SLSA Level 1
-To meet the requirements of [Build L1](https://slsa.dev/spec/v1.0/levels#build-l1), Harness SCS enables you to generate detailed provenance, which documents the build process, including the build platform and the top-level inputs. This provenance can then be easily downloaded and shared as needed. Also, it's important that you follow a consistent build process.
-- For generating SLSA Provenance, refer to [Generate SLSA Provenance](./generate-slsa.md)
-- To view and download the SLSA Provenance, refer to [View pipeline execution results](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa#run-the-pipeline)
+To meet the requirements of [Build L1](https://slsa.dev/spec/v1.0/levels#build-l1), Harness SCS enables you to generate detailed provenance, which documents the build process, including the build platform and the top-level inputs. This provenance can then be easily downloaded and shared as needed. Also, it is important that you follow a consistent build process.
+- Go to [Generate SLSA Provenance](./generate-slsa.md) to generate SLSA Provenance.
+- Go to [View pipeline execution results](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa#run-the-pipeline) to view and download the SLSA Provenance.
 
 
 ## How to comply with SLSA Level 2
@@ -53,9 +53,9 @@ To attain [Build L2](https://slsa.dev/spec/v1.0/levels#build-l2) compliance, adh
 Here are the steps to follow:
 
 - Connect your hosted infrastructure with Harness for executing builds.
-- Utilize Harness SCS to sign the generated provenance. Refer to [Attest SLSA Provenance](./generate-slsa.md#attest-slsa-provenance)
-- Verify the provenance attestation to confirm its authenticity in the downstream. This step is crucial for protecting the supply chain from unauthorized alterations. Refer to [Verify SLSA Provenance](./verify-slsa.md)
+- Utilize Harness SCS to sign the generated provenance. Go to [Attest SLSA Provenance](./generate-slsa.md#attest-slsa-provenance) to sign it.
+- Verify the provenance attestation to confirm its authenticity in the downstream. This step is crucial for protecting the supply chain from unauthorized alterations. Go to [Verify SLSA Provenance](./verify-slsa.md) to verify the attestation.
 
 ## How to comply with SLSA Level 3
 
-To achieve [Build L3](https://slsa.dev/spec/v1.0/levels#build-l3), you must be compliant to [L2](https://slsa.dev/spec/v1.0/levels#build-l2), and the infrastructure you are using to run your builds should be hardened, or you can use the [Harness cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/) environment, which is designed to isolate the build processes and prevent any potential influence between runs. Also, the hosted containerized step in Harness CI restricts build steps to access the provenance key information.
+To achieve [Build L3](https://slsa.dev/spec/v1.0/levels#build-l3), you must be compliant to [L2](https://slsa.dev/spec/v1.0/levels#build-l2), and the infrastructure you are using to run your builds should be hardened, or you can use the [Harness cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/) environment, which is designed to isolate the build processes and prevent any potential influence between runs. Also, the hosted containerized step in Harness CI restricts build steps to access the provenance key information.

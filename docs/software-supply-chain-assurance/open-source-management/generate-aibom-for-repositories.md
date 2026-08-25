@@ -1,7 +1,7 @@
 ---
 title: Generate and Manage AI Bill of Materials (AIBOM)
 description: Learn how to generate an AI Bill of Materials (AIBOM) for your repositories to gain visibility into AI model dependencies and supply chain risks.
-sidebar_position: 25
+sidebar_position: 110
 sidebar_label: Generate AIBOM
 
 tags:
@@ -24,7 +24,7 @@ AIBOM generation is currently supported only for source code repositories.
 
 ***
 
-## What will you learn in this topic?
+## What you will learn from this topic
 
 By the end of this topic, you will be able to:
 
@@ -39,8 +39,8 @@ By the end of this topic, you will be able to:
 
 Make a note of the following before you proceed with AIBOM generation:
 
-* Clear understanding of the build stage configuration within the pipeline. For more information, see [Build Stage Settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#execution).
-* Clear understanding of the security stage configuration within the pipeline. For more information, see [Get Started](https://developer.harness.io/docs/security-testing-orchestration/get-started/#set-up-your-pipeline).
+* Clear understanding of the build stage configuration within the pipeline. Go to [Build Stage Settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#execution) to review the settings.
+* Clear understanding of the security stage configuration within the pipeline. Go to [Get Started](/docs/security-testing-orchestration/get-started/#set-up-your-pipeline) to set up your pipeline.
 
 ***
 
@@ -58,30 +58,30 @@ The following table provides a structured overview of why AIBOM is used, when it
 
 ***
 
-## Configure AIBOM Orchestration
+## Configure AIBOM orchestration
 
 Configuring the AIBOM Orchestration step enables you to analyze a source repository for AI-related components and generate an AI Bill of Materials (AIBOM) in CycloneDX format. Add this step to a Build or Security stage to identify AI-related components used within the repository and upload the generated AIBOM to SCS.
 
 To configure the AIBOM Orchestration step within your pipeline, complete the following steps:
 
-1. [Select the AIBOM Orchestration step](#step-1---select-the-aibom-orchestration-step-in-your-pipeline)
-2. [(Optional) Use AIBOM flags](#optional-step-2---use-the-aibom-flags)
-3. [Configure the repository source](#step-3---configure-the-repository-source)
-4. [(Optional) Add any optional configuration](#optional-step-4---add-any-optional-configuration)
-5. [(Optional) Configure the advanced settings](#optional-step-5---configure-the-advanced-settings)
+1. [Select the AIBOM Orchestration step](#step-1-select-the-aibom-orchestration-step-in-your-pipeline)
+2. [(Optional) Use AIBOM flags](#step-2-use-the-aibom-flags-optional)
+3. [Configure the repository source](#step-3-configure-the-repository-source)
+4. [(Optional) Add any optional configuration](#step-4-add-any-optional-configuration-optional)
+5. [(Optional) Configure the advanced settings](#step-5-configure-the-advanced-settings-optional)
 
-### Step 1 - Select the AIBOM Orchestration step in your pipeline
+### Step 1: Select the AIBOM Orchestration step in your pipeline
 
 To select the AIBOM Orchestration step in your pipeline:
 
 1. Navigate to the **Pipelines** page under the **Manage** section from the sidebar navigation of your SCS account and click the `+ Create a Pipeline` button to create a pipeline. The **Create New Pipeline** dialog will open.
-2. Create a pipeline after configuring the initial details within the dialog. The **Pipeline Studio** opens. For more information, see [CI pipeline creation overview](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components/#pipelines).
-3. Configure a Build stage within the pipeline. Refer to the [Add a Build Stage to a Pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#add-a-build-stage-to-a-pipeline) documentation to create one.
-4. Select the **Infrastructure** tab for your Build stage and configure your preferred infrastructure settings. For more information, see [Infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#infrastructure).
+2. Create a pipeline after configuring the initial details within the dialog. The **Pipeline Studio** opens. Go to [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components/#pipelines) to understand pipeline components.
+3. Configure a Build stage within the pipeline. Go to [Add a Build Stage to a Pipeline](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#add-a-build-stage-to-a-pipeline) to create one.
+4. Select the **Infrastructure** tab for your Build stage and configure your preferred infrastructure settings. Go to [Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#infrastructure) to review the available options.
 
     :::note
 
-    This procedure assumes that you are adding the AIBOM Orchestration step to an existing Build pipeline configured to build your AI application. Ensure that the **Clone Codebase** is enabled in the **Build stage**, as the AIBOM Orchestration step analyzes the cloned repository available in the pipeline workspace. For more information on configuring codebase, see [Configure the default codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase).
+    This procedure assumes that you are adding the AIBOM Orchestration step to an existing Build pipeline configured to build your AI application. Ensure that the **Clone Codebase** is enabled in the **Build stage**, as the AIBOM Orchestration step analyzes the cloned repository available in the pipeline workspace. Go to [Configure the default codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase) to configure the codebase.
 
     :::
 
@@ -90,12 +90,12 @@ To select the AIBOM Orchestration step in your pipeline:
     <DocImage path={require('./static/aibom-step.png')} width="100%" height="100%" title="Click to view full size image" />
 
 6. Scroll down to the **Supply Chain Security** section or search within the **Step Library** to select the **AIBOM Orchestration** step.<br /> The **Step Parameters** tab in the **AIBOM Generation** side panel opens by default.
-7. In the **Name** field, enter a unique name for the step. Harness automatically generates a step ID from the name.<br /> Once the pipeline is created, you can't change the ID.
+7. In the **Name** field, enter a unique name for the step. Harness automatically generates a step ID from the name.<br /> Once the pipeline is created, you cannot change the ID.
 8. The **AIBOM Format** is set to `CycloneDX` by default.<br /> Currently, `CycloneDX` is the only supported format, so this value cannot be modified.
 
     <DocImage path={require('./static/aibom-step-name-format.png')} width="100%" height="100%" title="Click to view full size image" />
 
-### (Optional) Step 2 - Use the AIBOM flags
+### Step 2: Use the AIBOM flags (Optional)
 
 The AIBOM Orchestration step supports optional flags that customize how AI components are discovered and how the generated AIBOM is produced. These flags allow you to control component discovery, output, logging, performance, and AI model enrichment. Use them to tailor AIBOM generation for your specific repository and workflow.
 
@@ -148,7 +148,7 @@ The following flags are available for common use cases:
 :::
 </details>
 
-### Step 3 - Configure the repository source
+### Step 3: Configure the repository source
 
 The repository source configuration defines the repository and branch used by the AIBOM Orchestration step to identify AI-related components. To configure the repository source, complete the following steps:
 
@@ -167,7 +167,7 @@ The repository source configuration defines the repository and branch used by th
 
     <DocImage path={require('./static/aibom-repo-source.png')} width="100%" height="100%" title="Click to view full size image" />
 
-### (Optional) Step 4 - Add any optional configuration
+### Step 4: Add any optional configuration (Optional)
 
 The optional configuration settings allow you to customize the execution environment for the AIBOM Orchestration step. You can configure the container registry, image tag, execution timeout, and resource limits based on your pipeline requirements.
 
@@ -176,7 +176,7 @@ To add optional configuration for the AIBOM Orchestration step, complete the fol
 1. Click the **Optional Configuration** collapsible to expand it. It is collapsed by default.
 2. (Optional) Under the **Container Registry** field, click `Select` to open the `Create or Select an Existing Connector` dialog.
     1. Select your required connector from the list of existing connectors.<br /> You can search for your created connector or filter them by **Project**, **Organization**, and **Account**.
-    2. Alternatively, click `+ New Connector` to create a new container registry connector that hosts the AIBOM image.<br /> The available options are **Google Cloud Provider**, **AWS Cloud Provider**, **Docker Registry**, and **Azure Cloud Provider**. For information about creating these connectors, refer to [Create a GCP Connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp#create-a-gcp-connector), [Add an AWS connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-aws-connector#create-the-aws-connector), [Docker Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference), and [Add a Microsoft Azure connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector#add-an-azure-connector) respectively.
+    2. Alternatively, click `+ New Connector` to create a new container registry connector that hosts the AIBOM image.<br /> The available options are **Google Cloud Provider**, **AWS Cloud Provider**, **Docker Registry**, and **Azure Cloud Provider**. Go to [Create a GCP Connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp#create-a-gcp-connector), [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector#create-the-aws-connector), [Docker Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference), and [Add a Microsoft Azure connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector#add-an-azure-connector) to create these connectors.
 3. (Optional) In the **Image Tag** field, enter the tag of the AIBOM image to use during pipeline execution.<br /> By default, `latest` is used, which pulls the latest available image. To use a specific version, enter its image tag (For example, `0.62.1`).
 4. In the **Timeout** field, specify the maximum time that the AIBOM Orchestration step can run before it is terminated.
 5. In the **Limit Memory** field, specify the maximum amount of memory that can be allocated to the AIBOM Orchestration step during execution. The default value is `500Mi`.
@@ -184,16 +184,16 @@ To add optional configuration for the AIBOM Orchestration step, complete the fol
 
     <DocImage path={require('./static/aibom-optional-config.png')} width="100%" height="100%" title="Click to view full size image" />
 
-### (Optional) Step 5 - Configure the advanced settings
+### Step 5: Configure the advanced settings (Optional)
 
 The advanced settings allow you to customize the execution behavior of the AIBOM Orchestration step. You can configure conditional execution, failure strategies, looping strategies, and policy enforcement based on your pipeline requirements.
 
 To configure the advanced settings for the AIBOM Orchestration step, complete the following steps:
 
 1. Select the **Advanced** tab to configure the advanced settings for the AIBOM Orchestration step.
-2. Expand the **Conditional Execution** collapsible to configure when the AIBOM Orchestration step runs within the pipeline. For more information on configuring conditional execution, refer to [Define conditional executions for stages and steps](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings).
-3. Expand the **Failure Strategy** collapsible to configure how the pipeline responds if the AIBOM Orchestration step fails. For more information on configuring failure strategies, refer to [Define failure strategies for stages and steps](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
-4. Expand the **Looping Strategy** collapsible to configure how the AIBOM Orchestration step executes across multiple iterations. For more information on configuring looping strategies, refer to [Use looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
+2. Expand the **Conditional Execution** collapsible to configure when the AIBOM Orchestration step runs within the pipeline. Go to [Define conditional executions for stages and steps](/docs/platform/pipelines/step-skip-condition-settings) to configure conditional execution.
+3. Expand the **Failure Strategy** collapsible to configure how the pipeline responds if the AIBOM Orchestration step fails. Go to [Define failure strategies for stages and steps](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) to configure failure strategies.
+4. Expand the **Looping Strategy** collapsible to configure how the AIBOM Orchestration step executes across multiple iterations. Go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) to configure looping.
 5. Click **Apply Changes** in the upper-right corner of the side panel to save the step configuration.
 
     :::note
@@ -217,7 +217,7 @@ To run the pipeline, complete the following steps:
 1. Click **Save** in the upper-right corner of Pipeline Studio to save your pipeline changes.
 2. Click **Run** to open the **Run Pipeline** dialog.
 3. Provide any required runtime inputs, such as:
-    * If applicable, select the input set or overlay to apply to the pipeline execution. For more information, see [Input Sets and Overlays](https://developer.harness.io/docs/platform/pipelines/input-sets/#run-pipelines-with-input-sets-or-overlays).
+    * If applicable, select the input set or overlay to apply to the pipeline execution. Go to [Input Sets and Overlays](/docs/platform/pipelines/input-sets/#run-pipelines-with-input-sets-or-overlays) to run pipelines with input sets.
     * Select the build type for the pipeline execution. By default, **Git Branch** is selected.<br /> You can also run the pipeline using a **Git Tag**, **Git Pull Request**, or **Git Commit SHA**. The **Branch Name** field is prepopulated with the default branch configured for the code repository connector. If you want to build from a different branch, provide or select the required branch name.
 
     <DocImage path={require('./static/aibom-run-pipeline.png')} width="100%" height="100%" title="Click to view full size image" />

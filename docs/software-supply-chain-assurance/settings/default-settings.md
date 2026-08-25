@@ -1,7 +1,7 @@
 ---
 title: Default Settings
 description: Manage SCS Settings 
-sidebar_position: 90
+sidebar_position: 10
 
 tags:
   - harness-scs 
@@ -16,7 +16,7 @@ These settings ensure consistent behavior across all SCS steps and pipelines wit
 
 When enabled, all secrets fetched from external secret managers such as Vault must be provided in Base64 format. This ensures consistent handling and compatibility across different environments.
 
-### Enable SCS Air gap:
+### Enable SCS airgap:
 
 When enabled, Airgap mode allows Harness SCS to operate in closed or offline networks, ensuring that all SCS steps use local resources and internal registries instead of public endpoints.
 
@@ -27,3 +27,8 @@ When enabled, Airgap mode allows Harness SCS to operate in closed or offline net
 
 The default settings for SCS can be viewed only in the SCS module.
 :::
+
+## Next steps
+
+* [Manage SCS access control with RBAC](/docs/software-supply-chain-assurance/settings/rbac): Configure roles and permissions for SCS resources.
+* [Configure image tags for SCS plugins](/docs/software-supply-chain-assurance/settings/configure-image-tags-for-scs-plugins): Pin plugin image versions for your pipelines.

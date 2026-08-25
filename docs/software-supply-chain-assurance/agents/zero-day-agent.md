@@ -1,7 +1,7 @@
 ---
 title: Zero Day Agent
 description: Use the Zero Day Agent to detect and remediate zero-day vulnerabilities across your software supply chain.
-sidebar_position: 1
+sidebar_position: 10
 
 tags:
   - harness-scs
@@ -39,14 +39,14 @@ Make a note of the following before you proceed with Zero Day agent configuratio
 
 * Ensure your SCM provider is integrated with the platform to generate SBOMs for your code repositories. You can do this in one of the following ways:
     * Repository onboarding through RSPM currently supports GitHub and Bitbucket:
-        * To integrate your GitHub account and onboard the repositories, go to [Onboard GitHub Repositories](https://developer.harness.io/docs/software-supply-chain-assurance/open-source-management/integrations/github).
-        * To integrate your Bitbucket account and onboard the repositories, go to [Onboard Bitbucket Repositories](https://developer.harness.io/docs/software-supply-chain-assurance/open-source-management/integrations/bitbucket).
-    * SBOMs can be generated through pipeline execution. To generate SBOM via pipeline execution, refer to the [Generate SBOM for Repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) documentation.
-* Ensure that SBOMs are generated for your artifacts. For more information, see [Generate SBOM for artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts/).
+        * To integrate your GitHub account and onboard the repositories, go to [Onboard GitHub Repositories](/docs/software-supply-chain-assurance/open-source-management/integrations/github).
+        * To integrate your Bitbucket account and onboard the repositories, go to [Onboard Bitbucket Repositories](/docs/software-supply-chain-assurance/open-source-management/integrations/bitbucket).
+    * SBOMs can be generated through pipeline execution. Go to [Generate SBOM for Repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) to generate SBOM through pipeline execution.
+* Ensure that SBOMs are generated for your artifacts. Go to [Generate SBOM for artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts/) to generate them.
 
 ***
 
-## Understand the Zero Day agent
+## Understand the Zero Day Agent
 
 The Zero Day Agent is a pre-built SCS agent that automatically responds to zero-day vulnerabilities identified by the Harness Security Research Team. Once enabled at the Account scope, the agent analyzes the affected component against the SBOMs generated for your repositories and artifacts to determine its impact across your software supply chain. It identifies affected repositories and artifacts. The agent can also discover newly detected vulnerabilities that may not yet be identified by traditional SCA scanners, helping you respond to vulnerabilities that could otherwise be detected later. For eligible repositories, the agent provides the recommended dependency update and lets you create a remediation pull request.
 
@@ -60,7 +60,7 @@ The following table provides a structured overview of the Zero Day Agent, when t
 
 ***
 
-## Configure the Zero Day agent
+## Configure the Zero Day Agent
 
 Configuring the Zero Day agent lets you control how it notifies you, which severities it acts on, and where its executions run. It is available only at the **Account** scope. To configure the Zero Day Agent in SCS, complete the following steps:
 
@@ -105,7 +105,7 @@ The infrastructure setting determines where the agent's executions run. To confi
         * Linux is selected as the default operating system for running the agent in Kubernetes.
         * Click **Select Kubernetes Cluster** under **Kubernetes Cluster** to open the `Create or Select an Existing Connector` dialog.
         * Select your required connector from the list of existing connectors. You can search for your created connector or filter connectors by **Project**, **Organization**, and **Account**.
-        * Alternatively, click **+ New Connector** to create a new Kubernetes cluster connector for connecting your existing Kubernetes clusters with Harness. For more information, see [Add a Kubernetes cluster connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/#add-a-kubernetes-cluster-connector).
+        * Alternatively, click **+ New Connector** to create a new Kubernetes cluster connector for connecting your existing Kubernetes clusters with Harness. Go to [Add a Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/#add-a-kubernetes-cluster-connector) to create one.
         * Enter the namespace in your Kubernetes cluster where you want the agent to run.
 2. After verifying the details, click **Save** on the top right corner.<br /> Once saved, you can view the **Configuration saved successfully** toaster message at the top, indicating that the agent notification and infrastructure settings have been configured successfully.
 
@@ -113,7 +113,7 @@ The infrastructure setting determines where the agent's executions run. To confi
 
 ***
 
-## Enable the Zero Day agent
+## Enable the Zero Day Agent
 
 The Zero Day Agent is enabled at the **Account** scope and automatically responds to zero-day vulnerabilities. When a new zero-day vulnerability is identified, the agent analyzes the affected component, identifies all affected repositories and artifacts, and sends notifications through the configured notification channel before initiating the remediation workflow.
 
@@ -128,7 +128,7 @@ To enable the agent, complete the following steps:
 1. Navigate to the **Agents** page from the sidebar navigation of your SCS account.
 2. Enable the agent using the toggle on the agent card or the toggle in the upper-right corner of the agent page.<br /> Once enabled, the agent automatically responds to zero-day vulnerabilities identified by the Harness Security Research Team and runs across your software supply chain without requiring any user intervention.
 3. Once a run is detected, the agent sends an alert notification to the **Alerts** panel.<br /> The agent also sends a notification through the configured notification channel.
-4. Select **Alerts** from the sidebar navigation to open the **Alerts** panel and view the alert notifications. For more information on alerts, go to [Platform Alerts](/docs/platform/notifications/platform-alerts/).
+4. Select **Alerts** from the sidebar navigation to open the **Alerts** panel and view the alert notifications. Go to [Platform Alerts](/docs/platform/notifications/platform-alerts/) to configure alert rules.
 
     <DocImage path={require('./static/agent-alert-notification.png')} width="100%" height="100%" title="Click to view full size image" />
 

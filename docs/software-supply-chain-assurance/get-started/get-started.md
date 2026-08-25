@@ -2,7 +2,7 @@
 title: Get started
 sidebar_label: Get started
 description: Get started with Harness SCS
-sidebar_position: 3
+sidebar_position: 30
 redirect_from:
     - /docs/software-supply-chain-assurance/get-started/get-started-with-rspm
     - /docs/software-supply-chain-assurance/get-started/onboarding-guide
@@ -19,19 +19,19 @@ tags:
 This guide will help you onboard to the Harness SCS features, allowing you to set up RSPM, CI/CD SPM, and Artifact Security with integrations. Refer to the [Use SCS](/docs/software-supply-chain-assurance/ssca-supported#use-scs) section to see the full list of supported integrations for each feature.
 
 
-## Setup RSPM and CI/CD SPM on GitHub repos and Actions
+## Setup RSPM and CI/CD SPM on GitHub repos and actions
 
 Follow the instructions to connect your GitHub account with Harness SCS for RSPM and CI/CD SPM by installing the Harness SCS 
 
-1. [Configure GitHub App](/docs/software-supply-chain-assurance/get-started/#configuring-the-github-app-harness-scs)
+1. [Configure GitHub App](/docs/software-supply-chain-assurance/get-started/#configure-github-app)
 2. [Create Integration](/docs/software-supply-chain-assurance/get-started/#create-integration)
 
 
-### Configure GitHub App
+### Configure GitHub app
 
 Configure the Harness SCS GitHub app to connect with your GitHub account to fetch the necessary information. Follow the below guide to onboard the repositories via GitHub app.
 
-### Interactive Guide 
+### Interactive guide 
 
 <iframe
   src="https://app.tango.us/app/embed/b7be97fc-f9ea-4759-93e5-b196564eba61?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=false"
@@ -46,11 +46,11 @@ Configure the Harness SCS GitHub app to connect with your GitHub account to fetc
 ></iframe>
 
 
-### Create Integration
+### Create integration
 
 From the **Get started** page, click on Harness under all integrations, and select GitHub to configure and onboard the repositories.
 
-### Interactive Guide 
+### Interactive guide 
 
 <iframe
   src="https://app.tango.us/app/embed/81a2a194-0ef8-4c48-ac4e-ad6fd038d225?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=false"
@@ -69,9 +69,9 @@ From the **Get started** page, click on Harness under all integrations, and sele
 If the Configure button on GitHub says **Authorize and Request** instead of **Install and Authorize**" you don’t have permission to install the GitHub App. Please contact your GitHub admin for permissions.
 :::
 
-## Setup RSPM on Bitbucket Repositories
+## Setup RSPM on Bitbucket repositories
 
-Set up RSPM for your Bitbucket repositories to enable centralized security analysis in SCS. For step-by-step instructions, see [Onboard Bitbucket Repositories](/docs/software-supply-chain-assurance/open-source-management/integrations/bitbucket).
+Set up RSPM for your Bitbucket repositories to enable centralized security analysis in SCS. Go to [Onboard Bitbucket Repositories](/docs/software-supply-chain-assurance/open-source-management/integrations/bitbucket) to follow the step-by-step instructions.
 
 
 ## Setup CI/CD SPM on Harness pipelines
@@ -81,7 +81,7 @@ From the **Get started** page, click on **Harness** under available integrations
 
 
 
-### Interactive Guide 
+### Interactive guide 
 
 <iframe
   src="https://app.tango.us/app/embed/9339169c-e29f-42c7-b450-6372c93c71e1?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=false"

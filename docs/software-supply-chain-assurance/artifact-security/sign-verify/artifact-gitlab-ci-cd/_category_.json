@@ -1,6 +1,6 @@
 {
     "label":"Artifact Signing and Verification using GitLab CI/CD",
-    "position": 18,
+    "position": 30,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",

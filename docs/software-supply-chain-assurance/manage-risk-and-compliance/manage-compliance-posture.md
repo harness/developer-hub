@@ -2,7 +2,7 @@
 title: Compliance Summary
 sidebar_label: Compliance Summary
 description: Assess and understand the risk posture of your software supply chain
-sidebar_position: 3
+sidebar_position: 40
 redirect_from:
 
 - /docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture
@@ -23,14 +23,14 @@ The Compliance section within the SCS module serves as a hub for assessing and u
 <DocImage path={require('./static/rac-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
-To learn more about the supported standards and the rules applied to targets, please refer to the documentation on [Standards and Rule Definitions](/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions).
+Go to [Standards and Rule Definitions](/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions) to understand the supported standards and the rules applied to targets.
 
 :::note
 Currently Harness supports Code Repositories, and CI/CD. Please refer to the [Use SCS](/docs/software-supply-chain-assurance/ssca-supported#use-scs) section in the onboarding document to see the full list of supported integrations for each feature. In the near future, Harness will add support for other target types and integrations.
 
 :::
 
-## Compliance Overview
+## Compliance overview
 
 The Summery tab provides comprehensive details of evaluations conducted across all target types of the software supply chain. This tab offers details about:
 
@@ -45,7 +45,7 @@ The Summery tab provides comprehensive details of evaluations conducted across a
 Additionally, users can apply filters based on standards to view evaluations and details specific to each standard. The history of the data can be viewed for the last 24 hours, 7 days, and 30 days.
 
 
-## View Rule Evaluations
+## View rule evaluations
 
 The Rules tab in the **Compliance** section provides a detailed view of all the rules and their complete execution details applied across all the targets configured. For each rule, along with its name and description, the view provides the following information:
 
@@ -58,7 +58,7 @@ The Rules tab in the **Compliance** section provides a detailed view of all the 
 Users can view rules filtered by standards and apply an additional filter specific to severity. Also, users can perform searches within the filtered results. The history of the data can be viewed for the last 24 hours, 7 days, and 30 days.
 
 
-## View Impacted Target
+## View impacted target
 
 Upon clicking a rule in the Rules tab, you will see a list of all the targets impacted by the evaluation. This page provides information about the rule, its description, evaluation history and general remediation steps to address any failures.
 

@@ -2,7 +2,7 @@
 title: Component Violations
 sidebar_label: Component Violations
 description: View Component Violations for Artifacts and Code Repositories
-sidebar_position: 4
+sidebar_position: 30
 
 tags:
   - harness-scs 
@@ -44,7 +44,7 @@ You can apply filters to drill down and navigate across the following key dimens
 Click the ellipsis icon, in the top-right corner of the dashboard to download the component violations report (PDF or CSV), or set up automated delivery (daily, weekly, or monthly).
 
 
-### Pipeline Execution Summary
+### Pipeline execution summary
 
 Pipeline Execution Summary table lists the pipelines that violated the SBOM Allow/Deny List policy.
 

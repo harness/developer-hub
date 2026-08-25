@@ -2,7 +2,7 @@
 title: Rule Definitions and Standards
 sidebar_label: Rule Definitions and Standards
 description: View and manage the standards and associated rules supported by Harness SCS
-sidebar_position: 4
+sidebar_position: 50
 tags:
   - harness-scs 
   - risk-and-compliance
@@ -12,7 +12,7 @@ tags:
   - risk-management
 ---
 
-The **Rule Definitions** section offers a complete list of all the standards and associated rules supported by Harness SCS. These rules are applied to various target types, and the overall compliance posture is presented in the Compliance section of SCS. To learn more about managing the compliance status, refer to the [Compliance Summary](/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture) document.
+The **Rule Definitions** section offers a complete list of all the standards and associated rules supported by Harness SCS. These rules are applied to various target types, and the overall compliance posture is presented in the Compliance section of SCS. Go to [Compliance Summary](/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture) to understand how to manage the compliance status.
 
 
 <DocImage path={require('./static/compliance-ruldefinitons.png')} width="100%" height="100%" title="Click to view full size image" />
@@ -27,7 +27,7 @@ You can apply filters specific to standards to view the rules associated with th
 In the future, Harness will allow you to modify the severity of a rule or even suppress any rules from being evaluated.
 :::
 
-## Supported Standards and Rules
+## Supported standards and rules
 
 Harness supports the following standards:
 
@@ -41,14 +41,14 @@ For GitHub code repositories, Harness evaluates repository, organization, and en
 
 :::
 
-### CIS Benchmarks
+### CIS benchmarks
 
 The following CIS v1.0 rules are supported by Harness for the evaluations, and Harness will continue to add more rules across different target types. For more detailed information, refer to the official [CIS documentation](https://www.cisecurity.org/benchmark/software-supply-chain-security) 
 
 <details>
 <summary>CIS Benchmarks</summary>
 
-### Source Code
+### Source code
 
 | Rule ID  | Name                                                  | Platform | Type |
 |----------|-------------------------------------------------------|----------|--------|
@@ -78,7 +78,7 @@ The following CIS v1.0 rules are supported by Harness for the evaluations, and H
 | 1.3.8    | Strict Base Permissions Set for Repositories          | GitHub   | Code Repository  |
 | 1.3.9    | Organization Identity Confirmed with “Verified” Badge | GitHub   | Code Repository  |
 
-### Build Pipelines
+### Build pipelines
 
 | Rule ID  | Name                                                     | Platform | Type |
 |----------|----------------------------------------------------------|----------|--------|
@@ -107,7 +107,7 @@ The following CIS v1.0 rules are supported by Harness for the evaluations, and H
 
 </details>
 
-### OWASP Top 10 CI/CD Security Risks
+### OWASP Top 10 CI/CD security risks
 The following rules are supported by Harness to perform evaluations, and Harness will continue to add more rules across different target types. For more detailed information, refer to the official [OWASP documentation](https://owasp.org/www-project-top-10-ci-cd-security-risks/).
 
 <details>

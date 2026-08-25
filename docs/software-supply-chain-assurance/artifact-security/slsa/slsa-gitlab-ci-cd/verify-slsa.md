@@ -1,7 +1,7 @@
 ---
 title: Verify SLSA with Harness GitLab CI/CD
 description: Use Harness GitLab CI/CD to Verify SLSA Provenance
-sidebar_position: 21
+sidebar_position: 20
 tags:
   - harness-scs 
   - verify-slsa-with-gitlab-ci-cd
@@ -36,10 +36,10 @@ By the end of this topic, you will be able to:
 
 Make a note of the following before you proceed with verifying SLSA provenance using GitLab CI/CD:
 
-* Understand how to create Harness API keys using Personal API Keys or Service Account API Keys. For more information, go to [Manage API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys) and [Service Account API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens), respectively.
-* If you're using key-based or Secret Manager signing or verification, create or configure a Cosign key pair before configuring the pipeline. For step-by-step instructions, see [Quickstart Signing and Verifying with Cosign](https://docs.sigstore.dev/quickstart/quickstart-cosign/#quickstart-signing-and-verifying-with-cosign), which explains how to generate a local key pair or create one using a supported KMS provider. The key should be generated using Cosign of type `ecdsa-P256`. You don't need to install Cosign on your GitLab runner. The `harness/ssca-plugin` container image used by the Harness GitLab CI/CD components includes Cosign, so no additional installation is required.
-* If you plan to use Secret Manager attestation, store your verification key in a supported secret manager. Currently, Harness supports HashiCorp Vault. For GitLab CI/CD, you point the component at the key through pipeline variables such as `KMS_KEY` (and `VAULT_ADDR` when the key is stored in HashiCorp Vault), so you don't need to configure a Harness Secret Manager connector. For setup steps specific to HashiCorp Vault, see the [Add a HashiCorp Vault secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/).
-* Ensure that your GitLab runners support Docker-in-Docker (DinD). The component runs using the `docker:24-dind` service. For more information, go to [Use Docker-in-Docker](https://docs.gitlab.com/ci/docker/docker_in_docker/).
+* Understand how to create Harness API keys using Personal API Keys or Service Account API Keys. Go to [Manage API Keys](/docs/platform/automation/api/add-and-manage-api-keys) and [Service Account API Keys](/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens) to create them.
+* If you are using key-based or Secret Manager signing or verification, create or configure a Cosign key pair before configuring the pipeline. Go to [Quickstart Signing and Verifying with Cosign](https://docs.sigstore.dev/quickstart/quickstart-cosign/#quickstart-signing-and-verifying-with-cosign) to generate a local key pair or create one using a supported KMS provider. The key should be generated using Cosign of type `ecdsa-P256`. You do not need to install Cosign on your GitLab runner. The `harness/ssca-plugin` container image used by the Harness GitLab CI/CD components includes Cosign, so no additional installation is required.
+* If you plan to use Secret Manager attestation, store your verification key in a supported secret manager. Currently, Harness supports HashiCorp Vault. For GitLab CI/CD, you point the component at the key through pipeline variables such as `KMS_KEY` (and `VAULT_ADDR` when the key is stored in HashiCorp Vault), so you do not need to configure a Harness Secret Manager connector. For setup steps specific to HashiCorp Vault, go to [Add a HashiCorp Vault secret manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault/).
+* Ensure that your GitLab runners support Docker-in-Docker (DinD). The component runs using the `docker:24-dind` service. Go to [Use Docker-in-Docker](https://docs.gitlab.com/ci/docker/docker_in_docker/) to configure DinD support.
 
 ***
 
@@ -68,9 +68,9 @@ Complete the following steps to set up Harness GitLab CI/CD:
 4. Click the `Configure` button under **Configure GitLab CI/CD in your pipeline to generate SBOM and SLSA, and sign artifacts** to open the **Configure Integration** page, where the Artifact Security feature cards are displayed.
 5. Click the **Verify SLSA** card to open the **SLSA Verification** sidepanel.
 6. Click the `Go to Key Generation` button to create the Harness API key required to configure Harness GitLab CI/CD.
-    * Select **Using Service Account** from the dropdown to create the API key using a service account. For more information, see [Service Account API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens).
+    * Select **Using Service Account** from the dropdown to create the API key using a service account. Go to [Service Account API Keys](/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens) to create one.
     * Select **Using Personal Account** from the dropdown to create a personal API key.
-      Personal API keys are created at the account level and inherit the permissions assigned to your user account. For more information, see [Manage API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys).
+      Personal API keys are created at the account level and inherit the permissions assigned to your user account. Go to [Manage API Keys](/docs/platform/automation/api/add-and-manage-api-keys) to manage them.
 7. Click **Copy** in the upper-right corner of the code block to copy the generated GitLab CI/CD configuration, and then paste it into your GitLab workflow file.
 
 <DocImage path={require('./static/slsa-verification-gitlab.png')} width="100%" height="100%" title="Click to view full size image" />
@@ -83,21 +83,21 @@ After setting up Harness GitLab CI/CD, configure the **SLSA Verification** compo
 
 :::note
 
-If you're using **GitLab Self-Managed**, mirror the required Harness GitLab CI/CD components to your GitLab instance before configuring your pipeline. After mirroring the components, update the `component` reference in your workflow file to use the mirrored component. For step-by-step instructions, see [Use a GitLab.com component on GitLab Self-Managed](https://docs.gitlab.com/ci/components/#use-a-gitlabcom-component-on-gitlab-self-managed).
+If you are using **GitLab Self-Managed**, mirror the required Harness GitLab CI/CD components to your GitLab instance before configuring your pipeline. After mirroring the components, update the `component` reference in your workflow file to use the mirrored component. Go to [Use a GitLab.com component on GitLab Self-Managed](https://docs.gitlab.com/ci/components/#use-a-gitlabcom-component-on-gitlab-self-managed) to mirror components.
 
 :::
 
 Complete the following steps to configure SLSA verification:
 
-1. [Add the required GitLab CI/CD variables](#step-1---add-the-required-gitlab-cicd-variables)
-2. [Include the SLSA Verification component](#step-2---include-the-slsa-verification-component)
-3. [Configure SLSA provenance verification in the workflow](#step-3---configure-provenance-verification)
-4. [Review the workflow](#step-4---review-the-workflow)
-5. [Run the pipeline](#step-5---run-the-pipeline)
+1. [Add the required GitLab CI/CD variables](#step-1-add-the-required-gitlab-cicd-variables)
+2. [Include the SLSA Verification component](#step-2-include-the-slsa-verification-component)
+3. [Configure SLSA provenance verification in the workflow](#step-3-configure-provenance-verification)
+4. [Review the workflow](#step-4-review-the-workflow)
+5. [Run the pipeline](#step-5-run-the-pipeline)
 
-### Step 1 - Add the required GitLab CI/CD variables
+### Step 1: Add the required GitLab CI/CD variables
 
-Before configuring the SLSA Verification component, add the following variables to your GitLab project. For step-by-step instructions, see [Define a CI/CD Variable for a project](https://docs.gitlab.com/ci/variables/#for-a-project).
+Before configuring the SLSA Verification component, add the following variables to your GitLab project. Go to [Define a CI/CD Variable for a project](https://docs.gitlab.com/ci/variables/#for-a-project) to add them.
 
 | Variable | Description | Required | Example | Masked? |
 | --- | --- | --- | --- | --- |
@@ -113,7 +113,7 @@ Masked GitLab CI/CD variables cannot be passed through component inputs. For thi
 
 :::
 
-### Step 2 - Include the SLSA Verification component
+### Step 2: Include the SLSA Verification component
 
 Add an `scs` stage to your GitLab workflow file, or set the `stage` input on the component to an existing stage. Then, include the Harness **SLSA Verification** component in your GitLab workflow file.
 
@@ -154,7 +154,7 @@ By default, the component verifies the SLSA provenance associated with a contain
 
 :::
 
-To verify the SLSA provenance attestation, configure the verification inputs (`VERIFY_WITH`, `OIDC_PROVIDER`, `FULCIO_URL`, `KMS_KEY`, and `VAULT_ADDR`) as described in [Step 3 - Configure provenance verification](#step-3---configure-provenance-verification).
+To verify the SLSA provenance attestation, configure the verification inputs (`VERIFY_WITH`, `OIDC_PROVIDER`, `FULCIO_URL`, `KMS_KEY`, and `VAULT_ADDR`) as described in [Step 3: Configure provenance verification](#step-3-configure-provenance-verification).
  
 #### Override the generated job
  
@@ -176,7 +176,7 @@ If you are verifying provenance for an image in a private registry that is not t
 
 :::
 
-### Step 3 - Configure provenance verification
+### Step 3: Configure provenance verification
 
 Harness supports the following verification methods:
 
@@ -232,7 +232,7 @@ scs-slsa-verification:
 
 <TabItem value="Configure key-based verification" label="Configure key-based verification">
 
-To verify the signed SLSA provenance using a cryptographic key, set `VERIFY_WITH` to `keybased` and provide the Cosign key material as masked GitLab CI/CD variables on the job. `KMS_KEY` isn't used for key-based verification. It applies only to Secret Manager verification.
+To verify the signed SLSA provenance using a cryptographic key, set `VERIFY_WITH` to `keybased` and provide the Cosign key material as masked GitLab CI/CD variables on the job. `KMS_KEY` is not used for key-based verification. It applies only to Secret Manager verification.
  
 | Input | Description | Required |
 | --- | --- | --- |
@@ -260,7 +260,7 @@ To use a verification key stored in a supported secret manager, configure the fo
 
 </Tabs>
 
-### Step 4 - Review the workflow
+### Step 4: Review the workflow
 
 After configuring the required GitLab CI/CD variables and component inputs, your GitLab workflow file should resemble the following example. This example verifies the SLSA provenance for a container image in Harness SCS using Cosign with a verification key stored in HashiCorp Vault. The Harness scope variables are wired through `inputs`, `HARNESS_API_KEY` remains a masked GitLab CI/CD variable, and the Vault variables (`KMS_KEY` and `VAULT_ADDR`) are provided because verification is enabled.
  
@@ -279,21 +279,21 @@ include:
       VAULT_ADDR: $VAULT_ADDR
 ```
 
-### Step 5 - Run the pipeline
+### Step 5: Run the pipeline
 
-Commit and push your changes to trigger the GitLab pipeline. During pipeline execution, the SLSA Verification component verifies the provenance associated with the specified artifact. Based on the verification results, the pipeline determines whether the artifact can proceed to subsequent stages. For more information on running a GitLab pipeline, see [Tutorial: Create and run your first GitLab CI/CD pipeline](https://docs.gitlab.com/ci/quick_start/).
+Commit and push your changes to trigger the GitLab pipeline. During pipeline execution, the SLSA Verification component verifies the provenance associated with the specified artifact. Based on the verification results, the pipeline determines whether the artifact can proceed to subsequent stages. Go to [Tutorial: Create and run your first GitLab CI/CD pipeline](https://docs.gitlab.com/ci/quick_start/) to run a GitLab pipeline.
 
-After the pipeline completes, open the job execution logs and click the **Harness Artifact Details** link to view the generated artifact in SCS. For more information on viewing the status of a job and details of the pipeline, see [View the status of your pipeline and jobs](https://docs.gitlab.com/ci/quick_start/#view-the-status-of-your-pipeline-and-jobs).
+After the pipeline completes, open the job execution logs and click the **Harness Artifact Details** link to view the generated artifact in SCS. Go to [View the status of your pipeline and jobs](https://docs.gitlab.com/ci/quick_start/#view-the-status-of-your-pipeline-and-jobs) to check job status and pipeline details.
 
 <DocImage path={require('./static/slsa-verification-job.png')} width="100%" height="100%" title="Click to view full size image" />
 
-The Artifact Details page displays the SLSA verification results for the artifact. The verification results are also recorded in the [Chain of Custody](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-security/overview/#chain-of-custody), providing an immutable audit trail of the artifact lifecycle and the associated GitLab CI/CD pipeline execution. For more information on navigating through artifacts, see [Artifact Overview](/docs/software-supply-chain-assurance/artifact-security/overview/).
+The Artifact Details page displays the SLSA verification results for the artifact. The verification results are also recorded in the [Chain of Custody](/docs/software-supply-chain-assurance/artifact-security/overview/#chain-of-custody), providing an immutable audit trail of the artifact lifecycle and the associated GitLab CI/CD pipeline execution. Go to [Artifact Overview](/docs/software-supply-chain-assurance/artifact-security/overview/) to navigate through artifacts.
 
 <DocImage path={require('./static/slsa-verification-artifact.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ***
 
-## Example SLSA verification workflow
+## Example SLSA Verification workflow
 
 <details>
   <summary>Example SLSA verification workflow for a container image</summary>
@@ -382,6 +382,6 @@ include:
 
 ## Next steps
 
-* [Generate SBOM with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/generate-sbom) — Learn how to generate, attest, and upload SBOMs to Harness SCS during pipeline execution.
-* [Enforce SBOM policies with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/enforce-sbom-policies) — Learn how to verify SBOM attestations and enforce software supply chain policies during pipeline execution.
-* [Ingest SBOM with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/ingest-sbom) — Learn how to upload existing SBOMs generated by external tools or build processes to Harness SCS.
+* [Generate SBOM with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/generate-sbom): Generate, attest, and upload SBOMs to Harness SCS during pipeline execution.
+* [Enforce SBOM policies with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/enforce-sbom-policies): Verify SBOM attestations and enforce software supply chain policies during pipeline execution.
+* [Ingest SBOM with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/ingest-sbom): Upload existing SBOMs generated by external tools or build processes to Harness SCS.

@@ -1,7 +1,7 @@
 ---
 title: Verify SLSA
 description: Verify SLSA Provenance with Harness SCS
-sidebar_position: 20
+sidebar_position: 30
 redirect_from:
 
 - /docs/software-supply-chain-assurance/slsa/verify-slsa
@@ -20,19 +20,19 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this document, we'll explore how to verify SLSA Provenance attestation and enforce policies to guarantee the provenance contents remain unaltered. Unlike the setup for SLSA provenance generation, the verification process can be conducted in both the Build and Deploy stages of your pipeline. Here’s an overview of the procedure:
+In this document, we will explore how to verify SLSA Provenance attestation and enforce policies to guarantee the provenance contents remain unaltered. Unlike the setup for SLSA provenance generation, the verification process can be conducted in both the Build and Deploy stages of your pipeline. Here’s an overview of the procedure:
 
 <DocImage path={require('./static/overview-slsa-ver.png')} width="90%" height="90%" />
 
 
 ## Configure the SLSA verification step
 
-In the Harness SCS, the SLSA verification step is responsible for verifying the attested provenance and applying policies. To incorporate this, navigate to either the build or deploy stage of your pipeline and add the "SLSA Verification" step. When adding this to a deploy stage, ensure it's placed within a [container step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) and you enable the `container based execution`.
+In the Harness SCS, the SLSA verification step is responsible for verifying the attested provenance and applying policies. To incorporate this, navigate to either the build or deploy stage of your pipeline and add the "SLSA Verification" step. When adding this to a deploy stage, ensure it is placed within a [container step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) and you enable the `container based execution`.
 
 <DocImage path={require('./static/verify-slsa.png')} width="100%" height="100%" />
     
 
-### Container Images
+### Container images
 
 Follow the instructions below to configure the **SLSA Verification** step for container images.
 
@@ -101,7 +101,7 @@ When modifying the existing SLSA steps, you must manually remove the digest from
 </TabItem>
 </Tabs>
 
-### Non-Container Artifacts
+### Non-container artifacts
 
 SLSA verification supports both container images and non-container artifacts. Non-container artifacts are files or packages that are not packaged as container images, such as binaries, manifests, or archives. They are identified using their digest (SHA). This digest is used to match the artifact with its corresponding provenance during verification.
 
@@ -109,15 +109,15 @@ Ensure that the artifact and its digest are generated earlier in the pipeline, t
 
 To verify SLSA Provenance for Non-Container Artifacts:
 
-1. Enter a **Name** for the step under `Name`. Harness automatically generates a step ID from the name. Once the pipeline is created, you can't change the ID.
+1. Enter a **Name** for the step under `Name`. Harness automatically generates a step ID from the name. Once the pipeline is created, you cannot change the ID.
 2. Select **Harness Local Stage** as the **Source**.
 3. Specify the same workspace artifact path that was used during the SLSA Generation step under `Workspace Artifact Path`. This path must point to the exact location of the artifact within the workspace so that it can be matched with its provenance during verification. The default workspace path is `/harness`.
 
 <DocImage path={require('./static/verify-slsa-non-container-image.png')} width="100%" height="100%" title="Click to view full size image" />
 
-### Verify SLSA Attestation
+### Verify SLSA attestation
 
-Verification is the process of validating a provenance attestation to ensure its authenticity and integrity. It confirms that the attestation was signed by a trusted source, has not been tampered with, and corresponds to the expected artifact. In the SLSA Verification step, SLSA attestation verification ensures that only trusted, compliant artifacts are allowed to proceed in the pipeline. To understand the verification process, see [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
+Verification is the process of validating a provenance attestation to ensure its authenticity and integrity. It confirms that the attestation was signed by a trusted source, has not been tampered with, and corresponds to the expected artifact. In the SLSA Verification step, SLSA attestation verification ensures that only trusted, compliant artifacts are allowed to proceed in the pipeline. Go to [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) to understand the verification process.
 
 You can perform verification using Cosign with the following verification methods:
 
@@ -133,7 +133,7 @@ import CosignVerificationSlsaOptions from '/docs/software-supply-chain-assurance
 
 
 
-## Enforce Policies on SLSA Provenance
+## Enforce policies on SLSA Provenance
 
 Immediately following the verification of the provenance attestation, you have the option to configure the step to enforce policies on the provenance. This ensures that the contents of the provenance remain unchanged and have not been tampered with.
 
@@ -153,7 +153,7 @@ When the pipeline runs, the **SLSA Verification** step does the following:
 * Reports the overall pass/fail for SLSA verification on the **Supply Chain** tab.
 
 
-For more information about inspecting SLSA verification results, go to view pipeline execution results in the supply chain tab.
+You can view SLSA provenance and verification results in the Supply Chain tab of the pipeline execution details.
 
 <DocImage path={require('./static/scs-slsa-verification.png')} width="100%" height="100%" />
 

@@ -1,7 +1,7 @@
 ---
 title: Open Source Security and Risk Management
 description: Manage and mitigate security risks in your open source components effectively.
-sidebar_position: 1
+sidebar_position: 10
 
 tags:
   - harness-scs 
@@ -37,7 +37,7 @@ After completing the SBOM Orchestration step for your [artifacts](/docs/software
 - Detection of EOL and Close to EOL components is currently supported for npm, Maven, and PyPI. Support for additional package managers will be added in the future.
 :::
 
-### Malicious Packages
+### Malicious packages
 
 A dependency is considered to have a malicious package OSS risk when it has been identified as containing harmful or intentionally deceptive code that may compromise your software supply chain.
 
@@ -53,7 +53,7 @@ In the SBOM tab, you can filter dependencies by `Typosquatting` OSS risk to iden
 
 <DocImage path={require('./static/typosquatting-oss-risk.png')} width="80%" height="80%" title="Click to view full size image" />
 
-### Vulnerabilities in SBOM Components (OSS Risk - 1)
+### Vulnerabilities in SBOM components (OSS risk - 1)
 
 After you run the SBOM Orchestration step followed by an STO scan using any scanner required for component-level vulnerability mapping, the SBOM tab displays vulnerabilities for the components identified by the selected scan tool. This helps you effectively identify and prioritize open source risks.
 
@@ -63,7 +63,7 @@ You can also filter out the components, based on the OSS Risks.
 <DocImage path={require('./static/snyk.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
-### Outdated Components (OSS Risk - 5)
+### Outdated components (OSS risk - 5)
 
 A component is considered outdated when its current version is lower than the latest available version. In the SBOM tab, outdated components are indicated by a warning symbol next to their version. Create a [Jira ticket](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#create-jira-ticket) to update the component version to the latest available version.
 
@@ -72,20 +72,20 @@ A component is considered outdated when its current version is lower than the la
 
 
 
-### Unmaintained Components (OSS Risk - 4)
+### Unmaintained components (OSS risk - 4)
 
 An unmaintained component is one that has not received any version upgrades in the past year. In the SBOM tab, such components are marked with an alert symbol. Create a [Jira ticket](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#create-jira-ticket) to replace it with an alternative component.
 
 <DocImage path={require('./static/unmaintained.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
-### Close to End of Life Components
+### Close to end of life components
 
 A component is considered Close to End of Life if its EOL risk score falls between `30 and 59`. This score is based on warning signals such as declining maintenance, lack of updates, or unresolved security issues, which indicate that the component may soon reach EOL.
 
 <DocImage path={require('./static/close-to-eol.png')} width="80%" height="80%" title="Click to view full size image" />
 
-### End of Life Components
+### End of life components
 
 A component is considered End of Life if its EOL risk score falls between `60 and 100`. These components are typically no longer maintained or have been officially deprecated, making them risky to use in production. Harness SCS categorizes EOL into two types:
 
@@ -93,12 +93,12 @@ A component is considered End of Life if its EOL risk score falls between `60 an
 
 **Definite:** Confirmed end-of-life, such as when the package or repository is archived or officially deprecated.
 
-When you click on any **Close to EOL or EOL component**, a side panel opens where you can view detailed information about the component, including its EOL status, risk score, and key findings. Learn more about the [EOL Scoring System](/docs/software-supply-chain-assurance/how-to-guides/eol-scoring-system).
+When you click on any **Close to EOL or EOL component**, a side panel opens where you can view detailed information about the component, including its EOL status, risk score, and key findings. Go to [EOL Scoring System](/docs/software-supply-chain-assurance/how-to-guides/eol-scoring-system) to understand how the score is calculated.
 
 
 <DocImage path={require('./static/eol.png')} width="80%" height="80%" title="Click to view full size image" />
 
-### Create Jira Ticket
+### Create jira ticket
 
 As a prerequisite, configure a [Jira connector](/docs/platform/connectors/ticketing-systems/connect-to-jira/). Click on the module selector at the top left of the side bar, go to Unified View, and create the connector at the project level.
 
@@ -116,12 +116,12 @@ As a prerequisite, configure a [Jira connector](/docs/platform/connectors/ticket
 
 <DocImage path={require('./static/jira.png')} width="80%" height="80%" title="Click to view full size image" />
 
-### Enforce Policy
+### Enforce policy
 
 In the SBOM Orchestration step, you can enforce an OPA policy to block pipelines that include End of Life (EOL) components based on their count. The following is a sample policy:
 
 
-```
+```go
 package sbom
 
 import future.keywords.if

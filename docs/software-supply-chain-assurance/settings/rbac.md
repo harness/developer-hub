@@ -1,7 +1,7 @@
 ---
 title: Manage SCS Access Control with RBAC
 description: Manage SCS Roles and Permissions with RBAC.
-sidebar_position: 90
+sidebar_position: 20
 sidebar_label: RBAC
 
 redirect_from:
@@ -36,15 +36,15 @@ By the end of this topic, you will be able to understand:
 
 ***
 
-## Before you Begin
+## Before you begin
 
 Make a note of the following before you proceed with configuring RBAC in SCS:
 
-* Understanding of Role-based access control (RBAC) in Harness. Harness RBAC helps you manage user access to specific features, resources, and actions across the platform. For more information on Harness RBAC, see [Role-based Access Control (RBAC)](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/).
+* Understanding of Role-based access control (RBAC) in Harness. Harness RBAC helps you manage user access to specific features, resources, and actions across the platform. Go to [Role-based Access Control (RBAC)](/docs/platform/role-based-access-control/rbac-in-harness/) to understand the permissions model.
 
 ***
 
-## Understand Role-Based Access Control in SCS
+## Understand role-based access control in SCS
 
 RBAC in SCS helps organizations control who can access and manage different SCS operations. In large environments, multiple users often work on integrations, remediation workflows, and security configurations simultaneously. RBAC helps ensure that only authorized users can perform sensitive actions within SCS, reducing the risk of unauthorized changes and operational issues.
 
@@ -58,7 +58,7 @@ The following table provides an overview of why RBAC is important for SCS, when 
 
 ***
 
-## Default Managed Role Access for SCS
+## Default managed role access for SCS
 
 SCS RBAC permissions are automatically mapped to selected existing Harness managed roles based on their access level. This helps organizations apply SCS access controls without manually configuring permissions for commonly used administrative and viewer roles.
 
@@ -72,7 +72,7 @@ The following table shows how the existing Harness managed roles are mapped to S
 
 ***
 
-## Supported SCS Resources and Permissions
+## Supported SCS resources and permissions
 
 SCS RBAC permissions help administrators control access to different SCS resources and workflows based on user responsibilities and operational requirements. The following table describes the supported SCS resources, their available permissions, and the actions each permission allows within SCS.
 
@@ -193,7 +193,7 @@ To create a new role with SCS permissions, complete the following steps:
 
     <DocImage path={require('./static/access-control-rbac.png')} width="100%" height="80%" title="Click to view full size image" />
 
-3. Specify the **Name** of the role, for example, *demo_role*. Harness automatically generates a role ID from the role name. Once the role is created, you can't change the ID.
+3. Specify the **Name** of the role, for example, *demo_role*. Harness automatically generates a role ID from the role name. Once the role is created, you cannot change the ID.
 4. (Optional) Enter a description for the role.
 5. (Optional) Specify tags for the role by clicking on `+ Add “<tag_name>”` . The option appears automatically as you enter a tag name.
 6. After verifying the details, click **Save**. Once saved, you can view the **Role created successfully** toaster message at the top, indicating the successful creation of a new role. The role details page opens automatically with the default **Permissions** tab, where you can configure permissions for the required SCS resources.
@@ -206,7 +206,7 @@ To create a new role with SCS permissions, complete the following steps:
 
     :::note
 
-    You can assign the newly created role to a new or existing user. For more information on creating new users and assigning roles, see [Manage Users](/docs/platform/role-based-access-control/add-users/#add-users-manually).
+    You can assign the newly created role to a new or existing user. Go to [Manage Users](/docs/platform/role-based-access-control/add-users/#add-users-manually) to create new users and assign roles.
 
     :::
 10. (Optional) After assigning the role to a user, user group, or service account, click the `Assigned To` tab to view the associated users, user groups, and service accounts.
@@ -227,17 +227,17 @@ To modify the SCS permissions for an existing role, complete the following steps
 
 #### Modify the role name, description, or tags for an existing role
 
-Modifying an existing role allows administrators to update the role name, description, or tags to reflect changing organizational and access management requirements. For more information, see [Edit a Role](/docs/platform/role-based-access-control/add-manage-roles#edit-a-role).
+Modifying an existing role allows administrators to update the role name, description, or tags to reflect changing organizational and access management requirements. Go to [Edit a Role](/docs/platform/role-based-access-control/add-manage-roles#edit-a-role) to update an existing role..
 
 <DocImage path={require('./static/edit-scs-role.png')} width="100%" height="80%" title="Click to view full size image" />
 
-#### Delete an Existing Role
+#### Delete an existing role
 
-Deleting an existing role allows administrators to remove roles that are no longer required or are no longer used within the organization. For more information, see [Delete a Role](/docs/platform/role-based-access-control/add-manage-roles#delete-a-role). 
+Deleting an existing role allows administrators to remove roles that are no longer required or are no longer used within the organization. Go to [Delete a Role](/docs/platform/role-based-access-control/add-manage-roles#delete-a-role) to remove a role. 
 
 :::note
 
-For more information on managing roles, see [Manage Roles](/docs/platform/role-based-access-control/add-manage-roles).
+Go to [Manage Roles](/docs/platform/role-based-access-control/add-manage-roles) to understand role management in Harness.
 
 :::
 
@@ -290,7 +290,7 @@ To create a new resource group with SCS resources, complete the following steps:
 
 :::note
 
-You can assign the newly created resource group to a new or existing user. For more information on assigning users to custom resource groups, see [Assign users to custom resource groups](/docs/platform/role-based-access-control/manage-resource-groups#assign-users-to-custom-resource-groups)
+You can assign the newly created resource group to a new or existing user. Go to [Assign users to custom resource groups](/docs/platform/role-based-access-control/manage-resource-groups#assign-users-to-custom-resource-groups) to assign users.
 
 :::
 
@@ -307,23 +307,23 @@ Navigate to the Resource Groups page for the scope where the resource group was 
 
 #### Modify the resource group name, description, or tags for an existing resource group
 
-Modifying an existing resource group allows administrators to update its name, description, or tags to reflect changing organizational and access management requirements. For more information, see [Edit a resource group](https://developer.harness.io/docs/platform/role-based-access-control/manage-resource-groups#edit-a-resource-group).
+Modifying an existing resource group allows administrators to update its name, description, or tags to reflect changing organizational and access management requirements. Go to [Edit a resource group](/docs/platform/role-based-access-control/manage-resource-groups#edit-a-resource-group) to update an existing resource group.
 
 <DocImage path={require('./static/edit-scs-resource-group.png')} width="100%" height="100%" title="Click to view full size image" />
 
 #### Delete an existing resource group
 
-Deleting an existing resource group allows administrators to remove groups that are no longer required or in use within the organization. For more information, see [Delete a resource group](https://developer.harness.io/docs/platform/role-based-access-control/manage-resource-groups#delete-a-resource-group).
+Deleting an existing resource group allows administrators to remove groups that are no longer required or in use within the organization. Go to [Delete a resource group](/docs/platform/role-based-access-control/manage-resource-groups#delete-a-resource-group) to remove a resource group.
 
 :::note
 
-For more information on managing resource groups, see [Manage resource groups](https://developer.harness.io/docs/platform/role-based-access-control/manage-resource-groups).
+Go to [Manage resource groups](/docs/platform/role-based-access-control/manage-resource-groups) to understand resource group management in Harness.
 
 :::
 
 ***
 
-## Next Steps
+## Next steps
 
 * [OSS Risks Remediation](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation): Learn how to remediate vulnerabilities and OSS risks in direct dependencies through manual or automated pull requests.
 * [Remediation Tracker](/docs/software-supply-chain-assurance/open-source-management/remediation-tracker/overview): Learn how to track vulnerable artifacts and respond to zero-day exploits across deployed environments and pipelines.
