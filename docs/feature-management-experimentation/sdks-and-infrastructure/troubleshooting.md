@@ -1,7 +1,22 @@
 ---
 title: Troubleshooting
 sidebar_label: Troubleshooting
+description: SDK validation rules and troubleshooting guidance for Harness FME SDKs. Resolve common issues with SDK readiness, impressions, and network connectivity.
 sidebar_position: 15
+keywords:
+  - sdk troubleshooting
+  - gettreatment
+  - sdk validation
+  - fme sdk
+  - control treatment
+  - impressions
+  - sdk ready
+  - track method
+  - sdk errors
+tags:
+  - fme
+  - sdks
+  - troubleshooting
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/sdk-readiness-always-times-out-when-running-in-kubernetes-and-istio-proxy/
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/split-manager-returns-incomplete-list-of-feature-flags
@@ -14,12 +29,37 @@ redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-ios-javascript-sdk-client-on-never-runs
 ---
 
-## Overview
-
-Our SDKs have a standardized interface for inputs to every method. If you have issues getting up and running with any of our SDKs or aren't getting the expected return from any method or to the Split UI, you can find a detailed view of the types of validation that our SDK performs for each method below.
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+This page provides SDK validation rules and troubleshooting guidance for Harness Feature Management Experimentation (FME) SDKs. The validation reference explains expected input formats and error behaviors for SDK methods. The troubleshooting scenarios help resolve common SDK integration issues.
+
+Harness FME SDKs have standardized validation for method inputs. If you encounter unexpected return values or behaviors, use the validation reference below to understand error messages and SDK responses.
+
+:::info Legacy hostname references
+Some SDK endpoints still use legacy split.io hostnames (sdk.split.io, events.split.io) but are part of Harness FME infrastructure. This is expected behavior and does not indicate a configuration problem.
+:::
+
+---
+
+## What you will learn from this topic
+
+- **SDK method validation rules:** Understand expected input formats and validation behaviors for getTreatment, track, factory instantiation, and other SDK methods.
+- **Common error messages:** Learn how to interpret SDK error messages and control treatment responses (control is the default fallback treatment returned when SDK cannot evaluate a feature flag).
+- **Troubleshooting patterns:** Resolve SDK readiness issues, impression posting problems (impressions are records of getTreatment calls sent to Harness for analytics), and network connectivity errors.
+- **Debugging techniques:** Enable SDK logging and diagnose configuration problems.
+
+---
+
+## Before you begin
+
+This page covers SDK behavior and troubleshooting. For initial SDK setup and integration, go to [SDK overview](/docs/feature-management-experimentation/sdks-and-infrastructure) for installation instructions and configuration guidance.
+
+Basic familiarity with FME SDKs is recommended. If you are new to Harness FME, start with the SDK documentation for your programming language before using this troubleshooting reference.
+
+---
+
+## SDK method validation reference
 
 <Tabs queryString="tab-number">
 <TabItem value="1" label="GetTreatment Method Validation">
@@ -34,7 +74,7 @@ Below are the expected input data types for the method `getTreatment(key, split_
 For iOS, Android, and JavaScript, this method also has a signature of `getTreatment(split_name, attributes)`. If you are troubleshooting any of these SDKs, feel free to skip the Key Validations section below.
 :::
 
-### Key Validations
+#### Key Validations
 
 - `key == null` or `undefined` (or similar for each language)
    - SDK will return control
@@ -72,7 +112,7 @@ For iOS, Android, and JavaScript, this method also has a signature of `getTreatm
      ```
    - No Impression will be logged back to Split servers
 
-### Split Name Validations
+#### Split name validations
 
 - `split_name == null` or `undefined`
   - SDK will return control
@@ -102,7 +142,7 @@ For iOS, Android, and JavaScript, this method also has a signature of `getTreatm
     ```  
   - An Impression will be logged with the trimmed split name
 
-## Attributes Validations
+### Attributes validations
 
 - `attributes` is not of type dictionary  
   - SDK will return control  
@@ -121,7 +161,7 @@ Below are the errors and expected behavior you can expect from the SDK on the `t
 For iOS, Android, and JavaScript, this method also has signatures without a `traffic_type_name` or `key`. If you are troubleshooting any of these SDKS, feel free to skip the Key and Traffic Type Validations sections below.
 :::
 
-## Key Validations
+### Key Validations
 
 - `key == null` or `undefined`  
   - SDK will return `false`  
@@ -162,7 +202,7 @@ For iOS, Android, and JavaScript, this method also has signatures without a `tra
     ```  
   - No event will be logged back to Split servers
 
-## Event Type Validations
+### Event type validations
 
 - `event_type` is an empty string  
   - SDK will return `false`  
@@ -197,7 +237,7 @@ For iOS, Android, and JavaScript, this method also has signatures without a `tra
     ```  
   - No event will be logged back to Split servers
 
-## Traffic Type Validations
+### Traffic type validations
 
 - `traffic_type_name == null` or `undefined`  
   - SDK will return `false`  
@@ -230,7 +270,7 @@ For iOS, Android, and JavaScript, this method also has signatures without a `tra
     ```  
   - Event will be logged back to Split servers with `traffic_type_name` lowercased
 
-## Value Validations
+### Value validations
 
 - `value` is not null and not a finite number  
   - SDK will return `false`  
@@ -385,7 +425,7 @@ Below are validations for the `manager.split(split_name)` method:
 </TabItem>
 </Tabs>
 
-## Validation for a Destroyed Client
+## Validation for a destroyed client
 
 Below is the behavior you can expect from the client if it is used after it has been destroyed:
 
@@ -394,7 +434,13 @@ Below is the behavior you can expect from the client if it is used after it has 
 * Any calls to track will return false.
 * Any manager methods will return null or an empty collection.
 
-## Tracked events not showing
+---
+
+## Common troubleshooting scenarios
+
+### Network and connectivity issues
+
+#### Tracked events not showing
 
 Events sent via `client.track()` may not appear in the Harness FME UI even if the call succeeds. This usually happens because the FME Cloud silently rejects requests with invalid data.
 
@@ -402,7 +448,7 @@ Common causes include event type names containing invalid characters, such as sp
 
 To resolve this, ensure event type names and traffic types follow the guidelines in [SDKs and Customer-Deployed Components](/docs/feature-management-experimentation/sdks-and-infrastructure), and verify that the traffic types you use are defined in your organization.
 
-## SDK never gets ready regardless of the ready timeout value
+#### SDK never gets ready regardless of ready timeout value
 
 The SDK never reaches the ready state, no matter how long the ready timeout is set.
 
@@ -471,7 +517,9 @@ boolean checkIfSplitExists(String splitName) {
 }
 ```
 
-## Always getting control treatments from getTreatment
+### SDK behavior issues
+
+#### Always getting control treatments from getTreatment
 
 When using the SDK, the control treatment is either always or very often returned from the `getTreatment` call.
 
@@ -501,9 +549,9 @@ client.on(client.Event.SDK_READY, function() {
 
 ## SDKs making hundreds of network calls without using getTreatment or track methods
 
-When using any FME SDK library, you might notice the SDK making hundreds of network calls to split.io even though neither `getTreatment` nor `track` methods are being called.
+When using any FME SDK library, you might notice the SDK making hundreds of network calls to Harness FME servers even though neither `getTreatment` nor `track` methods are being called.
 
-If the Split.io library is encapsulated in a class and a new instance of the factory and client objects is created each time the client object is needed, then all these objects remain live in memory and continue synchronizing feature flag and segment changes with split.io, generating excessive network traffic.
+If the FME SDK library is encapsulated in a class and a new instance of the factory and client objects is created each time the client object is needed, then all these objects remain live in memory and continue synchronizing feature flag and segment changes with Harness FME servers, generating excessive network traffic.
 
 For example, in the JavaScript SDK:
 
@@ -664,3 +712,13 @@ class SplitIO {
 
 </TabItem>
 </Tabs>
+
+---
+
+## Next steps
+
+You have reviewed SDK validation rules and troubleshooting guidance for Harness FME SDKs. For additional SDK documentation and support resources:
+
+- [SDK overview](/docs/feature-management-experimentation/sdks-and-infrastructure): Complete SDK reference and installation guides for all supported languages.
+- [Split Synchronizer troubleshooting](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer#troubleshooting): Synchronizer-specific issues and configuration guidance.
+- [Harness Support](mailto:support@harness.io): Contact Harness Support for unresolved SDK issues or assistance with SDK integration.

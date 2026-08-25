@@ -1,17 +1,40 @@
 ---
 title: Understanding results
+description: Learn how to interpret metric impact card states in Harness FME experiments, including desired, undesired, inconclusive, and error states.
 sidebar_position: 10
+keywords:
+  - experiment results
+  - metric cards
+  - fme metrics
+  - statistical significance
+  - p-value
+  - experiment analysis
+tags:
+  - fme
+  - experimentation
+  - metrics
 ---
 
-## Overview
+Metric impact cards in Harness Feature Management Experimentation (FME) display different states depending on your experiment configuration, traffic distribution, available data, and baseline selection. This page explains how to interpret each metric card state and resolve common issues.
 
-Your metrics cards show different states depending on your user selections on the feature flag's Metric impact tab, the traffic distribution, the data available, and whether a baseline is selected in the feature flag definition. This page provides a summary of the states of the metric impact card. 
+For each metric, you specify whether you want the value to increase (for example, revenue) or decrease (for example, churn rate). The metric card state indicates whether your experiment achieved the desired outcome with statistical confidence.
 
-For each metric, you can register whether you want the number to go up (e.g., revenue) or down (e.g., churn). For more information about the Metric impact tab, refer to the [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/) documentation.
-
-:::tip
-On a **Desired**, **Undesired**, or **Inconclusive** impact metric card, you can see the range that the _**impact lies between**_. The two values are the statistically calculated extreme values for your impact. The smaller the range between the extreme values, the higher the confidence in the predictability of the feature impact on the metric.
+:::tip Confidence intervals
+On **Desired**, **Undesired**, or **Inconclusive** impact metric cards, you can see the range the impact lies between. The two values are the statistically calculated extreme values for your impact. A smaller range between extreme values indicates higher confidence in the predictability of the feature impact on the metric.
 :::
+
+---
+
+## Before you begin
+
+To understand metric card states, you should be familiar with:
+- Feature flag configuration and targeting rules
+- Experiment baseline and treatment concepts
+- Basic statistical significance concepts (p-value, confidence intervals)
+
+Go to [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/) to learn how to access and configure the Metric impact tab.
+
+---
 
 ## Metric card states
 
@@ -89,11 +112,11 @@ A metric card displays **The variance is equal to zero** when, for each treatmen
 
 ![](../../static/metric-not-available.png)
 
-A metric card displays **Not available** for the reasons given in the following table. If the troubleshooting tips don’t resolve your issue, and you continue to have problems with your metrics, contact [support@split.io](mailto:support@split.io).
+A metric card displays **Not available** for the reasons given in the following table. If the troubleshooting tips don’t resolve your issue, and you continue to have problems with your metrics, contact [support@harness.io](mailto:support@harness.io).
   
 | Reason for unavailable metric result | Troubleshooting tips |
 | ---- | ---- |
-| The calculation has not yet run for this flag. | The calculation runs within the first 15 minutes of a change in the feature flag's version. If it has been 15 minutes and you still see this issue, contact [support@split.io](mailto:support@split.io). Automatic calculations are run for feature flag versions which include a percentage targeting rule. Click the **Recalculate metrics** button to run on-demand calculations at any time. |
+| The calculation has not yet run for this flag. | The calculation runs within the first 15 minutes of a change in the feature flag's version. If it has been 15 minutes and you still see this issue, contact [support@harness.io](mailto:support@harness.io). Automatic calculations are run for feature flag versions which include a percentage targeting rule. Click the **Recalculate metrics** button to run on-demand calculations at any time. |
 | The metric either created or modified after the metrics impact was last updated. | The duration between updates scales with the length of the version. At the beginning of a version, calculations are run every 15 minutes for definitions updated in the past hour. The time between these calculations increases incrementally through the duration of a version. Feature flags update every hour for the first 12 hours and then alternate hours until it has been running for 24 hours. The calculation schedule then moves to daily until day 14 of a feature flag version. Final calculations run on days 21 and 28 of a feature flag version. The older the experiment, the less likely that the data collected in the last few hours can move the metric. Click the **Recalculate metrics** button to rerun your calculations. | 
 | No users have an impression for at least one of the treatments. | This message appears if you are comparing two treatments and one of the treatments has no samples. Ensure that the version and targeting rule you selected is serving traffic to both treatments. |
 | No users have met the metric's *filter by* condition for at least one of the treatments. | This message appears if the metric has a filter criteria in its definition, for example, measure this metric for users who clicked this button. Ensure that the customers who are in the treatment and firing the `track` event used in the metrics calculation have also fired the filter event. |
@@ -226,3 +249,13 @@ If mismatch persists, export the impression data using Data Export to identify m
 If mismatch persists, share a list of affected keys/users, plus a link to the metric details and definition, with [Harness Support](/docs/feature-management-experimentation/fme-support) for further investigation.
 </TabItem>
 </Tabs>
+
+---
+
+## Next steps
+
+You have learned how to interpret metric impact card states in Harness FME experiments. For additional experimentation guidance:
+
+- [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/): Learn how to analyze experiment data and configure metrics.
+- [Create experiments](/docs/feature-management-experimentation/experimentation/setup): Set up new experiments with proper baseline and treatment configuration.
+- [Harness Support](/docs/feature-management-experimentation/fme-support): Contact Harness Support for assistance with experiment analysis or metric configuration.

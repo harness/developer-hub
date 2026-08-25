@@ -2,11 +2,31 @@
 title: Validate Your SDK Setup
 sidebar_label: Validate Your SDK Setup
 sidebar_position: 2
+description: Validate your Harness FME SDK implementation with best practices checklist covering architecture, safety checks, configuration, and performance optimization.
+keywords:
+  - sdk validation
+  - fme sdk
+  - sdk best practices
+  - sdk setup
+  - sdk configuration
+  - singleton pattern
+  - impressions
+  - events
+  - flag sets
+  - sdk performance
+tags:
+  - fme
+  - sdks
+  - validation
 redirect_from:
 - /docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/sdk-validation-checklist
 ---
 
-The SDK validation checklist helps you ensure that the SDK is implemented according to FME best practices. This document describes the guidelines for incorporating the SDK into your software application in all supported languages. The main purpose is to define the general guidelines, checks, and validations that can be useful for developers and software architects to avoid common mistakes or oversights and to ensure optimal performance of the SDK. This guide covers recommendations in the following areas:
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
+The SDK validation checklist helps you ensure that the SDK is implemented according to Harness FME best practices. This document describes the guidelines for incorporating the SDK into your software application in all supported languages. The main purpose is to define the general guidelines, checks, and validations that can be useful for developers and software architects to avoid common mistakes or oversights and to ensure optimal performance of the SDK.
+
+This guide covers recommendations in the following areas:
 
 * Architectural design principles
 * Safety checks for prevention of race conditions
@@ -17,13 +37,24 @@ These areas each reflect best practices that come from our own experience at Har
 
 You can use or adapt them to your needs. The primary objectives are to ensure resource optimization, maximum application responsiveness, appropriate security enforcements, and proactive issue detection in your project, team, organization, or company source code working with the SDK.
 
+---
+
+## Before you begin
+
+- **Harness FME SDK installed:** You need an SDK already integrated in your application. Go to [SDK Overview](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/) to install and configure an SDK for your platform.
+- **Access to Harness FME UI:** You need access to the Harness FME web interface to view usage data, live tail, and Data hub. Go to **Settings** > **Usage** for usage data, enable live tail in your environment settings, and access Data hub from the main navigation. For account access, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
+- **Permissions:** You need **View** access to Usage data, live tail, and Data hub to validate SDK behavior. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) for permission configuration.
+- **Basic SDK concepts:** Familiarity with SDK architecture, impressions (records of getTreatment calls), events (custom tracking data), and CONTROL treatments (default fallback when SDK cannot evaluate). Go to [SDK Overview](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/) for an introduction to these concepts.
+
+---
+
 ## All Harness FME SDKs
 
-The following validation considerations are relevant for all FME SDKs. 
+The following validation considerations are relevant for all FME SDKs: 
 
-* **Ensure that the SDK is implemented in a singleton pattern.** Using the SDK as a singleton ensures that the minimum number of threads are used to serve your application. If you don’t, you can overload your infrastructure with unnecessary network traffic and use up far more application threads than is required. Use multiple clients on the client side from a single factory if you need to get treatments for multiple different traffic type ids.
+* **Ensure that the SDK is implemented in a singleton pattern.** Using the SDK as a singleton (a single instance shared across your application) ensures that the minimum number of threads are used to serve your application. If you do not, you can overload your infrastructure with unnecessary network traffic and use up far more application threads than is required. Use multiple clients on the client side from a single factory if you need to get treatments for multiple different traffic type ids (user identifiers for targeting).
 
-* **Ensure that the SDK is blocked until it signals it’s ready.** All FME SDKs have a method that blocks the thread until the SDK is ready with feature flag and segment definitions. Calling getTreatment before the SDK is ready gives CONTROL treatments. 
+* **Ensure that the SDK is blocked until it signals it is ready.** All FME SDKs have a method that blocks the thread until the SDK is ready with feature flag and segment definitions. Calling getTreatment (the method to evaluate feature flags) before the SDK is ready returns CONTROL treatments (the default fallback value). 
 
 * **Run the SDK with DEBUG enabled and evaluate any errors or warning messages that are thrown.** Pay attention specifically to errors or warnings related to multiple factories, missing event listeners, or other incorrect factory and client configuration. **Note: Run with debug enabled for only a few minutes.**
 
@@ -41,11 +72,13 @@ The following validation considerations are relevant for all FME SDKs.
 
 * **Validate 24 hours of impressions (and events) from the Data hub.** Take a feature flag that has a known high activity and download all impressions for it from the previous 24 hour period. Ensure that the number of treatments and IDs all match with expectations. For events, take the previous full 24 hours of events, if applicable. With impressions, take note if you are seeing any ‘CONTROL’ treatments as those warrant further investigation to understand why those are happening.
 
-* **Evaluate if you can take advantage of Flag Sets**   You can use Flag Sets for limiting the flags downloaded by an SDK. [Flag Sets](/docs/feature-management-experimentation/feature-management/manage-flags/using-flag-sets-to-boost-sdk-performance) allow you to control from Harness FME which flags are downloaded by an SDK. This means you can ensure that only the flags needed for a frontend SDK or a backend SDK are downloaded. This reduces the time for the SDK to get ready while also saving memory and bandwidth. 
+* **Evaluate if you can take advantage of Flag Sets**   You can use Flag Sets for limiting the flags downloaded by an SDK. [Flag Sets](/docs/feature-management-experimentation/feature-management/manage-flags/using-flag-sets-to-boost-sdk-performance) allow you to control from Harness FME which flags are downloaded by an SDK. This means you can ensure that only the flags needed for a frontend SDK or a backend SDK are downloaded. This reduces the time for the SDK to get ready while also saving memory and bandwidth.
+
+---
 
 ## Browser SDKs (including Angular, React, etc.)
 
-The following items are specific to browser-based SDKs. 
+The following items are specific to browser-based SDKs: 
 
 * **(React-specific) Ensure that the SDK is only used in a component or higher-order component (HOC).** Review the code samples on our help center. Do not create a new factory for each time a subcomponent is rendered. 
 
@@ -55,13 +88,19 @@ The following items are specific to browser-based SDKs.
 
 * **Evaluate if you can take advantage of lazy loading.** The SDK factory must have the customer key at initialization time. This key might not be available initially though, especially if the key is provided from another tool (e.g., Segment or mParticle). Using the Lazy init allows you to initialize the SDK by passing a dummy key, then create a new client from the same factory object when the actual customer key is obtained.
 
-## Mobile SDKs 
+---
 
-The following items are specific to the mobile SDKs. 
+## Mobile SDKs
+
+The following items are specific to the mobile SDKs: 
 
 * **Ensure that the SDK background syncing is enabled if desired.** Mobile SDKs have the synchronizeInBackground configuration setting that allows them to synchronize to the Harness FME servers while in the background. By default, this is disabled.
 
+---
+
 ## All Client-side SDKs (including iOS, React, JS, etc.)
+
+The following items apply to all client-side SDKs (browser, mobile, and other client platforms):
 
 The following items are specific to all client-side SDKs. This includes mobile- and browser-based SDKs. 
 
@@ -80,12 +119,52 @@ The following items are specific to all client-side SDKs. This includes mobile- 
 
   For experimentation, it is desired to have the results up to date. It is recommended to set the parameter scheduler.impressionsRefreshRate to a value less than the average time the user stays on the app.
 
+---
+
 ## Server-side SDKs (Python, Node.js, Java, etc.)
 
-The following items are specific to server-side SDKs. 
+The following items are specific to server-side SDKs: 
 
 * **Evaluate your traffic needs.** You may need to change the impressionsRefreshrate. The SDK has threads that sync the FME definitions from Harness FME servers to the cache, and posts all impressions and events created in the cache. Make sure the SDK can handle the incoming impressions load because the SDK drops impressions if the cap is reached in the impressionsQueue and impressions can’t be evicted.
 
   The SDK has parameters to control the run frequency for these threads. We recommend to estimate the highest number of impressions created at peak time from incoming user sessions and divide that by the number of app servers that have the SDK to estimate the number of treatments per minute each SDK generates. Roughly, the SDK’s default impressionsQueue can handle 2000 treatments per minute. If the peak time generates higher impressions, we can reduce the value of scheduler.impressionsRefreshRate by half (for example, from 60 to 30 seconds).
 
-**Note This traffic sizing is for pushing data back to Harness FME servers. Even if the impressionsQueue is full and drops impressions, serving treatments are not affected.**
+**This traffic sizing is for pushing data back to Harness FME servers. Even if the `impressionsQueue` is full and drops impressions, serving treatments is not affected.**
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="SDK remains in not ready state after blocking in Harness FME"
+  mode="docs"
+  fallback="Verify network connectivity to Harness FME servers, check SDK API key is correct, and ensure firewall rules allow outbound connections. Review SDK logs with DEBUG enabled for connection errors."
+/>
+
+<Troubleshoot
+  issue="Impressions not appearing in Harness FME live tail after SDK integration"
+  mode="docs"
+  fallback="Ensure getTreatment is being called in your application code, verify the SDK has finished initializing (SDK_READY event), check impressionsRefreshRate is set appropriately, and confirm network connectivity to Harness FME servers."
+/>
+
+<Troubleshoot
+  issue="High number of CONTROL treatments in Harness FME experiment results"
+  mode="docs"
+  fallback="CONTROL treatments indicate the SDK could not evaluate the flag. Common causes: calling getTreatment before SDK is ready, network connectivity issues, invalid targeting rules, or missing user attributes required by targeting rules."
+/>
+
+<Troubleshoot
+  issue="Dropped impressions due to impressionsQueue overflow in server-side Harness FME SDK"
+  mode="docs"
+  fallback="Reduce scheduler.impressionsRefreshRate to flush impressions more frequently (e.g., from 60 to 30 seconds), or increase impressionsQueue size if supported by your SDK version. Estimate peak treatments per minute and adjust accordingly."
+/>
+
+---
+
+## Next steps
+
+You have validated your Harness FME SDK implementation against best practices. Your SDK is now ready for production deployment with optimized performance and reliability.
+
+- Go to [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/) to analyze feature flag performance and metrics.
+- Go to [SDK Overview](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/) to explore advanced SDK features like lazy loading, background syncing, and Flag Sets.
+- Go to [Troubleshooting](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting) for detailed SDK troubleshooting guidance and validation rules.

@@ -1,9 +1,40 @@
 ---
 title: Statistical significance
 sidebar_position: 30
+description: Understand statistical significance, p-values, hypothesis testing, and how to interpret experiment results in Harness FME.
+keywords:
+  - statistical significance
+  - p-value
+  - hypothesis testing
+  - Type 1 error
+  - Type 2 error
+  - experiment analysis
+  - fme metrics
+  - null hypothesis
+tags:
+  - fme
+  - experimentation
+  - metrics
+  - statistics
 ---
 
-Statistical significance represents the likelihood that the difference in your metric between a selected treatment and the baseline treatment is not due to chance. Your significance threshold is a representation of risk tolerance. Formally, the significance threshold is the probability of detecting a false positive as outlined above.
+Statistical significance represents the likelihood that the difference in your metric between a selected treatment and the baseline treatment is not due to chance. Your significance threshold is a representation of risk tolerance. Formally, the significance threshold is the probability of detecting a false positive.
+
+In experimentation, you observe a sample of the population and use the samples that you observed to make inferences about the total sample population. Harness FME uses statistical significance to infer whether your treatment caused the movement in the metric. This page explains the statistical concepts, methodologies, and configurations used in Harness FME to help you interpret experiment results with confidence.
+
+---
+
+## What you will learn from this topic
+
+- **Statistical significance and p-values:** How Harness FME determines whether observed metric changes are due to your treatment or random chance, using significance thresholds and p-value calculations.
+- **Type 1 and Type 2 errors:** The difference between false positives (detecting an impact when none exists) and false negatives (missing a real impact), and how they affect your experiment confidence.
+- **Minimum sample sizes and normal distribution:** Why 355 experimental units are required by default before significance is calculated, and how the Central Limit Theorem ensures reliable results.
+- **Alert Policy Statistics:** How Harness FME applies statistical adjustments during the first 30 minutes of monitoring to detect metric degradations early while controlling false positive rates.
+- **Interpreting inconclusive results:** What it means when a metric does not reach statistical significance, how to analyze minimum likely detectable effects, and when to run experiments longer or test bigger changes.
+
+---
+
+## Statistical significance overview
 
 A commonly used value for the significance threshold is 0.05 (5%), which means that every time you do an experiment, there is a 5% chance of detecting a statistically significant impact, even if there is no difference between the treatments. In statistical terms, the significance threshold is equivalent to alpha (α).
 
@@ -25,7 +56,9 @@ Harness FME uses a two-sided test to detect differences between your baseline an
 
 Next, the p-value is computed, which is the probability of observing a t at least as extreme as we observed.
 
-The computed p-value is displayed for each metric and compared against the significance threshold setting, or α, for your account. See below for more background on alpha and type 1 errors. 
+The computed p-value is displayed for each metric and compared against the significance threshold setting, or α, for your account. See below for more background on alpha and type 1 errors.
+
+---
 
 ## Type 1 error
  
@@ -34,6 +67,8 @@ The *type 1 error* is when the null hypothesis, that the treatment has no impact
 If the p-value you computed above is less than α, it would be challenging to hold on to our hypothesis that there was no impact on the metric. 
 
 In this scenario, we reject the null hypothesis and accept that the treatment had an impact on the metric when compared to the baseline.
+
+---
 
 ## Type 2 error
  
@@ -47,9 +82,13 @@ In Harness FME, you can customize the significance threshold and power threshold
 
 Learn more about interpreting your metrics impact and configuring your statistical settings in Harness FME.
 
+---
+
 ## Normal distribution
  
 Robust experiments rely on the means of treatment and control groups, which are assumed to be normally distributed. The *central limit theorem (CLT)* shows that the mean of a variable has an approximately normal distribution if the sample size is large enough. We apply the [rule of thumb](http://bit.ly/expRulesOfThumb) that the minimum number of independent and identically distributed observations needed to safely assume that the means have a normal distribution is 355 for each treatment. Hence, by default we require a sample size of at least 355 in each treatment before we calculate significance for your metrics. You can change this minimum sample size requirement in the [Monitor and Experiment settings](/docs/feature-management-experimentation/experimentation/setup/experiment-settings/) section in Harness FME.
+
+---
 
 ## Alert Policy Statistics 
 
@@ -60,6 +99,8 @@ To enable the ability to detect degradations of a metric within the first 30 min
 * Comparisons of the p-value will be against a hard-coded list of p-value thresholds generated from your account-wide alpha-level. 
 * To avoid an increased false positive rate due to multiple testing, we will adjust your account's set alpha-level by alpha divided by the number of calculations ran within the first 30 minutes. 
 * Calculations of error margins on the impact will assume symmetrical uncertainty.
+
+---
 
 ## Interpreting inconclusive results
 
@@ -90,13 +131,16 @@ For example, you may see that although there was no significant impact across al
 
 Inconclusive results may also indicate that some of your assumptions about your users are invalid, for example what they want or what they find useful. It may also suggest that problems, or pain points, are not what you thought they were. These are all valuable lessons that inform future hypotheses and tests. 
 
-### Next steps
 
-When the metrics do not clearly indicate which treatment performed better, it is often best to keep the current, default state, the control treatment. If there is no reason to believe making a change will bring any benefit, then sticking with the current state will avoid unnecessary changes to the user experience.
+## Next steps
 
-However if you have your own reasons to favor one treatment over the other, perhaps it is cheaper or easier to maintain, then an inconclusive result can give you confidence that making that change will not disadvantage your users and you can safely go with your preference. 
+Now that you understand statistical significance in Harness FME experiments, apply these concepts to interpret your experiment results with confidence.
 
-Finally, if you are seeing inconclusive results too often, it may be a sign that you should test bigger, bolder changes. Subtle changes often have subtle impacts, which require higher levels of traffic to be detectable. Sometimes you need to go big; making more dramatic and visible changes to your product will be more likely to produce significant results and controlled experimentation provides a way to safely test your big ideas.  
+- Go to [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/) to learn how to analyze metric impact and configure experiments.
+- Go to [Sample size and sensitivity calculators](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/) to determine how many users you need for your experiment to detect meaningful changes.
+- Go to [Understanding results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards) to interpret metric card states including desired, undesired, and inconclusive results.
+
+---
 
 ## Troubleshooting
 
