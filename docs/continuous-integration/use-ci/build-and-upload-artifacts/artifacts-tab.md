@@ -41,7 +41,7 @@ Use these specifications to configure the Plugin step to use the Artifact Metada
 
 #### connectorRef
 
-Use the built-in Docker connector (`account.harness.Image`) or specify your own Docker connector. Harness uses this to pull the plugin Docker image.
+Use the built-in Docker connector (`account.harnessImage`) or specify your own Docker connector. Harness uses this to pull the plugin Docker image.
 
 This setting is labeled **Container Registry** in the Visual editor.
 
