@@ -107,7 +107,7 @@ For easier access and token management, use the **OIDC** (OpenID Connect) option
 Once you have configured your connectors, you can create a workspace and select them in the **New Workspace** panel:
 
 :::tip Migrate existing projects
-For first-time use, use our [migration tool](/docs/infra-as-code-management/remote-backends/state-migration) to create new workspaces and import your existing Terraform projects into the Harness Platform.
+For first-time use, go to [State Migration](/docs/infra-as-code-management/remote-backends/state-migration) to import the state of your existing Terraform projects into a Harness workspace.
 :::
 
 <Tabs queryString="create-workspace">

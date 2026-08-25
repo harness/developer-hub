@@ -155,7 +155,7 @@ To get the HTTP backend block for local CLI access, do the following:
 
 ### Authenticate to the backend
 
-Set the `TF_HTTP_PASSWORD` environment variable to a Harness API key with `State:Access` permissions on the workspace:
+Set the `TF_HTTP_PASSWORD` environment variable to a Harness API key with **Workspace Access State** (`iac_workspace_accessstate`) permission on the workspace:
 
 ```bash
 export TF_HTTP_PASSWORD=<your-harness-api-key>
