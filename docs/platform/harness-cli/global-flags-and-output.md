@@ -30,7 +30,7 @@ By the end of this page, you will know how to:
 
 ## Before you begin
 
-* **Harness CLI installed and authenticated:** Go to [Install and upgrade](/docs/platform/harness-cli/install-and-upgrade) and [Authenticate](/docs/platform/harness-cli/authenticate) to set up the CLI.
+* **Harness CLI installed and authenticated:** For setup steps, see [Install and upgrade](/docs/platform/harness-cli/install-and-upgrade) and [Authenticate](/docs/platform/harness-cli/authenticate).
 
 ---
 
@@ -127,7 +127,7 @@ harness list pipeline --limit 25 --offset 50
 
 ---
 
-## Next steps
+## Related articles
 
-- Go to [Platform](/docs/platform/harness-cli/harness-cli-commands/platform-commands) for detailed examples of platform resource operations.
-- Go to [Troubleshooting](/docs/platform/harness-cli/troubleshooting) to resolve common CLI errors.
+- [Platform](/docs/platform/harness-cli/harness-cli-commands/platform-commands): Review detailed examples of platform resource operations.
+- [Troubleshooting](/docs/platform/harness-cli/troubleshooting): Resolve common CLI errors.

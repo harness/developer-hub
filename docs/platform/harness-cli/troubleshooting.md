@@ -29,7 +29,7 @@ By the end of this page, you will know how to:
 
 ## Before you begin
 
-* **Harness CLI installed:** Go to [Install and upgrade](/docs/platform/harness-cli/install-and-upgrade) if the CLI is not yet installed.
+* **Harness CLI installed:** For installation steps, see [Install and upgrade](/docs/platform/harness-cli/install-and-upgrade).
 
 ---
 
@@ -74,6 +74,20 @@ harness list pipeline
 ```
 
 Debug output includes request URLs, payloads, response status codes, and API error messages, which can help identify the root cause of failures.
+
+### Debug helpers
+
+The `debug` commands report on the CLI itself rather than on a Harness resource.
+
+```sh
+harness debug update_check
+harness debug sso-log
+harness debug miscfg
+```
+
+- **`harness debug update_check`:** Probes the release manifest and reports what an in-place upgrade would do.
+- **`harness debug sso-log`:** Emits SSO auth debug events, which is useful when a browser login flow does not complete.
+- **`harness debug miscfg`:** Triggers a misconfigured command as a registry self-test. This is a development-only helper.
 
 ---
 
@@ -253,13 +267,13 @@ If the issue persists:
 
 * Run `harness <command> --help` to view command-specific usage and flags.
 * Re-run the command with `--debug` and capture the output for troubleshooting.
-* See [Supported resources and actions](/docs/platform/harness-cli/supported-resources-and-actions) to verify that the resource and action are supported.
+* To confirm that the resource and action are supported, see [Supported resources and actions](/docs/platform/harness-cli/supported-resources-and-actions).
 * Contact Harness Support and include relevant error messages, debug output, and CLI version information.
 
 ---
 
-## Next steps
+## Related articles
 
-* See [Supported resources and actions](/docs/platform/harness-cli/supported-resources-and-actions) for supported resources and actions.
-* See [Global flags and output](/docs/platform/harness-cli/global-flags-and-output) for shared flags, output formats, and environment variables.
-* See [Authenticate](/docs/platform/harness-cli/authenticate) to review profile and credential configuration.
+* [Supported resources and actions](/docs/platform/harness-cli/supported-resources-and-actions): Confirm which resources and actions the CLI supports.
+* [Global flags and output](/docs/platform/harness-cli/global-flags-and-output): Review shared flags, output formats, and environment variables.
+* [Authenticate](/docs/platform/harness-cli/authenticate): Review profile and credential configuration.

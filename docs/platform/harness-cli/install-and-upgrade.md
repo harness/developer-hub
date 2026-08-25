@@ -16,6 +16,8 @@ By the end of this guide, you will be able to:
 * Install the Harness CLI using the automated installer or a release archive.
 * Customize the installation for CI/CD systems, containers, and non-standard installation paths.
 * Upgrade to the latest release or install a specific version.
+* Install or upgrade an individual module or external plugin.
+* Inspect what an in-place upgrade would do before you run it.
 * Remove the CLI and its local configuration.
 
 ---
@@ -36,7 +38,7 @@ Make sure you have:
 **The Harness CLI is open source.**
 
 - View the source code on [GitHub](https://github.com/harness/cli).
-- Go to the [command reference](https://github.com/harness/cli/wiki/Command-Reference) to view the complete list of supported commands.
+- For the complete list of supported commands, see the [command reference](https://github.com/harness/cli/wiki/Command-Reference).
 - Download specific versions from the [releases](https://github.com/harness/cli/releases) page.
 
 We welcome contributions. To report bugs or request features, open an [issue](https://github.com/harness/cli/issues). To contribute code, submit a [pull request](https://github.com/harness/cli/pulls).
@@ -114,12 +116,60 @@ harness install cli --version v1.2.3
 harness install cli --check
 ```
 
+`harness install cli` upgrades the `harness` binary and every installed module in one shot. Add `--core-only` to upgrade the core binary and leave the modules untouched.
+
+```sh
+harness install cli --core-only
+```
+
 | Flag                   | Description                                                         |
 | ---------------------- | ------------------------------------------------------------------- |
 | `--version <tag>`      | Installs a specific release version.                                |
 | `--install-dir <path>` | Overrides the installation directory.                               |
 | `--force`              | Reinstalls the CLI even if the target version is already installed. |
 | `--check`              | Displays the latest available version without installing it.        |
+| `--core-only`          | Installs or upgrades only the core binary, not the modules.         |
+
+:::note
+`--install-dir` must match the path of the executable that is currently running. If it does not, the command exits with an error rather than installing a second copy elsewhere.
+:::
+
+---
+
+## Install a module or plugin
+
+Modules and external plugins ship as separate binaries that `harness` dispatches to transparently. Install or upgrade them individually when you do not want to touch the rest of the installation.
+
+```sh
+harness install module <module_name>
+harness install plugin <plugin_name>
+```
+
+For example, install the Artifact Registry module on its own:
+
+```sh
+harness install module har
+```
+
+`harness install plugin` is an alias for `harness install module`, so either form works for an external plugin binary.
+
+To review what is installed:
+
+```sh
+harness list module
+harness list plugin
+harness get plugin <plugin_name>
+```
+
+---
+
+## Check what an upgrade would do
+
+Probe the release manifest and report the actions an in-place upgrade would take, without changing anything on disk.
+
+```sh
+harness debug update_check
+```
 
 ---
 
@@ -143,5 +193,7 @@ Removing the configuration directory also deletes saved profiles, credentials, a
 
 ## Next steps
 
-- Go to [Authenticate](/docs/platform/harness-cli/authenticate) to log in and set up your first profile.
-- Go to [Harness CLI overview](/docs/platform/harness-cli/harness-cli-overview) to understand the command structure.
+With the CLI installed, log in and set up a profile before you run your first command.
+
+- [Authenticate](/docs/platform/harness-cli/authenticate): Log in and set up your first profile.
+- [Harness CLI overview](/docs/platform/harness-cli/harness-cli-overview): Understand the command structure.

@@ -97,11 +97,15 @@ The Harness CLI organizes commands into modules. Each module groups related reso
 
 | Module | Resources it covers |
 | --- | --- |
-| **Platform** | Authentication, profiles, account hierarchy, RBAC, connectors, secrets, delegates, OPA governance policies, and audit trail |
-| **Continuous Delivery** | Pipelines, executions, triggers, templates, deployment freezes, services, environments, infrastructure definitions, and service overrides |
-| **Artifact Registry** | Registries, artifacts, versions, metadata, push, pull, security scans, and migrations |
-| **Infrastructure as Code Management** | Terraform and OpenTofu workspaces and operations (plan, apply, destroy) |
-| **Code Repository** | Repositories, pull requests, branches, commits, and tags |
+| **Core** | Authentication and profiles, install and upgrade, version, module and plugin discovery, and debug helpers |
+| **Platform** | Account hierarchy, RBAC, connectors, secrets, settings, delegates, delegate tokens, Harness Worker Agents, and entity usage |
+| **Continuous Delivery** | Pipelines, executions, triggers, input sets, templates and template versions, approvals, deployment freezes, services, environments, infrastructure definitions, and service overrides |
+| **Artifact Registry** | Registries, artifacts, versions, metadata, push in 18 package formats, pull, install helpers, security scans, and migrations |
+| **Infrastructure as Code Management** | Terraform and OpenTofu workspaces, remote plans, Ansible hosts, inventories, playbooks, and the module and provider registries |
+| **Code Repository** | Repositories, pull requests, code review, reviewers and codeowners, AI review insights, branches, commits, tags, comments, and checks |
+| **GitOps** | Agents, applications, destination clusters, source repositories, and ApplicationSets |
+| **Governance** | OPA policies, policy sets, and policy evaluations |
+| **Audit** | Read-only audit trail across every Harness resource |
 | **AI Evaluations** | Datasets, metrics, metric sets, evaluation targets, models, evaluation runs, and suites |
 | **Knowledge Graph** | Entity graph schema and HQL query engine (run, validate, explain) |
 
@@ -127,6 +131,8 @@ If you enter an invalid resource name, the CLI suggests the closest matching res
 
 ## Next steps
 
-- Go to [Install and upgrade](/docs/platform/harness-cli/install-and-upgrade) to get the CLI on your machine.
-- Go to [Authenticate](/docs/platform/harness-cli/authenticate) to log in and configure profiles.
-- Go to [Supported resources and actions](/docs/platform/harness-cli/supported-resources-and-actions) to see the full resource and action matrix.
+Install the CLI, then log in and confirm which operations the CLI supports for the resources you plan to automate.
+
+- [Install and upgrade](/docs/platform/harness-cli/install-and-upgrade): Get the CLI on your machine.
+- [Authenticate](/docs/platform/harness-cli/authenticate): Log in and configure profiles.
+- [Supported resources and actions](/docs/platform/harness-cli/supported-resources-and-actions): Review the full resource and action matrix.

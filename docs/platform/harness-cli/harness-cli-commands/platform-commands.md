@@ -36,8 +36,8 @@ By the end of this page, you will know how to:
 
 ## Before you begin
 
-- **Harness CLI installed and authenticated:** Go to [Install and upgrade](/docs/platform/harness-cli/install-and-upgrade) and [Authenticate](/docs/platform/harness-cli/authenticate) to set up the CLI.
-- **Scope configured:** Ensure your profile has a default org and project set, or pass `--org` and `--project` on each command. Go to [Authenticate](/docs/platform/harness-cli/authenticate#set-default-scope) to configure scope.
+- **Harness CLI installed and authenticated:** For setup steps, see [Install and upgrade](/docs/platform/harness-cli/install-and-upgrade) and [Authenticate](/docs/platform/harness-cli/authenticate).
+- **Scope configured:** Ensure your profile has a default org and project set, or pass `--org` and `--project` on each command. For more information, see [Authenticate](/docs/platform/harness-cli/authenticate#set-default-scope).
 
 ---
 
@@ -444,7 +444,7 @@ harness get audit_event <event_id> --format json
 
 ---
 
-## Next steps
+## Related articles
 
-- Go to [Continuous Delivery](/docs/platform/harness-cli/harness-cli-commands/cd-and-pipeline-commands) to manage pipelines and executions.
-- Go to [Supported resources and actions](/docs/platform/harness-cli/supported-resources-and-actions) to see the full capability matrix.
+- [Continuous Delivery](/docs/platform/harness-cli/harness-cli-commands/cd-and-pipeline-commands): Manage pipelines and executions.
+- [Supported resources and actions](/docs/platform/harness-cli/supported-resources-and-actions): Review the full capability matrix.

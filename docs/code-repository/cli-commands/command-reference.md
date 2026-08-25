@@ -1,47 +1,40 @@
 ---
-title: Code Repository
-sidebar_label: Code Repository
-description: Use the Harness CLI to manage the Code Repository module, including repositories, pull requests, reviewers, AI review insights, branches, commits, tags, comments, and checks.
-sidebar_position: 5
+title: Code Repository command reference
+sidebar_label: Command Reference
+sidebar_position: 20
+description: Complete reference for every Harness CLI command in the Code Repository module, covering repositories, pull requests, reviews, AI review insights, branches, commits, tags, comments, and checks.
 keywords:
   - harness cli
-  - code repository
-  - repositories
-  - pull requests
-  - code review
-  - reviewers
-  - codeowners
-  - branches
-  - commits
-  - tags
-  - git
+  - code repository cli commands
+  - command reference
+  - harness list pr
+  - harness create pr
+  - harness execute pr merge
+  - harness list branch
+  - harness create tag
+  - code review cli
+tags:
+  - code-repository
+  - cli
 ---
 
-Harness Code Repository provides built-in git hosting within the Harness platform. The CLI gives you full access to repository management, pull request workflows, code review, branch operations, and commit history without switching to a browser or external git host. Use these commands to automate code review workflows, manage branches at scale, and integrate repository operations into scripts and pipelines.
+This page is the complete command reference for the Code Repository module. It documents all 41 commands, with syntax and examples for repositories, pull requests, reviews, Harness Code AI insights, branches, commits, tags, comments, and status checks.
 
-This page covers all Code Repository resources and actions available in the CLI.
+Every command follows the same grammar:
 
----
+```sh
+harness <verb> <noun> [identifier] [flags]
+```
 
-## What you will learn in this topic
-
-By the end of this page, you will know how to:
-
-- List, create, update, and delete repositories.
-- Open, update, merge, and close pull requests from the terminal.
-- List the pull requests you authored and the pull requests that await your review across every repository in scope.
-- Submit review decisions and manage reviewers and codeowners.
-- Retrieve Harness Code AI review insights, such as risk summaries, suggested reviewers, and suggested labels.
-- View pull request activity, manage comments, and inspect status checks.
-- Create and manage branches and tags.
-- Inspect commit history and individual commit details.
+For an install, authentication, and end-to-end review walkthrough, see [Harness CLI for Code Repository](/docs/code-repository/cli-commands/harness-cli).
 
 ---
 
 ## Before you begin
 
 - **Harness CLI installed and authenticated:** For setup steps, see [Install and upgrade](/docs/platform/harness-cli/install-and-upgrade) and [Authenticate](/docs/platform/harness-cli/authenticate).
-- **Project scope configured:** Code Repository resources require `--org` and `--project`. Set them in your profile or pass them on each command.
+- **Project scope configured:** Code Repository resources require `--org` and `--project`. Set them in your profile with `harness auth setscope`, or pass them on each command.
+- **Code Repository permissions:** You need **View** on repositories, plus **Edit** to create or update them and **Push** to merge pull requests. For the full list, see the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference#code-repository).
 
 ---
 
@@ -49,6 +42,7 @@ By the end of this page, you will know how to:
 
 Repositories are top-level resources. Pull requests, branches, commits, and tags live inside a repository, so they use compound identifiers that combine the repository with the child resource:
 
+- **`<repo>`:** A repository.
 - **`<repo>/<pr_number>`:** A pull request in a repository.
 - **`<repo>/<branch>`:** A branch in a repository.
 - **`<repo>/<sha>`:** A commit in a repository.
@@ -59,9 +53,24 @@ Leave the slash in a compound identifier unencoded. For the `--set`, `--del`, `-
 
 ---
 
+## Command summary
+
+| Resource | Commands |
+| --- | --- |
+| [Repositories](#repositories) | `list repository`, `get repository`, `create repository`, `update repository`, `delete repository` |
+| [Pull requests](#pull-requests) | `list pr`, `list pr:mine`, `list pr:review_pending`, `get pr`, `create pr`, `update pr`, `execute pr:merge`, `execute pr:close` |
+| [Reviews, reviewers, and codeowners](#reviews-reviewers-and-codeowners) | `execute pr:review`, `list code_principal`, `list pr_reviewer`, `create pr_reviewer`, `delete pr_reviewer`, `list pr_codeowner` |
+| [AI review insights](#ai-review-insights) | `get pr:insight`, `get pr:review_group`, `list pr_suggested_reviewer`, `list pr_suggested_label`, `list pr_success_criterion` |
+| [Activity, comments, and checks](#pull-request-activity-comments-and-checks) | `list pr_activity`, `list pr_comment`, `create pr_comment`, `update pr_comment`, `delete pr_comment`, `list pr_check`, `list commit_check` |
+| [Branches](#branches) | `list branch`, `get branch`, `create branch`, `delete branch` |
+| [Commits](#commits) | `list commit`, `list pr_commit`, `get commit` |
+| [Tags](#tags) | `list tag`, `create tag`, `delete tag` |
+
+---
+
 ## Repositories
 
-A repository stores your source code and tracks changes through git. Each repository belongs to a project and has a default branch, description, and access settings. Use repository commands to create new projects, update configurations, or remove archived code.
+A repository stores your source code and tracks changes through git. Each repository belongs to a project and has a default branch, description, and access settings.
 
 ### List repositories
 
@@ -118,7 +127,7 @@ harness delete repository <repository_id>
 
 ## Pull requests
 
-A pull request proposes changes from one branch to another for code review. Pull requests track the discussion, review decisions, and merge status of a set of commits. Use the CLI to manage the entire pull request lifecycle from creation through merge.
+A pull request proposes changes from one branch to another for code review. Pull requests track the discussion, review decisions, and merge status of a set of commits.
 
 ### List pull requests
 
@@ -200,6 +209,10 @@ harness execute pr:merge <repository_id>/<pr_number> --method merge|squash|rebas
 harness execute pr:merge <repository_id>/<pr_number> --method squash --delete-branch
 harness execute pr:merge <repository_id>/<pr_number> --dry-run
 ```
+
+:::tip Verify before you merge
+Run the merge with `--dry-run` first. The command reports whether the pull request is mergeable and what would happen, without changing the branch.
+:::
 
 ### Close a pull request
 
@@ -315,6 +328,8 @@ List the AI review success-criteria results for a pull request.
 harness list pr_success_criterion <repository_id>/<pr_number>
 ```
 
+For more information about the AI review capabilities behind these commands, see [AI agents](/docs/code-repository/pull-requests/ai-agents).
+
 ---
 
 ## Pull request activity, comments, and checks
@@ -388,7 +403,7 @@ harness list commit_check <repository_id>/<commit_sha> --search "<search_term>"
 
 ## Branches
 
-A branch is a named pointer to a commit in a repository. Branches let multiple developers work on different features simultaneously without interfering with each other. Use branch commands to create feature branches, inspect branch state, or clean up merged branches.
+A branch is a named pointer to a commit in a repository. Branches let multiple developers work on different features simultaneously without interfering with each other.
 
 ### List branches
 
@@ -431,7 +446,7 @@ harness delete branch <repository_id>/<branch_name>
 
 ## Commits
 
-A commit is an immutable snapshot of repository contents at a point in time. Each commit records who made the change, when, and why (through the commit message). Use commit commands to browse history and inspect individual changes for debugging or auditing.
+A commit is an immutable snapshot of repository contents at a point in time. Each commit records who made the change, when, and why, through the commit message.
 
 ### List recent commits
 
@@ -466,7 +481,7 @@ harness get commit <repository_id>/<commit_sha> --format json
 
 ## Tags
 
-A tag marks a specific commit with a human-readable name, typically used to identify release versions. Unlike branches, tags do not move forward with new commits. Use tags to create stable release markers that you can reference in deployments and changelogs.
+A tag marks a specific commit with a human-readable name, typically used to identify release versions. Unlike branches, tags do not move forward with new commits.
 
 ### List tags
 
@@ -500,6 +515,7 @@ harness delete tag <repository_id>/<tag_name>
 
 ## Related articles
 
-- [Harness CLI for Code Repository](/docs/code-repository/cli-commands/harness-cli): Install, authenticate, and run a guided review and merge workflow.
-- [Continuous Delivery](/docs/platform/harness-cli/harness-cli-commands/cd-and-pipeline-commands): Manage pipelines and deployment resources.
-- [Platform](/docs/platform/harness-cli/harness-cli-commands/platform-commands): Manage account resources, connectors, and secrets.
+- [Harness CLI for Code Repository](/docs/code-repository/cli-commands/harness-cli): Install the CLI, authenticate, and run a guided review and merge workflow.
+- [Supported resources and actions](/docs/platform/harness-cli/supported-resources-and-actions): Confirm which actions each resource supports before you script against it.
+- [Global flags and output](/docs/platform/harness-cli/global-flags-and-output): Review the flags, output formats, and paging options that apply to every command.
+- [Create a pull request](/docs/code-repository/pull-requests/create-pr): Compare the CLI flow with the equivalent UI workflow.

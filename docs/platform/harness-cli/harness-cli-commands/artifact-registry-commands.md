@@ -24,9 +24,12 @@ This page covers every Artifact Registry resource and action available in the CL
 By the end of this page, you will know how to:
 
 - List and create registries for different package types.
-- Push artifacts (Docker, Helm, Maven, npm, Go, Python, generic) to a registry.
+- Configure a local package-manager client to use a Harness registry.
+- Push artifacts to a registry in any of the 18 supported package formats.
 - Pull artifacts back to your local machine.
+- Resolve dependencies from a Harness registry with the package-manager install helpers.
 - Inspect artifact metadata, versions, and files.
+- Delete artifacts individually or in bulk by name pattern.
 - Trigger firewall scans and copy artifacts between registries.
 - Migrate external registries into Harness Artifact Registry.
 
@@ -34,7 +37,7 @@ By the end of this page, you will know how to:
 
 ## Before you begin
 
-- **Harness CLI installed and authenticated:** Go to [Install and upgrade](/docs/platform/harness-cli/install-and-upgrade) and [Authenticate](/docs/platform/harness-cli/authenticate) to set up the CLI.
+- **Harness CLI installed and authenticated:** For setup steps, see [Install and upgrade](/docs/platform/harness-cli/install-and-upgrade) and [Authenticate](/docs/platform/harness-cli/authenticate).
 - **Project scope configured:** Artifact Registry resources require `--org` and `--project`. Set them in your profile or pass them on each command.
 - **Registry exists:** Most push and pull commands require a registry identifier. Create one first or use an existing registry.
 
@@ -83,6 +86,14 @@ Remove a registry and all artifacts stored within it. This action is irreversibl
 harness delete registry <registry>
 ```
 
+### Configure a package-manager client
+
+Point a local package-manager client at a Harness registry. The command writes the registry endpoint and credentials into the client configuration file for the registry's format, such as `.npmrc` for npm or `pip.conf` for Python.
+
+```sh
+harness configure registry <registry>
+```
+
 ### Registry metadata
 
 Registry metadata stores extended properties like descriptions, labels, and upstream proxy configurations. Update metadata to change how the registry behaves without recreating it.
@@ -90,13 +101,45 @@ Registry metadata stores extended properties like descriptions, labels, and upst
 ```sh
 harness get registry_metadata <registry>
 harness update registry_metadata <registry> --set description="<description>"
+harness update registry_metadata <registry> --del <key>
 ```
 
 ---
 
 ## Push artifacts
 
-The `push` action uploads a local artifact to a registry. Each package format has its own subcommand (`artifact:docker`, `artifact:helm`, `artifact:npm`, etc.) that handles format-specific upload logic. Use push commands to publish build outputs from CI pipelines or local development.
+The `push` action uploads a local artifact to a registry. Each package format has its own subcommand (`artifact:docker`, `artifact:helm`, `artifact:npm`, and so on) that handles format-specific upload logic. Use push commands to publish build outputs from CI pipelines or local development.
+
+### Supported push formats
+
+The CLI supports 18 push formats. Each command targets a registry of the matching package type.
+
+| Command | Uploads |
+| --- | --- |
+| `harness push artifact:generic` | One or more generic artifacts |
+| `harness push artifact:maven` | A Maven artifact (`.jar` or `.war`) |
+| `harness push artifact:npm` | An npm package (`.tgz`) |
+| `harness push artifact:python` | A Python package (`.whl`) |
+| `harness push artifact:nuget` | A NuGet package (`.nupkg`) |
+| `harness push artifact:rpm` | An RPM package |
+| `harness push artifact:cargo` | A Cargo crate (`.crate`) |
+| `harness push artifact:go` | A Go module |
+| `harness push artifact:conda` | A Conda package |
+| `harness push artifact:dart` | A Dart package |
+| `harness push artifact:composer` | A Composer package (`.zip`) |
+| `harness push artifact:ruby` | A Ruby gem |
+| `harness push artifact:swift` | A Swift package |
+| `harness push artifact:puppet` | A Puppet module (`.tar.gz`) |
+| `harness push artifact:debian` | A Debian package (`.deb` or `.dsc`) |
+| `harness push artifact:conan` | A Conan package |
+| `harness push artifact:helm` | A Helm chart |
+| `harness push artifact:docker` | A Docker image |
+
+Every push command follows the same shape: the first argument is `<registry>/<artifact_name>` and the second is the local path or image reference.
+
+```sh
+harness push artifact:<format> <registry>/<artifact_name> <path_to_file>
+```
 
 ### Push a Docker image
 
@@ -146,6 +189,36 @@ Upload a source distribution or wheel to a Python-type registry.
 harness push artifact:python <registry>/<package_name> <path_to_dist>
 ```
 
+### Push a Debian package
+
+Upload a `.deb` or `.dsc` file to a Debian-type registry. Debian pushes require `--distribution` and `--component`, because the registry indexes packages by both values.
+
+```sh
+harness push artifact:debian <registry>/<package_name> <path_to_package>.deb \
+  --distribution <distribution> \
+  --component <component>
+```
+
+---
+
+## Resolve dependencies from a registry
+
+The install helpers run your package manager against a Harness registry, so a build resolves dependencies from Harness without you editing the client configuration by hand.
+
+```sh
+harness execute artifact:npm_install
+harness execute artifact:npm_ci
+harness execute artifact:pip_install
+harness execute artifact:mvn_install
+harness execute artifact:dotnet_restore
+```
+
+- **`artifact:npm_install`:** Runs `npm install` against a Harness npm registry.
+- **`artifact:npm_ci`:** Runs `npm ci` against a Harness npm registry.
+- **`artifact:pip_install`:** Runs `pip install` against a Harness PyPI registry.
+- **`artifact:mvn_install`:** Runs Maven dependency resolution against a Harness Maven registry.
+- **`artifact:dotnet_restore`:** Runs `dotnet restore` against a Harness NuGet registry.
+
 ---
 
 ## Pull artifacts
@@ -189,6 +262,20 @@ Remove an artifact and all its versions from the registry. This action is irreve
 ```sh
 harness delete artifact <registry>/<artifact_name>
 ```
+
+### Delete artifacts in bulk
+
+Delete every artifact whose name matches a pattern. `--registry` is required. Narrow the match with `--version`, preview the result with `--dry-run`, and skip the confirmation prompt with `--force`.
+
+```sh
+harness delete artifact:bulk <pattern> --registry <registry> --dry-run
+harness delete artifact:bulk <pattern> --registry <registry> --version <version>
+harness delete artifact:bulk <pattern> --registry <registry> --force
+```
+
+:::warning
+Run a bulk delete with `--dry-run` first. The command removes every matching artifact and all of its versions, and the deletion cannot be undone.
+:::
 
 ### Artifact metadata
 
@@ -289,19 +376,16 @@ harness execute artifact_version:firewall_scan <version> \
 
 ## Migrate a registry
 
-Import artifacts from an external registry (Docker Hub, ECR, GCR, Artifactory) into Harness Artifact Registry. Use migration to consolidate scattered package stores into a single managed location.
+Import artifacts from an external registry (Docker Hub, ECR, GCR, Artifactory) into Harness Artifact Registry. Use migration to consolidate scattered package stores into a single managed location. Describe the source registry in a config file and pass it with `-f`.
 
 ```sh
-harness execute registry:migrate <registry> \
-  --set sourceType=<source_type> \
-  --set sourceUrl=<source_url> \
-  --set sourceImage=<source_image>
+harness execute registry:migrate <registry> -f <migration_config>.yaml
 ```
 
 ---
 
-## Next steps
+## Related articles
 
-- Go to [Continuous Delivery](/docs/platform/harness-cli/harness-cli-commands/cd-and-pipeline-commands) to manage pipelines and deployment resources.
-- Go to [Infrastructure as Code Management](/docs/platform/harness-cli/harness-cli-commands/iacm-commands) to manage Terraform and OpenTofu workspaces.
-- Go to [Code Repository](/docs/platform/harness-cli/harness-cli-commands/code-repository-commands) to manage repositories and pull requests.
+- [Continuous Delivery](/docs/platform/harness-cli/harness-cli-commands/cd-and-pipeline-commands): Manage pipelines and deployment resources.
+- [Infrastructure as Code Management](/docs/platform/harness-cli/harness-cli-commands/iacm-commands): Manage Terraform and OpenTofu workspaces.
+- [Code Repository](/docs/platform/harness-cli/harness-cli-commands/code-repository-commands): Manage repositories and pull requests.
