@@ -193,11 +193,11 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /src/components/Docs/data/internalDeveloperPortal.ts shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io abhijeet.sharma1@harness.io
 
 # SCS Docs
-/docs/software-supply-chain-assurance/  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io
-/release-notes/software-supply-chain-assurance.md  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io
-/release-notes/static/scs/ lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io
-/src/components/Roadmap/data/sscaData.ts  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io
-/src/components/Docs/data/softwareSupplyChainAssuranceData.tsx  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io
+/docs/software-supply-chain-assurance/  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io sayanta.banerjee@harness.io
+/release-notes/software-supply-chain-assurance.md  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io sayanta.banerjee@harness.io
+/release-notes/static/scs/ lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io sayanta.banerjee@harness.io
+/src/components/Roadmap/data/sscaData.ts  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io sayanta.banerjee@harness.io
+/src/components/Docs/data/softwareSupplyChainAssuranceData.tsx  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io sayanta.banerjee@harness.io
 
 # IACM Docs
 /docs/infra-as-code-management/ richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io kavita.maurya@harness.io anubhuti.khare@harness.io abhijeet.sharma1@harness.io
