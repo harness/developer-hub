@@ -1,7 +1,7 @@
 ---
 title: Enforce policies with Harness GitLab CI/CD
 description: Use SCS GitLab CI/CD to implement SBOM Verification and Policy Enforcement.
-sidebar_position: 22
+sidebar_position: 30
 
 
 tags:
@@ -37,11 +37,11 @@ By the end of this topic, you will be able to:
 
 Make a note of the following before you proceed with enforcing SBOM policies using GitLab CI/CD:
 
-* Understand how to create Harness API keys using Personal API Keys or Service Account API Keys. For more information, go to [Manage API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys) and [Service Account API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens), respectively.
-* If you're using key-based or Secret Manager signing or verification, create or configure a Cosign key pair before configuring the pipeline. For step-by-step instructions, see [Quickstart Signing and Verifying with Cosign](https://docs.sigstore.dev/quickstart/quickstart-cosign/#quickstart-signing-and-verifying-with-cosign), which explains how to generate a local key pair or create one using a supported KMS provider. The key should be generated using Cosign of type `ecdsa-P256`. You don't need to install Cosign on your GitLab runner. The `harness/ssca-plugin` container image used by the Harness GitLab CI/CD components includes Cosign, so no additional installation is required.
-* If you plan to use Secret Manager attestation, store your verification key in a supported secret manager. Currently, Harness supports HashiCorp Vault. For GitLab CI/CD, you point the component at the key through pipeline variables such as `KMS_KEY` (and `VAULT_ADDR` when the key is stored in HashiCorp Vault), so you don't need to configure a Harness Secret Manager connector. For setup steps specific to HashiCorp Vault, see the [Add a HashiCorp Vault secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/).
-* Ensure that your GitLab runners support Docker-in-Docker (DinD). The component runs using the `docker:24-dind` service. For more information, go to [Use Docker-in-Docker](https://docs.gitlab.com/ci/docker/docker_in_docker/).
-* Ensure that you create an Open Policy Agent (OPA) SBOM policy set in SCS before configuring the SBOM Policy Enforcement component. For more information, go to [Create SBOM Policies](https://developer.harness.io/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies).
+* Understand how to create Harness API keys using Personal API Keys or Service Account API Keys. Go to [Manage API Keys](/docs/platform/automation/api/add-and-manage-api-keys) and [Service Account API Keys](/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens) to create either key type.
+* If you are using key-based or Secret Manager signing or verification, create or configure a Cosign key pair before configuring the pipeline. Go to [Quickstart Signing and Verifying with Cosign](https://docs.sigstore.dev/quickstart/quickstart-cosign/#quickstart-signing-and-verifying-with-cosign) to understand how to generate a local key pair or create one using a supported KMS provider. The key should be generated using Cosign of type `ecdsa-P256`. You do not need to install Cosign on your GitLab runner. The `harness/ssca-plugin` container image used by the Harness GitLab CI/CD components includes Cosign, so no additional installation is required.
+* If you plan to use Secret Manager attestation, store your verification key in a supported secret manager. Currently, Harness supports HashiCorp Vault. For GitLab CI/CD, you point the component at the key through pipeline variables such as `KMS_KEY` (and `VAULT_ADDR` when the key is stored in HashiCorp Vault), so you do not need to configure a Harness Secret Manager connector. Go to [Add a HashiCorp Vault secret manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault/) to configure HashiCorp Vault.
+* Ensure that your GitLab runners support Docker-in-Docker (DinD). The component runs using the `docker:24-dind` service. Go to [Use Docker-in-Docker](https://docs.gitlab.com/ci/docker/docker_in_docker/) to configure DinD support.
+* Ensure that you create an Open Policy Agent (OPA) SBOM policy set in SCS before configuring the SBOM Policy Enforcement component. Go to [Create SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies) to create a policy set.
 
 ***
 
@@ -70,9 +70,9 @@ Complete the following steps to set up Harness GitLab CI/CD:
 4. Click the `Configure` button under **Configure GitLab CI/CD in your pipeline to generate SBOM and SLSA, and sign artifacts** to open the **Configure Integration** page, where the Artifact Security feature cards are displayed.
 5. Click the **Verify SBOM** card to open the **SBOM Verification** sidepanel.
 6. Click the `Go to Key Generation` button to create the Harness API key required to configure Harness GitLab CI/CD.
-    * Select **Using Service Account** from the dropdown to create the API key using a service account. For more information, see [Service Account API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens).
+    * Select **Using Service Account** from the dropdown to create the API key using a service account. Go to [Service Account API Keys](/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens) to create the key.
     * Select **Using Personal Account** from the dropdown to create a personal API key.
-      Personal API keys are created at the account level and inherit the permissions assigned to your user account. For more information, see [Manage API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys).
+      Personal API keys are created at the account level and inherit the permissions assigned to your user account. Go to [Manage API Keys](/docs/platform/automation/api/add-and-manage-api-keys) to create a personal API key.
 7. Click **Copy** in the upper-right corner of the code block to copy the generated GitLab CI/CD configuration, and then paste it into your GitLab workflow file.
 
 <DocImage path={require('./static/sbom-verification-gitlab.png')} width="100%" height="100%" title="Click to view full size image" />
@@ -85,21 +85,21 @@ After setting up Harness GitLab CI/CD, configure the **SBOM Policy Enforcement**
 
 :::note
 
-If you're using **GitLab Self-Managed**, mirror the required Harness GitLab CI/CD components to your GitLab instance before configuring your pipeline. After mirroring the components, update the `component` reference in your workflow file to use the mirrored component. For step-by-step instructions, see [Use a GitLab.com component on GitLab Self-Managed](https://docs.gitlab.com/ci/components/#use-a-gitlabcom-component-on-gitlab-self-managed).
+If you are using **GitLab Self-Managed**, mirror the required Harness GitLab CI/CD components to your GitLab instance before configuring your pipeline. After mirroring the components, update the `component` reference in your workflow file to use the mirrored component. Go to [Use a GitLab.com component on GitLab Self-Managed](https://docs.gitlab.com/ci/components/#use-a-gitlabcom-component-on-gitlab-self-managed) to mirror the components.
 
 :::
 
 Complete the following steps to configure SBOM policy enforcement:
 
-1. [Add the required GitLab CI/CD variables](#step-1---add-the-required-gitlab-cicd-variables)
-2. [Include the SBOM Policy Enforcement component](#step-2---include-the-sbom-policy-enforcement-component)
-3. [Configure SBOM verification in the workflow](#step-3---configure-sbom-verification)
-4. [Review the workflow](#step-4---review-the-workflow)
-5. [Run the pipeline](#step-5---run-the-pipeline)
+1. [Add the required GitLab CI/CD variables](#step-1-add-the-required-gitlab-cicd-variables)
+2. [Include the SBOM Policy Enforcement component](#step-2-include-the-sbom-policy-enforcement-component)
+3. [Configure SBOM verification in the workflow](#step-3-configure-sbom-verification)
+4. [Review the workflow](#step-4-review-the-workflow)
+5. [Run the pipeline](#step-5-run-the-pipeline)
 
-### Step 1 - Add the required GitLab CI/CD variables
+### Step 1: Add the required GitLab CI/CD variables
 
-Before configuring the SBOM Policy Enforcement component, add the following variables to your GitLab project. For step-by-step instructions, see [Define a CI/CD Variable for a project](https://docs.gitlab.com/ci/variables/#for-a-project).
+Before configuring the SBOM Policy Enforcement component, add the following variables to your GitLab project. Go to [Define a CI/CD Variable for a project](https://docs.gitlab.com/ci/variables/#for-a-project) to add project variables.
 
 | Variable | Description | Required | Example | Masked? |
 | --- | --- | --- | --- | --- |
@@ -115,7 +115,7 @@ Masked GitLab CI/CD variables cannot be passed through component inputs. For thi
 
 :::
 
-### Step 2 - Include the SBOM Policy Enforcement component
+### Step 2: Include the SBOM Policy Enforcement component
 
 Add an `scs` stage to your GitLab workflow file, or set the `stage` input on the component to an existing stage. Then, include the Harness **SBOM Policy Enforcement** component in your GitLab workflow file.
 
@@ -158,7 +158,7 @@ By default, the component enforces SBOM policies for a container image. To enfor
 
 :::
 
-To verify the SBOM attestation before policy evaluation, configure the verification inputs (`VERIFY_WITH`, `OIDC_PROVIDER`, `FULCIO_URL`, `KMS_KEY`, and `VAULT_ADDR`) as described in [Step 3 - Configure SBOM verification](#step-3---configure-sbom-verification).
+To verify the SBOM attestation before policy evaluation, configure the verification inputs (`VERIFY_WITH`, `OIDC_PROVIDER`, `FULCIO_URL`, `KMS_KEY`, and `VAULT_ADDR`) as described in [Step 3: Configure SBOM verification](#step-3-configure-sbom-verification).
 
 #### Override the generated job
  
@@ -180,7 +180,7 @@ If you are enforcing policies for an image in a private registry that is not the
 
 :::
 
-### Step 3 - Configure SBOM verification
+### Step 3: Configure SBOM verification
 
 Harness supports the following verification methods:
 
@@ -237,7 +237,7 @@ scs-sbom-policy-enforcement:
 
 <TabItem value="Configure key-based verification" label="Configure key-based verification">
 
-To verify the signed SBOM using a cryptographic key, set `VERIFY_WITH` to `keybased` and provide the Cosign key material as masked GitLab CI/CD variables on the job. `KMS_KEY` isn't used for key-based verification. It applies only to Secret Manager verification.
+To verify the signed SBOM using a cryptographic key, set `VERIFY_WITH` to `keybased` and provide the Cosign key material as masked GitLab CI/CD variables on the job. `KMS_KEY` is not used for key-based verification. It applies only to Secret Manager verification.
  
 | Input | Description | Required |
 | --- | --- | --- |
@@ -265,7 +265,7 @@ To use a verification key stored in a supported secret manager, configure the fo
 
 </Tabs>
 
-### Step 4 - Review the workflow
+### Step 4: Review the workflow
 
 After configuring the required GitLab CI/CD variables and component inputs, your GitLab workflow file should resemble the following example. This example verifies the SBOM attestation for a container image and evaluates it against the specified policy set in Harness SCS. The policy evaluation results determine whether the artifact complies with your organization's security and compliance requirements before it proceeds through the pipeline. The Harness scope variables are wired through `inputs`, `HARNESS_API_KEY` remains a masked GitLab CI/CD variable, and the Vault variables (`KMS_KEY` and `VAULT_ADDR`) are provided because attestation verification is enabled.
  
@@ -300,15 +300,15 @@ include:
       VERIFY: false
 ```
 
-### Step 5 - Run the pipeline
+### Step 5: Run the pipeline
 
-Commit and push your changes to trigger the GitLab pipeline. During pipeline execution, the SBOM Policy Enforcement component verifies the SBOM attestation, if verification is enabled, and evaluates the specified artifact against the configured policy set. Based on the policy evaluation results, the pipeline determines whether the artifact complies with your organization's security and compliance requirements before proceeding to subsequent stages. For more information on running a GitLab pipeline, see [Tutorial: Create and run your first GitLab CI/CD pipeline](https://docs.gitlab.com/ci/quick_start/).
+Commit and push your changes to trigger the GitLab pipeline. During pipeline execution, the SBOM Policy Enforcement component verifies the SBOM attestation, if verification is enabled, and evaluates the specified artifact against the configured policy set. Based on the policy evaluation results, the pipeline determines whether the artifact complies with your organization's security and compliance requirements before proceeding to subsequent stages. Go to [Tutorial: Create and run your first GitLab CI/CD pipeline](https://docs.gitlab.com/ci/quick_start/) to run a GitLab pipeline..
 
-After the pipeline completes, open the job execution logs and click the **Harness Artifact Details** link to view the generated artifact in SCS. For more information on viewing the status of a job and details of the pipeline, see [View the status of your pipeline and jobs](https://docs.gitlab.com/ci/quick_start/#view-the-status-of-your-pipeline-and-jobs).
+After the pipeline completes, open the job execution logs and click the **Harness Artifact Details** link to view the generated artifact in SCS. Go to [View the status of your pipeline and jobs](https://docs.gitlab.com/ci/quick_start/#view-the-status-of-your-pipeline-and-jobs) to check job status and pipeline details.
 
 <DocImage path={require('./static/sbom-enforce-job.png')} width="100%" height="100%" title="Click to view full size image" />
 
-The Artifact Details page displays the SBOM policy evaluation results for the artifact. The policy evaluation is also recorded in the [Chain of Custody](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-security/overview/#chain-of-custody), providing an immutable audit trail of the artifact lifecycle and the associated GitLab CI/CD pipeline execution. For more information on navigating through artifacts, see [Artifact Overview](/docs/software-supply-chain-assurance/artifact-security/overview/).
+The Artifact Details page displays the SBOM policy evaluation results for the artifact. The policy evaluation is also recorded in the [Chain of Custody](/docs/software-supply-chain-assurance/artifact-security/overview/#chain-of-custody), providing an immutable audit trail of the artifact lifecycle and the associated GitLab CI/CD pipeline execution. Go to [Artifact Overview](/docs/software-supply-chain-assurance/artifact-security/overview/) to navigate through artifacts.
 
 <DocImage path={require('./static/sbom-policy-enforce-artifact.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -402,7 +402,7 @@ include:
 
 ## Next steps
 
-* [Generate SBOM with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/generate-sbom) — Learn how to generate, attest, and upload SBOMs to Harness SCS during pipeline execution.
-* [Ingest SBOM with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/ingest-sbom) — Learn how to upload existing SBOMs generated by external tools or build processes to Harness SCS.
-* [Generate SLSA with GitLab CI/CD](/docs/software-supply-chain-assurance/artifact-security/slsa/slsa-gitlab-ci-cd/generate-slsa) - Learn how to generate and attest SLSA provenance for software artifacts during pipeline execution.
-* [Verify SLSA with GitLab CI/CD](/docs/software-supply-chain-assurance/artifact-security/slsa/slsa-gitlab-ci-cd/verify-slsa) - Learn how to verify SLSA provenance and validate the integrity of software artifacts before promotion or deployment.
+* [Generate SBOM with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/generate-sbom): Learn how to generate, attest, and upload SBOMs to Harness SCS during pipeline execution.
+* [Ingest SBOM with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/ingest-sbom): Learn how to upload existing SBOMs generated by external tools or build processes to Harness SCS.
+* [Generate SLSA with GitLab CI/CD](/docs/software-supply-chain-assurance/artifact-security/slsa/slsa-gitlab-ci-cd/generate-slsa): Learn how to generate and attest SLSA provenance for software artifacts during pipeline execution.
+* [Verify SLSA with GitLab CI/CD](/docs/software-supply-chain-assurance/artifact-security/slsa/slsa-gitlab-ci-cd/verify-slsa): Learn how to verify SLSA provenance and validate the integrity of software artifacts before promotion or deployment.

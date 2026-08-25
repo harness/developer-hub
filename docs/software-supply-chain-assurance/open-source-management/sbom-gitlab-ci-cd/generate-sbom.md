@@ -1,7 +1,7 @@
 ---
 title: Generate and Attest SBOM with Harness GitLab CI/CD
 description: Learn how to use Harness GitLab CI/CD to generate a Software Bill of Materials (SBOM) and attest it for supply chain verification.
-sidebar_position: 11
+sidebar_position: 10
 sidebar_label: Generate SBOM with Harness GitLab CI/CD
 
 redirect_from:
@@ -41,10 +41,10 @@ By the end of this topic, you will be able to:
 
 Make a note of the following before you proceed with generating an SBOM using GitLab CI/CD:
 
-* Understand how to create Harness API keys using Personal API Keys or Service Account API Keys. For more information, go to [Manage API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys) and [Service Account API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens), respectively.
-* If you're using key-based or Secret Manager signing or verification, create or configure a Cosign key pair before configuring the pipeline. For step-by-step instructions, see [Quickstart Signing and Verifying with Cosign](https://docs.sigstore.dev/quickstart/quickstart-cosign/#quickstart-signing-and-verifying-with-cosign), which explains how to generate a local key pair or create one using a supported KMS provider. The key should be generated using Cosign of type `ecdsa-P256`. You don't need to install Cosign on your GitLab runner. The `harness/ssca-plugin` container image used by the Harness GitLab CI/CD components includes Cosign, so no additional installation is required.
-* If you plan to use Secret Manager attestation, store your signing key in a supported secret manager. Currently, Harness supports HashiCorp Vault. For GitLab CI/CD, you point the component at the key through pipeline variables such as `KMS_KEY` (and `VAULT_ADDR` when the key is stored in HashiCorp Vault), so you don't need to configure a Harness Secret Manager connector. For setup steps specific to HashiCorp Vault, see the [Add a HashiCorp Vault secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/).
-* Ensure that your GitLab runners support Docker-in-Docker (DinD). The component runs using the `docker:24-dind` service. For more information, go to [Use Docker-in-Docker](https://docs.gitlab.com/ci/docker/docker_in_docker/).
+* Understand how to create Harness API keys using Personal API Keys or Service Account API Keys. Go to [Manage API Keys](/docs/platform/automation/api/add-and-manage-api-keys) and [Service Account API Keys](/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens) to create either key type.
+* If you are using key-based or Secret Manager signing or verification, create or configure a Cosign key pair before configuring the pipeline. Go to [Quickstart Signing and Verifying with Cosign](https://docs.sigstore.dev/quickstart/quickstart-cosign/#quickstart-signing-and-verifying-with-cosign) to understand how to generate a local key pair or create one using a supported KMS provider. The key should be generated using Cosign of type `ecdsa-P256`. You do not need to install Cosign on your GitLab runner. The `harness/ssca-plugin` container image used by the Harness GitLab CI/CD components includes Cosign, so no additional installation is required.
+* If you plan to use Secret Manager attestation, store your signing key in a supported secret manager. Currently, Harness supports HashiCorp Vault. For GitLab CI/CD, you point the component at the key through pipeline variables such as `KMS_KEY` (and `VAULT_ADDR` when the key is stored in HashiCorp Vault), so you do not need to configure a Harness Secret Manager connector. Go to [Add a HashiCorp Vault secret manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault/) to configure HashiCorp Vault.
+* Ensure that your GitLab runners support Docker-in-Docker (DinD). The component runs using the `docker:24-dind` service. Go to [Use Docker-in-Docker](https://docs.gitlab.com/ci/docker/docker_in_docker/) to configure DinD support.
 
 ***
 
@@ -75,8 +75,8 @@ Complete the following steps to set up Harness GitLab CI/CD:
 4. Click the `Configure` button under **Configure GitLab CI/CD in your pipeline to generate SBOM and SLSA, and sign artifacts** to open the **Configure Integration** page, where the Artifact Security feature cards are displayed.
 5. Click the **Generate SBOM** card to open the **SBOM Generation** sidepanel.
 6. Click the `Go to Key Generation` button to create the Harness API key required to configure Harness GitLab CI/CD.
-    * Select **Using Service Account** from the dropdown to create the API key using a service account. For more information, see [Service Account API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens).
-    * Select **Using Personal Account** from the dropdown to create a personal API key. Personal API keys are created at the account level and inherit the permissions assigned to your user account. For more information, see [Manage API Keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys).
+    * Select **Using Service Account** from the dropdown to create the API key using a service account. Go to [Service Account API Keys](/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens) to create the key.
+    * Select **Using Personal Account** from the dropdown to create a personal API key. Personal API keys are created at the account level and inherit the permissions assigned to your user account. Go to [Manage API Keys](/docs/platform/automation/api/add-and-manage-api-keys) to create a personal API key.
 7. Click **Copy** in the upper-right corner of the code block to copy the generated GitLab CI/CD configuration, and then paste it into your GitLab workflow file.
 
 <DocImage path={require('./static/sbom-generation-gitlab.png')} width="100%" height="100%" title="Click to view full size image" />
@@ -85,11 +85,11 @@ Complete the following steps to set up Harness GitLab CI/CD:
 
 ## Configure SBOM generation in GitLab CI/CD
 
-After setting up Harness GitLab CI/CD, configure the SBOM Orchestration component in your GitLab workflow file. Add the required GitLab CI/CD variables to your GitLab project, configure the component inputs, the attestation settings, and run the pipeline. During pipeline execution, the component generates an SBOM for the specified artifact and uploads it to the SCS module. For the authoritative list of component inputs and defaults, see the CI/CD Catalog at [SCS GitLab Plugins](https://gitlab.com/explore/catalog/harness-scs/gitlab-plugins?tab=components#sbom-orchestration).
+After setting up Harness GitLab CI/CD, configure the SBOM Orchestration component in your GitLab workflow file. Add the required GitLab CI/CD variables to your GitLab project, configure the component inputs, the attestation settings, and run the pipeline. During pipeline execution, the component generates an SBOM for the specified artifact and uploads it to the SCS module. Go to the CI/CD Catalog at [SCS GitLab Plugins](https://gitlab.com/explore/catalog/harness-scs/gitlab-plugins?tab=components#sbom-orchestration) to review the authoritative list of component inputs and defaults.
 
 :::note
 
-If you're using **GitLab Self-Managed**, mirror the required Harness GitLab CI/CD components to your GitLab instance before configuring your pipeline. After mirroring the components, update the `component` reference in your workflow file to use the mirrored component. For step-by-step instructions, see [Use a GitLab.com component on GitLab Self-Managed](https://docs.gitlab.com/ci/components/#use-a-gitlabcom-component-on-gitlab-self-managed).
+If you are using **GitLab Self-Managed**, mirror the required Harness GitLab CI/CD components to your GitLab instance before configuring your pipeline. After mirroring the components, update the `component` reference in your workflow file to use the mirrored component. Go to [Use a GitLab.com component on GitLab Self-Managed](https://docs.gitlab.com/ci/components/#use-a-gitlabcom-component-on-gitlab-self-managed) to mirror the components.
 
 :::
 
@@ -97,13 +97,13 @@ Complete the following steps to configure SBOM generation:
 
 1. [Add the required GitLab CI/CD variables](#step-1---add-the-required-gitlab-cicd-variables)
 2. [Include the SBOM Orchestration component](#step-2---include-the-sbom-orchestration-component)
-3. [(Optional) Configure SBOM attestation in the workflow](#optional-step-3---configure-sbom-attestation)
+3. [Configure SBOM attestation in the workflow (optional)](#step-3---configure-sbom-attestation-optional)
 4. [Review the workflow](#step-4---review-the-workflow)
 5. [Run the pipeline](#step-5---run-the-pipeline)
 
 ### Step 1 - Add the required GitLab CI/CD variables
 
-Before configuring the SBOM Orchestration component, add the following variables to your GitLab project. For step by step instructions, see [Define a CI/CD Variable for a project](https://docs.gitlab.com/ci/variables/#for-a-project).
+Before configuring the SBOM Orchestration component, add the following variables to your GitLab project. Go to [Define a CI/CD Variable for a project](https://docs.gitlab.com/ci/variables/#for-a-project) to add project variables.
 
 | **Variable** | **Description** | **Required** | **Example** | **Masked?** |
 | --- | --- | --- | --- | --- |
@@ -163,7 +163,7 @@ By default, the component generates an SBOM for a container image. To generate a
 
 :::
 
-To attest the generated SBOM, configure the attestation inputs (`ATTEST_WITH`, `OIDC_PROVIDER`, `FULCIO_URL`, `KMS_KEY`, and `VAULT_ADDR`) as described in [(Optional) Step 3 - Configure SBOM attestation](#optional-step-3---configure-sbom-attestation).
+To attest the generated SBOM, configure the attestation inputs (`ATTEST_WITH`, `OIDC_PROVIDER`, `FULCIO_URL`, `KMS_KEY`, and `VAULT_ADDR`) as described in [Step 3 - Configure SBOM attestation](#step-3---configure-sbom-attestation-optional).
 
 #### Override the generated job
  
@@ -185,7 +185,7 @@ If you are generating an SBOM for an image in a private registry that is not the
 
 :::
 
-### (Optional) Step 3 - Configure SBOM attestation
+### Step 3 - Configure SBOM attestation (optional)
 
 Harness supports the following attestation methods:
 
@@ -240,7 +240,7 @@ scs-sbom-orchestration:
 
 <TabItem value="Configure key-based attestation" label="Configure key-based attestation">
 
-To sign the generated SBOM using a cryptographic key, set `ATTEST_WITH` to `keybased` and provide the Cosign key material as [masked GitLab CI/CD variables](https://docs.gitlab.com/ci/variables/#for-a-project) on the job. `KMS_KEY` isn't used for key-based attestation. It applies only to Secret Manager attestation.
+To sign the generated SBOM using a cryptographic key, set `ATTEST_WITH` to `keybased` and provide the Cosign key material as [masked GitLab CI/CD variables](https://docs.gitlab.com/ci/variables/#for-a-project) on the job. `KMS_KEY` is not used for key-based attestation. It applies only to Secret Manager attestation.
  
 | Input | Description | Required |
 | --- | --- | --- |
@@ -290,13 +290,13 @@ include:
 
 ### Step 5 - Run the pipeline
 
-Commit your changes and run the GitLab pipeline. During pipeline execution, the SBOM Orchestration component analyzes the specified target, generates an SBOM, and uploads it to the SCS module. If SBOM attestation is enabled, the component also generates and signs an SBOM attestation using the configured attestation method. For more information on running a GitLab pipeline, see [Tutorial: Create and run your first GitLab CI/CD pipeline](https://docs.gitlab.com/ci/quick_start/).
+Commit your changes and run the GitLab pipeline. During pipeline execution, the SBOM Orchestration component analyzes the specified target, generates an SBOM, and uploads it to the SCS module. If SBOM attestation is enabled, the component also generates and signs an SBOM attestation using the configured attestation method. Go to [Tutorial: Create and run your first GitLab CI/CD pipeline](https://docs.gitlab.com/ci/quick_start/) to run a GitLab pipeline.
 
-After the pipeline completes, open the job execution logs and click the **Harness Artifact Details** link to view the generated artifact in SCS. For more information on viewing the status of a job and details of the pipeline, see [View the status of your pipeline and jobs](https://docs.gitlab.com/ci/quick_start/#view-the-status-of-your-pipeline-and-jobs).
+After the pipeline completes, open the job execution logs and click the **Harness Artifact Details** link to view the generated artifact in SCS. Go to [View the status of your pipeline and jobs](https://docs.gitlab.com/ci/quick_start/#view-the-status-of-your-pipeline-and-jobs) to check job status and pipeline details.
 
 <DocImage path={require('./static/sbom-generate-job.png')} width="100%" height="100%" title="Click to view full size image" />
 
-The Artifact Details page displays the generated SBOM and its associated security results. The SBOM is also automatically recorded in the [Chain of Custody](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-security/overview/#chain-of-custody), providing an immutable audit trail of the artifact lifecycle and the associated GitLab CI/CD pipeline execution. For more information on navigating through artifacts, see [Artifact Overview](/docs/software-supply-chain-assurance/artifact-security/overview/).
+The Artifact Details page displays the generated SBOM and its associated security results. The SBOM is also automatically recorded in the [Chain of Custody](/docs/software-supply-chain-assurance/artifact-security/overview/#chain-of-custody), providing an immutable audit trail of the artifact lifecycle and the associated GitLab CI/CD pipeline execution. Go to [Artifact Overview](/docs/software-supply-chain-assurance/artifact-security/overview/) to navigate through artifacts.
 
 <DocImage path={require('./static/sbom-generation-artifact.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -392,5 +392,5 @@ include:
 
 ## Next steps
 
-* [Ingest SBOM with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/ingest-sbom) — Learn how to upload existing SBOMs generated by external tools or build processes to Harness SCS.
-* [Enforce SBOM Policies with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/enforce-sbom-policies) — Learn how to verify SBOM attestations and enforce software supply chain policies during pipeline execution.
+* [Ingest SBOM with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/ingest-sbom): Learn how to upload existing SBOMs generated by external tools or build processes to Harness SCS.
+* [Enforce SBOM Policies with GitLab CI/CD](/docs/software-supply-chain-assurance/open-source-management/sbom-gitlab-ci-cd/enforce-sbom-policies): Learn how to verify SBOM attestations and enforce software supply chain policies during pipeline execution.

@@ -2,7 +2,7 @@
 title: Ingest Software Bill of Materials (SBOM) data into SCS
 description: Harness SCS can ingest data from STO scanners that can generate an SBOM.
 sidebar_label: Ingest SBOM from STO Scanners
-sidebar_position: 20
+sidebar_position: 50
 redirect_from:
 
 - /docs/software-supply-chain-assurance/sbom/generate-sbom-aqua-trivy
@@ -45,13 +45,13 @@ The Aqua Trivy STO step creates a `JOB_ID` [output variable](/docs/continuous-in
 
 1. Replace `STAGE_ID` and `STEP_ID` in the following [Harness expression](/docs/platform/variables-and-expressions/runtime-inputs.md#expressions) with the stage ID and step ID for your Aqua Trivy STO step.
 
-   ```
+   ```yaml
    <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.JOB_ID>
    ```
 
 2. Use the expression in your SBOM file path. The exact path depends on where your scanner outputs SBOM files. For example, this filepath references an Aqua Trivy STO step with the ID `myaquatrivystep` in a stage with the ID `mybuildstage`:
 
-   ```
+   ```yaml
    /addon/results/<+pipeline.stages.mybuildstage.spec.execution.steps.myaquatrivystep.output.outputVariables.JOB_ID>.sbom
    ```
 
@@ -72,14 +72,14 @@ Add an [SBOM Orchestration step](/docs/software-supply-chain-assurance/open-sour
 
 * **Step Mode:** Set the step mode to **Ingestion**.
 * **SBOM File Path:** enter the SBOM file path that uses the `JOB_ID` value, as detailed in [Get the SBOM file path](#get-the-sbom-file-path).
-* **Source:** Set the source, which can be DockerHub, ECR, GCR, ACR or Repository. Depending on your selection, a unique set of fields will appear, each specific to the source you've chosen. Address these fields as required, this is similar to configuring the source in SBOM Orchestration step. For more details of what each field entails, please refer to the [documentation on SBOM Orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories#sbom-orchestration-step-configuration). If you are using DockerHub, you can follow along.
+* **Source:** Set the source, which can be DockerHub, ECR, GCR, ACR or Repository. Depending on your selection, a unique set of fields will appear, each specific to the source you've chosen. Address these fields as required, this is similar to configuring the source in SBOM Orchestration step. Go to the [documentation on SBOM Orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories#sbom-orchestration-step-configuration) to understand what each field entails. If you are using DockerHub, you can follow along.
 * **Image:**, Enter the name of your image with tag, such as `my-docker-org/repo-name:tag`.
 
 <DocImage path={require('./static/ingest-sbom-sto-scanner.png')} width="90%" height="90%" title="Click to view full size image" />
 
-### Attest the Ingested SBOM - Optional
+### Attest the ingested SBOM (optional)
 
-SBOM signing is the process of cryptographically signing an ingested SBOM to ensure its authenticity and integrity. It ensures that externally sourced SBOMs have not been tampered with and can be trusted by downstream systems for analysis and compliance. To understand the signing and verification process, see [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
+SBOM signing is the process of cryptographically signing an ingested SBOM to ensure its authenticity and integrity. It ensures that externally sourced SBOMs have not been tampered with and can be trusted by downstream systems for analysis and compliance. Go to [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) to understand the signing and verification process.
 
 You can perform attestation using Cosign with the following signing methods:
 
@@ -93,3 +93,7 @@ import GenerateCosignIngestSbom from '/docs/software-supply-chain-assurance/shar
 
 <GenerateCosignIngestSbom />
 
+## Next steps
+
+* [Enforce SBOM policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies): Evaluate the ingested SBOM against your policy sets during pipeline execution.
+* [Ingest SBOM data](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data): Ingest SBOMs generated outside of STO scanners.

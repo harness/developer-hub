@@ -1,7 +1,7 @@
 ---
 title: Enforce policies with GitHub Actions
 description: Use SCS GitHub Actions to implement SBOM Verification and Policy Enforcement.
-sidebar_position: 22
+sidebar_position: 30
 redirect_from:
 
 - /docs/software-supply-chain-assurance/sbom-policies/enforce-sbom-policies-with-github-actions
@@ -19,7 +19,7 @@ tags:
 [Harness GitHub Actions](https://github.com/marketplace/actions/harness-github-actions) provide a seamless way to integrate Harness's Software Supply Chain Security (SCS) capabilities directly into GitHub workflows. You can use this GitHub Action to perform various supply chain security tasks. 
 The Harness GitHub Action includes multiple sub-actions, each designed for specific tasks. This document focuses on the `harness/github-actions/sbom-policy-enforcement` sub-action, which is used to generate an SBOM and attest it if needed.
 
-The `harness/github-actions/sbom-policy-enforcement` verifies the SBOM attestation and enforces policies on the SBOM. The policies applied are *Harness SBOM Policies*. For more information on creating and managing SBOM policies, refer to the [Harness SBOM Policies Documentation](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies).
+The `harness/github-actions/sbom-policy-enforcement` verifies the SBOM attestation and enforces policies on the SBOM. The policies applied are *Harness SBOM Policies*. Go to [Create SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies) to create and manage SBOM policies.
 
 import NotesForKeysAndVault from '/docs/software-supply-chain-assurance/shared/note-key-gen-vault-support.md';
 
@@ -27,13 +27,13 @@ import NotesForKeysAndVault from '/docs/software-supply-chain-assurance/shared/n
 <NotesForKeysAndVault />
 :::
 
-### Requirements
+## Before you begin
 
 import GHActionReq from '/docs/software-supply-chain-assurance/shared/requirements-gh-actions.md';
 
 <GHActionReq />
 
-### Usage Example
+### Usage example
 
 ```yaml
 - name: SBOM Policy Enforcement
@@ -53,7 +53,7 @@ import GHActionReq from '/docs/software-supply-chain-assurance/shared/requiremen
 
 ### Configuration
 
-Make sure to include the required configurations from the [Requirements](#requirements) section in your workflow. Below are the specific configurations for the `sbom-policy-enforcement` sub-action.
+Make sure to include the required configurations from the [Before you begin](#before-you-begin) section in your workflow. Below are the specific configurations for the `sbom-policy-enforcement` sub-action.
 
 | **Key**            | **Value Example**            | **Description**                                                                 | **Required** |
 |--------------------|------------------------------|---------------------------------------------------------------------------------|-------------|
@@ -64,7 +64,7 @@ Make sure to include the required configurations from the [Requirements](#requir
 
 ### Sample workflow
 
-Here's a sample workflow using the `harness/github-actions/sbom-policy-enforcement`
+The following sample workflow uses the `harness/github-actions/sbom-policy-enforcement` sub-action.
 
 ```yaml
 
@@ -164,3 +164,7 @@ jobs:
            KMS_KEY: 'vault-key'
 
 ```
+
+## Next steps
+
+Go to [Ingest SBOM with Harness GitHub Actions](/docs/software-supply-chain-assurance/open-source-management/sbom-github-actions/ingest-sbom-with-github-actions) to upload an externally generated SBOM to Harness SCS.

@@ -1,6 +1,6 @@
 {
     "label":"SBOM using GitLab CI/CD",
-    "position": 48,
+    "position": 150,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",

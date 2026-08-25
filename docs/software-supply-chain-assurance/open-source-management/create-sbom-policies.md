@@ -1,7 +1,7 @@
 ---
 title: Create SBOM policies
 description: Create SBOM policies using OPA.
-sidebar_position: 21
+sidebar_position: 60
 redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/create-ssca-policies
   - /docs/software-supply-chain-assurance/sbom-policies/create-sbom-policies
@@ -14,25 +14,25 @@ tags:
   - supply-chain-visibility 
 ---
 
-This document provides a step-by-step guide on how to create SBOM Policies. For guidance on how to write these policies, please refer to the section on [write policy definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies). To learn about implementing SBOM policies, follow the instructions in the section on [enforcing SBOM policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies).
+This document provides a step-by-step guide on how to create SBOM Policies. Go to [write policy definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies) to learn how to write these policies. Go to [enforcing SBOM policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies) to implement them.
 
 <DocVideo src="https://youtu.be/u1QxLMUvrPU?si=a7w8h-NJ58n34xW0" />
 
-### Before you begin
+## Before you begin
 
-As you learn to create SBOM policies, ensure you thoroughly review
+Review the following before you create SBOM policies:
 
 
-* [Harness Policy as Code - Overview](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/)
-* [Harness Policy as Code - Quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart/)
+* **Policy as Code overview:** Go to [Harness Policy as Code - Overview](/docs/platform/governance/policy-as-code/harness-governance-overview/) to understand the governance framework.
+* **Policy as Code quickstart:** Go to [Harness Policy as Code - Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart/)
 
-The Harness Policy Library provides sample policies that simplify the process of creating and enforcing them against SBOM. Here's a guide on how to utilize these samples for policy creation.
+The Harness Policy Library provides sample policies that simplify the process of creating and enforcing them against SBOM. The following describes how to use these samples for policy creation.
 
 :::info
-Policies can be created at the account, organization, and project levels, this guide will focus on creating a policy at the account level. For instructions on crafting policies for the organization and project levels, please refer to the linked [overview guide](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/), which outlines a similar process.
+Policies can be created at the account, organization, and project levels, this guide will focus on creating a policy at the account level. Go to the [overview guide](/docs/platform/governance/policy-as-code/harness-governance-overview/) to craft policies for the organization and project levels, which outlines a similar process.
 :::
 
-### Creating an SBOM Policy
+## Create an SBOM policy
 
 1. Navigate to Account Settings > Security and Governance > Policies within your Harness Account, and select "Policies" from the options in the top right corner. Then, click on the "+New Policy" button.
 
@@ -57,7 +57,7 @@ Preview the sample policy of your choice and click on "Use this sample" to proce
 After selecting the sample, you can modify it as needed and then test the changes to ensure it meets your requirements.
 
 
-### Creating an SBOM Policy Set
+## Create an SBOM policy set
 
 Policies take effect only when they are added into a Policy Set. Within a Policy Set, policies are organized and linked to a specific Harness entity, such as SBOM, in this context. For a policy to be enforced, it must be part of a Policy Set.
 
@@ -89,4 +89,4 @@ Then, click on the "+ add policy" button to proceed with adding policies to your
 
 Select the necessary policies you wish to include in the set and add them. You have the option to specify the action to be taken if a policy fails, by choosing either “Error and exit” or “Warn and continue.” After making your selections, click "Apply" and then "Finish"
 
-This process will create a new policy set comprising all the selected policies. You can then select this policy set during the SBOM Enforcement step. For further details on how to enforce SBOM policies, please refer to the [Enforce SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies) section.
+This process will create a new policy set comprising all the selected policies. You can then select this policy set during the SBOM Enforcement step. Go to [Enforce SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies) to enforce SBOM policies.

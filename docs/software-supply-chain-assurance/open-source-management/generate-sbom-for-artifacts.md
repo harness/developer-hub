@@ -1,7 +1,7 @@
 ---
 title: Generate and Manage Software Bill of Materials (SBOM)
 description: Generate SBOM for Artifacts using Harness SCS
-sidebar_position: 9
+sidebar_position: 20
 sidebar_label: Generate SBOM for Artifacts
 redirect_from:
   - /docs/software-supply-chain-assurance/sbom/generate-sbom
@@ -23,7 +23,7 @@ import TabItem from '@theme/TabItem';
 
 A Software Bill of Materials (SBOM) is an exhaustive list of all components, libraries, and other dependencies utilized in a software application. The **SBOM Orchestration** step within Harness SCS facilitates the generation of SBOMs for your software artifacts and [code repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories).
 
-If you already possess an SBOM and wish to ingest it, please refer to the [Ingest SBOM](./ingest-sbom-data.md) section.
+If you already possess an SBOM and wish to ingest it, go to the [Ingest SBOM](./ingest-sbom-data.md) section.
 
 :::note
 
@@ -68,7 +68,7 @@ Follow the steps to configure the fields for each supported type:
 
 ### Use Syft
 
-If you're using **Syft** to generate the SBOM and want to ensure it includes all component licenses with high accuracy, you'll need to set specific environment variables based on your project's programming language. Here are the relevant variables:
+If you are using **Syft** to generate the SBOM and want to ensure it includes all component licenses with high accuracy, you will need to set specific environment variables based on your project's programming language. Here are the relevant variables:
 
   <details>
     <summary>Set variables for enhanced SBOM</summary>
@@ -119,7 +119,9 @@ The following flags can help optimize SBOM generation for common use cases:
 
 :::
 
-### Configure the Artifact Source
+### Configure the artifact source
+
+Configure the following fields to identify where your artifact is stored.
 
 - **Registry Type**: Select **Harness Artifact Registry** or **Third-Party Artifact Registry**, based on where your artifact is stored.
 - **Source**: Select the **Source** by choosing either a supported container registry from the list or Repository if you are generating the SBOM for source code.
@@ -143,9 +145,9 @@ Harbor: `</your-project/test-image>:tag`
 
 :::
 
-### Attest the Generated SBOM
+### Attest the generated SBOM
 
-SBOM signing is the process of cryptographically signing a generated SBOM to ensure its authenticity and integrity. It ensures that the SBOM has not been tampered with and can be trusted by downstream systems for analysis and compliance. To understand the signing and verification process, see [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
+SBOM signing is the process of cryptographically signing a generated SBOM to ensure its authenticity and integrity. It ensures that the SBOM has not been tampered with and can be trusted by downstream systems for analysis and compliance. Go to [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) to understand the signing and verification process.
 
 You can perform attestation using Cosign with the following signing methods:
 
@@ -162,7 +164,7 @@ import CosignAttestationOptions from '/docs/software-supply-chain-assurance/shar
 
 
 
-### Configure SBOM Drift
+### Configure SBOM drift
 
 This feature allows you to track changes in SBOMs by comparing against the last generated SBOM. It provides a detailed analysis of addition or removal of components and licenses, helping you manage and oversee software artifacts more effectively. However, this is optional and not required for SBOM generation. If you prefer not to detect changes in SBOMs, leave this option unchecked.
 
@@ -213,7 +215,7 @@ This example **Build** stage has three steps:
 </TabItem>
 <TabItem value="deploy" label="Deploy stage">
 
-SBOM Orchestration in deploy stage can only be used in the [Containerized Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
+SBOM Orchestration in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
 This example **Deploy** stage has two steps:
 
 - **SBOM Orchestration** step: Generate the SBOM.

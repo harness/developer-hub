@@ -2,7 +2,7 @@
 title: Create and Manage a Remediation Tracker
 sidebar_label: Create Remediation Tracker
 description: Learn to create and manage your remediation tracker
-sidebar_position: 2
+sidebar_position: 20
 redirect_from:
 - /docs/software-supply-chain-assurance/remediation-tracker/create-remediation-tracker
 
@@ -14,16 +14,16 @@ tags:
   - supply-chain-visibility
 ---
 
-The instructions provided in this document will guide you through the process of creating a remediation tracker in the SCS Module. Please follow these steps to set up your tracker.
+The instructions in this document guide you through creating a remediation tracker in the SCS module. Follow these steps to set up your tracker.
 
 <DocVideo src="https://youtu.be/BxTwle4240M?si=aZmCMEie5JAef4F3" />
 
-## Prerequisites
+## Before you begin
 
 Before creating a remediation tracker, it is crucial to ensure that your deployment pipelines incorporate and successfully complete the [SBOM Orchestration step](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories#sbom-orchestration-step-configuration). Additionally, all artifacts must be listed in the [Artifacts view](/docs/software-supply-chain-assurance/artifact-security/overview) page in the SCS module, as the tracker can only screen through those deployed artifacts available in this view.
 
 
-## Setting up the remediation tracker
+## Set up the remediation tracker
 
 Creating the remediation tracker can be done in a few clicks:
 
@@ -38,7 +38,7 @@ Creating the remediation tracker can be done in a few clicks:
 4. Configure the following details.
 
 
-* **CVE Number**: A CVE (Common Vulnerabilities and Exposures) number serves as a unique identifier assigned to a specific security vulnerability. Managed by MITRE, CVE numbers facilitate standardized tracking and referencing of vulnerabilities, you can explore [MITRE](https://cve.mitre.org/) or the [National Vulnerability Database (NVD)](https://nvd.nist.gov/) to learn more. 
+* **CVE Number**: A CVE (Common Vulnerabilities and Exposures) number serves as a unique identifier assigned to a specific security vulnerability. Managed by MITRE, CVE numbers facilitate standardized tracking and referencing of vulnerabilities. Go to [MITRE](https://cve.mitre.org/) or the [National Vulnerability Database (NVD)](https://nvd.nist.gov/) to review vulnerability records. 
 
     The 'Retrieve Information' button aids in fetching vulnerability data from the NVD database and automatically populates the Severity and Description fields. These fields are also editable for further customization. 
 
@@ -77,7 +77,7 @@ Each tracker in the list will present the provided details succinctly for quick 
 
 <DocImage path={require('./static/tracker-tab.png')} width="100%" height="80%" />
 
-## Viewing the affected artifacts
+## View the affected artifacts
 
 By clicking on the tracker, you can access a list of all artifacts that utilize the specified component and do not meet the remediation conditions. The following is an example of how the artifacts listing page appears for the sample 'log4j' remediation tracker.
 
@@ -87,7 +87,7 @@ By clicking on the tracker, you can access a list of all artifacts that utilize 
 
 
 
-## Viewing the affected deployment environments
+## View the affected deployment environments
 
 When all the artifacts are listed, you can click on any artifact to see a detailed list of its deployments and environments. This view also includes the specific pipeline used for deployment and displays the tag of the artifact and the component version utilized in each deployment. Here’s how it appears:
 
@@ -96,7 +96,7 @@ When all the artifacts are listed, you can click on any artifact to see a detail
 
 
 
-## Excluding artifacts from the remediation
+## Exclude artifacts from the remediation
 
 While the tracker lists all artifacts and includes them in the remediation process by default, it also offers the flexibility to exclude any artifact. To do this, click on the ellipses (…) in the list and select 'Exclude Artifact from Remediation.' This action will permanently remove the artifact from the process.
 
@@ -104,22 +104,22 @@ While the tracker lists all artifacts and includes them in the remediation proce
 
 :::info
 
-It's important to note that once an artifact is excluded, it cannot be re-added to the tracker. Additionally, there is no limit to the number of artifacts you can exclude from the process.
+It is important to note that once an artifact is excluded, it cannot be re-added to the tracker. Additionally, there is no limit to the number of artifacts you can exclude from the process.
 
 :::
 
-## Creating tickets from the tracker
+## Create tickets from the tracker
 
-In the tracker, you can easily create Jira tickets for individual artifacts. Simply click the 'Create Ticket' button located to the right of the artifact list item. This will open options to configure the ticket details, with the artifact details automatically populating the Jira ticket creation fields. Similarly, you can create tickets at the tracker level by clicking the 'Create Ticket' button in the top right corner of the screen. However, before proceeding, ensure that your Jira account is connected to Harness using the Harness Jira connector. For more information on this, you can refer to [Connect to Jira document](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira/).  
+In the tracker, you can easily create Jira tickets for individual artifacts. Simply click the 'Create Ticket' button located to the right of the artifact list item. This will open options to configure the ticket details, with the artifact details automatically populating the Jira ticket creation fields. Similarly, you can create tickets at the tracker level by clicking the 'Create Ticket' button in the top right corner of the screen. However, before proceeding, ensure that your Jira account is connected to Harness using the Harness Jira connector. Go to [Connect to Jira](/docs/platform/connectors/ticketing-systems/connect-to-jira) to set up the connector.  
 
 <DocImage path={require('./static/create-ticket-in-jira.png')} width="100%" height="80%" />
 
 
 :::info
-it's important to note that any status changes made to the tickets created in Jira do not impact the behavior of the tracker. 
+It is important to note that any status changes made to the tickets created in Jira do not impact the behavior of the tracker. 
 :::
 
 
-## Next Steps
+## Next steps
 
-For guidance on how to track your remediation progress, please refer to the [Track Remediation Progress](./track-remediation-progress) document.
+Go to [Track Remediation Progress](./track-remediation-progress) to monitor pending and remediated environments until the tracker closes.

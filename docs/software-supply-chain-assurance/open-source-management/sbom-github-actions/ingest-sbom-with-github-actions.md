@@ -1,7 +1,7 @@
 ---
 title: Ingest and Attest SBOM with Harness GitHub Actions
 description: Ingest and Attest SBOM with Harness Github Actions
-sidebar_position: 21
+sidebar_position: 20
 sidebar_label: Ingest SBOM with Harness GitHub Actions
 redirect_from:
 
@@ -28,13 +28,13 @@ import NotesForKeysAndVault from '/docs/software-supply-chain-assurance/shared/n
 <NotesForKeysAndVault />
 :::
 
-### Requirements
+## Before you begin
 
 import GHActionReq from '/docs/software-supply-chain-assurance/shared/requirements-gh-actions.md';
 
 <GHActionReq />
 
-### Usage Example
+### Usage example
 
 ```yaml
 - name: SBOM Ingestion
@@ -54,7 +54,7 @@ import GHActionReq from '/docs/software-supply-chain-assurance/shared/requiremen
 
 ### Configuration
 
-Make sure to include the required configurations from the [Requirements](#requirements) section in your workflow. Below are the specific configurations for the `sbom-ingestion` sub-action.
+Make sure to include the required configurations from the [Before you begin](#before-you-begin) section in your workflow. Below are the specific configurations for the `sbom-ingestion` sub-action.
 
 | **Key**           | **Value Example**         | **Description**                                               | **Required** |
 |-------------------|---------------------------|---------------------------------------------------------------|-------------|
@@ -65,7 +65,7 @@ Make sure to include the required configurations from the [Requirements](#requir
 
 ### Sample workflow
 
-Here's a sample workflow using the `harness/github-actions/sbom-ingestion`
+The following sample workflow uses the `harness/github-actions/sbom-ingestion` sub-action.
 
 ```yaml
 
@@ -169,8 +169,8 @@ jobs:
            SBOM_FILE_PATH: <path_to_sbom_file>
            VERIFY: true
            KMS_KEY: 'vault-key'
-         
-        
-
-
 ```
+
+## Next steps
+
+Go to [Enforce SBOM Policies with GitHub Actions](/docs/software-supply-chain-assurance/open-source-management/sbom-github-actions/enforce-sbom-policies-with-github-actions) to verify the ingested SBOM and enforce policies on it.

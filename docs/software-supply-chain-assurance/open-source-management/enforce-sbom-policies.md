@@ -1,7 +1,7 @@
 ---
 title: Enforce SBOM policies
 description: Use SCS to implement SBOM Policy Enforcement.
-sidebar_position: 21
+sidebar_position: 70
 redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/enforce-ssca-policies
   - /docs/software-supply-chain-assurance/ssca-policies/overview
@@ -28,7 +28,7 @@ Enforce SBOM policies in the CI and CD stages of your Harness pipelines to ensur
 
 <DocImage path={require('./static/sbom-enforcement-overview.png')} width="100%" height="100%" />
 
-Here's a breakdown of the overall steps involved:
+The following is a breakdown of the overall steps involved:
 
 
 
@@ -41,8 +41,8 @@ Here's a breakdown of the overall steps involved:
 
 To enforce SBOM policies in a Harness pipeline, you need:
 
-* A pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), a [CD (deploy) stage](/docs/continuous-delivery/overview#stage), or both. You'll add the SBOM Enforcement step to one of these stages.
-* [SBOM OPA policies that you want to enforce.](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#creating-an-sbom-policy)
+* A pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), a [CD (deploy) stage](/docs/continuous-delivery/overview#stage), or both. You will add the SBOM Enforcement step to one of these stages.
+* [SBOM OPA policies that you want to enforce.](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#create-an-sbom-policy)
 * SBOM to compare policies against. For example, you can [use SCS to generate SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) or [import SBOM](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data).
 * A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories).
 
@@ -75,9 +75,9 @@ import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifac
 
 <ArtifactSource />
 
-### Verify the SBOM Attestation
+### Verify the SBOM attestation
 
-Verification is the process of validating an SBOM signature to ensure its authenticity and integrity. It confirms that the SBOM was signed by a trusted source, has not been tampered with, and corresponds to the expected artifact. In the SBOM Policy Enforcement step, this ensures that only trusted and compliant SBOMs are used for downstream analysis and decision-making. To understand the verification process, see [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
+Verification is the process of validating an SBOM signature to ensure its authenticity and integrity. It confirms that the SBOM was signed by a trusted source, has not been tampered with, and corresponds to the expected artifact. In the SBOM Policy Enforcement step, this ensures that only trusted and compliant SBOMs are used for downstream analysis and decision-making. Go to [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) to understand the verification process.
 
 You can perform verification using Cosign with the following verification methods:
 
@@ -92,11 +92,11 @@ import CosignVerificationOptions from '/docs/software-supply-chain-assurance/sha
 <CosignVerificationOptions />
 
 
-### Policy Configuration
+### Policy configuration
 
 You can configure the step to enforce policies on the SBOM by selecting the appropriate policy set.
 
-- **Policy Sets:** Choose the policy sets you want to use for enforcement. You can select multiple policy sets from the **Account**, **Org**, or **Project** levels. For more details, refer to [Creating SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#creating-an-sbom-policy) and [Writing SBOM Policy Definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies).
+- **Policy Sets:** Choose the policy sets you want to use for enforcement. You can select multiple policy sets from the **Account**, **Org**, or **Project** levels. Go to [Creating SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies#create-an-sbom-policy) and [Writing SBOM Policy Definitions](/docs/software-supply-chain-assurance/how-to-guides/define-sbom-policies) to create policies and write policy definitions respectively.
 
 
 ## Run the pipeline
@@ -119,7 +119,7 @@ All components must meet the conditions described in *both* the `allow_list` and
 
 
 
-## View Policy Violations
+## View policy violations
 
 The policy violations arising from the SBOM Policy Enforcement step in your pipeline are accessible under the "Policy Violations" section of the artifact list. Also, the Policy Violations card in the overview displays a cumulative count of all the allow list and deny list items across all artifacts.
 

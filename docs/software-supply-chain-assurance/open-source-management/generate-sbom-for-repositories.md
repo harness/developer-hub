@@ -1,7 +1,7 @@
 ---
 title: Generate SBOM for Repositories
 description: Generate SBOM for Repositories using Harness SCS
-sidebar_position: 10
+sidebar_position: 30
 sidebar_label: Generate SBOM for Repositories
 redirect_from:
 
@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 A Software Bill of Materials (SBOM) is a comprehensive list of all components, libraries, and dependencies used in a software application. The **SBOM Orchestration** step in Harness Software Supply Chain (SCS) allows you to generate SBOMs for both code repositories and [software artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts), providing visibility into the components that make up your software.
 
 
-If you already possess an SBOM and wish to ingest it, please refer to the [Ingest SBOM](./ingest-sbom-data.md) section.
+If you already possess an SBOM and wish to ingest it, go to the [Ingest SBOM](./ingest-sbom-data.md) section.
 
 :::note
 
@@ -57,7 +57,7 @@ Using SBOM Orchestration step you can generate the SBOM for both Container image
 
 ### Use Syft
 
-If you're using **Syft** to generate the SBOM and want to ensure it includes all component licenses with high accuracy, you'll need to set specific environment variables based on your project's programming language. Here are the relevant variables:
+If you are using **Syft** to generate the SBOM and want to ensure it includes all component licenses with high accuracy, you will need to set specific environment variables based on your project's programming language. Here are the relevant variables:
 
 <details>
     <summary>Set variables for enhanced SBOM</summary>
@@ -108,11 +108,13 @@ The following flags can help optimize SBOM generation for common use cases:
 
 :::
 
-### Configure the Repository Source
+### Configure the repository source
+
+Configure the following fields to point the step at the repository you want to scan.
 
  *  **Source**: Select the **Source** as a Repository to generate the SBOM for source code.
 
- * **Repository URL:** The Repository URL you've configured for cloning into the workspace.
+ * **Repository URL:** The Repository URL you have configured for cloning into the workspace.
 
     :::note
 
@@ -130,19 +132,21 @@ The following flags can help optimize SBOM generation for common use cases:
 
     Make sure your repository is cloned into the stage workspace before the SBOM Orchestration step runs. There are several ways you can do this:
     * Clone the codebase by default, such as a [Build stage's default codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
-    * Add a [Git Clone step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step/) or [Run step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/) to the Deploy stage.
-    * Add a [Git Clone step or Run step to a Build stage](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
+    * Add a [Git Clone step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step/) to the Deploy stage.
+    * Add a [Run step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/) to the Deploy stage.
+    * Add a [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) to a Build stage.
+    * Add a [Run step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) to a Build stage.
 
 :::
 
-### Configure SBOM Drift
+### Configure SBOM drift
 
 
 This feature allows you to track changes in SBOMs by comparing them against a Git branch. It provides a detailed analysis of addition or removal of components and licenses, helps you manage and oversee repositories more effectively. You can configure the comparison to be between any two branches. For example, comparing a feature branch against the main branch to identify SBOM drift before merging. However, this is optional and not required for SBOM generation. If you prefer not to detect changes in SBOMs, simply leave this option unchecked.
 
 <DocImage path={require('./static/sbom-drift-for-repo.png')} width="70%" height="70%" />
 
-### Configure cdxgen with Extended Java Support
+### Configure cdxgen with extended Java support
 
 If you are using cdxgen to generate an SBOM, the default cdxgen image doesn’t include all Java runtime dependencies.
 
@@ -192,7 +196,7 @@ This example **Build** stage has three steps:
 </TabItem>
 <TabItem value="deploy" label="Deploy stage">
 
-SBOM Orchestration in deploy stage can only be used in the [Containerized Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
+SBOM Orchestration in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
 This example **Deploy** stage has two steps:
 
 - **SBOM Orchestration** step: Generate the SBOM.

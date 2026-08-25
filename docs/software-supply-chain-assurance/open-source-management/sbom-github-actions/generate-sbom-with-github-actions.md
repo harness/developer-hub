@@ -1,7 +1,7 @@
 ---
 title: Generate and Attest SBOM with Harness GitHub Actions
 description: Generate and Attest SBOM with Harness Github Actions
-sidebar_position: 11
+sidebar_position: 10
 sidebar_label: Generate SBOM with Harness GitHub Actions
 redirect_from:
 
@@ -28,13 +28,13 @@ import NotesForKeysAndVault from '/docs/software-supply-chain-assurance/shared/n
 <NotesForKeysAndVault />
 :::
 
-### Requirements
+## Before you begin
 
 import GHActionReq from '/docs/software-supply-chain-assurance/shared/requirements-gh-actions.md';
 
 <GHActionReq />
 
-### Usage Example
+### Usage example
 
 ```yaml
 - name: SBOM Generation
@@ -55,7 +55,7 @@ import GHActionReq from '/docs/software-supply-chain-assurance/shared/requiremen
 
 ### Configuration
 
-Make sure to include the required configurations from the [Requirements](#requirements) section in your workflow. Below are the specific configurations for the `sbom-generation` sub-action.
+Make sure to include the required configurations from the [Before you begin](#before-you-begin) section in your workflow. Below are the specific configurations for the `sbom-generation` sub-action.
 
 | **Key**         | **Value Example**       | **Description**                                            | **Required** |
 |-----------------|-------------------------|------------------------------------------------------------|-------------|
@@ -67,7 +67,7 @@ Make sure to include the required configurations from the [Requirements](#requir
 
 ### Sample workflow
 
-Here's a sample workflow using the `harness/github-actions/sbom-generation`
+The following sample workflow uses the `harness/github-actions/sbom-generation` sub-action.
 
 ```yaml
 
@@ -167,4 +167,6 @@ jobs:
 
 ```
 
-To verify the generated SBOM and enforce policies on it, refer to [Enforce SBOM Policies with GitHub Actions](/docs/software-supply-chain-assurance/open-source-management/sbom-github-actions/enforce-sbom-policies-with-github-actions) documentation.
+## Next steps
+
+Go to [Enforce SBOM Policies with GitHub Actions](/docs/software-supply-chain-assurance/open-source-management/sbom-github-actions/enforce-sbom-policies-with-github-actions) to verify the generated SBOM and enforce policies on it.

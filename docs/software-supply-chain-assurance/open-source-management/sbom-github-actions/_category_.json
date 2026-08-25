@@ -1,6 +1,6 @@
 {
     "label":"SBOM using GitHub Actions",
-    "position": 38,
+    "position": 130,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",

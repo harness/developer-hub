@@ -1,7 +1,7 @@
 ---
 title: Onboard GitHub Repositories
 description: Onboard GitHub repositories in SCS to perform repository security and posture management.
-sidebar_position: 1
+sidebar_position: 10
 sidebar_label: GitHub
 
 tags:
@@ -31,7 +31,7 @@ By the end of this topic, you will be able to understand:
 
 ## Understand GitHub repository onboarding in SCS
 
-Repository Security Posture Management (RSPM) in SCS helps organizations maintain visibility into the security and composition of repositories across their software development ecosystem. GitHub repository onboarding extends this capability by allowing GitHub repositories to be discovered, analyzed, and tracked within SCS. By bringing GitHub repositories into a centralized repository inventory, teams can establish a consistent approach to repository analysis, review security findings in context, and maintain visibility across GitHub organizations and projects. For more information about RSPM, see the [RSPM with Harness SCS](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm/) documentation.
+Repository Security Posture Management (RSPM) in SCS helps organizations maintain visibility into the security and composition of repositories across their software development ecosystem. GitHub repository onboarding extends this capability by allowing GitHub repositories to be discovered, analyzed, and tracked within SCS. By bringing GitHub repositories into a centralized repository inventory, teams can establish a consistent approach to repository analysis, review security findings in context, and maintain visibility across GitHub organizations and projects. Go to [RSPM with Harness SCS](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm) to understand how RSPM tracks repository posture.
 
 The following table provides a structured overview of why GitHub repository onboarding is used, when it is appropriate, and how it can be effectively leveraged within SCS for security scanning and SBOM generation.
 
@@ -65,7 +65,7 @@ A GitHub connector allows SCS to securely connect to your GitHub account and dis
 4. Click the `Configure` button under **Onboard your repositories** to open the **Get Started** page.<br /> The **Get Started** page displays options for onboarding through a **Harness Connector** or a **GitHub Application**. By default, the **Through Harness Connector** configuration card is expanded.
 5. Within the **Through Harness Connector** configuration card, click `Select Connector` to open the `Create or Select an Existing Connector` dialog.
 6. Select your required connector from the list of existing connectors.<br /> You can search for your created connector or filter them by **Project**, **Organization**, and **Account**.
-7. Alternatively, click `+ New Connector` to create a new GitHub connector for onboarding new repositories. For more information, see the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/).
+7. Alternatively, click `+ New Connector` to create a new GitHub connector for onboarding new repositories. Go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) to configure the connector fields.
 8. Click `Apply Selected` to use the existing or newly created GitHub connector.
 9. Click `Next` to open the **Choose repositories to scan** configuration section.
 
@@ -120,7 +120,7 @@ The GitHub application allows you to authorize SCS to discover and onboard repos
 
 ### Step 2 - Choose the repositories to scan
 
-The repository selection workflow is identical for both GitHub onboarding methods. For instructions on selecting repositories, see [Step 2 - Choose the repositories](/docs/software-supply-chain-assurance/open-source-management/integrations/github/#step-2---choose-the-repositories-to-scan) to scan under [Via Harness connector](/docs/software-supply-chain-assurance/open-source-management/integrations/github/#via-harness-connector).
+The repository selection workflow is identical for both GitHub onboarding methods. Go to [Step 2 - Choose the repositories to scan](/docs/software-supply-chain-assurance/open-source-management/integrations/github#step-2---choose-the-repositories-to-scan) under [Via Harness connector](/docs/software-supply-chain-assurance/open-source-management/integrations/github#via-harness-connector) to select repositories.
 
 ***
 

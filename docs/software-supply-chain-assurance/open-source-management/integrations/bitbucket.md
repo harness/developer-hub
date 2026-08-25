@@ -1,7 +1,7 @@
 ---
 title: Onboard Bitbucket Repositories
 description: Onboard Bitbucket repositories in SCS to perform repository security and posture management.
-sidebar_position: 2
+sidebar_position: 20
 sidebar_label: Bitbucket
 
 tags:
@@ -29,9 +29,9 @@ By the end of this topic, you will be able to understand:
 
 ***
 
-## Understand Bitbucket Repository Onboarding in SCS
+## Understand Bitbucket repository onboarding in SCS
 
-Repository Security Posture Management (RSPM) in SCS provides a centralized framework for managing repository-level security insights across your development environment. Bitbucket repository onboarding extends this framework by bringing your Bitbucket repositories into a unified repository inventory for visibility and assessment. This allows teams to organize repository analysis within a single workflow and maintain a consolidated view of repository security posture across Bitbucket projects. For more information about RSPM, see the [RSPM with Harness SCS](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm/) documentation.
+Repository Security Posture Management (RSPM) in SCS provides a centralized framework for managing repository-level security insights across your development environment. Bitbucket repository onboarding extends this framework by bringing your Bitbucket repositories into a unified repository inventory for visibility and assessment. This allows teams to organize repository analysis within a single workflow and maintain a consolidated view of repository security posture across Bitbucket projects. Go to [RSPM with Harness SCS](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm) to understand how RSPM tracks repository posture.
 
 The following table provides a structured overview of why Bitbucket repository onboarding is used, when it is appropriate, and how it can be effectively leveraged within SCS for security scanning and SBOM generation.
 
@@ -41,12 +41,12 @@ The following table provides a structured overview of why Bitbucket repository o
 
 ***
 
-## Create a Bitbucket Integration
+## Create a Bitbucket integration
 
 Creating a Bitbucket integration allows you to connect your repositories to SCS and enable onboarding for security scanning and SBOM generation. To configure a Bitbucket integration in SCS, complete the following steps:
 
-1. [Creating/Selecting the Bitbucket Connector](/docs/software-supply-chain-assurance/open-source-management/integrations/bitbucket#step-1---creatingselecting-the-bitbucket-connector) 
-2. [Choosing the repositories to scan](/docs/software-supply-chain-assurance/open-source-management/integrations/bitbucket#step-2---choosing-the-repositories-to-scan)
+1. [Create/Select the Bitbucket connector](/docs/software-supply-chain-assurance/open-source-management/integrations/bitbucket#step-1---createselect-the-bitbucket-connector)
+2. [Choose the repositories to scan](/docs/software-supply-chain-assurance/open-source-management/integrations/bitbucket#step-2---choose-the-repositories-to-scan)
 
 ### Step 1 - Create/Select the Bitbucket connector
 
@@ -58,10 +58,10 @@ A Bitbucket connector allows SCS to securely connect to your Bitbucket account a
 4. Click the `Configure` button under **Onboard your repositories** to open the **Get Started** page, where the Bitbucket configuration panel is displayed.
 5. Within the configuration panel, click `Select Connector` under **Through Harness Connector** to open the `Create or Select an Existing Connector` dialog.
 6. Select your required connector from the list of existing connectors. You can search for your created connector or filter connectors by **Project**, **Organization**, and **Account**.
-7. Alternatively, click `+ New Connector` to create a new Bitbucket connector for onboarding new repositories. For more information, see the [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/).
+7. Alternatively, click `+ New Connector` to create a new Bitbucket connector for onboarding new repositories. Go to the [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference) to configure the connector fields.
     :::note
 
-    When creating a Bitbucket connector, ensure that API access is enabled and select the **Email and API** token authentication method. The API token must be created in your Bitbucket account with the appropriate repository access scopes required for scanning. For more information, see the [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/#enable-api-access).
+    When creating a Bitbucket connector, ensure that API access is enabled and select the **Email and API** token authentication method. The API token must be created in your Bitbucket account with the appropriate repository access scopes required for scanning. Go to the [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/#enable-api-access) to enable API access.
 
     :::
 8. Click `Apply Selected` to use the existing or newly created Bitbucket connector.
@@ -83,7 +83,7 @@ To choose the Bitbucket repositories for scanning, complete the following steps:
 
 ***
 
-## Modify/Delete a Bitbucket Integration
+## Modify/Delete a Bitbucket integration
 
 Modifying a Bitbucket integration allows you to update the repositories selected for scanning, while deleting an integration removes it from SCS. To modify or delete a Bitbucket integration, complete the following steps:
 
@@ -105,7 +105,7 @@ Modifying a Bitbucket integration allows you to update the repositories selected
 
 ***
 
-## View an Onboarded Repository
+## View an onboarded repository
 
 After you add a Bitbucket integration and select the repositories for scanning, SCS immediately starts scanning the selected repositories in the background. Once the scans are complete, you can view the onboarded repositories and their scan results within SCS. To view an onboarded repository, complete the following steps:
 
@@ -117,7 +117,9 @@ After you add a Bitbucket integration and select the repositories for scanning, 
 
 ***
 
-## Next Steps
+## Next steps
+
+After you onboard your Bitbucket repositories, review the dependency and risk data that SCS generates for them:
 
 * [Direct/Indirect Dependency](/docs/software-supply-chain-assurance/open-source-management/direct-indirect-dependency)
 * [OSS Risks Remediation](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation)
