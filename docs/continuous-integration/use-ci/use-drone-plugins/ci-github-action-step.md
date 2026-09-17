@@ -368,6 +368,12 @@ GitHub Actions settings keys can include `-`, which is not supported by JEXL. Th
 
 :::
 
+:::info
+
+On GitHub Action plugin images based on act v0.2.89 or later, output variables whose names contain characters outside `[A-Za-z0-9_]` (for example, hyphens in `cache-hit` or `node-version` from `actions/setup-node`) are not injected into the action's runtime environment, because act's env-file parser rejects such names and fails the step. These outputs are still exported as Harness output variables and can be referenced normally in later steps and stages, for example `<+steps.STEP_ID.output.outputVariables."cache-hit">`. If your action reads such variables directly from its process environment (for example, `process.env['cache-hit']`), reference the Harness output variable instead.
+
+:::
+
 <details>
 <summary>YAML example: GitHub Actions output variable</summary>
 
