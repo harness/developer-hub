@@ -50,7 +50,7 @@ The Harness GCP connector has 2 credential types. For each type, you must instal
 You can install the gke-gcloud-auth-plugin on the delegate by creating a delegate with an immutable image and updating the following commands in `INIT_SCRIPT`:
 
 <details>
-<summary>RHEL 7 OS</summary>
+<summary>RHEL 8 OS</summary>
 
 ```
 tee -a /etc/yum.repos.d/google-cloud-sdk.repo << EOM
